@@ -26,3 +26,7 @@ dist-ssr
 # GTFS raw data (large files)
 data/gtfs/*.txt
 data/gtfs/*.zip
+
+# Environment variables
+.env
+.env.local

@@ -2,76 +2,85 @@ import { useEffect, useRef, useState, useCallback } from 'react';
 import maplibregl from 'maplibre-gl';
 import 'maplibre-gl/dist/maplibre-gl.css';
 import type { MuniLine } from '../types';
+import { supabase } from '../lib/supabase';
 import muniRoutes from '../data/muniMetroRoutes.json';
-
-// 511 API key
-const API_KEY = 'REDACTED_511_KEY';
 
 interface Vehicle {
   id: string;
   lat: number;
   lon: number;
   routeId: string;
-  heading?: number;
   speed?: number;
-  timestamp: string;
+  recordedAt: string;
 }
 
 interface SpeedMapProps {
   selectedLines: MuniLine[];
+  onVehicleUpdate?: (count: number, time: Date) => void;
 }
 
-export function SpeedMap({ selectedLines }: SpeedMapProps) {
+export function SpeedMap({ selectedLines, onVehicleUpdate }: SpeedMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const popup = useRef<maplibregl.Popup | null>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
-  const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
+  const [dataSource, setDataSource] = useState<'loading' | 'supabase' | 'none'>('loading');
 
-  // Fetch live vehicle positions
-  const fetchVehicles = useCallback(async () => {
+  // Ref to avoid re-render loops with the callback
+  const onVehicleUpdateRef = useRef(onVehicleUpdate);
+  onVehicleUpdateRef.current = onVehicleUpdate;
+
+  // Fetch vehicle positions from Supabase (data collected by the collector)
+  const fetchVehiclesFromSupabase = useCallback(async () => {
+    if (!supabase) {
+      setDataSource('none');
+      return;
+    }
+
     try {
-      const response = await fetch(
-        `https://api.511.org/transit/VehicleMonitoring?api_key=${API_KEY}&agency=SF&format=json`
-      );
-      const data = await response.json();
+      // Get ALL collected positions (for visualization/debugging)
+      const { data, error } = await supabase
+        .from('vehicle_positions')
+        .select('*')
+        .order('recorded_at', { ascending: false })
+        .limit(5000); // Limit to prevent browser overload
+
+      if (error) {
+        console.error('Error fetching from Supabase:', error);
+        setDataSource('none');
+        return;
+      }
+
+      // Show ALL positions as individual points (not just latest per vehicle)
+      const allPositions: Vehicle[] = (data || []).map((row: any) => ({
+        id: `${row.vehicle_id}-${row.id}`, // Unique ID for each position
+        lat: row.lat,
+        lon: row.lon,
+        routeId: row.route_id,
+        speed: row.speed_calculated,
+        recordedAt: row.recorded_at,
+      }));
+
+      setVehicles(allPositions);
+      setDataSource('supabase');
       
-      const vehicleActivities = data?.Siri?.ServiceDelivery?.VehicleMonitoringDelivery?.VehicleActivity || [];
-      
-      const metroVehicles: Vehicle[] = vehicleActivities
-        .filter((v: any) => {
-          const lineRef = v?.MonitoredVehicleJourney?.LineRef;
-          return ['J', 'K', 'L', 'M', 'N', 'T'].includes(lineRef);
-        })
-        .map((v: any) => {
-          const journey = v.MonitoredVehicleJourney;
-          const location = journey?.VehicleLocation;
-          return {
-            id: journey?.VehicleRef || Math.random().toString(),
-            lat: parseFloat(location?.Latitude) || 0,
-            lon: parseFloat(location?.Longitude) || 0,
-            routeId: journey?.LineRef || '',
-            heading: parseFloat(journey?.Bearing) || 0,
-            speed: parseFloat(journey?.Velocity) || undefined,
-            timestamp: v?.RecordedAtTime || new Date().toISOString(),
-          };
-        })
-        .filter((v: Vehicle) => v.lat !== 0 && v.lon !== 0);
-      
-      setVehicles(metroVehicles);
-      setLastUpdate(new Date());
+      if (allPositions.length > 0) {
+        const latestTime = new Date(allPositions[0].recordedAt);
+        onVehicleUpdateRef.current?.(allPositions.length, latestTime);
+      } else {
+        onVehicleUpdateRef.current?.(0, new Date());
+      }
     } catch (error) {
       console.error('Error fetching vehicles:', error);
+      setDataSource('none');
     }
-  }, []);
+  }, []); // No dependencies - uses ref for callback
 
-  // Poll for vehicle updates
+  // Fetch once on mount (no auto-refresh for historical data view)
   useEffect(() => {
-    fetchVehicles();
-    const interval = setInterval(fetchVehicles, 15000); // Update every 15 seconds
-    return () => clearInterval(interval);
-  }, [fetchVehicles]);
+    fetchVehiclesFromSupabase();
+  }, [fetchVehiclesFromSupabase]);
 
   // Initialize map
   useEffect(() => {
@@ -130,11 +139,11 @@ export function SpeedMap({ selectedLines }: SpeedMapProps) {
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
 
-    // Filter routes based on selection
+    // Filter routes based on selection (empty = show nothing)
     const filteredRoutes = {
       ...muniRoutes,
       features: muniRoutes.features.filter(
-        (f: any) => selectedLines.length === 0 || selectedLines.includes(f.properties.route_id)
+        (f: any) => selectedLines.includes(f.properties.route_id)
       ),
     };
 
@@ -210,9 +219,9 @@ export function SpeedMap({ selectedLines }: SpeedMapProps) {
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
 
-    // Filter vehicles based on selection
+    // Filter vehicles based on selection (empty = show nothing)
     const filteredVehicles = vehicles.filter(
-      (v) => selectedLines.length === 0 || selectedLines.includes(v.routeId as MuniLine)
+      (v) => selectedLines.includes(v.routeId as MuniLine)
     );
 
     // Create GeoJSON for vehicles
@@ -223,8 +232,8 @@ export function SpeedMap({ selectedLines }: SpeedMapProps) {
         properties: {
           id: v.id,
           routeId: v.routeId,
-          heading: v.heading,
           speed: v.speed,
+          recordedAt: v.recordedAt,
         },
         geometry: {
           type: 'Point' as const,
@@ -250,9 +259,9 @@ export function SpeedMap({ selectedLines }: SpeedMapProps) {
       type: 'circle',
       source: 'vehicles',
       paint: {
-        'circle-radius': 12,
+        'circle-radius': 5,
         'circle-color': '#00ff88',
-        'circle-opacity': 0.3,
+        'circle-opacity': 0.4,
         'circle-blur': 0.5,
       },
     });
@@ -263,9 +272,9 @@ export function SpeedMap({ selectedLines }: SpeedMapProps) {
       type: 'circle',
       source: 'vehicles',
       paint: {
-        'circle-radius': 6,
+        'circle-radius': 3,
         'circle-color': '#00ff88',
-        'circle-stroke-width': 2,
+        'circle-stroke-width': 1,
         'circle-stroke-color': '#fff',
       },
     });
@@ -283,13 +292,17 @@ export function SpeedMap({ selectedLines }: SpeedMapProps) {
     map.current.on('mousemove', 'vehicles', (e) => {
       if (!e.features?.length || !map.current) return;
       const props = e.features[0].properties;
+      const speed = props.speed ? `${Math.round(props.speed)} mph` : 'Speed unknown';
+      const time = new Date(props.recordedAt).toLocaleTimeString();
+      
       popup.current
         ?.setLngLat(e.lngLat)
         .setHTML(
           `<div class="popup-content">
             <div class="popup-title">${props.routeId} Train</div>
             <div class="popup-detail">Vehicle #${props.id}</div>
-            ${props.speed ? `<div class="popup-speed">${Math.round(props.speed)} mph</div>` : ''}
+            <div class="popup-speed">${speed}</div>
+            <div class="popup-time">Last seen: ${time}</div>
           </div>`
         )
         .addTo(map.current);
@@ -299,10 +312,9 @@ export function SpeedMap({ selectedLines }: SpeedMapProps) {
   return (
     <div className="map-wrapper">
       <div ref={mapContainer} className="map-container" />
-      {lastUpdate && (
-        <div className="update-badge">
-          <span className="live-dot"></span>
-          {vehicles.length} trains • Updated {lastUpdate.toLocaleTimeString()}
+      {dataSource === 'none' && (
+        <div className="data-status">
+          No data yet. Run <code>npm run collect</code> to start collecting.
         </div>
       )}
     </div>
