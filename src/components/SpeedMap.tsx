@@ -224,11 +224,10 @@ function createSegments(coordinates: number[][], routeId: string, direction: str
   return segments;
 }
 
-// Build segment data from all routes
+// Build segment data from all routes (combining both directions)
 interface SegmentData {
   segmentId: string;
   routeId: string;
-  direction: string;
   coordinates: number[][];  // Full geometry preserving curves
   startDistance: number;
   endDistance: number;
@@ -236,20 +235,28 @@ interface SegmentData {
 
 function buildAllSegments(): SegmentData[] {
   const allSegments: SegmentData[] = [];
+  const seenRoutes = new Set<string>();
   
+  // Only use one direction's geometry per route (to avoid duplicates)
   muniRoutes.features.forEach((feature: any) => {
     const routeId = feature.properties.route_id;
-    const direction = feature.properties.direction_id === '0' ? 'outbound' : 'inbound';
+    
+    // Skip if we already processed this route
+    if (seenRoutes.has(routeId)) return;
+    seenRoutes.add(routeId);
+    
     const coordinates = feature.geometry.coordinates;
     
-    const segments = createSegments(coordinates, routeId, direction);
+    // Create segments without direction distinction
+    const segments = createSegments(coordinates, routeId, 'combined');
     
     segments.forEach(seg => {
+      // Use route + segment index only (no direction)
+      const segmentId = `${routeId}_${seg.segmentId.split('_').pop()}`;
       allSegments.push({
-        segmentId: seg.segmentId,
+        segmentId,
         routeId,
-        direction,
-        coordinates: seg.coords,  // Use full coords array
+        coordinates: seg.coords,
         startDistance: seg.startDistance,
         endDistance: seg.endDistance,
       });
@@ -262,29 +269,31 @@ function buildAllSegments(): SegmentData[] {
 // Pre-build all segments
 const allRouteSegments = buildAllSegments();
 
-// Assign a vehicle to its segment
+// Assign a vehicle to its segment (direction-agnostic)
 function findSegmentForVehicle(lat: number, lon: number, routeId: string): string | null {
   const routeFeatures = muniRoutes.features.filter(
     (f: any) => f.properties.route_id === routeId
   );
   
-  let bestSegment: string | null = null;
+  let bestSegmentIndex: number | null = null;
   let minDistance = Infinity;
   
   for (const feature of routeFeatures) {
-    const direction = (feature as any).properties.direction_id === '0' ? 'outbound' : 'inbound';
     const coordinates = (feature as any).geometry.coordinates;
     
     const result = findNearestPointOnLine(lat, lon, coordinates);
     
     if (result.distance < minDistance && result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS) {
       minDistance = result.distance;
-      const segmentIndex = Math.floor(result.distanceAlong / SEGMENT_SIZE_METERS);
-      bestSegment = `${routeId}_${direction}_${segmentIndex}`;
+      bestSegmentIndex = Math.floor(result.distanceAlong / SEGMENT_SIZE_METERS);
     }
   }
   
-  return bestSegment;
+  if (bestSegmentIndex !== null) {
+    return `${routeId}_${bestSegmentIndex}`;
+  }
+  
+  return null;
 }
 
 // Convert direction_id to human-readable direction
@@ -942,3 +951,4 @@ export function SpeedMap({ selectedLines, speedFilter, showRouteLines, showStops
     </div>
   );
 }
+

@@ -14,8 +14,10 @@ export interface SpeedFilter {
 export type ViewMode = 'raw' | 'segments';
 
 function App() {
-  // Start with all lines selected
-  const [selectedLines, setSelectedLines] = useState<MuniLine[]>([...MUNI_LINES]);
+  // Start with all lines except F selected
+  const [selectedLines, setSelectedLines] = useState<MuniLine[]>(
+    MUNI_LINES.filter(line => line !== 'F')
+  );
   const [vehicleCount, setVehicleCount] = useState(0);
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
   const [speedFilter, setSpeedFilter] = useState<SpeedFilter>({
