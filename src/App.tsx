@@ -11,6 +11,8 @@ export interface SpeedFilter {
   showNoData: boolean;
 }
 
+export type ViewMode = 'raw' | 'segments';
+
 function App() {
   // Start with all lines selected
   const [selectedLines, setSelectedLines] = useState<MuniLine[]>([...MUNI_LINES]);
@@ -23,6 +25,7 @@ function App() {
   });
   const [showRouteLines, setShowRouteLines] = useState(true);
   const [showStops, setShowStops] = useState(true);
+  const [viewMode, setViewMode] = useState<ViewMode>('raw');
 
   return (
     <div className="app">
@@ -37,12 +40,15 @@ function App() {
         setShowRouteLines={setShowRouteLines}
         showStops={showStops}
         setShowStops={setShowStops}
+        viewMode={viewMode}
+        setViewMode={setViewMode}
       />
       <SpeedMap 
         selectedLines={selectedLines}
         speedFilter={speedFilter}
         showRouteLines={showRouteLines}
         showStops={showStops}
+        viewMode={viewMode}
         onVehicleUpdate={(count, time) => {
           setVehicleCount(count);
           setLastUpdate(time);

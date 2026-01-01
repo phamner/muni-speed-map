@@ -7,8 +7,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const gtfsDir = join(__dirname, '..', 'data', 'gtfs');
 const outputDir = join(__dirname, '..', 'src', 'data');
 
-// Muni Metro rail lines
-const METRO_LINES = ['J', 'K', 'L', 'M', 'N', 'T'];
+// Muni Metro rail lines + F historic streetcar
+const METRO_LINES = ['F', 'J', 'K', 'L', 'M', 'N', 'T'];
 
 function parseCSV(filename) {
   const content = readFileSync(join(gtfsDir, filename), 'utf-8');

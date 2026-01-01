@@ -23,6 +23,44 @@
     {
       "type": "Feature",
       "properties": {
+        "stop_id": "13311",
+        "stop_name": "17th St & Castro St",
+        "stop_code": "13311",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.434979,
+          37.762576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13318",
+        "stop_name": "17th St & Noe St",
+        "stop_code": "13318",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.432991,
+          37.762645
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "stop_id": "17065",
         "stop_name": "19th Ave & Holloway Ave",
         "stop_code": "17065",
@@ -494,6 +532,44 @@
         "coordinates": [
           -122.405044,
           37.708944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13092",
+        "stop_name": "Beach St & Mason St",
+        "stop_code": "13092",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.414125,
+          37.807407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13095",
+        "stop_name": "Beach St & Stockton St",
+        "stop_code": "13095",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.41081,
+          37.807841
         ]
       }
     },
@@ -1051,6 +1127,44 @@
     {
       "type": "Feature",
       "properties": {
+        "stop_id": "14726",
+        "stop_name": "Don Chee Way/Steuart St",
+        "stop_code": "14726",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.393449,
+          37.794052
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14727",
+        "stop_name": "Don Chee Way/Steuart St",
+        "stop_code": "14727",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.393438,
+          37.793918
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "stop_id": "14447",
         "stop_name": "Duboce Ave & Church St",
         "stop_code": "14447",
@@ -1102,6 +1216,25 @@
         "coordinates": [
           -122.433557,
           37.769357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17281",
+        "stop_name": "Embarcadero & Sansome St",
+        "stop_code": "17281",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.403233,
+          37.805146
         ]
       }
     },
@@ -1237,6 +1370,63 @@
         "coordinates": [
           -122.458024,
           37.764366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15174",
+        "stop_name": "Jefferson St & Powell St",
+        "stop_code": "15174",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.413357,
+          37.808594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15175",
+        "stop_name": "Jefferson St & Taylor St",
+        "stop_code": "15175",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.415514,
+          37.80832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15184",
+        "stop_name": "Jones St & Beach St",
+        "stop_code": "15184",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.417324,
+          37.807132
         ]
       }
     },
@@ -1921,6 +2111,652 @@
         "coordinates": [
           -122.394173,
           37.776269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17264",
+        "stop_name": "Market St & 1st St",
+        "stop_code": "17264",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.399195,
+          37.79094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15639",
+        "stop_name": "Market St & 2nd St",
+        "stop_code": "15639",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.401306,
+          37.789353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15640",
+        "stop_name": "Market St & 3rd St",
+        "stop_code": "15640",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.403519,
+          37.787525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15643",
+        "stop_name": "Market St & 4th St",
+        "stop_code": "15643",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.405847,
+          37.785705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15655",
+        "stop_name": "Market St & 5th  St",
+        "stop_code": "15655",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.407992,
+          37.784082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15645",
+        "stop_name": "Market St & 5th St",
+        "stop_code": "15645",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.408141,
+          37.783886
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15647",
+        "stop_name": "Market St & 6th St",
+        "stop_code": "15647",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4104,
+          37.782102
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15656",
+        "stop_name": "Market St & 7th St",
+        "stop_code": "15656",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.412441,
+          37.780568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15650",
+        "stop_name": "Market St & 7th St",
+        "stop_code": "15650",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.412613,
+          37.780363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15651",
+        "stop_name": "Market St & 8th St",
+        "stop_code": "15651",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.414826,
+          37.778606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15652",
+        "stop_name": "Market St & 9th St",
+        "stop_code": "15652",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.41634,
+          37.77741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15657",
+        "stop_name": "Market St & Battery St",
+        "stop_code": "15657",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.399069,
+          37.79111
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15659",
+        "stop_name": "Market St & Buchanan St",
+        "stop_code": "15659",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426149,
+          37.769786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15661",
+        "stop_name": "Market St & Church St",
+        "stop_code": "15661",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.428778,
+          37.767705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15662",
+        "stop_name": "Market St & Church St",
+        "stop_code": "15662",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.429214,
+          37.76725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15668",
+        "stop_name": "Market St & Dolores St",
+        "stop_code": "15668",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.427103,
+          37.76888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15669",
+        "stop_name": "Market St & Drumm St",
+        "stop_code": "15669",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.396178,
+          37.793473
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15672",
+        "stop_name": "Market St & Gough St",
+        "stop_code": "15672",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.421768,
+          37.773269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15673",
+        "stop_name": "Market St & Gough St",
+        "stop_code": "15673",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.421991,
+          37.772875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15675",
+        "stop_name": "Market St & Guerrero St",
+        "stop_code": "15675",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.424971,
+          37.77057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15676",
+        "stop_name": "Market St & Hyde St",
+        "stop_code": "15676",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.414379,
+          37.779105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15678",
+        "stop_name": "Market St & Kearny St",
+        "stop_code": "15678",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.40337,
+          37.78773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15681",
+        "stop_name": "Market St & Laguna St",
+        "stop_code": "15681",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.424666,
+          37.770953
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15680",
+        "stop_name": "Market St & Larkin St",
+        "stop_code": "15680",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.416236,
+          37.777598
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15682",
+        "stop_name": "Market St & Main St",
+        "stop_code": "15682",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.396627,
+          37.792984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15685",
+        "stop_name": "Market St & New Montgomery St",
+        "stop_code": "15685",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.402163,
+          37.788613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15686",
+        "stop_name": "Market St & Noe St",
+        "stop_code": "15686",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.432812,
+          37.764489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15687",
+        "stop_name": "Market St & Noe St",
+        "stop_code": "15687",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.433323,
+          37.763958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15690",
+        "stop_name": "Market St & Sanchez St",
+        "stop_code": "15690",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.430707,
+          37.766185
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17123",
+        "stop_name": "Market St & Sanchez St",
+        "stop_code": "17123",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.431216,
+          37.765632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15692",
+        "stop_name": "Market St & South Van Ness Ave",
+        "stop_code": "15692",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.419321,
+          37.775056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15694",
+        "stop_name": "Market St & Stockton St",
+        "stop_code": "15694",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.405859,
+          37.785777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15695",
+        "stop_name": "Market St & Taylor St",
+        "stop_code": "15695",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.410228,
+          37.782316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15696",
+        "stop_name": "Market St & Van Ness Ave",
+        "stop_code": "15696",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.419252,
+          37.775198
         ]
       }
     },
@@ -3551,6 +4387,44 @@
     {
       "type": "Feature",
       "properties": {
+        "stop_id": "14502",
+        "stop_name": "The Embarcadero & Bay St",
+        "stop_code": "14502",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.40603,
+          37.806629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14501",
+        "stop_name": "The Embarcadero & Bay St",
+        "stop_code": "14501",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.406278,
+          37.806945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "stop_id": "17145",
         "stop_name": "The Embarcadero & Brannan St",
         "stop_code": "17145",
@@ -3583,6 +4457,82 @@
         "coordinates": [
           -122.388138,
           37.784359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14504",
+        "stop_name": "The Embarcadero & Broadway",
+        "stop_code": "14504",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.397434,
+          37.798901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14503",
+        "stop_name": "The Embarcadero & Broadway",
+        "stop_code": "14503",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.397869,
+          37.799552
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17283",
+        "stop_name": "The Embarcadero & Ferry Building",
+        "stop_code": "17283",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.39377,
+          37.794828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14513",
+        "stop_name": "The Embarcadero & Ferry Building",
+        "stop_code": "14513",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.393552,
+          37.79489
         ]
       }
     },
@@ -3627,6 +4577,158 @@
         "coordinates": [
           -122.389841,
           37.790749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14518",
+        "stop_name": "The Embarcadero & Green St",
+        "stop_code": "14518",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.39892,
+          37.800605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14517",
+        "stop_name": "The Embarcadero & Green St",
+        "stop_code": "14517",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.399369,
+          37.801264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14516",
+        "stop_name": "The Embarcadero & Greenwich St",
+        "stop_code": "14516",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.401029,
+          37.80296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14515",
+        "stop_name": "The Embarcadero & Greenwich St",
+        "stop_code": "14515",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.401113,
+          37.803263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14529",
+        "stop_name": "The Embarcadero & Sansome St",
+        "stop_code": "14529",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.403314,
+          37.805022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14530",
+        "stop_name": "The Embarcadero & Stockton St",
+        "stop_code": "14530",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.410287,
+          37.808351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14534",
+        "stop_name": "The Embarcadero & Washington St",
+        "stop_code": "14534",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.395181,
+          37.796355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14532",
+        "stop_name": "The Embarcadero & Washington St",
+        "stop_code": "14532",
+        "routes": [
+          "F"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.39567,
+          37.797085
         ]
       }
     },

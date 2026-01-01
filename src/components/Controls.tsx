@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import type { MuniLine } from '../types';
 import { MUNI_LINES } from '../types';
 import { getPositionCount, supabase } from '../lib/supabase';
-import type { SpeedFilter } from '../App';
+import type { SpeedFilter, ViewMode } from '../App';
 
 // Official SFMTA colors from GTFS
 const MUNI_COLORS: Record<MuniLine, string> = {
+  F: '#B49A36',
   J: '#A96614',
   K: '#437C93',
   L: '#942D83',
@@ -25,9 +26,11 @@ interface ControlsProps {
   setShowRouteLines: (show: boolean) => void;
   showStops: boolean;
   setShowStops: (show: boolean) => void;
+  viewMode: ViewMode;
+  setViewMode: (mode: ViewMode) => void;
 }
 
-export function Controls({ selectedLines, setSelectedLines, vehicleCount, lastUpdate, speedFilter, setSpeedFilter, showRouteLines, setShowRouteLines, showStops, setShowStops }: ControlsProps) {
+export function Controls({ selectedLines, setSelectedLines, vehicleCount, lastUpdate, speedFilter, setSpeedFilter, showRouteLines, setShowRouteLines, showStops, setShowStops, viewMode, setViewMode }: ControlsProps) {
   const [dbPositionCount, setDbPositionCount] = useState<number>(0);
   const [dbConnected, setDbConnected] = useState<boolean>(false);
 
@@ -85,6 +88,25 @@ export function Controls({ selectedLines, setSelectedLines, vehicleCount, lastUp
             Latest: {lastUpdate.toLocaleTimeString()}
           </div>
         )}
+      </div>
+
+      {/* View Mode Toggle */}
+      <div className="control-group">
+        <div className="control-label">View Mode</div>
+        <div className="view-mode-toggle">
+          <button
+            className={`view-mode-btn ${viewMode === 'raw' ? 'active' : ''}`}
+            onClick={() => setViewMode('raw')}
+          >
+            Raw Data
+          </button>
+          <button
+            className={`view-mode-btn ${viewMode === 'segments' ? 'active' : ''}`}
+            onClick={() => setViewMode('segments')}
+          >
+            Segment Avg
+          </button>
+        </div>
       </div>
 
       {/* Line Filter */}
@@ -241,15 +263,16 @@ export function Controls({ selectedLines, setSelectedLines, vehicleCount, lastUp
 
       {/* Info */}
       <div className="info-section">
-        <h3>How It Works</h3>
+        <h3>About This Map</h3>
         <p>
-          1. <strong>Collector:</strong> Run <code>npm run collect</code> to gather train data
+          Each dot shows a train's location and speed at a point in time.
         </p>
         <p>
-          2. <strong>Map:</strong> Shows train positions from collected data (refreshes from Supabase)
+          <strong style={{color: '#ff3333'}}>Red dots</strong> = slow areas where trains get delayed.
+          <strong style={{color: '#33ffff'}}> Cyan dots</strong> = fast sections.
         </p>
         <p>
-          3. <strong>Speed analysis:</strong> Coming soon — speed heatmaps by segment
+          Use the filters to find bottlenecks and identify where transit improvements would have the most impact.
         </p>
       </div>
 

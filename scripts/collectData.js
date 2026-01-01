@@ -15,7 +15,7 @@ const SUPABASE_URL = 'https://REDACTED_SUPABASE_REF.supabase.co';
 const SUPABASE_ANON_KEY = 'REDACTED_SUPABASE_KEY';
 const API_511_KEY = 'REDACTED_511_KEY';
 
-const METRO_LINES = ['J', 'K', 'L', 'M', 'N', 'T'];
+const METRO_LINES = ['F', 'J', 'K', 'L', 'M', 'N', 'T'];
 const POLL_INTERVAL_MS = 90000; // 90 seconds (511 API limit: 60 requests/hour)
 
 // Initialize Supabase client

@@ -8,12 +8,14 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const gtfsDir = join(__dirname, '..', 'data', 'gtfs');
 const outputDir = join(__dirname, '..', 'src', 'data');
 
-// Muni Metro rail lines
-const METRO_LINES = ['J', 'K', 'L', 'M', 'N', 'T'];
+// Muni Metro rail lines + F historic streetcar
+const METRO_LINES = ['F', 'J', 'K', 'L', 'M', 'N', 'T'];
 
 // Preferred headsigns for each line (standard terminals, not variants)
 // These represent the "classic" route for each line
 const PREFERRED_HEADSIGNS = {
+  'F_0': ['Fishermans Wharf', 'Wharf', 'Jones'],
+  'F_1': ['Castro', 'Market'],
   'J_0': ['Balboa Park'],
   'J_1': ['Embarcadero', 'Church'],
   'K_0': ['Balboa Park'],
