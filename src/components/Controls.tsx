@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { MuniLine } from '../types';
 import { MUNI_LINES } from '../types';
 import { getPositionCount, supabase } from '../lib/supabase';
+import type { SpeedFilter } from '../App';
 
 // Official SFMTA colors from GTFS
 const MUNI_COLORS: Record<MuniLine, string> = {
@@ -18,9 +19,15 @@ interface ControlsProps {
   setSelectedLines: (lines: MuniLine[]) => void;
   vehicleCount: number;
   lastUpdate: Date | null;
+  speedFilter: SpeedFilter;
+  setSpeedFilter: (filter: SpeedFilter) => void;
+  showRouteLines: boolean;
+  setShowRouteLines: (show: boolean) => void;
+  showStops: boolean;
+  setShowStops: (show: boolean) => void;
 }
 
-export function Controls({ selectedLines, setSelectedLines, vehicleCount, lastUpdate }: ControlsProps) {
+export function Controls({ selectedLines, setSelectedLines, vehicleCount, lastUpdate, speedFilter, setSpeedFilter, showRouteLines, setShowRouteLines, showStops, setShowStops }: ControlsProps) {
   const [dbPositionCount, setDbPositionCount] = useState<number>(0);
   const [dbConnected, setDbConnected] = useState<boolean>(false);
 
@@ -84,12 +91,17 @@ export function Controls({ selectedLines, setSelectedLines, vehicleCount, lastUp
       <div className="control-group">
         <div className="control-label-row">
           <label className="control-label">Filter Lines</label>
-          <div className="line-actions">
-            <button className="text-button" onClick={selectAllLines}>
+          <div className="toggle-group">
+            <button 
+              className={`toggle-button ${selectedLines.length === MUNI_LINES.length ? 'active' : ''}`}
+              onClick={selectAllLines}
+            >
               All
             </button>
-            <span className="divider">|</span>
-            <button className="text-button" onClick={clearAllLines}>
+            <button 
+              className={`toggle-button ${selectedLines.length === 0 ? 'active' : ''}`}
+              onClick={clearAllLines}
+            >
               None
             </button>
           </div>
@@ -107,6 +119,99 @@ export function Controls({ selectedLines, setSelectedLines, vehicleCount, lastUp
               {line}
             </button>
           ))}
+        </div>
+        <div className="route-lines-toggle">
+          <label>
+            <input
+              type="checkbox"
+              checked={showRouteLines}
+              onChange={(e) => setShowRouteLines(e.target.checked)}
+            />
+            Show route lines
+          </label>
+        </div>
+        <div className="route-lines-toggle">
+          <label>
+            <input
+              type="checkbox"
+              checked={showStops}
+              onChange={(e) => setShowStops(e.target.checked)}
+            />
+            Show stations
+          </label>
+        </div>
+      </div>
+
+      {/* Speed Filter */}
+      <div className="control-group">
+        <div className="control-label">Speed Filter</div>
+        <div className="speed-filter">
+          <div className="speed-slider-row">
+            <label>Min: {speedFilter.minSpeed} mph</label>
+            <input
+              type="range"
+              min="0"
+              max="50"
+              value={speedFilter.minSpeed}
+              onChange={(e) => setSpeedFilter({
+                ...speedFilter,
+                minSpeed: Math.min(Number(e.target.value), speedFilter.maxSpeed)
+              })}
+              className="speed-slider"
+            />
+          </div>
+          <div className="speed-slider-row">
+            <label>Max: {speedFilter.maxSpeed} mph</label>
+            <input
+              type="range"
+              min="0"
+              max="50"
+              value={speedFilter.maxSpeed}
+              onChange={(e) => setSpeedFilter({
+                ...speedFilter,
+                maxSpeed: Math.max(Number(e.target.value), speedFilter.minSpeed)
+              })}
+              className="speed-slider"
+            />
+          </div>
+          <button
+            className="reset-filter-btn"
+            onClick={() => {
+              setSpeedFilter({ minSpeed: 0, maxSpeed: 50, showNoData: true });
+              setSelectedLines([...MUNI_LINES]);
+              setShowRouteLines(true);
+              setShowStops(true);
+            }}
+          >
+            Reset All Filters
+          </button>
+        </div>
+      </div>
+
+      {/* Speed Legend */}
+      <div className="control-group">
+        <div className="control-label">Speed Legend</div>
+        <div className="speed-legend">
+          <div className="speed-legend-item">
+            <span className="speed-dot" style={{ backgroundColor: '#ff3333' }}></span>
+            <span>0–5 mph (very slow)</span>
+          </div>
+          <div className="speed-legend-item">
+            <span className="speed-dot" style={{ backgroundColor: '#ff9933' }}></span>
+            <span>5–10 mph (slow)</span>
+          </div>
+          <div className="speed-legend-item">
+            <span className="speed-dot" style={{ backgroundColor: '#ffdd33' }}></span>
+            <span>10–15 mph (moderate)</span>
+          </div>
+          <div className="speed-legend-item">
+            <span className="speed-dot" style={{ backgroundColor: '#88ff33' }}></span>
+            <span>15–25 mph (good)</span>
+          </div>
+          <div className="speed-legend-item">
+            <span className="speed-dot" style={{ backgroundColor: '#33ffff' }}></span>
+            <span>25+ mph (fast)</span>
+          </div>
         </div>
       </div>
 

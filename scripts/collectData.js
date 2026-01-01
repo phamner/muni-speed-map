@@ -95,8 +95,9 @@ function calculateSpeed(vehicle) {
   if (lastPos) {
     const timeDiffSeconds = (new Date(vehicle.recorded_at) - new Date(lastPos.recorded_at)) / 1000;
     
-    // Only calculate if reasonable time gap (5-60 seconds)
-    if (timeDiffSeconds > 5 && timeDiffSeconds < 60) {
+    // Only calculate if reasonable time gap (5-180 seconds)
+    // 90s polling interval means most gaps will be ~90s
+    if (timeDiffSeconds > 5 && timeDiffSeconds < 180) {
       const distanceMeters = haversineDistance(
         lastPos.lat, lastPos.lon,
         vehicle.lat, vehicle.lon
@@ -160,12 +161,22 @@ async function collectOnce() {
   const { count, error } = await savePositions(vehiclesWithSpeed);
   
   const elapsed = Date.now() - startTime;
+  const timestamp = new Date().toLocaleString('en-US', { 
+    timeZone: 'America/Los_Angeles',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: false
+  });
   
   if (error) {
-    console.log(`[${new Date().toISOString()}] Error: ${error.message}`);
+    console.log(`[${timestamp} PT] Error: ${error.message}`);
   } else {
     console.log(
-      `[${new Date().toISOString()}] Saved ${count} positions ` +
+      `[${timestamp} PT] Saved ${count} positions ` +
       `(${withSpeed.length} with speed) in ${elapsed}ms`
     );
   }

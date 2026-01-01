@@ -1,0 +1,4522 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13266",
+        "stop_name": "15th Ave & Taraval St",
+        "stop_code": "13266",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.471297,
+          37.743124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17065",
+        "stop_name": "19th Ave & Holloway Ave",
+        "stop_code": "17065",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.475176,
+          37.721342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13358",
+        "stop_name": "19th Ave & Holloway Ave",
+        "stop_code": "13358",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.475245,
+          37.721342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13361",
+        "stop_name": "19th Ave & Junipero Serra Blvd",
+        "stop_code": "13361",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.472275,
+          37.716889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13385",
+        "stop_name": "19th Ave & Randolph St",
+        "stop_code": "13385",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.470249,
+          37.714856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13376",
+        "stop_name": "19th Ave & Randolph St",
+        "stop_code": "13376",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.47167,
+          37.7162
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13387",
+        "stop_name": "19th Ave & Randolph St",
+        "stop_code": "13387",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.469998,
+          37.714443
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17449",
+        "stop_name": "19th Ave & Winston Dr",
+        "stop_code": "17449",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.474846,
+          37.727195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13403",
+        "stop_name": "19th Ave & Winston Dr",
+        "stop_code": "13403",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.474937,
+          37.727017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13538",
+        "stop_name": "30th St & Dolores St",
+        "stop_code": "13538",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.424457,
+          37.74217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13537",
+        "stop_name": "30th St & Dolores St",
+        "stop_code": "13537",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.424026,
+          37.742304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13599",
+        "stop_name": "46th Ave & Taraval St",
+        "stop_code": "13599",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.504534,
+          37.741685
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13601",
+        "stop_name": "46th Ave & Ulloa St",
+        "stop_code": "13601",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.504407,
+          37.739829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13600",
+        "stop_name": "46th Ave & Ulloa St",
+        "stop_code": "13600",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.504579,
+          37.739998
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13603",
+        "stop_name": "46th Ave & Vicente St",
+        "stop_code": "13603",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.504268,
+          37.737973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13602",
+        "stop_name": "46th Ave & Vicente St",
+        "stop_code": "13602",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.50444,
+          37.738142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17869",
+        "stop_name": "47th Ave & Cutler Ave",
+        "stop_code": "17869",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.505413,
+          37.736991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17872",
+        "stop_name": "4th & Brannan Southbound",
+        "stop_code": "17872",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.396613,
+          37.778341
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17397",
+        "stop_name": "4th St & King St",
+        "stop_code": "17397",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.393829,
+          37.776135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17166",
+        "stop_name": "4th St & King St",
+        "stop_code": "17166",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.393864,
+          37.776278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17999",
+        "stop_name": "9th Ave & Irving St",
+        "stop_code": "17999",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.466344,
+          37.763307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15418",
+        "stop_name": "Balboa Park BART/Mezzanine Level",
+        "stop_code": "15418",
+        "routes": [
+          "J",
+          "K",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.447425,
+          37.721809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17399",
+        "stop_name": "Bayshore Blvd & Areta Ave",
+        "stop_code": "17399",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.402339,
+          37.712226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17395",
+        "stop_name": "Bayshore Blvd & Blanken Ave",
+        "stop_code": "17395",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.402316,
+          37.712253
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17396",
+        "stop_name": "Bayshore Blvd & Sunnydale Ave",
+        "stop_code": "17396",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.405113,
+          37.70897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17398",
+        "stop_name": "Bayshore Blvd & Sunnydale Ave",
+        "stop_code": "17398",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.405044,
+          37.708944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13715",
+        "stop_name": "Broad St & Capitol Ave",
+        "stop_code": "13715",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.458921,
+          37.713191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13716",
+        "stop_name": "Broad St & Capitol Ave",
+        "stop_code": "13716",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.459159,
+          37.713152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13717",
+        "stop_name": "Broad St & Orizaba Ave",
+        "stop_code": "13717",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.462331,
+          37.713178
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13718",
+        "stop_name": "Broad St & Plymouth Ave",
+        "stop_code": "13718",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.455927,
+          37.713222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13719",
+        "stop_name": "Broad St & Plymouth Ave",
+        "stop_code": "13719",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.45618,
+          37.713161
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13909",
+        "stop_name": "Carl St & Cole St",
+        "stop_code": "13909",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.449804,
+          37.765863
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13911",
+        "stop_name": "Carl St & Cole St",
+        "stop_code": "13911",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.450131,
+          37.765745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13912",
+        "stop_name": "Carl St & Hillway Ave",
+        "stop_code": "13912",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.456561,
+          37.765003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13913",
+        "stop_name": "Carl St & Hillway Ave",
+        "stop_code": "13913",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.456512,
+          37.764932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13914",
+        "stop_name": "Carl St & Stanyan St",
+        "stop_code": "13914",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.45259,
+          37.765495
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13915",
+        "stop_name": "Carl St & Stanyan St",
+        "stop_code": "13915",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.452928,
+          37.765371
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17876",
+        "stop_name": "Chinatown - Rose Pak Station",
+        "stop_code": "17876",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.408078,
+          37.794807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13984",
+        "stop_name": "Church St & 16th St",
+        "stop_code": "13984",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.428722,
+          37.764621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13985",
+        "stop_name": "Church St & 16th St",
+        "stop_code": "13985",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.428609,
+          37.764382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13987",
+        "stop_name": "Church St & 18th St",
+        "stop_code": "13987",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.428416,
+          37.761467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16218",
+        "stop_name": "Church St & 22nd St",
+        "stop_code": "16218",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.42775,
+          37.754607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13994",
+        "stop_name": "Church St & 22nd St",
+        "stop_code": "13994",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.427636,
+          37.754741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13995",
+        "stop_name": "Church St & 24th St",
+        "stop_code": "13995",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.427497,
+          37.7518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13996",
+        "stop_name": "Church St & 24th St",
+        "stop_code": "13996",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.42735,
+          37.751591
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18156",
+        "stop_name": "Church St & 26th St",
+        "stop_code": "18156",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.427261,
+          37.748603
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18155",
+        "stop_name": "Church St & 26th St",
+        "stop_code": "18155",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.42706,
+          37.748416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18158",
+        "stop_name": "Church St & 28th St",
+        "stop_code": "18158",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426955,
+          37.745398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18157",
+        "stop_name": "Church St & 28th St",
+        "stop_code": "18157",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426737,
+          37.745225
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13999",
+        "stop_name": "Church St & 29th St",
+        "stop_code": "13999",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426585,
+          37.743587
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14000",
+        "stop_name": "Church St & 30th St",
+        "stop_code": "14000",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426459,
+          37.742222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14004",
+        "stop_name": "Church St & Day St",
+        "stop_code": "14004",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426654,
+          37.742811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14006",
+        "stop_name": "Church St & Duboce Ave",
+        "stop_code": "14006",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.429087,
+          37.769302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18059",
+        "stop_name": "Church St & Market St",
+        "stop_code": "18059",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.429053,
+          37.767286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17073",
+        "stop_name": "Church St & Market St",
+        "stop_code": "17073",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.428927,
+          37.767509
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14447",
+        "stop_name": "Duboce Ave & Church St",
+        "stop_code": "14447",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.429408,
+          37.769472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14448",
+        "stop_name": "Duboce Ave & Church St",
+        "stop_code": "14448",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4294,
+          37.769409
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17252",
+        "stop_name": "Duboce St/Noe St/Duboce Park",
+        "stop_code": "17252",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.433557,
+          37.769357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16993",
+        "stop_name": "Forest Hill Station Outbound",
+        "stop_code": "16993",
+        "routes": [
+          "K",
+          "L",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.459192,
+          37.74817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17879",
+        "stop_name": "Fourth Street & Brannan Northbound",
+        "stop_code": "17879",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.39659,
+          37.778403
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15118",
+        "stop_name": "Irving St & 2nd Ave",
+        "stop_code": "15118",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.458643,
+          37.764441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18031",
+        "stop_name": "Irving St & 5th Ave",
+        "stop_code": "18031",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.462139,
+          37.764182
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18032",
+        "stop_name": "Irving St & 6th Ave",
+        "stop_code": "18032",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.462987,
+          37.764244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17996",
+        "stop_name": "Irving St & 8th Ave",
+        "stop_code": "17996",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.465428,
+          37.764038
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15124",
+        "stop_name": "Irving St & Arguello Blvd",
+        "stop_code": "15124",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.458024,
+          37.764366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15195",
+        "stop_name": "Judah St & 12th Ave",
+        "stop_code": "15195",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.469324,
+          37.762069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15196",
+        "stop_name": "Judah St & 12th Ave",
+        "stop_code": "15196",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.469526,
+          37.761988
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15197",
+        "stop_name": "Judah St & 15th Ave",
+        "stop_code": "15197",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.472777,
+          37.761848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15198",
+        "stop_name": "Judah St & 16th Ave",
+        "stop_code": "15198",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.473632,
+          37.76194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15199",
+        "stop_name": "Judah St & 19th Ave",
+        "stop_code": "15199",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.476921,
+          37.761743
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15200",
+        "stop_name": "Judah St & 19th Ave",
+        "stop_code": "15200",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.477194,
+          37.761655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15201",
+        "stop_name": "Judah St & 22nd Ave",
+        "stop_code": "15201",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.479855,
+          37.761534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15202",
+        "stop_name": "Judah St & 23rd Ave",
+        "stop_code": "15202",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.481164,
+          37.761547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15203",
+        "stop_name": "Judah St & 25th Ave",
+        "stop_code": "15203",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4833,
+          37.761452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15204",
+        "stop_name": "Judah St & 25th Ave",
+        "stop_code": "15204",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.48356,
+          37.761373
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15205",
+        "stop_name": "Judah St & 28th Ave",
+        "stop_code": "15205",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.48651,
+          37.76131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15206",
+        "stop_name": "Judah St & 28th Ave",
+        "stop_code": "15206",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.486763,
+          37.761232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15207",
+        "stop_name": "Judah St & 31st Ave",
+        "stop_code": "15207",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.489719,
+          37.761172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15208",
+        "stop_name": "Judah St & 31st Ave",
+        "stop_code": "15208",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.4895,
+          37.761105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15209",
+        "stop_name": "Judah St & 34th Ave",
+        "stop_code": "15209",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.49293,
+          37.761028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15210",
+        "stop_name": "Judah St & 34th Ave",
+        "stop_code": "15210",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.493199,
+          37.760955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15211",
+        "stop_name": "Judah St & 40th Ave",
+        "stop_code": "15211",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.499359,
+          37.760743
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15212",
+        "stop_name": "Judah St & 40th Ave",
+        "stop_code": "15212",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.499154,
+          37.760679
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15213",
+        "stop_name": "Judah St & 43rd Ave",
+        "stop_code": "15213",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.502574,
+          37.760598
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15214",
+        "stop_name": "Judah St & 43rd Ave",
+        "stop_code": "15214",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.502839,
+          37.760518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15215",
+        "stop_name": "Judah St & 46th Ave",
+        "stop_code": "15215",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.505832,
+          37.760493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15216",
+        "stop_name": "Judah St & 46th Ave",
+        "stop_code": "15216",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.506064,
+          37.760392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15193",
+        "stop_name": "Judah St & 9th Ave",
+        "stop_code": "15193",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.466688,
+          37.762227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15194",
+        "stop_name": "Judah St & 9th Ave",
+        "stop_code": "15194",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.466312,
+          37.762139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15219",
+        "stop_name": "Judah St & Funston Ave",
+        "stop_code": "15219",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.470329,
+          37.762075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15220",
+        "stop_name": "Judah St & Funston Ave",
+        "stop_code": "15220",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.470572,
+          37.76195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15224",
+        "stop_name": "Judah St & Sunset Blvd",
+        "stop_code": "15224",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.495668,
+          37.760917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15225",
+        "stop_name": "Judah St & Sunset Blvd",
+        "stop_code": "15225",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.495805,
+          37.760845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17219",
+        "stop_name": "Judah/La Playa/Ocean Beach",
+        "stop_code": "17219",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.508685,
+          37.760349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15223",
+        "stop_name": "Judah/La Playa/Ocean Beach",
+        "stop_code": "15223",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.508181,
+          37.760304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17113",
+        "stop_name": "Junipero Serra Blvd & Ocean Ave",
+        "stop_code": "17113",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.471707,
+          37.731628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17114",
+        "stop_name": "Junipero Serra Blvd & Ocean Ave",
+        "stop_code": "17114",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.471818,
+          37.731271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15237",
+        "stop_name": "King St & 2nd St",
+        "stop_code": "15237",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389824,
+          37.779621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15234",
+        "stop_name": "King St & 2nd St",
+        "stop_code": "15234",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389872,
+          37.77972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15240",
+        "stop_name": "King St & 4th St",
+        "stop_code": "15240",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.394082,
+          37.776269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15239",
+        "stop_name": "King St & 4th St",
+        "stop_code": "15239",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.394173,
+          37.776269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15728",
+        "stop_name": "Metro Castro Station/Downtown",
+        "stop_code": "15728",
+        "routes": [
+          "K",
+          "L",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.435231,
+          37.76262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16991",
+        "stop_name": "Metro Castro Station/Outbound",
+        "stop_code": "16991",
+        "routes": [
+          "K",
+          "L",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.435289,
+          37.762683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15726",
+        "stop_name": "Metro Church Station/Downtown",
+        "stop_code": "15726",
+        "routes": [
+          "K",
+          "L",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.429168,
+          37.767194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16998",
+        "stop_name": "Metro Church Station/Outbound",
+        "stop_code": "16998",
+        "routes": [
+          "K",
+          "L",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.429321,
+          37.767327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15727",
+        "stop_name": "Metro Civic Center Station/Downtn",
+        "stop_code": "15727",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.413347,
+          37.779712
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16997",
+        "stop_name": "Metro Civic Center Station/Outbd",
+        "stop_code": "16997",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.414223,
+          37.77924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16992",
+        "stop_name": "Metro Embarcadero Station",
+        "stop_code": "16992",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.396431,
+          37.793134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17217",
+        "stop_name": "Metro Embarcadero Station",
+        "stop_code": "17217",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.39715,
+          37.79271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15730",
+        "stop_name": "Metro Forest Hill Station/Downtown",
+        "stop_code": "15730",
+        "routes": [
+          "K",
+          "L",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.458623,
+          37.748351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15731",
+        "stop_name": "Metro Montgomery Station/Downtown",
+        "stop_code": "15731",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.401351,
+          37.789219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16994",
+        "stop_name": "Metro Montgomery Station/Outbound",
+        "stop_code": "16994",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.402127,
+          37.788791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15417",
+        "stop_name": "Metro Powell Station/Downtown",
+        "stop_code": "15417",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.407086,
+          37.784653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16995",
+        "stop_name": "Metro Powell Station/Outbound",
+        "stop_code": "16995",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.407822,
+          37.7843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15419",
+        "stop_name": "Metro Van Ness Station",
+        "stop_code": "15419",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.419252,
+          37.775127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15779",
+        "stop_name": "Ocean Ave & Aptos Ave",
+        "stop_code": "15779",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.467561,
+          37.728285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15780",
+        "stop_name": "Ocean Ave & Aptos Ave",
+        "stop_code": "15780",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.467871,
+          37.728383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15787",
+        "stop_name": "Ocean Ave & Dorado Ter",
+        "stop_code": "15787",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.461059,
+          37.724957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15788",
+        "stop_name": "Ocean Ave & Fairfield Way",
+        "stop_code": "15788",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.464072,
+          37.726008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15793",
+        "stop_name": "Ocean Ave & Jules Ave",
+        "stop_code": "15793",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.46139,
+          37.724955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15794",
+        "stop_name": "Ocean Ave & Lee St",
+        "stop_code": "15794",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.453999,
+          37.723459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15795",
+        "stop_name": "Ocean Ave & Lee St",
+        "stop_code": "15795",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.454423,
+          37.723397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15797",
+        "stop_name": "Ocean Ave & Miramar Ave",
+        "stop_code": "15797",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.458077,
+          37.724387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15798",
+        "stop_name": "Ocean Ave & Miramar Ave",
+        "stop_code": "15798",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.458306,
+          37.724262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15806",
+        "stop_name": "Ocean Ave & San Leandro Way",
+        "stop_code": "15806",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.469097,
+          37.729989
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15807",
+        "stop_name": "Ocean Ave & San Leandro Way",
+        "stop_code": "15807",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.469475,
+          37.729945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15808",
+        "stop_name": "Ocean Ave & Victoria St",
+        "stop_code": "15808",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.464337,
+          37.726029
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15784",
+        "stop_name": "Ocean Ave/Ccsf Pedestrian Bridge",
+        "stop_code": "15784",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.451448,
+          37.72304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15785",
+        "stop_name": "Ocean Ave/Ccsf Pedestrian Bridge",
+        "stop_code": "15785",
+        "routes": [
+          "K"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.450866,
+          37.722947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15825",
+        "stop_name": "Orizaba Ave & Broad St",
+        "stop_code": "15825",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.462585,
+          37.713328
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16172",
+        "stop_name": "Randolph St & Arch St",
+        "stop_code": "16172",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.466982,
+          37.714342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16173",
+        "stop_name": "Randolph St & Arch St",
+        "stop_code": "16173",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.467218,
+          37.714201
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16174",
+        "stop_name": "Randolph St & Bright St",
+        "stop_code": "16174",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.463392,
+          37.714348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16175",
+        "stop_name": "Randolph St & Bright St",
+        "stop_code": "16175",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.463675,
+          37.71425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16213",
+        "stop_name": "Right Of Way/18th St",
+        "stop_code": "16213",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.428184,
+          37.761192
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16214",
+        "stop_name": "Right Of Way/20th St",
+        "stop_code": "16214",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.427924,
+          37.758264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16215",
+        "stop_name": "Right Of Way/20th St",
+        "stop_code": "16215",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.427795,
+          37.758229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16216",
+        "stop_name": "Right Of Way/21st St",
+        "stop_code": "16216",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426922,
+          37.756643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16217",
+        "stop_name": "Right Of Way/21st St",
+        "stop_code": "16217",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426822,
+          37.756436
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16220",
+        "stop_name": "Right Of Way/Eucalyptus Dr",
+        "stop_code": "16220",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.474366,
+          37.730987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16219",
+        "stop_name": "Right Of Way/Eucalyptus Dr",
+        "stop_code": "16219",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.47435,
+          37.73119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16221",
+        "stop_name": "Right Of Way/Liberty St",
+        "stop_code": "16221",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426999,
+          37.757451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16222",
+        "stop_name": "Right Of Way/Liberty St",
+        "stop_code": "16222",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.426867,
+          37.757239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16224",
+        "stop_name": "Right Of Way/Ocean Ave",
+        "stop_code": "16224",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.473815,
+          37.731808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16223",
+        "stop_name": "Right Of Way/Ocean Ave",
+        "stop_code": "16223",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.473719,
+          37.732022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16257",
+        "stop_name": "San Jose Ave & Farallones St",
+        "stop_code": "16257",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.452148,
+          37.714153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16259",
+        "stop_name": "San Jose Ave & Farallones St",
+        "stop_code": "16259",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.452281,
+          37.713957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17778",
+        "stop_name": "San Jose Ave & Geneva Ave",
+        "stop_code": "17778",
+        "routes": [
+          "J",
+          "K"
+        ],
+        "route_count": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.446222,
+          37.721238
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17164",
+        "stop_name": "San Jose Ave & Geneva Ave",
+        "stop_code": "17164",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.446554,
+          37.720631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16262",
+        "stop_name": "San Jose Ave & Geneva Ave",
+        "stop_code": "16262",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.447196,
+          37.720096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16265",
+        "stop_name": "San Jose Ave & Lakeview Ave",
+        "stop_code": "16265",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.450368,
+          37.71633
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16266",
+        "stop_name": "San Jose Ave & Lakeview Ave",
+        "stop_code": "16266",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.450435,
+          37.716083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16269",
+        "stop_name": "San Jose Ave & Niagra Ave",
+        "stop_code": "16269",
+        "routes": [
+          "M"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.447654,
+          37.719421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16274",
+        "stop_name": "San Jose Ave & Ocean Ave",
+        "stop_code": "16274",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.444699,
+          37.723085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16275",
+        "stop_name": "San Jose Ave & Ocean Ave",
+        "stop_code": "16275",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.44479,
+          37.722862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16280",
+        "stop_name": "San Jose Ave & Randall St",
+        "stop_code": "16280",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.42432,
+          37.739385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16277",
+        "stop_name": "San Jose Ave & Randall St",
+        "stop_code": "16277",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.424157,
+          37.739741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16285",
+        "stop_name": "San Jose Ave & Santa Rosa Ave",
+        "stop_code": "16285",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.440016,
+          37.728996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16284",
+        "stop_name": "San Jose Ave & Santa Rosa Ave",
+        "stop_code": "16284",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.439922,
+          37.728991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16287",
+        "stop_name": "San Jose Ave & Santa Ynez Ave",
+        "stop_code": "16287",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.442359,
+          37.725877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16288",
+        "stop_name": "San Jose Ave & Santa Ynez Ave",
+        "stop_code": "16288",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.442442,
+          37.725681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14788",
+        "stop_name": "San Jose Ave/Glen Park Station",
+        "stop_code": "14788",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.433855,
+          37.732401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14787",
+        "stop_name": "San Jose Ave/Glen Park Station",
+        "stop_code": "14787",
+        "routes": [
+          "J"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.433416,
+          37.732525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17318",
+        "stop_name": "Sunset Tunnel East Portal",
+        "stop_code": "17318",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.433511,
+          37.769285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16615",
+        "stop_name": "Taraval St & 17th Ave",
+        "stop_code": "16615",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.473306,
+          37.743131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16617",
+        "stop_name": "Taraval St & 19th Ave",
+        "stop_code": "16617",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.475821,
+          37.742971
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16616",
+        "stop_name": "Taraval St & 19th Ave",
+        "stop_code": "16616",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.475444,
+          37.74311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16619",
+        "stop_name": "Taraval St & 22nd Ave",
+        "stop_code": "16619",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.478426,
+          37.74289
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16620",
+        "stop_name": "Taraval St & 23rd Ave",
+        "stop_code": "16620",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.48045,
+          37.742872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16623",
+        "stop_name": "Taraval St & 26th Ave",
+        "stop_code": "16623",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.483385,
+          37.742683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16622",
+        "stop_name": "Taraval St & 26th Ave",
+        "stop_code": "16622",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.483083,
+          37.742777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16627",
+        "stop_name": "Taraval St & 30th Ave",
+        "stop_code": "16627",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.487681,
+          37.742494
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16626",
+        "stop_name": "Taraval St & 30th Ave",
+        "stop_code": "16626",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.487337,
+          37.742588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16629",
+        "stop_name": "Taraval St & 32nd Ave",
+        "stop_code": "16629",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.489801,
+          37.742402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16628",
+        "stop_name": "Taraval St & 32nd Ave",
+        "stop_code": "16628",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.489505,
+          37.742491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16633",
+        "stop_name": "Taraval St & 40th Ave",
+        "stop_code": "16633",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.498316,
+          37.74199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16632",
+        "stop_name": "Taraval St & 40th Ave",
+        "stop_code": "16632",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.498055,
+          37.742124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16635",
+        "stop_name": "Taraval St & 42nd Ave",
+        "stop_code": "16635",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.500461,
+          37.7419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16634",
+        "stop_name": "Taraval St & 42nd Ave",
+        "stop_code": "16634",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.500202,
+          37.742021
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16637",
+        "stop_name": "Taraval St & 44th Ave",
+        "stop_code": "16637",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.502606,
+          37.741804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16636",
+        "stop_name": "Taraval St & 44th Ave",
+        "stop_code": "16636",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.502346,
+          37.741924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16638",
+        "stop_name": "Taraval St & 46th Ave",
+        "stop_code": "16638",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.50449,
+          37.741823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16641",
+        "stop_name": "Taraval St & Sunset Blvd",
+        "stop_code": "16641",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.49451,
+          37.742188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16640",
+        "stop_name": "Taraval St & Sunset Blvd",
+        "stop_code": "16640",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.494361,
+          37.742287
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17145",
+        "stop_name": "The Embarcadero & Brannan St",
+        "stop_code": "17145",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.387977,
+          37.784627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14506",
+        "stop_name": "The Embarcadero & Brannan St",
+        "stop_code": "14506",
+        "routes": [
+          "N"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388138,
+          37.784359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14509",
+        "stop_name": "The Embarcadero & Folsom St",
+        "stop_code": "14509",
+        "routes": [
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389692,
+          37.790481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14510",
+        "stop_name": "The Embarcadero & Folsom St",
+        "stop_code": "14510",
+        "routes": [
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 4
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389841,
+          37.790749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17362",
+        "stop_name": "Third Street & 20th St",
+        "stop_code": "17362",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388593,
+          37.760367
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17355",
+        "stop_name": "Third Street & 20th St",
+        "stop_code": "17355",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388558,
+          37.760518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17363",
+        "stop_name": "Third Street & 23rd St",
+        "stop_code": "17363",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388047,
+          37.755263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17354",
+        "stop_name": "Third Street & 23rd St",
+        "stop_code": "17354",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388001,
+          37.755414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17344",
+        "stop_name": "Third Street & Carroll Ave",
+        "stop_code": "17344",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.394394,
+          37.725241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17343",
+        "stop_name": "Third Street & Carroll Ave",
+        "stop_code": "17343",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.394222,
+          37.725491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17365",
+        "stop_name": "Third Street & Evans Ave",
+        "stop_code": "17365",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388034,
+          37.742727
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17352",
+        "stop_name": "Third Street & Evans Ave",
+        "stop_code": "17352",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.38792,
+          37.742726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17394",
+        "stop_name": "Third Street & Le Conte Ave",
+        "stop_code": "17394",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.397697,
+          37.71864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17400",
+        "stop_name": "Third Street & Le Conte Ave",
+        "stop_code": "17400",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.397468,
+          37.718809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17364",
+        "stop_name": "Third Street & Marin St",
+        "stop_code": "17364",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.387525,
+          37.749097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17353",
+        "stop_name": "Third Street & Marin St",
+        "stop_code": "17353",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.387445,
+          37.748999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17359",
+        "stop_name": "Third Street & Mission Rock St",
+        "stop_code": "17359",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389717,
+          37.772832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17358",
+        "stop_name": "Third Street & Mission Rock St",
+        "stop_code": "17358",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389683,
+          37.772984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17346",
+        "stop_name": "Third Street & Williams Ave",
+        "stop_code": "17346",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.392684,
+          37.729211
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17345",
+        "stop_name": "Third Street & Williams Ave",
+        "stop_code": "17345",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.392604,
+          37.729291
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17342",
+        "stop_name": "Third Street/Gilman/Paul",
+        "stop_code": "17342",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.395782,
+          37.722199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17347",
+        "stop_name": "Third Street/Gilman/Paul",
+        "stop_code": "17347",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.39561,
+          37.722449
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17390",
+        "stop_name": "Third Street/Hudson/Innes",
+        "stop_code": "17390",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.38893,
+          37.739934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17404",
+        "stop_name": "Third Street/Hudson/Innes",
+        "stop_code": "17404",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388884,
+          37.739916
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17391",
+        "stop_name": "Third Street/Kirkwood/La Salle",
+        "stop_code": "17391",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389734,
+          37.73765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17403",
+        "stop_name": "Third Street/Kirkwood/La Salle",
+        "stop_code": "17403",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389688,
+          37.737641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17392",
+        "stop_name": "Third Street/Oakdale/Palou",
+        "stop_code": "17392",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.390893,
+          37.73435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17402",
+        "stop_name": "Third Street/Oakdale/Palou",
+        "stop_code": "17402",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.390836,
+          37.734358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17393",
+        "stop_name": "Third Street/Revere/Shafter",
+        "stop_code": "17393",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.391605,
+          37.732289
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17401",
+        "stop_name": "Third Street/Revere/Shafter",
+        "stop_code": "17401",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.391502,
+          37.732262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17357",
+        "stop_name": "Ucsf / Chase Center (16th St)",
+        "stop_code": "17357",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389182,
+          37.768504
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17360",
+        "stop_name": "Ucsf / Chase Center (16th Street)",
+        "stop_code": "17360",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.389366,
+          37.768237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17361",
+        "stop_name": "Ucsf Medical Center (Mariposa)",
+        "stop_code": "17361",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388865,
+          37.764239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17356",
+        "stop_name": "Ucsf Medical Center (Mariposa)",
+        "stop_code": "17356",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.388853,
+          37.764391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18137",
+        "stop_name": "Ulloa St & 14th Ave",
+        "stop_code": "18137",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.470211,
+          37.741356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18136",
+        "stop_name": "Ulloa St & 14th Ave",
+        "stop_code": "18136",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.469969,
+          37.7415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16738",
+        "stop_name": "Ulloa St & Lenox Way",
+        "stop_code": "16738",
+        "routes": [
+          "L",
+          "M"
+        ],
+        "route_count": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.466155,
+          37.741125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16744",
+        "stop_name": "Ulloa St & West Portal Ave",
+        "stop_code": "16744",
+        "routes": [
+          "L",
+          "M"
+        ],
+        "route_count": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.466167,
+          37.741009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17877",
+        "stop_name": "Union Square/Market St Station Northbound",
+        "stop_code": "17877",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.406477,
+          37.787151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17874",
+        "stop_name": "Union Square/Market St Station Southbound",
+        "stop_code": "17874",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.406523,
+          37.787133
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16996",
+        "stop_name": "Van Ness Station Outbound",
+        "stop_code": "16996",
+        "routes": [
+          "J",
+          "K",
+          "L",
+          "M",
+          "N"
+        ],
+        "route_count": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.41934,
+          37.775234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16932",
+        "stop_name": "Wawona/46th Ave /Sf Zoo",
+        "stop_code": "16932",
+        "routes": [
+          "L"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.504351,
+          37.736125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16898",
+        "stop_name": "West Portal Ave & 14th Ave",
+        "stop_code": "16898",
+        "routes": [
+          "K",
+          "M"
+        ],
+        "route_count": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.469042,
+          37.737859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17125",
+        "stop_name": "West Portal Ave & 14th Ave",
+        "stop_code": "17125",
+        "routes": [
+          "K",
+          "M"
+        ],
+        "route_count": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.468984,
+          37.738064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16740",
+        "stop_name": "West Portal Station",
+        "stop_code": "16740",
+        "routes": [
+          "K",
+          "L",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.465216,
+          37.741518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16739",
+        "stop_name": "West Portal Station",
+        "stop_code": "16739",
+        "routes": [
+          "K",
+          "L",
+          "M"
+        ],
+        "route_count": 3
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.46553,
+          37.741391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17109",
+        "stop_name": "West Portal/Sloat/St Francis Circle",
+        "stop_code": "17109",
+        "routes": [
+          "K",
+          "M"
+        ],
+        "route_count": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.471446,
+          37.734825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16503",
+        "stop_name": "West Portal/Sloat/St Francis Circle",
+        "stop_code": "16503",
+        "routes": [
+          "K",
+          "M"
+        ],
+        "route_count": 2
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.471618,
+          37.734807
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17878",
+        "stop_name": "Yerba Buena/Moscone Station Northbound",
+        "stop_code": "17878",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.401551,
+          37.782358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "17873",
+        "stop_name": "Yerba Buena/Moscone Station Southbound",
+        "stop_code": "17873",
+        "routes": [
+          "T"
+        ],
+        "route_count": 1
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.40173,
+          37.78238
+        ]
+      }
+    }
+  ]
+}

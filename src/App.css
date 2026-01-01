@@ -67,29 +67,33 @@
   align-items: center;
 }
 
-.line-actions {
+.toggle-group {
   display: flex;
-  gap: 6px;
-  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  padding: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.text-button {
-  background: none;
+.toggle-button {
+  background: transparent;
   border: none;
-  color: #00d9ff;
-  font-size: 0.75rem;
-  cursor: pointer;
-  padding: 0;
-  transition: opacity 0.2s;
-}
-
-.text-button:hover {
-  opacity: 0.7;
-}
-
-.divider {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.5);
   font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.toggle-button:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.toggle-button.active {
+  background: rgba(0, 217, 255, 0.2);
+  color: #00d9ff;
 }
 
 .button-group {
@@ -157,6 +161,26 @@
   transform: scale(1.05);
 }
 
+.route-lines-toggle {
+  margin-top: 4px;
+}
+
+.route-lines-toggle label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.route-lines-toggle input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #00d9ff;
+  cursor: pointer;
+}
+
 /* Legend */
 .legend {
   display: flex;
@@ -190,6 +214,119 @@
   justify-content: space-between;
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.5);
+}
+
+/* Speed Legend */
+.speed-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.speed-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.speed-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+/* Speed Filter */
+.speed-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.speed-slider-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.speed-slider-row label {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.speed-slider {
+  width: 100%;
+  height: 6px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+}
+
+.speed-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #00d9ff;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.speed-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #00d9ff;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.speed-filter-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.speed-filter-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+}
+
+.speed-filter-checkbox input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #00d9ff;
+  cursor: pointer;
+}
+
+.reset-filter-btn {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-filter-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 
 /* Data Note */
@@ -434,6 +571,37 @@
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.4);
   margin-top: 4px;
+}
+
+/* Loading indicator */
+.loading-indicator {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: rgba(26, 26, 46, 0.95);
+  border: 1px solid rgba(0, 217, 255, 0.4);
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 0.85rem;
+  color: #00d9ff;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.loading-indicator::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(0, 217, 255, 0.3);
+  border-top-color: #00d9ff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 /* Ensure MapLibre canvas fills container */
