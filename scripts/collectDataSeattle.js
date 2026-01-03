@@ -205,11 +205,9 @@ async function main() {
     console.log('   Set SOUND_TRANSIT_API_KEY in your .env file');
     console.log('   Request a key at: https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/otd-terms-of-use');
     console.log('');
-    console.log('📊 DEMO MODE: Generating fake data for testing...\n');
-    
-    // Generate fake data for testing
-    await generateFakeData();
-    return;
+    console.log('❌ Cannot run without API key. Exiting.');
+    console.log('   Once you have a key, update OBA_API_KEY in this file.');
+    process.exit(1);
   }
   
   // Run immediately

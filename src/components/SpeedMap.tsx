@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { City } from "../types";
-import { getLinesForCity } from "../types";
+import { getLinesForCity, CITIES } from "../types";
 import { supabase } from "../lib/supabase";
 import muniRoutes from "../data/muniMetroRoutes.json";
 import muniStops from "../data/muniMetroStops.json";
@@ -470,6 +470,96 @@ interface Vehicle {
   segmentId?: string | null;
 }
 
+// Module-level cache - persists across component remounts for instant city switching
+const cityDataCache = new Map<City, Vehicle[]>();
+
+// Track if we've already started background preloading
+let preloadStarted = false;
+
+// Background preload function - fetches and caches a city's data without UI updates
+async function preloadCityData(targetCity: City): Promise<void> {
+  // Skip if already cached or no supabase
+  if (cityDataCache.has(targetCity) || !supabase) return;
+  
+  try {
+    const PAGE_SIZE = 5000;
+    let allData: any[] = [];
+    let from = 0;
+    let hasMore = true;
+    const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+
+    while (hasMore) {
+      const baseQuery = supabase
+        .from("vehicle_positions")
+        .select("*")
+        .gte("recorded_at", since)
+        .order("recorded_at", { ascending: false })
+        .range(from, from + PAGE_SIZE - 1);
+
+      let query;
+      if (targetCity === "SF") {
+        query = baseQuery.or("city.is.null,city.eq.SF");
+      } else {
+        query = baseQuery.eq("city", targetCity);
+      }
+
+      const { data, error } = await query;
+      if (error) break;
+
+      if (data && data.length > 0) {
+        allData = [...allData, ...data];
+        from += PAGE_SIZE;
+        hasMore = data.length === PAGE_SIZE;
+      } else {
+        hasMore = false;
+      }
+    }
+
+    // Filter to valid lines and transform
+    const validLines = getLinesForCity(targetCity);
+    const filteredData = allData.filter((row: any) => {
+      if (validLines.includes(row.route_id)) return true;
+      if (targetCity === "Sacramento" && row.route_id === "Shared") return true;
+      return false;
+    });
+
+    // Get city config for segment computation
+    const cityConfig = CITY_CONFIG[targetCity];
+    
+    const positions: Vehicle[] = filteredData.map((row: any) => ({
+      id: `${row.vehicle_id}-${row.id}`,
+      lat: row.lat,
+      lon: row.lon,
+      routeId: row.route_id,
+      direction: getDirection(row.direction_id),
+      speed: row.speed_calculated,
+      recordedAt: row.recorded_at,
+      segmentId: findSegmentForVehicle(row.lat, row.lon, row.route_id, cityConfig.routes),
+    }));
+
+    // Store in cache
+    cityDataCache.set(targetCity, positions);
+    console.log(`Background preloaded ${targetCity}: ${positions.length} positions`);
+  } catch (error) {
+    console.warn(`Failed to preload ${targetCity}:`, error);
+  }
+}
+
+// Start background preloading for all cities (staggered)
+function startBackgroundPreload(currentCity: City) {
+  if (preloadStarted) return;
+  preloadStarted = true;
+  
+  const otherCities = CITIES.filter(c => c !== currentCity);
+  
+  // Stagger requests by 500ms each to avoid hammering the server
+  otherCities.forEach((city, index) => {
+    setTimeout(() => {
+      preloadCityData(city);
+    }, (index + 1) * 500);
+  });
+}
+
 interface SpeedMapProps {
   city: City;
   selectedLines: string[];
@@ -549,8 +639,18 @@ export function SpeedMap({
       return;
     }
 
+    // Check cache first - instant city switching!
+    const cached = cityDataCache.get(city);
+    if (cached && cached.length > 0) {
+      console.log(`Using cached ${city} data: ${cached.length} positions`);
+      setVehicles(cached);
+      setDataSource("supabase");
+      return;
+    }
+
     try {
-      const PAGE_SIZE = 1000;
+      // Larger page size = fewer network roundtrips
+      const PAGE_SIZE = 5000;
       let allData: any[] = [];
       let from = 0;
       let hasMore = true;
@@ -655,6 +755,12 @@ export function SpeedMap({
       });
       console.timeEnd("Pre-computing segments");
 
+      // Cache the results for instant switching
+      cityDataCache.set(city, allPositions);
+      
+      // Start background preloading other cities
+      startBackgroundPreload(city);
+      
       setVehicles(allPositions);
       setDataSource("supabase");
 
@@ -711,10 +817,51 @@ export function SpeedMap({
 
   // Fetch data when city changes
   useEffect(() => {
+    // Check cache first - if cached, don't show loading state
+    const cached = cityDataCache.get(city);
+    if (cached && cached.length > 0) {
+      // Instant switch - use cached data
+      setVehicles(cached);
+      setDataSource("supabase");
+      console.log(`Instant cache hit for ${city}: ${cached.length} positions`);
+      
+      // Also update parent with cached data stats
+      if (cached.length > 0) {
+        const timestamps = cached.map((v) => new Date(v.recordedAt).getTime());
+        const latestTime = new Date(Math.max(...timestamps));
+        const dataAgeMinutes = (Date.now() - latestTime.getTime()) / (1000 * 60);
+        
+        // Calculate line stats from cached data
+        const lineSpeedMap = new Map<string, number[]>();
+        cached.forEach((v) => {
+          if (v.speed == null) return;
+          if (!lineSpeedMap.has(v.routeId)) {
+            lineSpeedMap.set(v.routeId, []);
+          }
+          lineSpeedMap.get(v.routeId)!.push(v.speed);
+        });
+        
+        const stats: LineStats[] = [];
+        lineSpeedMap.forEach((speeds, line) => {
+          if (line === "Shared") return;
+          const avg = speeds.reduce((a, b) => a + b, 0) / speeds.length;
+          const sorted = [...speeds].sort((a, b) => a - b);
+          const mid = Math.floor(sorted.length / 2);
+          const median = sorted.length % 2 !== 0
+            ? sorted[mid]
+            : (sorted[mid - 1] + sorted[mid]) / 2;
+          stats.push({ line, avgSpeed: avg, medianSpeed: median, count: speeds.length });
+        });
+        
+        onVehicleUpdateRef.current?.(cached.length, latestTime, stats, dataAgeMinutes);
+      }
+      return;
+    }
+    // No cache - show loading and fetch
     setVehicles([]);
     setDataSource("loading");
     fetchVehiclesFromSupabase();
-  }, [fetchVehiclesFromSupabase]);
+  }, [city, fetchVehiclesFromSupabase]);
 
   // Initialize map
   useEffect(() => {
@@ -1081,6 +1228,9 @@ export function SpeedMap({
           },
         });
 
+        // Track if crossing popup is pinned (clicked)
+        let crossingPopupPinned = false;
+        
         // Crossing hover popup
         map.current.on("mouseenter", "crossings", () => {
           if (map.current) map.current.getCanvas().style.cursor = "pointer";
@@ -1088,20 +1238,74 @@ export function SpeedMap({
 
         map.current.on("mouseleave", "crossings", () => {
           if (map.current) map.current.getCanvas().style.cursor = "";
-          popup.current?.remove();
+          // Only remove popup if not pinned
+          if (!crossingPopupPinned) {
+            popup.current?.remove();
+          }
         });
 
         map.current.on("mousemove", "crossings", (e) => {
+          // Don't update popup if it's pinned
+          if (crossingPopupPinned) return;
           if (!e.features?.length || !map.current) return;
+          
+          // Get coordinates from the feature geometry
+          const feature = e.features[0];
+          const coords = feature.geometry.type === "Point" 
+            ? (feature.geometry as GeoJSON.Point).coordinates 
+            : null;
+          const lon = coords ? coords[0].toFixed(6) : "N/A";
+          const lat = coords ? coords[1].toFixed(6) : "N/A";
 
           popup.current
             ?.setLngLat(e.lngLat)
             .setHTML(
               `<div class="popup-content">
                 <div class="popup-title">Grade Crossing</div>
+                <div class="popup-coords">${lat}, ${lon}</div>
               </div>`
             )
             .addTo(map.current);
+        });
+        
+        // Click to pin the popup
+        map.current.on("click", "crossings", (e) => {
+          if (!e.features?.length || !map.current) return;
+          
+          // Get coordinates from the feature geometry
+          const feature = e.features[0];
+          const coords = feature.geometry.type === "Point" 
+            ? (feature.geometry as GeoJSON.Point).coordinates 
+            : null;
+          const lon = coords ? coords[0].toFixed(6) : "N/A";
+          const lat = coords ? coords[1].toFixed(6) : "N/A";
+          
+          crossingPopupPinned = true;
+
+          popup.current
+            ?.setLngLat(e.lngLat)
+            .setHTML(
+              `<div class="popup-content popup-pinned">
+                <div class="popup-title">Grade Crossing 📌</div>
+                <div class="popup-coords">${lat}, ${lon}</div>
+                <div class="popup-hint">Click elsewhere to close</div>
+              </div>`
+            )
+            .addTo(map.current);
+          
+          // Prevent the click from propagating to the map
+          e.originalEvent.stopPropagation();
+        });
+        
+        // Click elsewhere on map to unpin
+        map.current.on("click", (e) => {
+          // Check if click was on a crossing (handled above)
+          const features = map.current?.queryRenderedFeatures(e.point, { layers: ["crossings"] });
+          if (features && features.length > 0) return;
+          
+          // Unpin and remove popup
+          crossingPopupPinned = false;
+          popup.current?.remove();
         });
       }
     };

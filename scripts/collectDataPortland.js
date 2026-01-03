@@ -3,7 +3,7 @@
  * Portland MAX Speed Map - Data Collector
  * 
  * Polls TriMet Vehicles API every 90 seconds and saves vehicle positions to Supabase.
- * TriMet provides speed directly in the API response.
+ * Speed is calculated from consecutive GPS readings since TriMet doesn't provide it.
  * 
  * Run with: node scripts/collectDataPortland.js
  */
@@ -16,7 +16,7 @@ const SUPABASE_ANON_KEY = 'REDACTED_SUPABASE_KEY';
 
 // ⚠️ REPLACE WITH YOUR TRIMET API KEY (AppID)
 // Register at: https://developer.trimet.org/
-const TRIMET_APP_ID = 'YOUR_TRIMET_APP_ID_HERE';
+const TRIMET_APP_ID = 'REDACTED_TRIMET_KEY';
 
 // MAX Light Rail lines (route IDs)
 // 90 = MAX Red, 100 = MAX Blue, 190 = MAX Yellow, 200 = MAX Green, 290 = MAX Orange
@@ -25,6 +25,58 @@ const POLL_INTERVAL_MS = 90000; // 90 seconds
 
 // Initialize Supabase client
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// Store previous positions for speed calculation
+const previousPositions = new Map();
+
+// Haversine distance between two points in meters
+function haversineDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371000; // Earth's radius in meters
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return R * c;
+}
+
+// Calculate speed from previous position
+function calculateSpeed(vehicleId, lat, lon, timestamp) {
+  const prev = previousPositions.get(vehicleId);
+  
+  // Store current position for next calculation
+  previousPositions.set(vehicleId, { lat, lon, timestamp });
+  
+  if (!prev) {
+    return null; // No previous position to compare
+  }
+  
+  const timeDiffSeconds = (timestamp - prev.timestamp) / 1000;
+  
+  // Only calculate speed if time gap is reasonable (30-300 seconds)
+  if (timeDiffSeconds < 30 || timeDiffSeconds > 300) {
+    return null;
+  }
+  
+  const distanceMeters = haversineDistance(prev.lat, prev.lon, lat, lon);
+  
+  // If distance is very small, vehicle is stationary
+  if (distanceMeters < 5) {
+    return 0;
+  }
+  
+  // Convert to mph
+  const speedMps = distanceMeters / timeDiffSeconds;
+  const speedMph = speedMps * 2.237;
+  
+  // Sanity check: light rail shouldn't exceed 60 mph
+  if (speedMph > 70) {
+    return null; // Likely GPS glitch
+  }
+  
+  return Math.round(speedMph * 10) / 10;
+}
 
 // Fetch vehicle positions from TriMet Vehicles API
 async function fetchVehiclePositions() {
@@ -50,15 +102,22 @@ async function fetchVehiclePositions() {
     const maxVehicles = vehicles
       .filter(v => MAX_LINES.includes(String(v.routeNumber)))
       .map(v => {
+        const vehicleId = String(v.vehicleID);
+        const lat = parseFloat(v.latitude);
+        const lon = parseFloat(v.longitude);
+        const timestamp = v.time || Date.now();
+        
+        // Calculate speed from consecutive GPS readings
+        const calculatedSpeed = calculateSpeed(vehicleId, lat, lon, timestamp);
+        
         return {
-          vehicle_id: String(v.vehicleID),
+          vehicle_id: vehicleId,
           route_id: String(v.routeNumber),
           direction_id: String(v.direction || ''),
-          lat: parseFloat(v.latitude),
-          lon: parseFloat(v.longitude),
+          lat: lat,
+          lon: lon,
           heading: v.bearing ? parseFloat(v.bearing) : null,
-          // TriMet provides speed in meters per second, convert to mph
-          speed_calculated: v.speed ? Math.round(v.speed * 2.237 * 10) / 10 : null,
+          speed_calculated: calculatedSpeed,
           recorded_at: v.time ? new Date(v.time).toISOString() : new Date().toISOString(),
           city: 'Portland',
         };

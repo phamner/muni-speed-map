@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import type {
   MuniLine,
   LAMetroLine,
@@ -167,6 +168,16 @@ export function Controls({
   setViewMode,
   lineStats,
 }: ControlsProps) {
+  // Sacramento warning modal state
+  const [showSacWarning, setShowSacWarning] = useState(false);
+  
+  // Show modal when user navigates to Sacramento
+  useEffect(() => {
+    if (city === "Sacramento") {
+      setShowSacWarning(true);
+    }
+  }, [city]);
+  
   // Live mode: fresh if data is less than 5 minutes old, but always available if we have any data
   const isLiveFresh = dataAgeMinutes !== null && dataAgeMinutes < 5;
   const hasAnyData = dataAgeMinutes !== null;
@@ -732,10 +743,40 @@ export function Controls({
             </a>
           ) : (
             <span>Transit API</span>
-          )}{" "}
-          GTFS-realtime
+          )}
+          {city === "Portland" || city === "Boston"
+            ? ""
+            : " GTFS-realtime"}
         </p>
       </div>
+      
+      {/* Sacramento Warning Modal */}
+      {showSacWarning && (
+        <div className="modal-overlay" onClick={() => setShowSacWarning(false)}>
+          <div className="modal-content sac-warning-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-icon">⚠️</div>
+            <h2>Sacramento Data Quality Issue</h2>
+            <p>
+              <strong>SacRT does not provide live tracking for light rail.</strong>
+            </p>
+            <p>
+              Their real-time API only includes buses. The data shown here is our 
+              best attempt to filter vehicles by proximity to track geometry, but 
+              it may include misidentified buses or missing trains.
+            </p>
+            <p className="modal-subtext">
+              This limitation is on SacRT's end and cannot be fixed without them 
+              updating their data feed.
+            </p>
+            <button 
+              className="modal-close-btn"
+              onClick={() => setShowSacWarning(false)}
+            >
+              I Understand
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
