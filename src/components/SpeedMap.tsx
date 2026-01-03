@@ -45,6 +45,22 @@ import type { SpeedFilter, ViewMode, LineStats } from "../App";
 // Maximum distance in meters from route line to be considered "on route"
 const MAX_DISTANCE_FROM_ROUTE_METERS = 100;
 
+// Debounce utility - prevents rapid successive calls
+function debounce<T extends (...args: any[]) => void>(
+  fn: T,
+  delay: number
+): T & { cancel: () => void } {
+  let timeoutId: ReturnType<typeof setTimeout> | null = null;
+  const debounced = (...args: Parameters<T>) => {
+    if (timeoutId) clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => fn(...args), delay);
+  };
+  debounced.cancel = () => {
+    if (timeoutId) clearTimeout(timeoutId);
+  };
+  return debounced as T & { cancel: () => void };
+}
+
 // City-specific configurations
 const CITY_CONFIG = {
   SF: {
@@ -431,16 +447,42 @@ function buildAllSegments(routes: any): SegmentData[] {
   return allSegments;
 }
 
-// Find segment for a vehicle
+// Cache for route features by routeId - avoids filtering on every call
+const routeFeatureCache = new Map<string, Map<string, any[]>>();
+
+// Build route features lookup map once per routes object
+function getRouteFeatureMap(routes: any): Map<string, any[]> {
+  // Use routes object reference as cache key (same object = same map)
+  const cacheKey = JSON.stringify(routes.features?.length ?? 0);
+  if (routeFeatureCache.has(cacheKey)) {
+    return routeFeatureCache.get(cacheKey)!;
+  }
+  
+  const map = new Map<string, any[]>();
+  for (const feature of routes.features || []) {
+    const routeId = feature.properties?.route_id;
+    if (!routeId) continue;
+    if (!map.has(routeId)) {
+      map.set(routeId, []);
+    }
+    map.get(routeId)!.push(feature);
+  }
+  
+  routeFeatureCache.set(cacheKey, map);
+  return map;
+}
+
+// Find segment for a vehicle (optimized with cached route lookup)
 function findSegmentForVehicle(
   lat: number,
   lon: number,
   routeId: string,
-  routes: any
+  routes: any,
+  routeFeatureMap?: Map<string, any[]>
 ): string | null {
-  const routeFeatures = routes.features.filter(
-    (f: any) => f.properties.route_id === routeId
-  );
+  // Use provided map or build one (for backward compatibility)
+  const featureMap = routeFeatureMap || getRouteFeatureMap(routes);
+  const routeFeatures = featureMap.get(routeId) || [];
 
   let bestSegmentIndex: number | null = null;
   let minDistance = Infinity;
@@ -582,6 +624,9 @@ async function preloadCityData(targetCity: City): Promise<void> {
     // Get city config for segment computation
     const cityConfig = CITY_CONFIG[targetCity];
     
+    // Build route feature map once (optimization: avoids filtering per-vehicle)
+    const routeFeatureMap = getRouteFeatureMap(cityConfig.routes);
+    
     const positions: Vehicle[] = filteredData.map((row: any) => ({
       id: `${row.vehicle_id}-${row.id}`,
       lat: row.lat,
@@ -590,7 +635,7 @@ async function preloadCityData(targetCity: City): Promise<void> {
       direction: getDirection(row.direction_id),
       speed: row.speed_calculated,
       recordedAt: row.recorded_at,
-      segmentId: findSegmentForVehicle(row.lat, row.lon, row.route_id, cityConfig.routes),
+      segmentId: findSegmentForVehicle(row.lat, row.lon, row.route_id, cityConfig.routes, routeFeatureMap),
       headsign: row.headsign,
     }));
 
@@ -798,6 +843,10 @@ export function SpeedMap({
 
       // Pre-compute segment assignments
       console.time("Pre-computing segments");
+      
+      // Build route feature map once (optimization: avoids filtering per-vehicle)
+      const routeFeatureMap = getRouteFeatureMap(cityConfig.routes);
+      
       const allPositions: Vehicle[] = filteredData.map((row: any) => {
         const lat = row.lat;
         const lon = row.lon;
@@ -814,7 +863,8 @@ export function SpeedMap({
             lat,
             lon,
             routeId,
-            cityConfig.routes
+            cityConfig.routes,
+            routeFeatureMap
           ),
           headsign: row.headsign,
         };
@@ -1769,19 +1819,11 @@ export function SpeedMap({
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
 
-    // Run immediately and after multiple delays to catch late-loading layers
+    // Run immediately and once after a short delay for late-loading layers
     reorderLayers();
-    const timeoutId1 = setTimeout(reorderLayers, 50);
-    const timeoutId2 = setTimeout(reorderLayers, 150);
-    const timeoutId3 = setTimeout(reorderLayers, 300);
-    const timeoutId4 = setTimeout(reorderLayers, 500);
+    const timeoutId = setTimeout(reorderLayers, 100);
 
-    return () => {
-      clearTimeout(timeoutId1);
-      clearTimeout(timeoutId2);
-      clearTimeout(timeoutId3);
-      clearTimeout(timeoutId4);
-    };
+    return () => clearTimeout(timeoutId);
   }, [
     mapLoaded,
     vehicles,
@@ -1795,19 +1837,18 @@ export function SpeedMap({
     reorderLayers,
   ]);
 
-  // Also reorder when any source data changes (catches async layer additions)
+  // Reorder when source data changes (catches async layer additions)
+  // Uses proper debounce to prevent excessive calls
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
 
-    const handleSourceData = () => {
-      // Debounce reordering to avoid excessive calls
-      setTimeout(reorderLayers, 10);
-    };
+    const debouncedReorder = debounce(reorderLayers, 50);
 
-    map.current.on("sourcedata", handleSourceData);
+    map.current.on("sourcedata", debouncedReorder);
 
     return () => {
-      map.current?.off("sourcedata", handleSourceData);
+      map.current?.off("sourcedata", debouncedReorder);
+      debouncedReorder.cancel();
     };
   }, [mapLoaded, reorderLayers]);
 
