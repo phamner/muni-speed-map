@@ -259,15 +259,17 @@ export function Controls({
           🌴 LA
         </button>
         <button
-          className={`city-btn ${city === "San Diego" ? "active" : ""}`}
+          className={`city-btn city-btn-pending ${city === "San Diego" ? "active" : ""}`}
           onClick={() => setCity("San Diego")}
+          title="Waiting for API key"
         >
           🌊 SD
         </button>
         {/* Row 2: Pacific NW + Central */}
         <button
-          className={`city-btn ${city === "Seattle" ? "active" : ""}`}
+          className={`city-btn city-btn-pending ${city === "Seattle" ? "active" : ""}`}
           onClick={() => setCity("Seattle")}
+          title="Waiting for API key"
         >
           ☕ Seattle
         </button>

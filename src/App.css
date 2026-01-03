@@ -88,6 +88,25 @@
   text-shadow: 0 0 8px rgba(255, 100, 100, 0.5);
 }
 
+/* Pending style for cities waiting for API keys (yellow) */
+.city-btn.city-btn-pending {
+  color: #ffd93d;
+  text-shadow: 0 0 8px rgba(255, 217, 61, 0.4);
+}
+
+.city-btn.city-btn-pending:hover {
+  color: #ffed4a;
+  background: rgba(255, 217, 61, 0.15);
+  text-shadow: 0 0 10px rgba(255, 217, 61, 0.5);
+}
+
+.city-btn.city-btn-pending.active {
+  background: linear-gradient(135deg, rgba(255, 217, 61, 0.35) 0%, rgba(200, 170, 30, 0.25) 100%);
+  color: #ffed4a;
+  box-shadow: 0 2px 12px rgba(255, 217, 61, 0.3);
+  text-shadow: 0 0 8px rgba(255, 230, 100, 0.5);
+}
+
 .app-header {
   display: flex;
   flex-direction: column;

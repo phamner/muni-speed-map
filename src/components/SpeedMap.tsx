@@ -482,25 +482,32 @@ async function preloadCityData(targetCity: City): Promise<void> {
   if (cityDataCache.has(targetCity) || !supabase) return;
   
   try {
-    const PAGE_SIZE = 5000;
+    // Supabase has a server-side limit of 1000 rows per request
+    const PAGE_SIZE = 1000;
     let allData: any[] = [];
     let from = 0;
     let hasMore = true;
     const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
     while (hasMore) {
-      const baseQuery = supabase
-        .from("vehicle_positions")
-        .select("*")
-        .gte("recorded_at", since)
-        .order("recorded_at", { ascending: false })
-        .range(from, from + PAGE_SIZE - 1);
-
+      // Build query with city filter first, then range LAST
       let query;
       if (targetCity === "SF") {
-        query = baseQuery.or("city.is.null,city.eq.SF");
+        query = supabase
+          .from("vehicle_positions")
+          .select("*")
+          .gte("recorded_at", since)
+          .or("city.is.null,city.eq.SF")
+          .order("recorded_at", { ascending: false })
+          .range(from, from + PAGE_SIZE - 1);
       } else {
-        query = baseQuery.eq("city", targetCity);
+        query = supabase
+          .from("vehicle_positions")
+          .select("*")
+          .gte("recorded_at", since)
+          .eq("city", targetCity)
+          .order("recorded_at", { ascending: false })
+          .range(from, from + PAGE_SIZE - 1);
       }
 
       const { data, error } = await query;
@@ -649,8 +656,9 @@ export function SpeedMap({
     }
 
     try {
-      // Larger page size = fewer network roundtrips
-      const PAGE_SIZE = 5000;
+      // Supabase has a server-side limit of 1000 rows per request (PGRST_MAX_ROWS)
+      // We must use 1000 to properly paginate through all results
+      const PAGE_SIZE = 1000;
       let allData: any[] = [];
       let from = 0;
       let hasMore = true;
@@ -662,20 +670,25 @@ export function SpeedMap({
       setLoadingProgress("Loading positions...");
 
       while (hasMore) {
-        // Build base query
-        const baseQuery = supabase
-          .from("vehicle_positions")
-          .select("*")
-          .gte("recorded_at", since)
-          .order("recorded_at", { ascending: false })
-          .range(from, from + PAGE_SIZE - 1);
-
-        // Filter by city
+        // Build query with city filter first, then range LAST
+        // (range must be applied after all filters to work correctly)
         let query;
         if (city === "SF") {
-          query = baseQuery.or("city.is.null,city.eq.SF");
+          query = supabase
+            .from("vehicle_positions")
+            .select("*")
+            .gte("recorded_at", since)
+            .or("city.is.null,city.eq.SF")
+            .order("recorded_at", { ascending: false })
+            .range(from, from + PAGE_SIZE - 1);
         } else {
-          query = baseQuery.eq("city", city);
+          query = supabase
+            .from("vehicle_positions")
+            .select("*")
+            .gte("recorded_at", since)
+            .eq("city", city)
+            .order("recorded_at", { ascending: false })
+            .range(from, from + PAGE_SIZE - 1);
         }
 
         let { data, error } = await query;
