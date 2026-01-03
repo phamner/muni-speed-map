@@ -7,30 +7,39 @@ import { supabase } from "../lib/supabase";
 import muniRoutes from "../data/muniMetroRoutes.json";
 import muniStops from "../data/muniMetroStops.json";
 import sfCrossings from "../data/sfGradeCrossings.json";
+import sfSwitches from "../data/sfSwitches.json";
 import laMetroRoutes from "../data/laMetroRoutes.json";
 import laMetroStops from "../data/laMetroStops.json";
 import laCrossings from "../data/laGradeCrossings.json";
+import laSwitches from "../data/laSwitches.json";
 import seattleLinkRoutes from "../data/seattleLinkRoutes.json";
 import seattleLinkStops from "../data/seattleLinkStops.json";
 import seattleCrossings from "../data/seattleGradeCrossings.json";
+import seattleSwitches from "../data/seattleSwitches.json";
 import bostonGreenLineRoutes from "../data/bostonGreenLineRoutes.json";
 import bostonGreenLineStops from "../data/bostonGreenLineStops.json";
 import bostonCrossings from "../data/bostonGradeCrossings.json";
+import bostonSwitches from "../data/bostonSwitches.json";
 import portlandMaxRoutes from "../data/portlandMaxRoutes.json";
 import portlandMaxStops from "../data/portlandMaxStops.json";
 import portlandCrossings from "../data/portlandGradeCrossings.json";
+import portlandSwitches from "../data/portlandSwitches.json";
 import sanDiegoTrolleyRoutes from "../data/sanDiegoTrolleyRoutes.json";
 import sanDiegoTrolleyStops from "../data/sanDiegoTrolleyStops.json";
 import sanDiegoCrossings from "../data/sanDiegoGradeCrossings.json";
+import sanDiegoSwitches from "../data/sanDiegoSwitches.json";
 import torontoStreetcarRoutes from "../data/torontoStreetcarRoutes.json";
 import torontoStreetcarStops from "../data/torontoStreetcarStops.json";
 import torontoCrossings from "../data/torontoGradeCrossings.json";
+import torontoSwitches from "../data/torontoSwitches.json";
 import phillyTrolleyRoutes from "../data/phillyTrolleyRoutes.json";
 import phillyTrolleyStops from "../data/phillyTrolleyStops.json";
 import phillyCrossings from "../data/phillyGradeCrossings.json";
+import phillySwitches from "../data/phillySwitches.json";
 import sacramentoLightRailRoutes from "../data/sacramentoLightRailRoutes.json";
 import sacramentoLightRailStops from "../data/sacramentoLightRailStops.json";
 import sacramentoCrossings from "../data/sacramentoGradeCrossings.json";
+import sacramentoSwitches from "../data/sacramentoSwitches.json";
 import type { SpeedFilter, ViewMode, LineStats } from "../App";
 
 // Maximum distance in meters from route line to be considered "on route"
@@ -44,6 +53,7 @@ const CITY_CONFIG = {
     routes: muniRoutes,
     stops: muniStops,
     crossings: sfCrossings,
+    switches: sfSwitches,
   },
   LA: {
     center: [-118.25, 34.05] as [number, number],
@@ -51,6 +61,7 @@ const CITY_CONFIG = {
     routes: laMetroRoutes,
     stops: laMetroStops,
     crossings: laCrossings,
+    switches: laSwitches,
   },
   Seattle: {
     center: [-122.33, 47.6] as [number, number],
@@ -58,6 +69,7 @@ const CITY_CONFIG = {
     routes: seattleLinkRoutes,
     stops: seattleLinkStops,
     crossings: seattleCrossings,
+    switches: seattleSwitches,
   },
   Boston: {
     center: [-71.08, 42.35] as [number, number],
@@ -65,6 +77,7 @@ const CITY_CONFIG = {
     routes: bostonGreenLineRoutes,
     stops: bostonGreenLineStops,
     crossings: bostonCrossings,
+    switches: bostonSwitches,
   },
   Portland: {
     center: [-122.68, 45.52] as [number, number],
@@ -72,6 +85,7 @@ const CITY_CONFIG = {
     routes: portlandMaxRoutes,
     stops: portlandMaxStops,
     crossings: portlandCrossings,
+    switches: portlandSwitches,
   },
   "San Diego": {
     center: [-117.15, 32.72] as [number, number],
@@ -79,20 +93,23 @@ const CITY_CONFIG = {
     routes: sanDiegoTrolleyRoutes,
     stops: sanDiegoTrolleyStops,
     crossings: sanDiegoCrossings,
+    switches: sanDiegoSwitches,
   },
   Toronto: {
     center: [-79.38, 43.65] as [number, number],
     zoom: 12,
     routes: torontoStreetcarRoutes,
     stops: torontoStreetcarStops,
-    crossings: torontoCrossings, // Streetcars run in mixed traffic - no railway crossings
+    crossings: torontoCrossings,
+    switches: torontoSwitches,
   },
   Philadelphia: {
     center: [-75.16, 39.95] as [number, number],
     zoom: 12,
     routes: phillyTrolleyRoutes,
     stops: phillyTrolleyStops,
-    crossings: phillyCrossings, // Trolleys run in mixed traffic - few railway crossings
+    crossings: phillyCrossings,
+    switches: phillySwitches,
   },
   Sacramento: {
     center: [-121.49, 38.58] as [number, number],
@@ -100,6 +117,7 @@ const CITY_CONFIG = {
     routes: sacramentoLightRailRoutes,
     stops: sacramentoLightRailStops,
     crossings: sacramentoCrossings,
+    switches: sacramentoSwitches,
   },
 };
 
@@ -606,6 +624,7 @@ interface SpeedMapProps {
   showRouteLines: boolean;
   showStops: boolean;
   showCrossings: boolean;
+  showSwitches: boolean;
   hideStoppedTrains: boolean;
   viewMode: ViewMode;
   onVehicleUpdate?: (
@@ -623,6 +642,7 @@ export function SpeedMap({
   showRouteLines,
   showStops,
   showCrossings,
+  showSwitches,
   hideStoppedTrains,
   viewMode,
   onVehicleUpdate,
@@ -1371,6 +1391,102 @@ export function SpeedMap({
     }
   }, [mapLoaded, showCrossings, filteredCrossings]);
 
+  // Get switches and signals data for current city
+  const switchesData = useMemo(() => {
+    const config = CITY_CONFIG[city];
+    return config.switches || { type: "FeatureCollection", features: [] };
+  }, [city]);
+
+  // Add/update switches layer
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+
+    const addSwitchesLayer = () => {
+      if (!map.current) return;
+
+      const existingSource = map.current.getSource("switches") as maplibregl.GeoJSONSource;
+
+      if (existingSource) {
+        existingSource.setData(switchesData as any);
+        map.current.setLayoutProperty(
+          "switches",
+          "visibility",
+          showSwitches ? "visible" : "none"
+        );
+      } else {
+        map.current.addSource("switches", {
+          type: "geojson",
+          data: switchesData as any,
+        });
+
+        // Add switch markers - use Y symbol in cyan
+        map.current.addLayer({
+          id: "switches",
+          type: "symbol",
+          source: "switches",
+          layout: {
+            visibility: showSwitches ? "visible" : "none",
+            "text-field": "Y",
+            "text-size": 14,
+            "text-font": ["Open Sans Bold"],
+            "text-allow-overlap": true,
+            "text-ignore-placement": true,
+          },
+          paint: {
+            "text-color": "#00d4ff",
+            "text-halo-color": "#000000",
+            "text-halo-width": 2,
+          },
+        });
+
+        // Switch hover popup
+        map.current.on("mouseenter", "switches", () => {
+          if (map.current) map.current.getCanvas().style.cursor = "pointer";
+        });
+
+        map.current.on("mouseleave", "switches", () => {
+          if (map.current) map.current.getCanvas().style.cursor = "";
+          popup.current?.remove();
+        });
+
+        map.current.on("mousemove", "switches", (e) => {
+          if (!e.features?.length || !map.current) return;
+          
+          const feature = e.features[0];
+          const coords = feature.geometry.type === "Point" 
+            ? (feature.geometry as GeoJSON.Point).coordinates 
+            : null;
+          const lon = coords ? coords[0].toFixed(6) : "N/A";
+          const lat = coords ? coords[1].toFixed(6) : "N/A";
+
+          popup.current
+            ?.setLngLat(e.lngLat)
+            .setHTML(
+              `<div class="popup-content">
+                <div class="popup-title">⚡ Track Switch</div>
+                <div class="popup-coords">${lat}, ${lon}</div>
+              </div>`
+            )
+            .addTo(map.current);
+        });
+      }
+    };
+
+    if (map.current.isStyleLoaded()) {
+      addSwitchesLayer();
+    } else {
+      const waitForStyle = () => {
+        if (!map.current) return;
+        if (map.current.isStyleLoaded()) {
+          addSwitchesLayer();
+        } else {
+          setTimeout(waitForStyle, 50);
+        }
+      };
+      setTimeout(waitForStyle, 50);
+    }
+  }, [mapLoaded, showSwitches, switchesData]);
+
   // Speed-based color scale (memoized to prevent re-renders)
   const speedColorExpression: maplibregl.ExpressionSpecification = useMemo(
     () => [
@@ -1607,61 +1723,93 @@ export function SpeedMap({
     map.current.setFilter("vehicles-glow", filterExpression);
   }, [speedFilter, hideStoppedTrains, mapLoaded]);
 
-  // Ensure proper layer ordering: routes at bottom, then segments, crossings, stops, then vehicles on top
-  // This runs whenever any toggle changes to ensure correct z-ordering
+  // Ensure proper layer ordering: routes at bottom, then data, then infrastructure on top
+  // This function can be called anytime to fix layer order
+  const reorderLayers = useCallback(() => {
+    if (!map.current) return;
+
+    // Order from bottom to top:
+    // 1. Route lines at the very bottom
+    // 2. Vehicle data (raw data / segment avg) above routes
+    // 3. Infrastructure overlays (crossings, switches) on top of data
+    // 4. Stops/labels at the very top for readability
+    const layerOrder = [
+      "routes-outline",
+      "routes",
+      "speed-segments",
+      "vehicles-glow",
+      "vehicles",
+      "crossings",
+      "switches",
+      "stops",
+      "stops-label",
+    ];
+
+    // Get existing layers in our order
+    const existingLayers = layerOrder.filter((id) =>
+      map.current?.getLayer(id)
+    );
+
+    if (existingLayers.length < 2) return;
+
+    // Move each layer to top in order, establishing correct z-order
+    for (let i = 0; i < existingLayers.length; i++) {
+      const currentLayer = existingLayers[i];
+      try {
+        // moveLayer with no second argument moves to top
+        // Processing in order ensures correct stacking
+        map.current.moveLayer(currentLayer);
+      } catch (e) {
+        // Layer might not exist, ignore
+      }
+    }
+  }, []);
+
+  // Reorder layers whenever toggles change
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
 
-    // Small delay to ensure layers are added before reordering
-    const reorderLayers = () => {
-      if (!map.current) return;
-
-      // Order from bottom to top
-      const layerOrder = [
-        "routes-outline",
-        "routes",
-        "speed-segments",
-        "crossings",
-        "stops",
-        "stops-label",
-        "vehicles-glow",
-        "vehicles",
-      ];
-
-      // Get existing layers in our order
-      const existingLayers = layerOrder.filter((id) =>
-        map.current?.getLayer(id)
-      );
-
-      if (existingLayers.length < 2) return;
-
-      // Move each layer to top in order, establishing correct z-order
-      for (let i = 0; i < existingLayers.length; i++) {
-        const currentLayer = existingLayers[i];
-        try {
-          // moveLayer with no second argument moves to top
-          // Processing in order ensures correct stacking
-          map.current.moveLayer(currentLayer);
-        } catch (e) {
-          // Layer might not exist, ignore
-        }
-      }
-    };
-
-    // Run immediately and after a short delay (for layers being added)
+    // Run immediately and after multiple delays to catch late-loading layers
     reorderLayers();
-    const timeoutId = setTimeout(reorderLayers, 100);
+    const timeoutId1 = setTimeout(reorderLayers, 50);
+    const timeoutId2 = setTimeout(reorderLayers, 150);
+    const timeoutId3 = setTimeout(reorderLayers, 300);
+    const timeoutId4 = setTimeout(reorderLayers, 500);
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      clearTimeout(timeoutId1);
+      clearTimeout(timeoutId2);
+      clearTimeout(timeoutId3);
+      clearTimeout(timeoutId4);
+    };
   }, [
     mapLoaded,
     vehicles,
     showStops,
     showCrossings,
+    showSwitches,
     showRouteLines,
     viewMode,
     selectedLines,
+    city,
+    reorderLayers,
   ]);
+
+  // Also reorder when any source data changes (catches async layer additions)
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+
+    const handleSourceData = () => {
+      // Debounce reordering to avoid excessive calls
+      setTimeout(reorderLayers, 10);
+    };
+
+    map.current.on("sourcedata", handleSourceData);
+
+    return () => {
+      map.current?.off("sourcedata", handleSourceData);
+    };
+  }, [mapLoaded, reorderLayers]);
 
   // Handle view mode toggle
   useEffect(() => {

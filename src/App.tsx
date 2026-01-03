@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { SpeedMap } from "./components/SpeedMap";
 import { Controls } from "./components/Controls";
 import { MUNI_LINES, getLinesForCity } from "./types";
@@ -29,6 +29,11 @@ function App() {
     MUNI_LINES.filter((line) => line !== "F") as string[]
   );
 
+  // Track if "none" was selected to preserve across city switches
+  const noneSelectedRef = useRef(false);
+  // Keep ref in sync with selectedLines (synchronously via render, not effect)
+  noneSelectedRef.current = selectedLines.length === 0;
+
   const [vehicleCount, setVehicleCount] = useState(0);
   const [lastUpdate, setLastUpdate] = useState<Date | null>(null);
   const [dataAgeMinutes, setDataAgeMinutes] = useState<number | null>(null);
@@ -40,6 +45,7 @@ function App() {
   const [showRouteLines, setShowRouteLines] = useState(true);
   const [showStops, setShowStops] = useState(false);
   const [showCrossings, setShowCrossings] = useState(false);
+  const [showSwitches, setShowSwitches] = useState(false);
   const [hideStoppedTrains, setHideStoppedTrains] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("raw");
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
@@ -47,10 +53,15 @@ function App() {
   // Reset state when city changes
   useEffect(() => {
     const lines = getLinesForCity(city);
-    // For SF, exclude F by default; for LA and Seattle, select all
-    if (city === "SF") {
+    // Preserve "none" selection across city switches
+    if (noneSelectedRef.current) {
+      // User had "none" selected, keep it that way
+      setSelectedLines([]);
+    } else if (city === "SF") {
+      // For SF, exclude F by default
       setSelectedLines(lines.filter((line) => line !== "F") as string[]);
     } else {
+      // For other cities, select all
       setSelectedLines([...lines] as string[]);
     }
     // Reset stats and counts when changing city (data is different)
@@ -84,6 +95,8 @@ function App() {
         setShowStops={setShowStops}
         showCrossings={showCrossings}
         setShowCrossings={setShowCrossings}
+        showSwitches={showSwitches}
+        setShowSwitches={setShowSwitches}
         hideStoppedTrains={hideStoppedTrains}
         setHideStoppedTrains={setHideStoppedTrains}
         viewMode={viewMode}
@@ -98,6 +111,7 @@ function App() {
         showRouteLines={showRouteLines}
         showStops={showStops}
         showCrossings={showCrossings}
+        showSwitches={showSwitches}
         hideStoppedTrains={hideStoppedTrains}
         viewMode={viewMode}
         onVehicleUpdate={(count, time, stats, ageMinutes) => {

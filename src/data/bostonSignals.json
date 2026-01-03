@@ -1,0 +1,95 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2446063569,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:speed": "10 mph",
+        "ref": "H08"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1052855,
+          42.3448136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7630862769,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0775192,
+          42.3500322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7797607204,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "ref": "H05"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1041473,
+          42.3454202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13322552332,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "railway:signal:position": "right",
+        "ref": "Z2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1041722,
+          42.3454476
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13322552334,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "ref": "H16"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1176741,
+          42.3322751
+        ]
+      }
+    }
+  ]
+}

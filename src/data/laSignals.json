@@ -1,0 +1,652 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1718677573,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "50 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3678479,
+          33.9646217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2193485866,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3876037,
+          33.9252456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6047606928,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "15 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3796413,
+          33.9297077
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6109451524,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "55 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3787235,
+          33.9406437
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6432786344,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "30 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3786559,
+          33.9482513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6986341978,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "?"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3787615,
+          33.9478229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8600305140,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "25 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3853,
+          33.9143618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10899540670,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "both"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2343476,
+          34.0573594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10899540676,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.2257113,
+          34.0730366
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11344998025,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "sign",
+        "railway:signal:speed_limit:speed": "55 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.460663,
+          34.0301365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11359147040,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3657382,
+          33.9654613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12066753450,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "25 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3770788,
+          33.900541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12066753451,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3853436,
+          33.913067
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12066753452,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "35 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3814506,
+          33.9296565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12066753454,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3833547,
+          33.9055304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12066753455,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "35 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3852922,
+          33.9130644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12066753456,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "35 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3797338,
+          33.9296153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979246,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3836477,
+          33.9291474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979247,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "50 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3786663,
+          33.94726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979248,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "40 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3786472,
+          33.9503442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979249,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit:form": "form"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3786432,
+          33.9494894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979250,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "10 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3786521,
+          33.9504829
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979252,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3786455,
+          33.9529589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979253,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit:form": "form"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.378647,
+          33.9516901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979255,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "25 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3871189,
+          33.9165792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979256,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "35 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3875361,
+          33.9234256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979258,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "55 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3787398,
+          33.9313184
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979259,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "40 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3786617,
+          33.9392477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979260,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.378663,
+          33.9461545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979261,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "left",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "15 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3787199,
+          33.9356008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979262,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3876533,
+          33.9228687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979263,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "35 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3864352,
+          33.9158852
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12994979264,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "railway:signal:speed_limit": "yes",
+        "railway:signal:speed_limit:form": "form",
+        "railway:signal:speed_limit:speed": "45 mph"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.3828495,
+          33.9050162
+        ]
+      }
+    }
+  ]
+}

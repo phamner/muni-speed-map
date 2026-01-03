@@ -144,6 +144,8 @@ interface ControlsProps {
   setShowStops: (show: boolean) => void;
   showCrossings: boolean;
   setShowCrossings: (show: boolean) => void;
+  showSwitches: boolean;
+  setShowSwitches: (show: boolean) => void;
   hideStoppedTrains: boolean;
   setHideStoppedTrains: (hide: boolean) => void;
   viewMode: ViewMode;
@@ -167,6 +169,8 @@ export function Controls({
   setShowStops,
   showCrossings,
   setShowCrossings,
+  showSwitches,
+  setShowSwitches,
   hideStoppedTrains,
   setHideStoppedTrains,
   viewMode,
@@ -444,7 +448,17 @@ export function Controls({
               checked={showCrossings}
               onChange={(e) => setShowCrossings(e.target.checked)}
             />
-            Show grade crossings
+            Show grade crossings (X)
+          </label>
+        </div>
+        <div className="route-lines-toggle">
+          <label>
+            <input
+              type="checkbox"
+              checked={showSwitches}
+              onChange={(e) => setShowSwitches(e.target.checked)}
+            />
+            Show track switches (Y)
           </label>
         </div>
         <div className="route-lines-toggle">
@@ -507,10 +521,13 @@ export function Controls({
               setSpeedFilter({ minSpeed: 0, maxSpeed: 50, showNoData: true });
               setSelectedLines([...allLines] as string[]);
               setShowRouteLines(true);
-              setShowStops(true);
+              setShowStops(false);
+              setShowCrossings(false);
+              setShowSwitches(false);
+              setHideStoppedTrains(false);
             }}
           >
-            Reset All Filters
+            Reset Filters
           </button>
         </div>
       </div>
@@ -562,7 +579,7 @@ export function Controls({
         <div className="control-group">
           <div className="control-label">Speed by Line</div>
           <div className="line-stats">
-            {lineStats.map((stat) => (
+            {[...lineStats].sort((a, b) => b.avgSpeed - a.avgSpeed).map((stat) => (
               <div key={stat.line} className="line-stat-item">
                 <span
                   className="line-stat-badge"
@@ -661,9 +678,19 @@ export function Controls({
             </p>
           </>
         )}
+        <p>
+          <strong>Grade crossings (X):</strong> Locations where the train
+          tracks cross a road at street level. Trains must slow down and sound
+          their horn at these intersections for safety.
+        </p>
+        <p>
+          <strong>Track switches (Y):</strong> Moveable rail sections that
+          allow trains to change tracks. They often require slower speeds and
+          cluster at junctions where multiple lines meet.
+        </p>
         {city !== "Toronto" && city !== "Philadelphia" && (
           <p className="data-attribution">
-            Grade crossing data from{" "}
+            Grade crossing and switch data from{" "}
             <a
               href="https://www.openrailwaymap.org/"
               target="_blank"
