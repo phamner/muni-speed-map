@@ -23,6 +23,11 @@ const CITIES = [
   "Toronto",
   "Philadelphia",
   "Sacramento",
+  "Pittsburgh",
+  "Dallas",
+  "Minneapolis",
+  "Denver",
+  "Salt Lake City",
 ];
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);

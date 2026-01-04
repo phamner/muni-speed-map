@@ -1,0 +1,3920 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 81980210,
+        "name": "North Carrollton/Frankford",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9374394,
+          32.9921551
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 82008420,
+        "name": "Downtown Carrollton",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9080487,
+          32.9540404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 82008698,
+        "name": "White Rock",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7328238,
+          32.8563326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 82008803,
+        "name": "SMU/Mockingbird",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7744346,
+          32.838193
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 82139111,
+        "name": "Spring Valley",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7370571,
+          32.941299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 278529040,
+        "name": "West Irving",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0077695,
+          32.8161381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 279091494,
+        "name": "Victory",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8129599,
+          32.7906901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 289943601,
+        "name": "Cedars",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7940596,
+          32.7690663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 290283327,
+        "name": "LBJ/Skillman",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7113054,
+          32.8981745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 308931577,
+        "name": "Victory",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8125,
+          32.788978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 309436682,
+        "name": "Victory",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.812627,
+          32.7903527
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 309472488,
+        "name": "West Irving",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0064237,
+          32.816028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 347716208,
+        "name": "Dallas Union Station",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8084481,
+          32.7759975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 859339940,
+        "name": "MLK Jr.",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.764864,
+          32.7740131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1205729674,
+        "name": "Boomtown Depot",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0675351,
+          32.7576783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1207198584,
+        "name": "Texas Depot",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0725769,
+          32.7572333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1239029698,
+        "name": "Downtown Irving/Heritage Crossing",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9483675,
+          32.8149671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1417710635,
+        "name": "Walnut Hill/Denton",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8837576,
+          32.881529
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1417710642,
+        "name": "Burbank",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8616513,
+          32.8427024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1521337958,
+        "name": "Downtown Carrollton",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9085295,
+          32.9549342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1521338032,
+        "name": "North Carrollton/Frankford",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9373527,
+          32.9922119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1521338390,
+        "name": "Walnut Hill/Denton",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8839402,
+          32.8825216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1521376783,
+        "name": "Farmers Branch",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8963141,
+          32.9222525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1521376816,
+        "name": "Farmers Branch",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.896078,
+          32.9213145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1521376848,
+        "name": "Royal Lane",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8881574,
+          32.8955134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1521376869,
+        "name": "Royal Lane",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8883391,
+          32.8965162
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1999510358,
+        "name": "Irving Convention Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9385518,
+          32.8769489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1999510361,
+        "name": "Las Colinas Urban Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9335904,
+          32.8686206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2047643399,
+        "name": "Downtown Plano",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7008622,
+          33.0212035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2047643493,
+        "name": "Downtown Plano",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7009195,
+          33.0203831
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2047657833,
+        "name": "Galatyn Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7111176,
+          32.9848231
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2047657963,
+        "name": "Arapaho Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7230607,
+          32.9633158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2122363586,
+        "name": "Lawnview",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7210955,
+          32.7657237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2122363975,
+        "name": "Baylor University Medical Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7825909,
+          32.7864281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2122364196,
+        "name": "Burbank",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8626288,
+          32.8432012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2123121402,
+        "name": "University of Dallas",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9145432,
+          32.8487525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2123121403,
+        "name": "University of Dallas",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9154698,
+          32.8493576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2123121929,
+        "name": "Forest Lane",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.762143,
+          32.9082239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2123255281,
+        "name": "Convention Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8025291,
+          32.7725813
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2123255571,
+        "name": "White Rock",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7327129,
+          32.8555215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2123255691,
+        "name": "LBJ/Skillman",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7122298,
+          32.8979336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2123396932,
+        "name": "CentrePort/DFW Airport",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.052651,
+          32.8169726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2123396940,
+        "name": "West Irving",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0072629,
+          32.816075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091512,
+        "name": "A8-A21",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0363808,
+          32.9066651
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091514,
+        "name": "A22-A39",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0365567,
+          32.9024848
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091515,
+        "name": "B1-B19",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0442605,
+          32.9027905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091516,
+        "name": "B20-B49",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0443546,
+          32.9065929
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091518,
+        "name": "C2-C19",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0363645,
+          32.8995066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091519,
+        "name": "C20-C39",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0364005,
+          32.8955622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091521,
+        "name": "D6-D22",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0441611,
+          32.8962624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091522,
+        "name": "D23-D40",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0441816,
+          32.8988576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091523,
+        "name": "E2-E16",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.036434,
+          32.8923544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2127091524,
+        "name": "E17-E38",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0365854,
+          32.888335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067210,
+        "name": "Saint Paul & Ross",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8006567,
+          32.7864398
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067213,
+        "name": "Saint Paul & Woodall Rodgers",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8022732,
+          32.7878079
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067222,
+        "name": "Saint Paul & McKinney",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8037478,
+          32.7890476
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067260,
+        "name": "McKinney & Harwood",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8035535,
+          32.7908745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067268,
+        "name": "McKinney & Pearl (N)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8029109,
+          32.792701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067278,
+        "name": "McKinney & Pearl (S)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8028118,
+          32.7931065
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067279,
+        "name": "McKinney & Maple (N)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8025447,
+          32.7938117
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067284,
+        "name": "McKinney & Maple (S)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8024627,
+          32.7941541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067291,
+        "name": "McKinney & Routh (N)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8017895,
+          32.7961819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067294,
+        "name": "McKinney & Routh (S)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8017154,
+          32.7965454
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067298,
+        "name": "McKinney & Boll (S)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8013831,
+          32.7977545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067299,
+        "name": "McKinney & Worthington (N)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.801196,
+          32.7983135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067304,
+        "name": "McKinney & Allen (N)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8009078,
+          32.7995267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067305,
+        "name": "McKinney & Allen (S)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8009286,
+          32.7995797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067353,
+        "name": "Cole & Allen",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8023623,
+          32.8019927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067381,
+        "name": "McKinney & Hall",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7997639,
+          32.8036099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067382,
+        "name": "Cole & Bowen",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8013019,
+          32.8036085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067410,
+        "name": "Cole & Hall",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8003009,
+          32.8051415
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067413,
+        "name": "Uptown Station",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.794103,
+          32.8055581
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067414,
+        "name": "McKinney & Lemmon",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7984239,
+          32.8057199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067426,
+        "name": "Cole & Lemmon (Far)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7995018,
+          32.8063747
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067447,
+        "name": "CityPlace & McKinney",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7967083,
+          32.8077839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067469,
+        "name": "Cole & West Village",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7983142,
+          32.8083331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067470,
+        "name": "McKinney & Blackburn",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7960749,
+          32.8085335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2174067485,
+        "name": "Blackburn & West Village",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7965349,
+          32.8092196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3285202940,
+        "name": "MLK Jr.",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7642453,
+          32.7734747
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3725455155,
+        "name": "Ledbetter",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7887225,
+          32.6828241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3725455156,
+        "name": "Ledbetter",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7888572,
+          32.6838123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3873614870,
+        "name": "Bell Tower",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9398691,
+          32.8663578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3873614876,
+        "name": "600 Las Colinas Boulevard",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.929538,
+          32.8604863
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3873614880,
+        "name": "Tower 909",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9352436,
+          32.8693024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3873614881,
+        "name": "600 Las Colinas Boulevard",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9295368,
+          32.8605159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3873614883,
+        "name": "Urban Towers",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9434332,
+          32.8709432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3873614887,
+        "name": "Bell Tower",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.939874,
+          32.8663249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4062958597,
+        "name": "Beckley",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8225833,
+          32.7588684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4062958618,
+        "name": "Oakenwald",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.818015,
+          32.7605437
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4062958629,
+        "name": "Greenbriar",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8151746,
+          32.7623505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4062958672,
+        "name": "Union Station",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8068932,
+          32.7754525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211784277,
+        "name": "West End",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8062729,
+          32.7807707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211784278,
+        "name": "West End",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8049896,
+          32.7810026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211784283,
+        "name": "Akard",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8011981,
+          32.7818377
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211784284,
+        "name": "Akard",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8001669,
+          32.782015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785889,
+        "name": "Saint Paul",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7974639,
+          32.7839891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785890,
+        "name": "Saint Paul",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7966952,
+          32.7845757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785895,
+        "name": "Pearl/Arts District",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.794915,
+          32.7861883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785896,
+        "name": "Pearl/Arts District",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7940903,
+          32.7867635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785897,
+        "name": "CityPlace/Uptown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7934144,
+          32.8056484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785902,
+        "name": "CityPlace/Uptown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7932463,
+          32.8066215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785912,
+        "name": "SMU/Mockingbird",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7754524,
+          32.8375316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785922,
+        "name": "Lovers Lane",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7719069,
+          32.8482313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785923,
+        "name": "Lovers Lane",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7715949,
+          32.8490263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785929,
+        "name": "Park Lane",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7660763,
+          32.8721728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785930,
+        "name": "Park Lane",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7657286,
+          32.8731755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785944,
+        "name": "Walnut Hill",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7648651,
+          32.8831909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785945,
+        "name": "Walnut Hill",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7649936,
+          32.8821985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785952,
+        "name": "Forest Lane",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7613251,
+          32.9088236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785957,
+        "name": "LBJ/Central",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7524091,
+          32.918129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785958,
+        "name": "LBJ/Central",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.751792,
+          32.9186891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785963,
+        "name": "Spring Valley",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7377009,
+          32.9405144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785969,
+        "name": "Arapaho Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7225861,
+          32.9639652
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785974,
+        "name": "Galatyn Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7107698,
+          32.9854648
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785979,
+        "name": "CityLine/Bush",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7033105,
+          33.0018068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211785980,
+        "name": "CityLine/Bush",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7029409,
+          33.0024905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211786090,
+        "name": "Parker Road",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7006573,
+          33.0343202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211786091,
+        "name": "Parker Road",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7007646,
+          33.0343217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211786103,
+        "name": "Trinity Mills",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9268205,
+          32.9812709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211786104,
+        "name": "Trinity Mills",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9260863,
+          32.9804557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211786105,
+        "name": "Trinity Mills",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9261764,
+          32.9803917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878141,
+        "name": "Bachman",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8772532,
+          32.8532316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878142,
+        "name": "Bachman",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8773055,
+          32.8537297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878143,
+        "name": "Bachman",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8773681,
+          32.8542444
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878155,
+        "name": "Inwood/Love Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8332612,
+          32.8217562
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878156,
+        "name": "Inwood/Love Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8335057,
+          32.8226786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878172,
+        "name": "Southwestern Medical District/Parkland",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8332662,
+          32.8133041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878173,
+        "name": "Southwestern Medical District/Parkland",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8333031,
+          32.8141947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878183,
+        "name": "Market Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8242591,
+          32.8047218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211878184,
+        "name": "Market Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8230703,
+          32.8044965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211891990,
+        "name": "Victory",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8123378,
+          32.7890127
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211891991,
+        "name": "Convention Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8032477,
+          32.7724557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211891992,
+        "name": "Convention Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8025203,
+          32.7725585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211891997,
+        "name": "Cedars",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7932497,
+          32.7685502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892003,
+        "name": "8th & Corinth",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7979064,
+          32.7483434
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892004,
+        "name": "8th & Corinth",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7987346,
+          32.7480083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892011,
+        "name": "Dallas Zoo",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8126843,
+          32.7409224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892012,
+        "name": "Dallas Zoo",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8133718,
+          32.7404183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892017,
+        "name": "Tyler/Vernon",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.838999,
+          32.7330329
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892018,
+        "name": "Tyler/Vernon",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8380495,
+          32.7331873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892023,
+        "name": "Hampton",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8558019,
+          32.7262014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892024,
+        "name": "Hampton",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8550122,
+          32.7265935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892033,
+        "name": "Westmoreland",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8713977,
+          32.7198197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892034,
+        "name": "Westmoreland",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8722579,
+          32.7196122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892068,
+        "name": "Lake Highlands",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7306231,
+          32.8789764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892069,
+        "name": "Lake Highlands",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7303181,
+          32.8799084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892093,
+        "name": "Forest/Jupiter",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6800303,
+          32.9079505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892094,
+        "name": "Forest/Jupiter",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6790111,
+          32.9081689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892103,
+        "name": "Downtown Garland",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6359211,
+          32.9162515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892104,
+        "name": "Downtown Garland",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6347045,
+          32.9163652
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892115,
+        "name": "Buckner",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6846964,
+          32.7182653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892116,
+        "name": "Buckner",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6846254,
+          32.7183313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892123,
+        "name": "Lake June",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7090882,
+          32.7320279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892124,
+        "name": "Lake June",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7096075,
+          32.7328628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892132,
+        "name": "Lawnview",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7199526,
+          32.7655709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892139,
+        "name": "Hatcher",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7430442,
+          32.7663553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892140,
+        "name": "Hatcher",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7418703,
+          32.766281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892143,
+        "name": "Fair Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.765703,
+          32.7825717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892144,
+        "name": "Fair Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7662101,
+          32.7813531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892146,
+        "name": "Baylor University Medical Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7813249,
+          32.7866893
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892155,
+        "name": "Deep Ellum",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7889367,
+          32.786222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892156,
+        "name": "Deep Ellum",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7881501,
+          32.7855048
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892168,
+        "name": "Illinois",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8052932,
+          32.722783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892169,
+        "name": "Illinois",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8051224,
+          32.7235573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892175,
+        "name": "Kiest",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8009274,
+          32.7067758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892176,
+        "name": "Kiest",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8013206,
+          32.7075237
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892186,
+        "name": "VA Medical Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7928107,
+          32.6933101
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211892187,
+        "name": "VA Medical Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7930408,
+          32.6940674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211918829,
+        "name": "Morrell",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8026658,
+          32.7397345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4211918830,
+        "name": "Morrell",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.802618,
+          32.739731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212704732,
+        "name": "Downtown Rowlett",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.5630865,
+          32.904231
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212704733,
+        "name": "Downtown Rowlett",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.5630652,
+          32.9041447
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212704738,
+        "name": "DFW Airport Terminal A",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0394776,
+          32.9066936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878950,
+        "name": "Union Station",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8082258,
+          32.7763425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878951,
+        "name": "Union Station",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8080186,
+          32.7754968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878952,
+        "name": "Dallas Union Station",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8081122,
+          32.7754664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878953,
+        "name": "DFW Airport Terminal A",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0395254,
+          32.9066917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878970,
+        "name": "Belt Line",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9861411,
+          32.8876846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878971,
+        "name": "Belt Line",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9869116,
+          32.8883732
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878972,
+        "name": "North Lake College",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9677709,
+          32.8752017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878973,
+        "name": "North Lake College",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9665909,
+          32.8751555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878974,
+        "name": "Hidden Ridge",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9549167,
+          32.8820591
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878975,
+        "name": "Hidden Ridge",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.95492,
+          32.8821037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878976,
+        "name": "Irving Convention Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9390613,
+          32.8772468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878977,
+        "name": "Irving Convention Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9380936,
+          32.8766629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878978,
+        "name": "Las Colinas Urban Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9332523,
+          32.8682235
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4212878979,
+        "name": "Las Colinas Urban Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9339077,
+          32.8689898
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4214857225,
+        "name": "Hebron",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.958127,
+          33.0096999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4214857226,
+        "name": "Hebron",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9587312,
+          33.0105932
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4215726237,
+        "name": "Old Town",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9865721,
+          33.0477906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4215961792,
+        "name": "Medical/Market Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8397963,
+          32.8090836
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4215961793,
+        "name": "Medical/Market Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8410133,
+          32.809647
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4216359696,
+        "name": "CentrePort/DFW Airport",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0535419,
+          32.8170433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4216359697,
+        "name": "CentrePort/DFW Airport",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0521643,
+          32.8169263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4216680372,
+        "name": "Downtown Irving/Heritage Crossing",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9470299,
+          32.8148544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4250978966,
+        "name": "Federal & Olive",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7964041,
+          32.7857009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4250978979,
+        "name": "Olive & Ross",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7986797,
+          32.7878543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4257937708,
+        "name": "Oakenwald",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8178615,
+          32.7605773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4296998270,
+        "name": "Saint Paul & Federal",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.798463,
+          32.7845497
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4296998272,
+        "name": "Saint Paul & San Jacinto",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.799752,
+          32.7856662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4296998273,
+        "name": "Olive & San Jacinto",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7972062,
+          32.7866873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4296998274,
+        "name": "Olive & Flora",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7999304,
+          32.7885284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4296998276,
+        "name": "Olive & Colby",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8029274,
+          32.7911684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4775749683,
+        "name": "Bishop Arts",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.824417,
+          32.7490128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4775749703,
+        "name": "6th Street",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8241538,
+          32.7529882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4775749704,
+        "name": "6th Street",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8240799,
+          32.7531362
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4775749949,
+        "name": "Beckley",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8224228,
+          32.7587984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5818005702,
+        "name": "Victory",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8126728,
+          32.7896489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5818005704,
+        "name": "Dallas Union Station",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8083758,
+          32.7760083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5818006724,
+        "name": "Medical/Market Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8399632,
+          32.8091942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6261527288,
+        "name": "Grapevine-Main Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0776417,
+          32.9337085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6368932349,
+        "name": "CityPlace & Noble",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7960459,
+          32.8072212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6368932350,
+        "name": "CityPlace & McKinney",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7967047,
+          32.8077871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6368932361,
+        "name": "McKinney & Bowen",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8005303,
+          32.8024903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6368932371,
+        "name": "Federal & Harwood",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.797161,
+          32.7849748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6368968527,
+        "name": "Camp Wisdom",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7883082,
+          32.6670148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6368968528,
+        "name": "Camp Wisdom",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.787899,
+          32.6660832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6368968533,
+        "name": "UNT Dallas",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.801523,
+          32.6537986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6368968535,
+        "name": "UNT Dallas",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8015745,
+          32.6538803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6958303301,
+        "name": "600 Las Colinas Boulevard",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.929573,
+          32.8604943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6958316513,
+        "name": "Tower 909",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9352877,
+          32.8693202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6958316515,
+        "name": "Urban Towers",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9434051,
+          32.8709022
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6958316517,
+        "name": "Bell Tower",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9398438,
+          32.8663458
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7020820218,
+        "name": "Union Station",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.808164,
+          32.7760501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7126918951,
+        "name": "DFW Airport North",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0540769,
+          32.9337773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7126918960,
+        "name": "Grapevine-Main Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0769273,
+          32.9337668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127084426,
+        "name": "Dallas Union Station",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.808154,
+          32.7754556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127084435,
+        "name": "Victory",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8124796,
+          32.7896884
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127192863,
+        "name": "Old Town",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9862137,
+          33.0468402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8455855030,
+        "name": "Greenbriar",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8152968,
+          32.7622762
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8455895633,
+        "name": "KWP/Arts District",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8008824,
+          32.7892673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8455993634,
+        "name": "McKinney & Olive (S)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8032484,
+          32.7917889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8459498228,
+        "name": "CityPlace/Uptown",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7933465,
+          32.8055969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8652436868,
+        "name": "Hidden Ridge",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.954873,
+          32.8820635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9121475807,
+        "name": "DFW Airport Terminal B",
+        "type": "buffer_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0412699,
+          32.9069188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9121475808,
+        "name": "DFW Airport Terminal B",
+        "type": "buffer_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.041221,
+          32.9069183
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11580852165,
+        "name": "McKinney & Fairmount (N)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8021454,
+          32.7950232
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11580852167,
+        "name": "McKinney & Fairmount (S)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8020976,
+          32.7952832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11581205355,
+        "name": "Cole & Lemmon (Near)",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7996011,
+          32.8072921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11772332093,
+        "name": "Knoll Trail",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8183107,
+          32.9626064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11925283677,
+        "name": "12th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6980256,
+          33.015498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12015160253,
+        "name": "Grapevine-Main Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0772514,
+          32.9337462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12978762746,
+        "name": "Addison",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8277192,
+          32.9591276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12978762747,
+        "name": "Addison",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8287134,
+          32.9588257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12980576170,
+        "name": "Knoll Trail",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.8172039,
+          32.9629584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981288512,
+        "name": "Downtown Carrollton Silver Line Station",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9084672,
+          32.9553667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981288513,
+        "name": "Downtown Carrollton Silver Line Station",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.9077216,
+          32.9557735
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981474213,
+        "name": "CityLine/Bush",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7036007,
+          33.0018176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981474214,
+        "name": "CityLine/Bush",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7031383,
+          33.00266
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981490101,
+        "name": "UT Dallas",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7506906,
+          32.9963539
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981490102,
+        "name": "UT Dallas",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7496068,
+          32.9964967
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981495410,
+        "name": "Shiloh Road",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.66537,
+          33.0124996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981495411,
+        "name": "Shiloh Road",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6663372,
+          33.0127568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981496134,
+        "name": "12th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.6990742,
+          33.0152342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981502365,
+        "name": "Cypress Waters",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.982823,
+          32.9508172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981502366,
+        "name": "Cypress Waters",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.983787,
+          32.9501912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981509131,
+        "name": "DFW Airport North",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0543288,
+          32.9342615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12981509132,
+        "name": "DFW Airport North",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -97.0540366,
+          32.9338026
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13250730344,
+        "name": "12th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7010474,
+          33.0145106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13250730345,
+        "name": "12th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7009956,
+          33.0145093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13251341486,
+        "name": "12th Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -96.7010215,
+          33.0145097
+        ]
+      }
+    }
+  ]
+}

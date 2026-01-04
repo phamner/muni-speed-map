@@ -1,0 +1,2931 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 176016880,
+        "name": "Original Thornton & 88th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.95344,
+          39.8583661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 439647509,
+        "name": "Littleton - Mineral"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0249845,
+          39.5801859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 439983297,
+        "name": "Littleton Downtown"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0148746,
+          39.6119672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 442726016,
+        "name": "Yale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9270833,
+          39.6686335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 442726036,
+        "name": "Southmoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9162593,
+          39.6485589
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 442751677,
+        "name": "Dry Creek"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8766071,
+          39.5788595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 442751762,
+        "name": "County Line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8722881,
+          39.5617223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 442756657,
+        "name": "Evans"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9928501,
+          39.6776734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 442756974,
+        "name": "Oxford - City of Sheridan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0048363,
+          39.642952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 461804741,
+        "name": "30th & Downing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9735251,
+          39.7589697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 647473261,
+        "name": "20th & Welton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9868971,
+          39.7479227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 649985468,
+        "name": "10th & Osage"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0055619,
+          39.7317811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 983926553,
+        "name": "16th & Stout"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9929136,
+          39.7460624
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 983926555,
+        "name": "16th & California"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9925368,
+          39.744814
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 983926564,
+        "name": "18th & California"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.990151,
+          39.7466706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 983926566,
+        "name": "18th & Stout"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9905011,
+          39.7479431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1040534409,
+        "name": "Theatre District / Convention Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9964164,
+          39.7438942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1359644378,
+        "name": "I-25 & Broadway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9901791,
+          39.7015236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1359676971,
+        "name": "Auraria West Campus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0106721,
+          39.7413142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259728,
+        "name": "Alameda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9929432,
+          39.7084192
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259729,
+        "name": "Auraria West Campus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0108327,
+          39.7416851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259730,
+        "name": "Colfax at Auraria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0020693,
+          39.740304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259731,
+        "name": "Colorado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.937699,
+          39.6796152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259732,
+        "name": "Englewood"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9999056,
+          39.6555812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259733,
+        "name": "I-25 & Broadway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9902076,
+          39.7017197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259734,
+        "name": "Empower Field at Mile High"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0132309,
+          39.7434472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259736,
+        "name": "Louisiana & Pearl"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9782732,
+          39.6928358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259738,
+        "name": "Theatre District / Convention Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9961205,
+          39.7439365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1362259740,
+        "name": "University of Denver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9647861,
+          39.6852626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2375617610,
+        "name": "Lamar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0666433,
+          39.7366771
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2375621013,
+        "name": "Garrison"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.099482,
+          39.736569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2375622010,
+        "name": "Lakewood - Wadsworth"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0814295,
+          39.7366917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2376710053,
+        "name": "Decatur Federal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0239779,
+          39.7372994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2376710233,
+        "name": "Knox"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0328593,
+          39.7356775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2376710288,
+        "name": "Perry"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0400096,
+          39.7347409
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2376710310,
+        "name": "Sheridan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0532158,
+          39.7351342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2376710507,
+        "name": "Oak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1199194,
+          39.7372861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2376710603,
+        "name": "Federal Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1289936,
+          39.719969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3016608826,
+        "name": "Ball Arena / Elitch Gardens"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.009792,
+          39.7486024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3032349499,
+        "name": "41st & Fox"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9969267,
+          39.7732157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3129339535,
+        "name": "Westminster"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0292027,
+          39.8227613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3246853084,
+        "name": "Central Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8916194,
+          39.7706387
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3250254374,
+        "name": "Peoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8504488,
+          39.7673616
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3250421986,
+        "name": "Florida"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8284758,
+          39.6899872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3250422001,
+        "name": "Aurora Metro Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8190741,
+          39.7084872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3250450276,
+        "name": "Colfax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8269965,
+          39.7401953
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3250450281,
+        "name": "2nd Avenue & Abilene"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8256763,
+          39.7194506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3250450286,
+        "name": "Fitzsimons"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8405345,
+          39.7549506
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3254826511,
+        "name": "Union Station Light Rail Plaza"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0030705,
+          39.7553804
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3266584498,
+        "name": "40th & Colorado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9425597,
+          39.7760489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4345414465,
+        "name": "Pecos Junction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0052026,
+          39.8051465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4459574189,
+        "name": "48th & Brighton at National Western Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.968377,
+          39.7847706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4459574190,
+        "name": "Commerce City & 72nd"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.943055,
+          39.8262986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4459574191,
+        "name": "Original Thornton & 88th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.953112,
+          39.8587458
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4459574192,
+        "name": "Thornton Crossroads & 104th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.942399,
+          39.8821396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4459574193,
+        "name": "Northglenn & 112th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.960123,
+          39.9025995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4459574194,
+        "name": "Eastlake & 124th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.962073,
+          39.9229268
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4498671735,
+        "name": "25th & Welton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9798462,
+          39.753332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4498687268,
+        "name": "27th & Welton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9773588,
+          39.7552451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5286898995,
+        "name": "Clear Creek - Federal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0234221,
+          39.803937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5601586822,
+        "name": "60th & Sheridan - Arvada Gold Strike"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0492617,
+          39.8036728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6296946856,
+        "name": "2nd Avenue & Abilene"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.825647,
+          39.7194602
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6301523061,
+        "name": "Iliff"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8268413,
+          39.6733393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6311184577,
+        "name": "Iliff"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8269399,
+          39.6733755
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6346234714,
+        "name": "Wheat Ridge / Ward Road"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1329838,
+          39.7880247
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6499091299,
+        "name": "Iliff"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8268716,
+          39.673315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6775305387,
+        "name": "Nine Mile"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.845125,
+          39.6575433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6775305388,
+        "name": "Orchard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8962184,
+          39.6135622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6775354285,
+        "name": "Belleview"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9044524,
+          39.6275447
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6777831125,
+        "name": "38th & Blake"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9736604,
+          39.7707666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6777853520,
+        "name": "40th & Airport/Gateway Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.7876692,
+          39.7698573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6777872314,
+        "name": "61st & Peña"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.7840115,
+          39.8069322
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6778250750,
+        "name": "Arapahoe at Village Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8884944,
+          39.6002395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6778269474,
+        "name": "Dayton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.87799,
+          39.6429642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6778270832,
+        "name": "13th Avenue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8235767,
+          39.7350008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6778373834,
+        "name": "Arvada Ridge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1117282,
+          39.7925049
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7125009460,
+        "name": "Peoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8504187,
+          39.7675532
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7125062195,
+        "name": "Olde Town Arvada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0802722,
+          39.7990275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7327224311,
+        "name": "Union Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0007481,
+          39.75363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7330691833,
+        "name": "18th & Stout"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9903298,
+          39.7480419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373751379,
+        "name": "Arvada Ridge"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1114649,
+          39.7926013
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373751380,
+        "name": "Olde Town Arvada"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0802583,
+          39.7989983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373760732,
+        "name": "60th & Sheridan - Arvada Gold Strike"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0489687,
+          39.8037054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373760733,
+        "name": "60th & Sheridan - Arvada Gold Strike"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0495241,
+          39.8036336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373783401,
+        "name": "Clear Creek - Federal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0231277,
+          39.8038961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373783402,
+        "name": "Clear Creek - Federal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0236691,
+          39.8039787
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373783403,
+        "name": "Pecos Junction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0049267,
+          39.8049597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373783404,
+        "name": "Pecos Junction"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0053598,
+          39.8053019
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373783405,
+        "name": "41st & Fox"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9969919,
+          39.7730439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373783406,
+        "name": "41st & Fox"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9968422,
+          39.7734233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373783407,
+        "name": "Union Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0006954,
+          39.7538904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373797407,
+        "name": "Wheat Ridge / Ward Road"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.133013,
+          39.7880599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373820822,
+        "name": "Westminster"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0290758,
+          39.8227423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373849586,
+        "name": "Union Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0006786,
+          39.7539649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859137,
+        "name": "Union Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0003548,
+          39.7536385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859138,
+        "name": "38th & Blake"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.973498,
+          39.7708613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859139,
+        "name": "38th & Blake"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9740006,
+          39.7705333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859140,
+        "name": "40th & Colorado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9421116,
+          39.7760504
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859141,
+        "name": "40th & Colorado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9430637,
+          39.7760433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859142,
+        "name": "Central Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8921183,
+          39.7706978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859143,
+        "name": "Central Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.891149,
+          39.770585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859144,
+        "name": "Peoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8504248,
+          39.7675355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859145,
+        "name": "Peoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8509059,
+          39.7676115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859146,
+        "name": "40th & Airport/Gateway Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.7876396,
+          39.7698637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859147,
+        "name": "40th & Airport/Gateway Park"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.7876907,
+          39.7698631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859148,
+        "name": "61st & Peña"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.7840068,
+          39.807262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7373859149,
+        "name": "61st & Peña"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.7840392,
+          39.8066138
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377152063,
+        "name": "Perry"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0404,
+          39.7347664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377152064,
+        "name": "Perry"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0396649,
+          39.7347228
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377152065,
+        "name": "Sheridan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0535677,
+          39.7351801
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377152066,
+        "name": "Sheridan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0527506,
+          39.7350964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377152292,
+        "name": "Union Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0034387,
+          39.7550112
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377152293,
+        "name": "Union Station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.002822,
+          39.7556158
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377206478,
+        "name": "Ball Arena / Elitch Gardens"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0102428,
+          39.7484312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377206479,
+        "name": "Ball Arena / Elitch Gardens"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0094835,
+          39.7486938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377206480,
+        "name": "Empower Field at Mile High"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0134363,
+          39.7435074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377206481,
+        "name": "Empower Field at Mile High"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0127564,
+          39.743375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377231740,
+        "name": "Auraria West Campus"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0109649,
+          39.7420207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377336301,
+        "name": "Knox"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0332373,
+          39.7357139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377336302,
+        "name": "Knox"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.032483,
+          39.7356429
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377352002,
+        "name": "Decatur Federal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.024339,
+          39.7371564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377352003,
+        "name": "Decatur Federal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0237152,
+          39.7373952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377364578,
+        "name": "Lamar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0668284,
+          39.7367132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377364579,
+        "name": "Lamar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0659916,
+          39.7366462
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377364580,
+        "name": "Lakewood - Wadsworth"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0818795,
+          39.73669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377364581,
+        "name": "Lakewood - Wadsworth"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.08104,
+          39.7365955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377364582,
+        "name": "Garrison"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0997181,
+          39.7365862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377364583,
+        "name": "Garrison"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0991991,
+          39.7365493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377364584,
+        "name": "Oak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1202735,
+          39.737355
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377392085,
+        "name": "Oak"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1195018,
+          39.7372083
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377392086,
+        "name": "Federal Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1294246,
+          39.7200035
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7377392088,
+        "name": "Federal Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.1285446,
+          39.7199317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7380201565,
+        "name": "10th and Osage"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0055215,
+          39.731459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7380201566,
+        "name": "10th and Osage"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0056522,
+          39.7320761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7380250033,
+        "name": "Alameda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.992858,
+          39.7082306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7380250034,
+        "name": "Alameda"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9931146,
+          39.7086199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7380260591,
+        "name": "I-25 & Broadway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9902897,
+          39.7014788
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7380260592,
+        "name": "I-25 & Broadway"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9901396,
+          39.702089
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7381234659,
+        "name": "Evans"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9929879,
+          39.6773862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7381234663,
+        "name": "Evans"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9927201,
+          39.6780547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7381234665,
+        "name": "Englewood"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0000762,
+          39.6553891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7381234666,
+        "name": "Englewood"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9997304,
+          39.6559832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382036671,
+        "name": "Oxford - City of Sheridan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0049661,
+          39.6427023
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382036672,
+        "name": "Oxford - City of Sheridan"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0046682,
+          39.6432411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382036676,
+        "name": "Littleton Downtown"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0150583,
+          39.6117489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382036677,
+        "name": "Littleton Downtown"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0147135,
+          39.6121661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382036678,
+        "name": "Littleton - Mineral"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0251395,
+          39.5799669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382036679,
+        "name": "Littleton - Mineral"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0247904,
+          39.5805518
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382703641,
+        "name": "University of Denver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.964485,
+          39.6851215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382703642,
+        "name": "University of Denver"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9650475,
+          39.685421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382727324,
+        "name": "Louisiana & Pearl"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9782418,
+          39.6927596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382727325,
+        "name": "Louisiana & Pearl"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9786006,
+          39.6932483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382731003,
+        "name": "Colorado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9374169,
+          39.6795637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382731004,
+        "name": "Colorado"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.93822,
+          39.6797073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382731005,
+        "name": "Yale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9269748,
+          39.6683274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382731006,
+        "name": "Yale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9271639,
+          39.6689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382737538,
+        "name": "Belleview"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9043331,
+          39.6273261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382737539,
+        "name": "Belleview"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9045335,
+          39.627882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382780416,
+        "name": "Southmoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.916156,
+          39.6482681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382780417,
+        "name": "Southmoor"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9163473,
+          39.6488546
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382801897,
+        "name": "Orchard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8961096,
+          39.6132781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7382801898,
+        "name": "Orchard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8962602,
+          39.613761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383357027,
+        "name": "Arapahoe at Village Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8883415,
+          39.5998692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383363688,
+        "name": "Dry Creek"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8764022,
+          39.5785331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383363689,
+        "name": "Dry Creek"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8767164,
+          39.5790862
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383367586,
+        "name": "Arapahoe at Village Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8885794,
+          39.6005503
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383375125,
+        "name": "County Line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8723483,
+          39.5613523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383375126,
+        "name": "County Line"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8722198,
+          39.5619975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383433199,
+        "name": "Dayton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8783014,
+          39.6428812
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383433200,
+        "name": "Dayton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8776206,
+          39.643085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383433201,
+        "name": "Nine Mile"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8454362,
+          39.6574545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383433202,
+        "name": "Nine Mile"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8447126,
+          39.657688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383433204,
+        "name": "Florida"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8284342,
+          39.6900205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383433205,
+        "name": "Florida"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8285561,
+          39.6900212
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383433206,
+        "name": "Aurora Metro Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8190583,
+          39.7088215
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383433207,
+        "name": "Aurora Metro Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8191023,
+          39.7081396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383472995,
+        "name": "2nd Avenue & Abilene"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8256979,
+          39.7194688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383472996,
+        "name": "13th Avenue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8235453,
+          39.7353547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383472997,
+        "name": "13th Avenue"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8235986,
+          39.7347173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383472998,
+        "name": "Colfax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8269691,
+          39.7404978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383472999,
+        "name": "Colfax"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8270148,
+          39.7398397
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383473000,
+        "name": "Fitzsimons"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8405494,
+          39.7549689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383473001,
+        "name": "Fitzsimons"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.840549,
+          39.7549311
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383476199,
+        "name": "Peoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8504676,
+          39.7673522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383476200,
+        "name": "Peoria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.8504656,
+          39.7673905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383597549,
+        "name": "Theatre District / Convention Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9958687,
+          39.7439201
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383597550,
+        "name": "16th & California"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9923654,
+          39.7449937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383597551,
+        "name": "18th & California"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9900418,
+          39.7467893
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383599822,
+        "name": "25th & Welton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9797977,
+          39.7533413
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383603287,
+        "name": "Colfax at Auraria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0025253,
+          39.7403033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383603288,
+        "name": "Colfax at Auraria"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0016708,
+          39.7403145
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383626116,
+        "name": "20th & Welton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9867149,
+          39.7480474
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383626117,
+        "name": "20th & Welton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9871648,
+          39.7477139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383626118,
+        "name": "27th & Welton"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9773252,
+          39.7552553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383626119,
+        "name": "30th & Downing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9735445,
+          39.7591768
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383626120,
+        "name": "30th & Downing"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9735025,
+          39.7591768
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7383637873,
+        "name": "16th & Stout"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9928581,
+          39.7460623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409305012,
+        "name": "Thornton Crossroads & 104th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.942687,
+          39.8824467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409305013,
+        "name": "Thornton Crossroads & 104th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.942153,
+          39.8818599
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409308268,
+        "name": "Commerce City & 72nd"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.943145,
+          39.8266386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409308269,
+        "name": "Commerce City & 72nd"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.942981,
+          39.8259828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409308270,
+        "name": "Original Thornton & 88th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.952882,
+          39.8591828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409323812,
+        "name": "48th & Brighton at National Western Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.967944,
+          39.7850768
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409323813,
+        "name": "48th & Brighton at National Western Center"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.968652,
+          39.7845991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409340301,
+        "name": "Northglenn & 112th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.96011,
+          39.903059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409340302,
+        "name": "Northglenn & 112th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.960263,
+          39.9021561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409348803,
+        "name": "Eastlake & 124th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.962278,
+          39.9233328
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7409348804,
+        "name": "Eastlake & 124th"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.961862,
+          39.9224836
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7412377862,
+        "name": "Union Station Track 2"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.0004793,
+          39.7536093
+        ]
+      }
+    }
+  ]
+}

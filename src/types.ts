@@ -9,6 +9,11 @@ export const CITIES = [
   "Toronto",
   "Philadelphia",
   "Sacramento",
+  "Pittsburgh",
+  "Dallas",
+  "Minneapolis",
+  "Denver",
+  "Salt Lake City",
 ] as const;
 export type City = (typeof CITIES)[number];
 
@@ -209,6 +214,92 @@ export const SACRAMENTO_LIGHT_RAIL_LINE_INFO: Record<
   Blue: { name: "Blue Line", letter: "Blue", color: "#0000FF" },
 };
 
+// Pittsburgh Port Authority "The T" Light Rail lines
+// Red Line = South Hills Village, Blue Line = Library
+export const PITTSBURGH_T_LINES = ["RED", "BLUE", "SLVR"] as const;
+export type PittsburghTLine = (typeof PITTSBURGH_T_LINES)[number];
+
+// Pittsburgh T line names and colors
+export const PITTSBURGH_T_LINE_INFO: Record<
+  PittsburghTLine,
+  { name: string; letter: string; color: string }
+> = {
+  RED: { name: "Red Line", letter: "Red", color: "#E31837" },
+  BLUE: { name: "Blue Line", letter: "Blue", color: "#0066B3" },
+  SLVR: { name: "Silver Line", letter: "Silver", color: "#A7A9AC" },
+};
+
+// Dallas DART Light Rail lines
+// Routes: Red, Blue, Green, Orange
+export const DALLAS_DART_LINES = ["RED", "BLUE", "GREEN", "ORANGE"] as const;
+export type DallasDartLine = (typeof DALLAS_DART_LINES)[number];
+
+// Dallas DART line names and colors
+export const DALLAS_DART_LINE_INFO: Record<
+  DallasDartLine,
+  { name: string; letter: string; color: string }
+> = {
+  RED: { name: "Red Line", letter: "Red", color: "#CE0E2D" },
+  BLUE: { name: "Blue Line", letter: "Blue", color: "#0039A6" },
+  GREEN: { name: "Green Line", letter: "Green", color: "#009B3A" },
+  ORANGE: { name: "Orange Line", letter: "Orange", color: "#F7931E" },
+};
+
+// Minneapolis Metro Transit Light Rail lines
+// Blue Line (Hiawatha) and Green Line (Central Corridor)
+export const MINNEAPOLIS_METRO_LINES = ["Blue", "Green"] as const;
+export type MinneapolisMetroLine = (typeof MINNEAPOLIS_METRO_LINES)[number];
+
+// Minneapolis Metro line names and colors
+export const MINNEAPOLIS_METRO_LINE_INFO: Record<
+  MinneapolisMetroLine,
+  { name: string; letter: string; color: string }
+> = {
+  Blue: { name: "Blue Line", letter: "Blue", color: "#0053A0" },
+  Green: { name: "Green Line", letter: "Green", color: "#009E49" },
+};
+
+// Denver RTD Light Rail lines
+// Lines present in OSM data: A, B, D, E, G, H, L, N, R, W
+// C and F are not explicitly tagged in OSM (they share tracks with other lines)
+export const DENVER_RTD_LINES = [
+  "A", "B", "D", "E", "G", "H", "L", "N", "R", "W"
+] as const;
+export type DenverRtdLine = (typeof DENVER_RTD_LINES)[number];
+
+// Denver RTD line names and colors (official RTD colors from Brand Elements)
+export const DENVER_RTD_LINE_INFO: Record<
+  DenverRtdLine,
+  { name: string; letter: string; color: string }
+> = {
+  A: { name: "A Line (Airport)", letter: "A", color: "#54C0E8" },     // Light Blue (commuter rail)
+  B: { name: "B Line (Westminster)", letter: "B", color: "#4C9C2E" }, // Dark Green (commuter rail)
+  D: { name: "D Line", letter: "D", color: "#008348" },               // Green
+  E: { name: "E Line", letter: "E", color: "#552683" },               // Purple
+  G: { name: "G Line (Arvada)", letter: "G", color: "#F9A01B" },      // Gold (commuter rail)
+  H: { name: "H Line", letter: "H", color: "#0075BF" },               // Blue
+  L: { name: "L Line", letter: "L", color: "#FDB813" },               // Yellow
+  N: { name: "N Line (Northglenn)", letter: "N", color: "#9B26B6" },  // Purple/Violet (commuter rail)
+  R: { name: "R Line", letter: "R", color: "#8CC63F" },               // Lime Green
+  W: { name: "W Line (Golden)", letter: "W", color: "#1C4E9D" },      // Dark Blue
+};
+
+// Salt Lake City UTA TRAX Light Rail lines
+// Blue, Red, Green lines + S-Line streetcar
+export const SLC_TRAX_LINES = ["Blue", "Red", "Green", "S-Line"] as const;
+export type SlcTraxLine = (typeof SLC_TRAX_LINES)[number];
+
+// Salt Lake City TRAX line names and colors
+export const SLC_TRAX_LINE_INFO: Record<
+  SlcTraxLine,
+  { name: string; letter: string; color: string }
+> = {
+  Blue: { name: "Blue Line", letter: "Blue", color: "#0053A0" },
+  Red: { name: "Red Line", letter: "Red", color: "#EE3124" },
+  Green: { name: "Green Line", letter: "Green", color: "#008144" },
+  "S-Line": { name: "S-Line Streetcar", letter: "S", color: "#FDB913" },
+};
+
 // Union type for any transit line
 export type TransitLine =
   | MuniLine
@@ -219,7 +310,12 @@ export type TransitLine =
   | SanDiegoTrolleyLine
   | TorontoStreetcarLine
   | PhillyTrolleyLine
-  | SacramentoLightRailLine;
+  | SacramentoLightRailLine
+  | PittsburghTLine
+  | DallasDartLine
+  | MinneapolisMetroLine
+  | DenverRtdLine
+  | SlcTraxLine;
 
 // Get lines for a specific city
 export function getLinesForCity(city: City): readonly string[] {
@@ -242,5 +338,15 @@ export function getLinesForCity(city: City): readonly string[] {
       return PHILLY_TROLLEY_LINES;
     case "Sacramento":
       return SACRAMENTO_LIGHT_RAIL_LINES;
+    case "Pittsburgh":
+      return PITTSBURGH_T_LINES;
+    case "Dallas":
+      return DALLAS_DART_LINES;
+    case "Minneapolis":
+      return MINNEAPOLIS_METRO_LINES;
+    case "Denver":
+      return DENVER_RTD_LINES;
+    case "Salt Lake City":
+      return SLC_TRAX_LINES;
   }
 }

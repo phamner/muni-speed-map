@@ -175,6 +175,46 @@ const CITIES = {
     outputFile: 'sacramentoMaxspeed.json',
     railwayTypes: 'light_rail',
     networkFilter: null
+  },
+  Pittsburgh: {
+    name: 'Pittsburgh',
+    bbox: [40.30, -80.10, 40.50, -79.90],
+    routesFile: 'pittsburghTRoutes.json',
+    outputFile: 'pittsburghMaxspeed.json',
+    railwayTypes: 'light_rail|tram',
+    networkFilter: null
+  },
+  Dallas: {
+    name: 'Dallas',
+    bbox: [32.65, -97.00, 33.00, -96.60],
+    routesFile: 'dallasDartRoutes.json',
+    outputFile: 'dallasMaxspeed.json',
+    railwayTypes: 'light_rail',
+    networkFilter: null
+  },
+  Minneapolis: {
+    name: 'Minneapolis',
+    bbox: [44.88, -93.40, 45.05, -93.15],
+    routesFile: 'minneapolisMetroRoutes.json',
+    outputFile: 'minneapolisMaxspeed.json',
+    railwayTypes: 'light_rail',
+    networkFilter: null
+  },
+  Denver: {
+    name: 'Denver',
+    bbox: [39.60, -105.10, 39.90, -104.80],
+    routesFile: 'denverRtdRoutes.json',
+    outputFile: 'denverMaxspeed.json',
+    railwayTypes: 'light_rail',
+    networkFilter: null
+  },
+  'Salt Lake City': {
+    name: 'Salt Lake City',
+    bbox: [40.60, -112.00, 40.85, -111.75],
+    routesFile: 'slcTraxRoutes.json',
+    outputFile: 'slcMaxspeed.json',
+    railwayTypes: 'light_rail',
+    networkFilter: null
   }
 };
 

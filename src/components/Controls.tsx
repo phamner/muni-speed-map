@@ -10,6 +10,11 @@ import type {
   TorontoStreetcarLine,
   PhillyTrolleyLine,
   SacramentoLightRailLine,
+  PittsburghTLine,
+  DallasDartLine,
+  MinneapolisMetroLine,
+  DenverRtdLine,
+  SlcTraxLine,
   City,
 } from "../types";
 import {
@@ -22,6 +27,11 @@ import {
   TORONTO_STREETCAR_LINE_INFO,
   PHILLY_TROLLEY_LINE_INFO,
   SACRAMENTO_LIGHT_RAIL_LINE_INFO,
+  PITTSBURGH_T_LINE_INFO,
+  DALLAS_DART_LINE_INFO,
+  MINNEAPOLIS_METRO_LINE_INFO,
+  DENVER_RTD_LINE_INFO,
+  SLC_TRAX_LINE_INFO,
   getLinesForCity,
 } from "../types";
 import type { SpeedFilter, ViewMode, LineStats, RouteLineMode } from "../App";
@@ -71,6 +81,18 @@ function getLineColor(line: string, city: City): string {
       SACRAMENTO_LIGHT_RAIL_LINE_INFO[line as SacramentoLightRailLine]?.color ||
       "#666"
     );
+  } else if (city === "Pittsburgh") {
+    return PITTSBURGH_T_LINE_INFO[line as PittsburghTLine]?.color || "#666";
+  } else if (city === "Dallas") {
+    return DALLAS_DART_LINE_INFO[line as DallasDartLine]?.color || "#666";
+  } else if (city === "Minneapolis") {
+    return (
+      MINNEAPOLIS_METRO_LINE_INFO[line as MinneapolisMetroLine]?.color || "#666"
+    );
+  } else if (city === "Denver") {
+    return DENVER_RTD_LINE_INFO[line as DenverRtdLine]?.color || "#666";
+  } else if (city === "Salt Lake City") {
+    return SLC_TRAX_LINE_INFO[line as SlcTraxLine]?.color || "#666";
   }
   return "#666";
 }
@@ -106,6 +128,18 @@ function getLineLabel(line: string, city: City): string {
       SACRAMENTO_LIGHT_RAIL_LINE_INFO[line as SacramentoLightRailLine]
         ?.letter || line
     );
+  } else if (city === "Pittsburgh") {
+    return PITTSBURGH_T_LINE_INFO[line as PittsburghTLine]?.letter || line;
+  } else if (city === "Dallas") {
+    return DALLAS_DART_LINE_INFO[line as DallasDartLine]?.letter || line;
+  } else if (city === "Minneapolis") {
+    return (
+      MINNEAPOLIS_METRO_LINE_INFO[line as MinneapolisMetroLine]?.letter || line
+    );
+  } else if (city === "Denver") {
+    return DENVER_RTD_LINE_INFO[line as DenverRtdLine]?.letter || line;
+  } else if (city === "Salt Lake City") {
+    return SLC_TRAX_LINE_INFO[line as SlcTraxLine]?.letter || line;
   }
   return line;
 }
@@ -115,14 +149,18 @@ function getBadgeWidthClass(city: City): string {
   switch (city) {
     case "Portland":
     case "San Diego":
-      return "badge-width-word"; // "Orange", "Yellow", "Copper"
+    case "Pittsburgh":
+    case "Dallas":
+      return "badge-width-word"; // "Orange", "Yellow", "Copper", "Red", etc.
     case "Sacramento":
-      return "badge-width-short-word"; // "Gold", "Blue"
+    case "Minneapolis":
+    case "Salt Lake City":
+      return "badge-width-short-word"; // "Gold", "Blue", "Green", "S"
     case "Toronto":
     case "Philadelphia":
       return "badge-width-3digit"; // "501", "102"
     default:
-      return "badge-width-letter"; // Single letters
+      return "badge-width-letter"; // Single letters (SF, LA, Boston, Seattle, Denver)
   }
 }
 
@@ -148,6 +186,16 @@ function getLineInfo(line: string, city: City): string | undefined {
   } else if (city === "Sacramento") {
     return SACRAMENTO_LIGHT_RAIL_LINE_INFO[line as SacramentoLightRailLine]
       ?.name;
+  } else if (city === "Pittsburgh") {
+    return PITTSBURGH_T_LINE_INFO[line as PittsburghTLine]?.name;
+  } else if (city === "Dallas") {
+    return DALLAS_DART_LINE_INFO[line as DallasDartLine]?.name;
+  } else if (city === "Minneapolis") {
+    return MINNEAPOLIS_METRO_LINE_INFO[line as MinneapolisMetroLine]?.name;
+  } else if (city === "Denver") {
+    return DENVER_RTD_LINE_INFO[line as DenverRtdLine]?.name;
+  } else if (city === "Salt Lake City") {
+    return SLC_TRAX_LINE_INFO[line as SlcTraxLine]?.name;
   }
   return undefined;
 }
@@ -263,6 +311,11 @@ export function Controls({
     Toronto: "Toronto",
     Philadelphia: "Philadelphia",
     Sacramento: "Sacramento",
+    Pittsburgh: "Pittsburgh",
+    Dallas: "Dallas",
+    Minneapolis: "Minneapolis",
+    Denver: "Denver",
+    "Salt Lake City": "Salt Lake City",
   };
   const systemNames: Record<string, string> = {
     SF: "Muni Speed Map",
@@ -274,6 +327,11 @@ export function Controls({
     Toronto: "Streetcar Speed Map",
     Philadelphia: "Trolley Speed Map",
     Sacramento: "Light Rail Speed Map",
+    Pittsburgh: "The T Speed Map",
+    Dallas: "DART Speed Map",
+    Minneapolis: "Metro Speed Map",
+    Denver: "RTD Speed Map",
+    "Salt Lake City": "TRAX Speed Map",
   };
   const cityLine = cityNames[city] || city;
   const systemLine = systemNames[city] || "Speed Map";
@@ -348,6 +406,52 @@ export function Controls({
         >
           🍁 Toronto
         </button>
+        {/* Row 4: New cities */}
+        <button
+          className={`city-btn city-btn-pending ${
+            city === "Pittsburgh" ? "active" : ""
+          }`}
+          onClick={() => setCity("Pittsburgh")}
+          title="Data collection starting soon"
+        >
+          🏗️ PIT
+        </button>
+        <button
+          className={`city-btn city-btn-pending ${
+            city === "Dallas" ? "active" : ""
+          }`}
+          onClick={() => setCity("Dallas")}
+          title="Data collection starting soon"
+        >
+          ⭐ Dallas
+        </button>
+        <button
+          className={`city-btn city-btn-pending ${
+            city === "Minneapolis" ? "active" : ""
+          }`}
+          onClick={() => setCity("Minneapolis")}
+          title="Data collection starting soon"
+        >
+          🌆 MSP
+        </button>
+        <button
+          className={`city-btn city-btn-pending ${
+            city === "Denver" ? "active" : ""
+          }`}
+          onClick={() => setCity("Denver")}
+          title="Data collection starting soon"
+        >
+          🏔️ Denver
+        </button>
+        <button
+          className={`city-btn city-btn-pending ${
+            city === "Salt Lake City" ? "active" : ""
+          }`}
+          onClick={() => setCity("Salt Lake City")}
+          title="Data collection starting soon"
+        >
+          🏔️ SLC
+        </button>
       </div>
 
       <div className="app-header">
@@ -414,7 +518,7 @@ export function Controls({
       {/* Line Filter */}
       <div className="control-group">
         <div className="control-label-row">
-          <label className="control-label">Filter Lines</label>
+          <label className="control-label">Filter Data</label>
           <div className="toggle-group">
             <button
               className={`toggle-button ${
@@ -694,7 +798,12 @@ export function Controls({
           city === "Boston" ||
           city === "Portland" ||
           city === "Toronto" ||
-          city === "Sacramento"
+          city === "Sacramento" ||
+          city === "Pittsburgh" ||
+          city === "Dallas" ||
+          city === "Minneapolis" ||
+          city === "Denver" ||
+          city === "Salt Lake City"
             ? "Speed is provided directly by the transit agency's API, giving accurate real-time readings."
             : "Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart)."}
         </p>
@@ -756,6 +865,47 @@ export function Controls({
               when either line is selected.
             </p>
           </>
+        )}
+        {city === "Pittsburgh" && (
+          <p>
+            <strong>Downtown subway:</strong> Pittsburgh's "The T" runs through
+            a subway tunnel in downtown before emerging for surface operations
+            in the South Hills suburbs — similar to SF Muni's Market Street
+            subway. Compare speeds between the grade-separated downtown section
+            and the at-grade suburban sections.
+          </p>
+        )}
+        {city === "Dallas" && (
+          <p>
+            <strong>Largest US light rail:</strong> DART is the largest light
+            rail system in the United States by route miles (93+ miles). Most
+            operations are at-grade with some elevated and grade-separated
+            sections.
+          </p>
+        )}
+        {city === "Minneapolis" && (
+          <p>
+            <strong>Airport tunnel:</strong> The Blue Line runs through a tunnel
+            under Minneapolis-St. Paul International Airport — one of the few
+            grade-separated sections. Downtown operations run on surface streets
+            in exclusive right-of-way without signal preemption.
+          </p>
+        )}
+        {city === "Denver" && (
+          <p>
+            <strong>Mixed operations:</strong> Denver RTD operates a large light
+            rail and commuter rail network with both at-grade and
+            grade-separated sections. Some lines (like the A Line to the
+            airport) are more grade-separated than others.
+          </p>
+        )}
+        {city === "Salt Lake City" && (
+          <p>
+            <strong>TRAX system:</strong> UTA's TRAX light rail serves the Salt
+            Lake Valley with three main lines plus the S-Line streetcar. Most
+            operations are at-grade with some grade-separated overpasses and
+            exclusive right-of-way sections.
+          </p>
         )}
         {city === "Seattle" && (
           <div className="data-warning">
@@ -870,6 +1020,46 @@ export function Controls({
               rel="noopener noreferrer"
             >
               SacRT GTFS-RT
+            </a>
+          ) : city === "Pittsburgh" ? (
+            <a
+              href="https://www.rideprt.org/inside-Pittsburgh-Regional-Transit/developer-resources/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Pittsburgh Regional Transit API
+            </a>
+          ) : city === "Dallas" ? (
+            <a
+              href="https://www.dart.org/about/dartdevelopers"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              DART GTFS-RT
+            </a>
+          ) : city === "Minneapolis" ? (
+            <a
+              href="https://svc.metrotransit.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Metro Transit API
+            </a>
+          ) : city === "Denver" ? (
+            <a
+              href="https://www.rtd-denver.com/open-data"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              RTD GTFS-RT
+            </a>
+          ) : city === "Salt Lake City" ? (
+            <a
+              href="https://developer.rideuta.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              UTA GTFS-RT
             </a>
           ) : (
             <span>Transit API</span>

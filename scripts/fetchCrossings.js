@@ -217,6 +217,36 @@ const CITIES = {
     bbox: [38.45, -121.6, 38.7, -121.2],
     routesFile: 'sacramentoLightRailRoutes.json',
     outputFile: 'sacramentoGradeCrossings.json'
+  },
+  Pittsburgh: {
+    name: 'Pittsburgh',
+    bbox: [40.30, -80.15, 40.55, -79.85],
+    routesFile: 'pittsburghTRoutes.json',
+    outputFile: 'pittsburghGradeCrossings.json'
+  },
+  Dallas: {
+    name: 'Dallas',
+    bbox: [32.60, -97.10, 33.05, -96.55],
+    routesFile: 'dallasDartRoutes.json',
+    outputFile: 'dallasGradeCrossings.json'
+  },
+  Minneapolis: {
+    name: 'Minneapolis',
+    bbox: [44.85, -93.45, 45.10, -93.10],
+    routesFile: 'minneapolisMetroRoutes.json',
+    outputFile: 'minneapolisGradeCrossings.json'
+  },
+  Denver: {
+    name: 'Denver',
+    bbox: [39.55, -105.15, 39.95, -104.75],
+    routesFile: 'denverRtdRoutes.json',
+    outputFile: 'denverGradeCrossings.json'
+  },
+  SaltLakeCity: {
+    name: 'Salt Lake City',
+    bbox: [40.55, -112.10, 40.90, -111.70],
+    routesFile: 'slcTraxRoutes.json',
+    outputFile: 'slcGradeCrossings.json'
   }
 };
 

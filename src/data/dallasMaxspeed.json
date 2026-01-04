@@ -1,0 +1,619 @@
+{
+  "type": "FeatureCollection",
+  "generated": "2026-01-04T02:02:58.331Z",
+  "source": "OpenStreetMap via Overpass API",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138883462,
+        "maxspeed": "65 mph",
+        "maxspeed_mph": 65,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9235008,
+            32.9778228
+          ],
+          [
+            -96.9214887,
+            32.9757755
+          ],
+          [
+            -96.919204,
+            32.9734162
+          ],
+          [
+            -96.918813,
+            32.9729855
+          ],
+          [
+            -96.9185811,
+            32.9727096
+          ],
+          [
+            -96.9182836,
+            32.9723233
+          ],
+          [
+            -96.9180873,
+            32.9720329
+          ],
+          [
+            -96.9179239,
+            32.9717713
+          ],
+          [
+            -96.9175784,
+            32.9711464
+          ],
+          [
+            -96.9174565,
+            32.9708815
+          ],
+          [
+            -96.9173075,
+            32.9705356
+          ],
+          [
+            -96.9152555,
+            32.9649301
+          ],
+          [
+            -96.9151441,
+            32.9646554
+          ],
+          [
+            -96.9149745,
+            32.9643077
+          ],
+          [
+            -96.9148483,
+            32.9640353
+          ],
+          [
+            -96.9146776,
+            32.9636804
+          ],
+          [
+            -96.9144344,
+            32.9632231
+          ],
+          [
+            -96.9142123,
+            32.9628526
+          ],
+          [
+            -96.9139321,
+            32.9623954
+          ],
+          [
+            -96.9113296,
+            32.9587174
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138883475,
+        "maxspeed": "25 mph",
+        "maxspeed_mph": 25,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.927862,
+            32.9822299
+          ],
+          [
+            -96.9277155,
+            32.982077
+          ],
+          [
+            -96.9276596,
+            32.9820212
+          ],
+          [
+            -96.926956,
+            32.9813203
+          ],
+          [
+            -96.9263673,
+            32.980735
+          ],
+          [
+            -96.9260863,
+            32.9804557
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138883485,
+        "maxspeed": "45 mph",
+        "maxspeed_mph": 45,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.93018,
+            32.9847053
+          ],
+          [
+            -96.9291037,
+            32.983526
+          ],
+          [
+            -96.9289808,
+            32.9833936
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138883488,
+        "maxspeed": "30 mph",
+        "maxspeed_mph": 30,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9287767,
+            32.9831737
+          ],
+          [
+            -96.9280855,
+            32.9824631
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138883496,
+        "maxspeed": "20 mph",
+        "maxspeed_mph": 20,
+        "name": null,
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9363184,
+            32.9911432
+          ],
+          [
+            -96.9359594,
+            32.9907024
+          ],
+          [
+            -96.9355977,
+            32.9902554
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 202363352,
+        "maxspeed": "55 mph",
+        "maxspeed_mph": 55,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9327139,
+            32.9873598
+          ],
+          [
+            -96.932119,
+            32.98675
+          ],
+          [
+            -96.9313149,
+            32.9859099
+          ],
+          [
+            -96.9311754,
+            32.9857648
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 421375084,
+        "maxspeed": "55 mph",
+        "maxspeed_mph": 55,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9355977,
+            32.9902554
+          ],
+          [
+            -96.934864,
+            32.989511
+          ],
+          [
+            -96.9346806,
+            32.9893414
+          ],
+          [
+            -96.9341364,
+            32.98881
+          ],
+          [
+            -96.9340195,
+            32.9886982
+          ],
+          [
+            -96.9327139,
+            32.9873598
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 421516444,
+        "maxspeed": "65 mph",
+        "maxspeed_mph": 65,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.925336,
+            32.9796892
+          ],
+          [
+            -96.925225,
+            32.9795758
+          ],
+          [
+            -96.9245508,
+            32.9788904
+          ],
+          [
+            -96.9239239,
+            32.9782421
+          ],
+          [
+            -96.9238512,
+            32.97817
+          ],
+          [
+            -96.9235008,
+            32.9778228
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 446930393,
+        "maxspeed": "35 mph",
+        "maxspeed_mph": 35,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9154698,
+            32.8493576
+          ],
+          [
+            -96.9155828,
+            32.8494277
+          ],
+          [
+            -96.9159002,
+            32.8496259
+          ],
+          [
+            -96.9164244,
+            32.8499238
+          ],
+          [
+            -96.9167085,
+            32.8500715
+          ],
+          [
+            -96.9169798,
+            32.8502037
+          ],
+          [
+            -96.9172555,
+            32.8503326
+          ],
+          [
+            -96.9175493,
+            32.8504565
+          ],
+          [
+            -96.9189094,
+            32.8509793
+          ],
+          [
+            -96.9195062,
+            32.8512211
+          ],
+          [
+            -96.9200769,
+            32.8514857
+          ],
+          [
+            -96.9203348,
+            32.8516219
+          ],
+          [
+            -96.9210917,
+            32.8520381
+          ],
+          [
+            -96.9224138,
+            32.8527714
+          ],
+          [
+            -96.9226159,
+            32.8528792
+          ],
+          [
+            -96.9229843,
+            32.8530849
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 911046646,
+        "maxspeed": "25 mph",
+        "maxspeed_mph": 25,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.936401,
+            32.9910857
+          ],
+          [
+            -96.9355977,
+            32.9902554
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1304538264,
+        "maxspeed": "45 mph",
+        "maxspeed_mph": 45,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9311754,
+            32.9857648
+          ],
+          [
+            -96.9307018,
+            32.9852721
+          ],
+          [
+            -96.93018,
+            32.9847053
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1304538265,
+        "maxspeed": "30 mph",
+        "maxspeed_mph": 30,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9289808,
+            32.9833936
+          ],
+          [
+            -96.9287767,
+            32.9831737
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1304538266,
+        "maxspeed": "30 mph",
+        "maxspeed_mph": 30,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9280855,
+            32.9824631
+          ],
+          [
+            -96.927862,
+            32.9822299
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1304538267,
+        "maxspeed": "25 mph",
+        "maxspeed_mph": 25,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": false
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9260863,
+            32.9804557
+          ],
+          [
+            -96.9260127,
+            32.9803805
+          ],
+          [
+            -96.925336,
+            32.9796892
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1304538268,
+        "maxspeed": "35 mph",
+        "maxspeed_mph": 35,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9101758,
+            32.9570867
+          ],
+          [
+            -96.909886,
+            32.9566771
+          ],
+          [
+            -96.9095662,
+            32.9562169
+          ],
+          [
+            -96.9090433,
+            32.9554344
+          ],
+          [
+            -96.9080487,
+            32.9540404
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1304538269,
+        "maxspeed": "55 mph",
+        "maxspeed_mph": 55,
+        "name": "DART Light Rail",
+        "network": null,
+        "tunnel": false,
+        "bridge": true
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.9113296,
+            32.9587174
+          ],
+          [
+            -96.9101758,
+            32.9570867
+          ]
+        ]
+      }
+    }
+  ]
+}

@@ -40,6 +40,27 @@ import sacramentoLightRailRoutes from "../data/sacramentoLightRailRoutes.json";
 import sacramentoLightRailStops from "../data/sacramentoLightRailStops.json";
 import sacramentoCrossings from "../data/sacramentoGradeCrossings.json";
 import sacramentoSwitches from "../data/sacramentoSwitches.json";
+// New cities
+import pittsburghTRoutes from "../data/pittsburghTRoutes.json";
+import pittsburghTStops from "../data/pittsburghTStops.json";
+import pittsburghCrossings from "../data/pittsburghGradeCrossings.json";
+import pittsburghSwitches from "../data/pittsburghSwitches.json";
+import dallasDartRoutes from "../data/dallasDartRoutes.json";
+import dallasDartStops from "../data/dallasDartStops.json";
+import dallasCrossings from "../data/dallasGradeCrossings.json";
+import dallasSwitches from "../data/dallasSwitches.json";
+import minneapolisMetroRoutes from "../data/minneapolisMetroRoutes.json";
+import minneapolisMetroStops from "../data/minneapolisMetroStops.json";
+import minneapolisCrossings from "../data/minneapolisGradeCrossings.json";
+import minneapolisSwitches from "../data/minneapolisSwitches.json";
+import denverRtdRoutes from "../data/denverRtdRoutes.json";
+import denverRtdStops from "../data/denverRtdStops.json";
+import denverCrossings from "../data/denverGradeCrossings.json";
+import denverSwitches from "../data/denverSwitches.json";
+import slcTraxRoutes from "../data/slcTraxRoutes.json";
+import slcTraxStops from "../data/slcTraxStops.json";
+import slcCrossings from "../data/slcGradeCrossings.json";
+import slcSwitches from "../data/slcSwitches.json";
 // Speed limit data from OpenRailwayMap
 import sfMaxspeed from "../data/sfMaxspeed.json";
 import laMaxspeed from "../data/laMaxspeed.json";
@@ -48,6 +69,10 @@ import bostonMaxspeed from "../data/bostonMaxspeed.json";
 import portlandMaxspeed from "../data/portlandMaxspeed.json";
 import sanDiegoMaxspeed from "../data/sanDiegoMaxspeed.json";
 import phillyMaxspeed from "../data/phillyMaxspeed.json";
+import denverMaxspeed from "../data/denverMaxspeed.json";
+import minneapolisMaxspeed from "../data/minneapolisMaxspeed.json";
+import dallasMaxspeed from "../data/dallasMaxspeed.json";
+import slcMaxspeed from "../data/slcMaxspeed.json";
 import type { SpeedFilter, ViewMode, LineStats } from "../App";
 
 // Maximum distance in meters from route line to be considered "on route"
@@ -151,6 +176,51 @@ const CITY_CONFIG = {
     crossings: sacramentoCrossings,
     switches: sacramentoSwitches,
     maxspeed: null as any,
+  },
+  Pittsburgh: {
+    center: [-79.99, 40.43] as [number, number],
+    zoom: 11.5,
+    routes: pittsburghTRoutes,
+    stops: pittsburghTStops,
+    crossings: pittsburghCrossings,
+    switches: pittsburghSwitches,
+    maxspeed: null as any,
+  },
+  Dallas: {
+    center: [-96.8, 32.78] as [number, number],
+    zoom: 10.5,
+    routes: dallasDartRoutes,
+    stops: dallasDartStops,
+    crossings: dallasCrossings,
+    switches: dallasSwitches,
+    maxspeed: dallasMaxspeed as any,
+  },
+  Minneapolis: {
+    center: [-93.27, 44.98] as [number, number],
+    zoom: 11.5,
+    routes: minneapolisMetroRoutes,
+    stops: minneapolisMetroStops,
+    crossings: minneapolisCrossings,
+    switches: minneapolisSwitches,
+    maxspeed: minneapolisMaxspeed as any,
+  },
+  Denver: {
+    center: [-104.9, 39.75] as [number, number],
+    zoom: 10,
+    routes: denverRtdRoutes,
+    stops: denverRtdStops,
+    crossings: denverCrossings,
+    switches: denverSwitches,
+    maxspeed: denverMaxspeed as any,
+  },
+  "Salt Lake City": {
+    center: [-111.89, 40.76] as [number, number],
+    zoom: 11,
+    routes: slcTraxRoutes,
+    stops: slcTraxStops,
+    crossings: slcCrossings,
+    switches: slcSwitches,
+    maxspeed: slcMaxspeed as any,
   },
 };
 
@@ -467,24 +537,44 @@ function buildAllSegments(routes: any): SegmentData[] {
 // Cache for route features by routeId - avoids filtering on every call
 const routeFeatureCache = new Map<string, Map<string, any[]>>();
 
-// Build route features lookup map once per routes object
-function getRouteFeatureMap(routes: any): Map<string, any[]> {
-  // Use routes object reference as cache key (same object = same map)
-  const cacheKey = JSON.stringify(routes.features?.length ?? 0);
+// Build route features lookup map once per routes object. If `city` is provided
+// we can apply city-specific adjustments (for example, OSM-sourced Dallas routes
+// use a single "shared" route_id; duplicate those features under the DART line
+// ids so vehicle route_ids like "RED" can be matched).
+function getRouteFeatureMap(routes: any, city?: string): Map<string, any[]> {
+  // Use routes.features length + city as cache key (stable across runs)
+  const cacheKey = JSON.stringify({ len: routes.features?.length ?? 0, city });
   if (routeFeatureCache.has(cacheKey)) {
     return routeFeatureCache.get(cacheKey)!;
   }
-  
+
   const map = new Map<string, any[]>();
   for (const feature of routes.features || []) {
     const routeId = feature.properties?.route_id;
     if (!routeId) continue;
-    if (!map.has(routeId)) {
-      map.set(routeId, []);
-    }
+
+    // Default: add feature under its declared route_id
+    if (!map.has(routeId)) map.set(routeId, []);
     map.get(routeId)!.push(feature);
+
+    // City-specific adjustment: Dallas OSM routes often use a shared route_id
+    // ("shared"). Duplicate those features for each DART line so lookups by
+    // vehicle route_id (eg. "RED") succeed.
+    if (
+      city === "Dallas" &&
+      String(routeId).toLowerCase() === "shared" &&
+      feature.properties?.railway
+    ) {
+      // Import Dallas DART line list from types dynamically to avoid circular
+      // imports at module load time (types.ts already compiled to JS).
+      const DALLAS_LINES = ["RED", "BLUE", "GREEN", "ORANGE"];
+      for (const line of DALLAS_LINES) {
+        if (!map.has(line)) map.set(line, []);
+        map.get(line)!.push(feature);
+      }
+    }
   }
-  
+
   routeFeatureCache.set(cacheKey, map);
   return map;
 }
@@ -585,7 +675,8 @@ const cityDataCache = new Map<City, Vehicle[]>();
 let preloadStarted = false;
 
 // Only select columns we actually use (reduces data transfer by ~40%)
-const POSITION_COLUMNS = "id,vehicle_id,lat,lon,route_id,direction_id,speed_calculated,recorded_at,headsign";
+const POSITION_COLUMNS =
+  "id,vehicle_id,lat,lon,route_id,direction_id,speed_calculated,recorded_at,headsign";
 
 // Parallel fetch helper - fetches multiple pages concurrently
 async function fetchPagesParallel(
@@ -596,7 +687,7 @@ async function fetchPagesParallel(
   pageSize: number
 ): Promise<any[]> {
   if (!supabase) return [];
-  
+
   const promises = [];
   for (let i = 0; i < numPages; i++) {
     const from = (startPage + i) * pageSize;
@@ -620,20 +711,20 @@ async function fetchPagesParallel(
     }
     promises.push(query);
   }
-  
+
   const results = await Promise.all(promises);
-  return results.flatMap(r => r.data || []);
+  return results.flatMap((r) => r.data || []);
 }
 
 // Background preload function - fetches and caches a city's data without UI updates
 async function preloadCityData(targetCity: City): Promise<void> {
   // Skip if already cached or no supabase
   if (cityDataCache.has(targetCity) || !supabase) return;
-  
+
   try {
     const PAGE_SIZE = 1000;
     const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-    
+
     // Fetch first page to estimate total count
     let query;
     if (targetCity === "SF") {
@@ -653,25 +744,31 @@ async function preloadCityData(targetCity: City): Promise<void> {
         .order("recorded_at", { ascending: false })
         .range(0, PAGE_SIZE - 1);
     }
-    
+
     const { data: firstPage, error } = await query;
     if (error || !firstPage) return;
-    
+
     let allData = [...firstPage];
-    
+
     // If first page is full, fetch remaining pages in parallel
     if (firstPage.length === PAGE_SIZE) {
       const PARALLEL_BATCH = 5;
       let pageNum = 1;
       let hasMore = true;
-      
+
       while (hasMore) {
-        const batchData = await fetchPagesParallel(targetCity, since, pageNum, PARALLEL_BATCH, PAGE_SIZE);
+        const batchData = await fetchPagesParallel(
+          targetCity,
+          since,
+          pageNum,
+          PARALLEL_BATCH,
+          PAGE_SIZE
+        );
         allData = [...allData, ...batchData];
-        
+
         hasMore = batchData.length === PARALLEL_BATCH * PAGE_SIZE;
         pageNum += PARALLEL_BATCH;
-        
+
         // Safety limit: max 30 pages (30k positions)
         if (pageNum > 30) break;
       }
@@ -687,10 +784,10 @@ async function preloadCityData(targetCity: City): Promise<void> {
 
     // Get city config for segment computation
     const cityConfig = CITY_CONFIG[targetCity];
-    
+
     // Build route feature map once (optimization: avoids filtering per-vehicle)
-    const routeFeatureMap = getRouteFeatureMap(cityConfig.routes);
-    
+    const routeFeatureMap = getRouteFeatureMap(cityConfig.routes, targetCity);
+
     const positions: Vehicle[] = filteredData.map((row: any) => ({
       id: `${row.vehicle_id}-${row.id}`,
       lat: row.lat,
@@ -699,13 +796,21 @@ async function preloadCityData(targetCity: City): Promise<void> {
       direction: getDirection(row.direction_id),
       speed: row.speed_calculated,
       recordedAt: row.recorded_at,
-      segmentId: findSegmentForVehicle(row.lat, row.lon, row.route_id, cityConfig.routes, routeFeatureMap),
+      segmentId: findSegmentForVehicle(
+        row.lat,
+        row.lon,
+        row.route_id,
+        cityConfig.routes,
+        routeFeatureMap
+      ),
       headsign: row.headsign,
     }));
 
     // Store in cache
     cityDataCache.set(targetCity, positions);
-    console.log(`Background preloaded ${targetCity}: ${positions.length} positions`);
+    console.log(
+      `Background preloaded ${targetCity}: ${positions.length} positions`
+    );
   } catch (error) {
     console.warn(`Failed to preload ${targetCity}:`, error);
   }
@@ -715,9 +820,9 @@ async function preloadCityData(targetCity: City): Promise<void> {
 function startBackgroundPreload(currentCity: City) {
   if (preloadStarted) return;
   preloadStarted = true;
-  
-  const otherCities = CITIES.filter(c => c !== currentCity);
-  
+
+  const otherCities = CITIES.filter((c) => c !== currentCity);
+
   // Stagger requests by 500ms each to avoid hammering the server
   otherCities.forEach((city, index) => {
     setTimeout(() => {
@@ -821,7 +926,9 @@ export function SpeedMap({
     try {
       const PAGE_SIZE = 1000;
       const PARALLEL_BATCH = 5; // Fetch 5 pages at once
-      const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+      const since = new Date(
+        Date.now() - 7 * 24 * 60 * 60 * 1000
+      ).toISOString();
 
       setLoadingProgress("Loading positions...");
       console.time("Fetching data");
@@ -869,7 +976,9 @@ export function SpeedMap({
       }
 
       let allData = firstPage || [];
-      setLoadingProgress(`Loading... ${allData.length.toLocaleString()} positions`);
+      setLoadingProgress(
+        `Loading... ${allData.length.toLocaleString()} positions`
+      );
 
       // If first page is full, fetch remaining pages in parallel batches
       if (firstPage && firstPage.length === PAGE_SIZE) {
@@ -877,13 +986,21 @@ export function SpeedMap({
         let hasMore = true;
 
         while (hasMore) {
-          const batchData = await fetchPagesParallel(city, since, pageNum, PARALLEL_BATCH, PAGE_SIZE);
+          const batchData = await fetchPagesParallel(
+            city,
+            since,
+            pageNum,
+            PARALLEL_BATCH,
+            PAGE_SIZE
+          );
           allData = [...allData, ...batchData];
-          setLoadingProgress(`Loading... ${allData.length.toLocaleString()} positions`);
-          
+          setLoadingProgress(
+            `Loading... ${allData.length.toLocaleString()} positions`
+          );
+
           hasMore = batchData.length === PARALLEL_BATCH * PAGE_SIZE;
           pageNum += PARALLEL_BATCH;
-          
+
           // Safety limit: max 30 pages (30k positions)
           if (pageNum > 30) break;
         }
@@ -910,10 +1027,10 @@ export function SpeedMap({
 
       // Pre-compute segment assignments
       console.time("Pre-computing segments");
-      
+
       // Build route feature map once (optimization: avoids filtering per-vehicle)
-      const routeFeatureMap = getRouteFeatureMap(cityConfig.routes);
-      
+      const routeFeatureMap = getRouteFeatureMap(cityConfig.routes, city);
+
       const allPositions: Vehicle[] = filteredData.map((row: any) => {
         const lat = row.lat;
         const lon = row.lon;
@@ -940,10 +1057,10 @@ export function SpeedMap({
 
       // Cache the results for instant switching
       cityDataCache.set(city, allPositions);
-      
+
       // Start background preloading other cities
       startBackgroundPreload(city);
-      
+
       setVehicles(allPositions);
       setDataSource("supabase");
 
@@ -1007,13 +1124,14 @@ export function SpeedMap({
       setVehicles(cached);
       setDataSource("supabase");
       console.log(`Instant cache hit for ${city}: ${cached.length} positions`);
-      
+
       // Also update parent with cached data stats
       if (cached.length > 0) {
         const timestamps = cached.map((v) => new Date(v.recordedAt).getTime());
         const latestTime = new Date(Math.max(...timestamps));
-        const dataAgeMinutes = (Date.now() - latestTime.getTime()) / (1000 * 60);
-        
+        const dataAgeMinutes =
+          (Date.now() - latestTime.getTime()) / (1000 * 60);
+
         // Calculate line stats from cached data
         const lineSpeedMap = new Map<string, number[]>();
         cached.forEach((v) => {
@@ -1023,20 +1141,31 @@ export function SpeedMap({
           }
           lineSpeedMap.get(v.routeId)!.push(v.speed);
         });
-        
+
         const stats: LineStats[] = [];
         lineSpeedMap.forEach((speeds, line) => {
           if (line === "Shared") return;
           const avg = speeds.reduce((a, b) => a + b, 0) / speeds.length;
           const sorted = [...speeds].sort((a, b) => a - b);
           const mid = Math.floor(sorted.length / 2);
-          const median = sorted.length % 2 !== 0
-            ? sorted[mid]
-            : (sorted[mid - 1] + sorted[mid]) / 2;
-          stats.push({ line, avgSpeed: avg, medianSpeed: median, count: speeds.length });
+          const median =
+            sorted.length % 2 !== 0
+              ? sorted[mid]
+              : (sorted[mid - 1] + sorted[mid]) / 2;
+          stats.push({
+            line,
+            avgSpeed: avg,
+            medianSpeed: median,
+            count: speeds.length,
+          });
         });
-        
-        onVehicleUpdateRef.current?.(cached.length, latestTime, stats, dataAgeMinutes);
+
+        onVehicleUpdateRef.current?.(
+          cached.length,
+          latestTime,
+          stats,
+          dataAgeMinutes
+        );
       }
       return;
     }
@@ -1162,18 +1291,33 @@ export function SpeedMap({
     const addRouteLayers = () => {
       if (!map.current) return;
 
-      const showByLine = showRouteLines && routeLineMode === "byLine";
       const showBySpeed = showRouteLines && routeLineMode === "bySpeedLimit";
 
       // If no lines selected, show all routes; otherwise filter to selected
+      // Skip filtering for cities with OSM-sourced route data that don't have line-specific routes
+      const osmSourcedCities = [
+        "Pittsburgh",
+        "Dallas",
+        "Minneapolis",
+        "Salt Lake City",
+      ];
+      const skipRouteFiltering = osmSourcedCities.includes(city);
       const filteredRoutes = {
         ...cityConfig.routes,
         features:
-          selectedLines.length === 0
+          selectedLines.length === 0 || skipRouteFiltering
             ? cityConfig.routes.features
-            : cityConfig.routes.features.filter((f: any) =>
-                selectedLines.includes(f.properties.route_id)
-              ),
+            : cityConfig.routes.features.filter((f: any) => {
+                // Check if route matches any selected line
+                if (selectedLines.includes(f.properties.route_id)) return true;
+                // For OSM routes with multiple lines, check if any line matches
+                if (f.properties.lines && Array.isArray(f.properties.lines)) {
+                  return f.properties.lines.some((line: string) =>
+                    selectedLines.includes(line)
+                  );
+                }
+                return false;
+              }),
       };
 
       // Remove existing layers
@@ -1328,18 +1472,32 @@ export function SpeedMap({
           const props = e.features[0].properties;
           const speedMph = props.maxspeed_mph;
           // Color matches the extended speed legend
-          const speedColor = speedMph == null ? "#666666" :
-                             speedMph >= 50 ? "#22ccff" :
-                             speedMph >= 35 ? "#33eebb" :
-                             speedMph >= 25 ? "#88ff33" :
-                             speedMph >= 15 ? "#ffdd33" :
-                             speedMph >= 10 ? "#ff9933" : "#ff3333";
+          const speedColor =
+            speedMph == null
+              ? "#666666"
+              : speedMph >= 50
+              ? "#22ccff"
+              : speedMph >= 35
+              ? "#33eebb"
+              : speedMph >= 25
+              ? "#88ff33"
+              : speedMph >= 15
+              ? "#ffdd33"
+              : speedMph >= 10
+              ? "#ff9933"
+              : "#ff3333";
           popup.current
             ?.setLngLat(e.lngLat)
             .setHTML(
               `<div class="popup-content">
-                <div class="popup-title" style="color: ${speedColor}">Speed Limit: ${props.maxspeed || "Unknown"}</div>
-                ${props.name ? `<div class="popup-detail">${props.name}</div>` : ""}
+                <div class="popup-title" style="color: ${speedColor}">Speed Limit: ${
+                props.maxspeed || "Unknown"
+              }</div>
+                ${
+                  props.name
+                    ? `<div class="popup-detail">${props.name}</div>`
+                    : ""
+                }
               </div>`
             )
             .addTo(map.current);
@@ -1360,11 +1518,11 @@ export function SpeedMap({
 
       map.current.on("mousemove", "routes", (e) => {
         if (!e.features?.length || !map.current) return;
-        
+
         // In speed limit mode, don't show popup for grey areas (no data)
         // The speed-limit layer handles popups for areas with data
         if (showBySpeed) return;
-        
+
         // In byLine mode, show route name
         const props = e.features[0].properties;
         popup.current
@@ -1394,7 +1552,15 @@ export function SpeedMap({
       };
       setTimeout(waitForStyle, 50);
     }
-  }, [mapLoaded, selectedLines, showRouteLines, routeLineMode, cityConfig.routes, cityConfig.maxspeed, maxspeedColorExpression]);
+  }, [
+    mapLoaded,
+    selectedLines,
+    showRouteLines,
+    routeLineMode,
+    cityConfig.routes,
+    cityConfig.maxspeed,
+    maxspeedColorExpression,
+  ]);
 
   // Add/update stops layer
   useEffect(() => {
@@ -1404,16 +1570,19 @@ export function SpeedMap({
       if (!map.current) return;
 
       // If no lines selected, show all stops; otherwise filter to selected
+      // Note: OSM-sourced stops may not have a 'routes' property
       const filteredStops = {
         ...cityConfig.stops,
         features:
           selectedLines.length === 0
             ? cityConfig.stops.features
-            : cityConfig.stops.features.filter((f: any) =>
-                f.properties.routes.some((r: string) =>
+            : cityConfig.stops.features.filter((f: any) => {
+                // If stop doesn't have routes property, show it (can't filter)
+                if (!f.properties.routes) return true;
+                return f.properties.routes.some((r: string) =>
                   selectedLines.includes(r)
-                )
-              ),
+                );
+              }),
       };
 
       const existingSource = map.current.getSource(
@@ -1525,16 +1694,42 @@ export function SpeedMap({
   // Note: F-line only crossings are already filtered out during the fetch script
   const filteredCrossings = useMemo(() => {
     // Each crossing has a 'routes' property listing which transit lines it's near
-    // Show all crossings that have at least one route
+    // For OSM-sourced cities without routes property, filter by proximity to route lines
     const nearbyFeatures = cityConfig.crossings.features.filter(
       (crossing: any) => {
         const nearRoutes: string[] = crossing.properties.routes;
-        return nearRoutes && nearRoutes.length > 0;
+        // If has routes property, use it
+        if (nearRoutes) {
+          return nearRoutes.length > 0;
+        }
+
+        // For OSM-sourced cities, check if crossing is within 50m of any route line
+        const [lon, lat] = crossing.geometry.coordinates;
+        const maxDistanceMeters = 50;
+
+        for (const feature of cityConfig.routes.features) {
+          const coords = feature.geometry.coordinates;
+          // Handle both LineString and MultiLineString
+          const lineStrings =
+            feature.geometry.type === "MultiLineString" ? coords : [coords];
+
+          for (const lineCoords of lineStrings) {
+            const distance = distanceToLineString(
+              lat,
+              lon,
+              lineCoords as number[][]
+            );
+            if (distance <= maxDistanceMeters) {
+              return true;
+            }
+          }
+        }
+        return false;
       }
     );
 
     return { ...cityConfig.crossings, features: nearbyFeatures };
-  }, [cityConfig.crossings]);
+  }, [cityConfig.crossings, cityConfig.routes]);
 
   // Add/update crossings layer
   useEffect(() => {
@@ -1582,7 +1777,7 @@ export function SpeedMap({
 
         // Track if crossing popup is pinned (clicked)
         let crossingPopupPinned = false;
-        
+
         // Crossing hover popup
         map.current.on("mouseenter", "crossings", () => {
           if (map.current) map.current.getCanvas().style.cursor = "pointer";
@@ -1600,12 +1795,13 @@ export function SpeedMap({
           // Don't update popup if it's pinned
           if (crossingPopupPinned) return;
           if (!e.features?.length || !map.current) return;
-          
+
           // Get coordinates from the feature geometry
           const feature = e.features[0];
-          const coords = feature.geometry.type === "Point" 
-            ? (feature.geometry as GeoJSON.Point).coordinates 
-            : null;
+          const coords =
+            feature.geometry.type === "Point"
+              ? (feature.geometry as GeoJSON.Point).coordinates
+              : null;
           const lon = coords ? coords[0].toFixed(6) : "N/A";
           const lat = coords ? coords[1].toFixed(6) : "N/A";
 
@@ -1619,19 +1815,20 @@ export function SpeedMap({
             )
             .addTo(map.current);
         });
-        
+
         // Click to pin the popup
         map.current.on("click", "crossings", (e) => {
           if (!e.features?.length || !map.current) return;
-          
+
           // Get coordinates from the feature geometry
           const feature = e.features[0];
-          const coords = feature.geometry.type === "Point" 
-            ? (feature.geometry as GeoJSON.Point).coordinates 
-            : null;
+          const coords =
+            feature.geometry.type === "Point"
+              ? (feature.geometry as GeoJSON.Point).coordinates
+              : null;
           const lon = coords ? coords[0].toFixed(6) : "N/A";
           const lat = coords ? coords[1].toFixed(6) : "N/A";
-          
+
           crossingPopupPinned = true;
 
           popup.current
@@ -1644,17 +1841,19 @@ export function SpeedMap({
               </div>`
             )
             .addTo(map.current);
-          
+
           // Prevent the click from propagating to the map
           e.originalEvent.stopPropagation();
         });
-        
+
         // Click elsewhere on map to unpin
         map.current.on("click", (e) => {
           // Check if click was on a crossing (handled above)
-          const features = map.current?.queryRenderedFeatures(e.point, { layers: ["crossings"] });
+          const features = map.current?.queryRenderedFeatures(e.point, {
+            layers: ["crossings"],
+          });
           if (features && features.length > 0) return;
-          
+
           // Unpin and remove popup
           crossingPopupPinned = false;
           popup.current?.remove();
@@ -1677,11 +1876,41 @@ export function SpeedMap({
     }
   }, [mapLoaded, showCrossings, filteredCrossings]);
 
-  // Get switches and signals data for current city
+  // Get switches and signals data for current city, filtered by proximity to routes
   const switchesData = useMemo(() => {
     const config = CITY_CONFIG[city];
-    return config.switches || { type: "FeatureCollection", features: [] };
-  }, [city]);
+    const rawSwitches = config.switches || {
+      type: "FeatureCollection",
+      features: [],
+    };
+
+    // Filter switches to only those near route lines
+    const filteredFeatures = rawSwitches.features.filter((sw: any) => {
+      const [lon, lat] = sw.geometry.coordinates;
+      const maxDistanceMeters = 50;
+
+      for (const feature of cityConfig.routes.features) {
+        const coords = feature.geometry.coordinates;
+        // Handle both LineString and MultiLineString
+        const lineStrings =
+          feature.geometry.type === "MultiLineString" ? coords : [coords];
+
+        for (const lineCoords of lineStrings) {
+          const distance = distanceToLineString(
+            lat,
+            lon,
+            lineCoords as number[][]
+          );
+          if (distance <= maxDistanceMeters) {
+            return true;
+          }
+        }
+      }
+      return false;
+    });
+
+    return { ...rawSwitches, features: filteredFeatures };
+  }, [city, cityConfig.routes]);
 
   // Add/update switches layer
   useEffect(() => {
@@ -1690,7 +1919,9 @@ export function SpeedMap({
     const addSwitchesLayer = () => {
       if (!map.current) return;
 
-      const existingSource = map.current.getSource("switches") as maplibregl.GeoJSONSource;
+      const existingSource = map.current.getSource(
+        "switches"
+      ) as maplibregl.GeoJSONSource;
 
       if (existingSource) {
         existingSource.setData(switchesData as any);
@@ -1737,11 +1968,12 @@ export function SpeedMap({
 
         map.current.on("mousemove", "switches", (e) => {
           if (!e.features?.length || !map.current) return;
-          
+
           const feature = e.features[0];
-          const coords = feature.geometry.type === "Point" 
-            ? (feature.geometry as GeoJSON.Point).coordinates 
-            : null;
+          const coords =
+            feature.geometry.type === "Point"
+              ? (feature.geometry as GeoJSON.Point).coordinates
+              : null;
           const lon = coords ? coords[0].toFixed(6) : "N/A";
           const lat = coords ? coords[1].toFixed(6) : "N/A";
 
@@ -1894,15 +2126,15 @@ export function SpeedMap({
             second: "2-digit",
             hour12: true,
           });
-          
+
           // Build popup title based on city
           let titleLine = `${props.routeId} Train`;
           let detailLine = `Vehicle #${props.id}`;
-          
+
           if (props.city === "Portland" && props.headsign) {
             // Portland: Use headsign directly (e.g., "Yellow Line to City Ctr/Milw")
             titleLine = props.headsign;
-            detailLine = `Vehicle #${props.id.split('-')[0]}`;
+            detailLine = `Vehicle #${props.id.split("-")[0]}`;
           } else if (props.city === "SF") {
             // SF: Prefer API headsign if available (e.g., "Fisherman's Wharf")
             // Fall back to hardcoded terminus mapping for older data
@@ -1910,7 +2142,10 @@ export function SpeedMap({
               titleLine = `${props.routeId} Line to ${props.headsign}`;
             } else {
               const terminus = SF_TERMINUS[props.routeId];
-              const dir = props.direction === "Inbound" ? terminus?.inbound : terminus?.outbound;
+              const dir =
+                props.direction === "Inbound"
+                  ? terminus?.inbound
+                  : terminus?.outbound;
               titleLine = `${props.routeId} Line ${dir || ""}`.trim();
             }
           } else if (props.city === "LA") {
@@ -1920,11 +2155,17 @@ export function SpeedMap({
             const lineInfo = LA_METRO_LINE_INFO[props.routeId as LAMetroLine];
             const lineLetter = lineInfo?.letter || props.routeId;
             const terminus = LA_TERMINUS[props.routeId];
-            const dir = props.direction === "Outbound" ? terminus?.inbound : terminus?.outbound;
-            titleLine = dir ? `${lineLetter} Line ${dir}` : `${lineLetter} Line`;
+            const dir =
+              props.direction === "Outbound"
+                ? terminus?.inbound
+                : terminus?.outbound;
+            titleLine = dir
+              ? `${lineLetter} Line ${dir}`
+              : `${lineLetter} Line`;
           } else if (props.city === "Boston") {
             // Boston: Show branch name (e.g., "B Branch" instead of "Green-B")
-            const branchName = BOSTON_BRANCH_NAMES[props.routeId] || props.routeId;
+            const branchName =
+              BOSTON_BRANCH_NAMES[props.routeId] || props.routeId;
             titleLine = `Green Line ${branchName}`;
           }
 
@@ -2022,9 +2263,7 @@ export function SpeedMap({
     ];
 
     // Get existing layers in our order
-    const existingLayers = layerOrder.filter((id) =>
-      map.current?.getLayer(id)
-    );
+    const existingLayers = layerOrder.filter((id) => map.current?.getLayer(id));
 
     if (existingLayers.length < 2) return;
 

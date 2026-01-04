@@ -1,0 +1,2390 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 33482951,
+        "name": "Lake Street/Midtown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2390797,
+          44.9487845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 34552408,
+        "name": "US Bank Stadium",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2603217,
+          44.9749018
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 243959227,
+        "name": "Cedar-Riverside",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2511593,
+          44.9686552
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 246903522,
+        "name": "Bloomington Central",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2259462,
+          44.8563416
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 246903524,
+        "name": "30th Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.23129,
+          44.8559791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 412503579,
+        "name": "Terminal 1 - Lindbergh",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2055343,
+          44.8804706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 478050478,
+        "name": "50th Street/Minnehaha Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2103002,
+          44.912569
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 606286457,
+        "name": "Cedar-Riverside",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2508207,
+          44.9679881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 622236970,
+        "name": "Fridley",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.271023,
+          45.0788549
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1131431168,
+        "name": "Bloomington Central",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2269307,
+          44.8564227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1131431348,
+        "name": "Lake Street/Midtown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2386738,
+          44.9479327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1131431435,
+        "name": "30th Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2320658,
+          44.855562
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1131431847,
+        "name": "Terminal 1 - Lindbergh",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2056761,
+          44.8805436
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1436098600,
+        "name": "Westgate",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2076662,
+          44.9679877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605300941,
+        "name": "Mall of America",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2387784,
+          44.8542365
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480116,
+        "name": "Warehouse District/Hennepin Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2728306,
+          44.9797842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480119,
+        "name": "Government Plaza",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2662746,
+          44.9770169
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480121,
+        "name": "Nicollet Mall",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2703173,
+          44.9787879
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480134,
+        "name": "Nicollet Mall",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2695059,
+          44.9783496
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480137,
+        "name": "Warehouse District/Hennepin Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2734209,
+          44.9803142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480138,
+        "name": "Target Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2774521,
+          44.9830404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480140,
+        "name": "Target Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2768033,
+          44.9824485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480153,
+        "name": "Government Plaza",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2654363,
+          44.9766199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1605480156,
+        "name": "U.S. Bank Stadium",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2593387,
+          44.9751097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1607209452,
+        "name": "Target Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2774212,
+          44.9829192
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1607209471,
+        "name": "Franklin Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2468999,
+          44.9622608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1607209483,
+        "name": "Franklin Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2472464,
+          44.962947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1607209524,
+        "name": "Target Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2775648,
+          44.983018
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1611090897,
+        "name": "38th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2293009,
+          44.9343597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1611090919,
+        "name": "38th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.229656,
+          44.9350543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1613842554,
+        "name": "VA Medical Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2024489,
+          44.9033234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1613842555,
+        "name": "VA Medical Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2022627,
+          44.9026249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1619096653,
+        "name": "46th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2201303,
+          44.9211414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1619096705,
+        "name": "46th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2197298,
+          44.9204817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1678639125,
+        "name": "50th Street/Minnehaha Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2096976,
+          44.9119968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1686581220,
+        "name": "Fort Snelling",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1982643,
+          44.8929177
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1686581226,
+        "name": "Fort Snelling",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1978907,
+          44.8935845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1695404447,
+        "name": "Terminal 2 - Humphrey",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2239269,
+          44.8737832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1695404488,
+        "name": "Terminal 2 - Humphrey",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2243686,
+          44.8745254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1720052645,
+        "name": "American Boulevard",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2231681,
+          44.8587149
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1722225703,
+        "name": "Cottage City Stop",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3089103,
+          44.9311773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1722225764,
+        "name": "42nd St Depot",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3095406,
+          44.9277933
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1813907342,
+        "name": "Target Field",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2771733,
+          44.983206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819181065,
+        "name": "US Bank Stadium",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2598737,
+          44.9749861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819181070,
+        "name": "Government Plaza",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2658495,
+          44.9768155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819181071,
+        "name": "Warehouse District/Hennepin Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2731207,
+          44.9800501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819181072,
+        "name": "Nicollet Mall",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2698892,
+          44.9785588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819182327,
+        "name": "Cedar-Riverside",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2510323,
+          44.9683955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819182328,
+        "name": "Franklin Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2470061,
+          44.9625301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819190084,
+        "name": "Fort Snelling",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.198107,
+          44.893164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819190085,
+        "name": "Lake Street/Midtown",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2388449,
+          44.9483483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819190086,
+        "name": "Terminal 2 - Humphrey",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2241343,
+          44.8741545
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819190087,
+        "name": "VA Medical Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2023157,
+          44.9028805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819190088,
+        "name": "38th Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.229424,
+          44.9346222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819190089,
+        "name": "46th Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2198839,
+          44.9207482
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1819190090,
+        "name": "50th Street/Minnehaha Park",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2099905,
+          44.9122824
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1936899078,
+        "name": "Bloomington Central",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2264658,
+          44.8563818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1936899153,
+        "name": "30th Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2315774,
+          44.8558484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2119908838,
+        "name": "West Bank",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2456592,
+          44.9720057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2485685698,
+        "name": "American Boulevard",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2232036,
+          44.85769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2485685699,
+        "name": "American Boulevard",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2231316,
+          44.8597664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623846,
+        "name": "Snelling Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1656077,
+          44.9556717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623847,
+        "name": "Hamline Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.15546,
+          44.9556957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623848,
+        "name": "Snelling Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1684025,
+          44.9556993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623849,
+        "name": "Capitol/Rice Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1046433,
+          44.9556983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623850,
+        "name": "Victoria Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1350902,
+          44.9557132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623851,
+        "name": "Dale Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1248997,
+          44.955715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623852,
+        "name": "Lexington Parkway",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.145275,
+          44.9557164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623853,
+        "name": "Hamline Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1582603,
+          44.9557269
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623854,
+        "name": "Capitol/Rice Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1056546,
+          44.9557302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623855,
+        "name": "Western Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1147748,
+          44.9557559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623856,
+        "name": "Dale Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1277156,
+          44.9557464
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623857,
+        "name": "Lexington Parkway",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1480448,
+          44.955752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623858,
+        "name": "Victoria Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1378958,
+          44.955751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623859,
+        "name": "Western Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1174998,
+          44.9557845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623860,
+        "name": "Fairview Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1783189,
+          44.9562194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623861,
+        "name": "Fairview Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1791597,
+          44.9565951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623862,
+        "name": "Raymond Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1950308,
+          44.9628897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623863,
+        "name": "Raymond Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1958527,
+          44.9632637
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623864,
+        "name": "Westgate",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2052931,
+          44.9669906
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623865,
+        "name": "Prospect Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2153202,
+          44.9713663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623866,
+        "name": "West Bank",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.246693,
+          44.9719198
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623867,
+        "name": "Prospect Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2152052,
+          44.9721093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623868,
+        "name": "East Bank",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2305747,
+          44.973632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623869,
+        "name": "East Bank",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2315879,
+          44.9737298
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623870,
+        "name": "Stadium Village",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.22311,
+          44.9744709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913623871,
+        "name": "Stadium Village",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2225738,
+          44.9750669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631271,
+        "name": "Capitol/Rice Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1051011,
+          44.9557251
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631273,
+        "name": "Dale Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.126309,
+          44.9557383
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631274,
+        "name": "Fairview Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1787686,
+          44.9564181
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631275,
+        "name": "Hamline Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1568449,
+          44.9557164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631276,
+        "name": "Lexington Parkway",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1466494,
+          44.9557479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631277,
+        "name": "Prospect Park",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2152607,
+          44.9717094
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631278,
+        "name": "Raymond Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1954717,
+          44.9630871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631281,
+        "name": "East Bank",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2310986,
+          44.9736726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631282,
+        "name": "Stadium Village",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2228415,
+          44.9747673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631283,
+        "name": "Victoria Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1364979,
+          44.9557403
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631285,
+        "name": "Western Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1161239,
+          44.9557653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2913631286,
+        "name": "Westgate",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2064717,
+          44.9674839
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4065219555,
+        "name": "Snelling Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1670158,
+          44.955687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4254534424,
+        "name": "West Bank",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2463486,
+          44.9719278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4305375756,
+        "name": "Target Field - Platform 1",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2771187,
+          44.9827407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6576974953,
+        "name": "Mall of America",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2388203,
+          44.8544238
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6576974954,
+        "name": "Mall of America",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2387267,
+          44.8544208
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6576997972,
+        "name": "Terminal 1 - Lindbergh",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.20562,
+          44.8805283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6631293188,
+        "name": "Town Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.431354,
+          44.8590775
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638646696,
+        "name": "Opus",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4139601,
+          44.8977713
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638649720,
+        "name": "City West",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4109948,
+          44.8905423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638649722,
+        "name": "Golden Triangle",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4100891,
+          44.8771959
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638693370,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4101281,
+          44.877584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638693371,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4100355,
+          44.8769072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638726692,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4321336,
+          44.8590694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638726693,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4303932,
+          44.8591558
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638754368,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4113666,
+          44.8908139
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638754369,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4106673,
+          44.8902802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638768433,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4138893,
+          44.8981036
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6638768434,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4140151,
+          44.8974499
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640580590,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3547996,
+          44.9386176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640738048,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3390669,
+          44.9438726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640738049,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3399017,
+          44.9436805
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640738050,
+        "name": "Beltline Boulevard",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3394464,
+          44.9437864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640738077,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3547321,
+          44.9385478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640738078,
+        "name": "Wooddale Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3547585,
+          44.9385937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640738079,
+        "name": "Louisiana Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3650244,
+          44.9348601
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640738080,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.365075,
+          44.934896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6640738081,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3650087,
+          44.9348257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6641824111,
+        "name": "Royalston",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2830488,
+          44.9812392
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6641824112,
+        "name": "Bassett Creek Valley",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2957254,
+          44.9743028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6641824113,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2960407,
+          44.9741901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6641824114,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2953283,
+          44.974527
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6641824115,
+        "name": "Bryn Mawr",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3091331,
+          44.9680568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6641824143,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3094941,
+          44.9679388
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6641824144,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3087545,
+          44.9682014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6641849960,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2829875,
+          44.9813275
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6648666574,
+        "name": "Shady Oak",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4209655,
+          44.9177951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652942386,
+        "name": "West Lake Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3243977,
+          44.9476952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652942428,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3147089,
+          44.960433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652952037,
+        "name": "West 21st Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.314663,
+          44.9606784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652964636,
+        "name": "Blake Road",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3864382,
+          44.9277978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652964641,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3867482,
+          44.9277424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652964642,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3859553,
+          44.9279206
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652964643,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.324656,
+          44.9475728
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652964644,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3240474,
+          44.9478951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652964645,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3146155,
+          44.9609406
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6652964647,
+        "name": "Unknown",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2830454,
+          44.9813252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6712718279,
+        "name": "SouthWest",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4444376,
+          44.8598512
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127258549,
+        "name": "Midway",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1841362,
+          44.9614345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127258550,
+        "name": "Midway",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1842314,
+          44.9614317
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127258551,
+        "name": "Midway",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1840235,
+          44.961434
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127258552,
+        "name": "Midway",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1840399,
+          44.964617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127258553,
+        "name": "Midway",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1841457,
+          44.964617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127258554,
+        "name": "Midway",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.1842408,
+          44.9646157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127605345,
+        "name": "Fridley",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2708815,
+          45.07945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7127605346,
+        "name": "Fridley",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2709686,
+          45.0783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8365570101,
+        "name": "Target Field - Platform 2",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2786201,
+          44.9834772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8446755210,
+        "name": "Target Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2780297,
+          44.9832595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8446755211,
+        "name": "Target Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.2789496,
+          44.9836132
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9153888873,
+        "name": "Downtown Hopkins",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.4091851,
+          44.9207673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9892321102,
+        "name": "Lakewood Cemetery Stop",
+        "type": "tram_stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -93.3050624,
+          44.9358794
+        ]
+      }
+    }
+  ]
+}
