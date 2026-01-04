@@ -426,11 +426,8 @@ export function Controls({
           ⭐ Dallas
         </button>
         <button
-          className={`city-btn city-btn-pending ${
-            city === "Minneapolis" ? "active" : ""
-          }`}
+          className={`city-btn ${city === "Minneapolis" ? "active" : ""}`}
           onClick={() => setCity("Minneapolis")}
-          title="Data collection starting soon"
         >
           🌆 MSP
         </button>
