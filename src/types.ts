@@ -116,7 +116,10 @@ export const PORTLAND_STREETCAR_LINE_INFO: Record<
 };
 
 // Combined Portland rail lines (MAX + Streetcar)
-export const PORTLAND_RAIL_LINES = [...PORTLAND_MAX_LINES, ...PORTLAND_STREETCAR_LINES] as const;
+export const PORTLAND_RAIL_LINES = [
+  ...PORTLAND_MAX_LINES,
+  ...PORTLAND_STREETCAR_LINES,
+] as const;
 export type PortlandRailLine = PortlandMaxLine | PortlandStreetcarLine;
 
 // San Diego MTS Trolley lines
@@ -263,7 +266,16 @@ export const MINNEAPOLIS_METRO_LINE_INFO: Record<
 // Lines present in OSM data: A, B, D, E, G, H, L, N, R, W
 // C and F are not explicitly tagged in OSM (they share tracks with other lines)
 export const DENVER_RTD_LINES = [
-  "A", "B", "D", "E", "G", "H", "L", "N", "R", "W"
+  "A",
+  "B",
+  "D",
+  "E",
+  "G",
+  "H",
+  "L",
+  "N",
+  "R",
+  "W",
 ] as const;
 export type DenverRtdLine = (typeof DENVER_RTD_LINES)[number];
 
@@ -272,16 +284,16 @@ export const DENVER_RTD_LINE_INFO: Record<
   DenverRtdLine,
   { name: string; letter: string; color: string }
 > = {
-  A: { name: "A Line (Airport)", letter: "A", color: "#54C0E8" },     // Light Blue (commuter rail)
+  A: { name: "A Line (Airport)", letter: "A", color: "#54C0E8" }, // Light Blue (commuter rail)
   B: { name: "B Line (Westminster)", letter: "B", color: "#4C9C2E" }, // Dark Green (commuter rail)
-  D: { name: "D Line", letter: "D", color: "#008348" },               // Green
-  E: { name: "E Line", letter: "E", color: "#552683" },               // Purple
-  G: { name: "G Line (Arvada)", letter: "G", color: "#F9A01B" },      // Gold (commuter rail)
-  H: { name: "H Line", letter: "H", color: "#0075BF" },               // Blue
-  L: { name: "L Line", letter: "L", color: "#FDB813" },               // Yellow
-  N: { name: "N Line (Northglenn)", letter: "N", color: "#9B26B6" },  // Purple/Violet (commuter rail)
-  R: { name: "R Line", letter: "R", color: "#8CC63F" },               // Lime Green
-  W: { name: "W Line (Golden)", letter: "W", color: "#1C4E9D" },      // Dark Blue
+  D: { name: "D Line", letter: "D", color: "#008348" }, // Green
+  E: { name: "E Line", letter: "E", color: "#552683" }, // Purple
+  G: { name: "G Line (Arvada)", letter: "G", color: "#F9A01B" }, // Gold (commuter rail)
+  H: { name: "H Line", letter: "H", color: "#0075BF" }, // Blue
+  L: { name: "L Line", letter: "L", color: "#FDB813" }, // Yellow
+  N: { name: "N Line (Northglenn)", letter: "N", color: "#9B26B6" }, // Purple/Violet (commuter rail)
+  R: { name: "R Line", letter: "R", color: "#8CC63F" }, // Lime Green
+  W: { name: "W Line (Golden)", letter: "W", color: "#1C4E9D" }, // Dark Blue
 };
 
 // Salt Lake City UTA TRAX Light Rail lines

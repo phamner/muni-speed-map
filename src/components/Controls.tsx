@@ -356,39 +356,12 @@ export function Controls({
           🌴 LA
         </button>
         <button
-          className={`city-btn city-btn-pending ${
-            city === "San Diego" ? "active" : ""
-          }`}
-          onClick={() => setCity("San Diego")}
-          title="Waiting for API key"
-        >
-          🌊 SD
-        </button>
-        {/* Row 2: Pacific NW + Central */}
-        <button
-          className={`city-btn city-btn-pending ${
-            city === "Seattle" ? "active" : ""
-          }`}
-          onClick={() => setCity("Seattle")}
-          title="Waiting for API key"
-        >
-          ☕ Seattle
-        </button>
-        <button
           className={`city-btn ${city === "Portland" ? "active" : ""}`}
           onClick={() => setCity("Portland")}
         >
-          🚲 PDX
+          🚲 Portland
         </button>
-        <button
-          className={`city-btn city-btn-warning ${
-            city === "Sacramento" ? "active" : ""
-          }`}
-          onClick={() => setCity("Sacramento")}
-          title="Data quality issues - SacRT doesn't tag light rail vehicles"
-        >
-          ⚠️ Sac
-        </button>
+
         {/* Row 3: East + Canada */}
         <button
           className={`city-btn ${city === "Boston" ? "active" : ""}`}
@@ -407,6 +380,12 @@ export function Controls({
           onClick={() => setCity("Toronto")}
         >
           🍁 Toronto
+        </button>
+        <button
+          className={`city-btn ${city === "Minneapolis" ? "active" : ""}`}
+          onClick={() => setCity("Minneapolis")}
+        >
+          🌆 MSP
         </button>
         {/* Row 4: New cities */}
         <button
@@ -427,12 +406,7 @@ export function Controls({
         >
           ⭐ Dallas
         </button>
-        <button
-          className={`city-btn ${city === "Minneapolis" ? "active" : ""}`}
-          onClick={() => setCity("Minneapolis")}
-        >
-          🌆 MSP
-        </button>
+
         <button
           className={`city-btn city-btn-pending ${
             city === "Denver" ? "active" : ""
@@ -450,6 +424,35 @@ export function Controls({
           title="Data collection starting soon"
         >
           🏔️ SLC
+        </button>
+        <button
+          className={`city-btn city-btn-pending ${
+            city === "San Diego" ? "active" : ""
+          }`}
+          onClick={() => setCity("San Diego")}
+          title="Waiting for API key"
+        >
+          🌊 SD
+        </button>
+        {/* Row 2: Pacific NW + Central */}
+        <button
+          className={`city-btn city-btn-pending ${
+            city === "Seattle" ? "active" : ""
+          }`}
+          onClick={() => setCity("Seattle")}
+          title="Waiting for API key"
+        >
+          ☕ Seattle
+        </button>
+
+        <button
+          className={`city-btn city-btn-warning ${
+            city === "Sacramento" ? "active" : ""
+          }`}
+          onClick={() => setCity("Sacramento")}
+          title="Data quality issues - SacRT doesn't tag light rail vehicles"
+        >
+          ⚠️ Sac
         </button>
       </div>
 

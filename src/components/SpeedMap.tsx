@@ -1315,7 +1315,8 @@ export function SpeedMap({
         "Pittsburgh",
         "Dallas",
         "Minneapolis",
-        "Salt Lake City",
+        // Salt Lake City routes are now line-specific and should be filterable
+        // "Salt Lake City",
       ];
       const skipRouteFiltering = osmSourcedCities.includes(city);
       const filteredRoutes = {

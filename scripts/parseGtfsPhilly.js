@@ -44,7 +44,7 @@ const LINE_NAMES = {
   15: "Route 15 (Girard)",
   34: "Route 34",
   36: "Route 36",
-  101: "Route 101 (Media)",
+  101: "Route 101 (D1)",
   102: "Route 102 (Sharon Hill)",
 };
 
