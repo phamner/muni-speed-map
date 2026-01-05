@@ -345,7 +345,7 @@ export function Controls({
         <h1
           className={`app-title ${city === "Boston" ? "app-title-long" : ""}`}
         >
-          Urban Rail Friction Map
+          Urban Rail Speed Map
           {/* {systemLine}  */}
         </h1>
         <span className="app-city">{cityLine}</span>
@@ -698,56 +698,56 @@ export function Controls({
 
       {/* Speed Legend - static extended scale */}
       <div className="control-group">
-        <div className="control-label">Speed Legend</div>
+        <div className="control-label">Speed Legend (mph)</div>
         <div className="speed-legend">
           <div className="speed-legend-item">
             <span
               className="speed-legend-dot"
               style={{ backgroundColor: "#9b2d6b" }}
             ></span>
-            <span>&lt; 5 mph</span>
+            <span>&lt; 5</span>
           </div>
           <div className="speed-legend-item">
             <span
               className="speed-legend-dot"
               style={{ backgroundColor: "#ff3333" }}
             ></span>
-            <span>5-10 mph</span>
+            <span>5-10</span>
           </div>
           <div className="speed-legend-item">
             <span
               className="speed-legend-dot"
               style={{ backgroundColor: "#ff9933" }}
             ></span>
-            <span>10-15 mph</span>
+            <span>10-15</span>
           </div>
           <div className="speed-legend-item">
             <span
               className="speed-legend-dot"
               style={{ backgroundColor: "#ffdd33" }}
             ></span>
-            <span>15-25 mph</span>
+            <span>15-25</span>
           </div>
           <div className="speed-legend-item">
             <span
               className="speed-legend-dot"
               style={{ backgroundColor: "#88ff33" }}
             ></span>
-            <span>25-35 mph</span>
+            <span>25-35</span>
           </div>
           <div className="speed-legend-item">
             <span
               className="speed-legend-dot"
               style={{ backgroundColor: "#33eebb" }}
             ></span>
-            <span>35-50 mph</span>
+            <span>35-50</span>
           </div>
           <div className="speed-legend-item">
             <span
               className="speed-legend-dot"
               style={{ backgroundColor: "#22ccff" }}
             ></span>
-            <span>&gt; 50 mph</span>
+            <span>&gt; 50</span>
           </div>
           <div className="speed-legend-item">
             <span
@@ -762,7 +762,7 @@ export function Controls({
       {/* Line Statistics */}
       {lineStats.length > 0 && (
         <div className="control-group">
-          <div className="control-label">Speed by Line</div>
+          <div className="control-label">Speed by Line (mph)</div>
           <div className="line-stats">
             {[...lineStats]
               .sort((a, b) => b.avgSpeed - a.avgSpeed)
