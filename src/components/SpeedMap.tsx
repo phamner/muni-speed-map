@@ -848,6 +848,8 @@ interface SpeedMapProps {
   showSwitches: boolean;
   hideStoppedTrains: boolean;
   viewMode: ViewMode;
+  showSatellite: boolean;
+  onSatelliteToggle?: (show: boolean) => void;
   onVehicleUpdate?: (
     count: number,
     time: Date,
@@ -867,6 +869,8 @@ export function SpeedMap({
   showSwitches,
   hideStoppedTrains,
   viewMode,
+  showSatellite,
+  onSatelliteToggle,
   onVehicleUpdate,
 }: SpeedMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -1209,6 +1213,14 @@ export function SpeedMap({
             tileSize: 256,
             attribution: "&copy; OpenStreetMap &copy; CARTO",
           },
+          "esri-satellite": {
+            type: "raster",
+            tiles: [
+              "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+            ],
+            tileSize: 256,
+            attribution: "&copy; Esri, Maxar, Earthstar Geographics",
+          },
         },
         layers: [
           {
@@ -1217,6 +1229,16 @@ export function SpeedMap({
             source: "carto-dark",
             minzoom: 0,
             maxzoom: 19,
+          },
+          {
+            id: "satellite-layer",
+            type: "raster",
+            source: "esri-satellite",
+            minzoom: 0,
+            maxzoom: 19,
+            layout: {
+              visibility: "none", // Hidden by default
+            },
           },
         ],
       },
@@ -1227,6 +1249,22 @@ export function SpeedMap({
     });
 
     map.current.addControl(new maplibregl.NavigationControl(), "bottom-right");
+
+    // Add scale control showing both miles and kilometers
+    map.current.addControl(
+      new maplibregl.ScaleControl({
+        maxWidth: 150,
+        unit: "imperial", // Shows miles
+      }),
+      "bottom-left"
+    );
+    map.current.addControl(
+      new maplibregl.ScaleControl({
+        maxWidth: 150,
+        unit: "metric", // Shows kilometers
+      }),
+      "bottom-left"
+    );
 
     popup.current = new maplibregl.Popup({
       closeButton: false,
@@ -2583,9 +2621,54 @@ export function SpeedMap({
     allRouteSegments,
   ]);
 
+  // Toggle satellite/dark base map
+  useEffect(() => {
+    if (!mapLoaded || !map.current) return;
+
+    try {
+      map.current.setLayoutProperty(
+        "carto-dark-layer",
+        "visibility",
+        showSatellite ? "none" : "visible"
+      );
+      map.current.setLayoutProperty(
+        "satellite-layer",
+        "visibility",
+        showSatellite ? "visible" : "none"
+      );
+    } catch (e) {
+      // Layers may not exist yet
+    }
+  }, [mapLoaded, showSatellite]);
+
+  // Toggle satellite view from the map layer button
+  const toggleSatellite = () => {
+    if (onSatelliteToggle) {
+      onSatelliteToggle(!showSatellite);
+    }
+  };
+
   return (
     <div className="map-wrapper">
       <div ref={mapContainer} className="map-container" />
+
+      {/* Google Maps-style layer toggle button */}
+      <div
+        className="map-layer-toggle"
+        onClick={toggleSatellite}
+        title={showSatellite ? "Switch to dark map" : "Switch to satellite"}
+      >
+        <div
+          className="layer-preview"
+          style={{
+            backgroundImage: showSatellite
+              ? "url('https://a.basemaps.cartocdn.com/dark_all/12/656/1582@2x.png')"
+              : "url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/12/1582/656')",
+          }}
+        />
+        <div className="layer-label">{showSatellite ? "Map" : "Satellite"}</div>
+      </div>
+
       {dataSource === "none" && (
         <div className="data-status">
           No data yet. Run{" "}

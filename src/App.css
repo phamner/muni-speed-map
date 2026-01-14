@@ -1114,3 +1114,64 @@
 .sac-warning-modal {
   border-color: rgba(255, 150, 50, 0.3);
 }
+
+/* Map scale control styling */
+.maplibregl-ctrl-scale {
+  background-color: rgba(26, 26, 46, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-top: none;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 2px 6px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.maplibregl-ctrl-bottom-left .maplibregl-ctrl-scale {
+  margin-left: 10px;
+  margin-bottom: 4px;
+}
+
+/* Google Maps-style layer toggle button */
+.map-layer-toggle {
+  position: absolute;
+  bottom: 68px;
+  left: 10px;
+  width: 70px;
+  height: 70px;
+  background: rgba(26, 26, 46, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.map-layer-toggle:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.map-layer-toggle .layer-preview {
+  width: 100%;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.map-layer-toggle .layer-label {
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

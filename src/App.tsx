@@ -52,6 +52,7 @@ function App() {
   const [hideStoppedTrains, setHideStoppedTrains] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("raw");
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
+  const [showSatellite, setShowSatellite] = useState(false);
 
   // Reset state when city changes
   useEffect(() => {
@@ -120,6 +121,8 @@ function App() {
         showSwitches={showSwitches}
         hideStoppedTrains={hideStoppedTrains}
         viewMode={viewMode}
+        showSatellite={showSatellite}
+        onSatelliteToggle={setShowSatellite}
         onVehicleUpdate={(count, time, stats, ageMinutes) => {
           setVehicleCount(count);
           setLastUpdate(time);

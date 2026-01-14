@@ -651,7 +651,9 @@ export function Controls({
               onClick={() => {
                 // Line 5 Eglinton is not yet operational
                 if (city === "Toronto" && line === "805") {
-                  console.log("Line 5 Eglinton: Coming soon - not yet operational");
+                  console.log(
+                    "Line 5 Eglinton: Coming soon - not yet operational"
+                  );
                   return;
                 }
                 toggleLine(line);
@@ -666,7 +668,9 @@ export function Controls({
                 <>
                   <span className="toronto-line-number">
                     {line === "805" || line === "806"
-                      ? TORONTO_STREETCAR_LINE_INFO[line as TorontoStreetcarLine]?.letter
+                      ? TORONTO_STREETCAR_LINE_INFO[
+                          line as TorontoStreetcarLine
+                        ]?.letter
                       : line}
                   </span>
                   <span className="toronto-line-corridor">
