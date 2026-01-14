@@ -29,6 +29,7 @@ import sanDiegoTrolleyStops from "../data/sanDiegoTrolleyStops.json";
 import sanDiegoCrossings from "../data/sanDiegoGradeCrossings.json";
 import sanDiegoSwitches from "../data/sanDiegoSwitches.json";
 import torontoStreetcarRoutes from "../data/torontoStreetcarRoutes.json";
+import torontoLrtRoutes from "../data/torontoLrtRoutes.json";
 import torontoStreetcarStops from "../data/torontoStreetcarStops.json";
 import torontoCrossings from "../data/torontoGradeCrossings.json";
 import torontoSwitches from "../data/torontoSwitches.json";
@@ -102,7 +103,7 @@ function debounce<T extends (...args: any[]) => void>(
 const CITY_CONFIG = {
   SF: {
     center: [-122.433, 37.767] as [number, number],
-    zoom: 12.5,
+    zoom: 11,
     routes: muniRoutes,
     stops: muniStops,
     crossings: sfCrossings,
@@ -111,7 +112,7 @@ const CITY_CONFIG = {
   },
   LA: {
     center: [-118.25, 34.05] as [number, number],
-    zoom: 10.5,
+    zoom: 11,
     routes: laMetroRoutes,
     stops: laMetroStops,
     crossings: laCrossings,
@@ -120,7 +121,7 @@ const CITY_CONFIG = {
   },
   Seattle: {
     center: [-122.33, 47.6] as [number, number],
-    zoom: 10.5,
+    zoom: 11,
     routes: seattleLinkRoutes,
     stops: seattleLinkStops,
     crossings: seattleCrossings,
@@ -129,7 +130,7 @@ const CITY_CONFIG = {
   },
   Boston: {
     center: [-71.08, 42.35] as [number, number],
-    zoom: 12,
+    zoom: 11,
     routes: bostonGreenLineRoutes,
     stops: bostonGreenLineStops,
     crossings: bostonCrossings,
@@ -138,7 +139,7 @@ const CITY_CONFIG = {
   },
   Portland: {
     center: [-122.68, 45.52] as [number, number],
-    zoom: 11.5,
+    zoom: 11,
     routes: portlandMaxRoutes,
     stops: portlandMaxStops,
     crossings: portlandCrossings,
@@ -156,8 +157,15 @@ const CITY_CONFIG = {
   },
   Toronto: {
     center: [-79.38, 43.65] as [number, number],
-    zoom: 12,
-    routes: torontoStreetcarRoutes,
+    zoom: 11,
+    // Merge streetcar routes with LRT routes
+    routes: {
+      type: "FeatureCollection",
+      features: [
+        ...(torontoStreetcarRoutes as any).features,
+        ...(torontoLrtRoutes as any).features,
+      ],
+    },
     stops: torontoStreetcarStops,
     crossings: torontoCrossings,
     switches: torontoSwitches,
@@ -165,7 +173,7 @@ const CITY_CONFIG = {
   },
   Philadelphia: {
     center: [-75.16, 39.95] as [number, number],
-    zoom: 12,
+    zoom: 11,
     routes: phillyTrolleyRoutes,
     stops: phillyTrolleyStops,
     crossings: phillyCrossings,
@@ -174,7 +182,7 @@ const CITY_CONFIG = {
   },
   Sacramento: {
     center: [-121.49, 38.58] as [number, number],
-    zoom: 11.5,
+    zoom: 11,
     routes: sacramentoLightRailRoutes,
     stops: sacramentoLightRailStops,
     crossings: sacramentoCrossings,
@@ -183,7 +191,7 @@ const CITY_CONFIG = {
   },
   Pittsburgh: {
     center: [-79.99, 40.43] as [number, number],
-    zoom: 11.5,
+    zoom: 11,
     routes: pittsburghTRoutes,
     stops: pittsburghTStops,
     crossings: pittsburghCrossings,
@@ -192,7 +200,7 @@ const CITY_CONFIG = {
   },
   Dallas: {
     center: [-96.8, 32.78] as [number, number],
-    zoom: 10.5,
+    zoom: 11,
     routes: dallasDartRoutes,
     stops: dallasDartStops,
     crossings: dallasCrossings,
@@ -201,7 +209,7 @@ const CITY_CONFIG = {
   },
   Minneapolis: {
     center: [-93.27, 44.98] as [number, number],
-    zoom: 11.5,
+    zoom: 11,
     routes: minneapolisMetroRoutes,
     stops: minneapolisMetroStops,
     crossings: minneapolisCrossings,
@@ -210,7 +218,7 @@ const CITY_CONFIG = {
   },
   Denver: {
     center: [-104.9, 39.75] as [number, number],
-    zoom: 10,
+    zoom: 11,
     routes: denverRtdRoutes,
     stops: denverRtdStops,
     crossings: denverCrossings,
@@ -228,7 +236,7 @@ const CITY_CONFIG = {
   },
   "San Jose": {
     center: [-121.89, 37.34] as [number, number],
-    zoom: 11.5,
+    zoom: 11,
     routes: vtaLightRailRoutes,
     stops: vtaLightRailStops,
     crossings: sanJoseCrossings,

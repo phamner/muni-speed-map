@@ -144,8 +144,8 @@ export const SAN_DIEGO_TROLLEY_LINE_INFO: Record<
   "535": { name: "Copper Line", letter: "Copper", color: "#B87333" },
 };
 
-// Toronto TTC Streetcar lines
-// Main streetcar routes that run frequently
+// Toronto TTC Streetcar and LRT lines
+// Main streetcar routes that run frequently, plus new LRT lines
 export const TORONTO_STREETCAR_LINES = [
   "501",
   "503",
@@ -158,6 +158,8 @@ export const TORONTO_STREETCAR_LINES = [
   "510",
   "511",
   "512",
+  "805", // Line 5 Eglinton LRT (not yet open)
+  "806", // Line 6 Finch West LRT (opened Dec 2025)
 ] as const;
 export type TorontoStreetcarLine = (typeof TORONTO_STREETCAR_LINES)[number];
 
@@ -231,6 +233,18 @@ export const TORONTO_STREETCAR_LINE_INFO: Record<
     letter: "512",
     color: "#ED1C24",
     corridor: "St. Clair",
+  },
+  "805": {
+    name: "Line 5 Eglinton",
+    letter: "5",
+    color: "#D18E00", // Official TTC Line 5 orange
+    corridor: "Eglinton",
+  },
+  "806": {
+    name: "Line 6 Finch West",
+    letter: "6",
+    color: "#959595", // Official TTC Line 6 gray
+    corridor: "Finch West",
   },
 };
 

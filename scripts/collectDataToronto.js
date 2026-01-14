@@ -1,26 +1,41 @@
 #!/usr/bin/env node
 /**
- * Toronto TTC Streetcar Data Collector
+ * Toronto TTC Streetcar & LRT Data Collector
  *
- * Fetches real-time vehicle positions from TTC's NextBus-compatible API,
- * calculates speeds between consecutive readings, and stores in Supabase.
+ * Fetches real-time vehicle positions from:
+ * 1. TTC's NextBus/Umo API for streetcars (501-512)
+ * 2. TTC's GTFS-RT feed for LRT lines (Line 6 Finch West = route 806)
+ *
+ * Calculates speeds between consecutive readings and stores in Supabase.
  *
  * No API key required - TTC provides open data feeds.
  *
  * Usage: npm run collect:toronto
  */
 
+// Node.js 16/18 polyfills for fetch and Headers
+import fetch, { Headers, Request, Response } from "node-fetch";
+global.fetch = fetch;
+global.Headers = Headers;
+global.Request = Request;
+global.Response = Response;
+
 import { createClient } from "@supabase/supabase-js";
+import GtfsRealtimeBindings from "gtfs-realtime-bindings";
 
 // Configuration
 const SUPABASE_URL = "https://REDACTED_SUPABASE_REF.supabase.co";
 const SUPABASE_ANON_KEY =
   "REDACTED_SUPABASE_KEY";
 
-// TTC uses NextBus/Umo API
+// TTC uses NextBus/Umo API for streetcars
 const API_BASE_URL = "https://retro.umoiq.com/service/publicJSONFeed";
 
-// Streetcar route tags
+// TTC GTFS-RT feed for buses and LRT
+const GTFS_RT_VEHICLE_POSITIONS_URL =
+  "https://bustime.ttc.ca/gtfsrt/vehicles";
+
+// Streetcar route tags (NextBus/Umo API)
 const STREETCAR_ROUTES = [
   "501",
   "503",
@@ -34,6 +49,11 @@ const STREETCAR_ROUTES = [
   "511",
   "512",
 ];
+
+// LRT route IDs (GTFS-RT feed)
+// Line 6 Finch West = 806 (opened Dec 7, 2025)
+// Line 5 Eglinton = 805 (future, not yet open)
+const LRT_ROUTES = ["806", "805"];
 
 const POLL_INTERVAL_MS = 90000; // 90 seconds
 
@@ -117,6 +137,87 @@ async function fetchRouteVehicles(routeTag) {
   }
 }
 
+// Fetch LRT vehicle positions from GTFS-RT feed
+async function fetchLrtVehicles() {
+  try {
+    const response = await fetch(GTFS_RT_VEHICLE_POSITIONS_URL);
+
+    if (!response.ok) {
+      throw new Error(`GTFS-RT API error: ${response.status}`);
+    }
+
+    const buffer = await response.arrayBuffer();
+    const feed = GtfsRealtimeBindings.transit_realtime.FeedMessage.decode(
+      new Uint8Array(buffer)
+    );
+
+    const lrtVehicles = [];
+    const routeCounts = {};
+
+    for (const entity of feed.entity) {
+      if (!entity.vehicle || !entity.vehicle.position) continue;
+
+      const routeId = entity.vehicle.trip?.routeId;
+      if (!routeId || !LRT_ROUTES.includes(routeId)) continue;
+
+      // Count vehicles per route for logging
+      routeCounts[routeId] = (routeCounts[routeId] || 0) + 1;
+
+      const position = entity.vehicle.position;
+      const timestamp = entity.vehicle.timestamp
+        ? new Date(Number(entity.vehicle.timestamp) * 1000)
+        : new Date();
+
+      lrtVehicles.push({
+        vehicle_id: `LRT-${entity.vehicle.vehicle?.id || entity.id}`,
+        route_id: routeId,
+        direction_id: entity.vehicle.trip?.directionId?.toString() || "",
+        lat: position.latitude,
+        lon: position.longitude,
+        // GTFS-RT speed is in m/s, convert to mph
+        speed_reported: position.speed ? position.speed * 2.237 : null,
+        heading: position.bearing || null,
+        recorded_at: timestamp.toISOString(),
+        city: "Toronto",
+      });
+    }
+
+    // Log LRT route status
+    console.log("   🚈 LRT Status:");
+    for (const route of LRT_ROUTES) {
+      const count = routeCounts[route] || 0;
+      if (route === "806") {
+        // Line 6 Finch West - special logging
+        if (count > 0) {
+          console.log(
+            `      ✅ Line 6 Finch West (route 806): ${count} vehicle(s) ACTIVE`
+          );
+        } else {
+          console.log(
+            `      ⏳ Line 6 Finch West (route 806): No vehicles detected (waiting for data)`
+          );
+        }
+      } else if (route === "805") {
+        // Line 5 Eglinton - not yet open
+        if (count > 0) {
+          console.log(
+            `      ✅ Line 5 Eglinton (route 805): ${count} vehicle(s) ACTIVE`
+          );
+        } else {
+          console.log(
+            `      ⏳ Line 5 Eglinton (route 805): Not yet operational`
+          );
+        }
+      }
+    }
+
+    return lrtVehicles;
+  } catch (error) {
+    console.error("   Error fetching LRT data from GTFS-RT:", error.message);
+    return [];
+  }
+}
+
 // Calculate speed from last known position
 function calculateSpeed(vehicle) {
   const key = vehicle.vehicle_id;
@@ -165,24 +266,30 @@ function calculateSpeed(vehicle) {
 // Main collection loop
 async function collectData() {
   console.log(
-    `[${formatTime(new Date())}] Fetching Toronto TTC vehicle positions...`,
+    `[${formatTime(new Date())}] Fetching Toronto TTC vehicle positions...`
   );
 
   try {
-    // Fetch all routes in parallel
-    const allVehicles = [];
+    // Fetch streetcar data from NextBus/Umo API
+    const streetcarVehicles = [];
 
     for (const routeTag of STREETCAR_ROUTES) {
       const vehicles = await fetchRouteVehicles(routeTag);
-      allVehicles.push(...vehicles);
+      streetcarVehicles.push(...vehicles);
       // Small delay between requests to be polite
       await new Promise((resolve) => setTimeout(resolve, 100));
     }
 
-    console.log(`   Found ${allVehicles.length} Streetcar vehicles`);
+    console.log(`   🚊 Found ${streetcarVehicles.length} Streetcar vehicles`);
+
+    // Fetch LRT data from GTFS-RT feed
+    const lrtVehicles = await fetchLrtVehicles();
+
+    // Combine all vehicles
+    const allVehicles = [...streetcarVehicles, ...lrtVehicles];
 
     if (allVehicles.length === 0) {
-      console.log("   No Streetcar vehicles found, skipping...");
+      console.log("   No vehicles found, skipping...");
       return;
     }
 
@@ -234,9 +341,10 @@ async function collectData() {
 
 // Main entry point
 async function main() {
-  console.log("🚊 Toronto TTC Streetcar Collector");
+  console.log("🚊 Toronto TTC Streetcar & LRT Collector");
   console.log(`   Polling every ${POLL_INTERVAL_MS / 1000} seconds`);
-  console.log(`   Tracking routes: ${STREETCAR_ROUTES.join(", ")}`);
+  console.log(`   Streetcar routes: ${STREETCAR_ROUTES.join(", ")}`);
+  console.log(`   LRT routes: ${LRT_ROUTES.join(", ")} (Line 6 Finch West, Line 5 Eglinton)`);
   console.log("");
 
   // Run immediately

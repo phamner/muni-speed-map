@@ -297,6 +297,30 @@
   white-space: nowrap;
 }
 
+/* Coming soon / not operational lines */
+.line-coming-soon {
+  opacity: 0.5;
+  cursor: not-allowed;
+  position: relative;
+}
+
+.line-coming-soon::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.1) 3px,
+    rgba(0, 0, 0, 0.1) 6px
+  );
+  pointer-events: none;
+}
+
 .route-lines-section {
   margin-top: 4px;
 }

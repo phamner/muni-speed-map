@@ -640,23 +640,41 @@ export function Controls({
               key={line}
               className={`line-button ${
                 selectedLines.includes(line) ? "active" : "inactive"
-              }${city === "Toronto" ? " toronto-line-button" : ""}`}
+              }${city === "Toronto" ? " toronto-line-button" : ""}${
+                city === "Toronto" && line === "805" ? " line-coming-soon" : ""
+              }`}
               style={
                 {
                   "--line-color": getLineColor(line, city),
                 } as React.CSSProperties
               }
-              onClick={() => toggleLine(line)}
-              title={getLineInfo(line, city)}
+              onClick={() => {
+                // Line 5 Eglinton is not yet operational
+                if (city === "Toronto" && line === "805") {
+                  console.log("Line 5 Eglinton: Coming soon - not yet operational");
+                  return;
+                }
+                toggleLine(line);
+              }}
+              title={
+                city === "Toronto" && line === "805"
+                  ? "Line 5 Eglinton - Coming Soon (not yet operational)"
+                  : getLineInfo(line, city)
+              }
             >
               {city === "Toronto" ? (
                 <>
-                  <span className="toronto-line-number">{line}</span>
+                  <span className="toronto-line-number">
+                    {line === "805" || line === "806"
+                      ? TORONTO_STREETCAR_LINE_INFO[line as TorontoStreetcarLine]?.letter
+                      : line}
+                  </span>
                   <span className="toronto-line-corridor">
                     {
                       TORONTO_STREETCAR_LINE_INFO[line as TorontoStreetcarLine]
                         ?.corridor
                     }
+                    {line === "805" ? " ⏳" : ""}
                   </span>
                 </>
               ) : (
