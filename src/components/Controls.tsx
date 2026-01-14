@@ -502,15 +502,6 @@ export function Controls({
 
         <button
           className={`city-btn city-btn-pending ${
-            city === "Dallas" ? "active" : ""
-          }`}
-          onClick={() => setCity("Dallas")}
-          title="Data collection starting soon"
-        >
-          ⭐ Dallas
-        </button>
-        <button
-          className={`city-btn city-btn-pending ${
             city === "San Diego" ? "active" : ""
           }`}
           onClick={() => setCity("San Diego")}
@@ -520,36 +511,29 @@ export function Controls({
         </button>
 
         <button
-          className={`city-btn city-btn-warning ${
-            city === "Sacramento" ? "active" : ""
-          }`}
-          onClick={() => setCity("Sacramento")}
-          title="Data quality issues - SacRT doesn't tag light rail vehicles"
-        >
-          ⚠️ Sac
-        </button>
-
-        <button
           className="city-btn city-btn-dark-orange"
           onClick={() => console.log("Jersey City (HBLR) - Coming soon")}
           title="Hudson-Bergen Light Rail - Coming soon"
         >
-          🚊 JC
+          🚊JC
         </button>
         <button
           className="city-btn city-btn-dark-orange"
           onClick={() => console.log("Calgary (CTrain) - Coming soon")}
           title="CTrain - Coming soon"
         >
-          🚊 CGY
+          🚊 EMD
         </button>
         <button
-          className="city-btn city-btn-dark-orange"
-          onClick={() => console.log("Edmonton (LRT) - Coming soon")}
-          title="Edmonton LRT - Coming soon"
+          className={`city-btn city-btn-pending ${
+            city === "Dallas" ? "active" : ""
+          }`}
+          onClick={() => setCity("Dallas")}
+          title="Data collection starting soon"
         >
-          🚊 EDM
+          ⭐ Dallas
         </button>
+
         <button
           className="city-btn city-btn-dark-orange"
           onClick={() => console.log("Cleveland (RTA) - Coming soon")}
@@ -563,6 +547,15 @@ export function Controls({
           title="LYNX Blue Line - Coming soon"
         >
           🚊 CLT
+        </button>
+        <button
+          className={`city-btn city-btn-warning ${
+            city === "Sacramento" ? "active" : ""
+          }`}
+          onClick={() => setCity("Sacramento")}
+          title="Data quality issues - SacRT doesn't tag light rail vehicles"
+        >
+          ⚠️ Sac
         </button>
       </div>
 
@@ -647,7 +640,7 @@ export function Controls({
               key={line}
               className={`line-button ${
                 selectedLines.includes(line) ? "active" : "inactive"
-              }`}
+              }${city === "Toronto" ? " toronto-line-button" : ""}`}
               style={
                 {
                   "--line-color": getLineColor(line, city),
@@ -656,7 +649,19 @@ export function Controls({
               onClick={() => toggleLine(line)}
               title={getLineInfo(line, city)}
             >
-              {getLineLabel(line, city)}
+              {city === "Toronto" ? (
+                <>
+                  <span className="toronto-line-number">{line}</span>
+                  <span className="toronto-line-corridor">
+                    {
+                      TORONTO_STREETCAR_LINE_INFO[line as TorontoStreetcarLine]
+                        ?.corridor
+                    }
+                  </span>
+                </>
+              ) : (
+                getLineLabel(line, city)
+              )}
             </button>
           ))}
         </div>

@@ -164,19 +164,74 @@ export type TorontoStreetcarLine = (typeof TORONTO_STREETCAR_LINES)[number];
 // Toronto Streetcar line names and colors
 export const TORONTO_STREETCAR_LINE_INFO: Record<
   TorontoStreetcarLine,
-  { name: string; letter: string; color: string }
+  { name: string; letter: string; color: string; corridor: string }
 > = {
-  "501": { name: "501 Queen", letter: "501", color: "#ED1C24" },
-  "503": { name: "503 Kingston Rd", letter: "503", color: "#ED1C24" },
-  "504": { name: "504 King", letter: "504", color: "#ED1C24" },
-  "505": { name: "505 Dundas", letter: "505", color: "#ED1C24" },
-  "506": { name: "506 Carlton", letter: "506", color: "#ED1C24" },
-  "507": { name: "507 Long Branch", letter: "507", color: "#ED1C24" },
-  "508": { name: "508 Lake Shore", letter: "508", color: "#ED1C24" },
-  "509": { name: "509 Harbourfront", letter: "509", color: "#ED1C24" },
-  "510": { name: "510 Spadina", letter: "510", color: "#ED1C24" },
-  "511": { name: "511 Bathurst", letter: "511", color: "#ED1C24" },
-  "512": { name: "512 St Clair", letter: "512", color: "#ED1C24" },
+  "501": {
+    name: "501 Queen",
+    letter: "501",
+    color: "#ED1C24",
+    corridor: "Queen",
+  },
+  "503": {
+    name: "503 Kingston Rd",
+    letter: "503",
+    color: "#ED1C24",
+    corridor: "Kingston Rd",
+  },
+  "504": {
+    name: "504 King",
+    letter: "504",
+    color: "#ED1C24",
+    corridor: "King",
+  },
+  "505": {
+    name: "505 Dundas",
+    letter: "505",
+    color: "#ED1C24",
+    corridor: "Dundas",
+  },
+  "506": {
+    name: "506 Carlton",
+    letter: "506",
+    color: "#ED1C24",
+    corridor: "Carlton",
+  },
+  "507": {
+    name: "507 Long Branch",
+    letter: "507",
+    color: "#ED1C24",
+    corridor: "Long Branch",
+  },
+  "508": {
+    name: "508 Lake Shore",
+    letter: "508",
+    color: "#ED1C24",
+    corridor: "Lake Shore",
+  },
+  "509": {
+    name: "509 Harbourfront",
+    letter: "509",
+    color: "#ED1C24",
+    corridor: "Harbourfront",
+  },
+  "510": {
+    name: "510 Spadina",
+    letter: "510",
+    color: "#ED1C24",
+    corridor: "Spadina",
+  },
+  "511": {
+    name: "511 Bathurst",
+    letter: "511",
+    color: "#ED1C24",
+    corridor: "Bathurst",
+  },
+  "512": {
+    name: "512 St Clair",
+    letter: "512",
+    color: "#ED1C24",
+    corridor: "St. Clair",
+  },
 };
 
 // Philadelphia SEPTA Trolley lines

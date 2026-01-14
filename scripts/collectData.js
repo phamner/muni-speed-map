@@ -18,7 +18,6 @@ const API_511_KEY = "REDACTED_511_KEY";
 
 const METRO_LINES = ["F", "J", "K", "L", "M", "N", "T"];
 const POLL_INTERVAL_MS = 90000; // 90 seconds (511 API limit: 60 requests/hour)
-const MAX_POSITIONS_PER_CITY = 5000; // Keep only the most recent positions
 
 // Initialize Supabase client
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
@@ -158,57 +157,6 @@ async function savePositions(positions) {
   return { count: positions.length };
 }
 
-// Prune old positions to keep only MAX_POSITIONS_PER_CITY
-async function pruneOldPositions(city) {
-  try {
-    // Get count of positions for this city
-    const { count, error: countError } = await supabase
-      .from("vehicle_positions")
-      .select("*", { count: "exact", head: true })
-      .eq("city", city);
-
-    if (countError) {
-      console.error("Error counting positions:", countError.message);
-      return;
-    }
-
-    // If under limit, nothing to do
-    if (count <= MAX_POSITIONS_PER_CITY) return;
-
-    const toDelete = count - MAX_POSITIONS_PER_CITY;
-
-    // Get IDs of oldest positions to delete
-    const { data: oldestRows, error: selectError } = await supabase
-      .from("vehicle_positions")
-      .select("id")
-      .eq("city", city)
-      .order("recorded_at", { ascending: true })
-      .limit(toDelete);
-
-    if (selectError || !oldestRows?.length) {
-      console.error("Error selecting old positions:", selectError?.message);
-      return;
-    }
-
-    // Delete oldest rows
-    const idsToDelete = oldestRows.map((r) => r.id);
-    const { error: deleteError } = await supabase
-      .from("vehicle_positions")
-      .delete()
-      .in("id", idsToDelete);
-
-    if (deleteError) {
-      console.error("Error deleting old positions:", deleteError.message);
-    } else {
-      console.log(
-        `   Pruned ${toDelete} old positions (keeping ${MAX_POSITIONS_PER_CITY})`,
-      );
-    }
-  } catch (err) {
-    console.error("Error in pruneOldPositions:", err.message);
-  }
-}
-
 // Main collection loop
 async function collectOnce() {
   const startTime = Date.now();
@@ -251,9 +199,6 @@ async function collectOnce() {
       `[${timestamp} PT] Saved ${count} positions ` +
         `(${withSpeed.length} with speed) in ${elapsed}ms`,
     );
-
-    // Prune old data to keep database size manageable
-    await pruneOldPositions("SF");
   }
 }
 

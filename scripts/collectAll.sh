@@ -53,25 +53,23 @@ cleanup() {
 # Set up trap to catch Ctrl+C
 trap cleanup SIGINT SIGTERM
 
-# Start all collectors
+# Start all collectors (12 working cities)
 start_collector "SF" "collectData.js" "🌉"
 start_collector "LA" "collectDataLA.js" "🌴"
-start_collector "San Diego" "collectDataSanDiego.js" "🌊"
 start_collector "Seattle" "collectDataSeattle.js" "☕"
 start_collector "Portland" "collectDataPortland.js" "🚲"
 start_collector "Boston" "collectDataBoston.js" "🦞"
-start_collector "Toronto" "collectDataToronto.js" "🍁"
 start_collector "Philadelphia" "collectDataPhilly.js" "🔔"
-start_collector "Sacramento" "collectDataSacramento.js" "🏛️"
-start_collector "Pittsburgh" "collectDataPittsburgh.js" "🏗️"
-start_collector "Dallas" "collectDataDallas.js" "⭐"
+start_collector "San Jose" "collectDataVTA.js" "💻"
+start_collector "Toronto" "collectDataToronto.js" "🍁"
 start_collector "Minneapolis" "collectDataMinneapolis.js" "🌆"
 start_collector "Denver" "collectDataDenver.js" "🏔️"
 start_collector "Salt Lake City" "collectDataSaltLakeCity.js" "🏔️"
+start_collector "Pittsburgh" "collectDataPittsburgh.js" "🏗️"
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo -e "${GREEN}✅ All 14 collectors running!${NC}"
+echo -e "${GREEN}✅ All 12 collectors running!${NC}"
 echo ""
 echo "📊 Logs will appear below, prefixed by city."
 echo "🛑 Press Ctrl+C to stop all collectors."
