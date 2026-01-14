@@ -2096,8 +2096,9 @@ export function SpeedMap({
         if (speedFilter.maxSpeed < 50) {
           initialFilters.push(["<=", ["get", "speed"], speedFilter.maxSpeed]);
         }
+        // Use 0.5 threshold so speeds that round to 0 (like 0.3 mph) are also hidden
         if (hideStoppedTrains) {
-          initialFilters.push([">", ["get", "speed"], 0]);
+          initialFilters.push([">=", ["get", "speed"], 0.5]);
         }
         const initialFilter: maplibregl.FilterSpecification = [
           "all",
@@ -2260,8 +2261,9 @@ export function SpeedMap({
     }
 
     // Hide stopped trains (0 mph) if toggle is enabled
+    // Use 0.5 threshold so speeds that round to 0 (like 0.3 mph) are also hidden
     if (hideStoppedTrains) {
-      filters.push([">", ["get", "speed"], 0]);
+      filters.push([">=", ["get", "speed"], 0.5]);
     }
 
     const filterExpression: maplibregl.FilterSpecification = [
