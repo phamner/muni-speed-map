@@ -997,9 +997,10 @@ export function SpeedMap({
       setDataSource("supabase");
 
       // Calculate line statistics (allPositions already filtered to valid lines)
+      // Exclude 0 mph readings (trains in yards, at terminals, etc.) from averages
       const lineSpeedMap = new Map<string, number[]>();
       allPositions.forEach((v) => {
-        if (v.speed == null) return;
+        if (v.speed == null || v.speed < 0.5) return; // Skip null and ~0 mph readings
         if (!lineSpeedMap.has(v.routeId)) {
           lineSpeedMap.set(v.routeId, []);
         }
@@ -1070,9 +1071,10 @@ export function SpeedMap({
           (Date.now() - latestTime.getTime()) / (1000 * 60);
 
         // Calculate line stats from cached data
+        // Exclude 0 mph readings (trains in yards, at terminals, etc.) from averages
         const lineSpeedMap = new Map<string, number[]>();
         cached.forEach((v) => {
-          if (v.speed == null) return;
+          if (v.speed == null || v.speed < 0.5) return; // Skip null and ~0 mph readings
           if (!lineSpeedMap.has(v.routeId)) {
             lineSpeedMap.set(v.routeId, []);
           }
