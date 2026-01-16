@@ -35,6 +35,7 @@ export const CITY_COORDS: Record<
   Denver: { center: [-104.9, 39.75], zoom: 11 },
   "Salt Lake City": { center: [-111.89, 40.76], zoom: 11 },
   "San Jose": { center: [-121.89, 37.34], zoom: 11 },
+  Phoenix: { center: [-112.0, 33.47], zoom: 11 },
   // Placeholder cities (no data yet)
   "Jersey City": { center: [-74.05, 40.73], zoom: 11 },
   Calgary: { center: [-114.07, 51.05], zoom: 11 },
@@ -388,12 +389,47 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       };
     }
 
+    case "Phoenix": {
+      const [routes, stops, crossings, switches, maxspeed] = await Promise.all([
+        import("./phoenixLightRailRoutes.json"),
+        import("./phoenixLightRailStops.json"),
+        import("./phoenixGradeCrossings.json"),
+        import("./phoenixSwitches.json"),
+        import("./phoenixMaxspeed.json"),
+      ]);
+      console.timeEnd(`Loading ${city} static data`);
+      return {
+        routes: routes.default,
+        stops: stops.default,
+        crossings: crossings.default,
+        switches: switches.default,
+        maxspeed: maxspeed.default,
+      };
+    }
+
+    case "Charlotte": {
+      const [routes, stops, crossings, switches, maxspeed] = await Promise.all([
+        import("./charlotteLightRailRoutes.json"),
+        import("./charlotteLightRailStops.json"),
+        import("./charlotteGradeCrossings.json"),
+        import("./charlotteSwitches.json"),
+        import("./charlotteMaxspeed.json"),
+      ]);
+      console.timeEnd(`Loading ${city} static data`);
+      return {
+        routes: routes.default,
+        stops: stops.default,
+        crossings: crossings.default,
+        switches: switches.default,
+        maxspeed: maxspeed.default,
+      };
+    }
+
     // Placeholder cities - return empty data
     case "Jersey City":
     case "Calgary":
     case "Edmonton":
-    case "Cleveland":
-    case "Charlotte": {
+    case "Cleveland": {
       console.timeEnd(`Loading ${city} static data`);
       return {
         routes: { type: "FeatureCollection", features: [] },

@@ -50,13 +50,12 @@ Each city was selected because its light rail or streetcar system has **signific
 
 These systems have significant street-running and could be added:
 
-| City             | System       | Why It's a Good Candidate                                                      |
-| ---------------- | ------------ | ------------------------------------------------------------------------------ |
-| 🌊 **San Diego** | MTS Trolley  | Large network with street-running sections through downtown and East County    |
-| 🌵 **Phoenix**   | Valley Metro | Extensive street-running through downtown and Tempe                            |
-| 🤠 **Houston**   | METRORail    | Red Line runs at-grade through Midtown and Medical Center                      |
-| 🇨🇦 **Calgary**   | CTrain       | One of North America's busiest light rail systems with downtown street-running |
-| 🇨🇦 **Edmonton**  | ETS LRT      | Capital, Metro, and Valley Lines with urban at-grade sections                  |
+| City             | System      | Why It's a Good Candidate                                                      |
+| ---------------- | ----------- | ------------------------------------------------------------------------------ |
+| 🌊 **San Diego** | MTS Trolley | Large network with street-running sections through downtown and East County    |
+| 🤠 **Houston**   | METRORail   | Red Line runs at-grade through Midtown and Medical Center                      |
+| 🇨🇦 **Calgary**   | CTrain      | One of North America's busiest light rail systems with downtown street-running |
+| 🇨🇦 **Edmonton**  | ETS LRT     | Capital, Metro, and Valley Lines with urban at-grade sections                  |
 
 ### ❌ Systems We Chose Not to Include
 
@@ -89,6 +88,8 @@ The focus remains on **light rail and streetcars that compete with street traffi
 | 🏔️ **Salt Lake City** | UTA TRAX         | Blue, Red, Green, S-Line         | ✅ Collecting |
 | 🏗️ **Pittsburgh**     | The T Light Rail | Red, Blue, Silver                | ✅ Collecting |
 | 🏛️ **Sacramento**     | SacRT Light Rail | Gold, Blue                       | ✅ Collecting |
+| 🌵 **Phoenix**        | Valley Metro     | A Line, B Line                   | ✅ Collecting |
+| 🚊 **Charlotte**      | CATS LYNX        | Blue Line, Gold Line             | ✅ Collecting |
 | 🌊 **San Diego**      | MTS Trolley      | Blue, Orange, Green, Copper      | ⏳ Needs key  |
 | 🤠 **Dallas**         | DART Light Rail  | Red, Blue, Green, Orange         | ⏳ Needs key  |
 
@@ -194,6 +195,8 @@ npm run collect:all
 | `npm run collect:slc`         | Salt Lake City | `collectDataSaltLakeCity.js` | ✅ Active        |
 | `npm run collect:pittsburgh`  | Pittsburgh     | `collectDataPittsburgh.js`   | ✅ Active        |
 | `npm run collect:vta`         | San Jose (VTA) | `collectDataVTA.js`          | ✅ Active        |
+| `npm run collect:phoenix`     | Phoenix        | `collectDataPhoenix.js`      | ✅ Active        |
+| `npm run collect:charlotte`   | Charlotte      | `collectDataCharlotte.js`    | ✅ Active        |
 | `npm run collect:sandiego`    | San Diego      | `collectDataSanDiego.js`     | ⏳ Needs API key |
 | `npm run collect:dallas`      | Dallas         | `collectDataDallas.js`       | ⏳ Needs API key |
 
@@ -201,7 +204,7 @@ npm run collect:all
 
 | Command                          | Cities                      | Script                        |
 | -------------------------------- | --------------------------- | ----------------------------- |
-| `npm run collect:all`            | All 12 active cities        | `collectAll.sh`               |
+| `npm run collect:all`            | All 15 active cities        | `collectAll.sh`               |
 | `npm run collect:seattle-denver` | Seattle + Denver            | `collectDataSeattleDenver.js` |
 | `npm run collect:slc-pit`        | Salt Lake City + Pittsburgh | `collectDataSlcPittsburgh.js` |
 
@@ -229,6 +232,8 @@ npm run collect:all
 | Salt Lake City | UTA GTFS-RT         | ❌ No key needed                                                                               |
 | Pittsburgh     | PRT TrueTime        | ❌ No key needed                                                                               |
 | Sacramento     | SacRT GTFS-RT       | ❌ No key needed                                                                               |
+| Phoenix        | Valley Metro JSON   | ❌ No key needed                                                                               |
+| Charlotte      | CATS GTFS-RT        | ❌ No key needed                                                                               |
 | San Diego      | MTS GTFS-RT         | ✅ Yes - https://www.sdmts.com/business-center/app-developers                                  |
 
 ### Data Retention
@@ -302,6 +307,8 @@ MIT License - feel free to use and adapt for transit advocacy in your city!
 - **Salt Lake City**: [UTA GTFS-RT](https://www.rideuta.com/Developer-Resources)
 - **Pittsburgh**: [PRT TrueTime GTFS-RT](https://truetime.portauthority.org/)
 - **Sacramento**: [SacRT Transit Data Portal](https://www.sacrt.com/transit-data-portal/)
+- **Phoenix**: [Valley Metro GTFS-RT](https://www.valleymetro.org/gtfs-real-time-data)
+- **Charlotte**: [CATS GTFS-RT](https://gtfsrealtime.ridetransit.org/)
 - **San Diego**: [MTS Developer Resources](https://www.sdmts.com/business-center/app-developers)
 - **Grade Crossings**: [OpenStreetMap](https://www.openstreetmap.org/) via Overpass API
 - **Base Map**: [CARTO Dark Matter](https://carto.com/basemaps/)

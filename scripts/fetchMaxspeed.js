@@ -235,6 +235,22 @@ const CITIES = {
     railwayTypes: "light_rail",
     networkFilter: null,
   },
+  Phoenix: {
+    name: "Phoenix",
+    bbox: [33.35, -112.35, 33.55, -111.75], // Valley Metro Rail extent
+    routesFile: "phoenixLightRailRoutes.json",
+    outputFile: "phoenixMaxspeed.json",
+    railwayTypes: "light_rail",
+    networkFilter: null,
+  },
+  Charlotte: {
+    name: "Charlotte",
+    bbox: [35.09, -80.95, 35.35, -80.70], // LYNX Blue Line + Gold Line extent
+    routesFile: "charlotteLightRailRoutes.json",
+    outputFile: "charlotteMaxspeed.json",
+    railwayTypes: "light_rail|tram",
+    networkFilter: null,
+  },
 };
 
 const OVERPASS_API = "https://overpass-api.de/api/interpreter";

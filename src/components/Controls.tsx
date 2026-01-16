@@ -16,6 +16,7 @@ import type {
   DenverRtdLine,
   SlcTraxLine,
   VtaLightRailLine,
+  PhoenixLightRailLine,
   HblrLine,
   CalgaryCtrainLine,
   EdmontonLrtLine,
@@ -39,6 +40,7 @@ import {
   DENVER_RTD_LINE_INFO,
   SLC_TRAX_LINE_INFO,
   VTA_LIGHT_RAIL_LINE_INFO,
+  PHOENIX_LIGHT_RAIL_LINE_INFO,
   HBLR_LINE_INFO,
   CALGARY_CTRAIN_LINE_INFO,
   EDMONTON_LRT_LINE_INFO,
@@ -107,6 +109,11 @@ function getLineColor(line: string, city: City): string {
     return SLC_TRAX_LINE_INFO[line as SlcTraxLine]?.color || "#666";
   } else if (city === "San Jose") {
     return VTA_LIGHT_RAIL_LINE_INFO[line as VtaLightRailLine]?.color || "#666";
+  } else if (city === "Phoenix") {
+    return (
+      PHOENIX_LIGHT_RAIL_LINE_INFO[line as PhoenixLightRailLine]?.color ||
+      "#E5721A"
+    );
   } else if (city === "Jersey City") {
     return HBLR_LINE_INFO[line as HblrLine]?.color || "#666";
   } else if (city === "Calgary") {
@@ -166,6 +173,10 @@ function getLineLabel(line: string, city: City): string {
     return SLC_TRAX_LINE_INFO[line as SlcTraxLine]?.letter || line;
   } else if (city === "San Jose") {
     return VTA_LIGHT_RAIL_LINE_INFO[line as VtaLightRailLine]?.letter || line;
+  } else if (city === "Phoenix") {
+    return (
+      PHOENIX_LIGHT_RAIL_LINE_INFO[line as PhoenixLightRailLine]?.letter || line
+    );
   } else if (city === "Jersey City") {
     return HBLR_LINE_INFO[line as HblrLine]?.letter || line;
   } else if (city === "Calgary") {
@@ -195,8 +206,11 @@ function getBadgeWidthClass(city: City): string {
     case "Calgary":
     case "Edmonton":
     case "Cleveland":
+      return "badge-width-short-word"; // "Blue", "Green", "Cap", "Met"
     case "Charlotte":
-      return "badge-width-short-word"; // "Gold", "Blue", "Green", "S", "Orange", "Cap", "Met"
+      return "badge-width-short-word"; // "Blue", "Gold"
+    case "Phoenix":
+      return "badge-width-letter"; // Single letters (A, B)
     case "Toronto":
     case "Philadelphia":
     case "Jersey City":
@@ -240,6 +254,8 @@ function getLineInfo(line: string, city: City): string | undefined {
     return SLC_TRAX_LINE_INFO[line as SlcTraxLine]?.name;
   } else if (city === "San Jose") {
     return VTA_LIGHT_RAIL_LINE_INFO[line as VtaLightRailLine]?.name;
+  } else if (city === "Phoenix") {
+    return PHOENIX_LIGHT_RAIL_LINE_INFO[line as PhoenixLightRailLine]?.name;
   } else if (city === "Jersey City") {
     return HBLR_LINE_INFO[line as HblrLine]?.name;
   } else if (city === "Calgary") {
@@ -376,6 +392,7 @@ export function Controls({
     Edmonton: "Edmonton",
     Cleveland: "Cleveland",
     Charlotte: "Charlotte",
+    Phoenix: "Phoenix",
   };
   const systemNames: Record<string, string> = {
     SF: "Muni Speed Map",
@@ -398,6 +415,7 @@ export function Controls({
     Edmonton: "LRT Speed Map",
     Cleveland: "RTA Speed Map",
     Charlotte: "LYNX Speed Map",
+    Phoenix: "Valley Metro Speed Map",
   };
   const cityLine = cityNames[city] || city;
   const systemLine = systemNames[city] || "Speed Map";
@@ -501,6 +519,22 @@ export function Controls({
         </button>
 
         <button
+          className={`city-btn ${city === "Phoenix" ? "active" : ""}`}
+          onClick={() => setCity("Phoenix")}
+          title="Valley Metro Rail"
+        >
+          🌵 PHX
+        </button>
+
+        <button
+          className={`city-btn ${city === "Charlotte" ? "active" : ""}`}
+          onClick={() => setCity("Charlotte")}
+          title="LYNX Blue Line & Gold Line"
+        >
+          🚊 CLT
+        </button>
+
+        <button
           className={`city-btn city-btn-pending ${
             city === "San Diego" ? "active" : ""
           }`}
@@ -508,6 +542,14 @@ export function Controls({
           title="Waiting for API key"
         >
           🌊 SD
+        </button>
+
+        <button
+          className="city-btn city-btn-dark-orange"
+          onClick={() => console.log("Cleveland (RTA) - Coming soon")}
+          title="RTA Red Line - Coming soon"
+        >
+          🚊 CLE
         </button>
 
         <button
@@ -534,20 +576,6 @@ export function Controls({
           ⭐ Dallas
         </button>
 
-        <button
-          className="city-btn city-btn-dark-orange"
-          onClick={() => console.log("Cleveland (RTA) - Coming soon")}
-          title="RTA Red Line - Coming soon"
-        >
-          🚊 CLE
-        </button>
-        <button
-          className="city-btn city-btn-dark-orange"
-          onClick={() => console.log("Charlotte (LYNX) - Coming soon")}
-          title="LYNX Blue Line - Coming soon"
-        >
-          🚊 CLT
-        </button>
         <button
           className={`city-btn city-btn-warning ${
             city === "Sacramento" ? "active" : ""

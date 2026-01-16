@@ -4,825 +4,1769 @@
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "10",
-        "stop_name": "STEEL PLAZA STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 271199474,
+        "name": "First Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.995332,
-          40.439562
+          -79.9966107,
+          40.4354512
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "100",
-        "stop_name": "WILLOW STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 271200706,
+        "name": "Station Square",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.026193,
-          40.365469
+          -80.0030757,
+          40.4315546
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "101",
-        "stop_name": "WILLOW STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 271201788,
+        "name": "South Hills Junction",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.026632,
-          40.365186
+          -80.0072689,
+          40.4208224
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "102",
-        "stop_name": "BON AIR STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 271201832,
+        "name": "South Hills Junction",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.003178,
-          40.408156
+          -80.0070624,
+          40.4206942
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "103",
-        "stop_name": "BON AIR STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 271202630,
+        "name": "Bon Air",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.003113,
-          40.407736
+          -80.0031162,
+          40.4079432
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "104",
-        "stop_name": "OVERBROOK JUNCTION",
-        "routes": [
-          "RED"
-        ]
+        "id": 271203169,
+        "name": "Palm Garden",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.027101,
-          40.365906
+          -80.0118176,
+          40.4164083
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "105",
-        "stop_name": "OVERBROOK JUNCTION",
-        "routes": [
-          "RED"
-        ]
+        "id": 271203170,
+        "name": "Palm Garden",
+        "type": "halt"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.027136,
-          40.365888
+          -80.0118183,
+          40.4162609
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "11",
-        "stop_name": "WOOD STREET STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 271203773,
+        "name": "Dawn",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.998804,
-          40.441827
+          -80.0108985,
+          40.41292
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "110",
-        "stop_name": "NORTH SIDE STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 271209617,
+        "name": "Westfield",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.009498,
-          40.447859
+          -80.0200715,
+          40.4105041
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "111",
-        "stop_name": "GATEWAY STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 271210114,
+        "name": "Hampshire",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.003978,
-          40.44142
+          -80.0245095,
+          40.4110031
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "112",
-        "stop_name": "PALM GARDEN",
-        "routes": [
-          "RED"
-        ]
+        "id": 271210116,
+        "name": "Hampshire",
+        "type": "halt"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.011827,
-          40.416466
+          -80.0246573,
+          40.4107944
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "113",
-        "stop_name": "PALM GARDEN",
-        "routes": [
-          "RED"
-        ]
+        "id": 271223681,
+        "name": "Stevenson",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.011822,
-          40.416126
+          -80.0338096,
+          40.399403
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "12",
-        "stop_name": "WOOD STREET STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 271223687,
+        "name": "Potomac",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.999438,
-          40.442149
+          -80.0364826,
+          40.3972608
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "13",
-        "stop_name": "GATEWAY STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 534832734,
+        "name": "Poplar",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.004205,
-          40.442189
+          -80.0383556,
+          40.3752405
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "17",
-        "stop_name": "BROADWAY AVE AT BELASCO",
-        "routes": [
-          "RED"
-        ]
+        "id": 534846359,
+        "name": "Washington Junction",
+        "type": "stop_position"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.027078,
-          40.407036
+          -80.0280696,
+          40.3536183
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "17482",
-        "stop_name": "BROADWAY AVE AT SHIRAS",
-        "routes": [
-          "RED"
-        ]
+        "id": 534896006,
+        "name": "Arlington",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030326,
-          40.403788
+          -80.033408,
+          40.369977
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "18",
-        "stop_name": "BROADWAY AVE AT BELASCO",
-        "routes": [
-          "RED"
-        ]
+        "id": 538153125,
+        "name": "St. Anne's",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.026832,
-          40.407213
+          -80.0292587,
+          40.3608414
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "19",
-        "stop_name": "BROADWAY AVE AT HAMPSHIRE",
-        "routes": [
-          "RED"
-        ]
+        "id": 538153633,
+        "name": "Shiras",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.024636,
-          40.410367
+          -80.0302668,
+          40.4039978
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "22280",
-        "stop_name": "BROADWAY AVE AT SHIRAS",
-        "routes": [
-          "RED"
-        ]
+        "id": 538153878,
+        "name": "Shiras",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030283,
-          40.404084
+          -80.0303055,
+          40.4038183
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "25",
-        "stop_name": "BEAGLE",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 539718625,
+        "name": "Steel Plaza",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.031477,
-          40.300909
+          -79.995157,
+          40.4398835
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "30",
-        "stop_name": "CASSWELL",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 539752150,
+        "name": "Penn Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.033811,
-          40.349336
+          -79.9918004,
+          40.4438998
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "37",
-        "stop_name": "DORMONT JUNCTION",
-        "routes": [
-          "RED"
-        ]
+        "id": 687142153,
+        "name": "South Bank",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.040762,
-          40.39201
+          -79.9982917,
+          40.3930527
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "40",
-        "stop_name": "FALLOWFIELD STATION",
-        "routes": [
-          "RED"
-        ]
+        "id": 690230728,
+        "name": "Duquesne Lower Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.023434,
-          40.411176
+          -80.0176226,
+          40.4398317
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "45",
-        "stop_name": "KINGS SCHOOL ROAD",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 690231260,
+        "name": "Monongahela Upper Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.033333,
-          40.308545
+          -80.005898,
+          40.4313934
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "46",
-        "stop_name": "KINGS SCHOOL ROAD",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 691558990,
+        "name": "Casswell",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.033251,
-          40.308018
+          -80.0340265,
+          40.349266
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "47",
-        "stop_name": "LOGAN ROAD",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 691559003,
+        "name": "Highland",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.03314,
-          40.311723
+          -80.039999,
+          40.3482624
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "48",
-        "stop_name": "LOGAN ROAD",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 691559037,
+        "name": "Dorchester",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.033358,
-          40.311297
+          -80.0480068,
+          40.340954
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "49",
-        "stop_name": "LYTLE",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 693561884,
+        "name": "Pittsburgh Union Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.031059,
-          40.33464
+          -79.9913371,
+          40.4453645
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "50",
-        "stop_name": "LYTLE STATION",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 693562071,
+        "name": "Pittsburgh Union Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.031065,
-          40.334217
+          -79.9911554,
+          40.4451428
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "51",
-        "stop_name": "MESTA",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 1307334098,
+        "name": "Allegheny",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030761,
-          40.330813
+          -80.0177181,
+          40.44784
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "52",
-        "stop_name": "MESTA",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 1307334123,
+        "name": "Gateway",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030775,
-          40.330398
+          -80.0041133,
+          40.4417723
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "53",
-        "stop_name": "MOUNT LEBANON STATION",
-        "routes": [
-          "RED"
-        ]
+        "id": 1589832032,
+        "name": "Lytle",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.04318,
-          40.382651
+          -80.0310595,
+          40.3344337
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "54",
-        "stop_name": "MOUNT LEBANON STATION",
-        "routes": [
-          "RED"
-        ]
+        "id": 1589834489,
+        "name": "Mesta",
+        "type": "halt"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.043434,
-          40.381726
+          -80.0307721,
+          40.3306713
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "55",
-        "stop_name": "MUNROE",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 1589834834,
+        "name": "South Park",
+        "type": "halt"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029695,
-          40.32278
+          -80.0305676,
+          40.3279697
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "61",
-        "stop_name": "POTOMAC STATION",
-        "routes": [
-          "RED"
-        ]
+        "id": 1699273167,
+        "name": "Castle Shannon",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.036243,
-          40.397354
+          -80.0302593,
+          40.3681627
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "62",
-        "stop_name": "POTOMAC STATION",
-        "routes": [
-          "RED"
-        ]
+        "id": 1699273448,
+        "name": "Willow",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.036748,
-          40.397127
+          -80.0263784,
+          40.3653207
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "63",
-        "stop_name": "SANDY CREEK",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 1699273522,
+        "name": "Overbrook Junction",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030397,
-          40.296474
+          -80.0270927,
+          40.3657806
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "64",
-        "stop_name": "SARAH",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 2353633370,
+        "name": "Allegheny",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029613,
-          40.315982
+          -80.0177542,
+          40.4479472
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "65",
-        "stop_name": "SARAH",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 3076463527,
+        "name": "Belasco",
+        "type": "halt"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029968,
-          40.31563
+          -80.026989,
+          40.4071266
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "66",
-        "stop_name": "LIBRARY STATION",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 4242048675,
+        "name": "Castle Shannon",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.020933,
-          40.287071
+          -80.0301721,
+          40.3682278
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "67",
-        "stop_name": "SMITH ROAD",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 4242048901,
+        "name": "Arlington",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029222,
-          40.356887
+          -80.0333659,
+          40.3700057
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "68",
-        "stop_name": "SMITH ROAD",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 4425287679,
+        "name": "North Side",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029261,
-          40.356835
+          -80.0095941,
+          40.4480746
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "69",
-        "stop_name": "SOUTH HILLS VILLAGE STATION",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 4471918980,
+        "name": "Highland",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.052715,
-          40.339376
+          -80.0394447,
+          40.3484633
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "70",
-        "stop_name": "SOUTH HILLS VILLAGE STATION",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 4471919309,
+        "name": "Bethel Village",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.053341,
-          40.339308
+          -80.0466788,
+          40.3438842
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "71",
-        "stop_name": "SOUTH HILLS JUNCTION STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 4472120438,
+        "name": "Westfield",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.007226,
-          40.420841
+          -80.0201132,
+          40.4104747
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "72",
-        "stop_name": "SOUTH HILLS JUNCTION STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 4472120473,
+        "name": "Pennant",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.008222,
-          40.420363
+          -80.0146744,
+          40.4114259
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "73",
-        "stop_name": "SOUTH PARK ROAD",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 4491753333,
+        "name": "Penn Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030536,
+          -79.9918299,
+          40.4439295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4501868262,
+        "name": "Beagle",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0314919,
+          40.3008924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4501868268,
+        "name": "King's School",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0332462,
+          40.3080947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4501868276,
+        "name": "Logan",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0333316,
+          40.3113174
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4501868280,
+        "name": "Sarah",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.029857,
+          40.3157353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4501868302,
+        "name": "Munroe",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0297464,
+          40.3228666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4501868423,
+        "name": "Hillcrest",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.028878,
+          40.3455339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4601198171,
+        "name": "South Hills Junction",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0070931,
+          40.420725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4601198905,
+        "name": "South Hills Junction",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0073002,
+          40.4208492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4608877855,
+        "name": "Station Square",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0031035,
+          40.4315202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4608879520,
+        "name": "First Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -79.9965718,
+          40.4354352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4615770719,
+        "name": "St. Anne's",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.029305,
+          40.3608477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4836768113,
+        "name": "Dawn",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0108476,
+          40.4129155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4836768117,
+        "name": "Palm Garden",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.011813,
+          40.4161172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5103693071,
+        "name": "Boggs",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0103859,
+          40.4167236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5103693072,
+        "name": "Boggs",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0104397,
+          40.4167068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5103693073,
+        "name": "Boggs",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0104129,
+          40.4167119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5104398635,
+        "name": "South Hills Junction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0069654,
+          40.4210044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5105282300,
+        "name": "Station Square",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0031274,
+          40.4315681
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5105596227,
+        "name": "North Side",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0095935,
+          40.4480442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106118883,
+        "name": "South Hills Village",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0530531,
+          40.3393603
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106118884,
+        "name": "South Hills Village",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0530393,
+          40.3393217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106118897,
+        "name": "Dorchester",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0480551,
+          40.3409662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106118898,
+        "name": "Dorchester",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0480296,
+          40.3409611
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106118908,
+        "name": "Bethel Village",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0462285,
+          40.3444227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106118909,
+        "name": "Bethel Village",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0464699,
+          40.3441779
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122128,
+        "name": "Highland",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0397335,
+          40.348364
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122131,
+        "name": "Casswell",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0338159,
+          40.3493385
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122132,
+        "name": "Casswell",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0339044,
+          40.3493043
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122144,
+        "name": "Washington Junction",
+        "type": "stop_position"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0281665,
+          40.3535984
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122145,
+        "name": "Washington Junction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0281068,
+          40.3536106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122156,
+        "name": "Willow",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0263499,
+          40.3653938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122157,
+        "name": "Willow",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0263607,
+          40.3653617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122169,
+        "name": "Smith Road",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0292264,
+          40.356912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122170,
+        "name": "Smith Road",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0292794,
+          40.3569071
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122177,
+        "name": "Smith Road",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0292541,
+          40.3569076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122197,
+        "name": "St. Anne's",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0292843,
+          40.3608445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122198,
+        "name": "Overbrook Junction",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0270384,
+          40.365798
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122199,
+        "name": "Overbrook Junction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0270145,
+          40.3657081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122209,
+        "name": "Arlington",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0333874,
+          40.3699899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122210,
+        "name": "Poplar",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0383214,
+          40.3752718
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122211,
+        "name": "Poplar",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0383408,
+          40.3752543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122214,
+        "name": "Mt. Lebanon",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0432312,
+          40.3823571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122215,
+        "name": "Mt. Lebanon",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0433512,
+          40.3823668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122218,
+        "name": "Dormont Junction",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0410007,
+          40.3915214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122219,
+        "name": "Dormont Junction",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0409345,
+          40.3915943
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122220,
+        "name": "Dormont Junction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0409687,
+          40.3915629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122321,
+        "name": "Potomac",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0364548,
+          40.3972312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122322,
+        "name": "Potomac",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0364649,
+          40.3972459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122324,
+        "name": "Stevenson",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0337683,
+          40.3993759
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122325,
+        "name": "Stevenson",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0337874,
+          40.3993881
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122332,
+        "name": "Shiras",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0302975,
+          40.4039262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122335,
+        "name": "Belasco",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0268933,
+          40.4071863
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122336,
+        "name": "Belasco",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0270741,
+          40.4070567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122347,
+        "name": "Hampshire",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0246419,
+          40.4104883
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122351,
+        "name": "Fallowfield",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0232869,
+          40.4111628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122352,
+        "name": "Fallowfield",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0232908,
+          40.4111832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122353,
+        "name": "Fallowfield",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0232862,
+          40.411142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122357,
+        "name": "Westfield",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0200897,
+          40.4104899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122373,
+        "name": "Dawn",
+        "type": "halt"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0108535,
+          40.4129452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5106122374,
+        "name": "Pennant",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0146816,
+          40.4114634
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107632403,
+        "name": "Beagle",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0314965,
+          40.3008204
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107632404,
+        "name": "Beagle",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0314816,
+          40.3009358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107632409,
+        "name": "King's School",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0332557,
+          40.3080413
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107632410,
+        "name": "King's School",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0332421,
+          40.3081575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107632412,
+        "name": "Logan",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0333061,
+          40.3113264
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107632413,
+        "name": "Logan",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0333503,
+          40.3113227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107632416,
+        "name": "Sarah",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0297229,
+          40.3158542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107632417,
+        "name": "Sarah",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0299863,
+          40.3156123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107639126,
+        "name": "Munroe",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0297943,
+          40.3229259
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107639127,
+        "name": "Munroe",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.029691,
+          40.3227925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5107639129,
+        "name": "South Park",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0305362,
           40.327821
         ]
       }
@@ -830,942 +1774,705 @@
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "74",
-        "stop_name": "SOUTH PARK ROAD",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 5107639130,
+        "name": "South Park",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030599,
-          40.328103
+          -80.0305962,
+          40.3281103
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75",
-        "stop_name": "ST ANNE'S",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 5107639134,
+        "name": "Mesta",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029244,
-          40.360892
+          -80.0307771,
+          40.3304515
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "76",
-        "stop_name": "ST ANNE'S",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 5107639135,
+        "name": "Mesta",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029385,
-          40.360648
+          -80.0307553,
+          40.3307461
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77",
-        "stop_name": "STATION SQUARE STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 5107639140,
+        "name": "Lytle",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.002671,
-          40.431324
+          -80.0310403,
+          40.3344356
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "78",
-        "stop_name": "STATION SQUARE STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 5107639141,
+        "name": "Lytle",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.003158,
-          40.431606
+          -80.0310789,
+          40.3344331
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "79",
-        "stop_name": "STEVENSON",
-        "routes": [
-          "RED"
-        ]
+        "id": 5107639151,
+        "name": "Hillcrest",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.03364,
-          40.399491
+          -80.0288714,
+          40.3455837
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "80",
-        "stop_name": "STEVENSON",
-        "routes": [
-          "RED"
-        ]
+        "id": 5107639152,
+        "name": "Hillcrest",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.033939,
-          40.399293
+          -80.0289017,
+          40.34554
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "81",
-        "stop_name": "WASHINGTON JUNCTION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 5108140287,
+        "name": "Bon Air",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.028173,
-          40.353933
+          -80.003168,
+          40.4079343
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "82",
-        "stop_name": "WASHINGTON JUNCTION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 5108140288,
+        "name": "Bon Air",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.028117,
-          40.353447
+          -80.0031421,
+          40.4079395
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "83",
-        "stop_name": "WESTFIELD",
-        "routes": [
-          "RED"
-        ]
+        "id": 5108140299,
+        "name": "Denise",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.019964,
-          40.410318
+          -79.9989846,
+          40.3996379
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "84",
-        "stop_name": "WESTFIELD",
-        "routes": [
-          "RED"
-        ]
+        "id": 5108140300,
+        "name": "Denise",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.020113,
-          40.410544
+          -79.9990376,
+          40.3996307
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "85",
-        "stop_name": "WEST LIBRARY",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 5108140302,
+        "name": "Denise",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029802,
-          40.294139
+          -79.9990008,
+          40.3996337
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "86",
-        "stop_name": "WEST LIBRARY",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 5108140308,
+        "name": "South Bank",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029852,
-          40.294131
+          -79.998343,
+          40.393046
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "87",
-        "stop_name": "SANDY CREEK",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 5108140309,
+        "name": "South Bank",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030448,
-          40.296466
+          -79.9983155,
+          40.3930485
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "88",
-        "stop_name": "BOGGS STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5108140394,
+        "name": "McNeilly",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.010357,
-          40.416682
+          -80.0048755,
+          40.3775535
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "89",
-        "stop_name": "BOGGS STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5108140395,
+        "name": "McNeilly",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.010334,
-          40.416499
+          -80.004898,
+          40.3775674
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "9",
-        "stop_name": "STEEL PLAZA STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
+        "id": 5108140396,
+        "name": "McNeilly",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.995207,
-          40.439841
+          -80.0048545,
+          40.3775427
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "90",
-        "stop_name": "DENISE STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5108140397,
+        "name": "Killarney",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.999029,
-          40.399855
+          -80.0079638,
+          40.3737688
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "91",
-        "stop_name": "DENISE STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5108140398,
+        "name": "Killarney",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.998987,
-          40.399416
+          -80.0079455,
+          40.3737563
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "92",
-        "stop_name": "SOUTH BANK STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5108140399,
+        "name": "Killarney",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.99833,
-          40.393266
+          -80.0079861,
+          40.3737826
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "93",
-        "stop_name": "SOUTH BANK STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5108140400,
+        "name": "Memorial Hall",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -79.998309,
-          40.392837
+          -80.0164445,
+          40.3665459
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "94",
-        "stop_name": "MCNEILLY STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5108140401,
+        "name": "Memorial Hall",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.004684,
-          40.377718
+          -80.0164304,
+          40.3665268
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "95",
-        "stop_name": "MCNEILLY STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5108140402,
+        "name": "Memorial Hall",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.005063,
-          40.377404
+          -80.0164565,
+          40.3665661
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "96",
-        "stop_name": "KILLARNEY",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5312909745,
+        "name": "Duquesne Upper Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.00777,
-          40.373925
+          -80.0187226,
+          40.4383395
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "97",
-        "stop_name": "KILLARNEY STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5317312317,
+        "name": "Monongahela Lower Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.008182,
-          40.373624
+          -80.0049384,
+          40.432461
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "98",
-        "stop_name": "MEMORIAL HALL",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5374154007,
+        "name": "Wood Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.016186,
-          40.366611
+          -79.9994541,
+          40.4420789
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99",
-        "stop_name": "MEMORIAL HALL STATION",
-        "routes": [
-          "BLUE",
-          "SLVR"
-        ]
+        "id": 5374154017,
+        "name": "Wood Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.01672,
-          40.366474
+          -79.999442,
+          40.4420919
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99948",
-        "stop_name": "POPLAR",
-        "routes": [
-          "RED"
-        ]
+        "id": 5374154043,
+        "name": "Steel Plaza",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.038129,
-          40.375081
+          -79.994866,
+          40.4407888
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99949",
-        "stop_name": "POPLAR",
-        "routes": [
-          "RED"
-        ]
+        "id": 5374154045,
+        "name": "Steel Plaza",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.03851,
-          40.375395
+          -79.99493,
+          40.4398958
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99951",
-        "stop_name": "MUNROE",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 5377078813,
+        "name": "Gateway",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.029796,
-          40.322921
+          -80.0041806,
+          40.441764
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99963",
-        "stop_name": "HILLCREST",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 5377170418,
+        "name": "Steel Plaza",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.028911,
-          40.34549
+          -79.9951841,
+          40.4398743
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99964",
-        "stop_name": "HILLCREST",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 5379947701,
+        "name": "Wood Street",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.028867,
-          40.345557
+          -79.9996136,
+          40.4423119
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99965",
-        "stop_name": "HIGHLAND",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 6728188002,
+        "name": "Steel Plaza",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.03979,
-          40.348372
+          -79.9951235,
+          40.4400218
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99966",
-        "stop_name": "HIGHLAND",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 7022584316,
+        "name": "Pittsburgh Union Station",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.039769,
-          40.348321
+          -79.9916388,
+          40.4445773
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99968",
-        "stop_name": "FALLOWFIELD STATION",
-        "routes": [
-          "RED"
-        ]
+        "id": 7758163134,
+        "name": "First Avenue",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.023078,
-          40.411148
+          -79.9965942,
+          40.4354348
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99969",
-        "stop_name": "DORMONT JUNCTION",
-        "routes": [
-          "RED"
-        ]
+        "id": 7758163135,
+        "name": "Gateway",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.04108,
-          40.391329
+          -80.0041412,
+          40.4417454
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99971",
-        "stop_name": "DORCHESTER",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 7758163136,
+        "name": "North Side",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.048133,
-          40.340801
+          -80.0097874,
+          40.4475333
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99972",
-        "stop_name": "DORCHESTER",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 7758163137,
+        "name": "Allegheny",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.047931,
-          40.341118
+          -80.0178574,
+          40.4478717
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99973",
-        "stop_name": "DAWN",
-        "routes": [
-          "RED"
-        ]
+        "id": 7758163138,
+        "name": "Castle Shannon",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.010912,
-          40.413126
+          -80.0301305,
+          40.3681348
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99974",
-        "stop_name": "DAWN",
-        "routes": [
-          "RED"
-        ]
+        "id": 7774325613,
+        "name": "South Hills Village",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.010848,
-          40.412945
+          -80.053051,
+          40.3393403
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99975",
-        "stop_name": "CASTLE SHANNON STATION",
-        "routes": [
-          "RED"
-        ]
+        "id": 7774350441,
+        "name": "Mt. Lebanon",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030126,
-          40.368066
+          -80.0432929,
+          40.3823597
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99976",
-        "stop_name": "CASTLE SHANNON STATION",
-        "routes": [
-          "RED"
-        ]
+        "id": 7781924293,
+        "name": "Duquesne Lower Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.030516,
-          40.368492
+          -80.0176532,
+          40.4398457
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99978",
-        "stop_name": "CASSWELL",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 7781924294,
+        "name": "Duquesne Upper Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.034039,
-          40.349264
+          -80.0187523,
+          40.4383525
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99979",
-        "stop_name": "BETHEL VILLAGE",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 7781924296,
+        "name": "Monongahela Upper Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.046747,
-          40.343744
+          -80.0058707,
+          40.4313798
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99980",
-        "stop_name": "BETHEL VILLAGE",
-        "routes": [
-          "BLUE",
-          "RED"
-        ]
+        "id": 7781924300,
+        "name": "Monongahela Lower Station",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.04607,
-          40.344605
+          -80.0049095,
+          40.4324456
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99981",
-        "stop_name": "BEAGLE",
-        "routes": [
-          "SLVR"
-        ]
+        "id": 12752945686,
+        "name": "Warrington + Allen",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.031418,
-          40.300507
+          -79.9937246,
+          40.421814
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "99983",
-        "stop_name": "ARLINGTON",
-        "routes": [
-          "RED"
-        ]
+        "id": 12752945687,
+        "name": "Warrington + Allen",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -80.033313,
-          40.369889
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "99984",
-        "stop_name": "ARLINGTON",
-        "routes": [
-          "RED"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -80.03354,
-          40.370176
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "99987",
-        "stop_name": "BROADWAY AVE AT HAMPSHIRE",
-        "routes": [
-          "RED"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -80.024525,
-          40.410999
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "99996",
-        "stop_name": "FIRST AVENUE STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -79.996698,
-          40.435282
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "99997",
-        "stop_name": "FIRST AVENUE STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -79.996468,
-          40.435574
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "99998",
-        "stop_name": "ALLEGHENY STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -80.017787,
-          40.44789
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "99999",
-        "stop_name": "NORTH SIDE STATION",
-        "routes": [
-          "BLUE",
-          "RED",
-          "SLVR"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -80.010515,
-          40.4481
+          -79.9937223,
+          40.4217784
         ]
       }
     }

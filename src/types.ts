@@ -15,6 +15,7 @@ export const CITIES = [
   "Denver",
   "Salt Lake City",
   "San Jose",
+  "Phoenix",
   "Jersey City",
   "Calgary",
   "Edmonton",
@@ -451,15 +452,30 @@ export const CLEVELAND_RTA_LINE_INFO: Record<
   Red: { name: "Red Line", letter: "Red", color: "#EE3124" },
 };
 
-// Charlotte LYNX Light Rail lines
-export const CHARLOTTE_LYNX_LINES = ["Blue"] as const;
+// Charlotte CATS Light Rail lines
+// 501 = LYNX Blue Line, 510 = CityLYNX Gold Line
+export const CHARLOTTE_LYNX_LINES = ["501", "510"] as const;
 export type CharlotteLynxLine = (typeof CHARLOTTE_LYNX_LINES)[number];
 
 export const CHARLOTTE_LYNX_LINE_INFO: Record<
   CharlotteLynxLine,
   { name: string; letter: string; color: string }
 > = {
-  Blue: { name: "LYNX Blue Line", letter: "Blue", color: "#0072CE" },
+  "501": { name: "LYNX Blue Line", letter: "Blue", color: "#0169B4" },
+  "510": { name: "CityLYNX Gold Line", letter: "Gold", color: "#FFD203" },
+};
+
+// Phoenix Valley Metro Rail lines
+// A = East-West (downtown to Mesa), B = Northwest Extension
+export const PHOENIX_LIGHT_RAIL_LINES = ["A", "B"] as const;
+export type PhoenixLightRailLine = (typeof PHOENIX_LIGHT_RAIL_LINES)[number];
+
+export const PHOENIX_LIGHT_RAIL_LINE_INFO: Record<
+  PhoenixLightRailLine,
+  { name: string; letter: string; color: string }
+> = {
+  A: { name: "A Line (East-West)", letter: "A", color: "#1E8ECD" }, // Official blue
+  B: { name: "B Line (North-South)", letter: "B", color: "#B76912" }, // Official orange
 };
 
 // Union type for any transit line
@@ -479,6 +495,7 @@ export type TransitLine =
   | DenverRtdLine
   | SlcTraxLine
   | VtaLightRailLine
+  | PhoenixLightRailLine
   | HblrLine
   | CalgaryCtrainLine
   | EdmontonLrtLine
@@ -518,6 +535,8 @@ export function getLinesForCity(city: City): readonly string[] {
       return SLC_TRAX_LINES;
     case "San Jose":
       return VTA_LIGHT_RAIL_LINES;
+    case "Phoenix":
+      return PHOENIX_LIGHT_RAIL_LINES;
     case "Jersey City":
       return HBLR_LINES;
     case "Calgary":

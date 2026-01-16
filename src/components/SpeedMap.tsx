@@ -2598,7 +2598,6 @@ export function SpeedMap({
               : "url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/12/1582/656')",
           }}
         />
-        <div className="layer-label">{showSatellite ? "Map" : "Satellite"}</div>
       </div>
 
       {/* City data loading overlay */}

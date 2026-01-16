@@ -80,6 +80,16 @@ const CITIES = {
       "S-Line": "#77777a",
     },
   },
+  Phoenix: {
+    name: "Phoenix",
+    bbox: [33.35, -112.35, 33.55, -111.75],
+    railwayTypes: "light_rail",
+    outputRoutesFile: "phoenixLightRailRoutes.json",
+    outputStopsFile: "phoenixLightRailStops.json",
+    lineColors: {
+      MARS: "#E5721A", // Official Valley Metro Rail orange
+    },
+  },
 };
 
 function delay(ms) {
