@@ -92,7 +92,7 @@ The focus remains on **light rail and streetcars that compete with street traffi
 | 🌵 **Phoenix**        | Valley Metro     | A Line, B Line                   | ✅ Collecting |
 | 🚊 **Charlotte**      | CATS LYNX        | Blue Line, Gold Line             | ✅ Collecting |
 | 🍁 **Calgary**        | Calgary CTrain   | Red Line, Blue Line              | ✅ Collecting |
-| 🦀 **Baltimore**       | MTA Light Rail   | Light RailLink                   | ⏳ Needs key  |
+| 🦀 **Baltimore**       | MTA Light Rail   | Light RailLink                   | ✅ Collecting |
 | 🌊 **San Diego**      | MTS Trolley      | Blue, Orange, Green, Copper      | ⏳ Needs key  |
 | 🤠 **Dallas**         | DART Light Rail  | Red, Blue, Green, Orange         | ⏳ Needs key  |
 
@@ -202,7 +202,7 @@ npm run collect:all
 | `npm run collect:phoenix`            | Phoenix              | `collectDataPhoenix.js`           | ✅ Active                |
 | `npm run collect:charlotte`          | Charlotte            | `collectDataCharlotte.js`         | ✅ Active                |
 | `npm run collect:calgary`            | Calgary              | `collectDataCalgary.js`           | ❌ No train data in feed |
-| `npm run collect:baltimore`          | Baltimore            | `collectDataBaltimore.js`         | ⏳ Needs Swiftly API key |
+| `npm run collect:baltimore`          | Baltimore            | `collectDataBaltimore.js`         | ✅ Active                |
 | `npm run collect:sandiego`           | San Diego            | `collectDataSanDiego.js`          | ⏳ Needs API key         |
 | `npm run collect:dallas`             | Dallas               | `collectDataDallas.js`            | ⏳ Needs API key         |
 

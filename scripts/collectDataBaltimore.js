@@ -12,9 +12,10 @@
  * GTFS-RT is provided via Swiftly API - requires SWIFTLY_KEY environment variable
  * Vehicle Positions: https://api.goswift.ly/real-time/mta-maryland-light-rail/gtfs-rt-vehicle-positions
  * 
- * Run with: SWIFTLY_KEY=your_key node scripts/collectDataBaltimore.js
+ * Run with: npm run collect:baltimore
  */
 
+import 'dotenv/config';
 import GtfsRealtimeBindings from 'gtfs-realtime-bindings';
 import fetch, { Headers, Request, Response } from 'node-fetch';
 import { createClient } from '@supabase/supabase-js';
@@ -116,7 +117,7 @@ async function fetchVehiclePositions() {
   try {
     const response = await fetch(VEHICLE_POSITIONS_URL, {
       headers: {
-        'Authorization': `Bearer ${SWIFTLY_KEY}`,
+        'Authorization': SWIFTLY_KEY,
       },
     });
     
@@ -169,18 +170,13 @@ async function fetchVehiclePositions() {
         
         const timestamp = (v.timestamp?.low || v.timestamp) * 1000 || Date.now();
         
-        // Check if feed provides speed directly (in m/s)
-        let reportedSpeed = null;
-        if (v.position?.speed && v.position.speed > 0) {
-          // Convert m/s to mph
-          reportedSpeed = Math.round(v.position.speed * 2.237 * 10) / 10;
-        }
-        
         // Calculate speed from consecutive GPS readings
+        // NOTE: API-reported speed from Swiftly is unreliable (often 2-14x higher than actual)
+        // GPS-calculated speed is verified accurate by comparing distance traveled over time
         const calculatedSpeed = calculateSpeed(vehicleId, lat, lon, timestamp);
         
-        // Use reported speed if available, otherwise use calculated speed
-        const speed = reportedSpeed !== null ? reportedSpeed : calculatedSpeed;
+        // Use GPS-calculated speed only (API speed is unreliable for Baltimore)
+        const speed = calculatedSpeed;
         
         return {
           vehicle_id: vehicleId,

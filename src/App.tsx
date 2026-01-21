@@ -15,6 +15,8 @@ export type ViewMode = "raw" | "segments" | "live";
 
 export type RouteLineMode = "byLine" | "bySpeedLimit" | "bySeparation";
 
+export type SpeedUnit = "mph" | "kmh";
+
 export interface LineStats {
   line: string;
   avgSpeed: number;
@@ -53,6 +55,7 @@ function App() {
   const [viewMode, setViewMode] = useState<ViewMode>("raw");
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
   const [showSatellite, setShowSatellite] = useState(false);
+  const [speedUnit, setSpeedUnit] = useState<SpeedUnit>("mph");
 
   // Reset state when city changes
   useEffect(() => {
@@ -108,6 +111,8 @@ function App() {
         viewMode={viewMode}
         setViewMode={setViewMode}
         lineStats={lineStats}
+        speedUnit={speedUnit}
+        setSpeedUnit={setSpeedUnit}
       />
       <SpeedMap
         key={city}
@@ -123,6 +128,7 @@ function App() {
         viewMode={viewMode}
         showSatellite={showSatellite}
         onSatelliteToggle={setShowSatellite}
+        speedUnit={speedUnit}
         onVehicleUpdate={(count, time, stats, ageMinutes) => {
           setVehicleCount(count);
           setLastUpdate(time);

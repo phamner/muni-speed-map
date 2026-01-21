@@ -338,12 +338,23 @@ function buildRouteGeometryMap(routes: any): Map<string, number[][][]> {
 
   routes.features.forEach((feature: any) => {
     const routeId = feature.properties.route_id;
+    const geomType = feature.geometry.type;
     const coordinates = feature.geometry.coordinates;
 
     if (!routeMap.has(routeId)) {
       routeMap.set(routeId, []);
     }
-    routeMap.get(routeId)!.push(coordinates);
+
+    // Handle both LineString and MultiLineString geometries
+    if (geomType === "MultiLineString") {
+      // MultiLineString: coordinates is array of line strings
+      for (const lineCoords of coordinates) {
+        routeMap.get(routeId)!.push(lineCoords);
+      }
+    } else {
+      // LineString: coordinates is a single line string
+      routeMap.get(routeId)!.push(coordinates);
+    }
   });
 
   return routeMap;
@@ -934,6 +945,7 @@ interface SpeedMapProps {
   viewMode: ViewMode;
   showSatellite: boolean;
   onSatelliteToggle?: (show: boolean) => void;
+  speedUnit: "mph" | "kmh";
   onVehicleUpdate?: (
     count: number,
     time: Date,
@@ -955,6 +967,7 @@ export function SpeedMap({
   viewMode,
   showSatellite,
   onSatelliteToggle,
+  speedUnit,
   onVehicleUpdate,
 }: SpeedMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -980,6 +993,27 @@ export function SpeedMap({
   // Ref to avoid re-render loops with the callback
   const onVehicleUpdateRef = useRef(onVehicleUpdate);
   onVehicleUpdateRef.current = onVehicleUpdate;
+
+  // Keep speedUnit in a ref so event handlers can access current value
+  const speedUnitRef = useRef(speedUnit);
+  speedUnitRef.current = speedUnit;
+
+  // Speed unit conversion helpers (using ref for event handlers)
+  const formatSpeedFromRef = (mph: number): string => {
+    const unit = speedUnitRef.current;
+    const value = unit === "kmh" ? mph * 1.60934 : mph;
+    return unit === "kmh" 
+      ? `${Math.round(value)} km/h`
+      : `${Math.round(value)} mph`;
+  };
+  
+  const formatAvgSpeedFromRef = (mph: number): string => {
+    const unit = speedUnitRef.current;
+    const value = unit === "kmh" ? mph * 1.60934 : mph;
+    return unit === "kmh" 
+      ? `${value.toFixed(1)} km/h`
+      : `${value.toFixed(1)} mph`;
+  };
 
   // Load city static data when city changes
   useEffect(() => {
@@ -1824,13 +1858,14 @@ export function SpeedMap({
               : speedMph >= 10
               ? "#ff9933"
               : "#ff3333";
+          const displaySpeed = speedMph != null 
+              ? formatSpeedFromRef(speedMph) 
+              : "Unknown";
           popup.current
             ?.setLngLat(e.lngLat)
             .setHTML(
               `<div class="popup-content">
-                <div class="popup-title" style="color: ${speedColor}">Speed Limit: ${
-                props.maxspeed || "Unknown"
-              }</div>
+                <div class="popup-title" style="color: ${speedColor}">Speed Limit: ${displaySpeed}</div>
                 ${
                   props.name
                     ? `<div class="popup-detail">${props.name}</div>`
@@ -2580,7 +2615,7 @@ export function SpeedMap({
           const props = e.features[0].properties;
           const speed =
             props.speed != null
-              ? `${Math.round(props.speed)} mph`
+              ? formatSpeedFromRef(props.speed)
               : "Speed unknown";
           const dateTime = new Date(props.recordedAt).toLocaleString("en-US", {
             month: "short",
@@ -3039,9 +3074,7 @@ export function SpeedMap({
           .setHTML(
             `<div class="popup-content">
               <div class="popup-title">${props.routeId} Segment</div>
-              <div class="popup-speed">${Math.round(
-                props.avgSpeed
-              )} mph avg</div>
+              <div class="popup-speed">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
               <div class="popup-detail">${props.sampleCount} readings</div>
             </div>`
           )
@@ -3076,6 +3109,27 @@ export function SpeedMap({
       // Layers may not exist yet
     }
   }, [mapLoaded, showSatellite]);
+
+  // Update speed limit labels when speed unit changes
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+    
+    try {
+      if (map.current.getLayer("speed-limit-labels")) {
+        const unitSuffix = speedUnit === "kmh" ? " km/h" : " mph";
+        const conversionFactor = speedUnit === "kmh" ? 1.60934 : 1;
+        
+        // MapLibre expression to convert and display speed
+        map.current.setLayoutProperty("speed-limit-labels", "text-field", [
+          "concat",
+          ["to-string", ["round", ["*", ["get", "maxspeed_mph"], conversionFactor]]],
+          unitSuffix
+        ]);
+      }
+    } catch (e) {
+      // Layer may not exist
+    }
+  }, [mapLoaded, speedUnit]);
 
   // Toggle satellite view from the map layer button
   const toggleSatellite = () => {

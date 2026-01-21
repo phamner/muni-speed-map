@@ -50,7 +50,7 @@ import {
   BALTIMORE_LIGHT_RAIL_LINE_INFO,
   getLinesForCity,
 } from "../types";
-import type { SpeedFilter, ViewMode, LineStats, RouteLineMode } from "../App";
+import type { SpeedFilter, ViewMode, LineStats, RouteLineMode, SpeedUnit } from "../App";
 
 // Official SFMTA colors from GTFS
 const MUNI_COLORS: Record<MuniLine, string> = {
@@ -216,8 +216,9 @@ function getBadgeWidthClass(city: City): string {
     case "Charlotte":
       return "badge-width-short-word"; // "Blue", "Gold"
     case "Phoenix":
+      return "badge-width-letter"; // Single letters (A, B)
     case "Baltimore":
-      return "badge-width-letter"; // Single letters (A, B) or short codes (LR)
+      return "badge-width-3digit"; // "LR" needs more space than single letter
     case "Toronto":
     case "Philadelphia":
     case "Jersey City":
@@ -304,6 +305,8 @@ interface ControlsProps {
   viewMode: ViewMode;
   setViewMode: (mode: ViewMode) => void;
   lineStats: LineStats[];
+  speedUnit: SpeedUnit;
+  setSpeedUnit: (unit: SpeedUnit) => void;
 }
 
 export function Controls({
@@ -331,6 +334,8 @@ export function Controls({
   viewMode,
   setViewMode,
   lineStats,
+  speedUnit,
+  setSpeedUnit,
 }: ControlsProps) {
   // Sacramento warning modal state
   const [showSacWarning, setShowSacWarning] = useState(false);
@@ -378,6 +383,14 @@ export function Controls({
   const clearAllLines = () => {
     setSelectedLines([]);
   };
+
+  // Speed unit conversion helpers
+  const convertSpeed = (mph: number): number => {
+    return speedUnit === "kmh" ? mph * 1.60934 : mph;
+  };
+  
+  const unitLabel = speedUnit === "kmh" ? "km/h" : "mph";
+  const unitLabelLower = speedUnit === "kmh" ? "km/h" : "mph";
 
   // Two-line title: Line 1 = City, Line 2 = System
   const cityNames: Record<string, string> = {
@@ -546,7 +559,7 @@ export function Controls({
         </button>
 
         <button
-          className={`city-btn city-btn-pending ${city === "Baltimore" ? "active" : ""}`}
+          className={`city-btn ${city === "Baltimore" ? "active" : ""}`}
           onClick={() => setCity("Baltimore")}
           title="MTA Light RailLink"
         >
@@ -628,7 +641,23 @@ export function Controls({
 
       {/* View Mode Toggle */}
       <div className="control-group">
-        <div className="control-label">Data View Mode</div>
+        <div className="control-label-row">
+          <div className="control-label">Speed View Mode</div>
+          <div className="unit-toggle-group">
+            <button
+              className={`unit-toggle-btn ${speedUnit === "mph" ? "active" : ""}`}
+              onClick={() => setSpeedUnit("mph")}
+            >
+              mph
+            </button>
+            <button
+              className={`unit-toggle-btn ${speedUnit === "kmh" ? "active" : ""}`}
+              onClick={() => setSpeedUnit("kmh")}
+            >
+              km/h
+            </button>
+          </div>
+        </div>
         <div className="view-mode-toggle">
           <button
             className={`view-mode-btn ${viewMode === "raw" ? "active" : ""}`}
@@ -867,7 +896,7 @@ export function Controls({
               checked={hideStoppedTrains}
               onChange={(e) => setHideStoppedTrains(e.target.checked)}
             />
-            Hide stopped trains (0 mph)
+            Hide stopped trains (0 {unitLabelLower})
           </label>
         </div>
       </div>
@@ -877,7 +906,7 @@ export function Controls({
         <div className="control-label">Speed Filter</div>
         <div className="speed-filter">
           <div className="speed-slider-row">
-            <label>Min: {speedFilter.minSpeed} mph</label>
+            <label>Min: {Math.round(convertSpeed(speedFilter.minSpeed))} {unitLabelLower}</label>
             <input
               type="range"
               min="0"
@@ -897,8 +926,8 @@ export function Controls({
           </div>
           <div className="speed-slider-row">
             <label>
-              Max: {speedFilter.maxSpeed === 50 ? "50+" : speedFilter.maxSpeed}{" "}
-              mph
+              Max: {speedFilter.maxSpeed === 50 ? `${Math.round(convertSpeed(50))}+` : Math.round(convertSpeed(speedFilter.maxSpeed))}{" "}
+              {unitLabelLower}
             </label>
             <input
               type="range"
@@ -936,7 +965,7 @@ export function Controls({
 
       {/* Speed Legend - two column layout: slow (left) to fast (right) */}
       <div className="control-group">
-        <div className="control-label">Speed Legend (MPH)</div>
+        <div className="control-label">Speed Legend (<span className="unit-text">{unitLabel}</span>)</div>
         <div className="speed-legend-grid">
           {/* Left column - slower speeds */}
           <div className="speed-legend-column">
@@ -945,28 +974,28 @@ export function Controls({
                 className="speed-legend-dot"
                 style={{ backgroundColor: "#9b2d6b" }}
               ></span>
-              <span>≤ 5</span>
+              <span>≤ {Math.round(convertSpeed(5))}</span>
             </div>
             <div className="speed-legend-item">
               <span
                 className="speed-legend-dot"
                 style={{ backgroundColor: "#ff3333" }}
               ></span>
-              <span>5-10</span>
+              <span>{Math.round(convertSpeed(5))}-{Math.round(convertSpeed(10))}</span>
             </div>
             <div className="speed-legend-item">
               <span
                 className="speed-legend-dot"
                 style={{ backgroundColor: "#ff9933" }}
               ></span>
-              <span>10-15</span>
+              <span>{Math.round(convertSpeed(10))}-{Math.round(convertSpeed(15))}</span>
             </div>
             <div className="speed-legend-item">
               <span
                 className="speed-legend-dot"
                 style={{ backgroundColor: "#ffdd33" }}
               ></span>
-              <span>15-25</span>
+              <span>{Math.round(convertSpeed(15))}-{Math.round(convertSpeed(25))}</span>
             </div>
           </div>
           {/* Right column - faster speeds */}
@@ -976,21 +1005,21 @@ export function Controls({
                 className="speed-legend-dot"
                 style={{ backgroundColor: "#88ff33" }}
               ></span>
-              <span>25-35</span>
+              <span>{Math.round(convertSpeed(25))}-{Math.round(convertSpeed(35))}</span>
             </div>
             <div className="speed-legend-item">
               <span
                 className="speed-legend-dot"
                 style={{ backgroundColor: "#33eebb" }}
               ></span>
-              <span>35-50</span>
+              <span>{Math.round(convertSpeed(35))}-{Math.round(convertSpeed(50))}</span>
             </div>
             <div className="speed-legend-item">
               <span
                 className="speed-legend-dot"
                 style={{ backgroundColor: "#22ccff" }}
               ></span>
-              <span>&gt; 50</span>
+              <span>&gt; {Math.round(convertSpeed(50))}</span>
             </div>
             <div className="speed-legend-item">
               <span
@@ -1006,7 +1035,7 @@ export function Controls({
       {/* Line Statistics */}
       {lineStats.length > 0 && (
         <div className="control-group">
-          <div className="control-label">Speed by Line</div>
+          <div className="control-label">Speed by Line (<span className="unit-text">{unitLabel}</span>)</div>
           <div className="line-stats">
             {[...lineStats]
               .sort((a, b) => b.avgSpeed - a.avgSpeed)
@@ -1020,11 +1049,11 @@ export function Controls({
                     {getLineLabel(stat.line, city)}
                   </span>
                   <span className="line-stat-speed">
-                    {stat.avgSpeed.toFixed(1)}
+                    {convertSpeed(stat.avgSpeed).toFixed(1)}
                   </span>
                   <span className="line-stat-label">avg</span>
                   <span className="line-stat-speed">
-                    {stat.medianSpeed.toFixed(1)}
+                    {convertSpeed(stat.medianSpeed).toFixed(1)}
                   </span>
                   <span className="line-stat-label">median</span>
                   <span className="line-stat-count">
