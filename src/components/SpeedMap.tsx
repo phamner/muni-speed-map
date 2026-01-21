@@ -960,6 +960,8 @@ export function SpeedMap({
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
   const popup = useRef<maplibregl.Popup | null>(null);
+  const crossingPopupPinned = useRef(false);
+  const crossingHandlersRegistered = useRef(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [dataSource, setDataSource] = useState<"loading" | "supabase" | "none">(
@@ -1349,6 +1351,9 @@ export function SpeedMap({
       map.current = null;
     }
 
+    // Reset handler registration flags for new map
+    crossingHandlersRegistered.current = false;
+
     // Reset mapLoaded state for new map
     setMapLoaded(false);
 
@@ -1529,7 +1534,16 @@ export function SpeedMap({
       // This was causing incorrect tunnel sections to appear on some lines (e.g., J Church).
       // TODO: Implement more accurate tunnel detection, possibly using static tunnel portal
       // locations or pre-computed route-to-tunnel mappings per city.
-      const regularRoutes = filteredRoutes;
+      
+      // Separate under-construction routes (like Line 5 Eglinton) for dashed styling
+      const constructionRoutes = {
+        type: "FeatureCollection",
+        features: filteredRoutes.features.filter((f: any) => f.properties.under_construction),
+      };
+      const regularRoutes = {
+        type: "FeatureCollection",
+        features: filteredRoutes.features.filter((f: any) => !f.properties.under_construction),
+      };
       const tunnelRoutes = { type: "FeatureCollection", features: [] };
 
       // Remove existing layers and sources - recreate fresh on each update
@@ -1537,11 +1551,17 @@ export function SpeedMap({
         if (map.current.getLayer("routes-outline"))
           map.current.removeLayer("routes-outline");
         if (map.current.getLayer("routes")) map.current.removeLayer("routes");
+        if (map.current.getLayer("routes-construction-outline"))
+          map.current.removeLayer("routes-construction-outline");
+        if (map.current.getLayer("routes-construction"))
+          map.current.removeLayer("routes-construction");
         if (map.current.getLayer("routes-tunnel-outline"))
           map.current.removeLayer("routes-tunnel-outline");
         if (map.current.getLayer("routes-tunnel"))
           map.current.removeLayer("routes-tunnel");
         if (map.current.getSource("routes")) map.current.removeSource("routes");
+        if (map.current.getSource("routes-construction"))
+          map.current.removeSource("routes-construction");
         if (map.current.getSource("routes-tunnel"))
           map.current.removeSource("routes-tunnel");
         // Speed limit layers
@@ -1574,6 +1594,12 @@ export function SpeedMap({
       map.current.addSource("routes-tunnel", {
         type: "geojson",
         data: tunnelRoutes as any,
+      });
+
+      // Add under-construction routes (dashed lines with construction pattern)
+      map.current.addSource("routes-construction", {
+        type: "geojson",
+        data: constructionRoutes as any,
       });
 
       const firstDataLayer = map.current.getLayer("vehicles-glow")
@@ -1619,6 +1645,47 @@ export function SpeedMap({
             "line-color": showBySpeed || showBySeparation ? "#6b7280" : ["get", "route_color"],
             "line-width": 4,
             "line-opacity": 0.9,
+          },
+        },
+        firstDataLayer
+      );
+
+      // Under-construction route layers (dashed lines to indicate not yet operational)
+      map.current.addLayer(
+        {
+          id: "routes-construction-outline",
+          type: "line",
+          source: "routes-construction",
+          layout: {
+            "line-join": "round",
+            "line-cap": "round",
+            visibility: showRouteLines ? "visible" : "none",
+          },
+          paint: {
+            "line-color": "#000",
+            "line-width": 7,
+            "line-opacity": 0.5,
+            "line-dasharray": [2, 2], // Dashed pattern for construction
+          },
+        },
+        firstDataLayer
+      );
+
+      map.current.addLayer(
+        {
+          id: "routes-construction",
+          type: "line",
+          source: "routes-construction",
+          layout: {
+            "line-join": "round",
+            "line-cap": "round",
+            visibility: showRouteLines ? "visible" : "none",
+          },
+          paint: {
+            "line-color": showBySpeed || showBySeparation ? "#6b7280" : ["get", "route_color"],
+            "line-width": 4,
+            "line-opacity": 0.8,
+            "line-dasharray": [2, 2], // Dashed pattern for construction
           },
         },
         firstDataLayer
@@ -1735,7 +1802,7 @@ export function SpeedMap({
 
         map.current.on("mouseleave", "speed-limit", () => {
           if (map.current) map.current.getCanvas().style.cursor = "";
-          popup.current?.remove();
+          if (!crossingPopupPinned.current) popup.current?.remove();
         });
 
         map.current.on("mousemove", "speed-limit", (e) => {
@@ -1843,7 +1910,7 @@ export function SpeedMap({
 
         map.current.on("mouseleave", "separation", () => {
           if (map.current) map.current.getCanvas().style.cursor = "";
-          popup.current?.remove();
+          if (!crossingPopupPinned.current) popup.current?.remove();
         });
 
         map.current.on("mousemove", "separation", (e) => {
@@ -1853,7 +1920,7 @@ export function SpeedMap({
           
           // Get color and label for separation type
           const sepInfo: Record<string, { color: string; label: string; icon: string }> = {
-            tunnel: { color: "#3b82f6", label: "Tunnel", icon: "🔵" },
+            tunnel: { color: "#3b82f6", label: "Tunnel / Trench", icon: "🔵" },
             elevated: { color: "#22c55e", label: "Elevated", icon: "🟢" },
             street_running: { color: "#ef4444", label: "Street Running", icon: "🔴" },
             reserved_lane: { color: "#f97316", label: "Reserved Lane", icon: "🟠" },
@@ -1884,7 +1951,7 @@ export function SpeedMap({
 
       map.current.on("mouseleave", "routes", () => {
         if (map.current) map.current.getCanvas().style.cursor = "";
-        popup.current?.remove();
+        if (!crossingPopupPinned.current) popup.current?.remove();
       });
 
       map.current.on("mousemove", "routes", (e) => {
@@ -2025,7 +2092,7 @@ export function SpeedMap({
 
         map.current.on("mouseleave", "stops", () => {
           if (map.current) map.current.getCanvas().style.cursor = "";
-          popup.current?.remove();
+          if (!crossingPopupPinned.current) popup.current?.remove();
         });
 
         map.current.on("mousemove", "stops", (e) => {
@@ -2111,6 +2178,19 @@ export function SpeedMap({
         "crossings"
       ) as maplibregl.GeoJSONSource;
 
+      // Determine crossing color based on city
+      // LA & Charlotte get green for gated crossings (verified accurate), orange for others
+      // All other cities get orange (barrier data unreliable)
+      const verifiedGateCities = ["LA", "Charlotte"];
+      const crossingColor = verifiedGateCities.includes(city)
+        ? [
+            "case",
+            ["==", ["get", "crossing_barrier"], "yes"],
+            "#22c55e", // Green for gated crossings in verified cities
+            "#ff9500"  // Orange for ungated/unknown
+          ]
+        : "#ff9500"; // Orange for all other cities
+      
       if (existingSource) {
         // Update data with filtered crossings
         existingSource.setData(filteredCrossings as any);
@@ -2119,13 +2199,15 @@ export function SpeedMap({
           "visibility",
           showCrossings ? "visible" : "none"
         );
+        // Update color when city changes
+        map.current.setPaintProperty("crossings", "text-color", crossingColor as any);
       } else {
         map.current.addSource("crossings", {
           type: "geojson",
           data: filteredCrossings as any,
         });
 
-        // Add crossing markers - use ✕ symbol in orange/yellow
+        // Add crossing markers layer
         map.current.addLayer({
           id: "crossings",
           type: "symbol",
@@ -2138,95 +2220,113 @@ export function SpeedMap({
             "text-ignore-placement": true,
           },
           paint: {
-            "text-color": "#ff9500",
+            "text-color": crossingColor as any,
             "text-halo-color": "#000000",
             "text-halo-width": 1.5,
           },
         });
 
-        // Track if crossing popup is pinned (clicked)
-        let crossingPopupPinned = false;
+        // Register event handlers only once (they use refs so they work across re-renders)
+        if (!crossingHandlersRegistered.current) {
+          crossingHandlersRegistered.current = true;
 
-        // Crossing hover popup
-        map.current.on("mouseenter", "crossings", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "pointer";
-        });
-
-        map.current.on("mouseleave", "crossings", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "";
-          // Only remove popup if not pinned
-          if (!crossingPopupPinned) {
-            popup.current?.remove();
-          }
-        });
-
-        map.current.on("mousemove", "crossings", (e) => {
-          // Don't update popup if it's pinned
-          if (crossingPopupPinned) return;
-          if (!e.features?.length || !map.current) return;
-
-          // Get coordinates from the feature geometry
-          const feature = e.features[0];
-          const coords =
-            feature.geometry.type === "Point"
-              ? (feature.geometry as GeoJSON.Point).coordinates
-              : null;
-          const lon = coords ? coords[0].toFixed(6) : "N/A";
-          const lat = coords ? coords[1].toFixed(6) : "N/A";
-
-          popup.current
-            ?.setLngLat(e.lngLat)
-            .setHTML(
-              `<div class="popup-content">
-                <div class="popup-title">Grade Crossing</div>
-                <div class="popup-coords">${lat}, ${lon}</div>
-              </div>`
-            )
-            .addTo(map.current);
-        });
-
-        // Click to pin the popup
-        map.current.on("click", "crossings", (e) => {
-          if (!e.features?.length || !map.current) return;
-
-          // Get coordinates from the feature geometry
-          const feature = e.features[0];
-          const coords =
-            feature.geometry.type === "Point"
-              ? (feature.geometry as GeoJSON.Point).coordinates
-              : null;
-          const lon = coords ? coords[0].toFixed(6) : "N/A";
-          const lat = coords ? coords[1].toFixed(6) : "N/A";
-
-          crossingPopupPinned = true;
-
-          popup.current
-            ?.setLngLat(e.lngLat)
-            .setHTML(
-              `<div class="popup-content popup-pinned">
-                <div class="popup-title">Grade Crossing 📌</div>
-                <div class="popup-coords">${lat}, ${lon}</div>
-                <div class="popup-hint">Click elsewhere to close</div>
-              </div>`
-            )
-            .addTo(map.current);
-
-          // Prevent the click from propagating to the map
-          e.originalEvent.stopPropagation();
-        });
-
-        // Click elsewhere on map to unpin
-        map.current.on("click", (e) => {
-          // Check if click was on a crossing (handled above)
-          const features = map.current?.queryRenderedFeatures(e.point, {
-            layers: ["crossings"],
+          // Crossing hover popup
+          map.current.on("mouseenter", "crossings", () => {
+            if (map.current) map.current.getCanvas().style.cursor = "pointer";
           });
-          if (features && features.length > 0) return;
 
-          // Unpin and remove popup
-          crossingPopupPinned = false;
-          popup.current?.remove();
-        });
+          map.current.on("mouseleave", "crossings", () => {
+            if (map.current) map.current.getCanvas().style.cursor = "";
+            // Only remove popup if not pinned
+            if (!crossingPopupPinned.current) {
+              popup.current?.remove();
+            }
+          });
+
+          map.current.on("mousemove", "crossings", (e) => {
+            // Don't update popup if it's pinned
+            if (crossingPopupPinned.current) return;
+            if (!e.features?.length || !map.current) return;
+
+            // Get coordinates from the feature geometry
+            const feature = e.features[0];
+            const props = feature.properties || {};
+            const coords =
+              feature.geometry.type === "Point"
+                ? (feature.geometry as GeoJSON.Point).coordinates
+                : null;
+            const lon = coords ? coords[0].toFixed(6) : "N/A";
+            const lat = coords ? coords[1].toFixed(6) : "N/A";
+            
+            // Build barrier info line
+            const barrierStatus = props.crossing_barrier === "yes" 
+              ? "✓ Gated" 
+              : props.crossing_barrier === "no" 
+                ? "✗ No gates" 
+                : "";
+
+            popup.current
+              ?.setLngLat(e.lngLat)
+              .setHTML(
+                `<div class="popup-content">
+                  <div class="popup-title">Grade Crossing${barrierStatus ? ` <span style="color: ${props.crossing_barrier === 'yes' ? '#22c55e' : '#ff9500'}">${barrierStatus}</span>` : ''}</div>
+                  <div class="popup-coords">${lat}, ${lon}</div>
+                </div>`
+              )
+              .addTo(map.current);
+          });
+
+          // Click to pin the popup
+          map.current.on("click", "crossings", (e) => {
+            if (!e.features?.length || !map.current) return;
+
+            // Get coordinates from the feature geometry
+            const feature = e.features[0];
+            const props = feature.properties || {};
+            const coords =
+              feature.geometry.type === "Point"
+                ? (feature.geometry as GeoJSON.Point).coordinates
+                : null;
+            const lon = coords ? coords[0].toFixed(6) : "N/A";
+            const lat = coords ? coords[1].toFixed(6) : "N/A";
+            
+            // Build barrier info line
+            const barrierStatus = props.crossing_barrier === "yes" 
+              ? "✓ Gated" 
+              : props.crossing_barrier === "no" 
+                ? "✗ No gates" 
+                : "";
+
+            crossingPopupPinned.current = true;
+
+            popup.current
+              ?.setLngLat(e.lngLat)
+              .setHTML(
+                `<div class="popup-content popup-pinned">
+                  <div class="popup-title">Grade Crossing${barrierStatus ? ` <span style="color: ${props.crossing_barrier === 'yes' ? '#22c55e' : '#ff9500'}">${barrierStatus}</span>` : ''} 📌</div>
+                  <div class="popup-coords">${lat}, ${lon}</div>
+                  <div class="popup-hint">Click elsewhere to close</div>
+                </div>`
+              )
+              .addTo(map.current);
+
+            // Prevent the click from propagating to the map
+            e.originalEvent.stopPropagation();
+          });
+
+          // Click elsewhere on map to unpin
+          map.current.on("click", (e) => {
+            // Check if click was on a crossing (handled above)
+            const features = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["crossings"],
+            });
+            if (features && features.length > 0) return;
+
+            // Unpin and remove popup
+            crossingPopupPinned.current = false;
+            popup.current?.remove();
+          });
+        }
       }
     };
 
@@ -2243,7 +2343,7 @@ export function SpeedMap({
       };
       setTimeout(waitForStyle, 50);
     }
-  }, [mapLoaded, showCrossings, filteredCrossings]);
+  }, [mapLoaded, showCrossings, filteredCrossings, city]);
 
   // Get switches and signals data for current city, filtered by proximity to routes
   const switchesData = useMemo(() => {
@@ -2327,7 +2427,7 @@ export function SpeedMap({
 
         map.current.on("mouseleave", "switches", () => {
           if (map.current) map.current.getCanvas().style.cursor = "";
-          popup.current?.remove();
+          if (!crossingPopupPinned.current) popup.current?.remove();
         });
 
         map.current.on("mousemove", "switches", (e) => {
@@ -2472,7 +2572,7 @@ export function SpeedMap({
 
         map.current.on("mouseleave", "vehicles", () => {
           if (map.current) map.current.getCanvas().style.cursor = "";
-          popup.current?.remove();
+          if (!crossingPopupPinned.current) popup.current?.remove();
         });
 
         map.current.on("mousemove", "vehicles", (e) => {
@@ -2927,7 +3027,7 @@ export function SpeedMap({
 
       map.current.on("mouseleave", "speed-segments", () => {
         if (map.current) map.current.getCanvas().style.cursor = "";
-        popup.current?.remove();
+        if (!crossingPopupPinned.current) popup.current?.remove();
       });
 
       map.current.on("mousemove", "speed-segments", (e) => {
@@ -2987,6 +3087,20 @@ export function SpeedMap({
   return (
     <div className="map-wrapper">
       <div ref={mapContainer} className="map-container" />
+
+      {/* Crossing gate legend - only for cities with verified gate data */}
+      {showCrossings && ["LA", "Charlotte"].includes(city) && (
+        <div className="crossing-gate-legend">
+          <div className="crossing-legend-item">
+            <span className="crossing-x gated">✕</span>
+            <span>Gated</span>
+          </div>
+          <div className="crossing-legend-item">
+            <span className="crossing-x other">✕</span>
+            <span>Other</span>
+          </div>
+        </div>
+      )}
 
       {/* Google Maps-style layer toggle button */}
       <div

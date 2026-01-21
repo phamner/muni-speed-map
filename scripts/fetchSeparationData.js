@@ -7,7 +7,7 @@
  * and saves them as GeoJSON files for use in the "By Separation" view.
  *
  * Separation categories:
- * - 🔵 Tunnel: tunnel=yes
+ * - 🔵 Tunnel / Trench: tunnel=yes
  * - 🟢 Elevated/Bridge: bridge=yes
  * - 🔴 Street Running: embedded=yes, railway:run=street, tram:tram=yes
  * - 🟠 Reserved Lane: railway:traffic_mode=mixed, etc.
@@ -146,10 +146,10 @@ const CITIES = {
   },
   Toronto: {
     name: "Toronto",
-    bbox: [43.62, -79.5, 43.72, -79.3],
+    bbox: [43.62, -79.55, 43.85, -79.2], // Expanded for Line 5 Eglinton & Line 6 Finch West
     routesFile: "torontoStreetcarRoutes.json",
     outputFile: "torontoSeparation.json",
-    railwayTypes: "tram",
+    railwayTypes: "tram|light_rail", // Include streetcars and LRT lines
   },
   Philadelphia: {
     name: "Philadelphia",
@@ -449,7 +449,7 @@ out body geom;
     });
     
     console.log(`   Distribution:`);
-    console.log(`     🔵 Tunnel: ${counts.tunnel}`);
+    console.log(`     🔵 Tunnel / Trench: ${counts.tunnel}`);
     console.log(`     🟢 Elevated: ${counts.elevated}`);
     console.log(`     🔴 Street Running: ${counts.street_running}`);
     console.log(`     🟠 Reserved Lane: ${counts.reserved_lane}`);

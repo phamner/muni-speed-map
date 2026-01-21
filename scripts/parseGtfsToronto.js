@@ -11,9 +11,12 @@ const outputDir = join(__dirname, "..", "src", "data");
 // Main daytime streetcar routes
 const STREETCAR_LINES = [
   "501",
+  "503", // Kingston Rd (sometimes runs as bus replacement)
   "504",
   "505",
   "506",
+  "507", // Long Branch
+  "508", // Lake Shore (rush hour only, seasonal)
   "509",
   "510",
   "511",
@@ -23,9 +26,12 @@ const STREETCAR_LINES = [
 // Line colors - TTC streetcars are traditionally red
 const LINE_COLORS = {
   501: "#ED1C24", // Queen
+  503: "#ED1C24", // Kingston Rd
   504: "#ED1C24", // King
   505: "#ED1C24", // Dundas
   506: "#ED1C24", // Carlton
+  507: "#ED1C24", // Long Branch
+  508: "#ED1C24", // Lake Shore
   509: "#ED1C24", // Harbourfront
   510: "#ED1C24", // Spadina
   511: "#ED1C24", // Bathurst
@@ -34,9 +40,12 @@ const LINE_COLORS = {
 
 const LINE_NAMES = {
   501: "501 Queen",
+  503: "503 Kingston Rd",
   504: "504 King",
   505: "505 Dundas",
   506: "506 Carlton",
+  507: "507 Long Branch",
+  508: "508 Lake Shore",
   509: "509 Harbourfront",
   510: "510 Spadina",
   511: "511 Bathurst",

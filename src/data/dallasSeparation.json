@@ -1,6 +1,6 @@
 {
   "type": "FeatureCollection",
-  "generated": "2026-01-20T05:17:47.280Z",
+  "generated": "2026-01-21T06:04:26.159Z",
   "source": "OpenStreetMap via Overpass API",
   "features": [
     {
@@ -136,9 +136,159 @@
     {
       "type": "Feature",
       "properties": {
+        "id": 10006825,
+        "separationType": "elevated",
+        "name": "DART North Central Corridor",
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.7648492,
+            32.8844924
+          ],
+          [
+            -96.7648413,
+            32.8850593
+          ],
+          [
+            -96.764811,
+            32.8875609
+          ],
+          [
+            -96.7648101,
+            32.8876386
+          ],
+          [
+            -96.7648096,
+            32.8877277
+          ],
+          [
+            -96.7647965,
+            32.8900249
+          ],
+          [
+            -96.7647892,
+            32.8913099
+          ],
+          [
+            -96.7647786,
+            32.8931776
+          ],
+          [
+            -96.7647878,
+            32.8933874
+          ],
+          [
+            -96.7647948,
+            32.8935729
+          ],
+          [
+            -96.7648075,
+            32.8937446
+          ],
+          [
+            -96.7648361,
+            32.8940009
+          ],
+          [
+            -96.7648673,
+            32.8942293
+          ],
+          [
+            -96.764912,
+            32.8944557
+          ],
+          [
+            -96.7649574,
+            32.894653
+          ],
+          [
+            -96.7650106,
+            32.8948484
+          ],
+          [
+            -96.7650706,
+            32.8950452
+          ],
+          [
+            -96.7651579,
+            32.8952987
+          ],
+          [
+            -96.7651865,
+            32.8953818
+          ],
+          [
+            -96.7654651,
+            32.8961409
+          ],
+          [
+            -96.7657159,
+            32.8968225
+          ],
+          [
+            -96.7657759,
+            32.8970056
+          ],
+          [
+            -96.7658095,
+            32.8971082
+          ],
+          [
+            -96.7659154,
+            32.897473
+          ],
+          [
+            -96.765973,
+            32.897737
+          ],
+          [
+            -96.766011,
+            32.8980112
+          ],
+          [
+            -96.7660342,
+            32.8983789
+          ],
+          [
+            -96.7660266,
+            32.8988349
+          ],
+          [
+            -96.7659632,
+            32.8992718
+          ],
+          [
+            -96.7659042,
+            32.8995498
+          ],
+          [
+            -96.7657979,
+            32.8999323
+          ],
+          [
+            -96.7655754,
+            32.9005459
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": 10014117,
         "separationType": "separated_at_grade",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": false,
         "embedded": false,
@@ -242,7 +392,7 @@
       "properties": {
         "id": 26349715,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -272,7 +422,7 @@
       "properties": {
         "id": 26382084,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -306,7 +456,7 @@
       "properties": {
         "id": 26383425,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -336,7 +486,7 @@
       "properties": {
         "id": 26452863,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -566,7 +716,7 @@
       "properties": {
         "id": 28672256,
         "separationType": "separated_at_grade",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": false,
         "embedded": false,
@@ -604,7 +754,7 @@
       "properties": {
         "id": 28672594,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -638,7 +788,7 @@
       "properties": {
         "id": 28672601,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -676,7 +826,7 @@
       "properties": {
         "id": 28672603,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -770,7 +920,7 @@
       "properties": {
         "id": 91353900,
         "separationType": "tunnel",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": true,
         "bridge": false,
         "embedded": false,
@@ -920,7 +1070,7 @@
       "properties": {
         "id": 91353927,
         "separationType": "tunnel",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": true,
         "bridge": false,
         "embedded": false,
@@ -990,7 +1140,7 @@
       "properties": {
         "id": 103374572,
         "separationType": "separated_at_grade",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": false,
         "embedded": false,
@@ -1762,7 +1912,7 @@
       "properties": {
         "id": 194243919,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -1800,7 +1950,7 @@
       "properties": {
         "id": 194243936,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -1834,7 +1984,7 @@
       "properties": {
         "id": 194243937,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -1888,7 +2038,7 @@
       "properties": {
         "id": 201963220,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -1918,7 +2068,7 @@
       "properties": {
         "id": 201963223,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -1952,7 +2102,7 @@
       "properties": {
         "id": 201963225,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3386,7 +3536,7 @@
       "properties": {
         "id": 202345947,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3444,7 +3594,7 @@
       "properties": {
         "id": 202345948,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3488,6 +3638,104 @@
     {
       "type": "Feature",
       "properties": {
+        "id": 202345949,
+        "separationType": "elevated",
+        "name": "DART North Central Corridor",
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.7602681,
+            32.9096465
+          ],
+          [
+            -96.7599029,
+            32.9099424
+          ],
+          [
+            -96.7596396,
+            32.9101591
+          ],
+          [
+            -96.7594096,
+            32.9103695
+          ],
+          [
+            -96.7592048,
+            32.9105747
+          ],
+          [
+            -96.7589764,
+            32.9108254
+          ],
+          [
+            -96.7555856,
+            32.9147934
+          ],
+          [
+            -96.7552474,
+            32.915178
+          ],
+          [
+            -96.7549105,
+            32.9155387
+          ],
+          [
+            -96.7543596,
+            32.9160947
+          ],
+          [
+            -96.7541014,
+            32.9163557
+          ],
+          [
+            -96.7531134,
+            32.9173546
+          ],
+          [
+            -96.7529226,
+            32.9175475
+          ],
+          [
+            -96.7528505,
+            32.9176228
+          ],
+          [
+            -96.7528172,
+            32.9176563
+          ],
+          [
+            -96.7525917,
+            32.9178835
+          ],
+          [
+            -96.7524359,
+            32.9180405
+          ],
+          [
+            -96.752077,
+            32.9184022
+          ],
+          [
+            -96.751792,
+            32.9186891
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": 202345952,
         "separationType": "tunnel",
         "name": "DART Orange Line",
@@ -3520,7 +3768,7 @@
       "properties": {
         "id": 202345953,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3537,6 +3785,10 @@
           [
             -96.7652393,
             32.9016697
+          ],
+          [
+            -96.7655122,
+            32.9009134
           ],
           [
             -96.7656395,
@@ -3592,7 +3844,7 @@
       "properties": {
         "id": 202345955,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3622,7 +3874,7 @@
       "properties": {
         "id": 202345956,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3652,7 +3904,7 @@
       "properties": {
         "id": 202345957,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3752,6 +4004,152 @@
     {
       "type": "Feature",
       "properties": {
+        "id": 202345962,
+        "separationType": "elevated",
+        "name": "DART North Central Corridor",
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.7656395,
+            32.9005606
+          ],
+          [
+            -96.7658623,
+            32.8999432
+          ],
+          [
+            -96.765968,
+            32.8995572
+          ],
+          [
+            -96.7660231,
+            32.8992909
+          ],
+          [
+            -96.7660821,
+            32.8988382
+          ],
+          [
+            -96.7660919,
+            32.8983812
+          ],
+          [
+            -96.7660649,
+            32.8980059
+          ],
+          [
+            -96.7660231,
+            32.8977304
+          ],
+          [
+            -96.7659671,
+            32.8974601
+          ],
+          [
+            -96.7658645,
+            32.8970943
+          ],
+          [
+            -96.7657661,
+            32.8968125
+          ],
+          [
+            -96.7655136,
+            32.8961307
+          ],
+          [
+            -96.7652324,
+            32.8953671
+          ],
+          [
+            -96.7652096,
+            32.8952998
+          ],
+          [
+            -96.7651195,
+            32.8950332
+          ],
+          [
+            -96.7650572,
+            32.894837
+          ],
+          [
+            -96.7650042,
+            32.8946402
+          ],
+          [
+            -96.7649591,
+            32.89445
+          ],
+          [
+            -96.7649155,
+            32.894229
+          ],
+          [
+            -96.7648813,
+            32.8939976
+          ],
+          [
+            -96.7648564,
+            32.8937465
+          ],
+          [
+            -96.7648423,
+            32.89357
+          ],
+          [
+            -96.7648346,
+            32.893387
+          ],
+          [
+            -96.7648281,
+            32.893183
+          ],
+          [
+            -96.764841,
+            32.890713
+          ],
+          [
+            -96.7648415,
+            32.8906223
+          ],
+          [
+            -96.7648566,
+            32.8877147
+          ],
+          [
+            -96.7648571,
+            32.8876232
+          ],
+          [
+            -96.7648583,
+            32.8875484
+          ],
+          [
+            -96.7648965,
+            32.8850613
+          ],
+          [
+            -96.7649267,
+            32.8844945
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": 202345965,
         "separationType": "elevated",
         "name": "DART Orange Line",
@@ -3800,7 +4198,7 @@
       "properties": {
         "id": 202345966,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3880,7 +4278,7 @@
       "properties": {
         "id": 202345969,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3914,7 +4312,7 @@
       "properties": {
         "id": 202345973,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3952,7 +4350,7 @@
       "properties": {
         "id": 202345974,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -3990,7 +4388,7 @@
       "properties": {
         "id": 202345975,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -4528,7 +4926,7 @@
       "properties": {
         "id": 202345985,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -4566,7 +4964,7 @@
       "properties": {
         "id": 202345986,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -4599,6 +4997,110 @@
           [
             -96.7657286,
             32.8731755
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 202345987,
+        "separationType": "elevated",
+        "name": "DART North Central Corridor",
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.7628827,
+            32.9072493
+          ],
+          [
+            -96.7630852,
+            32.9068291
+          ],
+          [
+            -96.7638247,
+            32.9052942
+          ],
+          [
+            -96.7639656,
+            32.9050057
+          ],
+          [
+            -96.7641638,
+            32.9045694
+          ],
+          [
+            -96.7644377,
+            32.903891
+          ],
+          [
+            -96.7650974,
+            32.902063
+          ],
+          [
+            -96.7652393,
+            32.9016697
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 202345989,
+        "separationType": "elevated",
+        "name": "DART North Central Corridor",
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.7651731,
+            32.9016553
+          ],
+          [
+            -96.7643688,
+            32.9038731
+          ],
+          [
+            -96.7641094,
+            32.9045501
+          ],
+          [
+            -96.7639184,
+            32.9049853
+          ],
+          [
+            -96.7637771,
+            32.9052757
+          ],
+          [
+            -96.7630666,
+            32.9067553
+          ],
+          [
+            -96.7628186,
+            32.9072234
           ]
         ]
       }
@@ -6726,7 +7228,7 @@
       "properties": {
         "id": 421394964,
         "separationType": "separated_at_grade",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": false,
         "embedded": false,
@@ -6906,7 +7408,7 @@
       "properties": {
         "id": 421516409,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -6940,7 +7442,7 @@
       "properties": {
         "id": 421516410,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -6968,9 +7470,87 @@
     {
       "type": "Feature",
       "properties": {
+        "id": 421516412,
+        "separationType": "elevated",
+        "name": "DART North Central Corridor",
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -96.7528865,
+            32.9176499
+          ],
+          [
+            -96.752959,
+            32.9175745
+          ],
+          [
+            -96.7535996,
+            32.9169288
+          ],
+          [
+            -96.7536834,
+            32.9168444
+          ],
+          [
+            -96.7543791,
+            32.9161432
+          ],
+          [
+            -96.7549443,
+            32.9155708
+          ],
+          [
+            -96.7552848,
+            32.9152076
+          ],
+          [
+            -96.7556241,
+            32.9148211
+          ],
+          [
+            -96.7590171,
+            32.9108547
+          ],
+          [
+            -96.7592521,
+            32.910607
+          ],
+          [
+            -96.7594637,
+            32.9104092
+          ],
+          [
+            -96.7597005,
+            32.9102083
+          ],
+          [
+            -96.7599606,
+            32.9100056
+          ],
+          [
+            -96.7603388,
+            32.9097174
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "id": 421516413,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -7008,7 +7588,7 @@
       "properties": {
         "id": 421516414,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -7058,7 +7638,7 @@
       "properties": {
         "id": 421516415,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -7088,7 +7668,7 @@
       "properties": {
         "id": 421516416,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -7126,7 +7706,7 @@
       "properties": {
         "id": 421516417,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -7160,7 +7740,7 @@
       "properties": {
         "id": 421516418,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -7190,7 +7770,7 @@
       "properties": {
         "id": 421516425,
         "separationType": "separated_at_grade",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": false,
         "embedded": false,
@@ -7220,7 +7800,7 @@
       "properties": {
         "id": 421516427,
         "separationType": "separated_at_grade",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": false,
         "embedded": false,
@@ -8176,7 +8756,7 @@
       "properties": {
         "id": 421558278,
         "separationType": "tunnel",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": true,
         "bridge": false,
         "embedded": false,
@@ -8322,7 +8902,7 @@
       "properties": {
         "id": 421566417,
         "separationType": "tunnel",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": true,
         "bridge": false,
         "embedded": false,
@@ -8388,7 +8968,7 @@
       "properties": {
         "id": 421715481,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -9570,7 +10150,7 @@
       "properties": {
         "id": 910965818,
         "separationType": "tunnel",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": true,
         "bridge": false,
         "embedded": false,
@@ -9660,7 +10240,7 @@
       "properties": {
         "id": 910965821,
         "separationType": "tunnel",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": true,
         "bridge": false,
         "embedded": false,
@@ -9750,7 +10330,7 @@
       "properties": {
         "id": 911060979,
         "separationType": "elevated",
-        "name": "DART Light Rail",
+        "name": "DART North Central Corridor",
         "tunnel": false,
         "bridge": true,
         "embedded": false,
@@ -9779,66 +10359,6 @@
           [
             -96.7706861,
             32.8512913
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 970154432,
-        "separationType": "elevated",
-        "name": "DART Light Rail",
-        "tunnel": false,
-        "bridge": true,
-        "embedded": false,
-        "railwayRun": null,
-        "trafficMode": null,
-        "segregated": null,
-        "cutting": false,
-        "embankment": false,
-        "layer": 1
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            -96.7347651,
-            32.9449069
-          ],
-          [
-            -96.7346876,
-            32.9450284
-          ]
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 970154434,
-        "separationType": "elevated",
-        "name": "DART Light Rail",
-        "tunnel": false,
-        "bridge": true,
-        "embedded": false,
-        "railwayRun": null,
-        "trafficMode": null,
-        "segregated": null,
-        "cutting": false,
-        "embankment": false,
-        "layer": 1
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [
-          [
-            -96.734732,
-            32.9450478
-          ],
-          [
-            -96.7348004,
-            32.9449408
           ]
         ]
       }
@@ -9890,7 +10410,7 @@
       "properties": {
         "id": 1052675128,
         "separationType": "tunnel",
-        "name": "DART Orange/Red/Blue Line",
+        "name": "DART North Central Corridor",
         "tunnel": true,
         "bridge": false,
         "embedded": false,

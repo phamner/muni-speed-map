@@ -130,7 +130,8 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  min-height: 52px; /* Fixed height to prevent shifting */
+  min-height: 52px;
+  /* Fixed height to prevent shifting */
 }
 
 .app-city {
@@ -311,13 +312,11 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 3px,
-    rgba(0, 0, 0, 0.1) 3px,
-    rgba(0, 0, 0, 0.1) 6px
-  );
+  background: repeating-linear-gradient(45deg,
+      transparent,
+      transparent 3px,
+      rgba(0, 0, 0, 0.1) 3px,
+      rgba(0, 0, 0, 0.1) 6px);
   pointer-events: none;
 }
 
@@ -485,14 +484,12 @@
 .legend-gradient {
   height: 12px;
   border-radius: 6px;
-  background: linear-gradient(
-    to right,
-    #dc2626 0%,
-    #ea580c 25%,
-    #eab308 40%,
-    #84cc16 60%,
-    #22c55e 80%
-  );
+  background: linear-gradient(to right,
+      #dc2626 0%,
+      #ea580c 25%,
+      #eab308 40%,
+      #84cc16 60%,
+      #22c55e 80%);
 }
 
 .legend-labels {
@@ -509,18 +506,31 @@
   gap: 6px;
 }
 
+/* Two-column speed legend grid */
+.speed-legend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 16px;
+}
+
+.speed-legend-column {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .speed-legend-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.8rem;
+  gap: 8px;
+  font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.75);
 }
 
 .speed-dot,
 .speed-legend-dot {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   border: 1px solid rgba(255, 255, 255, 0.3);
   flex-shrink: 0;
@@ -828,8 +838,17 @@
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.2); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
 }
 
 /* Info section */
@@ -941,7 +960,8 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.db-connected, .db-disconnected {
+.db-connected,
+.db-disconnected {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1040,7 +1060,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* Loading overlay for city data */
@@ -1105,8 +1127,13 @@
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-content {
@@ -1122,11 +1149,12 @@
 }
 
 @keyframes slideUp {
-  from { 
+  from {
     opacity: 0;
     transform: translateY(20px);
   }
-  to { 
+
+  to {
     opacity: 1;
     transform: translateY(0);
   }
@@ -1207,6 +1235,46 @@
 .maplibregl-ctrl-bottom-left .maplibregl-ctrl-scale {
   margin-left: 10px;
   margin-bottom: 4px;
+}
+
+/* Floating crossing gate legend - above satellite toggle */
+.crossing-gate-legend {
+  position: absolute;
+  bottom: 170px;
+  /* Above satellite toggle (68px + 91px + 11px gap) */
+  left: 10px;
+  background: rgba(26, 26, 46, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
+
+.crossing-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+.crossing-legend-item:not(:last-child) {
+  margin-bottom: 3px;
+}
+
+.crossing-x {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.crossing-x.gated {
+  color: #22c55e;
+}
+
+.crossing-x.other {
+  color: #ff9500;
 }
 
 /* Google Maps-style layer toggle button */

@@ -628,7 +628,7 @@ export function Controls({
 
       {/* View Mode Toggle */}
       <div className="control-group">
-        <div className="control-label">View Mode</div>
+        <div className="control-label">Data View Mode</div>
         <div className="view-mode-toggle">
           <button
             className={`view-mode-btn ${viewMode === "raw" ? "active" : ""}`}
@@ -703,18 +703,11 @@ export function Controls({
                 } as React.CSSProperties
               }
               onClick={() => {
-                // Line 5 Eglinton is not yet operational
-                if (city === "Toronto" && line === "805") {
-                  console.log(
-                    "Line 5 Eglinton: Coming soon - not yet operational"
-                  );
-                  return;
-                }
                 toggleLine(line);
               }}
               title={
                 city === "Toronto" && line === "805"
-                  ? "Line 5 Eglinton - Coming Soon (not yet operational)"
+                  ? "Line 5 Eglinton - Under Construction (route data from OpenStreetMap)"
                   : getLineInfo(line, city)
               }
             >
@@ -732,7 +725,7 @@ export function Controls({
                       TORONTO_STREETCAR_LINE_INFO[line as TorontoStreetcarLine]
                         ?.corridor
                     }
-                    {line === "805" ? " ⏳" : ""}
+                    {line === "805" ? " 🚧" : ""}
                   </span>
                 </>
               ) : (
@@ -762,15 +755,26 @@ export function Controls({
             >
               By Line
             </button>
-            <button
-              className={`route-mode-btn ${
-                routeLineMode === "bySpeedLimit" ? "active" : ""
-              }`}
-              onClick={() => setRouteLineMode("bySpeedLimit")}
-              disabled={!showRouteLines}
-            >
-              Speed Limit
-            </button>
+            {city === "Toronto" || city === "Pittsburgh" || city === "Baltimore" || city === "Phoenix" ? (
+              <button
+                className="route-mode-btn"
+                style={{ opacity: 0.4, cursor: "not-allowed" }}
+                disabled
+                title="Speed limit data is not available for this city"
+              >
+                Speed Limit
+              </button>
+            ) : (
+              <button
+                className={`route-mode-btn ${
+                  routeLineMode === "bySpeedLimit" ? "active" : ""
+                }`}
+                onClick={() => setRouteLineMode("bySpeedLimit")}
+                disabled={!showRouteLines}
+              >
+                Speed Limit
+              </button>
+            )}
             <button
               className={`route-mode-btn ${
                 routeLineMode === "bySeparation" ? "active" : ""
@@ -786,7 +790,7 @@ export function Controls({
             <div className="separation-legend">
               <div className="separation-legend-item">
                 <span className="separation-legend-line" style={{ backgroundColor: "#3b82f6" }}></span>
-                <span>Tunnel</span>
+                <span>Tunnel / Trench</span>
               </div>
               <div className="separation-legend-item">
                 <span className="separation-legend-line" style={{ backgroundColor: "#22c55e" }}></span>
@@ -823,14 +827,28 @@ export function Controls({
           </label>
         </div>
         <div className="route-lines-toggle">
-          <label>
-            <input
-              type="checkbox"
-              checked={showCrossings}
-              onChange={(e) => setShowCrossings(e.target.checked)}
-            />
-            Show grade crossings (X)
-          </label>
+          {city === "Philadelphia" || city === "Toronto" ? (
+            <label
+              style={{ opacity: 0.5, cursor: "not-allowed" }}
+              title="Grade crossing data is not available for this city"
+            >
+              <input
+                type="checkbox"
+                checked={false}
+                disabled
+              />
+              Show grade crossings (X)
+            </label>
+          ) : (
+            <label>
+              <input
+                type="checkbox"
+                checked={showCrossings}
+                onChange={(e) => setShowCrossings(e.target.checked)}
+              />
+              Show grade crossings (X)
+            </label>
+          )}
         </div>
         <div className="route-lines-toggle">
           <label>
@@ -916,65 +934,71 @@ export function Controls({
         </div>
       </div>
 
-      {/* Speed Legend - static extended scale */}
+      {/* Speed Legend - two column layout: slow (left) to fast (right) */}
       <div className="control-group">
-        <div className="control-label">Speed Legend</div>
-        <div className="speed-legend">
-          <div className="speed-legend-item">
-            <span
-              className="speed-legend-dot"
-              style={{ backgroundColor: "#9b2d6b" }}
-            ></span>
-            <span>≤ 5 mph</span>
+        <div className="control-label">Speed Legend (MPH)</div>
+        <div className="speed-legend-grid">
+          {/* Left column - slower speeds */}
+          <div className="speed-legend-column">
+            <div className="speed-legend-item">
+              <span
+                className="speed-legend-dot"
+                style={{ backgroundColor: "#9b2d6b" }}
+              ></span>
+              <span>≤ 5</span>
+            </div>
+            <div className="speed-legend-item">
+              <span
+                className="speed-legend-dot"
+                style={{ backgroundColor: "#ff3333" }}
+              ></span>
+              <span>5-10</span>
+            </div>
+            <div className="speed-legend-item">
+              <span
+                className="speed-legend-dot"
+                style={{ backgroundColor: "#ff9933" }}
+              ></span>
+              <span>10-15</span>
+            </div>
+            <div className="speed-legend-item">
+              <span
+                className="speed-legend-dot"
+                style={{ backgroundColor: "#ffdd33" }}
+              ></span>
+              <span>15-25</span>
+            </div>
           </div>
-          <div className="speed-legend-item">
-            <span
-              className="speed-legend-dot"
-              style={{ backgroundColor: "#ff3333" }}
-            ></span>
-            <span>5-10 mph</span>
-          </div>
-          <div className="speed-legend-item">
-            <span
-              className="speed-legend-dot"
-              style={{ backgroundColor: "#ff9933" }}
-            ></span>
-            <span>10-15 mph</span>
-          </div>
-          <div className="speed-legend-item">
-            <span
-              className="speed-legend-dot"
-              style={{ backgroundColor: "#ffdd33" }}
-            ></span>
-            <span>15-25 mph</span>
-          </div>
-          <div className="speed-legend-item">
-            <span
-              className="speed-legend-dot"
-              style={{ backgroundColor: "#88ff33" }}
-            ></span>
-            <span>25-35 mph</span>
-          </div>
-          <div className="speed-legend-item">
-            <span
-              className="speed-legend-dot"
-              style={{ backgroundColor: "#33eebb" }}
-            ></span>
-            <span>35-50 mph</span>
-          </div>
-          <div className="speed-legend-item">
-            <span
-              className="speed-legend-dot"
-              style={{ backgroundColor: "#22ccff" }}
-            ></span>
-            <span>&gt; 50 mph</span>
-          </div>
-          <div className="speed-legend-item">
-            <span
-              className="speed-legend-dot"
-              style={{ backgroundColor: "#666666" }}
-            ></span>
-            <span>No data</span>
+          {/* Right column - faster speeds */}
+          <div className="speed-legend-column">
+            <div className="speed-legend-item">
+              <span
+                className="speed-legend-dot"
+                style={{ backgroundColor: "#88ff33" }}
+              ></span>
+              <span>25-35</span>
+            </div>
+            <div className="speed-legend-item">
+              <span
+                className="speed-legend-dot"
+                style={{ backgroundColor: "#33eebb" }}
+              ></span>
+              <span>35-50</span>
+            </div>
+            <div className="speed-legend-item">
+              <span
+                className="speed-legend-dot"
+                style={{ backgroundColor: "#22ccff" }}
+              ></span>
+              <span>&gt; 50</span>
+            </div>
+            <div className="speed-legend-item">
+              <span
+                className="speed-legend-dot"
+                style={{ backgroundColor: "#666666" }}
+              ></span>
+              <span>No data</span>
+            </div>
           </div>
         </div>
       </div>
