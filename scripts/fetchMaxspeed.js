@@ -267,6 +267,14 @@ const CITIES = {
     railwayTypes: "light_rail",
     networkFilter: null,
   },
+  Cleveland: {
+    name: "Cleveland",
+    bbox: [41.39, -81.86, 41.55, -81.50], // RTA Rapid Transit extent
+    routesFile: "clevelandRtaRoutes.json",
+    outputFile: "clevelandMaxspeed.json",
+    railwayTypes: "light_rail|subway", // Blue/Green are light_rail, Red is subway in OSM
+    networkFilter: null,
+  },
 };
 
 const OVERPASS_API = "https://overpass-api.de/api/interpreter";

@@ -444,15 +444,18 @@ export const EDMONTON_LRT_LINE_INFO: Record<
   Metro: { name: "Metro Line", letter: "Met", color: "#00A651" },
 };
 
-// Cleveland RTA Red Line (Rapid Transit)
-export const CLEVELAND_RTA_LINES = ["Red"] as const;
+// Cleveland RTA Rapid Transit
+// Route IDs: 66 = Red Line, 67 = Blue Line, 68 = Green Line
+export const CLEVELAND_RTA_LINES = ["66", "67", "68"] as const;
 export type ClevelandRtaLine = (typeof CLEVELAND_RTA_LINES)[number];
 
 export const CLEVELAND_RTA_LINE_INFO: Record<
   ClevelandRtaLine,
   { name: string; letter: string; color: string }
 > = {
-  Red: { name: "Red Line", letter: "Red", color: "#EE3124" },
+  "66": { name: "Red Line", letter: "Red", color: "#D7182A" },
+  "67": { name: "Blue Line", letter: "Blue", color: "#15BEF0" },
+  "68": { name: "Green Line", letter: "Green", color: "#8FB73E" },
 };
 
 // Charlotte CATS Light Rail lines

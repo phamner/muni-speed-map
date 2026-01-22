@@ -981,6 +981,7 @@ export function SpeedMap({
     "loading"
   );
   const [loadingProgress, setLoadingProgress] = useState<string>("");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // City static data - loaded lazily on-demand
   const [cityStaticData, setCityStaticData] = useState<CityStaticData | null>(
@@ -1200,10 +1201,16 @@ export function SpeedMap({
       }
 
       console.timeEnd("Fetching data");
-      setLoadingProgress("");
       console.log(
         `Fetched ${allData.length} ${city} positions from last 7 days`
       );
+
+      // Show processing phase
+      setLoadingProgress(`Processing ${allData.length.toLocaleString()} positions...`);
+      setIsProcessing(true);
+      
+      // Small delay to let React update UI before heavy processing
+      await new Promise(resolve => setTimeout(resolve, 50));
 
       // Filter to only valid lines for this city (removes data for removed lines like Mattapan)
       // For Sacramento, also include "Shared" for downtown shared section vehicles
@@ -1219,6 +1226,8 @@ export function SpeedMap({
       );
 
       // Pre-compute segment assignments
+      setLoadingProgress(`Mapping ${filteredData.length.toLocaleString()} positions to track...`);
+      await new Promise(resolve => setTimeout(resolve, 10));
       console.time("Pre-computing segments");
 
       // Build route feature map once (optimization: avoids filtering per-vehicle)
@@ -1253,6 +1262,10 @@ export function SpeedMap({
 
       // Start background preloading other cities
       startBackgroundPreload(city);
+
+      // Show rendering phase
+      setLoadingProgress(`Rendering ${allPositions.length.toLocaleString()} data points...`);
+      await new Promise(resolve => setTimeout(resolve, 10));
 
       setVehicles(allPositions);
       setDataSource("supabase");
@@ -1303,9 +1316,15 @@ export function SpeedMap({
       } else {
         onVehicleUpdateRef.current?.(0, new Date(), [], undefined);
       }
+
+      // Show rendering phase - will be cleared by idle event listener
+      // after MapLibre finishes rendering all the data
+      setLoadingProgress("Rendering...");
     } catch (error) {
       console.error("Error fetching vehicles:", error);
       setDataSource("none");
+      setLoadingProgress("");
+      setIsProcessing(false);
     }
   }, [city, cityConfig.routes]);
 
@@ -1322,6 +1341,8 @@ export function SpeedMap({
       // Instant switch - use cached data
       setVehicles(cached);
       setDataSource("supabase");
+      setLoadingProgress("Rendering...");
+      // Note: setIsProcessing(false) will be called by the idle listener in vehicles useEffect
       console.log(`Instant cache hit for ${city}: ${cached.length} positions`);
 
       // Also update parent with cached data stats
@@ -2409,7 +2430,7 @@ export function SpeedMap({
     });
 
     return { ...rawSwitches, features: filteredFeatures };
-  }, [city, cityConfig.routes]);
+  }, [city, cityConfig.routes, cityConfig.switches]);
 
   // Add/update switches layer
   useEffect(() => {
@@ -2684,15 +2705,41 @@ export function SpeedMap({
       }
     };
 
+    // Function to wait for map to finish rendering
+    const waitForIdle = () => {
+      if (!map.current) return;
+      
+      // Listen for the idle event (fires when map finishes rendering)
+      const handleIdle = () => {
+        console.log("Map idle - clearing loading indicator");
+        setLoadingProgress("");
+        setIsProcessing(false);
+      };
+      
+      // Use once so it only fires once
+      map.current.once("idle", handleIdle);
+      
+      // Fallback timeout in case idle doesn't fire
+      setTimeout(() => {
+        if (isProcessing) {
+          console.log("Loading fallback timeout - clearing indicator");
+          setLoadingProgress("");
+          setIsProcessing(false);
+        }
+      }, 10000);
+    };
+
     // If style is already loaded, add layers immediately
     // Otherwise, wait for it with a small delay
     if (map.current.isStyleLoaded()) {
       addVehicleLayers();
+      waitForIdle();
     } else {
       const waitForStyle = () => {
         if (!map.current) return;
         if (map.current.isStyleLoaded()) {
           addVehicleLayers();
+          waitForIdle();
         } else {
           setTimeout(waitForStyle, 50);
         }
@@ -2707,7 +2754,9 @@ export function SpeedMap({
     selectedLines,
     routeGeometryMap,
     city,
+    isProcessing,
   ]);
+
 
   // Update speed filter
   useEffect(() => {
@@ -3180,7 +3229,15 @@ export function SpeedMap({
         </div>
       )}
 
-      {dataSource === "none" && !cityDataLoading && (
+      {/* Data processing overlay - shown during fetch and heavy computation */}
+      {!cityDataLoading && (loadingProgress || isProcessing) && (
+        <div className="loading-overlay processing">
+          <div className="loading-spinner" />
+          <div className="loading-text">{loadingProgress || "Finishing up..."}</div>
+        </div>
+      )}
+
+      {dataSource === "none" && !cityDataLoading && !isProcessing && (
         <div className="data-status">
           No data yet. Run{" "}
           <code>
@@ -3199,9 +3256,6 @@ export function SpeedMap({
           </code>{" "}
           to start collecting.
         </div>
-      )}
-      {loadingProgress && !cityDataLoading && (
-        <div className="loading-indicator">{loadingProgress}</div>
       )}
     </div>
   );

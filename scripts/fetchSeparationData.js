@@ -228,6 +228,13 @@ const CITIES = {
     outputFile: "baltimoreSeparation.json",
     railwayTypes: "light_rail",
   },
+  Cleveland: {
+    name: "Cleveland",
+    bbox: [41.39, -81.86, 41.55, -81.50],
+    routesFile: "clevelandRtaRoutes.json",
+    outputFile: "clevelandSeparation.json",
+    railwayTypes: "light_rail|subway", // Blue/Green are light_rail, Red is subway in OSM
+  },
 };
 
 const OVERPASS_API = "https://overpass-api.de/api/interpreter";

@@ -193,6 +193,13 @@ const CITIES = {
     switchesFile: "baltimoreSwitches.json",
     signalsFile: "baltimoreSignals.json",
   },
+  Cleveland: {
+    name: "Cleveland",
+    bbox: [41.39, -81.86, 41.55, -81.50],
+    routesFile: "clevelandRtaRoutes.json",
+    switchesFile: "clevelandSwitches.json",
+    signalsFile: "clevelandSignals.json",
+  },
 };
 
 const OVERPASS_API = "https://overpass-api.de/api/interpreter";

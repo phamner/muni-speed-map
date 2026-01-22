@@ -576,10 +576,30 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       };
     }
 
+    case "Cleveland": {
+      const [routes, stops, crossings, switches, maxspeed, separation] = await Promise.all([
+        import("./clevelandRtaRoutes.json"),
+        import("./clevelandRtaStops.json"),
+        import("./clevelandGradeCrossings.json"),
+        import("./clevelandSwitches.json"),
+        import("./clevelandMaxspeed.json").catch(() => ({ default: null })),
+        import("./clevelandSeparation.json").catch(() => ({ default: null })),
+      ]);
+      console.timeEnd(`Loading ${city} static data`);
+      return {
+        routes: routes.default,
+        stops: stops.default,
+        crossings: crossings.default,
+        switches: switches.default,
+        maxspeed: maxspeed?.default || null,
+        tunnelsBridges: null, // No tunnels/bridges data yet
+        separation: separation?.default || null,
+      };
+    }
+
     // Placeholder cities - return empty data
     case "Jersey City":
-    case "Edmonton":
-    case "Cleveland": {
+    case "Edmonton": {
       console.timeEnd(`Loading ${city} static data`);
       return {
         routes: { type: "FeatureCollection", features: [] },

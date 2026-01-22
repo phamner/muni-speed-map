@@ -1149,6 +1149,18 @@
   letter-spacing: 0.5px;
 }
 
+/* Processing overlay - slightly more transparent to show map loading */
+.loading-overlay.processing {
+  background: rgba(10, 10, 20, 0.75);
+}
+
+.loading-overlay.processing .loading-text {
+  font-size: 0.95rem;
+  max-width: 280px;
+  text-align: center;
+  line-height: 1.4;
+}
+
 /* Ensure MapLibre canvas fills container */
 .map-container .maplibregl-map {
   width: 100% !important;

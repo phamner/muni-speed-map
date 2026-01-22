@@ -44,6 +44,7 @@ Each city was selected because its light rail or streetcar system has **signific
 | 🏗️ **Pittsburgh**     | The T Light Rail | Historic light rail system with downtown subway and South Hills surface sections            |
 | 🏛️ **Sacramento**     | SacRT Light Rail | Street-running through downtown Sacramento with Gold and Blue Lines                         |
 | 🦀 **Baltimore**       | MTA Light Rail   | 29-mile light rail with branches to BWI Airport, Glen Burnie, and Hunt Valley               |
+| 🎸 **Cleveland**       | RTA Rapid        | Red Line rapid transit plus Blue/Green branches with downtown subway and suburban sections  |
 
 **Not included:** Heavy rail systems (BART, NYC Subway, DC Metro) that are fully grade-separated — they don't have traffic conflicts to analyze.
 
@@ -93,6 +94,7 @@ The focus remains on **light rail and streetcars that compete with street traffi
 | 🚊 **Charlotte**      | CATS LYNX        | Blue Line, Gold Line             | ✅ Collecting |
 | 🍁 **Calgary**        | Calgary CTrain   | Red Line, Blue Line              | ✅ Collecting |
 | 🦀 **Baltimore**       | MTA Light Rail   | Light RailLink                   | ✅ Collecting |
+| 🎸 **Cleveland**       | RTA Rapid        | Red, Blue, Green                 | ✅ Collecting |
 | 🌊 **San Diego**      | MTS Trolley      | Blue, Orange, Green, Copper      | ⏳ Needs key  |
 | 🤠 **Dallas**         | DART Light Rail  | Red, Blue, Green, Orange         | ⏳ Needs key  |
 
@@ -203,6 +205,7 @@ npm run collect:all
 | `npm run collect:charlotte`          | Charlotte            | `collectDataCharlotte.js`         | ✅ Active                |
 | `npm run collect:calgary`            | Calgary              | `collectDataCalgary.js`           | ❌ No train data in feed |
 | `npm run collect:baltimore`          | Baltimore            | `collectDataBaltimore.js`         | ✅ Active                |
+| `npm run collect:cleveland`          | Cleveland            | `collectDataCleveland.js`         | ✅ Active                |
 | `npm run collect:sandiego`           | San Diego            | `collectDataSanDiego.js`          | ⏳ Needs API key         |
 | `npm run collect:dallas`             | Dallas               | `collectDataDallas.js`            | ⏳ Needs API key         |
 

@@ -567,6 +567,14 @@ export function Controls({
         </button>
 
         <button
+          className={`city-btn ${city === "Cleveland" ? "active" : ""}`}
+          onClick={() => setCity("Cleveland")}
+          title="RTA Red, Blue & Green Lines"
+        >
+          🎸 CLE
+        </button>
+
+        <button
           className={`city-btn city-btn-pending ${
             city === "San Diego" ? "active" : ""
           }`}
@@ -784,7 +792,7 @@ export function Controls({
             >
               By Line
             </button>
-            {city === "Toronto" || city === "Pittsburgh" || city === "Baltimore" || city === "Phoenix" ? (
+            {city === "Toronto" || city === "Pittsburgh" || city === "Baltimore" || city === "Phoenix" || city === "Cleveland" ? (
               <button
                 className="route-mode-btn"
                 style={{ opacity: 0.4, cursor: "not-allowed" }}

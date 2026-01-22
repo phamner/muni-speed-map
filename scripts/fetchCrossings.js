@@ -273,6 +273,12 @@ const CITIES = {
     routesFile: "charlotteLightRailRoutes.json",
     outputFile: "charlotteGradeCrossings.json",
   },
+  Cleveland: {
+    name: "Cleveland",
+    bbox: [41.39, -81.86, 41.55, -81.50],
+    routesFile: "clevelandRtaRoutes.json",
+    outputFile: "clevelandGradeCrossings.json",
+  },
 };
 
 const OVERPASS_API = "https://overpass-api.de/api/interpreter";
