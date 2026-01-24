@@ -1569,11 +1569,6 @@ export function SpeedMap({
       setMapLoaded(true);
     });
 
-    // Collapse expanded stop clusters when zooming
-    map.current.on("zoomstart", () => {
-      setExpandedStopCluster(null);
-    });
-
     return () => {
       map.current?.remove();
       map.current = null;
