@@ -50,6 +50,7 @@ import {
   BALTIMORE_LIGHT_RAIL_LINE_INFO,
   getLinesForCity,
 } from "../types";
+import { ABOUT_CITY_NOTES, ABOUT_SECTIONS } from "../content/aboutProject";
 import type {
   SpeedFilter,
   ViewMode,
@@ -363,6 +364,7 @@ export function Controls({
 }: ControlsProps) {
   // Sacramento warning modal state
   const [showSacWarning, setShowSacWarning] = useState(false);
+  const [showAboutModal, setShowAboutModal] = useState(false);
 
   // Show modal when user navigates to Sacramento
   useEffect(() => {
@@ -418,28 +420,28 @@ export function Controls({
 
   // Two-line title: Line 1 = City, Line 2 = System
   const cityNames: Record<string, string> = {
-    SF: "San Francisco",
-    LA: "Los Angeles",
-    Seattle: "Seattle",
-    Boston: "Boston",
-    Portland: "Portland",
-    "San Diego": "San Diego",
-    Toronto: "Toronto",
-    Philadelphia: "Philadelphia",
-    Sacramento: "Sacramento",
-    Pittsburgh: "Pittsburgh",
-    Dallas: "Dallas",
-    Minneapolis: "Minneapolis",
-    Denver: "Denver",
-    "Salt Lake City": "Salt Lake City",
-    "San Jose": "San Jose",
-    "Jersey City": "Jersey City",
-    Calgary: "Calgary",
-    Edmonton: "Edmonton",
-    Cleveland: "Cleveland",
-    Charlotte: "Charlotte",
-    Phoenix: "Phoenix",
-    Baltimore: "Baltimore",
+    SF: "San Francisco, CA",
+    LA: "Los Angeles, CA",
+    Seattle: "Seattle, WA",
+    Boston: "Boston, MA",
+    Portland: "Portland, OR",
+    "San Diego": "San Diego, CA",
+    Toronto: "Toronto, ON",
+    Philadelphia: "Philadelphia, PA",
+    Sacramento: "Sacramento, CA",
+    Pittsburgh: "Pittsburgh, PA",
+    Dallas: "Dallas, TX",
+    Minneapolis: "Minneapolis, MN",
+    Denver: "Denver, CO",
+    "Salt Lake City": "Salt Lake City, UT",
+    "San Jose": "San Jose, CA",
+    "Jersey City": "Jersey City, NJ",
+    Calgary: "Calgary, AB",
+    Edmonton: "Edmonton, AB",
+    Cleveland: "Cleveland, OH",
+    Charlotte: "Charlotte, NC",
+    Phoenix: "Phoenix, AZ",
+    Baltimore: "Baltimore, MD",
   };
   const systemNames: Record<string, string> = {
     SF: "Muni Speed Map",
@@ -660,6 +662,12 @@ export function Controls({
           ⚠️ Sac
         </button> */}
       </div>
+      <button
+        className="about-project-btn"
+        onClick={() => setShowAboutModal(true)}
+      >
+        About this project
+      </button>
 
       {/* Data Status */}
       <div className="status-section">
@@ -963,7 +971,7 @@ export function Controls({
                 checked={showRailContextHeavy}
                 onChange={(e) => setShowRailContextHeavy(e.target.checked)}
               />
-              Heavy rail / metro ({railContextHeavyCount})
+              Metro / Subway ({railContextHeavyCount})
             </label>
           </div>
           <div className="route-lines-toggle">
@@ -973,7 +981,7 @@ export function Controls({
                 checked={showRailContextCommuter}
                 onChange={(e) => setShowRailContextCommuter(e.target.checked)}
               />
-              Regional / commuter rail ({railContextCommuterCount})
+              Regional / Commuter rail ({railContextCommuterCount})
             </label>
           </div>
         </div>
@@ -1183,136 +1191,6 @@ export function Controls({
             ? "Speed is provided directly by the transit agency's API, giving accurate real-time readings."
             : "Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart)."}
         </p>
-        <p>
-          <strong>Data freshness:</strong> This map displays all recent data
-          from the database.
-        </p>
-        {city === "SF" && (
-          <>
-            <p>
-              <strong>Sunset Tunnel:</strong> The N Judah's Sunset Tunnel has no
-              GPS signal inside, so data points cluster at the tunnel portals.
-              The higher speeds shown there represent the actual average speed
-              through the grade-separated tunnel section.
-            </p>
-            <p>
-              <strong>F Line note:</strong> Grade crossings for the F Market
-              line are hidden because it runs entirely on Market Street surface
-              level, which would be confusing alongside the Market Street subway
-              lines below.
-            </p>
-          </>
-        )}
-        {city === "Portland" && (
-          <p>
-            <strong>Downtown transit mall:</strong> Portland's MAX runs through
-            downtown on a dedicated transit mall rather than traditional
-            at-grade crossings, so fewer grade crossing markers appear in the
-            city center.
-          </p>
-        )}
-        {city === "Toronto" && (
-          <p>
-            <strong>Grade crossings:</strong> Toronto streetcars run embedded in
-            city streets in mixed traffic, so OpenStreetMap doesn't tag these as
-            railway grade crossings. The speed data still shows where streetcars
-            slow down due to traffic conflicts.
-          </p>
-        )}
-        {city === "Philadelphia" && (
-          <p>
-            <strong>Grade crossings:</strong> Philadelphia trolleys operate in
-            mixed traffic on city streets, so OpenStreetMap doesn't tag these as
-            railway grade crossings. The speed data still shows where trolleys
-            slow down due to traffic conflicts.
-          </p>
-        )}
-        {city === "Sacramento" && (
-          <>
-            <div className="data-warning">
-              <strong>⚠️ Data Quality Issue:</strong> SacRT's API doesn't
-              identify which vehicles are light rail vs. buses. We attempt to
-              filter by track proximity, but some data points may be incorrect.
-              This is left as-is until a solution can be found.
-            </div>
-            <p>
-              <strong>Shared track:</strong> Gold and Blue lines share track
-              through downtown Sacramento. Vehicles in this section are shown
-              when either line is selected.
-            </p>
-          </>
-        )}
-        {city === "Pittsburgh" && (
-          <p>
-            <strong>Downtown subway:</strong> Pittsburgh's "The T" runs through
-            a subway tunnel in downtown before emerging for surface operations
-            in the South Hills suburbs — similar to SF Muni's Market Street
-            subway. Compare speeds between the grade-separated downtown section
-            and the at-grade suburban sections.
-          </p>
-        )}
-        {city === "Dallas" && (
-          <p>
-            <strong>Largest US light rail:</strong> DART is the largest light
-            rail system in the United States by route miles (93+ miles). Most
-            operations are at-grade with some elevated and grade-separated
-            sections.
-          </p>
-        )}
-        {city === "Minneapolis" && (
-          <p>
-            <strong>Airport tunnel:</strong> The Blue Line runs through a tunnel
-            under Minneapolis-St. Paul International Airport — one of the few
-            grade-separated sections. Downtown operations run on surface streets
-            in exclusive right-of-way without signal preemption.
-          </p>
-        )}
-        {city === "Denver" && (
-          <p>
-            <strong>Mixed operations:</strong> Denver RTD operates a large light
-            rail and commuter rail network with both at-grade and
-            grade-separated sections. Some lines (like the A Line to the
-            airport) are more grade-separated than others.
-          </p>
-        )}
-        {city === "Salt Lake City" && (
-          <p>
-            <strong>TRAX system:</strong> UTA's TRAX light rail serves the Salt
-            Lake Valley with three main lines plus the S-Line streetcar. Most
-            operations are at-grade with some grade-separated overpasses and
-            exclusive right-of-way sections.
-          </p>
-        )}
-        {city === "San Jose" && (
-          <p>
-            <strong>VTA Light Rail:</strong> Santa Clara Valley Transportation
-            Authority operates light rail with three lines (Blue, Green, Orange)
-            serving Silicon Valley. Most operations are at-grade with some
-            subway sections in downtown San Jose.
-          </p>
-        )}
-        {city === "San Diego" && (
-          <div className="data-warning">
-            <strong>⚠️ No Data Available:</strong> San Diego Trolley data
-            collection requires an MTS API key. Route lines and infrastructure
-            are shown, but no speed data is currently being collected.
-          </div>
-        )}
-        <p>
-          <strong>Grade crossings (X):</strong> Locations where the train tracks
-          cross a road at street level. These may have gates, stop signs,
-          traffic lights (with signal priority or preemption), or other controls
-          that can affect train speeds.
-        </p>
-        <p>
-          <strong>Track switches (Y):</strong> Moveable rail sections that allow
-          trains to change tracks. Switches are often found at junctions where
-          multiple lines meet or at terminal turnbacks.
-        </p>
-        <p>
-          <strong>Speed limit overlay:</strong> When viewing route lines "By
-          Speed Limit", grey sections indicate unknown speed limits.
-        </p>
         <p className="data-attribution">
           Grade crossing, switch, and speed limit data from{" "}
           <a
@@ -1452,6 +1330,82 @@ export function Controls({
           {city === "Portland" || city === "Boston" ? "" : " GTFS-realtime"}
         </p>
       </div>
+
+      {/* About Project Modal */}
+      {showAboutModal && (
+        <div className="modal-overlay" onClick={() => setShowAboutModal(false)}>
+          <div
+            className="modal-content about-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2>{ABOUT_SECTIONS.title}</h2>
+            <p>{ABOUT_SECTIONS.whatItIs}</p>
+
+            <div className="about-section-block">
+              <h3>Why These Decisions Were Made</h3>
+              <ul>
+                {ABOUT_SECTIONS.keyDecisions.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="about-section-block">
+              <h3>City Inclusion Criteria</h3>
+              <ul>
+                {ABOUT_SECTIONS.inclusionCriteria.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="about-section-block">
+              <h3>Why Some Cities Are Excluded</h3>
+              <ul>
+                {ABOUT_SECTIONS.exclusions.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="about-section-block">
+              <h3>Data Methodology</h3>
+              <ul>
+                {ABOUT_SECTIONS.dataMethodology.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="about-section-block">
+              <h3>How To Read The Map</h3>
+              <ul>
+                {ABOUT_SECTIONS.interpretationNotes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="about-section-block">
+              <h3>City Notes</h3>
+              <ul>
+                {ABOUT_CITY_NOTES.map((cityNote) => (
+                  <li key={cityNote.city}>
+                    <strong>{cityNote.city}:</strong> {cityNote.note}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <button
+              className="modal-close-btn"
+              onClick={() => setShowAboutModal(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Sacramento Warning Modal */}
       {showSacWarning && (

@@ -52,6 +52,22 @@ const TRAX_ROUTE_IDS = {
   "45389": "S-Line", // 720 S-Line (Sugar House Streetcar)
 };
 
+// Fallback aliases observed in some GTFS-RT trip descriptors
+// (public-facing route IDs/codes instead of internal GTFS route_id values).
+const TRAX_ROUTE_ALIASES = {
+  ...TRAX_ROUTE_IDS,
+  "701": "Blue",
+  "703": "Red",
+  "704": "Green",
+  "720": "S-Line",
+  Blue: "Blue",
+  Red: "Red",
+  Green: "Green",
+  "S-Line": "S-Line",
+  "S Line": "S-Line",
+  SLINE: "S-Line",
+};
+
 const POLL_INTERVAL_MS = 90000; // 90 seconds
 
 // Initialize Supabase client
@@ -136,15 +152,39 @@ async function fetchVehiclePositions() {
       return [];
     }
 
-    // Filter for TRAX vehicles using tripId lookup
+    // Filter for TRAX vehicles using tripId lookup with routeId fallback.
     const railVehicles = [];
+    let totalVehicles = 0;
+    let withTrip = 0;
+    let tripMapped = 0;
+    let routeFallbackMapped = 0;
     
     for (const entity of feed.entity) {
-      if (!entity.vehicle || !entity.vehicle.trip) continue;
+      if (!entity.vehicle) continue;
+      totalVehicles++;
+      if (!entity.vehicle.trip) continue;
+      withTrip++;
       
       const tripId = entity.vehicle.trip.tripId;
-      const tripInfo = tripToRouteMap.get(tripId);
-      
+      let tripInfo = tripToRouteMap.get(tripId);
+      if (tripInfo) {
+        tripMapped++;
+      } else {
+        // Fallback: some UTA feeds publish routeId values that don't align
+        // with local trips.txt trip_ids; use routeId aliases when available.
+        const rawRouteId = entity.vehicle.trip.routeId?.toString()?.trim();
+        const lineName = rawRouteId ? TRAX_ROUTE_ALIASES[rawRouteId] : null;
+        if (lineName) {
+          tripInfo = {
+            routeId: rawRouteId,
+            lineName,
+            headsign: entity.vehicle.trip.tripHeadsign || "",
+            directionId: entity.vehicle.trip.directionId?.toString() || "0",
+          };
+          routeFallbackMapped++;
+        }
+      }
+
       if (!tripInfo) continue; // Not a TRAX trip
       
       const v = entity.vehicle;
@@ -171,6 +211,12 @@ async function fetchVehiclePositions() {
           headsign: tripInfo.headsign || null,
         });
       }
+    }
+
+    if (totalVehicles > 0) {
+      console.log(
+        `   UTA feed diagnostics: total=${totalVehicles}, withTrip=${withTrip}, tripMapped=${tripMapped}, routeFallbackMapped=${routeFallbackMapped}`,
+      );
     }
 
     return railVehicles;

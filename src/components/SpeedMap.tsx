@@ -1340,15 +1340,15 @@ export function SpeedMap({
         ?.setLngLat(e.lngLat)
         .setHTML(
           `<div class="popup-content">
-            <div class="popup-title">Passenger Rail</div>
+            <div class="popup-title">Regional & Metro Rail</div>
             ${
               heavy.length
-                ? `<div class="popup-detail" style="margin-top:4px;color:#d1d5db">Heavy rail / metro</div>${groupHtml(heavy)}`
+                ? `<div class="popup-detail" style="margin-top:4px;color:#d1d5db"> Metro / Subway </div>${groupHtml(heavy)}`
                 : ""
             }
             ${
               commuter.length
-                ? `<div class="popup-detail" style="margin-top:4px;color:#d1d5db">Regional / commuter rail</div>${groupHtml(commuter)}`
+                ? `<div class="popup-detail" style="margin-top:4px;color:#d1d5db">Regional / Commuter rail</div>${groupHtml(commuter)}`
                 : ""
             }
           </div>`,
@@ -3925,7 +3925,7 @@ export function SpeedMap({
             }`}
           >
             <span className="rail-context-legend-line heavy"></span>
-            <span>Heavy rail / metro</span>
+            <span>Metro / Subway</span>
           </div>
           <div
             className={`rail-context-legend-item ${
@@ -3933,7 +3933,7 @@ export function SpeedMap({
             }`}
           >
             <span className="rail-context-legend-line commuter"></span>
-            <span>Regional / commuter</span>
+            <span>Regional / Commuter</span>
           </div>
         </div>
       )}

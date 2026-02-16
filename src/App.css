@@ -69,6 +69,25 @@
   box-shadow: 0 2px 8px rgba(0, 217, 255, 0.2);
 }
 
+.about-project-btn {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid rgba(0, 217, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(0, 217, 255, 0.12);
+  color: #9befff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.about-project-btn:hover {
+  background: rgba(0, 217, 255, 0.18);
+  border-color: rgba(0, 217, 255, 0.55);
+  color: #c8f8ff;
+}
+
 /* Warning style for cities with data quality issues */
 .city-btn.city-btn-warning {
   color: #ff6b6b;
@@ -1279,6 +1298,44 @@
 /* Sacramento-specific warning modal */
 .sac-warning-modal {
   border-color: rgba(255, 150, 50, 0.3);
+}
+
+.about-modal {
+  max-width: 860px;
+  width: min(860px, calc(100vw - 40px));
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  text-align: left;
+  border-color: rgba(0, 217, 255, 0.25);
+}
+
+.about-modal h2 {
+  color: #9befff;
+  margin-bottom: 14px;
+}
+
+.about-section-block {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-section-block h3 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.about-section-block ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.about-section-block li {
+  margin: 0 0 8px 0;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.45;
+  font-size: 0.9rem;
 }
 
 /* Map scale control styling */

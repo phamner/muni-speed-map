@@ -158,7 +158,8 @@ async function fetchLrtVehicles() {
       if (!entity.vehicle || !entity.vehicle.position) continue;
 
       const routeId = entity.vehicle.trip?.routeId;
-      if (!routeId || !LRT_ROUTES.includes(routeId)) continue;
+      if (!routeId) continue;
+      if (!LRT_ROUTES.includes(routeId)) continue;
 
       // Count vehicles per route for logging
       routeCounts[routeId] = (routeCounts[routeId] || 0) + 1;
