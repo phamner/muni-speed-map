@@ -51,7 +51,9 @@
     "parse-stops:toronto": "node scripts/parseStopsToronto.js",
     "parse-stops:philly": "node scripts/parseStopsPhilly.js",
     "parse-stops:sacramento": "node scripts/parseStopsSacramento.js",
-    "fetch-crossings": "node scripts/fetchCrossings.js"
+    "fetch-crossings": "node scripts/fetchCrossings.js",
+    "test:rail-context": "node --test scripts/lib/railContextGtfs.test.js",
+    "build:rail-context": "node scripts/buildRailContextBatch.js"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",

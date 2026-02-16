@@ -312,6 +312,12 @@ interface ControlsProps {
   setShowCrossings: (show: boolean) => void;
   showSwitches: boolean;
   setShowSwitches: (show: boolean) => void;
+  showRailContextHeavy: boolean;
+  setShowRailContextHeavy: (show: boolean) => void;
+  showRailContextCommuter: boolean;
+  setShowRailContextCommuter: (show: boolean) => void;
+  railContextHeavyCount: number;
+  railContextCommuterCount: number;
   hideStoppedTrains: boolean;
   setHideStoppedTrains: (hide: boolean) => void;
   viewMode: ViewMode;
@@ -341,6 +347,12 @@ export function Controls({
   setShowCrossings,
   showSwitches,
   setShowSwitches,
+  showRailContextHeavy,
+  setShowRailContextHeavy,
+  showRailContextCommuter,
+  setShowRailContextCommuter,
+  railContextHeavyCount,
+  railContextCommuterCount,
   hideStoppedTrains,
   setHideStoppedTrains,
   viewMode,
@@ -594,7 +606,7 @@ export function Controls({
         >
           🌊 SD
         </button>
-        <button
+        {/* <button
           className={`city-btn city-btn-dark-orange ${city === "Calgary" ? "active" : ""}`}
           onClick={() => setCity("Calgary")}
           title="CTrain Red & Blue Lines"
@@ -636,7 +648,7 @@ export function Controls({
           title="Data collection starting soon"
         >
           🇺🇸 D.C.
-        </button>
+        </button> */}
 
         {/* <button
           className={`city-btn city-btn-warning ${
@@ -942,6 +954,29 @@ export function Controls({
             Hide stopped trains (0 {unitLabelLower})
           </label>
         </div>
+        <div className="route-lines-section">
+          <div className="control-label">Regional & Metro Overlay</div>
+          <div className="route-lines-toggle">
+            <label>
+              <input
+                type="checkbox"
+                checked={showRailContextHeavy}
+                onChange={(e) => setShowRailContextHeavy(e.target.checked)}
+              />
+              Heavy rail / metro ({railContextHeavyCount})
+            </label>
+          </div>
+          <div className="route-lines-toggle">
+            <label>
+              <input
+                type="checkbox"
+                checked={showRailContextCommuter}
+                onChange={(e) => setShowRailContextCommuter(e.target.checked)}
+              />
+              Regional / commuter rail ({railContextCommuterCount})
+            </label>
+          </div>
+        </div>
       </div>
 
       {/* Speed Filter */}
@@ -1004,6 +1039,8 @@ export function Controls({
               setShowStops(false);
               setShowCrossings(false);
               setShowSwitches(false);
+              setShowRailContextHeavy(false);
+              setShowRailContextCommuter(false);
               setHideStoppedTrains(false);
             }}
           >
@@ -1253,13 +1290,6 @@ export function Controls({
             serving Silicon Valley. Most operations are at-grade with some
             subway sections in downtown San Jose.
           </p>
-        )}
-        {city === "Seattle" && (
-          <div className="data-warning">
-            <strong>⚠️ No Data Available:</strong> Seattle Link data collection
-            requires a Sound Transit API key. Route lines and infrastructure are
-            shown, but no speed data is currently being collected.
-          </div>
         )}
         {city === "San Diego" && (
           <div className="data-warning">

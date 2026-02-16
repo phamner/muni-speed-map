@@ -5,6 +5,8 @@
  */
 
 import type { City } from "../types";
+import slcRailContextHeavy from "./slcRailContextHeavy.json";
+import slcRailContextCommuter from "./slcRailContextCommuter.json";
 
 // Type for city static data (routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation)
 export interface CityStaticData {
@@ -15,6 +17,99 @@ export interface CityStaticData {
   maxspeed: any | null;
   tunnelsBridges: any | null;
   separation: any | null;
+  railContextHeavy?: any | null;
+  railContextCommuter?: any | null;
+}
+
+const cityToRailContextPrefix: Partial<Record<City, string>> = {
+  SF: "sf",
+  LA: "la",
+  Seattle: "seattle",
+  Boston: "boston",
+  Portland: "portland",
+  "San Diego": "sanDiego",
+  Toronto: "toronto",
+  Philadelphia: "philly",
+  Sacramento: "sacramento",
+  Pittsburgh: "pittsburgh",
+  Dallas: "dallas",
+  Minneapolis: "minneapolis",
+  Denver: "denver",
+  "Salt Lake City": "slc",
+  "San Jose": "vta",
+  Phoenix: "phoenix",
+  "Jersey City": "hblr",
+  Calgary: "calgary",
+  Edmonton: "edmonton",
+  Cleveland: "cleveland",
+  Charlotte: "charlotte",
+  Baltimore: "baltimore",
+  Washington: "washington",
+};
+
+const railContextModules = import.meta.glob("./*RailContext*.json");
+let railContextDebugLogged = false;
+
+async function loadRailContextData(city: City): Promise<{
+  railContextHeavy: any | null;
+  railContextCommuter: any | null;
+}> {
+  // Deterministic fallback for SLC to avoid any glob-indexing edge cases.
+  if (city === "Salt Lake City") {
+    console.log(
+      `SLC rail context static import: heavy=${slcRailContextHeavy?.features?.length || 0}, commuter=${slcRailContextCommuter?.features?.length || 0}`,
+    );
+    return {
+      railContextHeavy: (slcRailContextHeavy as any) || null,
+      railContextCommuter: (slcRailContextCommuter as any) || null,
+    };
+  }
+
+  const prefix = cityToRailContextPrefix[city];
+  if (!prefix) {
+    return { railContextHeavy: null, railContextCommuter: null };
+  }
+
+  const heavyFilename = `${prefix}RailContextHeavy.json`;
+  const commuterFilename = `${prefix}RailContextCommuter.json`;
+
+  const getFilename = (key: string) => {
+    const noQuery = key.split("?")[0];
+    const parts = noQuery.split("/");
+    return parts[parts.length - 1];
+  };
+
+  if (!railContextDebugLogged) {
+    railContextDebugLogged = true;
+    console.log(
+      "Rail context module keys:",
+      Object.keys(railContextModules).map(getFilename),
+    );
+  }
+
+  // Vite glob keys can vary by format; resolve by filename suffix for robustness.
+  const heavyLoader = Object.entries(railContextModules).find(([key]) =>
+    getFilename(key) === heavyFilename,
+  )?.[1];
+  const commuterLoader = Object.entries(railContextModules).find(([key]) =>
+    getFilename(key) === commuterFilename,
+  )?.[1];
+
+  const [heavy, commuter] = await Promise.all([
+    heavyLoader ? heavyLoader() : Promise.resolve(null),
+    commuterLoader ? commuterLoader() : Promise.resolve(null),
+  ]);
+
+  if (!heavyLoader && !commuterLoader) {
+    console.warn(
+      `Rail context files not found for ${city} (expected ${heavyFilename} / ${commuterFilename})`,
+    );
+  }
+
+  return {
+    railContextHeavy: (heavy as any)?.default || null,
+    railContextCommuter: (commuter as any)?.default || null,
+  };
 }
 
 // City coordinates/zoom - these are tiny so we keep them bundled
@@ -73,8 +168,10 @@ export async function loadCityData(city: City): Promise<CityStaticData> {
 
   try {
     const data = await loadPromise;
-    cityStaticDataCache.set(city, data);
-    return data;
+    const railContext = await loadRailContextData(city);
+    const dataWithRailContext: CityStaticData = { ...data, ...railContext };
+    cityStaticDataCache.set(city, dataWithRailContext);
+    return dataWithRailContext;
   } finally {
     loadingPromises.delete(city);
   }

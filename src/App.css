@@ -1339,6 +1339,61 @@
   color: #ff9500;
 }
 
+/* Floating rail context legend - near map toggle and crossing legend */
+.rail-context-legend {
+  position: absolute;
+  bottom: 238px;
+  left: 10px;
+  background: rgba(26, 26, 46, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  min-width: 170px;
+}
+
+.rail-context-legend-title {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 6px;
+}
+
+.rail-context-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+}
+
+.rail-context-legend-item.disabled {
+  opacity: 0.45;
+}
+
+.rail-context-legend-item:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.rail-context-legend-line {
+  width: 20px;
+  border-top: 3px solid #d7dee8;
+}
+
+.rail-context-legend-line.heavy {
+  border-top-style: solid;
+}
+
+.rail-context-legend-line.commuter {
+  border-top-color: #77c4ff;
+  border-top-style: solid;
+  border-top-width: 2px;
+}
+
 /* Google Maps-style layer toggle button */
 .map-layer-toggle {
   position: absolute;

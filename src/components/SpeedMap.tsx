@@ -12,6 +12,8 @@ import {
   CITY_COORDS,
   type CityStaticData,
 } from "../data/cityDataLoaders";
+import slcRailContextHeavy from "../data/slcRailContextHeavy.json";
+import slcRailContextCommuter from "../data/slcRailContextCommuter.json";
 import type { SpeedFilter, ViewMode, LineStats } from "../App";
 
 // Maximum distance in meters from route line to be considered "on route"
@@ -42,7 +44,18 @@ const EMPTY_CITY_DATA: CityStaticData = {
   maxspeed: null,
   tunnelsBridges: null,
   separation: null,
+  railContextHeavy: null,
+  railContextCommuter: null,
 };
+
+function escapeHtml(value: string): string {
+  return value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
+}
 
 // Haversine distance between two points in meters
 function haversineDistance(
@@ -1078,6 +1091,8 @@ interface SpeedMapProps {
   showStops: boolean;
   showCrossings: boolean;
   showSwitches: boolean;
+  showRailContextHeavy: boolean;
+  showRailContextCommuter: boolean;
   hideStoppedTrains: boolean;
   viewMode: ViewMode;
   showSatellite: boolean;
@@ -1089,6 +1104,7 @@ interface SpeedMapProps {
     lineStats?: LineStats[],
     dataAgeMinutes?: number,
   ) => void;
+  onRailContextUpdate?: (heavyCount: number, commuterCount: number) => void;
 }
 
 export function SpeedMap({
@@ -1100,12 +1116,15 @@ export function SpeedMap({
   showStops,
   showCrossings,
   showSwitches,
+  showRailContextHeavy,
+  showRailContextCommuter,
   hideStoppedTrains,
   viewMode,
   showSatellite,
   onSatelliteToggle,
   speedUnit,
   onVehicleUpdate,
+  onRailContextUpdate,
 }: SpeedMapProps) {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<maplibregl.Map | null>(null);
@@ -1213,8 +1232,130 @@ export function SpeedMap({
       maxspeed: cityStaticData?.maxspeed || null,
       tunnelsBridges: cityStaticData?.tunnelsBridges || null,
       separation: cityStaticData?.separation || null,
+      railContextHeavy: cityStaticData?.railContextHeavy || null,
+      railContextCommuter: cityStaticData?.railContextCommuter || null,
     }),
     [city, cityStaticData],
+  );
+
+  const effectiveRailContext = useMemo(() => {
+    const heavy = cityConfig.railContextHeavy;
+    const commuter = cityConfig.railContextCommuter;
+
+    // Hard fallback: if SLC rail context is empty at runtime, use static JSON imports directly.
+    if (
+      city === "Salt Lake City" &&
+      (!commuter?.features || commuter.features.length === 0) &&
+      (slcRailContextCommuter as any)?.features?.length > 0
+    ) {
+      console.warn(
+        "Using SLC rail-context static fallback in SpeedMap (loader returned empty).",
+      );
+      return {
+        heavy:
+          (slcRailContextHeavy as any)?.features?.length > 0
+            ? (slcRailContextHeavy as any)
+            : heavy,
+        commuter: slcRailContextCommuter as any,
+      };
+    }
+
+    return { heavy, commuter };
+  }, [city, cityConfig.railContextHeavy, cityConfig.railContextCommuter]);
+
+  const railContextCounts = useMemo(
+    () => ({
+      heavy: effectiveRailContext.heavy?.features?.length || 0,
+      commuter: effectiveRailContext.commuter?.features?.length || 0,
+    }),
+    [effectiveRailContext],
+  );
+
+  useEffect(() => {
+    onRailContextUpdate?.(railContextCounts.heavy, railContextCounts.commuter);
+  }, [onRailContextUpdate, railContextCounts]);
+
+  const handleRailContextMouseEnter = useCallback(() => {
+    if (map.current) map.current.getCanvas().style.cursor = "pointer";
+  }, []);
+
+  const handleRailContextMouseLeave = useCallback(() => {
+    if (map.current) map.current.getCanvas().style.cursor = "";
+    if (!crossingPopupPinned.current) popup.current?.remove();
+  }, []);
+
+  const handleRailContextMouseMove = useCallback(
+    (e: maplibregl.MapMouseEvent & { point: maplibregl.PointLike }) => {
+      if (!map.current) return;
+      const features = map.current.queryRenderedFeatures(e.point, {
+        layers: ["rail-context-heavy", "rail-context-commuter"],
+      });
+      if (!features.length) return;
+
+      const dedupe = new Set<string>();
+      const heavy: Array<{ service: string; agency: string }> = [];
+      const commuter: Array<{ service: string; agency: string }> = [];
+
+      for (const feature of features) {
+        const props = (feature.properties || {}) as Record<string, any>;
+        const shortName = (props.route_short_name || "").toString().trim();
+        const longName = (props.route_long_name || "").toString().trim();
+        const routeId = (props.route_id || "Unknown route").toString().trim();
+        const agencyName = (props.agency_name || "Unknown agency")
+          .toString()
+          .trim();
+        const serviceClass = (
+          props.service_class ||
+          (feature.layer.id === "rail-context-heavy" ? "heavy" : "commuter")
+        )
+          .toString()
+          .trim()
+          .toLowerCase();
+
+        const serviceName =
+          shortName && longName
+            ? `${shortName} ${longName}`
+            : shortName || longName || routeId;
+        const key = `${serviceClass}|${serviceName}|${agencyName}`;
+        if (dedupe.has(key)) continue;
+        dedupe.add(key);
+
+        if (serviceClass === "heavy") {
+          heavy.push({ service: serviceName, agency: agencyName });
+        } else {
+          commuter.push({ service: serviceName, agency: agencyName });
+        }
+      }
+
+      const groupHtml = (items: Array<{ service: string; agency: string }>) =>
+        items
+          .sort((a, b) => a.service.localeCompare(b.service))
+          .map(
+            (item) =>
+              `<div class="popup-detail">${escapeHtml(item.service)} <span style="color:#9ca3af">(${escapeHtml(item.agency)})</span></div>`,
+          )
+          .join("");
+
+      popup.current
+        ?.setLngLat(e.lngLat)
+        .setHTML(
+          `<div class="popup-content">
+            <div class="popup-title">Passenger Rail</div>
+            ${
+              heavy.length
+                ? `<div class="popup-detail" style="margin-top:4px;color:#d1d5db">Heavy rail / metro</div>${groupHtml(heavy)}`
+                : ""
+            }
+            ${
+              commuter.length
+                ? `<div class="popup-detail" style="margin-top:4px;color:#d1d5db">Regional / commuter rail</div>${groupHtml(commuter)}`
+                : ""
+            }
+          </div>`,
+        )
+        .addTo(map.current);
+    },
+    [],
   );
 
   // Cluster stops by exact name - shows single marker for stations with same name
@@ -1865,11 +2006,19 @@ export function SpeedMap({
           map.current.removeLayer("routes-tunnel-outline");
         if (map.current.getLayer("routes-tunnel"))
           map.current.removeLayer("routes-tunnel");
+        if (map.current.getLayer("rail-context-heavy"))
+          map.current.removeLayer("rail-context-heavy");
+        if (map.current.getLayer("rail-context-commuter"))
+          map.current.removeLayer("rail-context-commuter");
         if (map.current.getSource("routes")) map.current.removeSource("routes");
         if (map.current.getSource("routes-construction"))
           map.current.removeSource("routes-construction");
         if (map.current.getSource("routes-tunnel"))
           map.current.removeSource("routes-tunnel");
+        if (map.current.getSource("rail-context-heavy-src"))
+          map.current.removeSource("rail-context-heavy-src");
+        if (map.current.getSource("rail-context-commuter-src"))
+          map.current.removeSource("rail-context-commuter-src");
         // Speed limit layers
         if (map.current.getLayer("speed-limit-outline"))
           map.current.removeLayer("speed-limit-outline");
@@ -1908,11 +2057,77 @@ export function SpeedMap({
         data: constructionRoutes as any,
       });
 
+      map.current.addSource("rail-context-heavy-src", {
+        type: "geojson",
+        data: effectiveRailContext.heavy || {
+          type: "FeatureCollection",
+          features: [],
+        },
+      });
+
+      map.current.addSource("rail-context-commuter-src", {
+        type: "geojson",
+        data: effectiveRailContext.commuter || {
+          type: "FeatureCollection",
+          features: [],
+        },
+      });
+      console.log(
+        `Rail context for ${city}: heavy=${effectiveRailContext.heavy?.features?.length || 0}, commuter=${effectiveRailContext.commuter?.features?.length || 0}`,
+      );
+
       const firstDataLayer = map.current.getLayer("vehicles-glow")
         ? "vehicles-glow"
         : map.current.getLayer("stops")
           ? "stops"
           : undefined;
+
+      map.current.addLayer(
+        {
+          id: "rail-context-heavy",
+          type: "line",
+          source: "rail-context-heavy-src",
+          layout: {
+            "line-join": "round",
+            "line-cap": "round",
+            visibility: showRailContextHeavy ? "visible" : "none",
+          },
+          paint: {
+            "line-color": "#d7dee8",
+            "line-width": 3.5,
+            "line-opacity": 0.9,
+          },
+        },
+        firstDataLayer,
+      );
+
+      map.current.addLayer(
+        {
+          id: "rail-context-commuter",
+          type: "line",
+          source: "rail-context-commuter-src",
+          layout: {
+            "line-join": "round",
+            "line-cap": "round",
+            visibility: showRailContextCommuter ? "visible" : "none",
+          },
+          paint: {
+            "line-color": "#77c4ff",
+            "line-width": 2.1,
+            "line-opacity": 0.95,
+          },
+        },
+        firstDataLayer,
+      );
+
+      for (const layerId of ["rail-context-heavy", "rail-context-commuter"]) {
+        map.current.off("mouseenter", layerId, handleRailContextMouseEnter);
+        map.current.off("mouseleave", layerId, handleRailContextMouseLeave);
+        map.current.off("mousemove", layerId, handleRailContextMouseMove);
+        map.current.on("mouseenter", layerId, handleRailContextMouseEnter);
+        map.current.on("mouseleave", layerId, handleRailContextMouseLeave);
+        map.current.on("mousemove", layerId, handleRailContextMouseMove);
+      }
 
       // Regular route layers
       // When "byLine" mode: colored by transit line
@@ -2375,12 +2590,41 @@ export function SpeedMap({
     mapLoaded,
     selectedLines,
     showRouteLines,
+    showRailContextHeavy,
+    showRailContextCommuter,
     routeLineMode,
     cityConfig.routes,
     cityConfig.maxspeed,
     cityConfig.separation,
+    effectiveRailContext,
     maxspeedColorExpression,
+    handleRailContextMouseEnter,
+    handleRailContextMouseLeave,
+    handleRailContextMouseMove,
   ]);
+
+  // Keep rail-context layer visibility in sync with toggle state
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+    try {
+      if (map.current.getLayer("rail-context-heavy")) {
+        map.current.setLayoutProperty(
+          "rail-context-heavy",
+          "visibility",
+          showRailContextHeavy ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("rail-context-commuter")) {
+        map.current.setLayoutProperty(
+          "rail-context-commuter",
+          "visibility",
+          showRailContextCommuter ? "visible" : "none",
+        );
+      }
+    } catch (e) {
+      // Layers might not exist yet
+    }
+  }, [mapLoaded, showRailContextHeavy, showRailContextCommuter]);
 
   // Add/update stops layer with clustering by name
   useEffect(() => {
@@ -3238,6 +3482,8 @@ export function SpeedMap({
     // 3. Infrastructure overlays (crossings, switches) on top of data
     // 4. Stops/labels at the very top for readability
     const layerOrder = [
+      "rail-context-heavy",
+      "rail-context-commuter",
       "routes-outline",
       "routes",
       "routes-tunnel-outline",
@@ -3290,6 +3536,8 @@ export function SpeedMap({
     showCrossings,
     showSwitches,
     showRouteLines,
+    showRailContextHeavy,
+    showRailContextCommuter,
     viewMode,
     selectedLines,
     city,
@@ -3664,6 +3912,31 @@ export function SpeedMap({
           }}
         />
       </div>
+
+      {/* Regional & Metro Overlay legend */}
+      {(showRailContextHeavy || showRailContextCommuter) && (
+        <div className="rail-context-legend">
+          <div className="rail-context-legend-title">
+            Regional & Metro Overlay
+          </div>
+          <div
+            className={`rail-context-legend-item ${
+              showRailContextHeavy ? "" : "disabled"
+            }`}
+          >
+            <span className="rail-context-legend-line heavy"></span>
+            <span>Heavy rail / metro</span>
+          </div>
+          <div
+            className={`rail-context-legend-item ${
+              showRailContextCommuter ? "" : "disabled"
+            }`}
+          >
+            <span className="rail-context-legend-line commuter"></span>
+            <span>Regional / commuter</span>
+          </div>
+        </div>
+      )}
 
       {/* City data loading overlay */}
       {cityDataLoading && (
