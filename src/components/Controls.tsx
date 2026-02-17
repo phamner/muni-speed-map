@@ -59,6 +59,32 @@ import type {
   SpeedUnit,
 } from "../App";
 
+const OFFICIAL_TRANSIT_MAP_URLS: Record<City, string> = {
+  SF: "",
+  LA: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Los_Angeles_Metro_System_Map.png",
+  Seattle: "",
+  Boston: "",
+  Portland: "https://trimet.org/maps/img/railsystem.png",
+  "San Diego": "",
+  Toronto: "",
+  Philadelphia: "",
+  Sacramento: "",
+  Pittsburgh: "",
+  Dallas: "",
+  Minneapolis: "",
+  Denver: "",
+  "Salt Lake City": "",
+  "San Jose": "",
+  Phoenix: "",
+  "Jersey City": "",
+  Calgary: "",
+  Edmonton: "",
+  Cleveland: "",
+  Charlotte: "",
+  Baltimore: "",
+  Washington: "",
+};
+
 // Official SFMTA colors from GTFS
 const MUNI_COLORS: Record<MuniLine, string> = {
   F: "#B49A36",
@@ -365,6 +391,7 @@ export function Controls({
   // Sacramento warning modal state
   const [showSacWarning, setShowSacWarning] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
+  const [showTransitMapModal, setShowTransitMapModal] = useState(false);
 
   // Show modal when user navigates to Sacramento
   useEffect(() => {
@@ -372,6 +399,23 @@ export function Controls({
       setShowSacWarning(true);
     }
   }, [city]);
+
+  // Allow Escape key to close open informational modals.
+  useEffect(() => {
+    if (!showAboutModal && !showTransitMapModal) return;
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setShowAboutModal(false);
+        setShowTransitMapModal(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [showAboutModal, showTransitMapModal]);
 
   // Live mode: fresh if data is less than 5 minutes old, but always available if we have any data
   const isLiveFresh = dataAgeMinutes !== null && dataAgeMinutes < 5;
@@ -470,6 +514,10 @@ export function Controls({
   const cityLine = cityNames[city] || city;
   const systemLine = systemNames[city] || "Speed Map";
   const longTitleCities = ["Boston", "Phoenix"];
+  const officialTransitMapUrl = OFFICIAL_TRANSIT_MAP_URLS[city];
+  const isOfficialMapPdf =
+    !!officialTransitMapUrl &&
+    officialTransitMapUrl.toLowerCase().split("?")[0].endsWith(".pdf");
 
   return (
     <div className="controls-panel">
@@ -481,6 +529,13 @@ export function Controls({
           {systemLine}
         </h1>
       </div>
+      <button
+        className="app-header-link-btn"
+        onClick={() => setShowTransitMapModal(true)}
+        title="View official transit rail map"
+      >
+        View official rail map
+      </button>
       {/* City Selector - 3x3 grid */}
       <div className="city-selector">
         {/* Row 1: West Coast */}
@@ -1338,6 +1393,14 @@ export function Controls({
             className="modal-content about-modal"
             onClick={(e) => e.stopPropagation()}
           >
+            <button
+              className="modal-close-icon"
+              onClick={() => setShowAboutModal(false)}
+              aria-label="Close about modal"
+              title="Close"
+            >
+              ×
+            </button>
             <h2>{ABOUT_SECTIONS.title}</h2>
             <p>{ABOUT_SECTIONS.whatItIs}</p>
 
@@ -1396,13 +1459,77 @@ export function Controls({
                 ))}
               </ul>
             </div>
+          </div>
+        </div>
+      )}
 
+      {/* Official Transit Map Modal */}
+      {showTransitMapModal && (
+        <div
+          className="modal-overlay"
+          onClick={() => setShowTransitMapModal(false)}
+        >
+          <div
+            className="modal-content transit-map-modal"
+            onClick={(e) => e.stopPropagation()}
+          >
             <button
-              className="modal-close-btn"
-              onClick={() => setShowAboutModal(false)}
+              className="modal-close-icon"
+              onClick={() => setShowTransitMapModal(false)}
+              aria-label="Close transit map modal"
+              title="Close"
             >
-              Close
+              X
             </button>
+            {/* <h2>{city} Official Rail Map</h2>
+            <p>
+              {officialTransitMapUrl
+                ? "Reference map provided by the local transit agency."
+                : "No official rail map URL is configured for this city yet."}
+            </p> */}
+            {officialTransitMapUrl ? (
+              <>
+                {isOfficialMapPdf ? (
+                  <div className="transit-map-pdf-placeholder">
+                    <p>
+                      This city map is a PDF. Open it in a new tab for the best
+                      viewing experience.
+                    </p>
+                    <a
+                      className="transit-map-open-btn"
+                      href={officialTransitMapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open PDF map
+                    </a>
+                  </div>
+                ) : (
+                  <>
+                    <div className="transit-map-frame">
+                      <img
+                        src={officialTransitMapUrl}
+                        alt={`${city} official rail map`}
+                        className="transit-map-image"
+                      />
+                    </div>
+                    <a
+                      className="transit-map-open-link"
+                      href={officialTransitMapUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Open full-size map in new tab
+                    </a>
+                  </>
+                )}
+              </>
+            ) : (
+              <div className="transit-map-empty">
+                Add this city to <code>OFFICIAL_TRANSIT_MAP_URLS</code> in{" "}
+                <code>src/components/Controls.tsx</code>.
+              </div>
+            )}
           </div>
         </div>
       )}

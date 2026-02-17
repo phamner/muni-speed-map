@@ -179,6 +179,28 @@
   font-size: 1.25rem;
 }
 
+.app-header-link-btn {
+  align-self: flex-start;
+  margin: -12px 0;
+  padding: 4px 8px;
+  border: 1px solid rgba(255, 196, 96, 0.35);
+  border-radius: 999px;
+  background: rgba(255, 184, 70, 0.12);
+  color: #ffd9a3;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.app-header-link-btn:hover {
+  background: rgba(255, 184, 70, 0.18);
+  border-color: rgba(255, 200, 120, 0.55);
+  color: #ffebca;
+}
+
 .control-group {
   display: flex;
   flex-direction: column;
@@ -1198,12 +1220,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.82);
   backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 5000;
   animation: fadeIn 0.2s ease-out;
 }
 
@@ -1218,6 +1241,7 @@
 }
 
 .modal-content {
+  position: relative;
   background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 16px;
@@ -1295,6 +1319,30 @@
   transform: translateY(0);
 }
 
+.modal-close-icon {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-close-icon:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
 /* Sacramento-specific warning modal */
 .sac-warning-modal {
   border-color: rgba(255, 150, 50, 0.3);
@@ -1336,6 +1384,97 @@
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.45;
   font-size: 0.9rem;
+}
+
+.transit-map-modal {
+  max-width: 1320px;
+  width: min(1320px, calc(100vw - 24px));
+  max-height: calc(100vh - 24px);
+  overflow-y: auto;
+  text-align: left;
+  border-color: rgba(255, 190, 100, 0.35);
+}
+
+.transit-map-modal h2 {
+  color: #ffd9a3;
+  margin-bottom: 10px;
+}
+
+.transit-map-frame {
+  margin-top: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.transit-map-image {
+  display: block;
+  width: 100%;
+  max-height: 78vh;
+  object-fit: contain;
+  height: auto;
+}
+
+.transit-map-open-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #9befff;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(155, 239, 255, 0.5);
+}
+
+.transit-map-open-link:hover {
+  color: #d5f8ff;
+  border-bottom-color: rgba(213, 248, 255, 0.7);
+}
+
+.transit-map-pdf-placeholder {
+  margin-top: 12px;
+  padding: 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.transit-map-pdf-placeholder p {
+  margin: 0 0 10px 0;
+}
+
+.transit-map-open-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 184, 70, 0.5);
+  background: rgba(255, 184, 70, 0.14);
+  color: #ffd9a3;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.transit-map-open-btn:hover {
+  background: rgba(255, 184, 70, 0.22);
+  border-color: rgba(255, 200, 120, 0.65);
+  color: #ffebca;
+}
+
+.transit-map-empty {
+  margin-top: 12px;
+  padding: 14px;
+  border: 1px dashed rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.transit-map-empty code {
+  color: #9befff;
+  font-family: 'SF Mono', monospace;
+  font-size: 0.82rem;
 }
 
 /* Map scale control styling */

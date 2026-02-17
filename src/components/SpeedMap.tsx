@@ -3392,6 +3392,16 @@ export function SpeedMap({
             )
             .addTo(map.current);
         });
+
+        map.current.on("click", "vehicles", (e) => {
+          if (!e.features?.length) return;
+          const feature = e.features[0];
+          console.log("Clicked train datapoint", {
+            properties: feature.properties,
+            geometry: feature.geometry,
+            lngLat: e.lngLat,
+          });
+        });
       }
     };
 
