@@ -543,6 +543,16 @@ function shouldShowRoute(
     return true;
   }
 
+  // Denver OSM route geometry is not fully line-keyed (often "default"/numeric ids).
+  // In segment mode, allow these geometry ids whenever at least one line is selected.
+  if (
+    city === "Denver" &&
+    selectedLines.length > 0 &&
+    (routeId === "default" || /^\d+$/.test(routeId))
+  ) {
+    return true;
+  }
+
   return false;
 }
 
@@ -780,57 +790,67 @@ function findSegmentForVehicle(
 ): string | null {
   // Use provided map or build one (for backward compatibility)
   const featureMap = routeFeatureMap || getRouteFeatureMap(routes);
-  const routeFeatures = featureMap.get(routeId) || [];
+  const directRouteFeatures = featureMap.get(routeId) || [];
+  const candidateRouteEntries: Array<[string, any[]]> =
+    directRouteFeatures.length > 0
+      ? [[routeId, directRouteFeatures]]
+      : Array.from(featureMap.entries());
 
   let bestSegmentIndex: number | null = null;
+  let bestSegmentRouteId: string | null = null;
   let minDistance = Infinity;
 
-  // Track cumulative segment offset across ALL features for this route
-  // (same logic as buildAllSegments to ensure consistent segment IDs)
-  let cumulativeSegmentOffset = 0;
+  for (const [candidateRouteId, routeFeatures] of candidateRouteEntries) {
+    // Track cumulative segment offset per route across all features
+    // (same logic as buildAllSegments to ensure consistent segment IDs)
+    let cumulativeSegmentOffset = 0;
 
-  for (const feature of routeFeatures) {
-    const geometry = (feature as any).geometry;
-    const geomType = geometry.type;
+    for (const feature of routeFeatures) {
+      const geometry = (feature as any).geometry;
+      const geomType = geometry.type;
 
-    // Handle both LineString and MultiLineString geometries
-    let lineStrings: number[][][];
-    if (geomType === "MultiLineString") {
-      lineStrings = geometry.coordinates;
-    } else {
-      // LineString - wrap in array to process uniformly
-      lineStrings = [geometry.coordinates];
-    }
-
-    // Process each line string in the geometry
-    for (const coordinates of lineStrings) {
-      const result = findNearestPointOnLine(lat, lon, coordinates);
-
-      if (
-        result.distance < minDistance &&
-        result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
-      ) {
-        minDistance = result.distance;
-        // Calculate segment index within this linestring, then add cumulative offset
-        const localSegmentIndex = Math.floor(
-          result.distanceAlong / SEGMENT_SIZE_METERS,
-        );
-        bestSegmentIndex = cumulativeSegmentOffset + localSegmentIndex;
+      // Handle both LineString and MultiLineString geometries
+      let lineStrings: number[][][];
+      if (geomType === "MultiLineString") {
+        lineStrings = geometry.coordinates;
+      } else {
+        // LineString - wrap in array to process uniformly
+        lineStrings = [geometry.coordinates];
       }
 
-      // Calculate how many segments this linestring has
-      // Must match buildAllSegments logic: floor(length / segment_size) + 1 for the partial end segment
-      const lineLength = result.totalLength;
-      const segmentsInLine = Math.floor(lineLength / SEGMENT_SIZE_METERS) + 1;
-      cumulativeSegmentOffset += segmentsInLine;
+      // Process each line string in the geometry
+      for (const coordinates of lineStrings) {
+        const result = findNearestPointOnLine(lat, lon, coordinates);
+
+        if (
+          result.distance < minDistance &&
+          result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
+        ) {
+          minDistance = result.distance;
+          // Calculate segment index within this linestring, then add cumulative offset
+          const localSegmentIndex = Math.floor(
+            result.distanceAlong / SEGMENT_SIZE_METERS,
+          );
+          bestSegmentIndex = cumulativeSegmentOffset + localSegmentIndex;
+          bestSegmentRouteId = candidateRouteId;
+        }
+
+        // Calculate how many segments this linestring has
+        // Must match buildAllSegments logic: floor(length / segment_size) + 1 for the partial end segment
+        const lineLength = result.totalLength;
+        const segmentsInLine =
+          Math.floor(lineLength / SEGMENT_SIZE_METERS) + 1;
+        cumulativeSegmentOffset += segmentsInLine;
+      }
     }
   }
 
   if (
     bestSegmentIndex !== null &&
+    bestSegmentRouteId &&
     minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS
   ) {
-    return `${routeId}_${bestSegmentIndex}`;
+    return `${bestSegmentRouteId}_${bestSegmentIndex}`;
   }
 
   return null;
