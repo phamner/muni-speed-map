@@ -88,11 +88,11 @@ async function loadRailContextData(city: City): Promise<{
   }
 
   // Vite glob keys can vary by format; resolve by filename suffix for robustness.
-  const heavyLoader = Object.entries(railContextModules).find(([key]) =>
-    getFilename(key) === heavyFilename,
+  const heavyLoader = Object.entries(railContextModules).find(
+    ([key]) => getFilename(key) === heavyFilename,
   )?.[1];
-  const commuterLoader = Object.entries(railContextModules).find(([key]) =>
-    getFilename(key) === commuterFilename,
+  const commuterLoader = Object.entries(railContextModules).find(
+    ([key]) => getFilename(key) === commuterFilename,
   )?.[1];
 
   const [heavy, commuter] = await Promise.all([
@@ -122,15 +122,18 @@ export const CITY_COORDS: Record<
   Seattle: { center: [-122.33, 47.6], zoom: 11 },
   Boston: { center: [-71.08, 42.35], zoom: 11 },
   Portland: { center: [-122.68, 45.52], zoom: 11 },
-  "San Diego": { center: [-117.15, 32.72], zoom: 11 },
+  "San Diego": { center: [-117.16338943173511, 32.76334066930366], zoom: 11 },
   Toronto: { center: [-79.38, 43.65], zoom: 11 },
-  Philadelphia: { center: [-75.16, 39.95], zoom: 11 },
+  Philadelphia: { center: [-75.2495383789954, 39.9514002426764], zoom: 11 },
   Sacramento: { center: [-121.49, 38.58], zoom: 11 },
-  Pittsburgh: { center: [-79.99, 40.43], zoom: 11 },
+  Pittsburgh: { center: [-80.01941337992724, 40.38898236744643], zoom: 11 },
   Dallas: { center: [-96.8, 32.78], zoom: 11 },
-  Minneapolis: { center: [-93.27, 44.98], zoom: 11 },
-  Denver: { center: [-104.9, 39.75], zoom: 11 },
-  "Salt Lake City": { center: [-111.89, 40.76], zoom: 11 },
+  Minneapolis: { center: [-93.2023633249224, 44.9483201926178], zoom: 11 },
+  Denver: { center: [-104.98772423634054, 39.68748990782979], zoom: 11 },
+  "Salt Lake City": {
+    center: [-111.90206770747481, 40.67840883957848],
+    zoom: 11,
+  },
   "San Jose": { center: [-121.89, 37.34], zoom: 11 },
   Phoenix: { center: [-112.0, 33.47], zoom: 11 },
   // Placeholder cities (no data yet)
@@ -140,6 +143,7 @@ export const CITY_COORDS: Record<
   Cleveland: { center: [-81.69, 41.5], zoom: 11 },
   Charlotte: { center: [-80.84, 35.23], zoom: 11 },
   Baltimore: { center: [-76.62, 39.32], zoom: 11 },
+  Washington: { center: [-77.03, 38.91], zoom: 11 },
 };
 
 // Cache for loaded city data - persists across component remounts
@@ -209,7 +213,16 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
 
   switch (city) {
     case "SF": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation, separationOverrides] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+        separationOverrides,
+      ] = await Promise.all([
         import("./muniMetroRoutes.json"),
         import("./muniMetroStops.json"),
         import("./sfGradeCrossings.json"),
@@ -220,7 +233,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         import("./sfSeparationOverrides.json").catch(() => ({ default: null })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
-      
+
       // Merge separation data with manual overrides (overrides take precedence)
       let mergedSeparation: any = separation.default;
       if (separationOverrides.default?.features?.length) {
@@ -231,7 +244,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           features: [...overrideFeatures, ...osmFeatures], // Overrides first so they render on top
         };
       }
-      
+
       return {
         routes: routes.default,
         stops: stops.default,
@@ -244,7 +257,16 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "LA": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation, separationOverrides] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+        separationOverrides,
+      ] = await Promise.all([
         import("./laMetroRoutes.json"),
         import("./laMetroStops.json"),
         import("./laGradeCrossings.json"),
@@ -255,7 +277,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         import("./laSeparationOverrides.json").catch(() => ({ default: null })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
-      
+
       // Merge separation data with manual overrides (OSM data takes precedence for elevated/tunnel sections)
       // Override features come FIRST so OSM features render on top and show elevated sections
       let mergedSeparation: any = separation.default;
@@ -267,7 +289,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           features: [...overrideFeatures, ...osmFeatures], // Overrides first, OSM on top
         };
       }
-      
+
       return {
         routes: routes.default,
         stops: stops.default,
@@ -280,7 +302,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Seattle": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./seattleLinkRoutes.json"),
         import("./seattleLinkStops.json"),
         import("./seattleGradeCrossings.json"),
@@ -302,7 +332,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Boston": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./bostonGreenLineRoutes.json"),
         import("./bostonGreenLineStops.json"),
         import("./bostonGradeCrossings.json"),
@@ -324,24 +362,37 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Portland": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation, overrides] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+        overrides,
+      ] = await Promise.all([
         import("./portlandMaxRoutes.json"),
         import("./portlandMaxStops.json"),
         import("./portlandGradeCrossings.json"),
         import("./portlandSwitches.json"),
         import("./portlandMaxspeed.json"),
-        import("./portlandTunnelsBridges.json").catch(() => ({ default: null })),
+        import("./portlandTunnelsBridges.json").catch(() => ({
+          default: null,
+        })),
         import("./portlandSeparation.json").catch(() => ({ default: null })),
-        import("./portlandSeparationOverrides.json").catch(() => ({ default: null })),
+        import("./portlandSeparationOverrides.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
-      
+
       // Merge OSM separation data with manual overrides
       const mergedSeparationFeatures = [
         ...(separation.default?.features || []),
         ...(overrides.default?.features || []),
       ];
-      
+
       return {
         routes: routes.default,
         stops: stops.default,
@@ -357,13 +408,23 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "San Diego": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./sanDiegoTrolleyRoutes.json"),
         import("./sanDiegoTrolleyStops.json"),
         import("./sanDiegoGradeCrossings.json"),
         import("./sanDiegoSwitches.json"),
         import("./sanDiegoMaxspeed.json"),
-        import("./sanDiegoTunnelsBridges.json").catch(() => ({ default: null })),
+        import("./sanDiegoTunnelsBridges.json").catch(() => ({
+          default: null,
+        })),
         import("./sanDiegoSeparation.json").catch(() => ({ default: null })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
@@ -416,7 +477,16 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Philadelphia": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation, overrides] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+        overrides,
+      ] = await Promise.all([
         import("./phillyTrolleyRoutes.json"),
         import("./phillyTrolleyStops.json"),
         import("./phillyGradeCrossings.json"),
@@ -424,16 +494,18 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         import("./phillyMaxspeed.json"),
         import("./phillyTunnelsBridges.json").catch(() => ({ default: null })),
         import("./phillySeparation.json").catch(() => ({ default: null })),
-        import("./phillySeparationOverrides.json").catch(() => ({ default: null })),
+        import("./phillySeparationOverrides.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
-      
+
       // Merge OSM separation data with manual overrides
       const mergedSeparationFeatures = [
         ...(separation.default?.features || []),
         ...(overrides.default?.features || []),
       ];
-      
+
       return {
         routes: routes.default,
         stops: stops.default,
@@ -449,14 +521,19 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Sacramento": {
-      const [routes, stops, crossings, switches, tunnelsBridges, separation] = await Promise.all([
-        import("./sacramentoLightRailRoutes.json"),
-        import("./sacramentoLightRailStops.json"),
-        import("./sacramentoGradeCrossings.json"),
-        import("./sacramentoSwitches.json"),
-        import("./sacramentoTunnelsBridges.json").catch(() => ({ default: null })),
-        import("./sacramentoSeparation.json").catch(() => ({ default: null })),
-      ]);
+      const [routes, stops, crossings, switches, tunnelsBridges, separation] =
+        await Promise.all([
+          import("./sacramentoLightRailRoutes.json"),
+          import("./sacramentoLightRailStops.json"),
+          import("./sacramentoGradeCrossings.json"),
+          import("./sacramentoSwitches.json"),
+          import("./sacramentoTunnelsBridges.json").catch(() => ({
+            default: null,
+          })),
+          import("./sacramentoSeparation.json").catch(() => ({
+            default: null,
+          })),
+        ]);
       console.timeEnd(`Loading ${city} static data`);
       return {
         routes: routes.default,
@@ -470,14 +547,19 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Pittsburgh": {
-      const [routes, stops, crossings, switches, tunnelsBridges, separation] = await Promise.all([
-        import("./pittsburghTRoutes.json"),
-        import("./pittsburghTStops.json"),
-        import("./pittsburghGradeCrossings.json"),
-        import("./pittsburghSwitches.json"),
-        import("./pittsburghTunnelsBridges.json").catch(() => ({ default: null })),
-        import("./pittsburghSeparation.json").catch(() => ({ default: null })),
-      ]);
+      const [routes, stops, crossings, switches, tunnelsBridges, separation] =
+        await Promise.all([
+          import("./pittsburghTRoutes.json"),
+          import("./pittsburghTStops.json"),
+          import("./pittsburghGradeCrossings.json"),
+          import("./pittsburghSwitches.json"),
+          import("./pittsburghTunnelsBridges.json").catch(() => ({
+            default: null,
+          })),
+          import("./pittsburghSeparation.json").catch(() => ({
+            default: null,
+          })),
+        ]);
       console.timeEnd(`Loading ${city} static data`);
       return {
         routes: routes.default,
@@ -491,7 +573,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Dallas": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./dallasDartRoutes.json"),
         import("./dallasDartStops.json"),
         import("./dallasGradeCrossings.json"),
@@ -513,13 +603,23 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Minneapolis": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./minneapolisMetroRoutes.json"),
         import("./minneapolisMetroStops.json"),
         import("./minneapolisGradeCrossings.json"),
         import("./minneapolisSwitches.json"),
         import("./minneapolisMaxspeed.json"),
-        import("./minneapolisTunnelsBridges.json").catch(() => ({ default: null })),
+        import("./minneapolisTunnelsBridges.json").catch(() => ({
+          default: null,
+        })),
         import("./minneapolisSeparation.json").catch(() => ({ default: null })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
@@ -535,7 +635,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Denver": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./denverRtdRoutes.json"),
         import("./denverRtdStops.json"),
         import("./denverGradeCrossings.json"),
@@ -557,7 +665,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Salt Lake City": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./slcTraxRoutes.json"),
         import("./slcTraxStops.json"),
         import("./slcGradeCrossings.json"),
@@ -579,7 +695,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "San Jose": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./vtaLightRailRoutes.json"),
         import("./vtaLightRailStops.json"),
         import("./sanJoseGradeCrossings.json"),
@@ -601,7 +725,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Phoenix": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./phoenixLightRailRoutes.json"),
         import("./phoenixLightRailStops.json"),
         import("./phoenixGradeCrossings.json"),
@@ -623,13 +755,23 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Charlotte": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./charlotteLightRailRoutes.json"),
         import("./charlotteLightRailStops.json"),
         import("./charlotteGradeCrossings.json"),
         import("./charlotteSwitches.json"),
         import("./charlotteMaxspeed.json"),
-        import("./charlotteTunnelsBridges.json").catch(() => ({ default: null })),
+        import("./charlotteTunnelsBridges.json").catch(() => ({
+          default: null,
+        })),
         import("./charlotteSeparation.json").catch(() => ({ default: null })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
@@ -645,7 +787,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Calgary": {
-      const [routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation] = await Promise.all([
+      const [
+        routes,
+        stops,
+        crossings,
+        switches,
+        maxspeed,
+        tunnelsBridges,
+        separation,
+      ] = await Promise.all([
         import("./calgaryLightRailRoutes.json"),
         import("./calgaryLightRailStops.json"),
         import("./calgaryGradeCrossings.json"),
@@ -667,14 +817,17 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Baltimore": {
-      const [routes, stops, crossings, switches, tunnelsBridges, separation] = await Promise.all([
-        import("./baltimoreLightRailRoutes.json"),
-        import("./baltimoreLightRailStops.json"),
-        import("./baltimoreGradeCrossings.json"),
-        import("./baltimoreSwitches.json"),
-        import("./baltimoreTunnelsBridges.json").catch(() => ({ default: null })),
-        import("./baltimoreSeparation.json").catch(() => ({ default: null })),
-      ]);
+      const [routes, stops, crossings, switches, tunnelsBridges, separation] =
+        await Promise.all([
+          import("./baltimoreLightRailRoutes.json"),
+          import("./baltimoreLightRailStops.json"),
+          import("./baltimoreGradeCrossings.json"),
+          import("./baltimoreSwitches.json"),
+          import("./baltimoreTunnelsBridges.json").catch(() => ({
+            default: null,
+          })),
+          import("./baltimoreSeparation.json").catch(() => ({ default: null })),
+        ]);
       console.timeEnd(`Loading ${city} static data`);
       return {
         routes: routes.default,
@@ -688,14 +841,15 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Cleveland": {
-      const [routes, stops, crossings, switches, maxspeed, separation] = await Promise.all([
-        import("./clevelandRtaRoutes.json"),
-        import("./clevelandRtaStops.json"),
-        import("./clevelandGradeCrossings.json"),
-        import("./clevelandSwitches.json"),
-        import("./clevelandMaxspeed.json").catch(() => ({ default: null })),
-        import("./clevelandSeparation.json").catch(() => ({ default: null })),
-      ]);
+      const [routes, stops, crossings, switches, maxspeed, separation] =
+        await Promise.all([
+          import("./clevelandRtaRoutes.json"),
+          import("./clevelandRtaStops.json"),
+          import("./clevelandGradeCrossings.json"),
+          import("./clevelandSwitches.json"),
+          import("./clevelandMaxspeed.json").catch(() => ({ default: null })),
+          import("./clevelandSeparation.json").catch(() => ({ default: null })),
+        ]);
       console.timeEnd(`Loading ${city} static data`);
       return {
         routes: routes.default,
@@ -744,17 +898,26 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
  */
 export function startBackgroundStaticPreload(currentCity: City): void {
   // Prioritize the most popular cities
-  const popularCities: City[] = ["LA", "Seattle", "Boston", "Portland", "Toronto"];
+  const popularCities: City[] = [
+    "LA",
+    "Seattle",
+    "Boston",
+    "Portland",
+    "Toronto",
+  ];
 
   // Filter out current city and already cached cities
   const citiesToPreload = popularCities.filter(
-    (c) => c !== currentCity && !cityStaticDataCache.has(c)
+    (c) => c !== currentCity && !cityStaticDataCache.has(c),
   );
 
   // Stagger preloading by 300ms each to avoid blocking UI
   citiesToPreload.forEach((city, index) => {
-    setTimeout(() => {
-      preloadCityStaticData(city);
-    }, (index + 1) * 300);
+    setTimeout(
+      () => {
+        preloadCityStaticData(city);
+      },
+      (index + 1) * 300,
+    );
   });
 }

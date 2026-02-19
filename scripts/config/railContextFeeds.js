@@ -12,7 +12,7 @@ export const railContextFeeds = {
     "./gtfs_context/bayarea/caltrain_gtfs.zip",
     "./gtfs_context/bayarea/capitol_corridor_gtfs.zip",
     "./gtfs_context/bayarea/smart_gtfs.zip",
-    // ACE is omitted until a valid static GTFS URL is available (511 key may be required).
+    "./gtfs_context/bayarea/ace_gtfs.zip",
   ],
   LA: [
     "./gtfs_la/gtfs_rail-master/gtfs_rail.zip",
@@ -67,7 +67,7 @@ export const railContextFeeds = {
     "./gtfs_context/bayarea/caltrain_gtfs.zip",
     "./gtfs_context/bayarea/capitol_corridor_gtfs.zip",
     "./gtfs_context/bayarea/smart_gtfs.zip",
-    // ACE is omitted until a valid static GTFS URL is available (511 key may be required).
+    "./gtfs_context/bayarea/ace_gtfs.zip",
   ],
   Phoenix: ["./gtfs_phoenix/gtfs.zip"],
   "Jersey City": [],

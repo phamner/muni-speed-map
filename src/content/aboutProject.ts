@@ -4,7 +4,7 @@ export interface AboutCityNote {
 }
 
 export const ABOUT_SECTIONS = {
-  title: "About This Project",
+  title: "Light Rail Analytics Map: about this project",
   whatItIs:
     "WHAT PROBLEM IS THIS TRYING TO SOLVE?  I TRIED TO FIND DATA ON SLOW SEGMENTS OF SF MUNI BUT FAILED, AND WANTED TO CREATE THAT RESOURCE.  This app visualizes light-rail and tram performance in North American cities using live vehicle positions and static infrastructure data. The goal is to make speed patterns, bottlenecks, and route characteristics easy to inspect.",
   keyDecisions: [
