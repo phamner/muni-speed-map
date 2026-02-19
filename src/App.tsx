@@ -50,10 +50,10 @@ function App() {
   const [routeLineMode, setRouteLineMode] = useState<RouteLineMode>("byLine");
   const [showStops, setShowStops] = useState(false);
   const [showCrossings, setShowCrossings] = useState(false);
+  const [showTrafficLights, setShowTrafficLights] = useState(false);
   const [showSwitches, setShowSwitches] = useState(false);
   const [showRailContextHeavy, setShowRailContextHeavy] = useState(false);
-  const [showRailContextCommuter, setShowRailContextCommuter] =
-    useState(false);
+  const [showRailContextCommuter, setShowRailContextCommuter] = useState(false);
   const [railContextHeavyCount, setRailContextHeavyCount] = useState(0);
   const [railContextCommuterCount, setRailContextCommuterCount] = useState(0);
   const [hideStoppedTrains, setHideStoppedTrains] = useState(false);
@@ -111,6 +111,8 @@ function App() {
         setShowStops={setShowStops}
         showCrossings={showCrossings}
         setShowCrossings={setShowCrossings}
+        showTrafficLights={showTrafficLights}
+        setShowTrafficLights={setShowTrafficLights}
         showSwitches={showSwitches}
         setShowSwitches={setShowSwitches}
         showRailContextHeavy={showRailContextHeavy}
@@ -136,6 +138,7 @@ function App() {
         routeLineMode={routeLineMode}
         showStops={showStops}
         showCrossings={showCrossings}
+        showTrafficLights={showTrafficLights}
         showSwitches={showSwitches}
         showRailContextHeavy={showRailContextHeavy}
         showRailContextCommuter={showRailContextCommuter}

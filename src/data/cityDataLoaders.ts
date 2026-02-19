@@ -8,7 +8,7 @@ import type { City } from "../types";
 import slcRailContextHeavy from "./slcRailContextHeavy.json";
 import slcRailContextCommuter from "./slcRailContextCommuter.json";
 
-// Type for city static data (routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation)
+// Type for city static data (routes, stops, crossings, switches, maxspeed, tunnelsBridges, separation, trafficLights)
 export interface CityStaticData {
   routes: any;
   stops: any;
@@ -17,6 +17,7 @@ export interface CityStaticData {
   maxspeed: any | null;
   tunnelsBridges: any | null;
   separation: any | null;
+  trafficLights: any | null;
   railContextHeavy?: any | null;
   railContextCommuter?: any | null;
 }
@@ -222,6 +223,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         tunnelsBridges,
         separation,
         separationOverrides,
+        trafficLights,
       ] = await Promise.all([
         import("./muniMetroRoutes.json"),
         import("./muniMetroStops.json"),
@@ -231,6 +233,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         import("./sfTunnelsBridges.json").catch(() => ({ default: null })),
         import("./sfSeparation.json").catch(() => ({ default: null })),
         import("./sfSeparationOverrides.json").catch(() => ({ default: null })),
+        import("./sfTrafficLightsConsolidated.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
 
@@ -253,6 +258,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: mergedSeparation,
+        trafficLights: trafficLights.default,
       };
     }
 
@@ -298,6 +304,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: mergedSeparation,
+        trafficLights: null,
       };
     }
 
@@ -328,6 +335,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -358,6 +366,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -404,6 +413,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           type: "FeatureCollection",
           features: mergedSeparationFeatures,
         },
+        trafficLights: null,
       };
     }
 
@@ -436,6 +446,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -473,6 +484,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: null,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -517,6 +529,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           type: "FeatureCollection",
           features: mergedSeparationFeatures,
         },
+        trafficLights: null,
       };
     }
 
@@ -543,6 +556,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: null,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -569,6 +583,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: null,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -599,6 +614,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -631,6 +647,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -661,6 +678,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -691,6 +709,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -721,6 +740,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -751,6 +771,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -783,6 +804,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -813,6 +835,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -837,6 +860,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: null, // No maxspeed data in OSM for Baltimore
         tunnelsBridges: tunnelsBridges.default,
         separation: separation.default,
+        trafficLights: null,
       };
     }
 
@@ -859,6 +883,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: maxspeed?.default || null,
         tunnelsBridges: null, // No tunnels/bridges data yet
         separation: separation?.default || null,
+        trafficLights: null,
       };
     }
 
@@ -874,6 +899,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: null,
         tunnelsBridges: null,
         separation: null,
+        trafficLights: null,
       };
     }
 
@@ -888,6 +914,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed: null,
         tunnelsBridges: null,
         separation: null,
+        trafficLights: null,
       };
     }
   }

@@ -44,6 +44,7 @@ const EMPTY_CITY_DATA: CityStaticData = {
   maxspeed: null,
   tunnelsBridges: null,
   separation: null,
+  trafficLights: null,
   railContextHeavy: null,
   railContextCommuter: null,
 };
@@ -1109,6 +1110,7 @@ interface SpeedMapProps {
   routeLineMode: "byLine" | "bySpeedLimit" | "bySeparation";
   showStops: boolean;
   showCrossings: boolean;
+  showTrafficLights: boolean;
   showSwitches: boolean;
   showRailContextHeavy: boolean;
   showRailContextCommuter: boolean;
@@ -1134,6 +1136,7 @@ export function SpeedMap({
   routeLineMode,
   showStops,
   showCrossings,
+  showTrafficLights,
   showSwitches,
   showRailContextHeavy,
   showRailContextCommuter,
@@ -1251,6 +1254,7 @@ export function SpeedMap({
       maxspeed: cityStaticData?.maxspeed || null,
       tunnelsBridges: cityStaticData?.tunnelsBridges || null,
       separation: cityStaticData?.separation || null,
+      trafficLights: cityStaticData?.trafficLights || null,
       railContextHeavy: cityStaticData?.railContextHeavy || null,
       railContextCommuter: cityStaticData?.railContextCommuter || null,
     }),
@@ -2644,13 +2648,33 @@ export function SpeedMap({
     }
   }, [mapLoaded, showRailContextHeavy, showRailContextCommuter]);
 
+  // Traffic lights filtering
+  const filteredTrafficLights = useMemo(() => {
+    if (!cityConfig.trafficLights?.features) {
+      return { type: "FeatureCollection" as const, features: [] };
+    }
+
+    const filtered = cityConfig.trafficLights.features.filter(
+      (feature: any) => {
+        const routes = feature.properties?.routes || [];
+        return routes.some((route: string) => selectedLines.includes(route));
+      },
+    );
+
+    return {
+      type: "FeatureCollection" as const,
+      features: filtered,
+    };
+  }, [cityConfig.trafficLights, selectedLines]);
+
   // Add/update stops layer with clustering by name
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
 
-    const addStopsLayers = () => {
+    const addStopsAndTrafficLightsLayers = () => {
       if (!map.current) return;
 
+      // === STOPS LAYER ===
       // Filter clustered stops to selected lines
       const filterByLines = (features: any[]) => {
         if (selectedLines.length === 0) return [];
@@ -2816,17 +2840,132 @@ export function SpeedMap({
           }
         });
       }
+
+      // === TRAFFIC LIGHTS LAYER ===
+      // Add traffic lights layer right after stops to ensure same z-order level
+      const existingTrafficLightsSource = map.current.getSource(
+        "traffic-lights",
+      ) as maplibregl.GeoJSONSource;
+
+      if (existingTrafficLightsSource) {
+        existingTrafficLightsSource.setData(filteredTrafficLights as any);
+        map.current.setLayoutProperty(
+          "traffic-lights",
+          "visibility",
+          showTrafficLights ? "visible" : "none",
+        );
+      } else {
+        map.current.addSource("traffic-lights", {
+          type: "geojson",
+          data: filteredTrafficLights as any,
+        });
+
+        if (!map.current.hasImage("traffic-light-emoji")) {
+          const size = 128;
+          const canvas = document.createElement("canvas");
+          canvas.width = size;
+          canvas.height = size;
+          const ctx = canvas.getContext("2d", { alpha: true });
+          if (ctx) {
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = "high";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "alphabetic";
+            ctx.font = `${size - 20}px "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif`;
+            ctx.fillText("🚦", size / 2, size * 0.75);
+            map.current.addImage("traffic-light-emoji", {
+              width: size,
+              height: size,
+              data: ctx.getImageData(0, 0, size, size).data,
+            });
+          }
+        }
+
+        map.current.addLayer({
+          id: "traffic-lights",
+          type: "symbol",
+          source: "traffic-lights",
+          layout: {
+            visibility: showTrafficLights ? "visible" : "none",
+            "icon-image": "traffic-light-emoji",
+            "icon-size": 0.18,
+            "icon-allow-overlap": true,
+            "icon-ignore-placement": true,
+          },
+        });
+
+        map.current.on("mouseenter", "traffic-lights", () => {
+          if (map.current) map.current.getCanvas().style.cursor = "pointer";
+        });
+
+        map.current.on("mouseleave", "traffic-lights", () => {
+          if (map.current) map.current.getCanvas().style.cursor = "";
+          if (!crossingPopupPinned.current) {
+            popup.current?.remove();
+          }
+        });
+
+        map.current.on("mousemove", "traffic-lights", (e) => {
+          if (crossingPopupPinned.current) return;
+          if (!e.features?.length || !map.current) return;
+
+          const feature = e.features[0];
+          const coords =
+            feature.geometry.type === "Point"
+              ? (feature.geometry as GeoJSON.Point).coordinates
+              : null;
+          const lon = coords ? coords[0].toFixed(6) : "N/A";
+          const lat = coords ? coords[1].toFixed(6) : "N/A";
+
+          popup.current
+            ?.setLngLat(e.lngLat)
+            .setHTML(
+              `<div class="popup-content">
+                <div class="popup-title">Traffic Light 🚦</div>
+                <div class="popup-coords">${lat}, ${lon}</div>
+              </div>`,
+            )
+            .addTo(map.current);
+        });
+
+        map.current.on("click", "traffic-lights", (e) => {
+          if (!e.features?.length || !map.current) return;
+
+          const feature = e.features[0];
+          const coords =
+            feature.geometry.type === "Point"
+              ? (feature.geometry as GeoJSON.Point).coordinates
+              : null;
+          const lon = coords ? coords[0].toFixed(6) : "N/A";
+          const lat = coords ? coords[1].toFixed(6) : "N/A";
+
+          crossingPopupPinned.current = true;
+
+          popup.current
+            ?.setLngLat(e.lngLat)
+            .setHTML(
+              `<div class="popup-content popup-pinned">
+                <div class="popup-title">Traffic Light 🚦 📌</div>
+                <div class="popup-coords">${lat}, ${lon}</div>
+                <div class="popup-hint">Click elsewhere to close</div>
+              </div>`,
+            )
+            .addTo(map.current);
+
+          e.originalEvent.stopPropagation();
+        });
+      }
     };
 
     // If style is already loaded, add layers immediately
     // Otherwise, wait for it with a small delay
     if (map.current.isStyleLoaded()) {
-      addStopsLayers();
+      addStopsAndTrafficLightsLayers();
     } else {
       const waitForStyle = () => {
         if (!map.current) return;
         if (map.current.isStyleLoaded()) {
-          addStopsLayers();
+          addStopsAndTrafficLightsLayers();
         } else {
           setTimeout(waitForStyle, 50);
         }
@@ -2836,12 +2975,15 @@ export function SpeedMap({
   }, [
     mapLoaded,
     showStops,
+    showTrafficLights,
     selectedLines,
     clusteredStops,
     expandedStopCluster,
+    filteredTrafficLights,
   ]);
 
   // Show all grade crossings regardless of selected lines
+  // Filter grade crossings by selected lines
   // Note: F-line only crossings are already filtered out during the fetch script
   const filteredCrossings = useMemo(() => {
     // Each crossing has a 'routes' property listing which transit lines it's near
@@ -2849,16 +2991,22 @@ export function SpeedMap({
     const nearbyFeatures = cityConfig.crossings.features.filter(
       (crossing: any) => {
         const nearRoutes: string[] = crossing.properties.routes;
-        // If has routes property, use it
+        // If has routes property, check if any of those routes are selected
         if (nearRoutes) {
-          return nearRoutes.length > 0;
+          return nearRoutes.some((route: string) =>
+            selectedLines.includes(route),
+          );
         }
 
-        // For OSM-sourced cities, check if crossing is within 50m of any route line
+        // For OSM-sourced cities, check if crossing is within 50m of any selected route line
         const [lon, lat] = crossing.geometry.coordinates;
         const maxDistanceMeters = 50;
 
         for (const feature of cityConfig.routes.features) {
+          const routeId = feature.properties?.route_id;
+          // Only check routes that are selected
+          if (!selectedLines.includes(routeId)) continue;
+
           const coords = feature.geometry.coordinates;
           // Handle both LineString and MultiLineString
           const lineStrings =
@@ -2876,7 +3024,7 @@ export function SpeedMap({
     );
 
     return { ...cityConfig.crossings, features: nearbyFeatures };
-  }, [cityConfig.crossings, cityConfig.routes]);
+  }, [cityConfig.crossings, cityConfig.routes, selectedLines]);
 
   // Add/update crossings layer
   useEffect(() => {
@@ -3074,19 +3222,32 @@ export function SpeedMap({
     }
   }, [mapLoaded, showCrossings, filteredCrossings, city]);
 
-  // Get switches and signals data for current city, filtered by proximity to routes
+  // Get switches and signals data for current city, filtered by selected lines
   const switchesData = useMemo(() => {
     const rawSwitches = cityConfig.switches || {
       type: "FeatureCollection",
       features: [],
     };
 
-    // Filter switches to only those near route lines
+    // Filter switches to only those near selected route lines
     const filteredFeatures = rawSwitches.features.filter((sw: any) => {
+      // If switch has pre-computed routes property, use it for fast filtering
+      const switchRoutes = sw.properties?.routes;
+      if (switchRoutes && Array.isArray(switchRoutes)) {
+        return switchRoutes.some((route: string) =>
+          selectedLines.includes(route),
+        );
+      }
+
+      // Fallback: check proximity to selected route lines
       const [lon, lat] = sw.geometry.coordinates;
       const maxDistanceMeters = 50;
 
       for (const feature of cityConfig.routes.features) {
+        const routeId = feature.properties?.route_id;
+        // Only check routes that are selected
+        if (!selectedLines.includes(routeId)) continue;
+
         const coords = feature.geometry.coordinates;
         // Handle both LineString and MultiLineString
         const lineStrings =
@@ -3103,7 +3264,7 @@ export function SpeedMap({
     });
 
     return { ...rawSwitches, features: filteredFeatures };
-  }, [city, cityConfig.routes, cityConfig.switches]);
+  }, [city, cityConfig.routes, cityConfig.switches, selectedLines]);
 
   // Add/update switches layer
   useEffect(() => {

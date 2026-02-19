@@ -378,6 +378,8 @@ interface ControlsProps {
   setShowStops: (show: boolean) => void;
   showCrossings: boolean;
   setShowCrossings: (show: boolean) => void;
+  showTrafficLights: boolean;
+  setShowTrafficLights: (show: boolean) => void;
   showSwitches: boolean;
   setShowSwitches: (show: boolean) => void;
   showRailContextHeavy: boolean;
@@ -413,6 +415,8 @@ export function Controls({
   setShowStops,
   showCrossings,
   setShowCrossings,
+  showTrafficLights,
+  setShowTrafficLights,
   showSwitches,
   setShowSwitches,
   showRailContextHeavy,
@@ -1271,6 +1275,26 @@ export function Controls({
                 onChange={(e) => setShowCrossings(e.target.checked)}
               />
               Show grade crossings (X)
+            </label>
+          )}
+        </div>
+        <div className="route-lines-toggle">
+          {city === "SF" ? (
+            <label>
+              <input
+                type="checkbox"
+                checked={showTrafficLights}
+                onChange={(e) => setShowTrafficLights(e.target.checked)}
+              />
+              Show traffic lights (🚦)
+            </label>
+          ) : (
+            <label
+              style={{ opacity: 0.5, cursor: "not-allowed" }}
+              title="Traffic light data is only available for San Francisco"
+            >
+              <input type="checkbox" checked={false} disabled />
+              Show traffic lights (🚦)
             </label>
           )}
         </div>
