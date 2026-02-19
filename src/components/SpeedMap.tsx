@@ -3726,6 +3726,9 @@ export function SpeedMap({
       // Skip if below min speed, or above max speed (unless max is 50, which means 50+)
       if (v.speed < speedFilter.minSpeed) return;
       if (speedFilter.maxSpeed < 50 && v.speed > speedFilter.maxSpeed) return;
+      // Hide stopped trains (0 mph) if toggle is enabled
+      // Use 0.5 threshold so speeds that round to 0 (like 0.3 mph) are also hidden
+      if (hideStoppedTrains && v.speed < 0.5) return;
       if (!v.segmentId) return;
 
       if (!segmentSpeeds.has(v.segmentId)) {
@@ -3744,6 +3747,14 @@ export function SpeedMap({
     const segmentFeatures = allRouteSegments
       .filter((seg) => shouldShowRoute(seg.routeId, selectedLines, city))
       .filter((seg) => segmentAverages.has(seg.segmentId))
+      .filter((seg) => {
+        // Hide segment averages at 0 mph when hideStoppedTrains is enabled
+        if (hideStoppedTrains) {
+          const data = segmentAverages.get(seg.segmentId);
+          return data && data.avg >= 0.5;
+        }
+        return true;
+      })
       .map((seg) => {
         const data = segmentAverages.get(seg.segmentId)!;
         return {
@@ -3848,6 +3859,7 @@ export function SpeedMap({
     }
   }, [
     speedFilter,
+    hideStoppedTrains,
     viewMode,
     mapLoaded,
     vehicles,
