@@ -370,7 +370,12 @@
 }
 
 .route-lines-toggle {
-  margin-bottom: 6px;
+  margin-bottom: 2px;
+}
+
+/* Remove gap between consecutive toggles in control-group */
+.control-group > .route-lines-toggle + .route-lines-toggle {
+  margin-top: -8px;
 }
 
 .route-lines-toggle label {
