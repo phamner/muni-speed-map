@@ -1285,7 +1285,7 @@ export function Controls({
               checked={showTrafficLights}
               onChange={(e) => setShowTrafficLights(e.target.checked)}
             />
-            Show traffic lights (🚦)
+            Show traffic lights
           </label>
         </div>
         <div className="route-lines-toggle">

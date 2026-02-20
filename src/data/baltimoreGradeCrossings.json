@@ -6,9 +6,7 @@
       "properties": {
         "id": "37330462",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "half",
         "crossing_light": "yes",
@@ -17,10 +15,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.654802,
-          39.4923342
-        ]
+        "coordinates": [-76.654802, 39.4923342]
       }
     },
     {
@@ -28,9 +23,7 @@
       "properties": {
         "id": "37370224,37641709,844179216,844179348",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 4,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -38,10 +31,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.651235225,
-          39.47571175
-        ]
+        "coordinates": [-76.651235225, 39.47571175]
       }
     },
     {
@@ -49,9 +39,7 @@
       "properties": {
         "id": "37370257,844179355",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -59,10 +47,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.662571,
-          39.47862495
-        ]
+        "coordinates": [-76.662571, 39.47862495]
       }
     },
     {
@@ -70,9 +55,7 @@
       "properties": {
         "id": "37370261,844179050",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -80,10 +63,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.66218835000001,
-          39.4802445
-        ]
+        "coordinates": [-76.66218835000001, 39.4802445]
       }
     },
     {
@@ -91,9 +71,7 @@
       "properties": {
         "id": "37370276",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "no",
         "crossing_light": "yes",
@@ -102,10 +80,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6610409,
-          39.4841706
-        ]
+        "coordinates": [-76.6610409, 39.4841706]
       }
     },
     {
@@ -113,9 +88,7 @@
       "properties": {
         "id": "37370288",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": null,
         "crossing_light": "yes",
@@ -124,10 +97,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6605739,
-          39.4858582
-        ]
+        "coordinates": [-76.6605739, 39.4858582]
       }
     },
     {
@@ -135,9 +105,7 @@
       "properties": {
         "id": "37370292",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "no",
         "crossing_light": "yes",
@@ -146,10 +114,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.660551,
-          39.4861174
-        ]
+        "coordinates": [-76.660551, 39.4861174]
       }
     },
     {
@@ -157,9 +122,7 @@
       "properties": {
         "id": "37370296",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "no",
         "crossing_light": "yes",
@@ -168,10 +131,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6606159,
-          39.4874283
-        ]
+        "coordinates": [-76.6606159, 39.4874283]
       }
     },
     {
@@ -179,9 +139,7 @@
       "properties": {
         "id": "37370300",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": null,
         "crossing_light": "yes",
@@ -190,10 +148,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6606617,
-          39.4878509
-        ]
+        "coordinates": [-76.6606617, 39.4878509]
       }
     },
     {
@@ -201,9 +156,7 @@
       "properties": {
         "id": "37388751,844225059",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -211,10 +164,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6280412,
-          39.43318855
-        ]
+        "coordinates": [-76.6280412, 39.43318855]
       }
     },
     {
@@ -222,9 +172,7 @@
       "properties": {
         "id": "37398678,844179334",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -232,10 +180,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.64458189999999,
-          39.47237765
-        ]
+        "coordinates": [-76.64458189999999, 39.47237765]
       }
     },
     {
@@ -243,9 +188,7 @@
       "properties": {
         "id": "37404450,848279253",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -253,10 +196,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6332104,
-          39.234421
-        ]
+        "coordinates": [-76.6332104, 39.234421]
       }
     },
     {
@@ -264,9 +204,7 @@
       "properties": {
         "id": "37423934,844179171",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -274,10 +212,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.64405645,
-          39.4658086
-        ]
+        "coordinates": [-76.64405645, 39.4658086]
       }
     },
     {
@@ -285,9 +220,7 @@
       "properties": {
         "id": "37429031,844179159",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -295,10 +228,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.66153785,
-          39.48292285
-        ]
+        "coordinates": [-76.66153785, 39.48292285]
       }
     },
     {
@@ -306,9 +236,7 @@
       "properties": {
         "id": "37570552,844225117",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -316,10 +244,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63006734999999,
-          39.4395765
-        ]
+        "coordinates": [-76.63006734999999, 39.4395765]
       }
     },
     {
@@ -327,9 +252,7 @@
       "properties": {
         "id": "37630680,848279286",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -337,10 +260,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63752905000001,
-          39.22788785
-        ]
+        "coordinates": [-76.63752905000001, 39.22788785]
       }
     },
     {
@@ -348,9 +268,7 @@
       "properties": {
         "id": "37635396,844179128,844179167,844179273,844179388,844179397",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 6,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -358,10 +276,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.64473175,
-          39.47449018333334
-        ]
+        "coordinates": [-76.64473175, 39.47449018333334]
       }
     },
     {
@@ -369,9 +284,7 @@
       "properties": {
         "id": "37641445,844179259,10902639406,10902639407",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 4,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -379,10 +292,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.66184195,
-          39.481638825000005
-        ]
+        "coordinates": [-76.66184195, 39.481638825000005]
       }
     },
     {
@@ -390,9 +300,7 @@
       "properties": {
         "id": "37682123,415393825",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -400,10 +308,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6314126,
-          39.4225243
-        ]
+        "coordinates": [-76.6314126, 39.4225243]
       }
     },
     {
@@ -411,9 +316,7 @@
       "properties": {
         "id": "49404331,49423494,847727059,847727214,2007727714,2007727739",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 6,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -421,10 +324,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63391451666666,
-          39.2588721
-        ]
+        "coordinates": [-76.63391451666666, 39.2588721]
       }
     },
     {
@@ -432,9 +332,7 @@
       "properties": {
         "id": "49450364,832330630",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -442,10 +340,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.62500295,
-          39.31379855
-        ]
+        "coordinates": [-76.62500295, 39.31379855]
       }
     },
     {
@@ -453,9 +348,7 @@
       "properties": {
         "id": "49537967,844696226",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -463,31 +356,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.64362125,
-          39.33180955
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "49551186,842581184",
-        "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
-        "crossingCount": 2,
-        "crossing_barrier": "yes",
-        "crossing_light": null,
-        "crossing_bell": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.620349,
-          39.2791748
-        ]
+        "coordinates": [-76.64362125, 39.33180955]
       }
     },
     {
@@ -495,9 +364,7 @@
       "properties": {
         "id": "49553959",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "no",
         "crossing_light": "yes",
@@ -506,10 +373,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6312214,
-          39.2628454
-        ]
+        "coordinates": [-76.6312214, 39.2628454]
       }
     },
     {
@@ -517,9 +381,7 @@
       "properties": {
         "id": "49573176,847727225",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -527,10 +389,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.62922245,
-          39.26622385
-        ]
+        "coordinates": [-76.62922245, 39.26622385]
       }
     },
     {
@@ -538,9 +397,7 @@
       "properties": {
         "id": "102583320,848279223",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -548,10 +405,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6521804,
-          39.2081345
-        ]
+        "coordinates": [-76.6521804, 39.2081345]
       }
     },
     {
@@ -559,9 +413,7 @@
       "properties": {
         "id": "265016601,848317920",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -569,10 +421,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.67107490000001,
-          39.191340800000006
-        ]
+        "coordinates": [-76.67107490000001, 39.191340800000006]
       }
     },
     {
@@ -580,9 +429,7 @@
       "properties": {
         "id": "265016611,848317918",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -590,10 +437,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.66270850000001,
-          39.19092085
-        ]
+        "coordinates": [-76.66270850000001, 39.19092085]
       }
     },
     {
@@ -601,9 +445,7 @@
       "properties": {
         "id": "265016626,393545151",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -611,10 +453,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.65605665000001,
-          39.1948413
-        ]
+        "coordinates": [-76.65605665000001, 39.1948413]
       }
     },
     {
@@ -622,9 +461,7 @@
       "properties": {
         "id": "265853444,265853445,848317916,848318055,1063252989,1063252991",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 6,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -632,10 +469,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.67607393333333,
-          39.190356333333334
-        ]
+        "coordinates": [-76.67607393333333, 39.190356333333334]
       }
     },
     {
@@ -643,9 +477,7 @@
       "properties": {
         "id": "268124273,845371971",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -653,10 +485,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61951755000001,
-          39.2904544
-        ]
+        "coordinates": [-76.61951755000001, 39.2904544]
       }
     },
     {
@@ -664,9 +493,7 @@
       "properties": {
         "id": "272512139,272512177,845372030,845372055",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 4,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -674,10 +501,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.62052700000001,
-          39.304286625
-        ]
+        "coordinates": [-76.62052700000001, 39.304286625]
       }
     },
     {
@@ -685,9 +509,7 @@
       "properties": {
         "id": "346229600,2007727710",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -695,10 +517,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6336773,
-          39.258566450000004
-        ]
+        "coordinates": [-76.6336773, 39.258566450000004]
       }
     },
     {
@@ -706,9 +525,7 @@
       "properties": {
         "id": "346232119,848279434",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -716,10 +533,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6534305,
-          39.20532865
-        ]
+        "coordinates": [-76.6534305, 39.20532865]
       }
     },
     {
@@ -727,9 +541,7 @@
       "properties": {
         "id": "346232997,848279417",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -737,10 +549,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.65588185,
-          39.199726
-        ]
+        "coordinates": [-76.65588185, 39.199726]
       }
     },
     {
@@ -748,9 +557,7 @@
       "properties": {
         "id": "346234490,850371462",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -758,10 +565,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.638857,
-          39.180066249999996
-        ]
+        "coordinates": [-76.638857, 39.180066249999996]
       }
     },
     {
@@ -769,9 +573,7 @@
       "properties": {
         "id": "346239145,850371054",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -779,10 +581,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6446884,
-          39.1887805
-        ]
+        "coordinates": [-76.6446884, 39.1887805]
       }
     },
     {
@@ -790,9 +589,7 @@
       "properties": {
         "id": "346239662,850371459",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -800,10 +597,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.65006535,
-          39.1935428
-        ]
+        "coordinates": [-76.65006535, 39.1935428]
       }
     },
     {
@@ -811,9 +605,7 @@
       "properties": {
         "id": "415148327,957112614",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -821,10 +613,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.65972819999999,
-          39.48944135
-        ]
+        "coordinates": [-76.65972819999999, 39.48944135]
       }
     },
     {
@@ -832,9 +621,7 @@
       "properties": {
         "id": "415148330",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "half",
         "crossing_light": "yes",
@@ -843,10 +630,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6606457,
-          39.489261
-        ]
+        "coordinates": [-76.6606457, 39.489261]
       }
     },
     {
@@ -854,9 +638,7 @@
       "properties": {
         "id": "668372067,671430214,844179144,844179303,8768718027,8768718028,8768718029,8768718030,8768718031",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 9,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -864,10 +646,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.64049405555555,
-          39.45789564444445
-        ]
+        "coordinates": [-76.64049405555555, 39.45789564444445]
       }
     },
     {
@@ -875,9 +654,7 @@
       "properties": {
         "id": "670866618,844118936,844118952,844118997",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 4,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -885,10 +662,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.655325525,
-          39.495710575000004
-        ]
+        "coordinates": [-76.655325525, 39.495710575000004]
       }
     },
     {
@@ -896,9 +670,7 @@
       "properties": {
         "id": "672523978",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "half",
         "crossing_light": "yes",
@@ -907,10 +679,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6580004,
-          39.4897552
-        ]
+        "coordinates": [-76.6580004, 39.4897552]
       }
     },
     {
@@ -918,9 +687,7 @@
       "properties": {
         "id": "672565488,845910728,845910760,845911352",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 4,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -928,10 +695,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6194908,
-          39.284065475000006
-        ]
+        "coordinates": [-76.6194908, 39.284065475000006]
       }
     },
     {
@@ -939,9 +703,7 @@
       "properties": {
         "id": "674758081,845911338",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -949,10 +711,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61938574999999,
-          39.28630925
-        ]
+        "coordinates": [-76.61938574999999, 39.28630925]
       }
     },
     {
@@ -960,9 +719,7 @@
       "properties": {
         "id": "674758196,845910974",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -970,10 +727,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61939165,
-          39.287568
-        ]
+        "coordinates": [-76.61939165, 39.287568]
       }
     },
     {
@@ -981,9 +735,7 @@
       "properties": {
         "id": "752760299,845911026",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -991,10 +743,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61935685,
-          39.2852591
-        ]
+        "coordinates": [-76.61935685, 39.2852591]
       }
     },
     {
@@ -1002,9 +751,7 @@
       "properties": {
         "id": "752769476,845372026,845372122,2460696823",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 4,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1012,10 +759,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6201832,
-          39.301741525
-        ]
+        "coordinates": [-76.6201832, 39.301741525]
       }
     },
     {
@@ -1023,9 +767,7 @@
       "properties": {
         "id": "752773816,752774584,844812553,845371953",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 4,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1033,10 +775,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.619987925,
-          39.306755175
-        ]
+        "coordinates": [-76.619987925, 39.306755175]
       }
     },
     {
@@ -1044,9 +783,7 @@
       "properties": {
         "id": "844179104,844179243",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1054,10 +791,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.65429370000001,
-          39.475929300000004
-        ]
+        "coordinates": [-76.65429370000001, 39.475929300000004]
       }
     },
     {
@@ -1065,9 +799,7 @@
       "properties": {
         "id": "844179195,844179341",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1075,10 +807,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6537484,
-          39.4758907
-        ]
+        "coordinates": [-76.6537484, 39.4758907]
       }
     },
     {
@@ -1086,9 +815,7 @@
       "properties": {
         "id": "844179219,844179376",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1096,10 +823,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.65319165,
-          39.47585125
-        ]
+        "coordinates": [-76.65319165, 39.47585125]
       }
     },
     {
@@ -1107,9 +831,7 @@
       "properties": {
         "id": "844225119,844696567",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1117,10 +839,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6507939,
-          39.37590865
-        ]
+        "coordinates": [-76.6507939, 39.37590865]
       }
     },
     {
@@ -1128,9 +847,7 @@
       "properties": {
         "id": "844696320,8419703198",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1138,10 +855,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.65009535,
-          39.35618615
-        ]
+        "coordinates": [-76.65009535, 39.35618615]
       }
     },
     {
@@ -1149,9 +863,7 @@
       "properties": {
         "id": "845371926,845371931",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1159,10 +871,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.62004315,
-          39.29842615
-        ]
+        "coordinates": [-76.62004315, 39.29842615]
       }
     },
     {
@@ -1170,9 +879,7 @@
       "properties": {
         "id": "845371933,845372008",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1180,10 +887,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.62016015,
-          39.3011208
-        ]
+        "coordinates": [-76.62016015, 39.3011208]
       }
     },
     {
@@ -1191,9 +895,7 @@
       "properties": {
         "id": "845371937,845371993,845372141",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 3,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1201,10 +903,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61957026666666,
-          39.291505
-        ]
+        "coordinates": [-76.61957026666666, 39.291505]
       }
     },
     {
@@ -1212,9 +911,7 @@
       "properties": {
         "id": "845371949,845371984",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1222,10 +919,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61991545000001,
-          39.29625015
-        ]
+        "coordinates": [-76.61991545000001, 39.29625015]
       }
     },
     {
@@ -1233,9 +927,7 @@
       "properties": {
         "id": "845371989,845372052",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1243,10 +935,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61999255,
-          39.297356050000005
-        ]
+        "coordinates": [-76.61999255, 39.297356050000005]
       }
     },
     {
@@ -1254,9 +943,7 @@
       "properties": {
         "id": "845372010",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "no",
         "crossing_light": "no",
@@ -1265,10 +952,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6195796,
-          39.2922894
-        ]
+        "coordinates": [-76.6195796, 39.2922894]
       }
     },
     {
@@ -1276,9 +960,7 @@
       "properties": {
         "id": "845372014,845372075",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1286,10 +968,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6196624,
-          39.292890799999995
-        ]
+        "coordinates": [-76.6196624, 39.292890799999995]
       }
     },
     {
@@ -1297,9 +976,7 @@
       "properties": {
         "id": "845372050,845372065",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1307,10 +984,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61976665,
-          39.2939444
-        ]
+        "coordinates": [-76.61976665, 39.2939444]
       }
     },
     {
@@ -1318,9 +992,7 @@
       "properties": {
         "id": "845372079,845372093",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1328,10 +1000,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61983025,
-          39.2949414
-        ]
+        "coordinates": [-76.61983025, 39.2949414]
       }
     },
     {
@@ -1339,9 +1008,7 @@
       "properties": {
         "id": "845372090",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "no",
         "crossing_light": null,
@@ -1350,10 +1017,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6196539,
-          39.2931586
-        ]
+        "coordinates": [-76.6196539, 39.2931586]
       }
     },
     {
@@ -1361,9 +1025,7 @@
       "properties": {
         "id": "845911220,845911232",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1371,10 +1033,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61945374999999,
-          39.28934825
-        ]
+        "coordinates": [-76.61945374999999, 39.28934825]
       }
     },
     {
@@ -1382,9 +1041,7 @@
       "properties": {
         "id": "850370848,850371537",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1392,10 +1049,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63343280000001,
-          39.17251315
-        ]
+        "coordinates": [-76.63343280000001, 39.17251315]
       }
     },
     {
@@ -1403,9 +1057,7 @@
       "properties": {
         "id": "850370926,850371558",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1413,10 +1065,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63454345,
-          39.1739771
-        ]
+        "coordinates": [-76.63454345, 39.1739771]
       }
     },
     {
@@ -1424,9 +1073,7 @@
       "properties": {
         "id": "850370942,850371030",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1434,10 +1081,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63996209999999,
-          39.1831054
-        ]
+        "coordinates": [-76.63996209999999, 39.1831054]
       }
     },
     {
@@ -1445,9 +1089,7 @@
       "properties": {
         "id": "850371522,850371563,6538561897",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 3,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1455,10 +1097,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63267286666667,
-          39.171633633333336
-        ]
+        "coordinates": [-76.63267286666667, 39.171633633333336]
       }
     },
     {
@@ -1466,9 +1105,7 @@
       "properties": {
         "id": "957169401,957169705",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1476,10 +1113,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.66161395,
-          39.48265765
-        ]
+        "coordinates": [-76.66161395, 39.48265765]
       }
     },
     {
@@ -1487,9 +1121,7 @@
       "properties": {
         "id": "966982241",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1498,10 +1130,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6260815,
-          39.3147961
-        ]
+        "coordinates": [-76.6260815, 39.3147961]
       }
     },
     {
@@ -1509,9 +1138,7 @@
       "properties": {
         "id": "1279446125,1279448301",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1519,10 +1146,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.67441579999999,
-          39.18737715
-        ]
+        "coordinates": [-76.67441579999999, 39.18737715]
       }
     },
     {
@@ -1530,9 +1154,7 @@
       "properties": {
         "id": "1960620040",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": "no",
         "crossing_light": null,
@@ -1541,10 +1163,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6196411,
-          39.2794119
-        ]
+        "coordinates": [-76.6196411, 39.2794119]
       }
     },
     {
@@ -1552,9 +1171,7 @@
       "properties": {
         "id": "1977410289,1977410290,1977410291",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 3,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1562,10 +1179,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61952426666666,
-          39.28130623333333
-        ]
+        "coordinates": [-76.61952426666666, 39.28130623333333]
       }
     },
     {
@@ -1573,9 +1187,7 @@
       "properties": {
         "id": "2077788314,2077788315",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1583,10 +1195,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6437429,
-          39.33215495
-        ]
+        "coordinates": [-76.6437429, 39.33215495]
       }
     },
     {
@@ -1594,9 +1203,7 @@
       "properties": {
         "id": "3286242162,3286242163",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1604,10 +1211,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63324105000001,
-          39.259987550000005
-        ]
+        "coordinates": [-76.63324105000001, 39.259987550000005]
       }
     },
     {
@@ -1615,9 +1219,7 @@
       "properties": {
         "id": "3812783994,3812783997",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1625,10 +1227,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63825555,
-          39.178556400000005
-        ]
+        "coordinates": [-76.63825555, 39.178556400000005]
       }
     },
     {
@@ -1636,9 +1235,7 @@
       "properties": {
         "id": "5029238992,5029238993",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1646,10 +1243,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63982490000001,
-          39.18276075
-        ]
+        "coordinates": [-76.63982490000001, 39.18276075]
       }
     },
     {
@@ -1657,9 +1251,7 @@
       "properties": {
         "id": "6336721035,6336721036",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1667,10 +1259,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63525655000001,
-          39.2534569
-        ]
+        "coordinates": [-76.63525655000001, 39.2534569]
       }
     },
     {
@@ -1678,9 +1267,7 @@
       "properties": {
         "id": "7222226721,7222226722,7222226734,7222226735",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 4,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1688,10 +1275,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61937265,
-          39.286925100000005
-        ]
+        "coordinates": [-76.61937265, 39.286925100000005]
       }
     },
     {
@@ -1699,9 +1283,7 @@
       "properties": {
         "id": "7975207452,7975207453",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1709,10 +1291,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.63615275000001,
-          39.41928745
-        ]
+        "coordinates": [-76.63615275000001, 39.41928745]
       }
     },
     {
@@ -1720,9 +1299,7 @@
       "properties": {
         "id": "9120687281,9120687282",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1730,10 +1307,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.61955175,
-          39.29099145
-        ]
+        "coordinates": [-76.61955175, 39.29099145]
       }
     },
     {
@@ -1741,9 +1315,7 @@
       "properties": {
         "id": "10902628929,10902628930",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1751,10 +1323,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.66172775,
-          39.48214955
-        ]
+        "coordinates": [-76.66172775, 39.48214955]
       }
     },
     {
@@ -1762,9 +1331,7 @@
       "properties": {
         "id": "10931374299,10931374300",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1772,10 +1339,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6553521,
-          39.202317550000004
-        ]
+        "coordinates": [-76.6553521, 39.202317550000004]
       }
     },
     {
@@ -1783,9 +1347,7 @@
       "properties": {
         "id": "10931374301,10931374302",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1793,10 +1355,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.64638235000001,
-          39.213960349999994
-        ]
+        "coordinates": [-76.64638235000001, 39.213960349999994]
       }
     },
     {
@@ -1804,9 +1363,7 @@
       "properties": {
         "id": "10931424008",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1815,10 +1372,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6403305,
-          39.1840234
-        ]
+        "coordinates": [-76.6403305, 39.1840234]
       }
     },
     {
@@ -1826,9 +1380,7 @@
       "properties": {
         "id": "10931438954,10931438955",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1836,10 +1388,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6329348,
-          39.17192335
-        ]
+        "coordinates": [-76.6329348, 39.17192335]
       }
     },
     {
@@ -1847,9 +1396,7 @@
       "properties": {
         "id": "10931444257",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1858,10 +1405,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.640201,
-          39.1836543
-        ]
+        "coordinates": [-76.640201, 39.1836543]
       }
     },
     {
@@ -1869,9 +1413,7 @@
       "properties": {
         "id": "10931457796,10931457797",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1879,10 +1421,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6332015,
-          39.17224085
-        ]
+        "coordinates": [-76.6332015, 39.17224085]
       }
     },
     {
@@ -1890,9 +1429,7 @@
       "properties": {
         "id": "10931459042",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "name": null,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1901,10 +1438,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6339288,
-          39.172948
-        ]
+        "coordinates": [-76.6339288, 39.172948]
       }
     },
     {
@@ -1912,9 +1446,7 @@
       "properties": {
         "id": "10931460902,10931460903",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": null,
         "crossing_light": null,
@@ -1922,10 +1454,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.646075,
-          39.214343549999995
-        ]
+        "coordinates": [-76.646075, 39.214343549999995]
       }
     },
     {
@@ -1933,9 +1462,7 @@
       "properties": {
         "id": "11021209855,11021209856",
         "type": "level_crossing",
-        "routes": [
-          "Light Rail"
-        ],
+        "routes": ["Light Rail"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
@@ -1943,10 +1470,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -76.6194601,
-          39.28989965
-        ]
+        "coordinates": [-76.6194601, 39.28989965]
       }
     }
   ]
