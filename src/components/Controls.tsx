@@ -1733,6 +1733,15 @@ export function Controls({
             </div>
 
             <div className="about-section-block">
+              <h3>How Segment Averages Work</h3>
+              <ul>
+                {ABOUT_SECTIONS.segmentAverages.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="about-section-block">
               <h3>How To Read The Map</h3>
               <ul>
                 {ABOUT_SECTIONS.interpretationNotes.map((item) => (

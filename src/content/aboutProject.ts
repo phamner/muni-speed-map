@@ -31,6 +31,13 @@ export const ABOUT_SECTIONS = {
     "Route geometry, crossings, switches, and separation overlays use curated static files and OSM-derived data.",
     "Regional/metro overlays are built from GTFS static feeds and filtered to passenger services.",
   ],
+  segmentAverages: [
+    "Route lines are divided into fixed 200-meter segments. Each vehicle position is assigned to the segment it falls within based on distance along the route.",
+    "For cities with visible parallel tracks (separate inbound and outbound geometries), all vehicle positions are projected onto a single reference geometry. This combines speed readings from both directions into unified segment averages. Currently this applies to Los Angeles and Denver.",
+    "Combining bidirectional data produces more statistically robust averages—instead of splitting 10 readings between two parallel segments, all 10 contribute to one average.",
+    "For cities with single-track display or where parallel track data is unavailable, segments are calculated independently without bidirectional merging. The visual result is the same, but each segment only reflects vehicles that passed through that specific geometry.",
+    "The result is a speed profile that answers 'how fast are trains on this section of the route' rather than 'how fast are inbound vs outbound trains separately.'",
+  ],
   interpretationNotes: [
     "Grade crossings (X) are where rail and roads intersect at street level; control type (gates/signals/signs) can affect speed.",
     "Track switches (Y) are movable rails at junctions/turnbacks and often correlate with operational slow zones.",

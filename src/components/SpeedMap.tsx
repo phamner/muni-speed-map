@@ -560,6 +560,10 @@ function shouldShowRoute(
 // Segment size in meters
 const SEGMENT_SIZE_METERS = 200;
 
+// Cities that use parallel track merging for segment averages
+// These cities have true side-by-side parallel tracks where combining inbound/outbound data makes sense
+const CITIES_WITH_PARALLEL_TRACKS = ["LA", "Denver"];
+
 // Calculate distance along a LineString to the nearest point
 function findNearestPointOnLine(
   lat: number,
@@ -693,20 +697,121 @@ interface SegmentData {
   coordinates: number[][];
   startDistance: number;
   endDistance: number;
+  referenceSegmentId?: string; // For parallel segments, the reference segment to clone data from
 }
 
-function buildAllSegments(routes: any): SegmentData[] {
+// Extract a subsection of a LineString between two distance values
+function extractLineSubsection(
+  coordinates: number[][],
+  startDist: number,
+  endDist: number,
+): number[][] {
+  const result: number[][] = [];
+  let distanceAlong = 0;
+  let started = false;
+
+  for (let i = 0; i < coordinates.length - 1; i++) {
+    const [x1, y1] = coordinates[i];
+    const [x2, y2] = coordinates[i + 1];
+    const segmentLength = haversineDistance(y1, x1, y2, x2);
+    const nextDistance = distanceAlong + segmentLength;
+
+    // Check if we need to start within this segment
+    if (!started && nextDistance >= startDist) {
+      const t = segmentLength > 0 ? (startDist - distanceAlong) / segmentLength : 0;
+      const startX = x1 + t * (x2 - x1);
+      const startY = y1 + t * (y2 - y1);
+      result.push([startX, startY]);
+      started = true;
+    }
+
+    // If we've started, add intermediate points
+    if (started && distanceAlong >= startDist && distanceAlong < endDist) {
+      // Add the start of this segment if it's after our start point
+      if (result.length === 0 || 
+          result[result.length - 1][0] !== x1 || 
+          result[result.length - 1][1] !== y1) {
+        result.push([x1, y1]);
+      }
+    }
+
+    // Check if we need to end within this segment
+    if (started && nextDistance >= endDist) {
+      const t = segmentLength > 0 ? (endDist - distanceAlong) / segmentLength : 0;
+      const endX = x1 + t * (x2 - x1);
+      const endY = y1 + t * (y2 - y1);
+      result.push([endX, endY]);
+      break;
+    }
+
+    // Add the end point of this segment if we're in the middle
+    if (started && nextDistance < endDist) {
+      result.push([x2, y2]);
+    }
+
+    distanceAlong = nextDistance;
+  }
+
+  // If we only have one point or none, return empty (invalid segment)
+  if (result.length < 2) {
+    return [];
+  }
+
+  return result;
+}
+
+// Project a point onto a LineString and get the distance along where it lands
+function projectPointOntoLine(
+  lat: number,
+  lon: number,
+  coordinates: number[][],
+): { distanceAlong: number; projectedPoint: [number, number] } | null {
+  let minDistance = Infinity;
+  let bestDistanceAlong = 0;
+  let bestProjectedPoint: [number, number] = [0, 0];
+  let distanceAlong = 0;
+
+  for (let i = 0; i < coordinates.length - 1; i++) {
+    const [x1, y1] = coordinates[i];
+    const [x2, y2] = coordinates[i + 1];
+    const segmentLength = haversineDistance(y1, x1, y2, x2);
+
+    const dist = distanceToSegment(lon, lat, x1, y1, x2, y2);
+    if (dist < minDistance) {
+      minDistance = dist;
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const t = dx === 0 && dy === 0
+        ? 0
+        : Math.max(0, Math.min(1, ((lon - x1) * dx + (lat - y1) * dy) / (dx * dx + dy * dy)));
+      bestDistanceAlong = distanceAlong + t * segmentLength;
+      bestProjectedPoint = [x1 + t * dx, y1 + t * dy];
+    }
+
+    distanceAlong += segmentLength;
+  }
+
+  // Only return if projection is reasonably close (within 200m)
+  if (minDistance > 200) {
+    return null;
+  }
+
+  return { distanceAlong: bestDistanceAlong, projectedPoint: bestProjectedPoint };
+}
+
+function buildAllSegments(routes: any, city?: string): SegmentData[] {
   const allSegments: SegmentData[] = [];
   // Track cumulative segment offset PER ROUTE across all features
   const routeSegmentOffsets = new Map<string, number>();
+  
+  // For LA: track reference segments per route for projecting onto parallel tracks
+  const referenceSegmentsByRoute = new Map<string, SegmentData[]>();
+  const processedRoutes = new Set<string>();
 
   routes.features.forEach((feature: any) => {
     const routeId = feature.properties.route_id;
     const geometry = feature.geometry;
     const geomType = geometry.type;
-
-    // Get current offset for this route (starts at 0)
-    let cumulativeSegmentOffset = routeSegmentOffsets.get(routeId) || 0;
 
     // Handle both LineString and MultiLineString geometries
     let lineStrings: number[][][];
@@ -717,34 +822,109 @@ function buildAllSegments(routes: any): SegmentData[] {
       lineStrings = [geometry.coordinates];
     }
 
-    // Process all line strings with cumulative offset for segment indexing
-    for (const coordinates of lineStrings) {
-      const segments = createSegments(coordinates, routeId, "combined");
+    // For cities with parallel tracks: check if this is a parallel track (not the first feature for this route)
+    const usesParallelMerge = city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
+    const isParallelTrack = usesParallelMerge && processedRoutes.has(routeId);
+    
+    if (usesParallelMerge && !processedRoutes.has(routeId)) {
+      // First feature for this route - these are reference segments
+      processedRoutes.add(routeId);
+      const routeRefSegments: SegmentData[] = [];
+      
+      for (const coordinates of lineStrings) {
+        const segments = createSegments(coordinates, routeId, "combined");
 
-      segments.forEach((seg) => {
-        const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
-        const adjustedIndex = cumulativeSegmentOffset + originalIndex;
-        const segmentId = `${routeId}_${adjustedIndex}`;
-        allSegments.push({
-          segmentId,
-          routeId,
-          coordinates: seg.coords,
-          startDistance: seg.startDistance,
-          endDistance: seg.endDistance,
+        segments.forEach((seg) => {
+          const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
+          const segmentId = `${routeId}_${originalIndex}`;
+          const segmentData: SegmentData = {
+            segmentId,
+            routeId,
+            coordinates: seg.coords,
+            startDistance: seg.startDistance,
+            endDistance: seg.endDistance,
+          };
+          allSegments.push(segmentData);
+          routeRefSegments.push(segmentData);
         });
-      });
-
-      // Calculate how many segments this linestring produced
-      if (segments.length > 0) {
-        const lastIndex = parseInt(
-          segments[segments.length - 1].segmentId.split("_").pop() || "0",
-        );
-        cumulativeSegmentOffset += lastIndex + 1;
       }
-    }
+      
+      referenceSegmentsByRoute.set(routeId, routeRefSegments);
+      
+    } else if (isParallelTrack) {
+      // LA parallel track: project reference segment boundaries onto this geometry
+      const refSegments = referenceSegmentsByRoute.get(routeId) || [];
+      
+      for (const coordinates of lineStrings) {
+        // For each reference segment, project its start/end points onto this parallel geometry
+        refSegments.forEach((refSeg, idx) => {
+          // Get the start and end points of the reference segment
+          const refStart = refSeg.coordinates[0];
+          const refEnd = refSeg.coordinates[refSeg.coordinates.length - 1];
+          
+          // Project these points onto the parallel geometry
+          const startProjection = projectPointOntoLine(refStart[1], refStart[0], coordinates);
+          const endProjection = projectPointOntoLine(refEnd[1], refEnd[0], coordinates);
+          
+          if (!startProjection || !endProjection) {
+            return; // Skip if projection fails (points too far from parallel track)
+          }
+          
+          // Extract the subsection of the parallel geometry between projected points
+          const startDist = Math.min(startProjection.distanceAlong, endProjection.distanceAlong);
+          const endDist = Math.max(startProjection.distanceAlong, endProjection.distanceAlong);
+          
+          const parallelCoords = extractLineSubsection(coordinates, startDist, endDist);
+          
+          if (parallelCoords.length < 2) {
+            return; // Skip invalid segments
+          }
+          
+          // Create parallel segment with reference to the original
+          const parallelSegmentId = `${routeId}_p_${idx}`;
+          allSegments.push({
+            segmentId: parallelSegmentId,
+            routeId,
+            coordinates: parallelCoords,
+            startDistance: startDist,
+            endDistance: endDist,
+            referenceSegmentId: refSeg.segmentId,
+          });
+        });
+      }
+      
+    } else {
+      // Non-LA city: build segments normally with cumulative offset
+      let cumulativeSegmentOffset = routeSegmentOffsets.get(routeId) || 0;
+      
+      for (const coordinates of lineStrings) {
+        const segments = createSegments(coordinates, routeId, "combined");
 
-    // Store the updated offset for this route
-    routeSegmentOffsets.set(routeId, cumulativeSegmentOffset);
+        segments.forEach((seg) => {
+          const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
+          const adjustedIndex = cumulativeSegmentOffset + originalIndex;
+          const segmentId = `${routeId}_${adjustedIndex}`;
+          allSegments.push({
+            segmentId,
+            routeId,
+            coordinates: seg.coords,
+            startDistance: seg.startDistance,
+            endDistance: seg.endDistance,
+          });
+        });
+
+        // Calculate how many segments this linestring produced
+        if (segments.length > 0) {
+          const lastIndex = parseInt(
+            segments[segments.length - 1].segmentId.split("_").pop() || "0",
+          );
+          cumulativeSegmentOffset += lastIndex + 1;
+        }
+      }
+
+      // Store the updated offset for this route
+      routeSegmentOffsets.set(routeId, cumulativeSegmentOffset);
+    }
   });
 
   return allSegments;
@@ -788,6 +968,7 @@ function findSegmentForVehicle(
   routeId: string,
   routes: any,
   routeFeatureMap?: Map<string, any[]>,
+  city?: string,
 ): string | null {
   // Use provided map or build one (for backward compatibility)
   const featureMap = routeFeatureMap || getRouteFeatureMap(routes);
@@ -806,7 +987,12 @@ function findSegmentForVehicle(
     // (same logic as buildAllSegments to ensure consistent segment IDs)
     let cumulativeSegmentOffset = 0;
 
-    for (const feature of routeFeatures) {
+    // For cities with parallel tracks: only use the first feature per route (project all vehicles onto reference geometry)
+    // This ensures all speed data ends up in reference segments for combined averaging
+    const usesParallelMerge = city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
+    const featuresToProcess = usesParallelMerge ? routeFeatures.slice(0, 1) : routeFeatures;
+
+    for (const feature of featuresToProcess) {
       const geometry = (feature as any).geometry;
       const geomType = geometry.type;
 
@@ -1070,6 +1256,7 @@ async function preloadCityData(targetCity: City): Promise<void> {
         row.route_id,
         staticData.routes,
         routeFeatureMap,
+        targetCity,
       ),
       headsign: row.headsign,
     }));
@@ -1464,8 +1651,8 @@ export function SpeedMap({
     [cityConfig.routes],
   );
   const allRouteSegments = useMemo(
-    () => buildAllSegments(cityConfig.routes),
-    [cityConfig.routes],
+    () => buildAllSegments(cityConfig.routes, city),
+    [cityConfig.routes, city],
   );
 
   // Compute live vehicles - only the latest position for each unique vehicle
@@ -1650,6 +1837,7 @@ export function SpeedMap({
             routeId,
             cityConfig.routes,
             routeFeatureMap,
+            city,
           ),
           headsign: row.headsign,
         };
@@ -3963,6 +4151,21 @@ export function SpeedMap({
       const avg = speeds.reduce((a, b) => a + b, 0) / speeds.length;
       segmentAverages.set(segmentId, { avg, count: speeds.length });
     });
+
+    // For cities with parallel tracks: Clone data from reference segments to parallel segments
+    // Parallel segments have a referenceSegmentId field that tells us which reference segment to clone from
+    if (city && CITIES_WITH_PARALLEL_TRACKS.includes(city)) {
+      allRouteSegments.forEach((seg) => {
+        if (!shouldShowRoute(seg.routeId, selectedLines, city)) return;
+        if (!seg.referenceSegmentId) return; // Only process parallel segments
+        
+        // Clone data from the reference segment
+        const refAverage = segmentAverages.get(seg.referenceSegmentId);
+        if (refAverage) {
+          segmentAverages.set(seg.segmentId, refAverage);
+        }
+      });
+    }
 
     const segmentFeatures = allRouteSegments
       .filter((seg) => shouldShowRoute(seg.routeId, selectedLines, city))
