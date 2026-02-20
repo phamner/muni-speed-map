@@ -158,10 +158,43 @@ function consolidateTrafficLights(
     `Consolidated to ${consolidatedLights.length} traffic light locations`,
   );
 
+  // Deduplicate: merge traffic lights that ended up at the same coordinates after snapping
+  const coordsMap = new Map();
+  
+  consolidatedLights.forEach((light) => {
+    const [lon, lat] = light.geometry.coordinates;
+    const key = `${lon.toFixed(7)},${lat.toFixed(7)}`;
+    
+    if (coordsMap.has(key)) {
+      // Merge with existing entry
+      const existing = coordsMap.get(key);
+      existing.properties.count += light.properties.count;
+      // Merge routes
+      const allRoutes = new Set([
+        ...existing.properties.routes,
+        ...light.properties.routes,
+      ]);
+      existing.properties.routes = Array.from(allRoutes);
+    } else {
+      coordsMap.set(key, light);
+    }
+  });
+
+  const deduplicatedLights = Array.from(coordsMap.values());
+  
+  // Re-number the IDs
+  deduplicatedLights.forEach((light, index) => {
+    light.properties.id = `cluster-${index}`;
+  });
+
+  console.log(
+    `Deduplicated to ${deduplicatedLights.length} unique locations`,
+  );
+
   // Save consolidated traffic lights
   const output = {
     type: "FeatureCollection",
-    features: consolidatedLights,
+    features: deduplicatedLights,
   };
 
   fs.writeFileSync(outputPath, JSON.stringify(output, null, 2));
