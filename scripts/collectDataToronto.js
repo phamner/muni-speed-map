@@ -28,10 +28,10 @@ dotenv.config();
 
 // Configuration from environment variables
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  console.error("❌ Error: SUPABASE_URL and SUPABASE_ANON_KEY environment variables are required");
+if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+  console.error("❌ Error: SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables are required");
   process.exit(1);
 }
 
@@ -65,7 +65,7 @@ const LRT_ROUTES = ["806", "805"];
 const POLL_INTERVAL_MS = 90000; // 90 seconds
 
 // Initialize Supabase client
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
 // Store last known positions for speed calculation
 const lastPositions = new Map();

@@ -28,10 +28,10 @@ const __dirname = dirname(__filename);
 
 // Configuration from environment variables
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  console.error("❌ Error: SUPABASE_URL and SUPABASE_ANON_KEY environment variables are required");
+if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+  console.error("❌ Error: SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables are required");
   process.exit(1);
 }
 
@@ -44,7 +44,7 @@ const MAX_DISTANCE_FROM_TRACK = 50;
 // Poll interval in milliseconds (90 seconds)
 const POLL_INTERVAL = 90000;
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
 // Load track geometry
 let trackSegments = [];

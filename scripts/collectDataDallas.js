@@ -22,7 +22,7 @@ dotenv.config();
 
 // Configuration from environment variables
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 
 // VEHICLE_POSITIONS_URL must be set to DART's GTFS-RT vehicle positions feed.
 // If left blank the script will warn and exit.
@@ -35,12 +35,12 @@ const LIGHT_RAIL_ROUTES = ["RED", "BLUE", "GREEN", "ORANGE"];
 const POLL_INTERVAL_MS = Number(process.env.POLL_INTERVAL_MS) || 90000; // 90 seconds
 
 // Initialize Supabase client
-if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
-  console.error("❌ Error: SUPABASE_URL and SUPABASE_ANON_KEY environment variables are required");
+if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
+  console.error("❌ Error: SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables are required");
   process.exit(1);
 }
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
 // Store previous positions for speed calculation
 const previousPositions = new Map();
