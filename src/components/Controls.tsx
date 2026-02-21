@@ -1173,7 +1173,7 @@ export function Controls({
           ) : undefined
         }
       >
-        <div className="line-buttons">
+        <div className={`line-buttons${allLines.length === 4 ? " four-lines" : ""}`}>
           {allLines.map((line) => (
             <button
               key={line}

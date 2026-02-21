@@ -381,6 +381,10 @@
   gap: 8px;
 }
 
+.line-buttons.four-lines {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .line-button {
   padding: 12px 8px;
   border: 2px solid var(--line-color);
