@@ -59,6 +59,7 @@
   "dependencies": {
     "@supabase/supabase-js": "^2.89.0",
     "@types/geojson": "^7946.0.16",
+    "@vercel/analytics": "^1.6.1",
     "adm-zip": "^0.5.16",
     "dotenv": "^17.2.3",
     "gtfs-realtime-bindings": "^1.1.1",

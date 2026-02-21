@@ -3,6 +3,7 @@ import { SpeedMap } from "./components/SpeedMap";
 import { Controls } from "./components/Controls";
 import { MUNI_LINES, getLinesForCity } from "./types";
 import type { City } from "./types";
+import { Analytics } from "@vercel/analytics/react";
 import "./App.css";
 
 export interface SpeedFilter {
@@ -158,6 +159,7 @@ function App() {
           if (ageMinutes !== undefined) setDataAgeMinutes(ageMinutes);
         }}
       />
+      <Analytics />
     </div>
   );
 }
