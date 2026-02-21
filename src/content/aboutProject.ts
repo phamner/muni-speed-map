@@ -5,12 +5,20 @@ export interface AboutCityNote {
 
 export const ABOUT_SECTIONS = {
   title: "Light Rail Analytics Map: about this project",
-  whatItIs: [
-    "As a San Franciscan and certified foamer, I wanted to understand how to improve the SF muni train system, which often moves far too slowly: running in mixed traffic; interacting with cars, stopped at red lights or stop signs, and picking up passengers at stops that are far too close together.",
-    "I wanted to find the pain points in the system, but I couldn't find localized speed data anywhere. So I decided to build it myself, and once I had started, I realized I could make it a tool for other cities as well.",
-    "This app visualizes light-rail and tram performance across North American cities using live vehicle positions and static infrastructure data.",
-    "The goal is to make speed patterns, bottlenecks, and route characteristics easy to explore.",
-  ],
+  whatItIs: {
+    intro: [
+      "As a San Franciscan frustrated by how slowly our light-rail system often moves—stuck in mixed traffic, waiting at red lights, stopping every few hundred feet—I wanted to understand where and why performance breaks down.",
+      "Surprisingly, there was no accessible, localized speed data showing how trains actually move through the system. So I built it myself.",
+      "This project ingests live GTFS-RT vehicle positions and combines them with static infrastructure data to calculate real-world operating speeds across entire light-rail networks.",
+    ],
+    visualizes: [
+      "Segment-by-segment speeds",
+      "Bottlenecks and delay hotspots",
+      "Route geometry and infrastructure constraints",
+      "Systemwide performance patterns",
+    ],
+    goal: "The goal is simple: make light-rail performance measurable, transparent, and easy to explore—in San Francisco and across North American cities.",
+  },
   keyDecisions: [
     "Scope is live light-rail/tram analytics first. Regional/metro layers are context only.",
     "Regional & metro overlays are static passenger-rail references, not speed analytics.",

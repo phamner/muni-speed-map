@@ -1634,7 +1634,18 @@ export function Controls({
               ×
             </button>
             <h2>{ABOUT_SECTIONS.title}</h2>
-            <p>{ABOUT_SECTIONS.whatItIs}</p>
+            <div className="about-intro">
+              {ABOUT_SECTIONS.whatItIs.intro.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+              <p><strong>It visualizes:</strong></p>
+              <ul>
+                {ABOUT_SECTIONS.whatItIs.visualizes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p>{ABOUT_SECTIONS.whatItIs.goal}</p>
+            </div>
 
             <div className="about-section-block">
               <h3>Why These Decisions Were Made</h3>
