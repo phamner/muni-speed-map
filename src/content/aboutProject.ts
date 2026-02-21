@@ -5,18 +5,17 @@ export interface AboutCityNote {
 
 export const ABOUT_SECTIONS = {
   title: "Light Rail Analytics Map: about this project",
-  whatItIs:
-    "As a railfan, I wanted to understand where SF Muni trains slow down and why—but I couldn't find that data anywhere. So I built it myself. This app visualizes light-rail and tram performance across North American cities using live vehicle positions and static infrastructure data. The goal is to make speed patterns, bottlenecks, and route characteristics easy to explore.",
+  whatItIs: [
+    "As a San Franciscan and certified foamer, I wanted to understand how to improve the SF muni train system, which often moves far too slowly: running in mixed traffic; interacting with cars, stopped at red lights or stop signs, and picking up passengers at stops that are too far close together.",
+    "I wanted to find the pain points in the system, but I couldn't find localized speed data anywhere. So I decided to build it myself, and once I had started, I realized I could make it a tool for other cities as well.",
+    "This app visualizes light-rail and tram performance across North American cities using live vehicle positions and static infrastructure data.",
+    "The goal is to make speed patterns, bottlenecks, and route characteristics easy to explore.",
+  ],
   keyDecisions: [
     "Scope is live light-rail/tram analytics first. Regional/metro layers are context only.",
     "Regional & metro overlays are static passenger-rail references, not speed analytics.",
     "Freight-only infrastructure is excluded.",
     "Intercity services (for example, long-distance Amtrak) are excluded by default to reduce clutter.",
-  ],
-  inclusionCriteria: [
-    "City is in North America.",
-    "City has an in-scope light-rail/tram network.",
-    "City has a usable live feed for light-rail operations (or clear path to one).",
   ],
   exclusions: [
     "Heavy rail-only systems: New York City, Chicago, Washington DC, Honolulu, Vancouver, Montreal",
