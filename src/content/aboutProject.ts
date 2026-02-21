@@ -7,17 +7,18 @@ export const ABOUT_SECTIONS = {
   title: "Light Rail Analytics Map: about this project",
   whatItIs: {
     intro: [
-      "As a San Franciscan frustrated by how slowly our light-rail system often moves—stuck in mixed traffic, waiting at red lights, stopping every few hundred feet—I wanted to understand where and why performance breaks down.",
-      "Surprisingly, there was no accessible, localized speed data showing how trains actually move through the system. So I built it myself.",
-      "This project ingests live GTFS-RT vehicle positions and combines them with static infrastructure data to calculate real-world operating speeds across entire light-rail networks.",
+      "Light-rail systems in North America often suffer from slow speeds due to mixed traffic, signal delays, frequent stops, and constrained infrastructure. Despite this, granular performance data is rarely publicly available.",
     ],
-    visualizes: [
-      "Segment-by-segment speeds",
-      "Bottlenecks and delay hotspots",
-      "Route geometry and infrastructure constraints",
-      "Systemwide performance patterns",
+    platformFeatures: [
+      "Ingests live GTFS-RT vehicle positions",
+      "Matches vehicles to route geometry",
+      "Computes segment-level speeds",
+      "Stores historical performance data",
+      "Visualizes speed distributions and bottlenecks on interactive maps",
     ],
-    goal: "The goal is simple: make light-rail performance measurable, transparent, and easy to explore—in San Francisco and across North American cities.",
+    details:
+      "By combining real-time data with static GTFS and infrastructure overlays, the platform makes it possible to identify systemic slow zones, compare cities, and evaluate infrastructure tradeoffs.",
+    goal: 'The aim is to turn anecdotal complaints about "slow trains" into measurable, actionable insights.',
   },
   keyDecisions: [
     "Scope is live light-rail/tram analytics first. Regional/metro layers are context only.",

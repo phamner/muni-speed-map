@@ -411,11 +411,7 @@ function CollapsibleSection({
 }) {
   return (
     <div className="collapsible-section">
-      <button
-        className="collapsible-header"
-        onClick={onToggle}
-        type="button"
-      >
+      <button className="collapsible-header" onClick={onToggle} type="button">
         <span className={`collapsible-chevron ${isExpanded ? "expanded" : ""}`}>
           ▶
         </span>
@@ -1149,7 +1145,9 @@ export function Controls({
       <CollapsibleSection
         title="Lines & Regional Context"
         isExpanded={sections.linesContext}
-        onToggle={() => setSections((s) => ({ ...s, linesContext: !s.linesContext }))}
+        onToggle={() =>
+          setSections((s) => ({ ...s, linesContext: !s.linesContext }))
+        }
         rightElement={
           sections.linesContext ? (
             <div className="toggle-group">
@@ -1173,7 +1171,9 @@ export function Controls({
           ) : undefined
         }
       >
-        <div className={`line-buttons${allLines.length === 4 ? " four-lines" : ""}`}>
+        <div
+          className={`line-buttons${allLines.length === 4 ? " four-lines" : ""}`}
+        >
           {allLines.map((line) => (
             <button
               key={line}
@@ -1325,7 +1325,9 @@ export function Controls({
             </div>
           )}
         </div>
-        <div className="control-label" style={{ marginTop: 8 }}>Regional & Metro Overlay</div>
+        <div className="control-label" style={{ marginTop: 8 }}>
+          Regional & Metro Overlay
+        </div>
         <div className="route-lines-toggle">
           <label>
             <input
@@ -1352,7 +1354,9 @@ export function Controls({
       <CollapsibleSection
         title="Infrastructure"
         isExpanded={sections.infrastructure}
-        onToggle={() => setSections((s) => ({ ...s, infrastructure: !s.infrastructure }))}
+        onToggle={() =>
+          setSections((s) => ({ ...s, infrastructure: !s.infrastructure }))
+        }
       >
         <div className="route-lines-toggle">
           <label>
@@ -1638,12 +1642,17 @@ export function Controls({
               {ABOUT_SECTIONS.whatItIs.intro.map((para, i) => (
                 <p key={i}>{para}</p>
               ))}
-              <p><strong>It visualizes:</strong></p>
+              <p>
+                <strong>
+                  This project seeks to be an analytics platform that:
+                </strong>
+              </p>
               <ul>
-                {ABOUT_SECTIONS.whatItIs.visualizes.map((item) => (
+                {ABOUT_SECTIONS.whatItIs.platformFeatures.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
+              <p>{ABOUT_SECTIONS.whatItIs.details}</p>
               <p>{ABOUT_SECTIONS.whatItIs.goal}</p>
             </div>
 
