@@ -1646,15 +1646,6 @@ export function Controls({
             </div>
 
             <div className="about-section-block">
-              <h3>City Inclusion Criteria</h3>
-              <ul>
-                {ABOUT_SECTIONS.inclusionCriteria.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="about-section-block">
               <h3>Why Some Cities Are Excluded</h3>
               <ul>
                 {ABOUT_SECTIONS.exclusions.map((item) => (

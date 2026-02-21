@@ -6,7 +6,7 @@ export interface AboutCityNote {
 export const ABOUT_SECTIONS = {
   title: "Light Rail Analytics Map: about this project",
   whatItIs: [
-    "As a San Franciscan and certified foamer, I wanted to understand how to improve the SF muni train system, which often moves far too slowly: running in mixed traffic; interacting with cars, stopped at red lights or stop signs, and picking up passengers at stops that are too far close together.",
+    "As a San Franciscan and certified foamer, I wanted to understand how to improve the SF muni train system, which often moves far too slowly: running in mixed traffic; interacting with cars, stopped at red lights or stop signs, and picking up passengers at stops that are far too close together.",
     "I wanted to find the pain points in the system, but I couldn't find localized speed data anywhere. So I decided to build it myself, and once I had started, I realized I could make it a tool for other cities as well.",
     "This app visualizes light-rail and tram performance across North American cities using live vehicle positions and static infrastructure data.",
     "The goal is to make speed patterns, bottlenecks, and route characteristics easy to explore.",
