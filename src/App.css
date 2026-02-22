@@ -2012,8 +2012,8 @@
     background: rgba(255, 255, 255, 0.2);
   }
 
-  /* Adjust map container to fill screen on mobile */
-  .map-container {
+  /* Adjust map wrapper to fill screen on mobile */
+  .map-wrapper {
     position: fixed;
     top: 0;
     left: 0;
@@ -2021,27 +2021,50 @@
     bottom: 0;
   }
 
-  /* Move speed legend to avoid hamburger button */
-  .speed-legend {
-    top: 70px;
-    left: 10px;
-    right: auto;
+  /* ===========================================
+     MOBILE MAP ELEMENTS POSITIONING (Portrait)
+     Stack from bottom: scale -> map toggle -> speed legend
+     =========================================== */
+
+  /* Distance/scale control - bottom left */
+  .maplibregl-ctrl-bottom-left .maplibregl-ctrl-scale {
+    margin-left: 10px;
+    margin-bottom: 10px;
   }
 
-  /* Adjust map layer toggle position on mobile */
+  /* Map layer toggle - above scale, bottom left */
   .map-layer-toggle {
-    width: 100px;
-    height: 100px;
-    bottom: 20px;
+    width: 90px;
+    height: 90px;
+    bottom: 45px;
+    left: 10px;
   }
 
   .map-layer-toggle .layer-preview {
-    height: 110px;
+    height: 100px;
   }
 
-  /* Adjust dynamic legends position on mobile */
+  /* Speed legend - above map toggle, bottom left */
+  .map-speed-legend {
+    bottom: 145px;
+    left: 10px;
+  }
+
+  /* Move dynamic legends (crossing legend, etc.) to avoid hamburger */
   .map-dynamic-legends {
     top: 70px;
+  }
+
+  /* ===========================================
+     HIDE MAP ELEMENTS WHEN SIDEBAR IS OPEN
+     =========================================== */
+  .controls-panel.mobile-open ~ .map-wrapper .map-speed-legend,
+  .controls-panel.mobile-open ~ .map-wrapper .map-layer-toggle,
+  .controls-panel.mobile-open ~ .map-wrapper .maplibregl-ctrl-bottom-left,
+  .controls-panel.mobile-open ~ .map-wrapper .map-dynamic-legends {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
   }
 
   /* Make city selector more compact on mobile */
@@ -2068,5 +2091,59 @@
   .line-toggle-btn {
     padding: 6px 10px;
     font-size: 0.7rem;
+  }
+}
+
+/* ===========================================
+   MOBILE LANDSCAPE MODE
+   Reposition elements to avoid overlaps
+   =========================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* In landscape, put hamburger in top-right to avoid speed legend */
+  .mobile-menu-toggle {
+    left: auto;
+    right: 12px;
+  }
+
+  /* Speed legend stays in top-left in landscape */
+  .map-speed-legend {
+    top: 12px;
+    bottom: auto;
+    left: 10px;
+  }
+
+  /* Map toggle in bottom-left */
+  .map-layer-toggle {
+    bottom: 10px;
+    left: 10px;
+    width: 80px;
+    height: 80px;
+  }
+
+  .map-layer-toggle .layer-preview {
+    height: 90px;
+  }
+
+  /* Scale in bottom-left, above map toggle */
+  .maplibregl-ctrl-bottom-left .maplibregl-ctrl-scale {
+    margin-bottom: 100px;
+  }
+
+  /* Dynamic legends move to right side in landscape */
+  .map-dynamic-legends {
+    top: 12px;
+    left: auto;
+    right: 70px;
+  }
+}
+
+/* ===========================================
+   TABLET STYLES (768px - 1024px)
+   Optional refinements for tablets
+   =========================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .controls-panel {
+    width: 280px;
+    padding: 18px;
   }
 }
