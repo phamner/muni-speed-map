@@ -1756,6 +1756,48 @@ export function SpeedMap({
       console.log(`Using cached ${city} data: ${cached.length} positions`);
       setVehicles(cached);
       setDataSource("supabase");
+
+      // Also update parent with cached data stats (fixes race condition where
+      // count shows 0 even though data is displayed)
+      const timestamps = cached.map((v) => new Date(v.recordedAt).getTime());
+      const latestTime = new Date(Math.max(...timestamps));
+      const dataAgeMinutes =
+        (Date.now() - latestTime.getTime()) / (1000 * 60);
+
+      // Calculate line stats from cached data
+      const lineSpeedMap = new Map<string, number[]>();
+      cached.forEach((v) => {
+        if (v.speed == null || v.speed < 0.5) return;
+        if (!lineSpeedMap.has(v.routeId)) {
+          lineSpeedMap.set(v.routeId, []);
+        }
+        lineSpeedMap.get(v.routeId)!.push(v.speed);
+      });
+
+      const stats: LineStats[] = [];
+      lineSpeedMap.forEach((speeds, line) => {
+        if (line === "Shared") return;
+        const avg = speeds.reduce((a, b) => a + b, 0) / speeds.length;
+        const sorted = [...speeds].sort((a, b) => a - b);
+        const mid = Math.floor(sorted.length / 2);
+        const median =
+          sorted.length % 2 !== 0
+            ? sorted[mid]
+            : (sorted[mid - 1] + sorted[mid]) / 2;
+        stats.push({
+          line,
+          avgSpeed: avg,
+          medianSpeed: median,
+          count: speeds.length,
+        });
+      });
+
+      onVehicleUpdateRef.current?.(
+        cached.length,
+        latestTime,
+        stats,
+        dataAgeMinutes,
+      );
       return;
     }
 
