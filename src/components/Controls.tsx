@@ -336,6 +336,8 @@ interface ControlsProps {
   railContextCommuterCount: number;
   hideStoppedTrains: boolean;
   setHideStoppedTrains: (hide: boolean) => void;
+  hideAllTrains: boolean;
+  setHideAllTrains: (hide: boolean) => void;
   viewMode: ViewMode;
   setViewMode: (mode: ViewMode) => void;
   lineStats: LineStats[];
@@ -409,6 +411,8 @@ export function Controls({
   railContextCommuterCount,
   hideStoppedTrains,
   setHideStoppedTrains,
+  hideAllTrains,
+  setHideAllTrains,
   viewMode,
   setViewMode,
   lineStats,
@@ -992,6 +996,23 @@ export function Controls({
             </>
           )}
         </div>
+        <div
+          className="unit-toggle-group"
+          style={{ marginTop: "8px", width: "fit-content" }}
+        >
+          <button
+            className={`unit-toggle-btn ${speedUnit === "mph" ? "active" : ""}`}
+            onClick={() => setSpeedUnit("mph")}
+          >
+            mph
+          </button>
+          <button
+            className={`unit-toggle-btn ${speedUnit === "kmh" ? "active" : ""}`}
+            onClick={() => setSpeedUnit("kmh")}
+          >
+            km/h
+          </button>
+        </div>
       </div>
 
       {/* Speed View & Filter */}
@@ -1000,28 +1021,25 @@ export function Controls({
         isExpanded={sections.speedView}
         onToggle={() => setSections((s) => ({ ...s, speedView: !s.speedView }))}
         rightElement={
-          sections.speedView ? (
-            <div className="unit-toggle-group">
-              <button
-                className={`unit-toggle-btn ${speedUnit === "mph" ? "active" : ""}`}
-                onClick={() => setSpeedUnit("mph")}
-              >
-                mph
-              </button>
-              <button
-                className={`unit-toggle-btn ${speedUnit === "kmh" ? "active" : ""}`}
-                onClick={() => setSpeedUnit("kmh")}
-              >
-                km/h
-              </button>
-            </div>
-          ) : undefined
+          <button
+            className={`train-visibility-toggle ${hideAllTrains ? "hidden" : "visible"}`}
+            onClick={() => setHideAllTrains(!hideAllTrains)}
+          >
+            {hideAllTrains ? "Show Trains" : "Hide Trains"}
+          </button>
         }
       >
-        <div className="view-mode-toggle">
+        <div
+          className="view-mode-toggle"
+          style={{
+            opacity: hideAllTrains ? 0.4 : 1,
+            pointerEvents: hideAllTrains ? "none" : "auto",
+          }}
+        >
           <button
             className={`view-mode-btn ${viewMode === "raw" ? "active" : ""}`}
             onClick={() => setViewMode("raw")}
+            disabled={hideAllTrains}
           >
             Raw Data
           </button>
@@ -1030,12 +1048,24 @@ export function Controls({
               viewMode === "segments" ? "active" : ""
             }`}
             onClick={() => setViewMode("segments")}
+            disabled={hideAllTrains}
           >
             Segment Avg
           </button>
         </div>
-        <div className="control-label">Speed Filter</div>
-        <div className="speed-filter">
+        <div
+          className="control-label"
+          style={{ opacity: hideAllTrains ? 0.4 : 1 }}
+        >
+          Speed Filter
+        </div>
+        <div
+          className="speed-filter"
+          style={{
+            opacity: hideAllTrains ? 0.4 : 1,
+            pointerEvents: hideAllTrains ? "none" : "auto",
+          }}
+        >
           <div className="speed-slider-row">
             <label>
               Min: {Math.round(convertSpeed(speedFilter.minSpeed))}{" "}
@@ -1056,6 +1086,7 @@ export function Controls({
                 })
               }
               className="speed-slider"
+              disabled={hideAllTrains}
             />
           </div>
           <div className="speed-slider-row">
@@ -1081,15 +1112,23 @@ export function Controls({
                 })
               }
               className="speed-slider"
+              disabled={hideAllTrains}
             />
           </div>
         </div>
-        <div className="route-lines-toggle">
+        <div
+          className="route-lines-toggle"
+          style={{
+            opacity: hideAllTrains ? 0.4 : 1,
+            pointerEvents: hideAllTrains ? "none" : "auto",
+          }}
+        >
           <label>
             <input
               type="checkbox"
               checked={hideStoppedTrains}
               onChange={(e) => setHideStoppedTrains(e.target.checked)}
+              disabled={hideAllTrains}
             />
             Hide stopped trains (0 {unitLabelLower})
           </label>

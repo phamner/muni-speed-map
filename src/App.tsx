@@ -102,6 +102,7 @@ function App() {
   const [railContextHeavyCount, setRailContextHeavyCount] = useState(0);
   const [railContextCommuterCount, setRailContextCommuterCount] = useState(0);
   const [hideStoppedTrains, setHideStoppedTrains] = useState(false);
+  const [hideAllTrains, setHideAllTrains] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("raw");
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
   const [showSatellite, setShowSatellite] = useState(false);
@@ -185,6 +186,8 @@ function App() {
         railContextCommuterCount={railContextCommuterCount}
         hideStoppedTrains={hideStoppedTrains}
         setHideStoppedTrains={setHideStoppedTrains}
+        hideAllTrains={hideAllTrains}
+        setHideAllTrains={setHideAllTrains}
         viewMode={viewMode}
         setViewMode={setViewMode}
         lineStats={lineStats}
@@ -207,6 +210,7 @@ function App() {
         showRailContextHeavy={showRailContextHeavy}
         showRailContextCommuter={showRailContextCommuter}
         hideStoppedTrains={hideStoppedTrains}
+        hideAllTrains={hideAllTrains}
         viewMode={viewMode}
         showSatellite={showSatellite}
         onSatelliteToggle={setShowSatellite}

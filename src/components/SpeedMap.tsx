@@ -1224,6 +1224,7 @@ interface SpeedMapProps {
   showRailContextHeavy: boolean;
   showRailContextCommuter: boolean;
   hideStoppedTrains: boolean;
+  hideAllTrains: boolean;
   viewMode: ViewMode;
   showSatellite: boolean;
   onSatelliteToggle?: (show: boolean) => void;
@@ -1252,6 +1253,7 @@ export function SpeedMap({
   showRailContextHeavy,
   showRailContextCommuter,
   hideStoppedTrains,
+  hideAllTrains,
   viewMode,
   showSatellite,
   onSatelliteToggle,
@@ -3602,30 +3604,35 @@ export function SpeedMap({
         // Filter to hide null speed data points and optionally stopped trains
         const initialFilters: maplibregl.ExpressionSpecification[] = [];
 
-        // For San Diego, allow null speed data since MTS doesn't provide speed in GTFS-RT
-        if (city !== "San Diego") {
-          initialFilters.push(["!=", ["get", "speed"], null]);
-        }
-
-        // Only apply speed filters to vehicles that have speed data
-        if (city === "San Diego") {
-          // For San Diego: only filter vehicles that have speed data
-          initialFilters.push([
-            "any",
-            ["==", ["get", "speed"], null], // Allow null speed
-            [">=", ["get", "speed"], speedFilter.minSpeed], // Or speed >= min
-          ]);
+        // If hideAllTrains is enabled, hide everything
+        if (hideAllTrains) {
+          initialFilters.push(["==", ["get", "speed"], -9999]); // Impossible condition to hide all
         } else {
-          // For other cities: normal speed filtering
-          initialFilters.push([">=", ["get", "speed"], speedFilter.minSpeed]);
-        }
-        // Only add max filter if not at 50 (50 means 50+ / no upper limit)
-        if (speedFilter.maxSpeed < 50) {
-          initialFilters.push(["<=", ["get", "speed"], speedFilter.maxSpeed]);
-        }
-        // Use 0.5 threshold so speeds that round to 0 (like 0.3 mph) are also hidden
-        if (hideStoppedTrains) {
-          initialFilters.push([">=", ["get", "speed"], 0.5]);
+          // For San Diego, allow null speed data since MTS doesn't provide speed in GTFS-RT
+          if (city !== "San Diego") {
+            initialFilters.push(["!=", ["get", "speed"], null]);
+          }
+
+          // Only apply speed filters to vehicles that have speed data
+          if (city === "San Diego") {
+            // For San Diego: only filter vehicles that have speed data
+            initialFilters.push([
+              "any",
+              ["==", ["get", "speed"], null], // Allow null speed
+              [">=", ["get", "speed"], speedFilter.minSpeed], // Or speed >= min
+            ]);
+          } else {
+            // For other cities: normal speed filtering
+            initialFilters.push([">=", ["get", "speed"], speedFilter.minSpeed]);
+          }
+          // Only add max filter if not at 50 (50 means 50+ / no upper limit)
+          if (speedFilter.maxSpeed < 50) {
+            initialFilters.push(["<=", ["get", "speed"], speedFilter.maxSpeed]);
+          }
+          // Use 0.5 threshold so speeds that round to 0 (like 0.3 mph) are also hidden
+          if (hideStoppedTrains) {
+            initialFilters.push([">=", ["get", "speed"], 0.5]);
+          }
         }
         const initialFilter: maplibregl.FilterSpecification = [
           "all",
@@ -3879,32 +3886,37 @@ export function SpeedMap({
 
     const filters: maplibregl.ExpressionSpecification[] = [];
 
-    // For San Diego, allow null speed data since MTS doesn't provide speed in GTFS-RT
-    if (city !== "San Diego") {
-      filters.push(["!=", ["get", "speed"], null]);
-    }
-
-    // Only apply speed filters to vehicles that have speed data
-    if (city === "San Diego") {
-      // For San Diego: only filter vehicles that have speed data
-      filters.push([
-        "any",
-        ["==", ["get", "speed"], null], // Allow null speed
-        [">=", ["get", "speed"], speedFilter.minSpeed], // Or speed >= min
-      ]);
+    // If hideAllTrains is enabled, hide everything
+    if (hideAllTrains) {
+      filters.push(["==", ["get", "speed"], -9999]); // Impossible condition to hide all
     } else {
-      // For other cities: normal speed filtering
-      filters.push([">=", ["get", "speed"], speedFilter.minSpeed]);
-    }
-    // Only add max filter if not at 50 (50 means 50+ / no upper limit)
-    if (speedFilter.maxSpeed < 50) {
-      filters.push(["<=", ["get", "speed"], speedFilter.maxSpeed]);
-    }
+      // For San Diego, allow null speed data since MTS doesn't provide speed in GTFS-RT
+      if (city !== "San Diego") {
+        filters.push(["!=", ["get", "speed"], null]);
+      }
 
-    // Hide stopped trains (0 mph) if toggle is enabled
-    // Use 0.5 threshold so speeds that round to 0 (like 0.3 mph) are also hidden
-    if (hideStoppedTrains) {
-      filters.push([">=", ["get", "speed"], 0.5]);
+      // Only apply speed filters to vehicles that have speed data
+      if (city === "San Diego") {
+        // For San Diego: only filter vehicles that have speed data
+        filters.push([
+          "any",
+          ["==", ["get", "speed"], null], // Allow null speed
+          [">=", ["get", "speed"], speedFilter.minSpeed], // Or speed >= min
+        ]);
+      } else {
+        // For other cities: normal speed filtering
+        filters.push([">=", ["get", "speed"], speedFilter.minSpeed]);
+      }
+      // Only add max filter if not at 50 (50 means 50+ / no upper limit)
+      if (speedFilter.maxSpeed < 50) {
+        filters.push(["<=", ["get", "speed"], speedFilter.maxSpeed]);
+      }
+
+      // Hide stopped trains (0 mph) if toggle is enabled
+      // Use 0.5 threshold so speeds that round to 0 (like 0.3 mph) are also hidden
+      if (hideStoppedTrains) {
+        filters.push([">=", ["get", "speed"], 0.5]);
+      }
     }
 
     const filterExpression: maplibregl.FilterSpecification = [
@@ -3914,7 +3926,7 @@ export function SpeedMap({
 
     map.current.setFilter("vehicles", filterExpression);
     map.current.setFilter("vehicles-glow", filterExpression);
-  }, [speedFilter, hideStoppedTrains, mapLoaded]);
+  }, [speedFilter, hideStoppedTrains, hideAllTrains, mapLoaded]);
 
   // Ensure proper layer ordering: routes at bottom, then data, then infrastructure on top
   // This function can be called anytime to fix layer order
@@ -4133,6 +4145,11 @@ export function SpeedMap({
   // Memoized segment averages calculation - expensive, only recalculate when data changes
   // NOT dependent on selectedLines - that filtering happens in the display effect below
   const cachedSegmentAverages = useMemo(() => {
+    // If hideAllTrains is enabled, return empty map
+    if (hideAllTrains) {
+      return new Map();
+    }
+
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
@@ -4172,7 +4189,14 @@ export function SpeedMap({
     }
 
     return segmentAverages;
-  }, [vehicles, speedFilter, hideStoppedTrains, city, allRouteSegments]);
+  }, [
+    vehicles,
+    speedFilter,
+    hideStoppedTrains,
+    hideAllTrains,
+    city,
+    allRouteSegments,
+  ]);
 
   // Display effect for segments - uses cached averages, only re-runs when selectedLines changes
   useEffect(() => {
