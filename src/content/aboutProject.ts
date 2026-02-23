@@ -123,70 +123,70 @@ export const ABOUT_SECTIONS = {
 export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   {
     city: "San Francisco",
-    note: "N Judah tunnel speeds may appear clustered at portals due to limited GPS in the Sunset Tunnel. The F-Market & Wharves line is hidden by default to avoid confusing its slower street-running speeds with the faster underground Muni Metro lines.",
+    note: "N Judah tunnel speeds may appear clustered at portals due to limited GPS in the Sunset Tunnel. The F-Market & Wharves line is hidden by default to avoid confusing its slower street-running speeds with the faster underground Muni Metro lines. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
   {
     city: "Los Angeles",
-    note: "Regional context includes Metrolink. Complex areas (for example, around major terminals) can look choppy because GTFS shape granularity varies by operator.",
+    note: "Regional context includes Metrolink. Complex areas (for example, around major terminals) can look choppy because GTFS shape granularity varies by operator. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
   },
   {
     city: "Seattle",
-    note: "Link has both tunneled and surface-running segments, so speed patterns can shift quickly at transition points and around major interline sections.",
+    note: "Link has both tunneled and surface-running segments, so speed patterns can shift quickly at transition points and around major interline sections. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
   {
     city: "Portland",
-    note: "MAX uses downtown transit-mall segments, so grade-crossing patterns differ from conventional at-grade crossings and may appear sparse in the core.",
+    note: "MAX uses downtown transit-mall segments, so grade-crossing patterns differ from conventional at-grade crossings and may appear sparse in the core. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
   },
   {
     city: "Boston",
-    note: "Green Line branch merges and street-running sections create strong speed variation by branch and by central subway approach segments.",
+    note: "Green Line branch merges and street-running sections create strong speed variation by branch and by central subway approach segments. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
   },
   {
     city: "Philadelphia",
-    note: "Regional/metro context includes SEPTA Regional Rail, SEPTA subway lines, PATCO, and NJ Transit Atlantic City Line. Street-running trolley segments often lack OSM grade-crossing tags, so mixed-traffic behavior is interpreted primarily from speed patterns.",
+    note: "Regional/metro context includes SEPTA Regional Rail, SEPTA subway lines, PATCO, and NJ Transit Atlantic City Line. Street-running trolley segments often lack OSM grade-crossing tags, so mixed-traffic behavior is interpreted primarily from speed patterns. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
   {
     city: "San Jose",
-    note: "Regional context includes Bay Area commuter and metro lines (for example, BART/Caltrain/Capitol Corridor) that are visible when zoomed out across the broader metro footprint.",
+    note: "Regional context includes Bay Area commuter and metro lines (for example, BART/Caltrain/Capitol Corridor) that are visible when zoomed out across the broader metro footprint. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
   {
     city: "Toronto",
-    note: "Heavy context includes TTC subway and commuter context includes GO rail. Streetcar corridors run in mixed traffic and typically are not tagged as classic railway grade crossings in OSM.",
+    note: "Heavy context includes TTC subway and commuter context includes GO rail. Streetcar corridors run in mixed traffic and typically are not tagged as classic railway grade crossings in OSM. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
   },
   {
     city: "Minneapolis–St. Paul",
-    note: "Airport tunnel and grade-separation sections can have distinct speed behavior compared with downtown street-running areas.",
+    note: "Airport tunnel and grade-separation sections can have distinct speed behavior compared with downtown street-running areas. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
   },
   {
     city: "Denver",
-    note: "RTD has multiple long corridors with different operating profiles, so network-wide averages can hide major segment-level differences between suburban and urban sections.",
+    note: "RTD has multiple long corridors with different operating profiles, so network-wide averages can hide major segment-level differences between suburban and urban sections. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
   },
   {
     city: "Salt Lake City",
-    note: "TRAX lines share downtown trackage, so compare individual line speeds separately from the shared core for clearer interpretation.",
+    note: "TRAX lines share downtown trackage, so compare individual line speeds separately from the shared core for clearer interpretation. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
   },
   {
     city: "Pittsburgh",
-    note: "The T transitions between downtown subway and South Hills surface running, creating clear grade-separation and speed regime differences in one corridor.",
+    note: "The T transitions between downtown subway and South Hills surface running, creating clear grade-separation and speed regime differences in one corridor. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
   },
   {
     city: "Phoenix",
-    note: "Valley Metro is largely surface-running, so intersection effects and corridor traffic conditions are often visible in the lower-speed distribution.",
+    note: "Valley Metro is largely surface-running, so intersection effects and corridor traffic conditions are often visible in the lower-speed distribution. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
   {
     city: "Charlotte",
-    note: "LYNX includes distinct Blue and Gold service patterns; compare overlap areas separately from end segments for clearer speed interpretation.",
+    note: "LYNX includes distinct Blue and Gold service patterns; compare overlap areas separately from end segments for clearer speed interpretation. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
   {
     city: "Baltimore",
-    note: "Light RailLink shows gaps in coverage along certain stretches (especially when the trains are not near stations) possibly due to limited GPS reporting frequency or infrastructure constraints. Regional context includes Metro SubwayLink and MARC commuter rail.",
+    note: "Light RailLink shows gaps in coverage along certain stretches (especially when the trains are not near stations) possibly due to limited GPS reporting frequency or infrastructure constraints. Regional context includes Metro SubwayLink and MARC commuter rail. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
   {
     city: "Cleveland",
-    note: "RTA corridor behavior can vary between shared trunk sections and outer branches, so line-level filtering is useful before comparing averages.",
+    note: "RTA corridor behavior can vary between shared trunk sections and outer branches, so line-level filtering is useful before comparing averages. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
   {
     city: "San Diego",
-    note: "Regional context includes NCTD Coaster commuter rail. The Trolley system covers four lines with varying service patterns across the metro area.",
+    note: "Regional context includes NCTD Coaster commuter rail. The Trolley system covers four lines with varying service patterns across the metro area. Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart).",
   },
 ];

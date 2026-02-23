@@ -1374,20 +1374,6 @@ export function Controls({
 
       {/* Info */}
       <div className="info-section">
-        <h3>About the {cityLine} Map</h3>
-        <p>
-          <strong>Speed data:</strong>{" "}
-          {city === "LA" ||
-          city === "Boston" ||
-          city === "Portland" ||
-          city === "Toronto" ||
-          city === "Pittsburgh" ||
-          city === "Minneapolis" ||
-          city === "Denver" ||
-          city === "Salt Lake City"
-            ? "Speed is provided directly by the transit agency's API, giving accurate real-time readings."
-            : "Speed is calculated from GPS positions, measuring distance traveled between consecutive readings (~90 seconds apart)."}
-        </p>
         <p className="data-attribution">
           Grade crossing, switch, and speed limit data from{" "}
           <a

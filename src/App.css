@@ -1045,7 +1045,7 @@
 
 /* Info section */
 .info-section {
-  padding: 16px;
+  padding: 12px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 8px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1058,10 +1058,10 @@
 }
 
 .info-section p {
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .info-section p:last-child {
@@ -1069,11 +1069,15 @@
 }
 
 .info-section .data-attribution {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 0;
+  padding-top: 8px;
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.4);
+}
+
+.info-section .data-attribution + .data-attribution {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 8px;
 }
 
 .info-section .data-attribution a {
