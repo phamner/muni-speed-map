@@ -1764,50 +1764,49 @@ export function Controls({
                           />
                         </div>
                       </div>
-                    </div>
-                    <div className="transit-map-zoom-controls">
-                      <button
-                        type="button"
-                        className="transit-map-zoom-btn"
-                        onClick={() =>
-                          applyTransitMapZoom(
-                            transitMapZoom - TRANSIT_MAP_BUTTON_ZOOM_STEP,
-                          )
-                        }
-                        disabled={transitMapZoom <= MIN_TRANSIT_MAP_ZOOM}
-                        aria-label="Zoom out map"
-                      >
-                        -
-                      </button>
-                      <span className="transit-map-zoom-level">
-                        {Math.round(transitMapZoom * 100)}%
-                      </span>
-                      <button
-                        type="button"
-                        className="transit-map-zoom-btn"
-                        onClick={() =>
-                          applyTransitMapZoom(
-                            transitMapZoom + TRANSIT_MAP_BUTTON_ZOOM_STEP,
-                          )
-                        }
-                        disabled={transitMapZoom >= MAX_TRANSIT_MAP_ZOOM}
-                        aria-label="Zoom in map"
-                      >
-                        +
-                      </button>
-                      <button
-                        type="button"
-                        className="transit-map-zoom-reset"
-                        onClick={() =>
-                          applyTransitMapZoom(MIN_TRANSIT_MAP_ZOOM)
-                        }
-                        disabled={transitMapZoom === MIN_TRANSIT_MAP_ZOOM}
-                      >
-                        Reset
-                      </button>
-                      <span className="transit-map-zoom-hint">
-                        Scroll to zoom, drag or arrow keys to pan
-                      </span>
+                      <div className="transit-map-zoom-controls">
+                        <div className="transit-map-zoom-buttons">
+                          <button
+                            type="button"
+                            className="transit-map-zoom-btn"
+                            onClick={() =>
+                              applyTransitMapZoom(
+                                transitMapZoom - TRANSIT_MAP_BUTTON_ZOOM_STEP,
+                              )
+                            }
+                            disabled={transitMapZoom <= MIN_TRANSIT_MAP_ZOOM}
+                            aria-label="Zoom out map"
+                          >
+                            -
+                          </button>
+                          <span className="transit-map-zoom-level">
+                            {Math.round(transitMapZoom * 100)}%
+                          </span>
+                          <button
+                            type="button"
+                            className="transit-map-zoom-btn"
+                            onClick={() =>
+                              applyTransitMapZoom(
+                                transitMapZoom + TRANSIT_MAP_BUTTON_ZOOM_STEP,
+                              )
+                            }
+                            disabled={transitMapZoom >= MAX_TRANSIT_MAP_ZOOM}
+                            aria-label="Zoom in map"
+                          >
+                            +
+                          </button>
+                          <button
+                            type="button"
+                            className="transit-map-zoom-reset"
+                            onClick={() =>
+                              applyTransitMapZoom(MIN_TRANSIT_MAP_ZOOM)
+                            }
+                            disabled={transitMapZoom === MIN_TRANSIT_MAP_ZOOM}
+                          >
+                            Reset
+                          </button>
+                        </div>
+                      </div>
                     </div>
                     {transitMapSourceUrl && (
                       <p className="transit-map-source">

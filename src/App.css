@@ -1568,7 +1568,7 @@
 
 .transit-map-modal {
   position: fixed;
-  top: 10vh;
+  top: 5vh;
   left: 12px;
   right: 12px;
   width: min(1320px, calc(100vw - 24px));
@@ -1578,6 +1578,7 @@
   overflow: hidden;
   text-align: left;
   border-color: rgba(255, 190, 100, 0.35);
+  padding: 56px;
 }
 
 .transit-map-modal h2 {
@@ -1586,7 +1587,7 @@
 }
 
 .transit-map-frame {
-  margin-top: 12px;
+  margin-top: 0;
   display: block;
   width: 100%;
   max-width: 100%;
@@ -1594,6 +1595,7 @@
   border-radius: 12px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.25);
+  position: relative;
 }
 
 .transit-map-viewport {
@@ -1629,46 +1631,74 @@
 }
 
 .transit-map-zoom-controls {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 10;
+}
+
+.transit-map-zoom-buttons {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  flex-wrap: wrap;
+  gap: 6px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .transit-map-zoom-btn,
 .transit-map-zoom-reset {
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
-  height: 32px;
-  padding: 0 10px;
+  border-radius: 6px;
+  height: 36px;
+  padding: 0 12px;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.transit-map-zoom-btn:hover:not(:disabled),
+.transit-map-zoom-reset:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .transit-map-zoom-btn {
-  width: 32px;
+  width: 36px;
   padding: 0;
+  font-size: 1.1rem;
 }
 
 .transit-map-zoom-btn:disabled,
 .transit-map-zoom-reset:disabled {
-  opacity: 0.45;
-  cursor: default;
+  opacity: 0.35;
+  cursor: not-allowed;
 }
 
 .transit-map-zoom-level {
-  min-width: 52px;
+  min-width: 48px;
   text-align: center;
   font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
 }
 
 .transit-map-zoom-hint {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-align: left;
+  line-height: 1.3;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: 220px;
 }
 
 .transit-map-open-link {
