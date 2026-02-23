@@ -1709,6 +1709,21 @@ export function Controls({
                       ))}
                     </ul>
                   </div>
+                  <div className="about-section-block">
+                    <h3>Source Code</h3>
+                    <ul>
+                      <li>
+                        GitHub Repository:{" "}
+                        <a
+                          href="https://github.com/philiphamner/muni-speed-map"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          https://github.com/philiphamner/muni-speed-map
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
                 </>
               )}
             </div>

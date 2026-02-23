@@ -115,6 +115,9 @@ export const ABOUT_SECTIONS = {
       "Storage: Supabase (PostgreSQL)",
       "Mapping: OpenStreetMap data + custom overlays",
     ],
+    sourceCode: [
+      "GitHub Repository: https://github.com/philiphamner/muni-speed-map",
+    ],
   },
 };
 
