@@ -1567,10 +1567,15 @@
 }
 
 .transit-map-modal {
+  position: fixed;
+  top: 10vh;
+  left: 12px;
+  right: 12px;
   width: min(1320px, calc(100vw - 24px));
   max-width: calc(100vw - 24px);
-  max-height: calc(100vh - 24px);
-  overflow-y: auto;
+  margin: 0 auto;
+  max-height: calc(90vh - 24px);
+  overflow: hidden;
   text-align: left;
   border-color: rgba(255, 190, 100, 0.35);
 }
