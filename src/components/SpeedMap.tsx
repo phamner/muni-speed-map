@@ -34,36 +34,23 @@ function debounce<T extends (...args: any[]) => void>(
   return debounced as T & { cancel: () => void };
 }
 
-// Get current time with milliseconds for logging
-function getTimestamp(): string {
-  const now = new Date();
-  return `${now.toLocaleTimeString()}.${now.getMilliseconds().toString().padStart(3, "0")}`;
-}
-
 // Monitor for long tasks (>50ms) that block the main thread
 function waitForNoLongTasks(
   quietPeriodMs: number = 2000, // Wait for 2s with no long tasks
-  startTime: number = performance.now(),
 ): Promise<void> {
   return new Promise((resolve) => {
     let lastLongTaskTime = performance.now();
     let resolved = false;
 
     const observer = new PerformanceObserver((list) => {
-      for (const entry of list.getEntries()) {
+      for (const _entry of list.getEntries()) {
         lastLongTaskTime = performance.now();
-        console.log(
-          `philip999 [${getTimestamp()}] 🔴 Long task: ${entry.duration.toFixed(0)}ms`,
-        );
       }
     });
 
     try {
       observer.observe({ entryTypes: ["longtask"] });
     } catch {
-      console.log(
-        `philip999 [${getTimestamp()}] ⚠️ Long Task API not supported`,
-      );
       resolve();
       return;
     }
@@ -75,10 +62,6 @@ function waitForNoLongTasks(
       if (quietTime >= quietPeriodMs) {
         resolved = true;
         observer.disconnect();
-        const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
-        console.log(
-          `philip999 [${getTimestamp()}] ✅ Stable for ${quietPeriodMs}ms - total load time: ${elapsed}s`,
-        );
         resolve();
       } else {
         setTimeout(checkQuiet, 500);
@@ -254,9 +237,6 @@ function filterSeparationByRoutes(
     const routeId = feature.properties?.route_id;
     if (routeId) selectedLineIds.add(routeId);
   }
-  console.log(
-    `filterSeparationByRoutes: city=${city}, selectedLineIds=${[...selectedLineIds].join(",")}, separationFeatures=${separation?.features?.length || 0}`,
-  );
 
   // Build a list of all coordinate segments from selected routes
   const routeCoords: number[][][] = [];
@@ -392,10 +372,7 @@ function filterSeparationByRoutes(
       if (isNear) {
         filteredFeatures.push(sepFeature);
       } else if (sepFeature.properties?.isManualOverride) {
-        // Debug: log when manual overrides are skipped due to proximity check
-        console.log(
-          `Manual override "${sepFeature.properties?.id}" skipped - not near any selected route`,
-        );
+        // Manual overrides that are not near any selected route are skipped
       }
     }
   }
@@ -1290,13 +1267,7 @@ export function SpeedMap({
 
   const checkPreloadComplete = useCallback(() => {
     const status = preloadStatusRef.current;
-    console.log(
-      `philipzzz 📊 Preload status: static=${status.staticDone}, vehicle=${status.vehicleDone}`,
-    );
     if (status.staticDone && status.vehicleDone) {
-      console.log(
-        "philipzzz ✅ Both preloads complete - calling onPreloadComplete",
-      );
       onPreloadCompleteRef.current?.();
     }
   }, []);
@@ -1762,7 +1733,6 @@ export function SpeedMap({
     // The vehicles useEffect will automatically update count/stats
     const cached = cityDataCache.get(city);
     if (cached && cached.length > 0) {
-      console.log(`Using cached ${city} data: ${cached.length} positions`);
       setVehicles(cached);
       setDataSource("supabase");
       return;
@@ -1805,7 +1775,6 @@ export function SpeedMap({
 
       // Legacy fallback for old schema
       if (error && error.code === "42703") {
-        console.log("City column not found, fetching all data (legacy)...");
         const fallbackQuery = supabase
           .from("vehicle_positions")
           .select(POSITION_COLUMNS)
@@ -1853,7 +1822,6 @@ export function SpeedMap({
       }
 
       console.timeEnd("Fetching data");
-      console.log(`Fetched ${allData.length} ${city} positions (all-time)`);
 
       // Show processing phase
       setLoadingProgress(
@@ -1869,9 +1837,6 @@ export function SpeedMap({
       const filteredData = allData.filter((row: any) => {
         return validLines.includes(row.route_id);
       });
-      console.log(
-        `Filtered to ${filteredData.length} positions for valid lines`,
-      );
 
       // Pre-compute segment assignments
       setLoadingProgress(
@@ -1951,7 +1916,6 @@ export function SpeedMap({
       setVehicles(cached);
       setDataSource("supabase");
       setLoadingProgress("Rendering...");
-      console.log(`Instant cache hit for ${city}: ${cached.length} positions`);
       return;
     }
     // No cache - show loading and fetch
@@ -2257,9 +2221,6 @@ export function SpeedMap({
           features: [],
         },
       });
-      console.log(
-        `Rail context for ${city}: heavy=${effectiveRailContext.heavy?.features?.length || 0}, commuter=${effectiveRailContext.commuter?.features?.length || 0}`,
-      );
 
       map.current.addLayer({
         id: "rail-context-heavy",
@@ -2529,13 +2490,6 @@ export function SpeedMap({
         filteredRoutes,
         city,
       );
-      console.log(
-        `Separation filter result: ${filteredSeparation.features?.length || 0} features for ${city}`,
-        selectedLines,
-      );
-      console.log(
-        `showBySeparation=${showBySeparation}, routeLineMode=${routeLineMode}`,
-      );
 
       // Debug: log separation types breakdown
       if (filteredSeparation.features?.length > 0) {
@@ -2544,28 +2498,9 @@ export function SpeedMap({
           const t = f.properties?.separationType || "unknown";
           typeCounts[t] = (typeCounts[t] || 0) + 1;
         }
-        console.log(`Separation types breakdown:`, typeCounts);
-
-        // Check for L-Taraval specifically
-        const lTaraval = filteredSeparation.features.find(
-          (f: any) => f.properties?.id === "manual-l-taraval-mixed-traffic",
-        );
-        if (lTaraval) {
-          console.log(
-            `L-Taraval mixed traffic feature INCLUDED:`,
-            lTaraval.properties,
-          );
-        } else {
-          console.log(
-            `L-Taraval mixed traffic feature NOT in filtered results`,
-          );
-        }
       }
 
       if (filteredSeparation.features?.length > 0) {
-        console.log(
-          `Adding separation source with ${filteredSeparation.features.length} features`,
-        );
         map.current.addSource("separation", {
           type: "geojson",
           data: filteredSeparation as any,
@@ -3755,12 +3690,7 @@ export function SpeedMap({
 
         map.current.on("click", "vehicles", (e) => {
           if (!e.features?.length) return;
-          const feature = e.features[0];
-          console.log("Clicked train datapoint", {
-            properties: feature.properties,
-            geometry: feature.geometry,
-            lngLat: e.lngLat,
-          });
+          // Click handler for debugging
         });
       }
     };
@@ -3769,14 +3699,9 @@ export function SpeedMap({
     const waitForIdle = () => {
       if (!map.current) return;
 
-      const startTime = performance.now();
       let longTasksDone = false;
       let mapIdle = false;
       let finished = false;
-
-      console.log(
-        `philip999 [${getTimestamp()}] Starting combined CPU + GPU monitoring...`,
-      );
 
       // EXPERIMENTAL: Monitor render events to detect when rendering truly stops
       let lastRenderTime = performance.now();
@@ -3790,10 +3715,6 @@ export function SpeedMap({
         const timeSinceLastRender = performance.now() - lastRenderTime;
         if (timeSinceLastRender > 1000 && !renderStopped) {
           renderStopped = true;
-          const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
-          console.log(
-            `philip999 [${getTimestamp()}] 🎯 RENDER STOPPED for 1s - total time: ${elapsed}s`,
-          );
           clearInterval(renderCheckInterval);
           map.current?.off("render", onRender);
         }
@@ -3803,10 +3724,6 @@ export function SpeedMap({
         if (finished) return;
         if (longTasksDone && mapIdle) {
           finished = true;
-          const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
-          console.log(
-            `philip999 [${getTimestamp()}] ✅ Both CPU and GPU done after ${elapsed}s - clearing indicator`,
-          );
           setLoadingProgress("");
           setIsProcessing(false);
           // Notify parent that map is ready
@@ -3815,21 +3732,13 @@ export function SpeedMap({
       };
 
       // Wait for JS long tasks to finish (CPU work)
-      waitForNoLongTasks(2000, startTime).then(() => {
-        const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
-        console.log(
-          `philip999 [${getTimestamp()}] CPU tasks complete after ${elapsed}s`,
-        );
+      waitForNoLongTasks(2000).then(() => {
         longTasksDone = true;
         tryFinish();
       });
 
       // Wait for MapLibre to finish rendering (GPU work)
       map.current.once("idle", () => {
-        const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
-        console.log(
-          `philip999 [${getTimestamp()}] MapLibre idle (GPU done) after ${elapsed}s`,
-        );
         mapIdle = true;
         tryFinish();
       });
@@ -3838,10 +3747,6 @@ export function SpeedMap({
       setTimeout(() => {
         if (!finished) {
           finished = true;
-          const elapsed = ((performance.now() - startTime) / 1000).toFixed(2);
-          console.log(
-            `philip999 [${getTimestamp()}] ⚠️ Fallback timeout after ${elapsed}s (CPU: ${longTasksDone}, GPU: ${mapIdle})`,
-          );
           setLoadingProgress("");
           setIsProcessing(false);
         }

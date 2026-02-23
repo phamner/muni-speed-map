@@ -927,14 +927,16 @@ export function Controls({
         </button>
         <button
           className="city-btn city-btn-dark-orange"
-          onClick={() => console.log("Jersey City (HBLR) - Coming soon")}
+          onClick={() => {}}
+          disabled
           title="Hudson-Bergen Light Rail - Coming soon"
         >
           🚊JC
         </button>
         <button
           className="city-btn city-btn-dark-orange"
-          onClick={() => console.log("Edmonton (LRT) - Coming soon")}
+          onClick={() => {}}
+          disabled
           title="LRT Capital & Metro Lines - Coming soon"
         >
           🚊 EMD
@@ -953,9 +955,8 @@ export function Controls({
           className={`city-btn city-btn-dark-orange ${
             city === "Washington" ? "active" : ""
           }`}
-          onClick={() =>
-            console.log("Washington D.C. (Purple Line) - Coming soon")
-          }
+          onClick={() => {}}
+          disabled
           // onClick={() => setCity("Washington")}
           title="Data collection starting soon"
         >

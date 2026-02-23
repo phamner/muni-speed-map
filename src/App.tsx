@@ -38,7 +38,6 @@ function App() {
   // Track app start time for debugging
   if (!(window as any).__appStartTime) {
     (window as any).__appStartTime = performance.now();
-    console.log("philipzzz 🚀 App started");
   }
 
   // Initial load state - DISABLED for now
@@ -57,13 +56,6 @@ function App() {
 
   // Callback when background preload completes
   const handlePreloadComplete = useCallback(() => {
-    const elapsed = (
-      (performance.now() - (window as any).__appStartTime) /
-      1000
-    ).toFixed(2);
-    console.log(
-      `philipzzz 🎉 All preloads complete at ${elapsed}s - hiding overlay`,
-    );
     setIsInitialLoad(false);
   }, []);
 

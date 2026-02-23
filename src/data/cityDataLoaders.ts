@@ -43,7 +43,6 @@ const cityToRailContextPrefix: Partial<Record<City, string>> = {
 };
 
 const railContextModules = import.meta.glob("./*RailContext*.json");
-let railContextDebugLogged = false;
 
 async function loadRailContextData(city: City): Promise<{
   railContextHeavy: any | null;
@@ -51,9 +50,6 @@ async function loadRailContextData(city: City): Promise<{
 }> {
   // Deterministic fallback for SLC to avoid any glob-indexing edge cases.
   if (city === "Salt Lake City") {
-    console.log(
-      `SLC rail context static import: heavy=${slcRailContextHeavy?.features?.length || 0}, commuter=${slcRailContextCommuter?.features?.length || 0}`,
-    );
     return {
       railContextHeavy: (slcRailContextHeavy as any) || null,
       railContextCommuter: (slcRailContextCommuter as any) || null,
@@ -73,14 +69,6 @@ async function loadRailContextData(city: City): Promise<{
     const parts = noQuery.split("/");
     return parts[parts.length - 1];
   };
-
-  if (!railContextDebugLogged) {
-    railContextDebugLogged = true;
-    console.log(
-      "Rail context module keys:",
-      Object.keys(railContextModules).map(getFilename),
-    );
-  }
 
   // Vite glob keys can vary by format; resolve by filename suffix for robustness.
   const heavyLoader = Object.entries(railContextModules).find(
