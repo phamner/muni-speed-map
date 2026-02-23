@@ -1306,6 +1306,7 @@ export function Controls({
           setSpeedFilter({ minSpeed: 0, maxSpeed: 50, showNoData: true });
           setSelectedLines([...allLines] as string[]);
           setShowRouteLines(true);
+          setRouteLineMode("byLine");
           setShowStops(false);
           setShowCrossings(false);
           setShowTrafficLights(false);
