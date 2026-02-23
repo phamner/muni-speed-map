@@ -40,7 +40,12 @@ import {
   BALTIMORE_LIGHT_RAIL_LINE_INFO,
   getLinesForCity,
 } from "../types";
-import { ABOUT_CITY_NOTES, ABOUT_SECTIONS } from "../content/aboutProject";
+import {
+  ABOUT_CITY_NOTES,
+  ABOUT_SECTIONS,
+  ABOUT_TABS,
+} from "../content/aboutProject";
+import type { AboutTab } from "../content/aboutProject";
 import type {
   SpeedFilter,
   ViewMode,
@@ -422,6 +427,7 @@ export function Controls({
   // Sacramento warning modal state
   const [showSacWarning, setShowSacWarning] = useState(false);
   const [showAboutModal, setShowAboutModal] = useState(false);
+  const [aboutActiveTab, setAboutActiveTab] = useState<AboutTab>("overview");
   const [showTransitMapModal, setShowTransitMapModal] = useState(false);
   const [transitMapZoom, setTransitMapZoom] = useState(MIN_TRANSIT_MAP_ZOOM);
   const [transitMapPan, setTransitMapPan] = useState({ x: 0, y: 0 });
@@ -966,13 +972,25 @@ export function Controls({
       {/* Data Status */}
       <div className="status-section">
         <div className="status-row">
-          <span className="live-indicator"></span>
-          <span>{vehicleCount.toLocaleString()} positions loaded</span>
-        </div>
-        <div className="status-row muted">
-          {lastUpdate
-            ? `Latest: ${lastUpdate.toLocaleTimeString()}`
-            : "Loading..."}
+          <span
+            className={`live-indicator ${vehicleCount === 0 ? "loading" : ""}`}
+          ></span>
+          <span>{vehicleCount.toLocaleString()} positions</span>
+          {lastUpdate && (
+            <>
+              <span className="status-separator">•</span>
+              <span className="status-time">
+                {lastUpdate.toLocaleDateString("en-US", {
+                  month: "numeric",
+                  day: "numeric",
+                })}{" "}
+                {lastUpdate.toLocaleTimeString("en-US", {
+                  hour: "numeric",
+                  minute: "2-digit",
+                })}
+              </span>
+            </>
+          )}
         </div>
       </div>
 
@@ -1510,77 +1528,162 @@ export function Controls({
               ×
             </button>
             <h2>{ABOUT_SECTIONS.title}</h2>
-            <div className="about-intro">
-              {ABOUT_SECTIONS.whatItIs.intro.map((para, i) => (
-                <p key={i}>{para}</p>
+
+            {/* Tab Navigation */}
+            <div className="about-tabs">
+              {ABOUT_TABS.map((tab) => (
+                <button
+                  key={tab.id}
+                  className={`about-tab ${aboutActiveTab === tab.id ? "active" : ""}`}
+                  onClick={() => setAboutActiveTab(tab.id)}
+                >
+                  {tab.label}
+                </button>
               ))}
-              <p>
-                <strong>
-                  This project seeks to be an analytics platform that:
-                </strong>
-              </p>
-              <ul>
-                {ABOUT_SECTIONS.whatItIs.platformFeatures.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <p>{ABOUT_SECTIONS.whatItIs.goal}</p>
             </div>
 
-            <div className="about-section-block">
-              <h3>Why These Decisions Were Made</h3>
-              <ul>
-                {ABOUT_SECTIONS.keyDecisions.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+            {/* Tab Content */}
+            <div className="about-tab-content">
+              {aboutActiveTab === "overview" && (
+                <div className="about-intro">
+                  {ABOUT_SECTIONS.overview.intro.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                  <p>{ABOUT_SECTIONS.overview.goal}</p>
+                </div>
+              )}
 
-            <div className="about-section-block">
-              <h3>Why Some Cities Are Excluded</h3>
-              <ul>
-                {ABOUT_SECTIONS.exclusions.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+              {aboutActiveTab === "howto" && (
+                <>
+                  <p>{ABOUT_SECTIONS.howto.intro}</p>
+                  <div className="about-section-block">
+                    <h3>Basic Controls</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.howto.controls.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>View Modes</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.howto.views.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>Tips</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.howto.tips.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              )}
 
-            <div className="about-section-block">
-              <h3>Data Methodology</h3>
-              <ul>
-                {ABOUT_SECTIONS.dataMethodology.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+              {aboutActiveTab === "data" && (
+                <>
+                  <div className="about-section-block">
+                    <h3>Data Sources</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.data.sources.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>How Segment Averages Work</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.data.segmentAverages.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>Limitations</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.data.limitations.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              )}
 
-            <div className="about-section-block">
-              <h3>How Segment Averages Work</h3>
-              <ul>
-                {ABOUT_SECTIONS.segmentAverages.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+              {aboutActiveTab === "features" && (
+                <>
+                  <div className="about-section-block">
+                    <h3>Platform Capabilities</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.features.platformFeatures.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>Visualizations</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.features.visualizations.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>How To Read The Map</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.features.interpretationNotes.map(
+                        (item) => (
+                          <li key={item}>{item}</li>
+                        ),
+                      )}
+                    </ul>
+                  </div>
+                </>
+              )}
 
-            <div className="about-section-block">
-              <h3>How To Read The Map</h3>
-              <ul>
-                {ABOUT_SECTIONS.interpretationNotes.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </div>
+              {aboutActiveTab === "cities" && (
+                <div className="about-section-block">
+                  <h3>City-Specific Notes</h3>
+                  <ul>
+                    {ABOUT_CITY_NOTES.map((cityNote) => (
+                      <li key={cityNote.city}>
+                        <strong>{cityNote.city}:</strong> {cityNote.note}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-            <div className="about-section-block">
-              <h3>City Notes</h3>
-              <ul>
-                {ABOUT_CITY_NOTES.map((cityNote) => (
-                  <li key={cityNote.city}>
-                    <strong>{cityNote.city}:</strong> {cityNote.note}
-                  </li>
-                ))}
-              </ul>
+              {aboutActiveTab === "technical" && (
+                <>
+                  <div className="about-section-block">
+                    <h3>Project Scope</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.technical.scope.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>Why Some Cities Are Excluded</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.technical.exclusions.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>Technology Stack</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.technical.stack.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

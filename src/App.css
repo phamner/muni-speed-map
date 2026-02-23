@@ -1110,6 +1110,22 @@
   margin-right: 4px;
 }
 
+.live-indicator.loading {
+  background: #ffd93d;
+  animation: pulse-yellow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-yellow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
 .data-note a {
   color: #00d9ff;
   text-decoration: none;
@@ -1121,9 +1137,9 @@
 
 /* Status Section */
 .status-section {
-  padding: 14px 16px;
-  background: rgba(0, 255, 136, 0.1);
-  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -1133,14 +1149,26 @@
 .status-row {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.9rem;
-  line-height: 1.3;
+  gap: 6px;
+  font-size: 0.8rem;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .status-row.muted {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
+}
+
+.status-separator {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.7rem;
+}
+
+.status-time {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
 }
 
 
@@ -1325,10 +1353,12 @@
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 10vh;
   z-index: 5000;
   animation: fadeIn 0.2s ease-out;
+  overflow-y: auto;
 }
 
 @keyframes fadeIn {
@@ -1460,13 +1490,58 @@
 
 .about-modal h2 {
   color: #9befff;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+/* About Modal Tabs */
+.about-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.about-tab {
+  padding: 10px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.about-tab:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.about-tab.active {
+  color: #9befff;
+  border-bottom-color: #9befff;
+}
+
+.about-tab-content {
+  min-height: 400px;
+  max-height: 60vh;
+  overflow-y: auto;
 }
 
 .about-section-block {
   margin-top: 16px;
   padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-section-block:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
 }
 
 .about-section-block h3 {
