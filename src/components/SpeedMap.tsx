@@ -2174,6 +2174,8 @@ export function SpeedMap({
           map.current.removeLayer("rail-context-commuter");
         if (map.current.getLayer("bus-routes-overlay"))
           map.current.removeLayer("bus-routes-overlay");
+        if (map.current.getLayer("bus-routes-overlay-labels"))
+          map.current.removeLayer("bus-routes-overlay-labels");
         if (map.current.getSource("routes")) map.current.removeSource("routes");
         if (map.current.getSource("routes-construction"))
           map.current.removeSource("routes-construction");
@@ -2317,6 +2319,58 @@ export function SpeedMap({
             14,
             0.36,
           ],
+        },
+      });
+
+      map.current.addLayer({
+        id: "bus-routes-overlay-labels",
+        type: "symbol",
+        source: "bus-routes-overlay-src",
+        minzoom: 14.0,
+        layout: {
+          "symbol-placement": "line",
+          "symbol-spacing": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            14.0,
+            520,
+            15,
+            420,
+            17,
+            320,
+          ],
+          "text-field": [
+            "coalesce",
+            ["get", "route_short_name"],
+            ["get", "route_id"],
+          ],
+          "text-font": ["Open Sans Semibold"],
+          "text-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            14.0,
+            9.5,
+            14.5,
+            10.5,
+            16,
+            12,
+            18,
+            13,
+          ],
+          "text-letter-spacing": 0.03,
+          "text-max-angle": 25,
+          "text-keep-upright": true,
+          "text-rotation-alignment": "map",
+          visibility: showBusRoutesOverlay ? "visible" : "none",
+        },
+        paint: {
+          "text-color": "#ffe28a",
+          "text-opacity": 0.88,
+          "text-halo-color": "rgba(7, 10, 18, 0.96)",
+          "text-halo-width": 1.5,
+          "text-halo-blur": 0.6,
         },
       });
 
@@ -2787,6 +2841,13 @@ export function SpeedMap({
       if (map.current.getLayer("bus-routes-overlay")) {
         map.current.setLayoutProperty(
           "bus-routes-overlay",
+          "visibility",
+          showBusRoutesOverlay ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("bus-routes-overlay-labels")) {
+        map.current.setLayoutProperty(
+          "bus-routes-overlay-labels",
           "visibility",
           showBusRoutesOverlay ? "visible" : "none",
         );
