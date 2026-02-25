@@ -777,19 +777,21 @@ export function Controls({
           {systemLine}
         </h1>
       </div>
-      <button
-        className="app-header-link-btn"
-        onClick={() => setShowTransitMapModal(true)}
-        title="View rail map"
-      >
-        View rail map
-      </button>
-      <button
-        className="app-header-link-btn app-header-link-btn-alt"
-        onClick={() => setShowAboutModal(true)}
-      >
-        About this project
-      </button>
+      <div className="app-header-link-row">
+        <button
+          className="app-header-link-btn app-header-link-btn-alt"
+          onClick={() => setShowAboutModal(true)}
+        >
+          About project
+        </button>
+        <button
+          className="app-header-link-btn"
+          onClick={() => setShowTransitMapModal(true)}
+          title="View rail map"
+        >
+          View rail map
+        </button>
+      </div>
       {/* City Selector - 3x3 grid */}
       <div className="city-selector">
         {/* Row 1: West Coast */}
