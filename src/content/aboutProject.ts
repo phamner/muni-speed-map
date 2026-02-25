@@ -36,9 +36,12 @@ export const ABOUT_SECTIONS = {
       "I chose to focus on light rail specifically because, unlike heavy metro systems or commuter/regional rail, it operates in environments where targeted improvements (signal priority, stop consolidation, lane separation) can make a real difference. Light rail in North America often suffers from operating in mixed traffic, signal delays, frequent stops, and constrained infrastructure. By combining fleet-wide observation snapshots with static GTFS and infrastructure overlays, this platform makes it possible to identify systemic slow zones, compare cities, and evaluate infrastructure tradeoffs.",
     ],
     goal: 'The aim is to turn anecdotal complaints about "slow trains" into measurable, actionable insights.',
-    dataCollectionTitle: "How the Speed Maps were Built",
+    snapshotSummaryTitle: "What You're Looking At",
+    snapshotSummary:
+      "An aggregated snapshot of train speed and location observations collected from repeated weekday sampling sessions in February 2026. This is not live train tracking.",
+    dataCollectionTitle: "How the Speed Maps Were Built",
     dataCollection:
-      "To capture the train speed data, I queried each transit agency's live vehicle endpoint every 90 seconds over several hours across multiple weekdays in February 2026. Each query returned the latest reported location and speed for the agency's entire active light rail fleet, not just a single train. I collected those system-wide snapshots and aggregated them into a city-level speed map showing where trains tend to move quickly or slow down. The result is an aggregated snapshot of fleet behavior, not live train tracking.",
+      "To capture the train speed data, I queried each transit agency's live vehicle endpoint every 90 seconds over several hours across multiple weekdays in February 2026. Each query returned the latest reported location and speed for the agency's entire active light rail fleet, not just a single train. I collected those system-wide snapshots and aggregated them into a city-level speed map showing where trains tend to move quickly or slow down.",
   },
 
   howto: {

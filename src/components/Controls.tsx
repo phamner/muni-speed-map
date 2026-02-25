@@ -1589,6 +1589,8 @@ export function Controls({
                     <p key={i}>{para}</p>
                   ))}
                   <p>{ABOUT_SECTIONS.overview.goal}</p>
+                  <h3>{ABOUT_SECTIONS.overview.snapshotSummaryTitle}</h3>
+                  <p>{ABOUT_SECTIONS.overview.snapshotSummary}</p>
                   <h3>{ABOUT_SECTIONS.overview.dataCollectionTitle}</h3>
                   <p>{ABOUT_SECTIONS.overview.dataCollection}</p>
                 </div>
