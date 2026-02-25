@@ -3781,27 +3781,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "4400709252,11219345702,11219345703,11219345705",
-        "type": "level_crossing",
-        "routes": [
-          "801"
-        ],
-        "crossingCount": 4,
-        "crossing_barrier": "yes",
-        "crossing_light": null,
-        "crossing_bell": "yes"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -118.24304175,
-          34.020637075
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "4607706093,4607706094,4607706095,4607706096",
         "type": "level_crossing",
         "routes": [

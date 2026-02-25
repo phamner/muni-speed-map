@@ -1252,6 +1252,7 @@ export function SpeedMap({
   const popup = useRef<maplibregl.Popup | null>(null);
   const crossingPopupPinned = useRef(false);
   const crossingHandlersRegistered = useRef(false);
+  const suppressNextMapClickUnpin = useRef(false);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [expandedStopCluster, setExpandedStopCluster] = useState<string | null>(
     null,
@@ -3166,6 +3167,7 @@ export function SpeedMap({
           const lat = coords ? coords[1].toFixed(6) : "N/A";
 
           crossingPopupPinned.current = true;
+          suppressNextMapClickUnpin.current = true;
 
           popup.current
             ?.setLngLat(e.lngLat)
@@ -3355,7 +3357,7 @@ export function SpeedMap({
           // Build barrier info line
           const barrierStatus =
             props.crossing_barrier === "yes"
-              ? "✓ Gated"
+              ? ""
               : props.crossing_barrier === "no"
                 ? "✗ No gates"
                 : "";
@@ -3388,7 +3390,7 @@ export function SpeedMap({
           // Build barrier info line
           const barrierStatus =
             props.crossing_barrier === "yes"
-              ? "✓ Gated"
+              ? ""
               : props.crossing_barrier === "no"
                 ? "✗ No gates"
                 : "";
@@ -3412,6 +3414,11 @@ export function SpeedMap({
 
         // Click elsewhere on map to unpin crossing popup and collapse stop clusters
         map.current.on("click", (e) => {
+          if (suppressNextMapClickUnpin.current) {
+            suppressNextMapClickUnpin.current = false;
+            return;
+          }
+
           // Check if click was on a crossing (handled above)
           const crossingFeatures = map.current?.queryRenderedFeatures(e.point, {
             layers: ["crossings"],
