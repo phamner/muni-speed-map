@@ -1448,11 +1448,23 @@ export function SpeedMap({
   }, [city, cityConfig.railContextHeavy, cityConfig.railContextCommuter]);
 
   const railContextCounts = useMemo(
-    () => ({
-      heavy: effectiveRailContext.heavy?.features?.length || 0,
-      commuter: effectiveRailContext.commuter?.features?.length || 0,
-      bus: cityConfig.busRoutesOverlay?.features?.length || 0,
-    }),
+    () => {
+      const busFeatures = cityConfig.busRoutesOverlay?.features || [];
+      const uniqueBusRoutes = new Set<string>();
+      for (const feature of busFeatures as any[]) {
+        const props = feature?.properties || {};
+        const routeKey = String(
+          props.route_short_name || props.route_id || props.route_name || "",
+        ).trim();
+        if (routeKey) uniqueBusRoutes.add(routeKey);
+      }
+
+      return {
+        heavy: effectiveRailContext.heavy?.features?.length || 0,
+        commuter: effectiveRailContext.commuter?.features?.length || 0,
+        bus: uniqueBusRoutes.size,
+      };
+    },
     [effectiveRailContext, cityConfig.busRoutesOverlay],
   );
 

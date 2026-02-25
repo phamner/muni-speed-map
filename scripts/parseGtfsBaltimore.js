@@ -295,13 +295,39 @@ async function main() {
 
   // 4. Read stops.txt
   console.log("\nReading stops.txt...");
+  const routes = parseCsv("routes.txt");
+  const stopTimes = parseCsv("stop_times.txt");
   const stops = parseCsv("stops.txt");
+
+  const lightRailRouteIds = new Set(
+    routes
+      .filter(
+        (route) =>
+          route.route_type === "0" ||
+          (route.route_short_name || "").toUpperCase().includes("LIGHT RAIL"),
+      )
+      .map((route) => route.route_id),
+  );
+
+  const lightRailTripIds = new Set(
+    trips
+      .filter((trip) => lightRailRouteIds.has(trip.route_id))
+      .map((trip) => trip.trip_id),
+  );
+
+  const lightRailStopIds = new Set();
+  for (const stopTime of stopTimes) {
+    if (lightRailTripIds.has(stopTime.trip_id)) {
+      lightRailStopIds.add(stopTime.stop_id);
+    }
+  }
   
   // Build stop features - filter to just Light Rail stops
   const stopFeatures = [];
-  const seenStopNames = new Set(); // Avoid duplicate stop names
   
   for (const stop of stops) {
+    if (!lightRailStopIds.has(stop.stop_id)) continue;
+
     const lat = parseFloat(stop.stop_lat);
     const lon = parseFloat(stop.stop_lon);
     
@@ -312,11 +338,7 @@ async function main() {
     stopName = stopName.replace(/\s*\(Northbound\)$/i, "");
     stopName = stopName.replace(/\s*\(Southbound\)$/i, "");
     stopName = stopName.trim();
-    
-    // Skip duplicate stop names (we just need one point per station)
-    if (seenStopNames.has(stopName)) continue;
-    seenStopNames.add(stopName);
-    
+
     stopFeatures.push({
       type: "Feature",
       properties: {
@@ -331,7 +353,7 @@ async function main() {
     });
   }
   
-  console.log(`Found ${stopFeatures.length} unique Light Rail stations`);
+  console.log(`Found ${stopFeatures.length} Light Rail stop points`);
 
   const stopsGeoJSON = {
     type: "FeatureCollection",

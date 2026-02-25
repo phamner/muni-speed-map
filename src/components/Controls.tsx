@@ -1303,6 +1303,7 @@ export function Controls({
         </div>
         {(city === "SF" ||
           city === "LA" ||
+          city === "Baltimore" ||
           city === "Boston" ||
           city === "Toronto" ||
           city === "Denver" ||

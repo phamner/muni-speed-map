@@ -582,8 +582,8 @@
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "s7013",
-        "stop_name": "Camden Station",
+        "stop_id": "7663",
+        "stop_name": "Hunt Valley",
         "routes": [
           "Light Rail"
         ]
@@ -591,16 +591,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.619713,
-          39.283745
+          -76.654762,
+          39.496292
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS_sb1",
-        "stop_name": "Courtesy Stop - shuttle bus 1",
+        "stop_id": "7664",
+        "stop_name": "Pepper Road",
         "routes": [
           "Light Rail"
         ]
@@ -608,16 +608,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.637464,
-          39.3379
+          -76.656693,
+          39.492104
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS_sb2",
-        "stop_name": "Courtesy Stop - shuttle bus 2",
+        "stop_id": "7665",
+        "stop_name": "McCormick Road",
         "routes": [
           "Light Rail"
         ]
@@ -625,16 +625,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.637663,
-          39.337879
+          -76.6595,
+          39.48951
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS001_sb1",
-        "stop_name": "Glen Burnie - shuttle bus 1",
+        "stop_id": "7666",
+        "stop_name": "Gilroy Road",
         "routes": [
           "Light Rail"
         ]
@@ -642,16 +642,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.633343,
-          39.172074
+          -76.661842,
+          39.481892
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS002_sb1",
-        "stop_name": "Ferndale SB - shuttle bus 1",
+        "stop_id": "7667",
+        "stop_name": "Warren Road",
         "routes": [
           "Light Rail"
         ]
@@ -659,16 +659,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.639943,
-          39.183282
+          -76.653297,
+          39.47583
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS002_sb2",
-        "stop_name": "Ferndale NB - shuttle bus 2",
+        "stop_id": "7668",
+        "stop_name": "Fairgrounds",
         "routes": [
           "Light Rail"
         ]
@@ -676,16 +676,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.63985,
-          39.183593
+          -76.634811,
+          39.448212
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS003_sb1",
-        "stop_name": "BWI Airport - shuttle bus 1",
+        "stop_id": "7669",
+        "stop_name": "Timonium",
         "routes": [
           "Light Rail"
         ]
@@ -693,16 +693,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.669713,
-          39.182506
+          -76.628159,
+          39.43351
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS004_sb1",
-        "stop_name": "BWI Business Park - shuttle bus 1",
+        "stop_id": "7670",
+        "stop_name": "Lutherville",
         "routes": [
           "Light Rail"
         ]
@@ -710,16 +710,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.673267,
-          39.191527
+          -76.627121,
+          39.428604
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS005_sb1",
-        "stop_name": "Linthicum NB - shuttle bus 1",
+        "stop_id": "7671",
+        "stop_name": "Falls Road",
         "routes": [
           "Light Rail"
         ]
@@ -727,16 +727,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.654472,
-          39.201805
+          -76.650116,
+          39.376457
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS005_sb2",
-        "stop_name": "Linthicum SB - shuttle bus 2",
+        "stop_id": "7673",
+        "stop_name": "Mt. Washington",
         "routes": [
           "Light Rail"
         ]
@@ -744,16 +744,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.654453,
-          39.202079
+          -76.65197,
+          39.368153
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS006_sb1",
-        "stop_name": "North Linthicum - shuttle bus 1",
+        "stop_id": "7674",
+        "stop_name": "Cold Spring Lane",
         "routes": [
           "Light Rail"
         ]
@@ -761,16 +761,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.645753,
-          39.214583
+          -76.647865,
+          39.34375
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS007_sb1",
-        "stop_name": "Nursery Road SB - shuttle bus 1",
+        "stop_id": "7675",
+        "stop_name": "Woodberry",
         "routes": [
           "Light Rail"
         ]
@@ -778,16 +778,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.642377,
-          39.221361
+          -76.643356,
+          39.330856
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS007_sb2",
-        "stop_name": "Nursery Road NB - shuttle bus 2",
+        "stop_id": "7676",
+        "stop_name": "North Avenue",
         "routes": [
           "Light Rail"
         ]
@@ -795,16 +795,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.642095,
-          39.221459
+          -76.622437,
+          39.311523
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS008_sb1",
-        "stop_name": "Baltimore Highlands SB - shuttle bus 1",
+        "stop_id": "7677",
+        "stop_name": "Penn Station",
         "routes": [
           "Light Rail"
         ]
@@ -812,16 +812,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.64152,
-          39.23693
+          -76.61611,
+          39.307805
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS008_sb2",
-        "stop_name": "Baltimore Highlands NB - shuttle bus 2",
+        "stop_id": "7678",
+        "stop_name": "Mt. Royal / MICA",
         "routes": [
           "Light Rail"
         ]
@@ -829,16 +829,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.64133,
-          39.23723
+          -76.619911,
+          39.307034
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS009_sb1",
-        "stop_name": "Patapsco - shuttle bus 1",
+        "stop_id": "7679",
+        "stop_name": "Cultural Center / State Center",
         "routes": [
           "Light Rail"
         ]
@@ -846,16 +846,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.630507,
-          39.242726
+          -76.620453,
+          39.303329
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS010_sb1",
-        "stop_name": "Cherry Hill NB - shuttle bus 1",
+        "stop_id": "7680",
+        "stop_name": "Mt. Vernon (Centre Street)",
         "routes": [
           "Light Rail"
         ]
@@ -863,16 +863,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.634224,
-          39.255441
+          -76.619995,
+          39.296509
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS010_sb2",
-        "stop_name": "Cherry Hill SB - shuttle bus 2",
+        "stop_id": "7681",
+        "stop_name": "Lexington Market",
         "routes": [
           "Light Rail"
         ]
@@ -880,16 +880,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.634373,
-          39.255666
+          -76.619667,
+          39.291866
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS011_sb1",
-        "stop_name": "Westport NB - shuttle bus 1",
+        "stop_id": "7682",
+        "stop_name": "Baltimore Arena (University Center)",
         "routes": [
           "Light Rail"
         ]
@@ -897,16 +897,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.633942,
-          39.262896
+          -76.619492,
+          39.288425
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS011_sb2",
-        "stop_name": "Westport SB - shuttle bus 2",
+        "stop_id": "7683",
+        "stop_name": "Convention Center",
         "routes": [
           "Light Rail"
         ]
@@ -914,16 +914,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.634132,
-          39.262964
+          -76.619423,
+          39.285427
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS012_sb1",
-        "stop_name": "Hamburg NB - shuttle bus 1",
+        "stop_id": "7684",
+        "stop_name": "Camden Station / Camden Yards",
         "routes": [
           "Light Rail"
         ]
@@ -931,16 +931,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.623455,
-          39.280214
+          -76.619484,
+          39.282791
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS012_sb2",
-        "stop_name": "Hamburg SB - shuttle bus 2",
+        "stop_id": "7685",
+        "stop_name": "Hamburg Street",
         "routes": [
           "Light Rail"
         ]
@@ -948,16 +948,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.62341,
-          39.281528
+          -76.62014,
+          39.278622
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS013_sb1",
-        "stop_name": "Camden SB - shuttle bus 1",
+        "stop_id": "7686",
+        "stop_name": "Westport",
         "routes": [
           "Light Rail"
         ]
@@ -965,16 +965,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.619924,
-          39.283638
+          -76.632378,
+          39.261528
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS013_sb2",
-        "stop_name": "Camden NB - shuttle bus 2",
+        "stop_id": "7687",
+        "stop_name": "Cherry Hill",
         "routes": [
           "Light Rail"
         ]
@@ -982,16 +982,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.619844,
-          39.283346
+          -76.63504,
+          39.255665
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS014_sb1",
-        "stop_name": "Convention Center SB - shuttle bus 1",
+        "stop_id": "7689",
+        "stop_name": "Patapsco",
         "routes": [
           "Light Rail"
         ]
@@ -999,16 +999,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.619311,
-          39.285416
+          -76.63018,
+          39.241669
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS014_sb2",
-        "stop_name": "Convention Center NB - shuttle bus 2",
+        "stop_id": "7690",
+        "stop_name": "Baltimore Highlands",
         "routes": [
           "Light Rail"
         ]
@@ -1016,16 +1016,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.619069,
-          39.285417
+          -76.633125,
+          39.234783
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS015_sb1",
-        "stop_name": "Arena NB - shuttle bus 1",
+        "stop_id": "7692",
+        "stop_name": "Nursery Road",
         "routes": [
           "Light Rail"
         ]
@@ -1033,16 +1033,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.6208,
-          39.28858
+          -76.641632,
+          39.221256
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS015_sb2",
-        "stop_name": "Arena SB - shuttle bus 2",
+        "stop_id": "7693",
+        "stop_name": "North Linthicum",
         "routes": [
           "Light Rail"
         ]
@@ -1050,16 +1050,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.620996,
-          39.28882
+          -76.646362,
+          39.214066
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS016_sb1",
-        "stop_name": "Lexington Market 1 NB - shuttle bus 1",
+        "stop_id": "7694",
+        "stop_name": "Linthicum",
         "routes": [
           "Light Rail"
         ]
@@ -1067,16 +1067,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.620958,
-          39.291669
+          -76.655586,
+          39.202061
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS016_sb2",
-        "stop_name": "Lexington Market 1 SB - shuttle bus 2",
+        "stop_id": "7696",
+        "stop_name": "BWI Business District",
         "routes": [
           "Light Rail"
         ]
@@ -1084,16 +1084,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.621175,
-          39.291483
+          -76.673706,
+          39.191483
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS016_sb3",
-        "stop_name": "Lexington Market 2 NB - shuttle bus 3",
+        "stop_id": "7697",
+        "stop_name": "BWI Airport",
         "routes": [
           "Light Rail"
         ]
@@ -1101,16 +1101,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.621085,
-          39.29324
+          -76.669548,
+          39.182499
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS016_sb4",
-        "stop_name": "Lexington Market 2 SB - shuttle bus 4",
+        "stop_id": "7698",
+        "stop_name": "Ferndale",
         "routes": [
           "Light Rail"
         ]
@@ -1118,16 +1118,16 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.621259,
-          39.293014
+          -76.640045,
+          39.183273
         ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "LRS017_sb1",
-        "stop_name": "Centre St NB - shuttle bus 1",
+        "stop_id": "7699",
+        "stop_name": "Glen Burnie (Cromwell)",
         "routes": [
           "Light Rail"
         ]
@@ -1135,484 +1135,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.621276,
-          39.29644
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS017_sb2",
-        "stop_name": "Centre St SB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.621474,
-          39.296875
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS018_sb1",
-        "stop_name": "Cultural Center NB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.62051,
-          39.30357
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS018_sb2",
-        "stop_name": "Cultural Center SB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.62075,
-          39.30358
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS019_sb1",
-        "stop_name": "Mt Royal SB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.62006,
-          39.3066
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS019_sb2",
-        "stop_name": "Mt Royal NB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.620029,
-          39.307002
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS021_sb1",
-        "stop_name": "North Avenue - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.622856,
-          39.311417
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS022_sb1",
-        "stop_name": "Woodberry NB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.635272,
-          39.332315
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS022_sb2",
-        "stop_name": "Woodberry SB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.635745,
-          39.333331
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS023_sb1",
-        "stop_name": "Shuttle Stop - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.637663,
-          39.337879
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS023_sb2",
-        "stop_name": "Shuttle Stop - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.637464,
-          39.3379
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS023_sb3",
-        "stop_name": "Coldspring NB - shuttle bus 3",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.640011,
-          39.342791
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS023_sb4",
-        "stop_name": "Coldspring SB - shuttle bus 4",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.640483,
-          39.343715
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS024_sb1",
-        "stop_name": "Mt. Washington NB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.648406,
-          39.368392
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS024_sb2",
-        "stop_name": "Mt. Washington SB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.648504,
-          39.368197
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS025_sb1",
-        "stop_name": "Falls Road - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.649315,
-          39.376722
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS026_sb1",
-        "stop_name": "Lutherville - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.626767,
-          39.428294
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS027_sb1",
-        "stop_name": "Timonium SB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.626212,
-          39.433346
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS027_sb2",
-        "stop_name": "Timonium NB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.626384,
-          39.433727
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS028_sb1",
-        "stop_name": "Fairgrounds - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.635449,
-          39.448352
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS029_sb1",
-        "stop_name": "Warren Rd NB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.651473,
-          39.476351
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS029_sb2",
-        "stop_name": "Warren Rd SB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.652689,
-          39.477314
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS030_sb1",
-        "stop_name": "Gilroy Rd NB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.661658,
-          39.482703
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS030_sb2",
-        "stop_name": "Gilroy Rd SB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.661865,
-          39.482531
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS031_sb1",
-        "stop_name": "McCormick Road NB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.659423,
-          39.489366
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS031_sb2",
-        "stop_name": "McCormick Road SB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.659535,
-          39.489448
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS032_sb1",
-        "stop_name": "Pepper Road NB - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.656076,
-          39.492348
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS032_sb2",
-        "stop_name": "Pepper Road SB - shuttle bus 2",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.655677,
-          39.492225
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "LRS033_sb1",
-        "stop_name": "Hunt Valley - shuttle bus 1",
-        "routes": [
-          "Light Rail"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.654345,
-          39.496396
+          -76.63282,
+          39.171692
         ]
       }
     }
