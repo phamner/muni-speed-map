@@ -1707,7 +1707,9 @@ export function Controls({
                     <p>{ABOUT_SECTIONS.prospective.intro}</p>
                     <p>{ABOUT_SECTIONS.prospective.outro}</p>
                     <div className="about-prospective-list">
-                      {ABOUT_PROSPECTIVE_CITIES.map((item) => (
+                      {[...ABOUT_PROSPECTIVE_CITIES]
+                        .sort((a, b) => a.city.localeCompare(b.city))
+                        .map((item) => (
                         <div
                           key={`${item.city}-${item.system}`}
                           className="about-prospective-card"

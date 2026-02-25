@@ -115,6 +115,7 @@ export const ABOUT_SECTIONS = {
 
   technical: {
     scope: [
+      "This project is currently focused on North American light rail and tram systems to keep the initial data collection and validation scope manageable.",
       "This platform focuses on aggregated light rail and tram speed analytics derived from repeated fleet-wide observations. Regional and metro overlays provide context but do not include speed analytics.",
       "Freight-only infrastructure is excluded.",
       "Intercity services (e.g., long-distance Amtrak) are excluded by default to reduce clutter.",
