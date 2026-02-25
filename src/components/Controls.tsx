@@ -390,7 +390,7 @@ export function Controls({
   selectedLines,
   setSelectedLines,
   vehicleCount,
-  lastUpdate,
+  lastUpdate: _lastUpdate,
   dataAgeMinutes: _dataAgeMinutes,
   speedFilter,
   setSpeedFilter,
