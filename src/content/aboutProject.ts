@@ -25,13 +25,13 @@ export const ABOUT_SECTIONS = {
 
   overview: {
     intro: [
-      "As a Bay Area native and huge railfan, I've always loved riding San Francisco's Muni light rail. But I've also been frustrated by how slow it often feels, and I couldn't find any granular data showing where and why trains bog down. So I built it myself, leveraging SFMTA's live location data to map train speeds in real time. Once I had a working prototype, I realized the same approach could apply to other cities.",
-      "I chose to focus on light rail specifically because, unlike heavy metro systems or commuter/regional rail, it operates in environments where targeted improvements (signal priority, stop consolidation, lane separation) can make a real difference. Light rail in North America often suffers from operating in mixed traffic, signal delays, frequent stops, and constrained infrastructure. By combining real-time data with static GTFS and infrastructure overlays, this platform makes it possible to identify systemic slow zones, compare cities, and evaluate infrastructure tradeoffs.",
+      "As a Bay Area native and huge railfan, I've always loved riding San Francisco's Muni light rail. But I've also been frustrated by how slow it often feels, and I couldn't find any granular data showing where and why trains bog down. So I built this using SFMTA's live vehicle feed as the source, then aggregating repeated observations into a speed map. Once I had a working prototype, I realized the same approach could apply to other cities.",
+      "I chose to focus on light rail specifically because, unlike heavy metro systems or commuter/regional rail, it operates in environments where targeted improvements (signal priority, stop consolidation, lane separation) can make a real difference. Light rail in North America often suffers from operating in mixed traffic, signal delays, frequent stops, and constrained infrastructure. By combining fleet-wide observation snapshots with static GTFS and infrastructure overlays, this platform makes it possible to identify systemic slow zones, compare cities, and evaluate infrastructure tradeoffs.",
     ],
     goal: 'The aim is to turn anecdotal complaints about "slow trains" into measurable, actionable insights.',
-    dataCollectionTitle: "How the Speed Maps Were Built",
+    dataCollectionTitle: "How the Speed Maps were Built",
     dataCollection:
-      "To build these speed maps, I queried each transit agency's live vehicle endpoint every 90 seconds. Each query returned the latest reported location and speed for the agency's entire active train fleet. I collected those system-wide snapshots over several hours during the workday across multiple days in February 2026, then aggregated them into a city-level speed map showing where trains tend to move quickly or slow down.",
+      "To capture the train speed data, I queried each transit agency's live vehicle endpoint every 90 seconds over several hours across multiple weekdays in February 2026. Each query returned the latest reported location and speed for the agency's entire active light rail fleet, not just a single train. I collected those system-wide snapshots and aggregated them into a city-level speed map showing where trains tend to move quickly or slow down. The result is an aggregated snapshot of fleet behavior, not live train tracking.",
   },
 
   howto: {
@@ -46,8 +46,8 @@ export const ABOUT_SECTIONS = {
       "Click 'Reset All Filters' to return to default view",
     ],
     views: [
-      "Raw Data: Shows individual vehicle positions and speeds in real time. Use this to see current train locations and instantaneous speeds.",
-      "Segment Avg: Displays averaged speeds across 200-meter segments. Use this to identify persistent slow zones and compare performance across different sections of track.",
+      "Raw Data: Shows individual vehicle position/speed observations from the sampled dataset. Use this to inspect the underlying fleet-wide snapshots and individual observations that feed the map.",
+      "Segment Avg: Displays averaged speeds across 200-meter segments based on the aggregated vehicle observations. Use this to identify persistent slow zones and compare performance across different sections of track.",
       "Speed Limit: Compares actual speeds to posted limits (where available). Gray segments indicate missing speed limit data.",
     ],
     tips: [
@@ -65,7 +65,7 @@ export const ABOUT_SECTIONS = {
 
   data: {
     sources: [
-      "Live train positions come from agency GTFS-Realtime feeds or agency-specific APIs",
+      "Source vehicle positions come from agency GTFS-Realtime feeds or agency-specific APIs, sampled repeatedly and aggregated into snapshot-based datasets",
       "Speed is either reported directly by the agency or calculated from consecutive GPS position updates",
       "Route geometry, crossings, switches, and separation overlays come from curated static files and OpenStreetMap data",
       "Regional/metro overlays are built from GTFS static feeds, filtered to passenger rail services",
@@ -91,10 +91,10 @@ export const ABOUT_SECTIONS = {
 
   features: {
     platformFeatures: [
-      "Collects real-time train location data from transit agencies",
+      "Collects repeated fleet-wide vehicle observations from transit agency feeds/APIs",
       "Matches vehicles to route geometry",
       "Computes segment-level speeds",
-      "Stores historical performance data",
+      "Aggregates observations into city-level speed snapshots",
       "Visualizes speed distributions and bottlenecks on interactive maps",
     ],
     visualizations: [
@@ -108,14 +108,15 @@ export const ABOUT_SECTIONS = {
 
   technical: {
     scope: [
-      "This platform focuses on live light rail and tram analytics. Regional and metro overlays provide context but do not include speed analytics.",
+      "This platform focuses on aggregated light rail and tram speed analytics derived from repeated fleet-wide observations. Regional and metro overlays provide context but do not include speed analytics.",
       "Freight-only infrastructure is excluded.",
       "Intercity services (e.g., long-distance Amtrak) are excluded by default to reduce clutter.",
     ],
     exclusions: [
       "Heavy rail systems (e.g., New York City, Chicago, Washington DC, Honolulu, Vancouver, Montreal)",
       "Heritage and streetcar-only systems (e.g., New Orleans, SF Cable Cars, Detroit, Kansas City, Cincinnati, Norfolk)",
-      "Systems without public live data (e.g., Dallas DART, Houston METRORail, Sacramento SacRT, St. Louis MetroLink, New Jersey systems, Calgary C-Train, Edmonton LRT, and several Mexican systems)",
+      "Systems without public vehicle-position data feeds/APIs that can support this snapshot-based methodology (e.g., Dallas DART, Houston METRORail, Sacramento SacRT, St. Louis MetroLink, New Jersey Hudson-Bergen Light Rail, New Jersey River Line, Calgary CTrain, Edmonton LRT, and several Mexican systems)",
+      "I have actively tried to add several of these systems (including HBLR, River Line, Calgary, Edmonton, St. Louis, Dallas, and Houston) and will add them to the project if I can find reliable data that supports the same fleet-wide snapshot methodology.",
     ],
     stack: [
       "Frontend: React + TypeScript + MapLibre GL JS",
@@ -136,7 +137,7 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Boston",
-    note: "Green Line branch merges and street-running sections create strong speed variation by branch and by central subway approach. Each branch has distinct operating characteristics worth comparing separately. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
+    note: "Green Line branch merges and street-running sections create strong speed variation by branch and by central subway approach. Each branch has distinct operating characteristics worth comparing separately. Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
   },
   {
     city: "Charlotte",
@@ -148,15 +149,15 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Denver",
-    note: "RTD operates multiple long corridors with different operating profiles. Network-wide averages can hide major segment-level differences between suburban and urban sections, so line-level filtering is useful for interpretation. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
+    note: "RTD operates multiple long corridors with different operating profiles. Network-wide averages can hide major segment-level differences between suburban and urban sections, so line-level filtering is useful for interpretation. Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
   },
   {
     city: "Los Angeles",
-    note: "Complex areas around major terminals can look choppy because GTFS shape granularity varies by operator. Regional context includes Metrolink commuter rail. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
+    note: "Complex areas around major terminals can look choppy because GTFS shape granularity varies by operator. Regional context includes Metrolink commuter rail. Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
   },
   {
     city: "Minneapolis–St. Paul",
-    note: "Airport tunnel and grade-separation sections show distinct speed behavior compared with downtown street-running areas. The Blue and Green lines share downtown trackage, so compare individual line performance separately from the shared core. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
+    note: "Airport tunnel and grade-separation sections show distinct speed behavior compared with downtown street-running areas. The Blue and Green lines share downtown trackage, so compare individual line performance separately from the shared core. Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
   },
   {
     city: "Philadelphia",
@@ -168,15 +169,15 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Pittsburgh",
-    note: "The T transitions between downtown subway and South Hills surface running, creating clear grade-separation and speed regime differences in one corridor. This makes Pittsburgh useful for comparing tunnel vs surface performance. GPS positions derived from the source data appear somewhat offset from the track alignment. I am unsure why, perhaps because of old technology used by the city. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
+    note: "The T transitions between downtown subway and South Hills surface running, creating clear grade-separation and speed regime differences in one corridor. This makes Pittsburgh useful for comparing tunnel vs surface performance. GPS positions derived from the source data appear somewhat offset from the track alignment. I am unsure why, perhaps because of old technology used by the city. Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
   },
   {
     city: "Portland",
-    note: "MAX uses downtown transit-mall segments where trains share lanes with buses. Grade-crossing patterns may appear sparse in the core because these differ from conventional at-grade crossings. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
+    note: "MAX uses downtown transit-mall segments where trains share lanes with buses. Grade-crossing patterns may appear sparse in the core because these differ from conventional at-grade crossings. Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
   },
   {
     city: "Salt Lake City",
-    note: "TRAX lines share downtown trackage, so compare individual line speeds separately from the shared core for clearer interpretation. The system includes both street-running and grade-separated segments with distinct performance characteristics. Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
+    note: "TRAX lines share downtown trackage, so compare individual line speeds separately from the shared core for clearer interpretation. The system includes both street-running and grade-separated segments with distinct performance characteristics. Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
   },
   {
     city: "San Diego",
@@ -196,6 +197,6 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Toronto",
-    note: "Streetcar corridors run in mixed traffic and typically are not tagged as classic railway grade crossings in OSM, so infrastructure markers may appear sparse. Context layers include TTC subway (heavy rail) and GO Transit (commuter rail). Speed is provided directly by the transit agency's API, giving accurate real-time readings.",
+    note: "Streetcar corridors run in mixed traffic and typically are not tagged as classic railway grade crossings in OSM, so infrastructure markers may appear sparse. Context layers include TTC subway (heavy rail) and GO Transit (commuter rail). Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
   },
 ];

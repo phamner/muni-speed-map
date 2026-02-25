@@ -1,6 +1,6 @@
 # 🚊 Light Rail Analytics Map
 
-A real-time visualization tool for analyzing light rail and streetcar speeds across major US cities. Identify slow zones, compare performance, and support data-driven transit advocacy.
+An aggregated snapshot visualization tool for analyzing light rail and streetcar speeds across major US cities. Identify slow zones, compare performance, and support data-driven transit advocacy.
 
 **🌐 Live App:** [https://muni-speed-map.vercel.app/](https://muni-speed-map.vercel.app/)
 
@@ -18,7 +18,7 @@ The solution is known: **upgrade the right-of-way**. Move from mixed traffic →
 
 ## 💡 The Approach
 
-This tool collects real-time GPS positions from transit vehicles, calculates their speeds, and visualizes the results on a map. By aggregating thousands of data points over days and weeks, patterns emerge:
+This tool repeatedly samples vehicle-position feeds from transit agencies, captures location/speed observations for each agency's active light rail fleet, and visualizes aggregated results on a map. It is not live train tracking, and it does not monitor a single train. By aggregating thousands of observations across repeated snapshots, patterns emerge:
 
 - **Red zones** = Trains consistently slow down here (traffic conflicts, bad signal timing)
 - **Cyan zones** = Trains move freely here (dedicated ROW, grade separation)
@@ -52,13 +52,19 @@ Each city was selected because its light rail or streetcar system has **signific
 
 ### 🔮 Potential Future Cities
 
-These systems have significant street-running and could be added:
+These systems have significant street-running and are strong candidates if I can get reliable vehicle-position data that supports the same fleet-wide snapshot methodology. I have actively tried to add several of them already.
 
-| City             | System      | Why It's a Good Candidate                                                      |
-| ---------------- | ----------- | ------------------------------------------------------------------------------ |
-| 🤠 **Houston**   | METRORail   | Red Line runs at-grade through Midtown and Medical Center                      |
-| 🇨🇦 **Calgary**   | CTrain      | One of North America's busiest light rail systems with downtown street-running |
-| 🇨🇦 **Edmonton**  | ETS LRT     | Capital, Metro, and Valley Lines with urban at-grade sections                  |
+| City                 | System                          | Why It's a Good Candidate                                                      |
+| -------------------- | ------------------------------- | ------------------------------------------------------------------------------ |
+| 🤠 **Houston**       | METRORail                       | Red Line runs at-grade through Midtown and Medical Center                      |
+| 🇨🇦 **Calgary**       | CTrain                          | One of North America's busiest light rail systems with downtown street-running |
+| 🇨🇦 **Edmonton**      | Edmonton LRT                    | Capital, Metro, and Valley Lines with urban at-grade sections                  |
+| 🌉 **New Jersey**    | Hudson-Bergen Light Rail (HBLR) | Extensive at-grade/light rail operation across Jersey City, Hoboken, and Bayonne |
+| 🔔 **New Jersey / Philly region** | River Line           | Interurban-style corridor linking Camden and Trenton; fits the regional light rail scope |
+| 🎸 **St. Louis**     | MetroLink                       | Light rail network with at-grade sections that would benefit from segment-level speed analysis |
+| 🤠 **Dallas**        | DART Light Rail                 | Large light rail system with multiple corridors and at-grade running segments  |
+
+I would like to add these systems if I can find data access that is reliable enough to support the project methodology.
 
 ### ❌ Systems I Chose Not to Include
 
@@ -95,7 +101,7 @@ The focus remains on **light rail and streetcars that compete with street traffi
 | 🚊 **Charlotte**      | CATS LYNX        | Blue Line, Gold Line             | ✅ Collecting          |
 | 🦀 **Baltimore**      | MTA Light Rail   | Light RailLink                   | ✅ Collecting          |
 | 🎸 **Cleveland**      | RTA Rapid        | Red, Blue, Green                 | ✅ Collecting          |
-| 🍁 **Calgary**        | Calgary CTrain   | Red Line, Blue Line              | ❌ No public live data |
+| 🍁 **Calgary**        | Calgary CTrain   | Red Line, Blue Line              | ❌ No public vehicle-position data |
 | 🌊 **San Diego**      | MTS Trolley      | Blue, Orange, Green, Copper      | ⏳ Needs key           |
 | 🤠 **Dallas**         | DART Light Rail  | Red, Blue, Green, Orange         | ⏳ Needs key           |
 
@@ -104,8 +110,8 @@ The focus remains on **light rail and streetcars that compete with street traffi
 ### Speed Visualization
 
 - **Color-coded data points**: Red (slow) → Yellow → Cyan (fast)
-- **Raw data view**: Individual GPS readings with calculated speeds
-- **Segment average view**: 100m track segments colored by average speed
+- **Raw data view**: Individual vehicle observations from the sampled snapshots
+- **Segment average view**: 100m track segments colored by aggregated average speed
 
 ![Segment View](docs/screenshot-segments.png)
 
@@ -126,7 +132,7 @@ The focus remains on **light rail and streetcars that compete with street traffi
 
 - Average and median speed per line
 - Lines ranked fastest to slowest
-- Real-time position counts
+- Observation counts from the sampled dataset
 
 ## 🛠️ Setup
 
@@ -204,7 +210,7 @@ npm run collect:all
 | `npm run collect:vta`                | San Jose (VTA)       | `collectDataVTA.js`               | ✅ Active              |
 | `npm run collect:phoenix`            | Phoenix              | `collectDataPhoenix.js`           | ✅ Active              |
 | `npm run collect:charlotte`          | Charlotte            | `collectDataCharlotte.js`         | ✅ Active              |
-| `npm run collect:calgary`            | Calgary              | `collectDataCalgary.js`           | ❌ No public live data |
+| `npm run collect:calgary`            | Calgary              | `collectDataCalgary.js`           | ❌ No public vehicle-position data |
 | `npm run collect:baltimore`          | Baltimore            | `collectDataBaltimore.js`         | ✅ Active              |
 | `npm run collect:cleveland`          | Cleveland            | `collectDataCleveland.js`         | ✅ Active              |
 | `npm run collect:sandiego`           | San Diego            | `collectDataSanDiego.js`          | ⏳ Needs API key       |
