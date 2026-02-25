@@ -3,20 +3,27 @@ export interface AboutCityNote {
   note: string;
 }
 
+export interface AboutProspectiveCity {
+  city: string;
+  system: string;
+  value: string;
+  blocker: string;
+}
+
 export type AboutTab =
   | "overview"
   | "howto"
-  | "features"
   | "data"
   | "cities"
+  | "prospective"
   | "technical";
 
 export const ABOUT_TABS: { id: AboutTab; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "howto", label: "How to Use" },
-  { id: "features", label: "Features" },
   { id: "data", label: "Data & Methodology" },
   { id: "cities", label: "City Notes" },
+  { id: "prospective", label: "Prospective Cities" },
   { id: "technical", label: "Technical Details" },
 ];
 
@@ -128,6 +135,13 @@ export const ABOUT_SECTIONS = {
       "GitHub Repository: https://github.com/philiphamner/muni-speed-map",
     ],
   },
+
+  prospective: {
+    intro:
+      "These are systems I would like to include because they would add meaningful comparisons for street-running and at-grade light rail. The main blocker is access to reliable public vehicle-position data that can support the same fleet-wide snapshot methodology used elsewhere in the project.",
+    outro:
+      "If I can find usable vehicle-position data for any of these systems, I would love to add them.",
+  },
 };
 
 export const ABOUT_CITY_NOTES: AboutCityNote[] = [
@@ -198,5 +212,96 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   {
     city: "Toronto",
     note: "Streetcar corridors run in mixed traffic and typically are not tagged as classic railway grade crossings in OSM, so infrastructure markers may appear sparse. Context layers include TTC subway (heavy rail) and GO Transit (commuter rail). Speed is provided directly by the transit agency's API for each vehicle observation in the sampled snapshots.",
+  },
+];
+
+export const ABOUT_PROSPECTIVE_CITIES: AboutProspectiveCity[] = [
+  {
+    city: "New Jersey (NYC metro)",
+    system: "Hudson-Bergen Light Rail (HBLR)",
+    value:
+      "HBLR would be a strong comparison case because it combines dense urban service, multiple branches, and substantial at-grade running in places like Jersey City, Hoboken, and Bayonne.",
+    blocker:
+      "No public live vehicle-position data.",
+  },
+  {
+    city: "New Jersey / Philadelphia region",
+    system: "River Line",
+    value:
+      "The River Line is valuable because it extends the Philly-region context with a distinct interurban-style light rail corridor between Camden and Trenton.",
+    blocker:
+      "No public live vehicle-position data.",
+  },
+  {
+    city: "Calgary",
+    system: "CTrain",
+    value:
+      "Calgary is one of North America's busiest light rail systems and includes downtown street-running plus major at-grade segments, making it a high-value comparison city.",
+    blocker:
+      "No public live light rail vehicle-position data (bus data only).",
+  },
+  {
+    city: "Edmonton",
+    system: "Edmonton LRT",
+    value:
+      "Edmonton's expanding LRT network (Capital, Metro, and Valley lines) would add a useful mix of urban at-grade, elevated, and tunneled operations.",
+    blocker:
+      "No public live light rail vehicle-position data (bus data only).",
+  },
+  {
+    city: "St. Louis",
+    system: "MetroLink",
+    value:
+      "MetroLink would add another major Midwestern light rail system with at-grade segments and corridor-level speed comparisons that fit the project's focus.",
+    blocker:
+      "No public live vehicle-position data.",
+  },
+  {
+    city: "Dallas",
+    system: "DART Light Rail",
+    value:
+      "DART is one of the largest light rail networks in North America, so adding it would provide valuable multi-corridor comparisons across a large at-grade system.",
+    blocker:
+      "No public live vehicle-position data.",
+  },
+  {
+    city: "Houston",
+    system: "METRORail",
+    value:
+      "Houston METRORail is a strong candidate because its at-grade corridors, downtown street-running, and signal interactions are exactly the kinds of operating conditions this map is built to analyze.",
+    blocker:
+      "No public live vehicle-position data.",
+  },
+  {
+    city: "Sacramento",
+    system: "SacRT Light Rail",
+    value:
+      "Sacramento is valuable because it has downtown street-running and at-grade sections that fit the project's core use case and would add a useful California comparison.",
+    blocker:
+      "No public live light rail vehicle-position data (bus data only).",
+  },
+  {
+    city: "Guadalajara",
+    system: "SITEUR light rail",
+    value:
+      "Guadalajara would broaden the project beyond the US/Canada and add a valuable comparison with a major Mexican urban rail system and different operating conditions.",
+    blocker:
+      "No public live light rail vehicle-position data.",
+  },
+  {
+    city: "Mexico City",
+    system: "Tren Ligero",
+    value:
+      "Mexico City's Tren Ligero would add a strong comparison for busy urban light rail operations in a very different street and transit environment.",
+    blocker:
+      "No public live light rail vehicle-position data.",
+  },
+  {
+    city: "Monterrey",
+    system: "Metrorrey",
+    value:
+      "Monterrey would add another major Mexican metro-area rail comparison and help expand the project's regional coverage beyond the US and Canada.",
+    blocker:
+      "No public live rail vehicle-position data.",
   },
 ];

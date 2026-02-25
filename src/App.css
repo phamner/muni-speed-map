@@ -1614,24 +1614,28 @@
 /* About Modal Tabs */
 .about-tabs {
   display: flex;
-  gap: 4px;
+  flex-wrap: nowrap;
+  gap: 2px;
   margin-bottom: 20px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  overflow-x: auto;
-  scrollbar-width: thin;
+  padding-bottom: 4px;
+  overflow-x: visible;
 }
 
 .about-tab {
-  padding: 10px 16px;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 9px 6px;
   background: transparent;
   border: none;
   border-bottom: 2px solid transparent;
   color: rgba(255, 255, 255, 0.6);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
   white-space: nowrap;
+  text-align: center;
 }
 
 .about-tab:hover {
@@ -1678,6 +1682,41 @@
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.45;
   font-size: 0.9rem;
+}
+
+.about-prospective-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.about-prospective-card {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.about-prospective-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.about-prospective-card h4 span {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 500;
+}
+
+.about-prospective-card p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.45;
+  font-size: 0.9rem;
+}
+
+.about-prospective-card p + p {
+  margin-top: 6px;
 }
 
 .transit-map-modal {

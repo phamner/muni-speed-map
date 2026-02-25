@@ -42,6 +42,7 @@ import {
 } from "../types";
 import {
   ABOUT_CITY_NOTES,
+  ABOUT_PROSPECTIVE_CITIES,
   ABOUT_SECTIONS,
   ABOUT_TABS,
 } from "../content/aboutProject";
@@ -1630,6 +1631,22 @@ export function Controls({
                       ))}
                     </ul>
                   </div>
+                  <div className="about-section-block">
+                    <h3>Platform Capabilities</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.features.platformFeatures.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>Visualizations</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.features.visualizations.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </>
               )}
 
@@ -1670,27 +1687,6 @@ export function Controls({
                 </>
               )}
 
-              {aboutActiveTab === "features" && (
-                <>
-                  <div className="about-section-block">
-                    <h3>Platform Capabilities</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.features.platformFeatures.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Visualizations</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.features.visualizations.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </>
-              )}
-
               {aboutActiveTab === "cities" && (
                 <div className="about-section-block">
                   <h3>City-Specific Notes</h3>
@@ -1702,6 +1698,34 @@ export function Controls({
                     ))}
                   </ul>
                 </div>
+              )}
+
+              {aboutActiveTab === "prospective" && (
+                <>
+                  <div className="about-section-block">
+                    <h3>Prospective Cities I Want to Add</h3>
+                    <p>{ABOUT_SECTIONS.prospective.intro}</p>
+                    <p>{ABOUT_SECTIONS.prospective.outro}</p>
+                    <div className="about-prospective-list">
+                      {ABOUT_PROSPECTIVE_CITIES.map((item) => (
+                        <div
+                          key={`${item.city}-${item.system}`}
+                          className="about-prospective-card"
+                        >
+                          <h4>
+                            {item.city} <span>({item.system})</span>
+                          </h4>
+                          <p>
+                            {item.value}
+                          </p>
+                          <p>
+                            <strong>Current blocker:</strong> {item.blocker}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
               )}
 
               {aboutActiveTab === "technical" && (
