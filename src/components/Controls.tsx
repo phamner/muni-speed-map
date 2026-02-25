@@ -768,14 +768,6 @@ export function Controls({
 
   return (
     <div className={`controls-panel ${isSidebarOpen ? "mobile-open" : ""}`}>
-      {/* Mobile close button */}
-      <button
-        className="mobile-close-btn"
-        onClick={onCloseSidebar}
-        aria-label="Close menu"
-      >
-        ✕
-      </button>
       <div className="app-header">
         <span className="app-city">{cityLine}</span>
         <h1
