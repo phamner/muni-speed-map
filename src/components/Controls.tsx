@@ -983,42 +983,26 @@ export function Controls({
       {/* Data Status */}
       <div className="status-section">
         <div className="status-row">
-          <span
-            className={`live-indicator ${vehicleCount === 0 ? "loading" : ""}`}
-          ></span>
-          <span>{vehicleCount.toLocaleString()} positions</span>
-          {lastUpdate && (
-            <>
-              <span className="status-separator">•</span>
-              <span className="status-time">
-                {lastUpdate.toLocaleDateString("en-US", {
-                  month: "numeric",
-                  day: "numeric",
-                })}{" "}
-                {lastUpdate.toLocaleTimeString("en-US", {
-                  hour: "numeric",
-                  minute: "2-digit",
-                })}
-              </span>
-            </>
-          )}
-        </div>
-        <div
-          className="unit-toggle-group"
-          style={{ marginTop: "8px", width: "fit-content" }}
-        >
-          <button
-            className={`unit-toggle-btn ${speedUnit === "mph" ? "active" : ""}`}
-            onClick={() => setSpeedUnit("mph")}
-          >
-            mph
-          </button>
-          <button
-            className={`unit-toggle-btn ${speedUnit === "kmh" ? "active" : ""}`}
-            onClick={() => setSpeedUnit("kmh")}
-          >
-            km/h
-          </button>
+          <div className="status-row-main">
+            <span
+              className={`live-indicator ${vehicleCount === 0 ? "loading" : ""}`}
+            ></span>
+            <span>{vehicleCount.toLocaleString()} data points</span>
+          </div>
+          <div className="unit-toggle-group status-unit-toggle">
+            <button
+              className={`unit-toggle-btn ${speedUnit === "mph" ? "active" : ""}`}
+              onClick={() => setSpeedUnit("mph")}
+            >
+              mph
+            </button>
+            <button
+              className={`unit-toggle-btn ${speedUnit === "kmh" ? "active" : ""}`}
+              onClick={() => setSpeedUnit("kmh")}
+            >
+              km/h
+            </button>
+          </div>
         </div>
       </div>
 

@@ -665,6 +665,15 @@
   pointer-events: none;
 }
 
+.status-unit-toggle {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.status-unit-toggle .unit-toggle-btn {
+  padding: 2px 6px;
+}
+
 /* Train Visibility Toggle */
 .train-visibility-toggle {
   padding: 4px 10px;
@@ -1177,7 +1186,8 @@
   height: 8px;
   background: #00ff88;
   border-radius: 50%;
-  margin-right: 4px;
+  margin-right: 0;
+  flex-shrink: 0;
 }
 
 .live-indicator.loading {
@@ -1207,7 +1217,7 @@
 
 /* Status Section */
 .status-section {
-  padding: 8px 12px;
+  padding: 8px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
@@ -1219,10 +1229,20 @@
 .status-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 0.8rem;
   line-height: 1.2;
   white-space: nowrap;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.status-row-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  flex-shrink: 0;
 }
 
 .status-row.muted {
