@@ -1444,7 +1444,7 @@ export function Controls({
           (OpenStreetMap)
         </p>
         <p className="data-attribution">
-          Data from{" "}
+          Train speed/location data from{" "}
           {city === "SF" ? (
             <a
               href="https://511.org/open-data"
@@ -1554,6 +1554,52 @@ export function Controls({
           )}
           {city === "Portland" || city === "Boston" ? "" : " GTFS-realtime"}
         </p>
+        {city !== "Toronto" && (
+          <p className="data-attribution">
+            Population density from{" "}
+            <a
+              href="https://tigerweb.geo.census.gov/tigerwebmain/TIGERweb_main.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              2020 US Census
+            </a>
+            {" "}tracts:{" "}
+            {city === "SF"
+              ? "San Francisco County"
+              : city === "LA"
+                ? "Los Angeles County"
+                : city === "Boston"
+                  ? "Suffolk, Middlesex, Norfolk, Essex counties"
+                  : city === "Philadelphia"
+                    ? "Philadelphia, Delaware, Montgomery, Bucks, Chester (PA); Camden, Burlington, Gloucester (NJ)"
+                    : city === "Seattle"
+                      ? "King, Snohomish, Pierce counties"
+                      : city === "Portland"
+                        ? "Multnomah, Washington, Clackamas counties"
+                        : city === "San Diego"
+                          ? "San Diego County"
+                          : city === "Denver"
+                            ? "Denver, Adams, Arapahoe, Jefferson, Douglas counties"
+                            : city === "Baltimore"
+                              ? "Baltimore City, Baltimore, Anne Arundel, Howard counties"
+                              : city === "Pittsburgh"
+                                ? "Allegheny County"
+                                : city === "Minneapolis"
+                                  ? "Hennepin, Ramsey counties"
+                                  : city === "Salt Lake City"
+                                    ? "Salt Lake County"
+                                    : city === "San Jose"
+                                      ? "Santa Clara County"
+                                      : city === "Phoenix"
+                                        ? "Maricopa County"
+                                        : city === "Cleveland"
+                                          ? "Cuyahoga County"
+                                          : city === "Charlotte"
+                                            ? "Mecklenburg County"
+                                            : ""}
+          </p>
+        )}
       </div>
 
       {/* About Project Modal */}
@@ -1668,6 +1714,14 @@ export function Controls({
                     <h3>Data Sources</h3>
                     <ul>
                       {ABOUT_SECTIONS.data.sources.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="about-section-block">
+                    <h3>Population Density Overlay</h3>
+                    <ul>
+                      {ABOUT_SECTIONS.data.populationDensity.map((item) => (
                         <li key={item}>{item}</li>
                       ))}
                     </ul>

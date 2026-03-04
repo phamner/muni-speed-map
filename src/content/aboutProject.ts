@@ -80,6 +80,13 @@ export const ABOUT_SECTIONS = {
       "Route geometry, crossings, switches, and separation overlays come from curated static files and OpenStreetMap data",
       "Regional/metro overlays are built from GTFS static feeds, filtered to passenger rail services",
     ],
+    populationDensity: [
+      "Population density data comes from the 2020 US Census Bureau, accessed via the TIGERweb REST API.",
+      "Geographic units are Census tracts—small statistical subdivisions that typically contain 1,200 to 8,000 people (averaging around 4,000). Tract boundaries are defined by the Census Bureau based on population size, natural and administrative boundaries, and local government input.",
+      "Density is calculated as total population (POP100 field) divided by land area, converted to people per square kilometer.",
+      "Coverage includes all US cities in the platform. Toronto is excluded because US Census data does not cover Canada.",
+      "The density overlay helps contextualize transit performance—areas with higher population density often correlate with higher ridership demand and different operating conditions.",
+    ],
     segmentAverages: [
       "Route lines are divided into fixed 200-meter segments. Each vehicle position is assigned to the segment it falls within based on distance along the route.",
       "For some cities (currently Los Angeles and Denver), the platform combines speed readings from both directions of travel into unified segment averages. This produces more statistically robust data—instead of splitting readings between parallel tracks, all readings contribute to one average per segment.",
