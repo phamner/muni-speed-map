@@ -1563,8 +1563,8 @@ export function Controls({
               rel="noopener noreferrer"
             >
               2020 US Census
-            </a>
-            {" "}tracts:{" "}
+            </a>{" "}
+            tracts:{" "}
             {city === "SF"
               ? "San Francisco County"
               : city === "LA"
@@ -1610,238 +1610,238 @@ export function Controls({
             className="modal-overlay"
             onClick={() => setShowAboutModal(false)}
           >
-          <div
-            className="modal-content about-modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="modal-close-icon"
-              onClick={() => setShowAboutModal(false)}
-              aria-label="Close about modal"
-              title="Close"
+            <div
+              className="modal-content about-modal"
+              onClick={(e) => e.stopPropagation()}
             >
-              ×
-            </button>
-            <h2>{ABOUT_SECTIONS.title}</h2>
+              <button
+                className="modal-close-icon"
+                onClick={() => setShowAboutModal(false)}
+                aria-label="Close about modal"
+                title="Close"
+              >
+                ×
+              </button>
+              <h2>{ABOUT_SECTIONS.title}</h2>
 
-            {/* Tab Navigation */}
-            <div className="about-tabs">
-              {ABOUT_TABS.map((tab) => (
-                <button
-                  key={tab.id}
-                  className={`about-tab ${aboutActiveTab === tab.id ? "active" : ""}`}
-                  onClick={() => setAboutActiveTab(tab.id)}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
+              {/* Tab Navigation */}
+              <div className="about-tabs">
+                {ABOUT_TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    className={`about-tab ${aboutActiveTab === tab.id ? "active" : ""}`}
+                    onClick={() => setAboutActiveTab(tab.id)}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
 
-            {/* Tab Content */}
-            <div className="about-tab-content">
-              {aboutActiveTab === "overview" && (
-                <div className="about-intro">
-                  {ABOUT_SECTIONS.overview.intro.map((para, i) => (
-                    <p key={i}>{para}</p>
-                  ))}
-                  <p>{ABOUT_SECTIONS.overview.goal}</p>
-                  <h3>{ABOUT_SECTIONS.overview.snapshotSummaryTitle}</h3>
-                  <p>{ABOUT_SECTIONS.overview.snapshotSummary}</p>
-                  <h3>{ABOUT_SECTIONS.overview.dataCollectionTitle}</h3>
-                  <p>{ABOUT_SECTIONS.overview.dataCollection}</p>
-                </div>
-              )}
-
-              {aboutActiveTab === "howto" && (
-                <>
-                  <p>{ABOUT_SECTIONS.howto.intro}</p>
-                  <div className="about-section-block">
-                    <h3>Basic Controls</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.howto.controls.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>View Modes</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.howto.views.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Understanding Infrastructure Markers</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.howto.infrastructureMarkers.map(
-                        (item) => (
-                          <li key={item}>{item}</li>
-                        ),
-                      )}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Tips</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.howto.tips.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Platform Capabilities</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.features.platformFeatures.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Visualizations</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.features.visualizations.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </>
-              )}
-
-              {aboutActiveTab === "data" && (
-                <>
-                  <div className="about-section-block">
-                    <h3>Data Sources</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.data.sources.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Population Density Overlay</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.data.populationDensity.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>How Segment Averages Work</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.data.segmentAverages.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Speed by Line Statistics</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.data.lineStatistics.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Limitations</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.data.limitations.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </>
-              )}
-
-              {aboutActiveTab === "cities" && (
-                <div className="about-section-block">
-                  <h3>City-Specific Notes</h3>
-                  <ul>
-                    {ABOUT_CITY_NOTES.map((cityNote) => (
-                      <li key={cityNote.city}>
-                        <strong>{cityNote.city}:</strong> {cityNote.note}
-                      </li>
+              {/* Tab Content */}
+              <div className="about-tab-content">
+                {aboutActiveTab === "overview" && (
+                  <div className="about-intro">
+                    {ABOUT_SECTIONS.overview.intro.map((para, i) => (
+                      <p key={i}>{para}</p>
                     ))}
-                  </ul>
-                </div>
-              )}
+                    <p>{ABOUT_SECTIONS.overview.goal}</p>
+                    <h3>{ABOUT_SECTIONS.overview.snapshotSummaryTitle}</h3>
+                    <p>{ABOUT_SECTIONS.overview.snapshotSummary}</p>
+                    <h3>{ABOUT_SECTIONS.overview.dataCollectionTitle}</h3>
+                    <p>{ABOUT_SECTIONS.overview.dataCollection}</p>
+                  </div>
+                )}
 
-              {aboutActiveTab === "prospective" && (
-                <>
-                  <div className="about-section-block">
-                    <h3>Prospective Cities I Want to Add</h3>
-                    <p>{ABOUT_SECTIONS.prospective.intro}</p>
-                    <p>{ABOUT_SECTIONS.prospective.outro}</p>
-                    <div className="about-prospective-list">
-                      {[...ABOUT_PROSPECTIVE_CITIES]
-                        .sort((a, b) => a.city.localeCompare(b.city))
-                        .map((item) => (
-                        <div
-                          key={`${item.city}-${item.system}`}
-                          className="about-prospective-card"
-                        >
-                          <h4>
-                            {item.city} <span>({item.system})</span>
-                          </h4>
-                          <p>
-                            {item.value}
-                          </p>
-                          <p>
-                            <strong>Current blocker:</strong> {item.blocker}
-                          </p>
-                        </div>
-                      ))}
+                {aboutActiveTab === "howto" && (
+                  <>
+                    <p>{ABOUT_SECTIONS.howto.intro}</p>
+                    <div className="about-section-block">
+                      <h3>Basic Controls</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.howto.controls.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
                     </div>
-                  </div>
-                </>
-              )}
+                    <div className="about-section-block">
+                      <h3>View Modes</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.howto.views.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Understanding Infrastructure Markers</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.howto.infrastructureMarkers.map(
+                          (item) => (
+                            <li key={item}>{item}</li>
+                          ),
+                        )}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Tips</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.howto.tips.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Platform Capabilities</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.features.platformFeatures.map(
+                          (item) => (
+                            <li key={item}>{item}</li>
+                          ),
+                        )}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Visualizations</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.features.visualizations.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                )}
 
-              {aboutActiveTab === "technical" && (
-                <>
+                {aboutActiveTab === "data" && (
+                  <>
+                    <div className="about-section-block">
+                      <h3>Data Sources</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.data.sources.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Population Density Overlay</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.data.populationDensity.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>How Segment Averages Work</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.data.segmentAverages.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Speed by Line Statistics</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.data.lineStatistics.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Limitations</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.data.limitations.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </>
+                )}
+
+                {aboutActiveTab === "cities" && (
                   <div className="about-section-block">
-                    <h3>Project Scope</h3>
+                    <h3>City-Specific Notes</h3>
                     <ul>
-                      {ABOUT_SECTIONS.technical.scope.map((item) => (
-                        <li key={item}>{item}</li>
+                      {ABOUT_CITY_NOTES.map((cityNote) => (
+                        <li key={cityNote.city}>
+                          <strong>{cityNote.city}:</strong> {cityNote.note}
+                        </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="about-section-block">
-                    <h3>Why Some Cities Are Excluded</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.technical.exclusions.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Technology Stack</h3>
-                    <ul>
-                      {ABOUT_SECTIONS.technical.stack.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="about-section-block">
-                    <h3>Source Code</h3>
-                    <ul>
-                      <li>
-                        GitHub Repository:{" "}
-                        <a
-                          href="https://github.com/philiphamner/muni-speed-map"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          https://github.com/philiphamner/muni-speed-map
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </>
-              )}
+                )}
+
+                {aboutActiveTab === "prospective" && (
+                  <>
+                    <div className="about-section-block">
+                      <h3>Prospective Cities I Want to Add</h3>
+                      <p>{ABOUT_SECTIONS.prospective.intro}</p>
+                      <p>{ABOUT_SECTIONS.prospective.outro}</p>
+                      <div className="about-prospective-list">
+                        {[...ABOUT_PROSPECTIVE_CITIES]
+                          .sort((a, b) => a.city.localeCompare(b.city))
+                          .map((item) => (
+                            <div
+                              key={`${item.city}-${item.system}`}
+                              className="about-prospective-card"
+                            >
+                              <h4>
+                                {item.city} <span>({item.system})</span>
+                              </h4>
+                              <p>{item.value}</p>
+                              <p>
+                                <strong>Current blocker:</strong> {item.blocker}
+                              </p>
+                            </div>
+                          ))}
+                      </div>
+                    </div>
+                  </>
+                )}
+
+                {aboutActiveTab === "technical" && (
+                  <>
+                    <div className="about-section-block">
+                      <h3>Project Scope</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.technical.scope.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Why Some Cities Are Excluded</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.technical.exclusions.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Technology Stack</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.technical.stack.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Source Code</h3>
+                      <ul>
+                        <li>
+                          GitHub Repository:{" "}
+                          <a
+                            href="https://github.com/philiphamner/muni-speed-map"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            https://github.com/philiphamner/muni-speed-map
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        </div>,
+          </div>,
           document.body,
         )}
 
@@ -1853,157 +1853,157 @@ export function Controls({
             className="modal-overlay"
             onClick={() => setShowTransitMapModal(false)}
           >
-          <div
-            className="modal-content transit-map-modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              className="modal-close-icon"
-              onClick={() => setShowTransitMapModal(false)}
-              aria-label="Close transit map modal"
-              title="Close"
+            <div
+              className="modal-content transit-map-modal"
+              onClick={(e) => e.stopPropagation()}
             >
-              X
-            </button>
-            {/* <h2>{city} Official Rail Map</h2>
+              <button
+                className="modal-close-icon"
+                onClick={() => setShowTransitMapModal(false)}
+                aria-label="Close transit map modal"
+                title="Close"
+              >
+                X
+              </button>
+              {/* <h2>{city} Official Rail Map</h2>
             <p>
               {officialTransitMapUrl
                 ? "Reference map provided by the local transit agency."
                 : "No official rail map URL is configured for this city yet."}
             </p> */}
-            {transitMapDisplayUrl ? (
-              <>
-                {isDisplayedMapPdf ? (
-                  <div className="transit-map-pdf-placeholder">
-                    <p>
-                      This city map is a PDF. Open it in a new tab for the best
-                      viewing experience.
-                    </p>
-                    {transitMapSourceUrl && (
-                      <p className="transit-map-source">
-                        Source:{" "}
-                        <a
-                          className="transit-map-source-link"
-                          href={transitMapSourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {transitMapSourceUrl}
-                        </a>
+              {transitMapDisplayUrl ? (
+                <>
+                  {isDisplayedMapPdf ? (
+                    <div className="transit-map-pdf-placeholder">
+                      <p>
+                        This city map is a PDF. Open it in a new tab for the
+                        best viewing experience.
                       </p>
-                    )}
-                  </div>
-                ) : (
-                  <>
-                    <div className="transit-map-frame">
-                      <div
-                        ref={transitMapViewportRef}
-                        className={`transit-map-viewport ${transitMapZoom > MIN_TRANSIT_MAP_ZOOM ? "zoomed" : ""} ${isTransitMapPanning ? "is-panning" : ""}`}
-                        tabIndex={0}
-                        role="application"
-                        aria-label="Rail map. Use scroll to zoom, drag or arrow keys to pan."
-                        onWheel={handleTransitMapWheel}
-                        onKeyDown={handleTransitMapKeyDown}
-                        onDoubleClick={(event) =>
-                          applyTransitMapZoom(
-                            transitMapZoom + TRANSIT_MAP_ZOOM_STEP,
-                            event.clientX,
-                            event.clientY,
-                          )
-                        }
-                        onPointerDown={handleTransitMapPointerDown}
-                        onPointerMove={handleTransitMapPointerMove}
-                        onPointerUp={handleTransitMapPointerUp}
-                        onPointerCancel={handleTransitMapPointerUp}
-                      >
-                        <div
-                          className="transit-map-canvas"
-                          style={transitMapCanvasStyle}
-                        >
-                          <img
-                            src={transitMapDisplayUrl}
-                            alt={`${city} rail map`}
-                            className="transit-map-image"
-                            style={transitMapImageStyle}
-                            onLoad={(event) => {
-                              const imageRect =
-                                event.currentTarget.getBoundingClientRect();
-                              setTransitMapBaseSize({
-                                width: imageRect.width,
-                                height: imageRect.height,
-                              });
-                            }}
-                          />
-                        </div>
-                      </div>
-                      <div className="transit-map-zoom-controls">
-                        <div className="transit-map-zoom-buttons">
-                          <button
-                            type="button"
-                            className="transit-map-zoom-btn"
-                            onClick={() =>
-                              applyTransitMapZoom(
-                                transitMapZoom - TRANSIT_MAP_BUTTON_ZOOM_STEP,
-                              )
-                            }
-                            disabled={transitMapZoom <= MIN_TRANSIT_MAP_ZOOM}
-                            aria-label="Zoom out map"
+                      {transitMapSourceUrl && (
+                        <p className="transit-map-source">
+                          Source:{" "}
+                          <a
+                            className="transit-map-source-link"
+                            href={transitMapSourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
                           >
-                            -
-                          </button>
-                          <span className="transit-map-zoom-level">
-                            {Math.round(transitMapZoom * 100)}%
-                          </span>
-                          <button
-                            type="button"
-                            className="transit-map-zoom-btn"
-                            onClick={() =>
-                              applyTransitMapZoom(
-                                transitMapZoom + TRANSIT_MAP_BUTTON_ZOOM_STEP,
-                              )
-                            }
-                            disabled={transitMapZoom >= MAX_TRANSIT_MAP_ZOOM}
-                            aria-label="Zoom in map"
-                          >
-                            +
-                          </button>
-                          <button
-                            type="button"
-                            className="transit-map-zoom-reset"
-                            onClick={() =>
-                              applyTransitMapZoom(MIN_TRANSIT_MAP_ZOOM)
-                            }
-                            disabled={transitMapZoom === MIN_TRANSIT_MAP_ZOOM}
-                          >
-                            Reset
-                          </button>
-                        </div>
-                      </div>
+                            {transitMapSourceUrl}
+                          </a>
+                        </p>
+                      )}
                     </div>
-                    {transitMapSourceUrl && (
-                      <p className="transit-map-source">
-                        Source:{" "}
-                        <a
-                          className="transit-map-source-link"
-                          href={transitMapSourceUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                  ) : (
+                    <>
+                      <div className="transit-map-frame">
+                        <div
+                          ref={transitMapViewportRef}
+                          className={`transit-map-viewport ${transitMapZoom > MIN_TRANSIT_MAP_ZOOM ? "zoomed" : ""} ${isTransitMapPanning ? "is-panning" : ""}`}
+                          tabIndex={0}
+                          role="application"
+                          aria-label="Rail map. Use scroll to zoom, drag or arrow keys to pan."
+                          onWheel={handleTransitMapWheel}
+                          onKeyDown={handleTransitMapKeyDown}
+                          onDoubleClick={(event) =>
+                            applyTransitMapZoom(
+                              transitMapZoom + TRANSIT_MAP_ZOOM_STEP,
+                              event.clientX,
+                              event.clientY,
+                            )
+                          }
+                          onPointerDown={handleTransitMapPointerDown}
+                          onPointerMove={handleTransitMapPointerMove}
+                          onPointerUp={handleTransitMapPointerUp}
+                          onPointerCancel={handleTransitMapPointerUp}
                         >
-                          {transitMapSourceUrl}
-                        </a>
-                      </p>
-                    )}
-                  </>
-                )}
-              </>
-            ) : (
-              <div className="transit-map-empty">
-                Add this city to <code>OFFICIAL_TRANSIT_MAP_URLS</code> in{" "}
-                <code>src/components/Controls.tsx</code>.
-              </div>
-            )}
-          </div>
-        </div>,
+                          <div
+                            className="transit-map-canvas"
+                            style={transitMapCanvasStyle}
+                          >
+                            <img
+                              src={transitMapDisplayUrl}
+                              alt={`${city} rail map`}
+                              className="transit-map-image"
+                              style={transitMapImageStyle}
+                              onLoad={(event) => {
+                                const imageRect =
+                                  event.currentTarget.getBoundingClientRect();
+                                setTransitMapBaseSize({
+                                  width: imageRect.width,
+                                  height: imageRect.height,
+                                });
+                              }}
+                            />
+                          </div>
+                        </div>
+                        <div className="transit-map-zoom-controls">
+                          <div className="transit-map-zoom-buttons">
+                            <button
+                              type="button"
+                              className="transit-map-zoom-btn"
+                              onClick={() =>
+                                applyTransitMapZoom(
+                                  transitMapZoom - TRANSIT_MAP_BUTTON_ZOOM_STEP,
+                                )
+                              }
+                              disabled={transitMapZoom <= MIN_TRANSIT_MAP_ZOOM}
+                              aria-label="Zoom out map"
+                            >
+                              -
+                            </button>
+                            <span className="transit-map-zoom-level">
+                              {Math.round(transitMapZoom * 100)}%
+                            </span>
+                            <button
+                              type="button"
+                              className="transit-map-zoom-btn"
+                              onClick={() =>
+                                applyTransitMapZoom(
+                                  transitMapZoom + TRANSIT_MAP_BUTTON_ZOOM_STEP,
+                                )
+                              }
+                              disabled={transitMapZoom >= MAX_TRANSIT_MAP_ZOOM}
+                              aria-label="Zoom in map"
+                            >
+                              +
+                            </button>
+                            <button
+                              type="button"
+                              className="transit-map-zoom-reset"
+                              onClick={() =>
+                                applyTransitMapZoom(MIN_TRANSIT_MAP_ZOOM)
+                              }
+                              disabled={transitMapZoom === MIN_TRANSIT_MAP_ZOOM}
+                            >
+                              Reset
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      {transitMapSourceUrl && (
+                        <p className="transit-map-source">
+                          Source:{" "}
+                          <a
+                            className="transit-map-source-link"
+                            href={transitMapSourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {transitMapSourceUrl}
+                          </a>
+                        </p>
+                      )}
+                    </>
+                  )}
+                </>
+              ) : (
+                <div className="transit-map-empty">
+                  Add this city to <code>OFFICIAL_TRANSIT_MAP_URLS</code> in{" "}
+                  <code>src/components/Controls.tsx</code>.
+                </div>
+              )}
+            </div>
+          </div>,
           document.body,
         )}
 
@@ -2015,35 +2015,35 @@ export function Controls({
             className="modal-overlay"
             onClick={() => setShowSacWarning(false)}
           >
-          <div
-            className="modal-content sac-warning-modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="modal-icon">⚠️</div>
-            <h2>Sacramento Data Quality Issue</h2>
-            <p>
-              <strong>
-                SacRT does not provide live tracking for light rail.
-              </strong>
-            </p>
-            <p>
-              Their real-time API only includes buses. The data shown here is
-              our best attempt to filter vehicles by proximity to track
-              geometry, but it may include misidentified buses or missing
-              trains.
-            </p>
-            <p className="modal-subtext">
-              This limitation is on SacRT's end and cannot be fixed without them
-              updating their data feed.
-            </p>
-            <button
-              className="modal-close-btn"
-              onClick={() => setShowSacWarning(false)}
+            <div
+              className="modal-content sac-warning-modal"
+              onClick={(e) => e.stopPropagation()}
             >
-              I Understand
-            </button>
-          </div>
-        </div>,
+              <div className="modal-icon">⚠️</div>
+              <h2>Sacramento Data Quality Issue</h2>
+              <p>
+                <strong>
+                  SacRT does not provide live tracking for light rail.
+                </strong>
+              </p>
+              <p>
+                Their real-time API only includes buses. The data shown here is
+                our best attempt to filter vehicles by proximity to track
+                geometry, but it may include misidentified buses or missing
+                trains.
+              </p>
+              <p className="modal-subtext">
+                This limitation is on SacRT's end and cannot be fixed without
+                them updating their data feed.
+              </p>
+              <button
+                className="modal-close-btn"
+                onClick={() => setShowSacWarning(false)}
+              >
+                I Understand
+              </button>
+            </div>
+          </div>,
           document.body,
         )}
     </div>
