@@ -1446,42 +1446,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": 606286322,
-        "type": "switch",
-        "railway": "switch"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-93.2478985, 44.9637032]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 606286323,
-        "type": "switch",
-        "railway": "switch"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-93.2479912, 44.9638587]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 606286325,
-        "type": "switch",
-        "railway": "switch"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-93.2480994, 44.9639076]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": 606286326,
         "type": "switch",
         "railway": "switch"
@@ -1501,42 +1465,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-93.2480882, 44.9640288]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 606286328,
-        "type": "switch",
-        "railway": "switch"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-93.2481253, 44.9640157]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 606286333,
-        "type": "switch",
-        "railway": "switch"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-93.2483053, 44.9640264]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 606286335,
-        "type": "switch",
-        "railway": "switch"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-93.2477364, 44.963387]
       }
     },
     {
@@ -1669,18 +1597,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-93.2499074, 44.9665645]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": 606286384,
-        "type": "switch",
-        "railway": "switch"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-93.2499176, 44.9666044]
       }
     },
     {

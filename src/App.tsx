@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { SpeedMap } from "./components/SpeedMap";
 import { Controls } from "./components/Controls";
-import { MUNI_LINES, getLinesForCity } from "./types";
+import { CITIES, MUNI_LINES, getLinesForCity } from "./types";
 import type { City } from "./types";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -31,6 +31,13 @@ const useIsDev = () => {
   if (typeof window === "undefined") return false;
   return window.location.search.includes("dev=true");
 };
+
+function getCityFromUrl(): City {
+  const params = new URLSearchParams(window.location.search);
+  const raw = params.get("city");
+  if (raw && (CITIES as readonly string[]).includes(raw)) return raw as City;
+  return "SF";
+}
 
 function App() {
   const isDev = useIsDev();
@@ -62,13 +69,22 @@ function App() {
   // Mobile sidebar state
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // City selector - SF or LA
-  const [city, setCity] = useState<City>("SF");
+  const [city, setCity] = useState<City>(getCityFromUrl);
+
+  // Sync city to URL so links are shareable
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    params.set("city", city);
+    window.history.replaceState({}, "", `?${params.toString()}`);
+  }, [city]);
 
   // Lines selected for the current city
-  const [selectedLines, setSelectedLines] = useState<string[]>(
-    MUNI_LINES.filter((line) => line !== "F") as string[],
-  );
+  const [selectedLines, setSelectedLines] = useState<string[]>(() => {
+    const c = getCityFromUrl();
+    const lines = getLinesForCity(c);
+    if (c === "SF") return lines.filter((l) => l !== "F") as string[];
+    return [...lines] as string[];
+  });
 
   // Track if "none" was selected to preserve across city switches
   const noneSelectedRef = useRef(false);
