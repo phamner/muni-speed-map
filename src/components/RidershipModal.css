@@ -1,0 +1,193 @@
+.modal-content.ridership-modal {
+  position: fixed;
+  top: 5vh;
+  left: 12px;
+  right: 12px;
+  width: min(1600px, calc(100vw - 24px));
+  max-width: calc(100vw - 24px);
+  margin: 0 auto;
+  max-height: calc(90vh - 24px);
+  overflow: hidden;
+  padding: 32px 40px;
+  text-align: left;
+}
+
+.ridership-modal h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.5rem;
+}
+
+.metric-toggle {
+  display: flex;
+  gap: 10px;
+  margin: 0 0 24px 0;
+  justify-content: center;
+}
+
+.metric-toggle button {
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s;
+}
+
+.metric-toggle button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.metric-toggle button.active {
+  background: rgba(0, 217, 255, 0.2);
+  border-color: #00d9ff;
+  color: #00d9ff;
+}
+
+.ridership-content {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 24px;
+  align-items: start;
+}
+
+.chart-container {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  min-height: 400px;
+}
+
+.chart-container h3 {
+  margin: 0 0 20px 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.line-chart {
+  width: 100%;
+  height: 450px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.line-chart svg {
+  width: 100%;
+  height: 100%;
+}
+
+.chart-line {
+  fill: none;
+  stroke: #007bff;
+  stroke-width: 2;
+  transition: stroke-width 0.2s;
+}
+
+.chart-line:hover {
+  stroke-width: 3;
+}
+
+.chart-dot {
+  fill: #007bff;
+  cursor: pointer;
+  transition: r 0.2s;
+}
+
+.chart-dot:hover {
+  r: 6;
+}
+
+.chart-axis {
+  stroke: #ccc;
+  stroke-width: 1;
+}
+
+.chart-axis-label {
+  fill: #666;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.chart-grid {
+  stroke: #e0e0e0;
+  stroke-width: 0.5;
+  stroke-dasharray: 2,2;
+}
+
+.summary-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-block {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.summary-block h3 {
+  margin: 0 0 16px 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.summary-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.summary-item .label {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+.summary-item .value {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.data-source {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.4);
+  text-align: left;
+  line-height: 1.5;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 60px 40px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 1rem;
+}
+
+.error {
+  color: #ff6b6b;
+}

@@ -100,6 +100,7 @@ function App() {
   const [viewMode, setViewMode] = useState<ViewMode>("raw");
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
   const [showSatellite, setShowSatellite] = useState(false);
+  const [showPopulationDensity, setShowPopulationDensity] = useState(false);
   const [speedUnit, setSpeedUnit] = useState<SpeedUnit>("mph");
 
   // Reset state when city changes
@@ -213,6 +214,8 @@ function App() {
         viewMode={viewMode}
         showSatellite={showSatellite}
         onSatelliteToggle={setShowSatellite}
+        showPopulationDensity={showPopulationDensity}
+        onPopulationDensityToggle={setShowPopulationDensity}
         speedUnit={speedUnit}
         onRailContextUpdate={(heavyCount, commuterCount, busCount) => {
           setRailContextHeavyCount(heavyCount);

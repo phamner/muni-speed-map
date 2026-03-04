@@ -845,6 +845,55 @@
   flex-shrink: 0;
 }
 
+/* Population Density Legend - shown when density layer is active */
+.map-density-legend {
+  position: absolute;
+  bottom: 353px;
+  left: 10px;
+  background: rgba(26, 26, 46, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 8px 12px;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.map-density-legend-title {
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2px;
+}
+
+.map-density-legend-scale {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-auto-flow: column;
+  gap: 4px 12px;
+}
+
+.density-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.density-legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 /* Speed Filter */
 .speed-filter {
   display: flex;
@@ -1067,6 +1116,26 @@
 .popup-detail {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.5);
+}
+
+/* Density popup styles */
+.popup-density {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 4px;
+  margin: 6px 0;
+}
+
+.density-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  /* Color set dynamically via inline style based on density */
+}
+
+.density-unit {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .popup-coords {
@@ -2215,35 +2284,113 @@
   border-top-width: 2px;
 }
 
-/* Google Maps-style layer toggle button */
-.map-layer-toggle {
+/* Google Maps-style expandable layer selector */
+.map-layer-selector {
   position: absolute;
   bottom: 68px;
   left: 10px;
-  width: 150px;
-  height: 150px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.map-layer-tile {
+  width: 70px;
+  height: 70px;
   background: rgba(26, 26, 46, 0.95);
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   cursor: pointer;
   overflow: hidden;
   transition: all 0.2s ease;
-  z-index: 1000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  position: relative;
 }
 
-.map-layer-toggle:hover {
+.map-layer-tile:hover {
   border-color: rgba(255, 255, 255, 0.6);
-  transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.map-layer-toggle .layer-preview {
+.map-layer-tile.active {
+  border-color: #4dabf7;
+  box-shadow: 0 0 0 1px #4dabf7, 0 4px 12px rgba(77, 171, 247, 0.3);
+}
+
+.map-layer-tile .layer-preview {
   width: 100%;
-  height: 165px;
+  height: 48px;
   background-size: cover;
   background-position: center;
-  border-radius: 6px;
+  border-radius: 6px 6px 0 0;
+}
+
+.map-layer-tile .layer-label {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: #fff;
+  padding: 3px 0;
+  background: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
+}
+
+/* Population density preview - gradient placeholder */
+.map-layer-tile .population-preview {
+  background: linear-gradient(
+    135deg,
+    #1a1a2e 0%,
+    #2d4a3e 25%,
+    #4a6741 50%,
+    #7a9c4a 75%,
+    #c4a84b 100%
+  );
+}
+
+/* Coming soon badge on tile */
+.map-layer-tile .tile-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 7px;
+  background: rgba(77, 171, 247, 0.8);
+  color: #fff;
+  padding: 2px 4px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.map-layer-tile.coming-soon {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.map-layer-tile.coming-soon:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Expandable tiles panel - appears on hover */
+.layer-tiles-panel {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  opacity: 0;
+  transform: translateX(-10px);
+  pointer-events: none;
+  transition: all 0.2s ease;
+}
+
+.map-layer-selector:hover .layer-tiles-panel {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: auto;
 }
 
 /* ===========================================
@@ -2382,28 +2529,46 @@
     margin-bottom: 12px;
   }
 
-  /* Map layer toggle - above scale, bottom left */
-  .map-layer-toggle {
-    width: 90px;
-    height: 90px;
-    bottom: 78px;
+  /* Map layer selector - above scale, bottom left */
+  .map-layer-selector {
+    bottom: 48px;
     left: 10px;
   }
 
-  .map-layer-toggle .layer-preview {
-    height: 100px;
+  .map-layer-tile {
+    width: 60px;
+    height: 60px;
   }
 
-  /* Speed legend - above map toggle, bottom left */
+  .map-layer-tile .layer-preview {
+    height: 40px;
+  }
+
+  .map-layer-tile .layer-label {
+    font-size: 9px;
+    padding: 2px 0;
+  }
+
+  /* Hide expanded panel on mobile */
+  .layer-tiles-panel {
+    display: none;
+  }
+
+  /* Speed legend - above map selector, bottom left */
   .map-speed-legend {
-    bottom: 184px;
+    bottom: 134px;
     left: 10px;
   }
 
   /* Separation legend - above speed legend */
   .map-separation-legend {
-    /* bottom: 352px; */
-    bottom: 315px;
+    bottom: 265px;
+    left: 10px;
+  }
+
+  /* Density legend - above speed legend */
+  .map-density-legend {
+    bottom: 265px;
     left: 10px;
   }
 
@@ -2417,7 +2582,8 @@
      =========================================== */
   .controls-panel.mobile-open ~ .map-wrapper .map-speed-legend,
   .controls-panel.mobile-open ~ .map-wrapper .map-separation-legend,
-  .controls-panel.mobile-open ~ .map-wrapper .map-layer-toggle,
+  .controls-panel.mobile-open ~ .map-wrapper .map-density-legend,
+  .controls-panel.mobile-open ~ .map-wrapper .map-layer-selector,
   .controls-panel.mobile-open ~ .map-wrapper .maplibregl-ctrl-bottom-left,
   .controls-panel.mobile-open ~ .map-wrapper .map-dynamic-legends {
     opacity: 0;
@@ -2532,21 +2698,35 @@
     left: 10px;
   }
 
-  /* Map toggle in bottom-left */
-  .map-layer-toggle {
+  /* Density legend below speed legend in landscape */
+  .map-density-legend {
+    top: 140px;
+    bottom: auto;
+    left: 10px;
+  }
+
+  /* Map selector in bottom-left */
+  .map-layer-selector {
     bottom: 10px;
     left: 10px;
-    width: 80px;
-    height: 80px;
   }
 
-  .map-layer-toggle .layer-preview {
-    height: 90px;
+  .map-layer-tile {
+    width: 55px;
+    height: 55px;
   }
 
-  /* Scale in bottom-left, above map toggle */
+  .map-layer-tile .layer-preview {
+    height: 35px;
+  }
+
+  .map-layer-tile .layer-label {
+    font-size: 8px;
+  }
+
+  /* Scale in bottom-left, above map selector */
   .maplibregl-ctrl-bottom-left .maplibregl-ctrl-scale {
-    margin-bottom: 100px;
+    margin-bottom: 75px;
   }
 
   /* Dynamic legends move to right side in landscape */
