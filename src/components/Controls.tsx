@@ -1554,16 +1554,7 @@ export function Controls({
           </p>
         )}
         <p className="data-attribution" style={{ marginTop: "8px" }}>
-          Built by Philip Hamner
-          <br />
-          <a
-            href="https://www.linkedin.com/in/philip-hamner/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LinkedIn
-          </a>
-          {" · "}
+          Built by Philip Hamner ·{" "}
           <a
             href="https://github.com/philiphamner/muni-speed-map"
             target="_blank"
@@ -1597,10 +1588,7 @@ export function Controls({
               <h2>
                 {ABOUT_SECTIONS.title}
                 <span style={{ fontSize: "0.5em", fontWeight: 400, color: "rgba(255,255,255,0.55)", marginLeft: "12px" }}>
-                  Built by Philip Hamner
-                  {" · "}
-                  <a href="https://www.linkedin.com/in/philip-hamner/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                  {" · "}
+                  Built by Philip Hamner ·{" "}
                   <a href="https://github.com/philiphamner/muni-speed-map" target="_blank" rel="noopener noreferrer">GitHub</a>
                 </span>
               </h2>
