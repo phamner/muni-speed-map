@@ -18,10 +18,9 @@ export function LayerSelector({
   return (
     <div className="map-layer-selector">
       <div
-        className={`map-layer-tile ${!showSatellite && !showPopulationDensity ? "active" : ""}`}
+        className={`map-layer-tile ${!showSatellite ? "active" : ""}`}
         onClick={() => {
           if (showSatellite) onSatelliteToggle?.(false);
-          if (showPopulationDensity) onPopulationDensityToggle?.(false);
         }}
         title="Dark map"
       >
@@ -40,7 +39,6 @@ export function LayerSelector({
           className={`map-layer-tile ${showSatellite ? "active" : ""}`}
           onClick={() => {
             onSatelliteToggle?.(!showSatellite);
-            if (showPopulationDensity) onPopulationDensityToggle?.(false);
           }}
           title="Satellite view"
         >
@@ -59,7 +57,6 @@ export function LayerSelector({
             className={`map-layer-tile ${showPopulationDensity ? "active" : ""}`}
             onClick={() => {
               onPopulationDensityToggle?.(!showPopulationDensity);
-              if (showSatellite) onSatelliteToggle?.(false);
             }}
             title="Population density (2020 US Census data)"
           >

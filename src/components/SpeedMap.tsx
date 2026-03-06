@@ -3604,14 +3604,20 @@ export function SpeedMap({
           });
         } // end of else block (first-time layer creation)
 
-        // Toggle visibility
+        // Toggle visibility and adjust opacity for satellite overlay
         const isVisible = showPopulationDensity ? "visible" : "none";
+        const fillOpacity = showSatellite ? 0.45 : 0.65;
 
         if (map.current.getLayer("population-density-fill")) {
           map.current.setLayoutProperty(
             "population-density-fill",
             "visibility",
             isVisible,
+          );
+          map.current.setPaintProperty(
+            "population-density-fill",
+            "fill-opacity",
+            fillOpacity,
           );
         }
         if (map.current.getLayer("population-density-outline")) {
@@ -3636,7 +3642,7 @@ export function SpeedMap({
     return () => {
       cancelled = true;
     };
-  }, [mapLoaded, showPopulationDensity, city]);
+  }, [mapLoaded, showPopulationDensity, showSatellite, city]);
 
   // Update speed limit labels when speed unit changes
   useEffect(() => {
