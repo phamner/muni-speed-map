@@ -560,9 +560,40 @@ export function Controls({
     Phoenix: "Valley Metro Speed Map",
     Baltimore: "RailLink Speed Map",
   };
+  const cityLogos: Partial<Record<string, string>> = {
+    SF: "/logos/Muni_worm_logo.svg",
+    LA: "/logos/LAMetroLogo.svg",
+    Seattle: "/logos/Sound_Transit_logo_simplified.svg",
+    Boston: "/logos/MBTA.svg",
+    Portland: "/logos/TriMet_MAX_logo.svg",
+    Philadelphia: "/logos/SEPTA.svg",
+    "San Jose": "/logos/VTA_logo_2017_no_text.svg",
+    Toronto: "/logos/Logo_of_the_Toronto_Transit_Commission.svg",
+    Minneapolis: "/logos/Metro_Minnesota_icon.svg",
+    Denver: "/logos/Regional_Transportation_District_logo.svg",
+    "Salt Lake City": "/logos/UTA_logo_reformatted.svg",
+    Pittsburgh: "/logos/Pittsburgh_Regional_Transit_Logo_no_text.svg",
+    Cleveland: "/logos/Cleveland_RTA_logo.svg",
+    Phoenix: "/logos/Valley_Metro_logo_no_text.svg",
+    Baltimore: "/logos/Baltimore_Light_RailLink_logo.svg",
+    "San Diego": "/logos/Logo_San_Diego_Metropolitan_Transit_System.svg",
+  };
+  const cityLogoHeights: Partial<Record<string, number>> = {
+    Phoenix: 22,
+    Denver: 22,
+    Toronto: 22,
+    "San Jose": 22,
+    Cleveland: 26,
+    Minneapolis: 26,
+    Boston: 26,
+    LA: 26,
+    Pittsburgh: 18,
+  };
   const cityLine = cityNames[city] || city;
   const systemLine = systemNames[city] || "Speed Map";
-  const longTitleCities = ["Boston", "Phoenix"];
+  const cityLogo = cityLogos[city];
+  const cityLogoHeight = cityLogoHeights[city];
+  const longTitleCities = ["Boston", "Phoenix", "Toronto"];
   const mobileMediumTitleCities = ["Phoenix", "Baltimore", "Toronto"];
   const mobileSmallTitleCities: City[] = [];
   const officialTransitMapUrl = OFFICIAL_TRANSIT_MAP_URLS[city];
@@ -779,12 +810,27 @@ export function Controls({
   return (
     <div className={`controls-panel ${isSidebarOpen ? "mobile-open" : ""}`}>
       <div className="app-header">
+        <div className="app-title-row">
+          <h1
+            className={`app-title ${longTitleCities.includes(city) ? "app-title-long" : ""} ${mobileMediumTitleCities.includes(city) ? "app-title-mobile-medium" : ""} ${mobileSmallTitleCities.includes(city) ? "app-title-mobile-small" : ""}`}
+          >
+            {systemLine}
+          </h1>
+          {cityLogo && (
+            <img
+              src={cityLogo}
+              alt=""
+              className="app-title-logo"
+              style={
+                cityLogoHeight ? { height: `${cityLogoHeight}px` } : undefined
+              }
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = "none";
+              }}
+            />
+          )}
+        </div>
         <span className="app-city">{cityLine}</span>
-        <h1
-          className={`app-title ${longTitleCities.includes(city) ? "app-title-long" : ""} ${mobileMediumTitleCities.includes(city) ? "app-title-mobile-medium" : ""} ${mobileSmallTitleCities.includes(city) ? "app-title-mobile-small" : ""}`}
-        >
-          {systemLine}
-        </h1>
       </div>
       <div className="app-header-link-row">
         <button
@@ -1600,9 +1646,22 @@ export function Controls({
               </button>
               <h2>
                 {ABOUT_SECTIONS.title}
-                <span style={{ fontSize: "0.5em", fontWeight: 400, color: "rgba(255,255,255,0.55)", marginLeft: "12px" }}>
+                <span
+                  style={{
+                    fontSize: "0.5em",
+                    fontWeight: 400,
+                    color: "rgba(255,255,255,0.55)",
+                    marginLeft: "12px",
+                  }}
+                >
                   Built by Philip Hamner ·{" "}
-                  <a href="https://github.com/philiphamner/muni-speed-map" target="_blank" rel="noopener noreferrer">GitHub</a>
+                  <a
+                    href="https://github.com/philiphamner/muni-speed-map"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    GitHub
+                  </a>
                 </span>
               </h2>
 
@@ -1988,7 +2047,6 @@ export function Controls({
           </div>,
           document.body,
         )}
-
     </div>
   );
 }

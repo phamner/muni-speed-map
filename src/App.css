@@ -93,7 +93,13 @@
   flex-direction: column;
   gap: 2px;
   min-height: 52px;
-  /* Fixed height to prevent shifting */
+}
+
+.app-title-row {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 30px;
 }
 
 .app-city {
@@ -116,6 +122,16 @@
   letter-spacing: -0.5px;
   line-height: 1.2;
   white-space: nowrap;
+}
+
+.app-title-logo {
+  position: absolute;
+  right: 25px;
+  transform: translateX(50%);
+  height: 24px;
+  width: auto;
+  max-width: 60px;
+  object-fit: contain;
 }
 
 .app-title.app-title-long {
