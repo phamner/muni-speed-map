@@ -575,12 +575,12 @@ export function Controls({
     Pittsburgh: "/logos/Pittsburgh_Regional_Transit_Logo_no_text.svg",
     Cleveland: "/logos/Cleveland_RTA_logo.svg",
     Phoenix: "/logos/Valley_Metro_logo_no_text.svg",
-    Baltimore: "/logos/Baltimore_Light_RailLink_logo.svg",
+    Baltimore: "/logos/Baltimore_Light_RailLink_logo (1)_attempt1.svg",
     "San Diego": "/logos/Logo_San_Diego_Metropolitan_Transit_System.svg",
   };
   const cityLogoHeights: Partial<Record<string, number>> = {
-    Phoenix: 22,
-    Denver: 22,
+    Phoenix: 20,
+    Denver: 20,
     Toronto: 22,
     "San Jose": 22,
     Cleveland: 26,
@@ -588,12 +588,15 @@ export function Controls({
     Boston: 26,
     LA: 26,
     Pittsburgh: 18,
+    Baltimore: 26,
   };
   const cityLine = cityNames[city] || city;
   const systemLine = systemNames[city] || "Speed Map";
   const cityLogo = cityLogos[city];
   const cityLogoHeight = cityLogoHeights[city];
-  const longTitleCities = ["Boston", "Phoenix", "Toronto"];
+  const mlongTitleCities = ["Baltimore"];
+  const longTitleCities = ["Boston", "Toronto"];
+  const xlongTitleCities = ["Phoenix"];
   const mobileMediumTitleCities = ["Phoenix", "Baltimore", "Toronto"];
   const mobileSmallTitleCities: City[] = [];
   const officialTransitMapUrl = OFFICIAL_TRANSIT_MAP_URLS[city];
@@ -812,12 +815,13 @@ export function Controls({
       <div className="app-header">
         <div className="app-title-row">
           <h1
-            className={`app-title ${longTitleCities.includes(city) ? "app-title-long" : ""} ${mobileMediumTitleCities.includes(city) ? "app-title-mobile-medium" : ""} ${mobileSmallTitleCities.includes(city) ? "app-title-mobile-small" : ""}`}
+            className={`app-title ${xlongTitleCities.includes(city) ? "app-title-xlong" : longTitleCities.includes(city) ? "app-title-long" : mlongTitleCities.includes(city) ? "app-title-mlong" : ""} ${mobileMediumTitleCities.includes(city) ? "app-title-mobile-medium" : ""} ${mobileSmallTitleCities.includes(city) ? "app-title-mobile-small" : ""}`}
           >
             {systemLine}
           </h1>
           {cityLogo && (
             <img
+              key={city}
               src={cityLogo}
               alt=""
               className="app-title-logo"

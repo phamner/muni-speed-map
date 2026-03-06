@@ -126,7 +126,7 @@
 
 .app-title-logo {
   position: absolute;
-  right: 25px;
+  right: 22px;
   transform: translateX(50%);
   height: 24px;
   width: auto;
@@ -134,8 +134,16 @@
   object-fit: contain;
 }
 
+.app-title.app-title-mlong {
+  font-size: 1.45rem;
+}
+
 .app-title.app-title-long {
   font-size: 1.25rem;
+}
+
+.app-title.app-title-xlong {
+  font-size: 1.15rem;
 }
 
 .app-header-link-btn {
