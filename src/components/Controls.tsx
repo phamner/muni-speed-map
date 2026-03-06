@@ -1507,18 +1507,29 @@ export function Controls({
           )}
           {city === "Portland" || city === "Boston" ? "" : " GTFS-realtime"}
         </p>
-        {city !== "Toronto" && (
-          <p className="data-attribution">
-            Population density from{" "}
+        <p className="data-attribution">
+          Population density from{" "}
+          {city === "Toronto" ? (
+            <a
+              href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              2021 Canadian Census
+            </a>
+          ) : (
             <a
               href="https://tigerweb.geo.census.gov/tigerwebmain/TIGERweb_main.html"
               target="_blank"
               rel="noopener noreferrer"
             >
               2020 US Census
-            </a>{" "}
-            tracts:{" "}
-            {city === "SF"
+            </a>
+          )}{" "}
+          tracts:{" "}
+          {city === "Toronto"
+            ? "Toronto CMA"
+            : city === "SF"
               ? "San Francisco, San Mateo counties"
               : city === "LA"
                 ? "Los Angeles, Orange counties"
@@ -1551,8 +1562,7 @@ export function Controls({
                                           : city === "Charlotte"
                                             ? "Mecklenburg, Gaston, Union counties"
                                             : ""}
-          </p>
-        )}
+        </p>
         <p className="data-attribution" style={{ marginTop: "8px" }}>
           Built by Philip Hamner ·{" "}
           <a

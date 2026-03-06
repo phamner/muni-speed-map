@@ -19,6 +19,7 @@ const cityToPrefix: Record<string, string> = {
   Cleveland: "cleveland",
   Charlotte: "charlotte",
   Baltimore: "baltimore",
+  Toronto: "toronto",
 };
 
 const cache = new Map<City, any>();

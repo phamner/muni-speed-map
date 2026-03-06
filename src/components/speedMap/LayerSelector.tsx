@@ -52,18 +52,16 @@ export function LayerSelector({
           <span className="layer-label">Satellite</span>
         </div>
 
-        {city !== "Toronto" && (
-          <div
-            className={`map-layer-tile ${showPopulationDensity ? "active" : ""}`}
-            onClick={() => {
-              onPopulationDensityToggle?.(!showPopulationDensity);
-            }}
-            title="Population density (2020 US Census data)"
-          >
-            <div className="layer-preview population-preview" />
-            <span className="layer-label">Density</span>
-          </div>
-        )}
+        <div
+          className={`map-layer-tile ${showPopulationDensity ? "active" : ""}`}
+          onClick={() => {
+            onPopulationDensityToggle?.(!showPopulationDensity);
+          }}
+          title="Population density"
+        >
+          <div className="layer-preview population-preview" />
+          <span className="layer-label">Density</span>
+        </div>
       </div>
     </div>
   );

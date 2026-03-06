@@ -3412,10 +3412,9 @@ export function SpeedMap({
       }
     };
 
-    if (city === "Toronto" || !showPopulationDensity) {
+    if (!showPopulationDensity) {
       hideDensityLayers();
-      if (!showPopulationDensity) return;
-      if (city === "Toronto") return;
+      return;
     }
 
     let cancelled = false;
@@ -3678,7 +3677,7 @@ export function SpeedMap({
         <SeparationLegend />
       )}
 
-      {showPopulationDensity && city !== "Toronto" && <DensityLegend />}
+      {showPopulationDensity && <DensityLegend />}
 
       <LayerSelector
         city={city}
