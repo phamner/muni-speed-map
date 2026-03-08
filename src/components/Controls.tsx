@@ -577,6 +577,7 @@ export function Controls({
     Phoenix: "/logos/Valley_Metro_logo_no_text.svg",
     Baltimore: "/logos/Baltimore_Light_RailLink_logo (1)_attempt1.svg",
     "San Diego": "/logos/Logo_San_Diego_Metropolitan_Transit_System.svg",
+    Charlotte: "/logos/Charlotte_CATS_logo.png",
   };
   const cityLogoHeights: Partial<Record<string, number>> = {
     Phoenix: 20,
@@ -594,6 +595,7 @@ export function Controls({
   const systemLine = systemNames[city] || "Speed Map";
   const cityLogo = cityLogos[city];
   const cityLogoHeight = cityLogoHeights[city];
+  const slightlySmallTitleCities = ["San Diego"];
   const mlongTitleCities = ["Baltimore"];
   const longTitleCities = ["Boston", "Toronto"];
   const xlongTitleCities = ["Phoenix"];
@@ -815,7 +817,7 @@ export function Controls({
       <div className="app-header">
         <div className="app-title-row">
           <h1
-            className={`app-title ${xlongTitleCities.includes(city) ? "app-title-xlong" : longTitleCities.includes(city) ? "app-title-long" : mlongTitleCities.includes(city) ? "app-title-mlong" : ""} ${mobileMediumTitleCities.includes(city) ? "app-title-mobile-medium" : ""} ${mobileSmallTitleCities.includes(city) ? "app-title-mobile-small" : ""}`}
+            className={`app-title ${xlongTitleCities.includes(city) ? "app-title-xlong" : longTitleCities.includes(city) ? "app-title-long" : mlongTitleCities.includes(city) ? "app-title-mlong" : slightlySmallTitleCities.includes(city) ? "app-title-slightly-small" : ""} ${mobileMediumTitleCities.includes(city) ? "app-title-mobile-medium" : ""} ${mobileSmallTitleCities.includes(city) ? "app-title-mobile-small" : ""}`}
           >
             {systemLine}
           </h1>

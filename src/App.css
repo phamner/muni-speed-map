@@ -134,6 +134,10 @@
   object-fit: contain;
 }
 
+.app-title.app-title-slightly-small {
+  font-size: 1.40rem;
+}
+
 .app-title.app-title-mlong {
   font-size: 1.45rem;
 }
@@ -143,7 +147,7 @@
 }
 
 .app-title.app-title-xlong {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
 }
 
 .app-header-link-btn {
