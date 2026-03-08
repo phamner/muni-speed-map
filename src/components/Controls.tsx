@@ -523,7 +523,7 @@ export function Controls({
 
   // Two-line title: Line 1 = City, Line 2 = System
   const cityNames: Record<string, string> = {
-    SF: "San Francisco, CAaa",
+    SF: "San Francisco, CA",
     LA: "Los Angeles, CA",
     Seattle: "Seattle, WA",
     Boston: "Boston, MA",
