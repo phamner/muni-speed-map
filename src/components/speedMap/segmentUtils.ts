@@ -5,11 +5,16 @@ export const SEGMENT_SIZE_METERS = 200;
 export const CITIES_WITH_PARALLEL_TRACKS = [
   "SF",
   "LA",
-  "Denver",
+  "Seattle",
   "Boston",
-  "Phoenix",
-  "Cleveland",
+  "San Diego",
   "Toronto",
+  "Philadelphia",
+  "Minneapolis",
+  "Denver",
+  "Salt Lake City",
+  "Cleveland",
+  "Charlotte",
 ];
 
 export interface SegmentData {
