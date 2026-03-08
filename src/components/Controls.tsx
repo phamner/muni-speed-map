@@ -1471,11 +1471,11 @@ export function Controls({
             </a>
           ) : city === "Seattle" ? (
             <a
-              href="https://api.pugetsound.onebusaway.org/"
+              href="https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Sound Transit OneBusAway API
+              Sound Transit Open Transit Data
             </a>
           ) : city === "Boston" ? (
             <a
@@ -1503,11 +1503,11 @@ export function Controls({
             </a>
           ) : city === "Toronto" ? (
             <a
-              href="https://open.toronto.ca/"
+              href="https://gtfsrt.ttc.ca/"
               target="_blank"
               rel="noopener noreferrer"
             >
-              TTC Open Data
+              TTC GTFS-RT
             </a>
           ) : city === "Philadelphia" ? (
             <a
@@ -1519,7 +1519,7 @@ export function Controls({
             </a>
           ) : city === "Pittsburgh" ? (
             <a
-              href="https://www.rideprt.org/inside-Pittsburgh-Regional-Transit/developer-resources/"
+              href="https://www.rideprt.org/business-center/developer-resources/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1535,7 +1535,7 @@ export function Controls({
             </a>
           ) : city === "Denver" ? (
             <a
-              href="https://www.rtd-denver.com/open-data"
+              href="https://www.rtd-denver.com/open-records/open-spatial-information"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1543,7 +1543,7 @@ export function Controls({
             </a>
           ) : city === "Salt Lake City" ? (
             <a
-              href="https://developer.rideuta.com/"
+              href="https://maps.rideuta.com/portal/apps/sites/#/uta-open-data"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -1556,6 +1556,22 @@ export function Controls({
               rel="noopener noreferrer"
             >
               511.org
+            </a>
+          ) : city === "Baltimore" ? (
+            <a
+              href="https://www.mta.maryland.gov/developer-resources"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              MTA Maryland Developer Resources
+            </a>
+          ) : city === "Cleveland" ? (
+            <a
+              href="https://riderta.com/developers"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              RTA Developer Resources
             </a>
           ) : (
             <span>Transit API</span>
