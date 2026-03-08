@@ -54,15 +54,15 @@ Each city was selected because its light rail or streetcar system has **signific
 
 These systems have significant street-running and are strong candidates if I can get reliable vehicle-position data that supports the same fleet-wide snapshot methodology. I have actively tried to add several of them already.
 
-| City                 | System                          | Why It's a Good Candidate                                                      |
-| -------------------- | ------------------------------- | ------------------------------------------------------------------------------ |
-| 🤠 **Houston**       | METRORail                       | Red Line runs at-grade through Midtown and Medical Center                      |
-| 🇨🇦 **Calgary**       | CTrain                          | One of North America's busiest light rail systems with downtown street-running |
-| 🇨🇦 **Edmonton**      | Edmonton LRT                    | Capital, Metro, and Valley Lines with urban at-grade sections                  |
-| 🌉 **New Jersey**    | Hudson-Bergen Light Rail (HBLR) | Extensive at-grade/light rail operation across Jersey City, Hoboken, and Bayonne |
-| 🔔 **New Jersey / Philly region** | River Line           | Interurban-style corridor linking Camden and Trenton; fits the regional light rail scope |
-| 🎸 **St. Louis**     | MetroLink                       | Light rail network with at-grade sections that would benefit from segment-level speed analysis |
-| 🤠 **Dallas**        | DART Light Rail                 | Large light rail system with multiple corridors and at-grade running segments  |
+| City                              | System                          | Why It's a Good Candidate                                                                      |
+| --------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------- |
+| 🤠 **Houston**                    | METRORail                       | Red Line runs at-grade through Midtown and Medical Center                                      |
+| 🇨🇦 **Calgary**                    | CTrain                          | One of North America's busiest light rail systems with downtown street-running                 |
+| 🇨🇦 **Edmonton**                   | Edmonton LRT                    | Capital, Metro, and Valley Lines with urban at-grade sections                                  |
+| 🌉 **New Jersey**                 | Hudson-Bergen Light Rail (HBLR) | Extensive at-grade/light rail operation across Jersey City, Hoboken, and Bayonne               |
+| 🔔 **New Jersey / Philly region** | River Line                      | Interurban-style corridor linking Camden and Trenton; fits the regional light rail scope       |
+| 🎸 **St. Louis**                  | MetroLink                       | Light rail network with at-grade sections that would benefit from segment-level speed analysis |
+| 🤠 **Dallas**                     | DART Light Rail                 | Large light rail system with multiple corridors and at-grade running segments                  |
 
 I would like to add these systems if I can find data access that is reliable enough to support the project methodology.
 
@@ -82,28 +82,28 @@ The focus remains on **light rail and streetcars that compete with street traffi
 
 ## 🌆 Supported Cities
 
-| City                  | System           | Lines                            | Status                 |
-| --------------------- | ---------------- | -------------------------------- | ---------------------- |
-| 🌉 **San Francisco**  | Muni Metro       | F, J, K, L, M, N, T              | ✅ Collecting          |
-| 🌴 **Los Angeles**    | Metro Rail       | A, B, C, D, E, K                 | ✅ Collecting          |
-| ☕ **Seattle**        | Link Light Rail  | 1 Line, 2 Line, T Line           | ✅ Collecting          |
-| 🚲 **Portland**       | MAX Light Rail   | Blue, Green, Orange, Red, Yellow | ✅ Collecting          |
-| 🦞 **Boston**         | MBTA Green Line  | B, C, D, E                       | ✅ Collecting          |
-| 🔔 **Philadelphia**   | SEPTA Trolleys   | 10, 11, 13, 15, 34, 36, 101, 102 | ✅ Collecting          |
-| 💻 **San Jose**       | VTA Light Rail   | Blue, Green, Orange              | ✅ Collecting          |
-| 🍁 **Toronto**        | TTC Streetcars   | 501-512, Line 6 Finch West       | ✅ Collecting          |
-| 🌆 **Minneapolis**    | Metro Transit    | Blue, Green                      | ✅ Collecting          |
-| 🏔️ **Denver**         | RTD Light Rail   | A, B, C, D, E, F, G, H, L, R, W  | ✅ Collecting          |
-| 🏔️ **Salt Lake City** | UTA TRAX         | Blue, Red, Green, S-Line         | ✅ Collecting          |
-| 🏗️ **Pittsburgh**     | The T Light Rail | Red, Blue, Silver                | ✅ Collecting          |
-| 🏛️ **Sacramento**     | SacRT Light Rail | Gold, Blue                       | ✅ Collecting          |
-| 🌵 **Phoenix**        | Valley Metro     | A Line, B Line                   | ✅ Collecting          |
-| 🚊 **Charlotte**      | CATS LYNX        | Blue Line, Gold Line             | ✅ Collecting          |
-| 🦀 **Baltimore**      | MTA Light Rail   | Light RailLink                   | ✅ Collecting          |
-| 🎸 **Cleveland**      | RTA Rapid        | Red, Blue, Green                 | ✅ Collecting          |
+| City                  | System           | Lines                            | Status                             |
+| --------------------- | ---------------- | -------------------------------- | ---------------------------------- |
+| 🌉 **San Francisco**  | Muni Metro       | F, J, K, L, M, N, T              | ✅ Collecting                      |
+| 🌴 **Los Angeles**    | Metro Rail       | A, B, C, D, E, K                 | ✅ Collecting                      |
+| ☕ **Seattle**        | Link Light Rail  | 1 Line, 2 Line, T Line           | ✅ Collecting                      |
+| 🚲 **Portland**       | MAX Light Rail   | Blue, Green, Orange, Red, Yellow | ✅ Collecting                      |
+| 🦞 **Boston**         | MBTA Green Line  | B, C, D, E                       | ✅ Collecting                      |
+| 🔔 **Philadelphia**   | SEPTA Trolleys   | 10, 11, 13, 15, 34, 36, 101, 102 | ✅ Collecting                      |
+| 💻 **San Jose**       | VTA Light Rail   | Blue, Green, Orange              | ✅ Collecting                      |
+| 🍁 **Toronto**        | TTC Streetcars   | 501-512, Line 6 Finch West       | ✅ Collecting                      |
+| 🌆 **Minneapolis**    | Metro Transit    | Blue, Green                      | ✅ Collecting                      |
+| 🏔️ **Denver**         | RTD Light Rail   | A, B, C, D, E, F, G, H, L, R, W  | ✅ Collecting                      |
+| 🏔️ **Salt Lake City** | UTA TRAX         | Blue, Red, Green, S-Line         | ✅ Collecting                      |
+| 🏗️ **Pittsburgh**     | The T Light Rail | Red, Blue, Silver                | ✅ Collecting                      |
+| 🏛️ **Sacramento**     | SacRT Light Rail | Gold, Blue                       | ✅ Collecting                      |
+| 🌵 **Phoenix**        | Valley Metro     | A Line, B Line                   | ✅ Collecting                      |
+| 🚊 **Charlotte**      | CATS LYNX        | Blue Line, Gold Line             | ✅ Collecting                      |
+| 🦀 **Baltimore**      | MTA Light Rail   | Light RailLink                   | ✅ Collecting                      |
+| 🎸 **Cleveland**      | RTA Rapid        | Red, Blue, Green                 | ✅ Collecting                      |
 | 🍁 **Calgary**        | Calgary CTrain   | Red Line, Blue Line              | ❌ No public vehicle-position data |
-| 🌊 **San Diego**      | MTS Trolley      | Blue, Orange, Green, Copper      | ⏳ Needs key           |
-| 🤠 **Dallas**         | DART Light Rail  | Red, Blue, Green, Orange         | ⏳ Needs key           |
+| 🌊 **San Diego**      | MTS Trolley      | Blue, Orange, Green, Copper      | ⏳ Needs key                       |
+| 🤠 **Dallas**         | DART Light Rail  | Red, Blue, Green, Orange         | ⏳ Needs key                       |
 
 ## ✨ Features
 
@@ -145,7 +145,7 @@ The focus remains on **light rail and streetcars that compete with street traffi
 
 ```bash
 # Clone the repository
-git clone https://github.com/philiphamner/muni-speed-map.git
+git clone https://github.com/phamner/muni-speed-map.git
 cd muni-speed-map
 
 # Install dependencies
@@ -192,29 +192,29 @@ npm run collect:all
 
 ### 📜 Collection Scripts
 
-| Command                              | City                 | Script                            | Status                 |
-| ------------------------------------ | -------------------- | --------------------------------- | ---------------------- |
-| `npm run collect:sf`                 | San Francisco        | `collectData.js`                  | ✅ Active              |
-| `npm run collect:la`                 | Los Angeles          | `collectDataLA.js`                | ✅ Active              |
-| `npm run collect:seattle`            | Seattle              | `collectDataSeattle.js`           | ✅ Active              |
-| `npm run collect:portland`           | Portland (MAX)       | `collectDataPortland.js`          | ✅ Active              |
-| `npm run collect:portland-streetcar` | Portland (Streetcar) | `collectDataPortlandStreetcar.js` | ✅ Active              |
-| `npm run collect:boston`             | Boston               | `collectDataBoston.js`            | ✅ Active              |
-| `npm run collect:philly`             | Philadelphia         | `collectDataPhilly.js`            | ✅ Active              |
-| `npm run collect:toronto`            | Toronto              | `collectDataToronto.js`           | ✅ Active              |
-| `npm run collect:sacramento`         | Sacramento           | `collectDataSacramento.js`        | ✅ Active              |
-| `npm run collect:minneapolis`        | Minneapolis          | `collectDataMinneapolis.js`       | ✅ Active              |
-| `npm run collect:denver`             | Denver               | `collectDataDenver.js`            | ✅ Active              |
-| `npm run collect:slc`                | Salt Lake City       | `collectDataSaltLakeCity.js`      | ✅ Active              |
-| `npm run collect:pittsburgh`         | Pittsburgh           | `collectDataPittsburgh.js`        | ✅ Active              |
-| `npm run collect:vta`                | San Jose (VTA)       | `collectDataVTA.js`               | ✅ Active              |
-| `npm run collect:phoenix`            | Phoenix              | `collectDataPhoenix.js`           | ✅ Active              |
-| `npm run collect:charlotte`          | Charlotte            | `collectDataCharlotte.js`         | ✅ Active              |
+| Command                              | City                 | Script                            | Status                             |
+| ------------------------------------ | -------------------- | --------------------------------- | ---------------------------------- |
+| `npm run collect:sf`                 | San Francisco        | `collectData.js`                  | ✅ Active                          |
+| `npm run collect:la`                 | Los Angeles          | `collectDataLA.js`                | ✅ Active                          |
+| `npm run collect:seattle`            | Seattle              | `collectDataSeattle.js`           | ✅ Active                          |
+| `npm run collect:portland`           | Portland (MAX)       | `collectDataPortland.js`          | ✅ Active                          |
+| `npm run collect:portland-streetcar` | Portland (Streetcar) | `collectDataPortlandStreetcar.js` | ✅ Active                          |
+| `npm run collect:boston`             | Boston               | `collectDataBoston.js`            | ✅ Active                          |
+| `npm run collect:philly`             | Philadelphia         | `collectDataPhilly.js`            | ✅ Active                          |
+| `npm run collect:toronto`            | Toronto              | `collectDataToronto.js`           | ✅ Active                          |
+| `npm run collect:sacramento`         | Sacramento           | `collectDataSacramento.js`        | ✅ Active                          |
+| `npm run collect:minneapolis`        | Minneapolis          | `collectDataMinneapolis.js`       | ✅ Active                          |
+| `npm run collect:denver`             | Denver               | `collectDataDenver.js`            | ✅ Active                          |
+| `npm run collect:slc`                | Salt Lake City       | `collectDataSaltLakeCity.js`      | ✅ Active                          |
+| `npm run collect:pittsburgh`         | Pittsburgh           | `collectDataPittsburgh.js`        | ✅ Active                          |
+| `npm run collect:vta`                | San Jose (VTA)       | `collectDataVTA.js`               | ✅ Active                          |
+| `npm run collect:phoenix`            | Phoenix              | `collectDataPhoenix.js`           | ✅ Active                          |
+| `npm run collect:charlotte`          | Charlotte            | `collectDataCharlotte.js`         | ✅ Active                          |
 | `npm run collect:calgary`            | Calgary              | `collectDataCalgary.js`           | ❌ No public vehicle-position data |
-| `npm run collect:baltimore`          | Baltimore            | `collectDataBaltimore.js`         | ✅ Active              |
-| `npm run collect:cleveland`          | Cleveland            | `collectDataCleveland.js`         | ✅ Active              |
-| `npm run collect:sandiego`           | San Diego            | `collectDataSanDiego.js`          | ⏳ Needs API key       |
-| `npm run collect:dallas`             | Dallas               | `collectDataDallas.js`            | ⏳ Needs API key       |
+| `npm run collect:baltimore`          | Baltimore            | `collectDataBaltimore.js`         | ✅ Active                          |
+| `npm run collect:cleveland`          | Cleveland            | `collectDataCleveland.js`         | ✅ Active                          |
+| `npm run collect:sandiego`           | San Diego            | `collectDataSanDiego.js`          | ⏳ Needs API key                   |
+| `npm run collect:dallas`             | Dallas               | `collectDataDallas.js`            | ⏳ Needs API key                   |
 
 **Combined Scripts:**
 
@@ -252,7 +252,6 @@ npm run collect:all
 | Charlotte      | CATS GTFS-RT        | ❌ No key needed                                                                               |
 | Baltimore      | Swiftly GTFS-RT     | ✅ Yes - https://www.goswift.ly/ (via MTA Maryland)                                            |
 | San Diego      | MTS GTFS-RT         | ✅ Yes - https://www.sdmts.com/business-center/app-developers                                  |
-
 
 ## 🗂️ Project Structure
 
@@ -332,7 +331,7 @@ MIT License - feel free to use and adapt for transit advocacy in your city!
 ## 👤 Author
 
 **Philip Hamner**
-[LinkedIn](https://www.linkedin.com/in/philip-hamner/) · [GitHub](https://github.com/philiphamner)
+[LinkedIn](https://www.linkedin.com/in/philip-hamner/) · [GitHub](https://github.com/phamner)
 
 ---
 

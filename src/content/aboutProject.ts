@@ -132,7 +132,7 @@ export const ABOUT_SECTIONS = {
     ],
     exclusions: [
       "Heavy rail systems (e.g., New York City, Chicago, Washington DC, Honolulu, Vancouver, Montreal)",
-      "Heritage and streetcar-only systems (e.g., New Orleans, SF Cable Cars, Detroit, Kansas City, Cincinnati, Norfolk)",
+      "Heritage and streetcar-only systems (e.g., New Orleans, SF Cable Cars, Detroit, Kansas City, Cincinnati, Norfolk). If anyone has a good argument for including any of these, I'm open to it.",
       "Systems without public vehicle-position data that can support this snapshot-based methodology (e.g., Dallas DART, Houston METRORail, Sacramento SacRT, St. Louis MetroLink, New Jersey Hudson-Bergen Light Rail, New Jersey River Line, Calgary CTrain, Edmonton LRT, and several Mexican systems)",
       "I have actively tried to add several of these systems (including HBLR, River Line, Calgary, Edmonton, St. Louis, Dallas, and Houston) and will add them if I can find reliable data that supports the same fleet-wide snapshot methodology.",
     ],
@@ -143,7 +143,7 @@ export const ABOUT_SECTIONS = {
       "Mapping: OpenStreetMap data + custom overlays",
     ],
     sourceCode: [
-      "GitHub Repository: https://github.com/philiphamner/muni-speed-map",
+      "GitHub Repository: https://github.com/phamner/muni-speed-map",
     ],
   },
 
@@ -231,42 +231,42 @@ export const ABOUT_PROSPECTIVE_CITIES: AboutProspectiveCity[] = [
     city: "New Jersey (NYC metro)",
     system: "Hudson-Bergen Light Rail (HBLR)",
     value:
-      "HBLR would be a strong comparison because it combines dense urban service, multiple branches, and substantial at-grade running in Jersey City, Hoboken, and Bayonne.",
+      "HBLR, operated by NJ Transit, runs through the dense urban waterfront cities of Jersey City, Hoboken, and Bayonne in the New York metropolitan area. The line has multiple branches, closely spaced stations, and a mix of street-running, dedicated right-of-way, and former freight alignments along the Hudson waterfront. I really like how urban this system feels compared with most North American light rail, and it would be a great addition as the project’s only rail line from the NYC metro area.",
     blocker: "No public live vehicle-position data.",
   },
   {
     city: "New Jersey / Philadelphia region",
     system: "River Line",
     value:
-      "The River Line would extend the Philly-region context with a distinct interurban-style light rail corridor between Camden and Trenton.",
+      "River Line, operated by NJ Transit, runs along the Delaware River between Camden and Trenton. The line has a more interurban-style alignment, with long stretches of dedicated right-of-way and relatively wide station spacing. Adding the River Line to the Philadelphia map would extend the regional context across the river and bring in an important rail corridor on the New Jersey side of the metro area.",
     blocker: "No public live vehicle-position data.",
   },
   {
     city: "Calgary",
     system: "CTrain",
     value:
-      "Calgary is one of North America's busiest light rail systems, with downtown street-running plus major at-grade segments, making it a high-value comparison city.",
+      "Calgary Transit operates the CTrain, one of the busiest light-rail systems in North America, carrying very high ridership for a metro area its size. The network combines a downtown transit mall with street-running segments and long outer corridors that operate largely in dedicated at-grade right-of-way, producing a wide range of operating conditions across the system. This mix of dense urban running and fast suburban segments makes Calgary a valuable comparison city for analyzing how speeds vary across different types of light-rail infrastructure. I wanted more Canadian cities in the project, and I was impressed with the network the city has built.",
     blocker: "No public live light rail vehicle-position data (bus data only).",
   },
   {
     city: "Edmonton",
     system: "Edmonton LRT",
     value:
-      "Edmonton's expanding LRT network (Capital, Metro, and Valley lines) would add a useful mix of urban at-grade, elevated, and tunneled operations.",
+      "Edmonton Transit Service operates the Edmonton LRT, which has evolved from an early grade-separated light-metro style system into a multi-line network that now includes tunneled downtown segments, elevated sections, and newer surface-running corridors. With the addition of the Valley Line, the network now spans a wide range of infrastructure types within a single system. This mix provides a useful look at how a historically grade-separated light rail system has expanded over time, adding newer surface-running lines while retaining its original tunneled core.",
     blocker: "No public live light rail vehicle-position data (bus data only).",
   },
   {
     city: "St. Louis",
     system: "MetroLink",
     value:
-      "MetroLink would add another major Midwestern light rail system with at-grade segments and corridor-level speed comparisons.",
+      "MetroLink, operated by Bi-State Development Agency, runs through St. Louis and nearby suburbs largely in exclusive right-of-way with relatively wide station spacing. Although technically light rail, the system behaves more like light metro or regional rail, with long uninterrupted segments and very little street running. That makes it an interesting addition, showing how much faster a North American light-rail system can operate when it’s built mostly separated from traffic.",
     blocker: "No public live vehicle-position data.",
   },
   {
     city: "Dallas",
     system: "DART Light Rail",
     value:
-      "DART is one of the largest light rail networks in North America, and adding it would provide valuable multi-corridor comparisons across a large at-grade system.",
+      "Dallas Area Rapid Transit (DART) operates the largest light-rail network in the United States, with 90+ miles of track spread across four lines. Much of the system runs in dedicated right-of-way along freight corridors or highway medians, with relatively little mixed-traffic street running. This makes it a useful contrast to more urban systems like SF Muni or LA Metro, which include more tunnels and street segments. Adding DART would allow comparisons across a large, mostly at-grade suburban light-rail network, highlighting how operating speeds vary between downtown trunk segments and long outer corridors.",
     blocker: "No public live vehicle-position data.",
   },
   {
@@ -280,28 +280,28 @@ export const ABOUT_PROSPECTIVE_CITIES: AboutProspectiveCity[] = [
     city: "Sacramento",
     system: "SacRT Light Rail",
     value:
-      "Sacramento has downtown street-running and at-grade sections that fit the project's core use case and would add a useful California comparison.",
+      "Sacramento Regional Transit District operates the SacRT Light Rail, a large mostly at-grade network serving Sacramento and the surrounding suburbs. The system includes downtown street-running segments along K Street as well as long suburban corridors with widely spaced stations. Its combination of urban street-running and extended surface alignments would make it useful for examining how speeds change between dense downtown segments and longer suburban sections within the same system.",
     blocker: "No public live light rail vehicle-position data (bus data only).",
   },
   {
     city: "Guadalajara",
     system: "SITEUR light rail",
     value:
-      "Guadalajara would broaden the project beyond the US and Canada and add a comparison with a major Mexican urban rail system.",
+      "Sistema de Tren Eléctrico Urbano operates the SITEUR light rail, a network that combines older surface-running light rail with newer fully grade-separated lines such as SITEUR Line 3. This creates an interesting mix of street-running corridors and modern metro-style infrastructure within the same system.",
     blocker: "No public live light rail vehicle-position data.",
   },
   {
     city: "Mexico City",
     system: "Tren Ligero",
     value:
-      "Mexico City's Tren Ligero would add a strong comparison for busy urban light rail in a very different street and transit environment.",
+      "The Tren Ligero, operated by Servicio de Transportes Eléctricos, is one of the busiest light-rail corridors in Latin America. Running through dense southern districts of Mexico City, it functions as a major feeder to the metro network and carries heavy ridership along a largely surface-running alignment.",
     blocker: "No public live light rail vehicle-position data.",
   },
   {
     city: "Monterrey",
     system: "Metrorrey",
     value:
-      "Monterrey would add another major Mexican metro-area rail comparison and expand the project's coverage beyond the US and Canada.",
+      "Sistema de Transporte Colectivo Metrorrey operates the Metrorrey, a predominantly elevated urban rail system running above major arterial roads in Monterrey. Its long elevated segments and widely spaced stations create operating conditions that differ significantly from typical street-running light-rail networks.",
     blocker: "No public live rail vehicle-position data.",
   },
 ];

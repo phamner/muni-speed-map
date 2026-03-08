@@ -1621,7 +1621,7 @@ export function Controls({
         <p className="data-attribution" style={{ marginTop: "8px" }}>
           Built by Philip Hamner ·{" "}
           <a
-            href="https://github.com/philiphamner/muni-speed-map"
+            href="https://github.com/phamner/muni-speed-map"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -1662,7 +1662,7 @@ export function Controls({
                 >
                   Built by Philip Hamner ·{" "}
                   <a
-                    href="https://github.com/philiphamner/muni-speed-map"
+                    href="https://github.com/phamner/muni-speed-map"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -1875,11 +1875,11 @@ export function Controls({
                         <li>
                           GitHub Repository:{" "}
                           <a
-                            href="https://github.com/philiphamner/muni-speed-map"
+                            href="https://github.com/phamner/muni-speed-map"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            https://github.com/philiphamner/muni-speed-map
+                            https://github.com/phamner/muni-speed-map
                           </a>
                         </li>
                       </ul>
