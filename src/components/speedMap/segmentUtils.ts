@@ -2,7 +2,15 @@ import { haversineDistance, distanceToSegment } from "./geoUtils";
 
 export const SEGMENT_SIZE_METERS = 200;
 
-export const CITIES_WITH_PARALLEL_TRACKS = ["LA", "Denver"];
+export const CITIES_WITH_PARALLEL_TRACKS = [
+  "SF",
+  "LA",
+  "Denver",
+  "Boston",
+  "Phoenix",
+  "Cleveland",
+  "Toronto",
+];
 
 export interface SegmentData {
   segmentId: string;
