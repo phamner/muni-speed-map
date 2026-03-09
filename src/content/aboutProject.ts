@@ -202,11 +202,11 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Salt Lake City",
-    note: "TRAX lines share downtown trackage, so filter by line to compare them individually. The system includes both street-running and grade-separated segments with distinct performance characteristics.",
+    note: "TRAX lines share downtown trackage, so filter by line to compare them individually. The system includes both street-running and grade-separated segments with distinct performance characteristics. I was suprised at how quickly trains run in this system, getting up to nearly 50 mph for miles at a time.",
   },
   {
     city: "San Diego",
-    note: "The Trolley has solid data coverage across all four lines. The system includes both street-running and grade-separated segments, and the speed differences between them are visible.",
+    note: "The Trolley has solid data coverage across all four lines. The system includes both street-running and grade-separated segments, and the speed differences between them are very visible.",
   },
   {
     city: "San Francisco",
@@ -218,7 +218,7 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Seattle",
-    note: "Link has sharp speed transitions where it moves between tunnel, elevated, and surface-running segments. The Rainier Valley surface section is noticeably slower than the rest of the line. This is one of the clearest examples on the platform of how grade separation directly affects operating speed within a single line.",
+    note: "Link has sharp speed transitions where it moves between tunnel, elevated, and surface-running segments. The Rainier Valley surface section is (famously) slower than the rest of the 1 line. This is one of the clearest examples on the platform of how grade separation directly affects operating speed within a single line.",
   },
   {
     city: "Toronto",
