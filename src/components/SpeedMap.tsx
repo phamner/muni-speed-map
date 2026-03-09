@@ -2230,18 +2230,8 @@ export function SpeedMap({
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
 
-    // Determine crossing color based on city
-    // Cities with verified CPUC gate data get green for gated crossings, orange for others
-    // All other cities get orange (OSM barrier data unreliable)
-    const verifiedGateCities = ["LA", "Charlotte", "San Diego"];
-    const crossingColor = verifiedGateCities.includes(city)
-      ? [
-          "case",
-          ["==", ["get", "crossing_barrier"], "yes"],
-          "#22c55e", // Green for gated crossings in verified cities
-          "#ff9500", // Orange for ungated/unknown
-        ]
-      : "#ff9500"; // Orange for all other cities
+    // All crossings use orange (gated vs non-gated distinction disabled - data too inconsistent)
+    const crossingColor = "#ff9500";
 
     // Check if source already exists - if so, just update data (fast path)
     const existingSource = map.current.getSource(

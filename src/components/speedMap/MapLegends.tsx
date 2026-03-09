@@ -191,8 +191,9 @@ export function DynamicLegends({
   showBusRoutesOverlay,
 }: DynamicLegendsProps) {
   const showCrossingLegend =
-    showCrossings &&
-    ["LA", "San Diego", "Salt Lake City", "Charlotte"].includes(city);
+    false &&
+    (showCrossings &&
+      ["LA", "San Diego", "Salt Lake City", "Charlotte"].includes(city));
   const showRailContextLegend =
     showRailContextHeavy || showRailContextCommuter || showBusRoutesOverlay;
 
@@ -205,12 +206,8 @@ export function DynamicLegends({
           <div className="dynamic-legend-title">Grade Crossings</div>
           <div className="crossing-legend-items">
             <div className="crossing-legend-item">
-              <span className="crossing-x gated">✕</span>
-              <span>Gated</span>
-            </div>
-            <div className="crossing-legend-item">
               <span className="crossing-x other">✕</span>
-              <span>Other</span>
+              <span>Street-level crossing</span>
             </div>
           </div>
         </div>
