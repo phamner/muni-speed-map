@@ -47,6 +47,8 @@
     "parse-gtfs:sacramento": "node scripts/parseGtfsSacramento.js",
     "parse-gtfs:slc": "node scripts/parseGtfsSLC.js",
     "parse-gtfs:pittsburgh": "node scripts/parseGtfsPittsburgh.js",
+    "parse-gtfs:vta": "node scripts/parseGtfsVTA.js",
+    "merge:vta": "node scripts/mergeVtaLineStrings.js",
     "parse-stops:seattle": "node scripts/parseStopsSeattle.js",
     "parse-stops:boston": "node scripts/parseStopsBoston.js",
     "parse-stops:portland": "node scripts/parseStopsPortland.js",
