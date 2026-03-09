@@ -1,4 +1,4 @@
-# 🚊 Light Rail Analytics Map
+# 🚊 Light Rail Speed Map
 
 An aggregated snapshot visualization tool for analyzing light rail and streetcar speeds across major US cities. Identify slow zones, compare performance, and support data-driven transit advocacy.
 

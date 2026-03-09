@@ -28,7 +28,7 @@ export const ABOUT_TABS: { id: AboutTab; label: string }[] = [
 ];
 
 export const ABOUT_SECTIONS = {
-  title: "Light Rail Analytics Map",
+  title: "Light Rail Speed Map",
 
   overview: {
     intro: [
