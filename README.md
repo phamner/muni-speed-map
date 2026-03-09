@@ -41,7 +41,7 @@ Each city was selected because its light rail or streetcar system has **signific
 | 💻 **San Jose**       | VTA Light Rail   | Silicon Valley light rail with extensive street-running through downtown San Jose           |
 | 🍁 **Toronto**        | TTC Streetcars   | Largest streetcar network in North America with extensive mixed-traffic operation           |
 | 🌆 **Minneapolis**    | Metro Transit    | Blue and Green Lines have at-grade sections in urban areas                                  |
-| 🏔️ **Denver**         | RTD Light Rail   | Downtown street-running sections with at-grade crossings                                    |
+| 🏔️ **Denver**         | RTD Light Rail   | Downtown street-running sections with grade crossings                                    |
 | 🏔️ **Salt Lake City** | UTA TRAX         | Four light rail lines with street-running through downtown Salt Lake City                   |
 | 🏗️ **Pittsburgh**     | The T Light Rail | Historic light rail system with downtown subway and South Hills surface sections            |
 | 🏛️ **Sacramento**     | SacRT Light Rail | Street-running through downtown Sacramento with Gold and Blue Lines                         |

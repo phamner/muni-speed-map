@@ -162,7 +162,7 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Boston",
-    note: "The Green Line is probably the most interesting map on here for comparing branches. Each branch (B, C, D, E) has a completely different speed profile, and you can clearly see how the B Line's closely spaced stops and street running drag its speeds down compared to the D Line's reserved right-of-way. The central subway section shows consistent speeds, but watch for the slowdowns where branches merge near Kenmore.",
+    note: "The Green Line branches show how much grade crossings matter. The D Line runs mostly in reserved right-of-way with far fewer grade crossings than the B, C, or E branches, and it shows up as noticeably faster on the map. The B and E lines, with more street-running and intersections, slow down more. Filter by branch to compare them directly.",
   },
   {
     city: "Charlotte",
@@ -214,7 +214,7 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "San Jose",
-    note: "VTA light rail runs almost entirely at surface level with a lot of at-grade crossings, and it shows in the speed data. Compare the different corridor sections to see how much operating conditions vary even within a mostly-surface system.",
+    note: "VTA light rail runs almost entirely at surface level with a lot of grade crossings, and it shows in the speed data. Compare the different corridor sections to see how much operating conditions vary even within a mostly-surface system.",
   },
   {
     city: "Seattle",
