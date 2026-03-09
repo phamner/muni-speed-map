@@ -166,15 +166,15 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Charlotte",
-    note: "The Blue Line runs mostly in dedicated right-of-way with wide station spacing, while the Gold Line (CityLYNX) is short, slow, and street-running downtown. Comparing the two on the same map is a good illustration of how much infrastructure type affects speed.",
+    note: "The Blue Line runs mostly in dedicated right-of-way with wide station spacing, while the Gold Line (CityLYNX) is a short and slow street car system running downtown. Comparing the two on the same map is a good illustration of how much infrastructure type affects speed.",
   },
   {
     city: "Cleveland",
-    note: "The Blue and Green lines share surface trackage on the east side. I was surpised at how fast they both operated in the East, where there are far more grade crossings than downtown.",
+    note: "The Blue and Green lines share surface trackage on the east side. I was surpised at how fast they both operated in the East, despite the fact that there are far more grade crossings than downtown.",
   },
   {
     city: "Denver",
-    note: "RTD has a huge light rail network, and the speed variation across it is striking. Only light rail lines are included here; commuter rail (A, B, G, N) is excluded. The suburban segments run fast, but the downtown core and shared-trackage sections slow down significantly. Line-level filtering is useful because the network-wide average hides a lot. I was a bit baffled by the layout of the network, which seems to have been built haphazardly on existing ROWs.",
+    note: "RTD has a huge light rail network, and the speed variation across it is striking. Only light rail lines are included here; commuter rail (A, B, G, N) is excluded from displaying speed data. The suburban segments run fast, but the downtown core and shared-trackage sections slow down significantly. Line-level filtering is useful because the network-wide average hides a lot. I was a bit baffled by the layout of the network, which seems to have been built haphazardly on existing ROWs.",
   },
   {
     city: "Los Angeles",
