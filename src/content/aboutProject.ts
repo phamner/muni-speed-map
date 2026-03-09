@@ -198,7 +198,7 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Portland",
-    note: "MAX uses downtown transit-mall segments where trains share lanes with buses. Grade-crossing patterns may appear sparse in the core because these differ from conventional at-grade crossings. Speed is provided directly by the transit agency's API for each vehicle observation.",
+    note: "MAX uses downtown transit-mall segments where trains share lanes with buses. Grade-crossing patterns may appear sparse in the core because these differ from conventional at-grade crossings. I believe the Broadway Bridge was closed to transit when I collected data, so there is a gap in coverage there. Speed is provided directly by the transit agency's API for each vehicle observation.",
   },
   {
     city: "Salt Lake City",
