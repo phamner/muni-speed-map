@@ -1441,7 +1441,8 @@ export function Controls({
       {/* Info */}
       <div className="info-section">
         <p className="data-attribution">
-          Grade crossing, switch, and speed limit data from{" "}
+          Grade crossing, switch, speed limit, grade separation, and traffic light
+          data from{" "}
           <a
             href="https://www.openrailwaymap.org/"
             target="_blank"
@@ -1572,6 +1573,14 @@ export function Controls({
               rel="noopener noreferrer"
             >
               RTA Developer Resources
+            </a>
+          ) : city === "Phoenix" ? (
+            <a
+              href="https://www.phoenixopendata.com/dataset/general-transit-feed-specification"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Valley Metro GTFS-RT (Phoenix Open Data)
             </a>
           ) : (
             <span>Transit API</span>
