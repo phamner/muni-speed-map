@@ -299,6 +299,33 @@
   text-transform: lowercase;
 }
 
+.speed-by-line-info-icon {
+  margin-left: 6px;
+  font-size: 0.8em;
+  opacity: 0.85;
+  cursor: help;
+  vertical-align: middle;
+  text-transform: none;
+}
+
+.speed-info-tooltip {
+  z-index: 10000;
+  padding: 8px 12px;
+  background: rgba(15, 15, 25, 0.95);
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.75rem;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: normal;
+  line-height: 1.4;
+  max-width: 240px;
+  white-space: normal;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
 .control-label-row {
   display: flex;
   justify-content: space-between;

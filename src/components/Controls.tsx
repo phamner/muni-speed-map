@@ -444,6 +444,19 @@ export function Controls({
   const TRANSIT_MAP_PAN_STEP = 40;
   const TRANSIT_MAP_PAN_STEP_FAST = 120;
 
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; text: string } | null>(null);
+  const tooltipTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const showTooltip = (e: React.MouseEvent, text: string) => {
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    tooltipTimer.current = setTimeout(() => {
+      setTooltip({ x: rect.right + 8, y: rect.top, text });
+    }, 500);
+  };
+  const hideTooltip = () => {
+    if (tooltipTimer.current) clearTimeout(tooltipTimer.current);
+    tooltipTimer.current = null;
+    setTooltip(null);
+  };
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [aboutActiveTab, setAboutActiveTab] = useState<AboutTab>("overview");
   const [showTransitMapModal, setShowTransitMapModal] = useState(false);
@@ -848,7 +861,8 @@ export function Controls({
         <button
           className="app-header-link-btn"
           onClick={() => setShowTransitMapModal(true)}
-          title="View rail map"
+          onMouseEnter={(e) => showTooltip(e, "View rail map")}
+          onMouseLeave={hideTooltip}
         >
           View rail map
         </button>
@@ -873,7 +887,8 @@ export function Controls({
         <button
           className={`city-btn  ${city === "Seattle" ? "active" : ""}`}
           onClick={() => setCity("Seattle")}
-          title="Waiting for API key"
+          onMouseEnter={(e) => showTooltip(e, "Waiting for API key")}
+          onMouseLeave={hideTooltip}
         >
           ☕ Seattle
         </button>
@@ -900,7 +915,8 @@ export function Controls({
         <button
           className={`city-btn  ${city === "San Jose" ? "active" : ""}`}
           onClick={() => setCity("San Jose")}
-          title="Data collection starting soon"
+          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
+          onMouseLeave={hideTooltip}
         >
           💻 SJ
         </button>
@@ -913,14 +929,16 @@ export function Controls({
         <button
           className={`city-btn ${city === "Minneapolis" ? "active" : ""}`}
           onClick={() => setCity("Minneapolis")}
-          title="Data collection starting soon"
+          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
+          onMouseLeave={hideTooltip}
         >
           🌲 MSP
         </button>
         <button
           className={`city-btn ${city === "Denver" ? "active" : ""}`}
           onClick={() => setCity("Denver")}
-          title="Data collection starting soon"
+          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
+          onMouseLeave={hideTooltip}
         >
           ⛏️ Denver
         </button>
@@ -929,14 +947,16 @@ export function Controls({
         <button
           className={`city-btn  ${city === "Salt Lake City" ? "active" : ""}`}
           onClick={() => setCity("Salt Lake City")}
-          title="Data collection starting soon"
+          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
+          onMouseLeave={hideTooltip}
         >
           🏔️ SLC
         </button>
         <button
           className={`city-btn  ${city === "Pittsburgh" ? "active" : ""}`}
           onClick={() => setCity("Pittsburgh")}
-          title="Data collection starting soon"
+          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
+          onMouseLeave={hideTooltip}
         >
           🏗️ PIT
         </button>
@@ -944,7 +964,8 @@ export function Controls({
         <button
           className={`city-btn ${city === "Phoenix" ? "active" : ""}`}
           onClick={() => setCity("Phoenix")}
-          title="Valley Metro Rail"
+          onMouseEnter={(e) => showTooltip(e, "Valley Metro Rail")}
+          onMouseLeave={hideTooltip}
         >
           🌵 PHX
         </button>
@@ -952,7 +973,8 @@ export function Controls({
         <button
           className={`city-btn ${city === "Charlotte" ? "active" : ""}`}
           onClick={() => setCity("Charlotte")}
-          title="LYNX Blue Line & Gold Line"
+          onMouseEnter={(e) => showTooltip(e, "LYNX Blue Line & Gold Line")}
+          onMouseLeave={hideTooltip}
         >
           🏦 CLT
         </button>
@@ -960,7 +982,8 @@ export function Controls({
         <button
           className={`city-btn ${city === "Baltimore" ? "active" : ""}`}
           onClick={() => setCity("Baltimore")}
-          title="MTA Light RailLink"
+          onMouseEnter={(e) => showTooltip(e, "MTA Light RailLink")}
+          onMouseLeave={hideTooltip}
         >
           🦀 BAL
         </button>
@@ -968,7 +991,8 @@ export function Controls({
         <button
           className={`city-btn ${city === "Cleveland" ? "active" : ""}`}
           onClick={() => setCity("Cleveland")}
-          title="RTA Red, Blue & Green Lines"
+          onMouseEnter={(e) => showTooltip(e, "RTA Red, Blue & Green Lines")}
+          onMouseLeave={hideTooltip}
         >
           🎸 CLE
         </button>
@@ -976,7 +1000,8 @@ export function Controls({
         <button
           className={`city-btn ${city === "San Diego" ? "active" : ""}`}
           onClick={() => setCity("San Diego")}
-          title="Waiting for API key"
+          onMouseEnter={(e) => showTooltip(e, "Waiting for API key")}
+          onMouseLeave={hideTooltip}
         >
           🌊 SD
         </button>
@@ -1180,11 +1205,10 @@ export function Controls({
               onClick={() => {
                 toggleLine(line);
               }}
-              title={
-                city === "Toronto" && line === "805"
-                  ? "Line 5 Eglinton - Under Construction (route data from OpenStreetMap)"
-                  : getLineInfo(line, city)
-              }
+              onMouseEnter={(e) => showTooltip(e, city === "Toronto" && line === "805"
+                ? "Line 5 Eglinton - Under Construction (route data from OpenStreetMap)"
+                : getLineInfo(line, city) || "")}
+              onMouseLeave={hideTooltip}
             >
               {city === "Toronto" ? (
                 <>
@@ -1241,7 +1265,8 @@ export function Controls({
                 className="route-mode-btn"
                 style={{ opacity: 0.4, cursor: "not-allowed" }}
                 disabled
-                title="Speed limit data is not available for this city"
+                onMouseEnter={(e) => showTooltip(e, "Speed limit data is not available for this city")}
+                onMouseLeave={hideTooltip}
               >
                 Speed Limit
               </button>
@@ -1342,7 +1367,8 @@ export function Controls({
           {city === "Philadelphia" || city === "Toronto" ? (
             <label
               style={{ opacity: 0.5, cursor: "not-allowed" }}
-              title="Grade crossing data is not available for this city"
+              onMouseEnter={(e) => showTooltip(e, "Grade crossing data is not available for this city")}
+              onMouseLeave={hideTooltip}
             >
               <input type="checkbox" checked={false} disabled />
               Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
@@ -1408,6 +1434,13 @@ export function Controls({
         <div className="control-group">
           <div className="control-label">
             Speed by Line (<span className="unit-text">{unitLabel}</span>)
+            <span
+              className="speed-by-line-info-icon"
+              onMouseEnter={(e) => showTooltip(e, "Excludes vehicles under 0.5 mph (stopped trains, yards) to reflect operational speeds.")}
+              onMouseLeave={hideTooltip}
+            >
+              ⓘ
+            </span>
           </div>
           <div className="line-stats">
             {[...lineStats]
@@ -1417,7 +1450,8 @@ export function Controls({
                   <span
                     className={`line-stat-badge ${getBadgeWidthClass(city)}`}
                     style={{ backgroundColor: getLineColor(stat.line, city) }}
-                    title={getLineInfo(stat.line, city)}
+                    onMouseEnter={(e) => showTooltip(e, getLineInfo(stat.line, city) || "")}
+                    onMouseLeave={hideTooltip}
                   >
                     {getLineLabel(stat.line, city)}
                   </span>
@@ -2078,6 +2112,18 @@ export function Controls({
           </div>,
           document.body,
         )}
+      {tooltip && (
+        <div
+          className="speed-info-tooltip"
+          style={{
+            position: "fixed",
+            left: tooltip.x,
+            top: tooltip.y,
+          }}
+        >
+          {tooltip.text}
+        </div>
+      )}
     </div>
   );
 }
