@@ -101,6 +101,7 @@ const CITIES = {
     routesFile: "seattleLinkRoutes.json",
     crossingsFile: "seattleGradeCrossings.json",
     outputFile: "seattleTrafficLightsConsolidated.json",
+    includeUnsnappedForRoutes: ["TLINE"], // T Line streetcar runs in streets; 1/2 Line keep grade-crossing-only
   },
   Boston: {
     name: "Boston",
@@ -255,7 +256,7 @@ async function fetchWithRetry(query) {
 }
 
 async function fetchTrafficLightsForCity(cityKey, city) {
-  const { name, bbox, routesFile, crossingsFile, outputFile, includeUnsnapped } = city;
+  const { name, bbox, routesFile, crossingsFile, outputFile, includeUnsnapped, includeUnsnappedForRoutes } = city;
   const [south, west, north, east] = bbox;
 
   console.log(`\n🚦 Processing ${name}...`);
@@ -475,13 +476,25 @@ out body;
   });
 
   // Filter to only snapped traffic lights (those near grade crossings)
-  // Unless includeUnsnapped is true (for cities like Portland with missing crossing data)
+  // Unless includeUnsnapped (all) or includeUnsnappedForRoutes (specific routes only, e.g. T Line streetcar)
   const snappedLights = deduplicatedLights.filter((l) => l.properties.snapped);
-  const finalLights = includeUnsnapped ? deduplicatedLights : snappedLights;
+  const unsnappedLights = deduplicatedLights.filter((l) => !l.properties.snapped);
+
+  let additionalUnsnapped = [];
+  if (includeUnsnapped) {
+    additionalUnsnapped = unsnappedLights;
+  } else if (includeUnsnappedForRoutes?.length) {
+    additionalUnsnapped = unsnappedLights.filter((l) =>
+      (l.properties.routes || []).some((r) => includeUnsnappedForRoutes.includes(r))
+    );
+  }
+  const finalLights = [...snappedLights, ...additionalUnsnapped];
 
   console.log(`   🔗 ${snappedLights.length}/${deduplicatedLights.length} snapped to crossings`);
   if (includeUnsnapped) {
     console.log(`   📍 Including all ${deduplicatedLights.length} traffic lights (includeUnsnapped=true)`);
+  } else if (additionalUnsnapped.length) {
+    console.log(`   📍 Including ${additionalUnsnapped.length} unsnapped for routes: ${includeUnsnappedForRoutes.join(", ")}`);
   }
 
   // Save output

@@ -1335,7 +1335,7 @@ export function Controls({
               checked={showStops}
               onChange={(e) => setShowStops(e.target.checked)}
             />
-            Show stations
+            Show stations ◆
           </label>
         </div>
         <div className="route-lines-toggle">
@@ -1345,7 +1345,7 @@ export function Controls({
               title="Grade crossing data is not available for this city"
             >
               <input type="checkbox" checked={false} disabled />
-              Show grade crossings (X)
+              Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
             </label>
           ) : (
             <label>
@@ -1354,7 +1354,7 @@ export function Controls({
                 checked={showCrossings}
                 onChange={(e) => setShowCrossings(e.target.checked)}
               />
-              Show grade crossings (X)
+              Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
             </label>
           )}
         </div>
@@ -1365,7 +1365,7 @@ export function Controls({
               checked={showTrafficLights}
               onChange={(e) => setShowTrafficLights(e.target.checked)}
             />
-            Show traffic lights
+            Show traffic lights 🚦
           </label>
         </div>
         <div className="route-lines-toggle">
@@ -1375,7 +1375,7 @@ export function Controls({
               checked={showSwitches}
               onChange={(e) => setShowSwitches(e.target.checked)}
             />
-            Show track switches (Y)
+            Show track switches <span style={{ color: "#00d4ff" }}>Y</span>
           </label>
         </div>
       </CollapsibleSection>
