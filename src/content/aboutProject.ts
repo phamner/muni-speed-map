@@ -68,6 +68,7 @@ export const ABOUT_SECTIONS = {
     ],
     infrastructureMarkers: [
       "Grade crossings (X) mark where rail and roads intersect at street level. The type of control (gates, signals, or signs) can affect train speeds.",
+      "Streetcar systems (Toronto, Philly, Charlotte Gold, Portland streetcar segments, Seattle T Line) do not show grade-crossing markers, as these lines operate in streets rather than crossing them. Use the traffic light overlay instead to see intersection impacts.",
       "Track switches (Y) are movable rails at junctions and turnbacks. These often correlate with operational slow zones.",
       "Traffic signals show where trains must interact with street traffic signals.",
     ],
