@@ -720,28 +720,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "8256326691",
-        "type": "level_crossing",
-        "routes": [
-          "510"
-        ],
-        "name": null,
-        "crossing_barrier": null,
-        "crossing_light": null,
-        "crossing_bell": null,
-        "crossingCount": 1
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -80.8265338,
-          35.2136381
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "9983831527,9983831538",
         "type": "level_crossing",
         "routes": [
