@@ -160,15 +160,18 @@ async function fetchLrtVehicles() {
 
     const lrtVehicles = [];
     const routeCounts = {};
+    const allRouteCounts = {}; // Log every route we see in the feed
 
     for (const entity of feed.entity) {
       if (!entity.vehicle || !entity.vehicle.position) continue;
 
       const routeId = entity.vehicle.trip?.routeId;
       if (!routeId) continue;
+
+      allRouteCounts[routeId] = (allRouteCounts[routeId] || 0) + 1;
+
       if (!LRT_ROUTES.includes(routeId)) continue;
 
-      // Count vehicles per route for logging
       routeCounts[routeId] = (routeCounts[routeId] || 0) + 1;
 
       const position = entity.vehicle.position;
@@ -189,6 +192,13 @@ async function fetchLrtVehicles() {
         city: "Toronto",
       });
     }
+
+    // Log every route (route_id + vehicle count) we see in the GTFS-RT feed
+    // const routesList = Object.entries(allRouteCounts)
+    //   .sort((a, b) => b[1] - a[1])
+    //   .map(([route, count]) => `${route}: ${count}`)
+    //   .join(", ");
+    // console.log(`philip9991    📋 GTFS-RT feed routes: ${routesList}`);
 
     // Log LRT route status
     console.log("   🚈 LRT Status:");

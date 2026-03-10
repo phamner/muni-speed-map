@@ -202,6 +202,7 @@ const CITIES = {
     routesFile: "charlotteLightRailRoutes.json",
     crossingsFile: "charlotteGradeCrossings.json",
     outputFile: "charlotteTrafficLightsConsolidated.json",
+    includeUnsnapped: true, // Gold Line streetcar runs in mixed traffic, few OSM grade crossings
   },
   Cleveland: {
     name: "Cleveland",
