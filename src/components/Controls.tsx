@@ -1393,6 +1393,13 @@ export function Controls({
               onChange={(e) => setShowTrafficLights(e.target.checked)}
             />
             Show traffic lights 🚦
+            <span
+              className="speed-by-line-info-icon"
+              onMouseEnter={(e) => showTooltip(e, "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.")}
+              onMouseLeave={hideTooltip}
+            >
+              ⓘ
+            </span>
           </label>
         </div>
         <div className="route-lines-toggle">
