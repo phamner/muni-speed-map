@@ -447,9 +447,10 @@ export function Controls({
   const [tooltip, setTooltip] = useState<{ x: number; y: number; text: string } | null>(null);
   const tooltipTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const showTooltip = (e: React.MouseEvent, text: string) => {
-    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    const x = e.clientX + 12;
+    const y = e.clientY + 12;
     tooltipTimer.current = setTimeout(() => {
-      setTooltip({ x: rect.right + 8, y: rect.top, text });
+      setTooltip({ x, y, text });
     }, 500);
   };
   const hideTooltip = () => {
