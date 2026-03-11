@@ -2675,7 +2675,8 @@ export function SpeedMap({
     const addVehicleLayers = () => {
       if (!map.current) return;
 
-      const vehicleGeoJSON = viewMode === "live" ? cachedLiveVehicleGeoJSON : cachedVehicleGeoJSON;
+      const vehicleGeoJSON =
+        viewMode === "live" ? cachedLiveVehicleGeoJSON : cachedVehicleGeoJSON;
 
       const existingSource = map.current.getSource(
         "vehicles",
@@ -3094,7 +3095,9 @@ export function SpeedMap({
     }
 
     // Swap vehicle source data only when transitioning to/from live mode
-    const source = map.current.getSource("vehicles") as maplibregl.GeoJSONSource;
+    const source = map.current.getSource(
+      "vehicles",
+    ) as maplibregl.GeoJSONSource;
     if (source) {
       if (viewMode === "live") {
         source.setData(cachedLiveVehicleGeoJSON);
@@ -3118,12 +3121,7 @@ export function SpeedMap({
         map.current.setLayoutProperty("speed-segments", "visibility", "none");
       }
     }
-  }, [
-    viewMode,
-    cachedVehicleGeoJSON,
-    cachedLiveVehicleGeoJSON,
-    mapLoaded,
-  ]);
+  }, [viewMode, cachedVehicleGeoJSON, cachedLiveVehicleGeoJSON, mapLoaded]);
 
   // Memoized segment averages — computed from ALL readings (no speed filter).
   // Speed filtering happens in the display effect, which hides whole segments by average.
@@ -3163,13 +3161,7 @@ export function SpeedMap({
     }
 
     return segmentAverages;
-  }, [
-    vehicles,
-    hideStoppedTrains,
-    hideAllTrains,
-    city,
-    allRouteSegments,
-  ]);
+  }, [vehicles, hideStoppedTrains, hideAllTrains, city, allRouteSegments]);
 
   const cachedSegmentAverages500 = useMemo(() => {
     if (hideAllTrains) {
@@ -3207,21 +3199,19 @@ export function SpeedMap({
     }
 
     return segmentAverages;
-  }, [
-    vehicles,
-    hideStoppedTrains,
-    hideAllTrains,
-    city,
-    allRouteSegments500,
-  ]);
+  }, [vehicles, hideStoppedTrains, hideAllTrains, city, allRouteSegments500]);
 
   // Display effect for segments - uses cached averages, only re-runs when selectedLines changes
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
     if (viewMode !== "segments" && viewMode !== "segments-500") return;
 
-    const activeSegments = viewMode === "segments-500" ? allRouteSegments500 : allRouteSegments;
-    const activeAverages = viewMode === "segments-500" ? cachedSegmentAverages500 : cachedSegmentAverages;
+    const activeSegments =
+      viewMode === "segments-500" ? allRouteSegments500 : allRouteSegments;
+    const activeAverages =
+      viewMode === "segments-500"
+        ? cachedSegmentAverages500
+        : cachedSegmentAverages;
 
     const segmentFeatures = activeSegments
       .filter((seg) => shouldShowRoute(seg.routeId, selectedLines, city))
@@ -3234,7 +3224,8 @@ export function SpeedMap({
         const data = activeAverages.get(seg.segmentId);
         if (!data) return false;
         if (data.avg < speedFilter.minSpeed) return false;
-        if (speedFilter.maxSpeed < 50 && data.avg > speedFilter.maxSpeed) return false;
+        if (speedFilter.maxSpeed < 50 && data.avg > speedFilter.maxSpeed)
+          return false;
         return true;
       })
       .map((seg) => {
@@ -3286,7 +3277,7 @@ export function SpeedMap({
           source: "speed-segments",
           layout: {
             "line-join": "round",
-            "line-cap": "round",
+            "line-cap": "butt",
           },
           paint: {
             "line-width": 6,
