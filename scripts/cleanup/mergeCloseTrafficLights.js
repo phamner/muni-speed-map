@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const THRESHOLD_METERS = 42;
+const THRESHOLD_METERS = 15;
 
 const CITY_FILES = {
   philly: "phillyTrafficLightsConsolidated.json",

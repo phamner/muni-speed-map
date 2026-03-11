@@ -2666,34 +2666,7 @@
         "coordinates": [-75.329562, 39.93424666666667]
       }
     },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-258",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": ["102"],
-        "snapped": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-75.2923542, 39.9270191]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-259",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["102"],
-        "snapped": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-75.29287515, 39.927198149999995]
-      }
-    },
+
     {
       "type": "Feature",
       "properties": {
@@ -3251,10 +3224,10 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "manual-philly-102-1",
+        "id": "manual-philly-101-1",
         "type": "traffic_signal",
         "count": 1,
-        "routes": ["102"],
+        "routes": ["101"],
         "snapped": false,
         "crossing_id": null
       },
@@ -3266,10 +3239,10 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "manual-philly-102-2",
+        "id": "manual-philly-101-7",
         "type": "traffic_signal",
         "count": 1,
-        "routes": ["102"],
+        "routes": ["101"],
         "snapped": false,
         "crossing_id": null
       },
@@ -3281,10 +3254,10 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "manual-philly-102-3",
+        "id": "manual-philly-101-8",
         "type": "traffic_signal",
         "count": 1,
-        "routes": ["102"],
+        "routes": ["101"],
         "snapped": false,
         "crossing_id": null
       },
@@ -3296,10 +3269,10 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "manual-philly-102-4",
+        "id": "manual-philly-101-9",
         "type": "traffic_signal",
         "count": 1,
-        "routes": ["102"],
+        "routes": ["101"],
         "snapped": false,
         "crossing_id": null
       },
@@ -3311,10 +3284,10 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "manual-philly-102-5",
+        "id": "manual-philly-101-10",
         "type": "traffic_signal",
         "count": 1,
-        "routes": ["102"],
+        "routes": ["101"],
         "snapped": false,
         "crossing_id": null
       },
@@ -3326,7 +3299,22 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "manual-philly-102-6",
+        "id": "manual-philly-101-11",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["101"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-75.39300943725715, 39.918413487479846]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-philly-102-1",
         "type": "traffic_signal",
         "count": 1,
         "routes": ["102"],
@@ -3335,7 +3323,7 @@
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-75.39300943725715, 39.918413487479846]
+        "coordinates": [-75.29259583889969, 39.92717912610342]
       }
     }
   ]
