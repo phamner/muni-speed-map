@@ -80,7 +80,13 @@ const CITY_SELECTOR_ITEMS: {
   { id: "Seattle", sortName: "Seattle", label: "Seattle", emoji: "☕", tooltip: "Waiting for API key" },
   { id: "SF", sortName: "San Francisco", label: "SF", emoji: "🌉" },
   { id: "Toronto", sortName: "Toronto", label: "Toronto", emoji: "🍁" },
-].sort((a, b) => a.sortName.localeCompare(b.sortName));
+].sort((a, b) => a.sortName.localeCompare(b.sortName)) as {
+  id: City;
+  sortName: string;
+  label: string;
+  emoji: string;
+  tooltip?: string;
+}[];
 
 const OFFICIAL_TRANSIT_MAP_URLS: Record<City, string> = {
   SF: "https://www.sfmta.com/media/33952/download?inline",
