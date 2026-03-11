@@ -120,6 +120,7 @@ export function SpeedMap({
   const hoveredTractId = useRef<string | null>(null);
   const crossingHandlersRegistered = useRef(false);
   const suppressNextMapClickUnpin = useRef(false);
+  const prevViewMode = useRef<ViewMode>(viewMode);
   const routeLineModeRef = useRef(routeLineMode);
   routeLineModeRef.current = routeLineMode;
   const showRouteLinesRef = useRef(showRouteLines);
@@ -609,6 +610,34 @@ export function SpeedMap({
     [cityConfig.routes, city],
   );
 
+  // Pre-computed GeoJSON for vehicle layers — avoids expensive rebuilds on mode switches
+  const cachedVehicleGeoJSON = useMemo(() => {
+    const filtered = vehicles.filter(
+      (v) =>
+        shouldShowRoute(v.routeId, selectedLines, city) &&
+        isOnRoute(v.lat, v.lon, v.routeId, routeGeometryMap, city),
+    );
+    return {
+      type: "FeatureCollection" as const,
+      features: filtered.map((v) => ({
+        type: "Feature" as const,
+        properties: {
+          id: v.id,
+          routeId: v.routeId,
+          direction: v.direction ?? null,
+          speed: v.speed ?? null,
+          recordedAt: v.recordedAt,
+          city: city,
+          headsign: v.headsign ?? null,
+        },
+        geometry: {
+          type: "Point" as const,
+          coordinates: [v.lon, v.lat],
+        },
+      })),
+    };
+  }, [vehicles, selectedLines, city, routeGeometryMap]);
+
   // Compute live vehicles - only the latest position for each unique vehicle
   const liveVehicles = useMemo(() => {
     const latestByVehicle = new Map<string, Vehicle>();
@@ -627,6 +656,32 @@ export function SpeedMap({
 
     return Array.from(latestByVehicle.values());
   }, [vehicles]);
+
+  const cachedLiveVehicleGeoJSON = useMemo(() => {
+    const filtered = liveVehicles.filter(
+      (v) =>
+        shouldShowRoute(v.routeId, selectedLines, city) &&
+        isOnRoute(v.lat, v.lon, v.routeId, routeGeometryMap, city),
+    );
+    return {
+      type: "FeatureCollection" as const,
+      features: filtered.map((v) => ({
+        type: "Feature" as const,
+        properties: {
+          id: v.id,
+          routeId: v.routeId,
+          direction: v.direction ?? null,
+          speed: v.speed ?? null,
+          recordedAt: v.recordedAt,
+          city: city,
+        },
+        geometry: {
+          type: "Point" as const,
+          coordinates: [v.lon, v.lat],
+        },
+      })),
+    };
+  }, [liveVehicles, selectedLines, city, routeGeometryMap]);
 
   // Fetch vehicle positions from Supabase filtered by city
   const fetchVehiclesFromSupabase = useCallback(async () => {
@@ -2620,32 +2675,7 @@ export function SpeedMap({
     const addVehicleLayers = () => {
       if (!map.current) return;
 
-      // In live mode, show only latest positions; in raw mode, show all
-      const sourceVehicles = viewMode === "live" ? liveVehicles : vehicles;
-      const filteredVehicles = sourceVehicles.filter(
-        (v) =>
-          shouldShowRoute(v.routeId, selectedLines, city) &&
-          isOnRoute(v.lat, v.lon, v.routeId, routeGeometryMap, city),
-      );
-      const vehicleGeoJSON = {
-        type: "FeatureCollection" as const,
-        features: filteredVehicles.map((v) => ({
-          type: "Feature" as const,
-          properties: {
-            id: v.id,
-            routeId: v.routeId,
-            direction: v.direction ?? null,
-            speed: v.speed ?? null,
-            recordedAt: v.recordedAt,
-            city: city, // Include city for popup display logic
-            headsign: v.headsign ?? null,
-          },
-          geometry: {
-            type: "Point" as const,
-            coordinates: [v.lon, v.lat],
-          },
-        })),
-      };
+      const vehicleGeoJSON = viewMode === "live" ? cachedLiveVehicleGeoJSON : cachedVehicleGeoJSON;
 
       const existingSource = map.current.getSource(
         "vehicles",
@@ -2897,13 +2927,10 @@ export function SpeedMap({
       setTimeout(waitForStyle, 50);
     }
   }, [
-    vehicles,
-    liveVehicles,
+    cachedVehicleGeoJSON,
+    cachedLiveVehicleGeoJSON,
     viewMode,
     mapLoaded,
-    selectedLines,
-    routeGeometryMap,
-    city,
     isProcessing,
   ]);
 
@@ -3066,84 +3093,16 @@ export function SpeedMap({
       );
     }
 
-    // In live mode, update the source with only live vehicles
-    if (viewMode === "live") {
-      const filteredLiveVehicles = liveVehicles.filter(
-        (v) =>
-          shouldShowRoute(v.routeId, selectedLines, city) &&
-          isOnRoute(v.lat, v.lon, v.routeId, routeGeometryMap, city),
-      );
-
-      const liveGeoJSON = {
-        type: "FeatureCollection" as const,
-        features: filteredLiveVehicles.map((v) => ({
-          type: "Feature" as const,
-          properties: {
-            id: v.id,
-            routeId: v.routeId,
-            direction: v.direction ?? null,
-            speed: v.speed ?? null,
-            recordedAt: v.recordedAt,
-            city: city,
-          },
-          geometry: {
-            type: "Point" as const,
-            coordinates: [v.lon, v.lat],
-          },
-        })),
-      };
-
-      const source = map.current.getSource(
-        "vehicles",
-      ) as maplibregl.GeoJSONSource;
-      if (source) {
-        source.setData(liveGeoJSON);
-      }
-
-      // Hide segments in live mode
-      if (map.current.getLayer("speed-segments")) {
-        map.current.setLayoutProperty("speed-segments", "visibility", "none");
-      }
-    } else if (viewMode === "raw") {
-      // Restore full vehicle data when switching back to raw mode
-      const filteredVehicles = vehicles.filter(
-        (v) =>
-          shouldShowRoute(v.routeId, selectedLines, city) &&
-          isOnRoute(v.lat, v.lon, v.routeId, routeGeometryMap, city),
-      );
-
-      const vehicleGeoJSON = {
-        type: "FeatureCollection" as const,
-        features: filteredVehicles.map((v) => ({
-          type: "Feature" as const,
-          properties: {
-            id: v.id,
-            routeId: v.routeId,
-            direction: v.direction ?? null,
-            speed: v.speed ?? null,
-            recordedAt: v.recordedAt,
-            city: city,
-            headsign: v.headsign ?? null,
-          },
-          geometry: {
-            type: "Point" as const,
-            coordinates: [v.lon, v.lat],
-          },
-        })),
-      };
-
-      const source = map.current.getSource(
-        "vehicles",
-      ) as maplibregl.GeoJSONSource;
-      if (source) {
-        source.setData(vehicleGeoJSON);
-      }
-
-      // Hide segments in raw mode
-      if (map.current.getLayer("speed-segments")) {
-        map.current.setLayoutProperty("speed-segments", "visibility", "none");
+    // Swap vehicle source data only when transitioning to/from live mode
+    const source = map.current.getSource("vehicles") as maplibregl.GeoJSONSource;
+    if (source) {
+      if (viewMode === "live") {
+        source.setData(cachedLiveVehicleGeoJSON);
+      } else if (prevViewMode.current === "live") {
+        source.setData(cachedVehicleGeoJSON);
       }
     }
+    prevViewMode.current = viewMode;
 
     const showSegments = viewMode === "segments" || viewMode === "segments-500";
     if (showSegments) {
@@ -3161,13 +3120,9 @@ export function SpeedMap({
     }
   }, [
     viewMode,
-    vehicles,
-    liveVehicles,
+    cachedVehicleGeoJSON,
+    cachedLiveVehicleGeoJSON,
     mapLoaded,
-    selectedLines,
-    allRouteSegments,
-    routeGeometryMap,
-    city,
   ]);
 
   // Memoized segment averages — computed from ALL readings (no speed filter).
