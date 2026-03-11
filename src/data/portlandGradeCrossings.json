@@ -1370,38 +1370,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "2887952493,2887952497,2887953602",
-        "type": "level_crossing",
-        "routes": ["194", "195"],
-        "crossingCount": 3,
-        "crossing_barrier": null,
-        "crossing_light": null,
-        "crossing_bell": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.66237369999999, 45.507626466666665]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "2887953610,2887953611,8939804292",
-        "type": "level_crossing",
-        "routes": ["195"],
-        "crossingCount": 3,
-        "crossing_barrier": null,
-        "crossing_light": null,
-        "crossing_bell": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.66211836666666, 45.5077329]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "2991458113,2991458116",
         "type": "level_crossing",
         "routes": ["290"],

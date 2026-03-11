@@ -619,21 +619,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-50",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.6743949, 45.5363658]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-51",
         "type": "traffic_signal",
         "count": 2,
@@ -1834,21 +1819,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-132",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.682128, 45.556010799999996]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-133",
         "type": "traffic_signal",
         "count": 1,
@@ -1979,21 +1949,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-122.68225165000001, 45.56190895]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-142",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.6820538, 45.562606349999996]
       }
     },
     {
@@ -3229,21 +3184,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-227",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.6824272, 45.5627213]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-228",
         "type": "traffic_signal",
         "count": 2,
@@ -3464,21 +3404,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-122.6822543, 45.5265242]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-251",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.6824841, 45.5561998]
       }
     },
     {
@@ -4474,66 +4399,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-353",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.68243995, 45.559134549999996]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-354",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.68211115, 45.5589218]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-355",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.68243935000001, 45.55471325]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-356",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["190"],
-        "snapped": false,
-        "crossing_id": "3929840191"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.68193124999999, 45.554590250000004]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-357",
         "type": "traffic_signal",
         "count": 2,
@@ -4634,6 +4499,81 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-122.64847962060043, 45.48756764609599]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-pdx-190-1",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["190"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.68221757595195, 45.554651748122176]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-pdx-190-2",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["190"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.68229812383521, 45.55609638458715]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-pdx-190-3",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["190"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.68226912986387, 45.55904515652174]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-pdx-190-4",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["190"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.68223611257167, 45.562664422007714]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-pdx-190-5",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["190"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.68208853171129, 45.57713770024233]
       }
     }
   ]
