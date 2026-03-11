@@ -56,6 +56,32 @@ import type {
   SpeedUnit,
 } from "../App";
 
+const CITY_SELECTOR_ITEMS: {
+  id: City;
+  sortName: string;
+  label: string;
+  emoji: string;
+  tooltip?: string;
+}[] = [
+  { id: "Baltimore", sortName: "Baltimore", label: "BAL", emoji: "🦀", tooltip: "MTA Light RailLink" },
+  { id: "Boston", sortName: "Boston", label: "Boston", emoji: "🦞" },
+  { id: "Charlotte", sortName: "Charlotte", label: "CLT", emoji: "🏦", tooltip: "LYNX Blue Line & Gold Line" },
+  { id: "Cleveland", sortName: "Cleveland", label: "CLE", emoji: "🎸", tooltip: "RTA Red, Blue & Green Lines" },
+  { id: "Denver", sortName: "Denver", label: "Denver", emoji: "⛏️", tooltip: "Data collection starting soon" },
+  { id: "LA", sortName: "Los Angeles", label: "LA", emoji: "🌴" },
+  { id: "Minneapolis", sortName: "Minneapolis", label: "MSP", emoji: "🌲", tooltip: "Data collection starting soon" },
+  { id: "Philadelphia", sortName: "Philadelphia", label: "Philly", emoji: "🔔" },
+  { id: "Phoenix", sortName: "Phoenix", label: "PHX", emoji: "🌵", tooltip: "Valley Metro Rail" },
+  { id: "Pittsburgh", sortName: "Pittsburgh", label: "PIT", emoji: "🏗️", tooltip: "Data collection starting soon" },
+  { id: "Portland", sortName: "Portland", label: "PDX", emoji: "🚲" },
+  { id: "Salt Lake City", sortName: "Salt Lake City", label: "SLC", emoji: "🏔️", tooltip: "Data collection starting soon" },
+  { id: "San Diego", sortName: "San Diego", label: "SD", emoji: "🌊", tooltip: "Waiting for API key" },
+  { id: "San Jose", sortName: "San Jose", label: "SJ", emoji: "💻", tooltip: "Data collection starting soon" },
+  { id: "Seattle", sortName: "Seattle", label: "Seattle", emoji: "☕", tooltip: "Waiting for API key" },
+  { id: "SF", sortName: "San Francisco", label: "SF", emoji: "🌉" },
+  { id: "Toronto", sortName: "Toronto", label: "Toronto", emoji: "🍁" },
+].sort((a, b) => a.sortName.localeCompare(b.sortName));
+
 const OFFICIAL_TRANSIT_MAP_URLS: Record<City, string> = {
   SF: "https://www.sfmta.com/media/33952/download?inline",
   LA: "https://cdn.beta.metro.net/wp-content/uploads/2025/09/19112839/26-0250_blt_GM_MlinkAmtrak_47x47.5_DCR.pdf",
@@ -868,144 +894,21 @@ export function Controls({
           View rail map
         </button>
       </div>
-      {/* City Selector - 3x3 grid */}
+      {/* City Selector - alphabetical by city name */}
       <div className="city-selector">
-        {/* Row 1: West Coast */}
-        <button
-          className={`city-btn ${city === "SF" ? "active" : ""}`}
-          onClick={() => setCity("SF")}
-        >
-          🌉 SF
-        </button>
-        <button
-          className={`city-btn ${city === "LA" ? "active" : ""}`}
-          onClick={() => setCity("LA")}
-        >
-          🌴 LA
-        </button>
-
-        {/* Row 2: Pacific NW + Central */}
-        <button
-          className={`city-btn  ${city === "Seattle" ? "active" : ""}`}
-          onClick={() => setCity("Seattle")}
-          onMouseEnter={(e) => showTooltip(e, "Waiting for API key")}
-          onMouseLeave={hideTooltip}
-        >
-          ☕ Seattle
-        </button>
-        <button
-          className={`city-btn ${city === "Portland" ? "active" : ""}`}
-          onClick={() => setCity("Portland")}
-        >
-          🚲 PDX
-        </button>
-
-        {/* Row 3: East + Canada */}
-        <button
-          className={`city-btn ${city === "Boston" ? "active" : ""}`}
-          onClick={() => setCity("Boston")}
-        >
-          🦞 Boston
-        </button>
-        <button
-          className={`city-btn ${city === "Philadelphia" ? "active" : ""}`}
-          onClick={() => setCity("Philadelphia")}
-        >
-          🔔 Philly
-        </button>
-        <button
-          className={`city-btn  ${city === "San Jose" ? "active" : ""}`}
-          onClick={() => setCity("San Jose")}
-          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
-          onMouseLeave={hideTooltip}
-        >
-          💻 SJ
-        </button>
-        <button
-          className={`city-btn ${city === "Toronto" ? "active" : ""}`}
-          onClick={() => setCity("Toronto")}
-        >
-          🍁 Toronto
-        </button>
-        <button
-          className={`city-btn ${city === "Minneapolis" ? "active" : ""}`}
-          onClick={() => setCity("Minneapolis")}
-          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
-          onMouseLeave={hideTooltip}
-        >
-          🌲 MSP
-        </button>
-        <button
-          className={`city-btn ${city === "Denver" ? "active" : ""}`}
-          onClick={() => setCity("Denver")}
-          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
-          onMouseLeave={hideTooltip}
-        >
-          ⛏️ Denver
-        </button>
-        {/* Row 4: New cities */}
-
-        <button
-          className={`city-btn  ${city === "Salt Lake City" ? "active" : ""}`}
-          onClick={() => setCity("Salt Lake City")}
-          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
-          onMouseLeave={hideTooltip}
-        >
-          🏔️ SLC
-        </button>
-        <button
-          className={`city-btn  ${city === "Pittsburgh" ? "active" : ""}`}
-          onClick={() => setCity("Pittsburgh")}
-          onMouseEnter={(e) => showTooltip(e, "Data collection starting soon")}
-          onMouseLeave={hideTooltip}
-        >
-          🏗️ PIT
-        </button>
-
-        <button
-          className={`city-btn ${city === "Phoenix" ? "active" : ""}`}
-          onClick={() => setCity("Phoenix")}
-          onMouseEnter={(e) => showTooltip(e, "Valley Metro Rail")}
-          onMouseLeave={hideTooltip}
-        >
-          🌵 PHX
-        </button>
-
-        <button
-          className={`city-btn ${city === "Charlotte" ? "active" : ""}`}
-          onClick={() => setCity("Charlotte")}
-          onMouseEnter={(e) => showTooltip(e, "LYNX Blue Line & Gold Line")}
-          onMouseLeave={hideTooltip}
-        >
-          🏦 CLT
-        </button>
-
-        <button
-          className={`city-btn ${city === "Baltimore" ? "active" : ""}`}
-          onClick={() => setCity("Baltimore")}
-          onMouseEnter={(e) => showTooltip(e, "MTA Light RailLink")}
-          onMouseLeave={hideTooltip}
-        >
-          🦀 BAL
-        </button>
-
-        <button
-          className={`city-btn ${city === "Cleveland" ? "active" : ""}`}
-          onClick={() => setCity("Cleveland")}
-          onMouseEnter={(e) => showTooltip(e, "RTA Red, Blue & Green Lines")}
-          onMouseLeave={hideTooltip}
-        >
-          🎸 CLE
-        </button>
-
-        <button
-          className={`city-btn ${city === "San Diego" ? "active" : ""}`}
-          onClick={() => setCity("San Diego")}
-          onMouseEnter={(e) => showTooltip(e, "Waiting for API key")}
-          onMouseLeave={hideTooltip}
-        >
-          🌊 SD
-        </button>
+        {CITY_SELECTOR_ITEMS.map(({ id, label, emoji, tooltip }) => (
+          <button
+            key={id}
+            className={`city-btn ${city === id ? "active" : ""}`}
+            onClick={() => setCity(id)}
+            {...(tooltip && {
+              onMouseEnter: (e: React.MouseEvent) => showTooltip(e, tooltip),
+              onMouseLeave: hideTooltip,
+            })}
+          >
+            {emoji} {label}
+          </button>
+        ))}
       </div>
 
       {/* Data Status */}

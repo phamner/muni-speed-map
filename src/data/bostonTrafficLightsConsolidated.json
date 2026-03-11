@@ -664,21 +664,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-107",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": ["Green-B"],
-        "snapped": true,
-        "crossing_id": "69487174"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-71.1248799, 42.3520987]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-110",
         "type": "traffic_signal",
         "count": 2,
