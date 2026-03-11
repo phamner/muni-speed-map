@@ -1544,8 +1544,6 @@ export function SpeedMap({
           "#ef4444", // Red
           "mixed_traffic",
           "#ef4444", // Red (same as street_running)
-          "reserved_lane",
-          "#f97316", // Orange
           "separated_at_grade",
           "#eab308", // Yellow
           "#6b7280", // Grey fallback for unknown
@@ -1614,11 +1612,6 @@ export function SpeedMap({
               color: "#ef4444",
               label: "Mixed Traffic",
               icon: "🔴",
-            },
-            reserved_lane: {
-              color: "#f97316",
-              label: "Reserved Lane",
-              icon: "🟠",
             },
             separated_at_grade: {
               color: "#eab308",

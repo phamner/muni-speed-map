@@ -677,22 +677,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "3041973703,3041973707",
-        "type": "level_crossing",
-        "routes": ["Green-C"],
-        "crossingCount": 2,
-        "crossing_barrier": null,
-        "crossing_light": null,
-        "crossing_bell": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-71.14958675, 42.3360006]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "3054673118,5185057892",
         "type": "level_crossing",
         "routes": ["Green-E"],
@@ -1130,22 +1114,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-71.1118749, 42.3314205]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "11749131368,11749131369",
-        "type": "level_crossing",
-        "routes": ["Green-D"],
-        "crossingCount": 2,
-        "crossing_barrier": null,
-        "crossing_light": null,
-        "crossing_bell": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-71.12744875, 42.331391100000005]
       }
     }
   ]

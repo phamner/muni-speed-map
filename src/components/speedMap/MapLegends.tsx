@@ -101,13 +101,6 @@ export function SeparationLegend() {
       <div className="separation-legend-item">
         <span
           className="separation-legend-line"
-          style={{ backgroundColor: "#f97316" }}
-        ></span>
-        <span>Reserved Lane</span>
-      </div>
-      <div className="separation-legend-item">
-        <span
-          className="separation-legend-line"
           style={{ backgroundColor: "#ef4444" }}
         ></span>
         <span>Mixed Traffic</span>

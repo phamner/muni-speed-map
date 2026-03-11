@@ -1428,6 +1428,31 @@
           [-71.110095, 42.328341]
         ]
       }
+    },
+
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "manual-green-e-extension",
+        "route_id": "Green-E",
+        "route_name": "Green Line E",
+        "route_color": "#00843D",
+        "route_letter": "E",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "Heath Street"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [-71.11011287509966, 42.32833204177715],
+          [-71.11053063825014, 42.32820463240176],
+          [-71.11070632293149, 42.32824825742517],
+          [-71.11073985054242, 42.32842027852942],
+          [-71.11075122973064, 42.32886767044661],
+          [-71.11073963687599, 42.32897223057298]
+        ]
+      }
     }
   ]
 }
