@@ -31,6 +31,7 @@ import {
 import {
   buildAllSegments,
   CITIES_WITH_PARALLEL_TRACKS,
+  SEGMENT_SIZE_500_METERS,
 } from "./speedMap/segmentUtils";
 import {
   type Vehicle,
@@ -38,7 +39,7 @@ import {
   POSITION_COLUMNS,
   fetchPagesParallel,
   getRouteFeatureMap,
-  findSegmentForVehicle,
+  findSegmentsForVehicle,
   getDirection,
   SF_TERMINUS,
   LA_TERMINUS,
@@ -603,6 +604,10 @@ export function SpeedMap({
     () => buildAllSegments(cityConfig.routes, city),
     [cityConfig.routes, city],
   );
+  const allRouteSegments500 = useMemo(
+    () => buildAllSegments(cityConfig.routes, city, SEGMENT_SIZE_500_METERS),
+    [cityConfig.routes, city],
+  );
 
   // Compute live vehicles - only the latest position for each unique vehicle
   const liveVehicles = useMemo(() => {
@@ -753,6 +758,14 @@ export function SpeedMap({
         const lat = row.lat;
         const lon = row.lon;
         const routeId = row.route_id;
+        const segments = findSegmentsForVehicle(
+          lat,
+          lon,
+          routeId,
+          cityConfig.routes,
+          routeFeatureMap,
+          city,
+        );
         return {
           id: `${row.vehicle_id}-${row.id}`,
           lat,
@@ -761,14 +774,8 @@ export function SpeedMap({
           direction: getDirection(row.direction_id),
           speed: row.speed_calculated,
           recordedAt: row.recorded_at,
-          segmentId: findSegmentForVehicle(
-            lat,
-            lon,
-            routeId,
-            cityConfig.routes,
-            routeFeatureMap,
-            city,
-          ),
+          segmentId: segments.segmentId,
+          segmentId500: segments.segmentId500,
           headsign: row.headsign,
         };
       });
@@ -3138,8 +3145,8 @@ export function SpeedMap({
       }
     }
 
-    if (viewMode === "segments") {
-      // Show segments layer (data is handled by separate effect)
+    const showSegments = viewMode === "segments" || viewMode === "segments-500";
+    if (showSegments) {
       if (map.current.getLayer("speed-segments")) {
         map.current.setLayoutProperty(
           "speed-segments",
@@ -3163,10 +3170,9 @@ export function SpeedMap({
     city,
   ]);
 
-  // Memoized segment averages calculation - expensive, only recalculate when data changes
-  // NOT dependent on selectedLines - that filtering happens in the display effect below
+  // Memoized segment averages — computed from ALL readings (no speed filter).
+  // Speed filtering happens in the display effect, which hides whole segments by average.
   const cachedSegmentAverages = useMemo(() => {
-    // If hideAllTrains is enabled, return empty map
     if (hideAllTrains) {
       return new Map();
     }
@@ -3175,10 +3181,6 @@ export function SpeedMap({
 
     vehicles.forEach((v) => {
       if (v.speed == null) return;
-      // Skip if below min speed, or above max speed (unless max is 50, which means 50+)
-      if (v.speed < speedFilter.minSpeed) return;
-      if (speedFilter.maxSpeed < 50 && v.speed > speedFilter.maxSpeed) return;
-      // Hide stopped trains (0 mph) if toggle is enabled
       if (hideStoppedTrains && v.speed < 0.5) return;
       if (!v.segmentId) return;
 
@@ -3195,13 +3197,9 @@ export function SpeedMap({
       segmentAverages.set(segmentId, { avg, count: speeds.length });
     });
 
-    // For cities with parallel tracks: Clone data from reference segments to parallel segments
-    // Parallel segments have a referenceSegmentId field that tells us which reference segment to clone from
     if (city && CITIES_WITH_PARALLEL_TRACKS.includes(city)) {
       allRouteSegments.forEach((seg) => {
-        if (!seg.referenceSegmentId) return; // Only process parallel segments
-
-        // Clone data from the reference segment
+        if (!seg.referenceSegmentId) return;
         const refAverage = segmentAverages.get(seg.referenceSegmentId);
         if (refAverage) {
           segmentAverages.set(seg.segmentId, refAverage);
@@ -3212,31 +3210,80 @@ export function SpeedMap({
     return segmentAverages;
   }, [
     vehicles,
-    speedFilter,
     hideStoppedTrains,
     hideAllTrains,
     city,
     allRouteSegments,
   ]);
 
+  const cachedSegmentAverages500 = useMemo(() => {
+    if (hideAllTrains) {
+      return new Map();
+    }
+
+    const segmentSpeeds: Map<string, number[]> = new Map();
+
+    vehicles.forEach((v) => {
+      if (v.speed == null) return;
+      if (hideStoppedTrains && v.speed < 0.5) return;
+      if (!v.segmentId500) return;
+
+      if (!segmentSpeeds.has(v.segmentId500)) {
+        segmentSpeeds.set(v.segmentId500, []);
+      }
+      segmentSpeeds.get(v.segmentId500)!.push(v.speed);
+    });
+
+    const segmentAverages: Map<string, { avg: number; count: number }> =
+      new Map();
+    segmentSpeeds.forEach((speeds, segmentId) => {
+      const avg = speeds.reduce((a, b) => a + b, 0) / speeds.length;
+      segmentAverages.set(segmentId, { avg, count: speeds.length });
+    });
+
+    if (city && CITIES_WITH_PARALLEL_TRACKS.includes(city)) {
+      allRouteSegments500.forEach((seg) => {
+        if (!seg.referenceSegmentId) return;
+        const refAverage = segmentAverages.get(seg.referenceSegmentId);
+        if (refAverage) {
+          segmentAverages.set(seg.segmentId, refAverage);
+        }
+      });
+    }
+
+    return segmentAverages;
+  }, [
+    vehicles,
+    hideStoppedTrains,
+    hideAllTrains,
+    city,
+    allRouteSegments500,
+  ]);
+
   // Display effect for segments - uses cached averages, only re-runs when selectedLines changes
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
-    if (viewMode !== "segments") return;
+    if (viewMode !== "segments" && viewMode !== "segments-500") return;
 
-    const segmentFeatures = allRouteSegments
+    const activeSegments = viewMode === "segments-500" ? allRouteSegments500 : allRouteSegments;
+    const activeAverages = viewMode === "segments-500" ? cachedSegmentAverages500 : cachedSegmentAverages;
+
+    const segmentFeatures = activeSegments
       .filter((seg) => shouldShowRoute(seg.routeId, selectedLines, city))
-      .filter((seg) => cachedSegmentAverages.has(seg.segmentId))
+      .filter((seg) => activeAverages.has(seg.segmentId))
       .filter((seg) => {
-        // Hide segment averages at 0 mph when hideStoppedTrains is enabled
         if (hideStoppedTrains) {
-          const data = cachedSegmentAverages.get(seg.segmentId);
-          return data && data.avg >= 0.5;
+          const data = activeAverages.get(seg.segmentId);
+          if (!data || data.avg < 0.5) return false;
         }
+        const data = activeAverages.get(seg.segmentId);
+        if (!data) return false;
+        if (data.avg < speedFilter.minSpeed) return false;
+        if (speedFilter.maxSpeed < 50 && data.avg > speedFilter.maxSpeed) return false;
         return true;
       })
       .map((seg) => {
-        const data = cachedSegmentAverages.get(seg.segmentId)!;
+        const data = activeAverages.get(seg.segmentId)!;
         return {
           type: "Feature" as const,
           properties: {
@@ -3339,11 +3386,14 @@ export function SpeedMap({
     }
   }, [
     cachedSegmentAverages,
+    cachedSegmentAverages500,
+    speedFilter,
     hideStoppedTrains,
     viewMode,
     mapLoaded,
     selectedLines,
     allRouteSegments,
+    allRouteSegments500,
     city,
   ]);
 

@@ -57,7 +57,8 @@ export const ABOUT_SECTIONS = {
     ],
     views: [
       "Raw Data: Shows individual vehicle position and speed observations from the sampled dataset. Use this to inspect the underlying fleet-wide snapshots that feed the map.",
-      "Segment Avg: Displays averaged speeds across 200-meter segments based on the aggregated vehicle observations. Use this to identify persistent slow zones and compare performance across different sections of track.",
+      "200m Avg: Displays averaged speeds across 200-meter segments based on the aggregated vehicle observations. Use this to identify persistent slow zones and compare performance across different sections of track.",
+      "500m Avg: Displays averaged speeds across 500-meter segments. Larger segments produce smoother averages with more readings per segment, useful for identifying broader speed trends along the route.",
       "Speed Limit: Compares actual speeds to posted limits (where available). Gray segments indicate missing speed limit data.",
     ],
     tips: [

@@ -4,6 +4,7 @@ import { MAX_DISTANCE_FROM_ROUTE_METERS } from "./geoUtils";
 import {
   findNearestPointOnLine,
   SEGMENT_SIZE_METERS,
+  SEGMENT_SIZE_500_METERS,
   CITIES_WITH_PARALLEL_TRACKS,
 } from "./segmentUtils";
 
@@ -41,6 +42,7 @@ export function findSegmentForVehicle(
   routes: any,
   routeFeatureMap?: Map<string, any[]>,
   city?: string,
+  segmentSizeMeters: number = SEGMENT_SIZE_METERS,
 ): string | null {
   const featureMap = routeFeatureMap || getRouteFeatureMap(routes);
   const directRouteFeatures = featureMap.get(routeId) || [];
@@ -82,14 +84,14 @@ export function findSegmentForVehicle(
         ) {
           minDistance = result.distance;
           const localSegmentIndex = Math.floor(
-            result.distanceAlong / SEGMENT_SIZE_METERS,
+            result.distanceAlong / segmentSizeMeters,
           );
           bestSegmentIndex = cumulativeSegmentOffset + localSegmentIndex;
           bestSegmentRouteId = candidateRouteId;
         }
 
         const lineLength = result.totalLength;
-        const segmentsInLine = Math.floor(lineLength / SEGMENT_SIZE_METERS) + 1;
+        const segmentsInLine = Math.floor(lineLength / segmentSizeMeters) + 1;
         cumulativeSegmentOffset += segmentsInLine;
       }
     }
@@ -104,6 +106,77 @@ export function findSegmentForVehicle(
   }
 
   return null;
+}
+
+export function findSegmentsForVehicle(
+  lat: number,
+  lon: number,
+  routeId: string,
+  routes: any,
+  routeFeatureMap?: Map<string, any[]>,
+  city?: string,
+): { segmentId: string | null; segmentId500: string | null } {
+  const featureMap = routeFeatureMap || getRouteFeatureMap(routes);
+  const directRouteFeatures = featureMap.get(routeId) || [];
+  const candidateRouteEntries: Array<[string, any[]]> =
+    directRouteFeatures.length > 0
+      ? [[routeId, directRouteFeatures]]
+      : Array.from(featureMap.entries());
+
+  let bestSegmentIndex200: number | null = null;
+  let bestSegmentIndex500: number | null = null;
+  let bestSegmentRouteId: string | null = null;
+  let minDistance = Infinity;
+
+  for (const [candidateRouteId, routeFeatures] of candidateRouteEntries) {
+    let cumulativeOffset200 = 0;
+    let cumulativeOffset500 = 0;
+
+    const usesParallelMerge =
+      city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
+    const featuresToProcess = usesParallelMerge
+      ? routeFeatures.slice(0, 1)
+      : routeFeatures;
+
+    for (const feature of featuresToProcess) {
+      const geometry = (feature as any).geometry;
+      const geomType = geometry.type;
+
+      let lineStrings: number[][][];
+      if (geomType === "MultiLineString") {
+        lineStrings = geometry.coordinates;
+      } else {
+        lineStrings = [geometry.coordinates];
+      }
+
+      for (const coordinates of lineStrings) {
+        const result = findNearestPointOnLine(lat, lon, coordinates);
+
+        if (
+          result.distance < minDistance &&
+          result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
+        ) {
+          minDistance = result.distance;
+          bestSegmentIndex200 = cumulativeOffset200 + Math.floor(result.distanceAlong / SEGMENT_SIZE_METERS);
+          bestSegmentIndex500 = cumulativeOffset500 + Math.floor(result.distanceAlong / SEGMENT_SIZE_500_METERS);
+          bestSegmentRouteId = candidateRouteId;
+        }
+
+        const lineLength = result.totalLength;
+        cumulativeOffset200 += Math.floor(lineLength / SEGMENT_SIZE_METERS) + 1;
+        cumulativeOffset500 += Math.floor(lineLength / SEGMENT_SIZE_500_METERS) + 1;
+      }
+    }
+  }
+
+  if (bestSegmentRouteId && minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS) {
+    return {
+      segmentId: bestSegmentIndex200 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex200}` : null,
+      segmentId500: bestSegmentIndex500 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex500}` : null,
+    };
+  }
+
+  return { segmentId: null, segmentId500: null };
 }
 
 export function getDirection(directionId: any): string | undefined {
@@ -159,6 +232,7 @@ export interface Vehicle {
   speed?: number;
   recordedAt: string;
   segmentId?: string | null;
+  segmentId500?: string | null;
   headsign?: string | null;
 }
 

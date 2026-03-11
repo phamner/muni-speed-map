@@ -1,6 +1,7 @@
 import { haversineDistance, distanceToSegment } from "./geoUtils";
 
 export const SEGMENT_SIZE_METERS = 200;
+export const SEGMENT_SIZE_500_METERS = 500;
 
 export const CITIES_WITH_PARALLEL_TRACKS = [
   "LA",
@@ -82,6 +83,7 @@ function createSegments(
   coordinates: number[][],
   routeId: string,
   direction: string,
+  segmentSizeMeters: number = SEGMENT_SIZE_METERS,
 ): {
   segmentId: string;
   coords: number[][];
@@ -107,9 +109,9 @@ function createSegments(
 
     while (
       distanceAlong + edgeLength >=
-      (segmentIndex + 1) * SEGMENT_SIZE_METERS
+      (segmentIndex + 1) * segmentSizeMeters
     ) {
-      const boundaryDistance = (segmentIndex + 1) * SEGMENT_SIZE_METERS;
+      const boundaryDistance = (segmentIndex + 1) * segmentSizeMeters;
       const distanceIntoBoundary = boundaryDistance - distanceAlong;
       const t = distanceIntoBoundary / edgeLength;
       const crossX = x1 + t * (x2 - x1);
@@ -253,7 +255,7 @@ function projectPointOntoLine(
   };
 }
 
-export function buildAllSegments(routes: any, city?: string): SegmentData[] {
+export function buildAllSegments(routes: any, city?: string, segmentSizeMeters: number = SEGMENT_SIZE_METERS): SegmentData[] {
   const allSegments: SegmentData[] = [];
   const routeSegmentOffsets = new Map<string, number>();
 
@@ -281,7 +283,7 @@ export function buildAllSegments(routes: any, city?: string): SegmentData[] {
       const routeRefSegments: SegmentData[] = [];
 
       for (const coordinates of lineStrings) {
-        const segments = createSegments(coordinates, routeId, "combined");
+        const segments = createSegments(coordinates, routeId, "combined", segmentSizeMeters);
 
         segments.forEach((seg) => {
           const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
@@ -356,7 +358,7 @@ export function buildAllSegments(routes: any, city?: string): SegmentData[] {
       let cumulativeSegmentOffset = routeSegmentOffsets.get(routeId) || 0;
 
       for (const coordinates of lineStrings) {
-        const segments = createSegments(coordinates, routeId, "combined");
+        const segments = createSegments(coordinates, routeId, "combined", segmentSizeMeters);
 
         segments.forEach((seg) => {
           const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");

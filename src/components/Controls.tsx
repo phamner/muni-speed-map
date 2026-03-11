@@ -63,21 +63,92 @@ const CITY_SELECTOR_ITEMS: {
   emoji: string;
   tooltip?: string;
 }[] = [
-  { id: "Baltimore", sortName: "Baltimore", label: "BAL", emoji: "🦀", tooltip: "MTA Light RailLink" },
+  {
+    id: "Baltimore",
+    sortName: "Baltimore",
+    label: "BAL",
+    emoji: "🦀",
+    tooltip: "MTA Light RailLink",
+  },
   { id: "Boston", sortName: "Boston", label: "Boston", emoji: "🦞" },
-  { id: "Charlotte", sortName: "Charlotte", label: "CLT", emoji: "🏦", tooltip: "LYNX Blue Line & Gold Line" },
-  { id: "Cleveland", sortName: "Cleveland", label: "CLE", emoji: "🎸", tooltip: "RTA Red, Blue & Green Lines" },
-  { id: "Denver", sortName: "Denver", label: "Denver", emoji: "⛏️", tooltip: "Data collection starting soon" },
+  {
+    id: "Charlotte",
+    sortName: "Charlotte",
+    label: "CLT",
+    emoji: "🏦",
+    tooltip: "LYNX Blue Line & Gold Line",
+  },
+  {
+    id: "Cleveland",
+    sortName: "Cleveland",
+    label: "CLE",
+    emoji: "🎸",
+    tooltip: "RTA Red, Blue & Green Lines",
+  },
+  {
+    id: "Denver",
+    sortName: "Denver",
+    label: "Denver",
+    emoji: "⛏️",
+    tooltip: "Data collection starting soon",
+  },
   { id: "LA", sortName: "Los Angeles", label: "LA", emoji: "🌴" },
-  { id: "Minneapolis", sortName: "Minneapolis", label: "MSP", emoji: "🌲", tooltip: "Data collection starting soon" },
-  { id: "Philadelphia", sortName: "Philadelphia", label: "Philly", emoji: "🔔" },
-  { id: "Phoenix", sortName: "Phoenix", label: "PHX", emoji: "🌵", tooltip: "Valley Metro Rail" },
-  { id: "Pittsburgh", sortName: "Pittsburgh", label: "PIT", emoji: "🏗️", tooltip: "Data collection starting soon" },
+  {
+    id: "Minneapolis",
+    sortName: "Minneapolis",
+    label: "MSP",
+    emoji: "🌲",
+    tooltip: "Data collection starting soon",
+  },
+  {
+    id: "Philadelphia",
+    sortName: "Philadelphia",
+    label: "Philly",
+    emoji: "🔔",
+  },
+  {
+    id: "Phoenix",
+    sortName: "Phoenix",
+    label: "PHX",
+    emoji: "🌵",
+    tooltip: "Valley Metro Rail",
+  },
+  {
+    id: "Pittsburgh",
+    sortName: "Pittsburgh",
+    label: "PIT",
+    emoji: "🏗️",
+    tooltip: "Data collection starting soon",
+  },
   { id: "Portland", sortName: "Portland", label: "PDX", emoji: "🚲" },
-  { id: "Salt Lake City", sortName: "Salt Lake City", label: "SLC", emoji: "🏔️", tooltip: "Data collection starting soon" },
-  { id: "San Diego", sortName: "San Diego", label: "SD", emoji: "🌊", tooltip: "Waiting for API key" },
-  { id: "San Jose", sortName: "San Jose", label: "SJ", emoji: "💻", tooltip: "Data collection starting soon" },
-  { id: "Seattle", sortName: "Seattle", label: "Seattle", emoji: "☕", tooltip: "Waiting for API key" },
+  {
+    id: "Salt Lake City",
+    sortName: "Salt Lake City",
+    label: "SLC",
+    emoji: "🏔️",
+    tooltip: "Data collection starting soon",
+  },
+  {
+    id: "San Diego",
+    sortName: "San Diego",
+    label: "SD",
+    emoji: "🌊",
+    tooltip: "Waiting for API key",
+  },
+  {
+    id: "San Jose",
+    sortName: "San Jose",
+    label: "SJ",
+    emoji: "💻",
+    tooltip: "Data collection starting soon",
+  },
+  {
+    id: "Seattle",
+    sortName: "Seattle",
+    label: "Seattle",
+    emoji: "☕",
+    tooltip: "Waiting for API key",
+  },
   { id: "SF", sortName: "San Francisco", label: "SF", emoji: "🌉" },
   { id: "Toronto", sortName: "Toronto", label: "Toronto", emoji: "🍁" },
 ].sort((a, b) => a.sortName.localeCompare(b.sortName)) as {
@@ -476,7 +547,11 @@ export function Controls({
   const TRANSIT_MAP_PAN_STEP = 40;
   const TRANSIT_MAP_PAN_STEP_FAST = 120;
 
-  const [tooltip, setTooltip] = useState<{ x: number; y: number; text: string } | null>(null);
+  const [tooltip, setTooltip] = useState<{
+    x: number;
+    y: number;
+    text: string;
+  } | null>(null);
   const tooltipTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const showTooltip = (e: React.MouseEvent, text: string) => {
     const x = e.clientX + 12;
@@ -978,7 +1053,16 @@ export function Controls({
             onClick={() => setViewMode("segments")}
             disabled={hideAllTrains}
           >
-            Segment Avg
+            200m Avg
+          </button>
+          <button
+            className={`view-mode-btn ${
+              viewMode === "segments-500" ? "active" : ""
+            }`}
+            onClick={() => setViewMode("segments-500")}
+            disabled={hideAllTrains}
+          >
+            500m Avg
           </button>
         </div>
         <div
@@ -1115,9 +1199,14 @@ export function Controls({
               onClick={() => {
                 toggleLine(line);
               }}
-              onMouseEnter={(e) => showTooltip(e, city === "Toronto" && line === "805"
-                ? "Line 5 Eglinton - Under Construction (route data from OpenStreetMap)"
-                : getLineInfo(line, city) || "")}
+              onMouseEnter={(e) =>
+                showTooltip(
+                  e,
+                  city === "Toronto" && line === "805"
+                    ? "Line 5 Eglinton - Under Construction (route data from OpenStreetMap)"
+                    : getLineInfo(line, city) || "",
+                )
+              }
               onMouseLeave={hideTooltip}
             >
               {city === "Toronto" ? (
@@ -1175,7 +1264,12 @@ export function Controls({
                 className="route-mode-btn"
                 style={{ opacity: 0.4, cursor: "not-allowed" }}
                 disabled
-                onMouseEnter={(e) => showTooltip(e, "Speed limit data is not available for this city")}
+                onMouseEnter={(e) =>
+                  showTooltip(
+                    e,
+                    "Speed limit data is not available for this city",
+                  )
+                }
                 onMouseLeave={hideTooltip}
               >
                 Speed Limit
@@ -1277,7 +1371,12 @@ export function Controls({
           {city === "Philadelphia" || city === "Toronto" ? (
             <label
               style={{ opacity: 0.5, cursor: "not-allowed" }}
-              onMouseEnter={(e) => showTooltip(e, "Grade crossing data is not available for this city")}
+              onMouseEnter={(e) =>
+                showTooltip(
+                  e,
+                  "Grade crossing data is not available for this city",
+                )
+              }
               onMouseLeave={hideTooltip}
             >
               <input type="checkbox" checked={false} disabled />
@@ -1304,7 +1403,12 @@ export function Controls({
             Show traffic lights 🚦
             <span
               className="speed-by-line-info-icon"
-              onMouseEnter={(e) => showTooltip(e, "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.")}
+              onMouseEnter={(e) =>
+                showTooltip(
+                  e,
+                  "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.",
+                )
+              }
               onMouseLeave={hideTooltip}
             >
               ⓘ
@@ -1353,7 +1457,12 @@ export function Controls({
             Speed by Line (<span className="unit-text">{unitLabel}</span>)
             <span
               className="speed-by-line-info-icon"
-              onMouseEnter={(e) => showTooltip(e, "Excludes vehicles under 0.5 mph (stopped trains, yards) to reflect operational speeds.")}
+              onMouseEnter={(e) =>
+                showTooltip(
+                  e,
+                  "Excludes vehicles under 0.5 mph (stopped trains, yards) to reflect operational speeds.",
+                )
+              }
               onMouseLeave={hideTooltip}
             >
               ⓘ
@@ -1367,7 +1476,9 @@ export function Controls({
                   <span
                     className={`line-stat-badge ${getBadgeWidthClass(city)}`}
                     style={{ backgroundColor: getLineColor(stat.line, city) }}
-                    onMouseEnter={(e) => showTooltip(e, getLineInfo(stat.line, city) || "")}
+                    onMouseEnter={(e) =>
+                      showTooltip(e, getLineInfo(stat.line, city) || "")
+                    }
                     onMouseLeave={hideTooltip}
                   >
                     {getLineLabel(stat.line, city)}
@@ -1392,8 +1503,8 @@ export function Controls({
       {/* Info */}
       <div className="info-section">
         <p className="data-attribution">
-          Grade crossing, switch, speed limit, grade separation, and traffic light
-          data from{" "}
+          Grade crossing, switch, speed limit, grade separation, and traffic
+          light data from{" "}
           <a
             href="https://www.openrailwaymap.org/"
             target="_blank"
