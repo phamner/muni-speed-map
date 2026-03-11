@@ -4654,36 +4654,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-341",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": ["290"],
-        "snapped": false,
-        "crossing_id": "2827345873"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.6400755, 45.4375679]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-342",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["290"],
-        "snapped": false,
-        "crossing_id": "2827345873"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.6398515, 45.43720125]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-343",
         "type": "traffic_signal",
         "count": 3,
