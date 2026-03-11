@@ -7,18 +7,13 @@
         "id": "cluster-12",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "2504656990,2504656994"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.28915275,
-          47.55345465
-        ]
+        "coordinates": [-122.28915275, 47.55345465]
       }
     },
     {
@@ -27,18 +22,13 @@
         "id": "cluster-21",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "4004845631,4004845632"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.27882015,
-          47.51342175
-        ]
+        "coordinates": [-122.27882015, 47.51342175]
       }
     },
     {
@@ -47,18 +37,13 @@
         "id": "cluster-22",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762832946,1762832948"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.281097,
-          47.5370556
-        ]
+        "coordinates": [-122.281097, 47.5370556]
       }
     },
     {
@@ -67,18 +52,13 @@
         "id": "cluster-24",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762833213,1762833216"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.2968849,
-          47.57194375
-        ]
+        "coordinates": [-122.2968849, 47.57194375]
       }
     },
     {
@@ -87,18 +67,13 @@
         "id": "cluster-26",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762833120,1762833123"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.293393,
-          47.56082205
-        ]
+        "coordinates": [-122.293393, 47.56082205]
       }
     },
     {
@@ -107,18 +82,13 @@
         "id": "cluster-27",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "3400988235,3400988236"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.2920395,
-          47.5586828
-        ]
+        "coordinates": [-122.2920395, 47.5586828]
       }
     },
     {
@@ -127,18 +97,13 @@
         "id": "cluster-28",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762833063,1762833066"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.28996095,
-          47.55521525
-        ]
+        "coordinates": [-122.28996095, 47.55521525]
       }
     },
     {
@@ -147,18 +112,13 @@
         "id": "cluster-29",
         "type": "traffic_signal",
         "count": 4,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762833016,1762833020,7147732811,7147732812"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.285566425,
-          47.54605205
-        ]
+        "coordinates": [-122.285566425, 47.54605205]
       }
     },
     {
@@ -167,18 +127,13 @@
         "id": "cluster-31",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762832961,1762832964"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.28204445,
-          47.53889635
-        ]
+        "coordinates": [-122.28204445, 47.53889635]
       }
     },
     {
@@ -187,18 +142,13 @@
         "id": "cluster-32",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762832902,2504659590"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.28070894999999,
-          47.53153465
-        ]
+        "coordinates": [-122.28070894999999, 47.53153465]
       }
     },
     {
@@ -207,18 +157,13 @@
         "id": "cluster-35",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762832849,2504661476"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.279197,
-          47.526122900000004
-        ]
+        "coordinates": [-122.279197, 47.526122900000004]
       }
     },
     {
@@ -227,98 +172,29 @@
         "id": "cluster-36",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762832803,1762832806"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.27917450000001,
-          47.523253749999995
-        ]
+        "coordinates": [-122.27917450000001, 47.523253749999995]
       }
     },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-82",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": [
-          "100479"
-        ],
-        "snapped": true,
-        "crossing_id": "1762833616,1762833623"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.32740245,
-          47.5861491
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-83",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": [
-          "100479"
-        ],
-        "snapped": true,
-        "crossing_id": "1762833562,1762833565,3522754233"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.32749633333333,
-          47.57980406666667
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-88",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": [
-          "100479"
-        ],
-        "snapped": true,
-        "crossing_id": "1173906871,1762833810"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -122.3271882,
-          47.592402750000005
-        ]
-      }
-    },
+
     {
       "type": "Feature",
       "properties": {
         "id": "cluster-91",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762833159,1762833162"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.29678899999999,
-          47.5662796
-        ]
+        "coordinates": [-122.29678899999999, 47.5662796]
       }
     },
     {
@@ -327,18 +203,13 @@
         "id": "cluster-92",
         "type": "traffic_signal",
         "count": 3,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762832724,2472438320,2472438324"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.2793492,
-          47.5171703
-        ]
+        "coordinates": [-122.2793492, 47.5171703]
       }
     },
     {
@@ -347,18 +218,13 @@
         "id": "cluster-93",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "53243854,1762832912,7612641683,7612641684"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.28077755,
-          47.5353787
-        ]
+        "coordinates": [-122.28077755, 47.5353787]
       }
     },
     {
@@ -367,18 +233,13 @@
         "id": "cluster-102",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "2472438319"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.279352,
-          47.5169955
-        ]
+        "coordinates": [-122.279352, 47.5169955]
       }
     },
     {
@@ -387,18 +248,13 @@
         "id": "cluster-114",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762832987,1762832990"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.28383515,
-          47.5424764
-        ]
+        "coordinates": [-122.28383515, 47.5424764]
       }
     },
     {
@@ -407,18 +263,13 @@
         "id": "cluster-127",
         "type": "traffic_signal",
         "count": 4,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762833133,1762833135,1762833137,1762833139"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.294668575,
-          47.562839475000004
-        ]
+        "coordinates": [-122.294668575, 47.562839475000004]
       }
     },
     {
@@ -427,18 +278,13 @@
         "id": "cluster-130",
         "type": "traffic_signal",
         "count": 4,
-        "routes": [
-          "100479"
-        ],
+        "routes": ["100479"],
         "snapped": true,
         "crossing_id": "1762833039,1762833041"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.2880816,
-          47.5512308
-        ]
+        "coordinates": [-122.2880816, 47.5512308]
       }
     },
     {
@@ -447,18 +293,13 @@
         "id": "cluster-63",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4393955,
-          47.2533024
-        ]
+        "coordinates": [-122.4393955, 47.2533024]
       }
     },
     {
@@ -467,18 +308,13 @@
         "id": "cluster-64",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.451719,
-          47.252001
-        ]
+        "coordinates": [-122.451719, 47.252001]
       }
     },
     {
@@ -487,18 +323,13 @@
         "id": "cluster-65",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4339074,
-          47.2392041
-        ]
+        "coordinates": [-122.4339074, 47.2392041]
       }
     },
     {
@@ -507,18 +338,13 @@
         "id": "cluster-67",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4484785,
-          47.2645927
-        ]
+        "coordinates": [-122.4484785, 47.2645927]
       }
     },
     {
@@ -527,18 +353,13 @@
         "id": "cluster-68",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4514859,
-          47.250966
-        ]
+        "coordinates": [-122.4514859, 47.250966]
       }
     },
     {
@@ -547,18 +368,13 @@
         "id": "cluster-69",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4355967,
-          47.2400113
-        ]
+        "coordinates": [-122.4355967, 47.2400113]
       }
     },
     {
@@ -567,18 +383,13 @@
         "id": "cluster-71",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4511454,
-          47.2620531
-        ]
+        "coordinates": [-122.4511454, 47.2620531]
       }
     },
     {
@@ -587,18 +398,13 @@
         "id": "cluster-72",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.449745,
-          47.262777
-        ]
+        "coordinates": [-122.449745, 47.262777]
       }
     },
     {
@@ -607,18 +413,13 @@
         "id": "cluster-73",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4537762,
-          47.2607222
-        ]
+        "coordinates": [-122.4537762, 47.2607222]
       }
     },
     {
@@ -627,18 +428,13 @@
         "id": "cluster-74",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4353683,
-          47.2390254
-        ]
+        "coordinates": [-122.4353683, 47.2390254]
       }
     },
     {
@@ -647,18 +443,13 @@
         "id": "cluster-75",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4389251,
-          47.2512387
-        ]
+        "coordinates": [-122.4389251, 47.2512387]
       }
     },
     {
@@ -667,18 +458,13 @@
         "id": "cluster-76",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4528903,
-          47.2571401
-        ]
+        "coordinates": [-122.4528903, 47.2571401]
       }
     },
     {
@@ -687,18 +473,13 @@
         "id": "cluster-77",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.439875,
-          47.2553549
-        ]
+        "coordinates": [-122.439875, 47.2553549]
       }
     },
     {
@@ -707,18 +488,13 @@
         "id": "cluster-78",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4384785,
-          47.2491918
-        ]
+        "coordinates": [-122.4384785, 47.2491918]
       }
     },
     {
@@ -727,18 +503,13 @@
         "id": "cluster-79",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4521972,
-          47.254061
-        ]
+        "coordinates": [-122.4521972, 47.254061]
       }
     },
     {
@@ -747,18 +518,13 @@
         "id": "cluster-80",
         "type": "traffic_signal",
         "count": 1,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4507877,
-          47.2478872
-        ]
+        "coordinates": [-122.4507877, 47.2478872]
       }
     },
     {
@@ -767,18 +533,13 @@
         "id": "cluster-99",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.43720715,
-          47.247194300000004
-        ]
+        "coordinates": [-122.43720715, 47.247194300000004]
       }
     },
     {
@@ -787,18 +548,13 @@
         "id": "cluster-111",
         "type": "traffic_signal",
         "count": 3,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4363163,
-          47.24316293333334
-        ]
+        "coordinates": [-122.4363163, 47.24316293333334]
       }
     },
     {
@@ -807,18 +563,13 @@
         "id": "cluster-118",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.4367001,
-          47.24515835
-        ]
+        "coordinates": [-122.4367001, 47.24515835]
       }
     },
     {
@@ -827,18 +578,13 @@
         "id": "cluster-123",
         "type": "traffic_signal",
         "count": 2,
-        "routes": [
-          "TLINE"
-        ],
+        "routes": ["TLINE"],
         "snapped": false,
         "crossing_id": "5242086877,5242086878"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -122.45007165,
-          47.24480485
-        ]
+        "coordinates": [-122.45007165, 47.24480485]
       }
     },
     {
@@ -869,6 +615,36 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-122.4293064249341, 47.23969537633662]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-sea-tline-1",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["TLINE"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.44074015255237, 47.25843476636878]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-sea-tline-2",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["TLINE"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.44253528798222, 47.261087882589635]
       }
     }
   ]
