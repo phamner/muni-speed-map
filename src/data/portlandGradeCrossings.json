@@ -1321,23 +1321,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "2466778118",
-        "type": "level_crossing",
-        "routes": ["290"],
-        "name": null,
-        "crossing_barrier": null,
-        "crossing_light": null,
-        "crossing_bell": null,
-        "crossingCount": 1
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-122.6358881, 45.4543182]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "2825601135",
         "type": "level_crossing",
         "routes": ["290"],
