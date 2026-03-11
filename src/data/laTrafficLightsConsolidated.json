@@ -22,7 +22,7 @@
         "id": "cluster-16",
         "type": "traffic_signal",
         "count": 2,
-        "routes": ["804", "807"],
+        "routes": ["804"],
         "snapped": true,
         "crossing_id": "084S-104.40"
       },
