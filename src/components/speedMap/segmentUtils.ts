@@ -13,6 +13,7 @@ export const CITIES_WITH_PARALLEL_TRACKS = [
   "Salt Lake City",
   "Cleveland",
   "Charlotte",
+  "Portland",
 ];
 
 export interface SegmentData {

@@ -3542,9 +3542,7 @@ export function SpeedMap({
             popup.current?.remove();
           });
 
-          const showDensityPopup = (
-            e: maplibregl.MapLayerMouseEvent,
-          ) => {
+          const showDensityPopup = (e: maplibregl.MapLayerMouseEvent) => {
             if (!e.features?.length || !map.current) return;
             const props = e.features[0].properties;
             const newTractId = props.GEOID;
@@ -3591,7 +3589,11 @@ export function SpeedMap({
               .addTo(map.current);
           };
 
-          map.current.on("mousemove", "population-density-fill", showDensityPopup);
+          map.current.on(
+            "mousemove",
+            "population-density-fill",
+            showDensityPopup,
+          );
           map.current.on("click", "population-density-fill", showDensityPopup);
         } // end of else block (first-time layer creation)
 
@@ -3663,7 +3665,9 @@ export function SpeedMap({
     <div className="map-wrapper">
       <div ref={mapContainer} className="map-container" />
 
-      <div className={`map-legends-group ${showMobileLegends ? "mobile-expanded" : ""}`}>
+      <div
+        className={`map-legends-group ${showMobileLegends ? "mobile-expanded" : ""}`}
+      >
         <SpeedLegend speedUnit={speedUnit} />
 
         {showRouteLines && routeLineMode === "bySeparation" && (
