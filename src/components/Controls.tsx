@@ -1142,7 +1142,19 @@ export function Controls({
               onChange={(e) => setHideStoppedTrains(e.target.checked)}
               disabled={hideAllTrains}
             />
-            Hide stopped trains (0 {unitLabelLower})
+            Hide non-moving trains
+            <span
+              className="speed-by-line-info-icon"
+              onMouseEnter={(e) =>
+                showTooltip(
+                  e,
+                  "Excludes stopped vehicles from raw data and segment averages. Toggling causes segment averages to recalculate, raising displayed speeds.",
+                )
+              }
+              onMouseLeave={hideTooltip}
+            >
+              ⓘ
+            </span>
           </label>
         </div>
       </CollapsibleSection>
