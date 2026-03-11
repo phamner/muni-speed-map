@@ -229,22 +229,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-86",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["807"],
-        "snapped": true,
-        "crossing_id": "084A-4.70"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-118.33847, 33.97413]
-      }
-    },
-
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-88",
         "type": "traffic_signal",
         "count": 1,
@@ -951,36 +935,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-269",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": ["807"],
-        "snapped": true,
-        "crossing_id": "084A-2.42"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-118.37357, 33.96237]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-271",
-        "type": "traffic_signal",
-        "count": 3,
-        "routes": ["807"],
-        "snapped": true,
-        "crossing_id": "084A-4.12"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-118.347278, 33.96994]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-279",
         "type": "traffic_signal",
         "count": 2,
@@ -1191,21 +1145,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-352",
-        "type": "traffic_signal",
-        "count": 3,
-        "routes": ["807"],
-        "snapped": true,
-        "crossing_id": "084A-2.88"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-118.366359, 33.965219]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-355",
         "type": "traffic_signal",
         "count": 4,
@@ -1321,21 +1260,6 @@
       "geometry": {
         "type": "Point",
         "coordinates": [-118.193724, 33.769248]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "id": "cluster-371",
-        "type": "traffic_signal",
-        "count": 2,
-        "routes": ["807"],
-        "snapped": true,
-        "crossing_id": "084A-4.92"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-118.335247, 33.975666]
       }
     },
     {
