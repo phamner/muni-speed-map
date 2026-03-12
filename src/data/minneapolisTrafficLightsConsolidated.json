@@ -930,6 +930,174 @@
         "type": "Point",
         "coordinates": [-93.2232328, 44.86917165]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-1",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Blue"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.22326527505786, 44.87265315661765]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-2",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Blue"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.22568124115281, 44.856375608938265]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-1",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.09861394187504, 44.95178982019648]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-2",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.09797426640812, 44.95103248824477]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-3",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.0970649526938, 44.95016715525606]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-4",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.09547266869875, 44.94863559954886]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-5",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.09396286320984, 44.9470937379043]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-6",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.09314803360554, 44.946335328678714]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-7",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.09128180174253, 44.946052022576914]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-8",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.09005493163869, 44.946612418738816]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-9",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.08869405493841, 44.9472681298266]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-stp-10",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["Green"],
+        "snapped": false
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-93.08735798701528, 44.947913880786196]
+      }
     }
   ]
 }
