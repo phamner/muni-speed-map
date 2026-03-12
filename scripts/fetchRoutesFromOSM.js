@@ -18,6 +18,7 @@ const __dirname = path.dirname(__filename);
 const DATA_DIR = path.join(__dirname, "..", "src", "data");
 
 const OVERPASS_API = "https://overpass-api.de/api/interpreter";
+const OVERPASS_FALLBACK_API = "https://overpass.kumi.systems/api/interpreter";
 
 // City configurations with their bounding boxes and route filters
 const CITIES = {
@@ -25,6 +26,8 @@ const CITIES = {
     name: "Pittsburgh",
     bbox: [40.3, -80.15, 40.55, -79.85],
     railwayTypes: "light_rail|subway|tram",
+    routeType: "light_rail",
+    useRouteRelations: true,
     outputRoutesFile: "pittsburghTRoutes.json",
     outputStopsFile: "pittsburghTStops.json",
     lineColors: {
@@ -96,6 +99,301 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function fetchOverpass(query) {
+  let lastError = null;
+
+  for (const endpoint of [OVERPASS_API, OVERPASS_FALLBACK_API]) {
+    try {
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: `data=${encodeURIComponent(query)}`,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      lastError = error;
+      console.warn(`   Overpass request failed via ${endpoint}: ${error.message}`);
+    }
+  }
+
+  throw lastError || new Error("Overpass request failed");
+}
+
+function getRouteIdFromTags(tags = {}) {
+  if (tags.ref) {
+    const ref = String(tags.ref).trim().toUpperCase();
+    if (ref.includes("RED")) return "RED";
+    if (ref.includes("BLUE")) return "BLUE";
+    if (ref.includes("SILVER")) return "SLVR";
+    if (ref.includes("SLVR")) return "SLVR";
+    return ref;
+  }
+
+  if (tags.name) {
+    const name = String(tags.name).toLowerCase();
+    if (name.includes("red")) return "RED";
+    if (name.includes("blue")) return "BLUE";
+    if (name.includes("silver")) return "SLVR";
+    if (name.includes("green")) return "GREEN";
+    if (name.includes("orange")) return "ORANGE";
+    if (name.includes("gold")) return "GOLD";
+  }
+
+  return "default";
+}
+
+function getRouteName(routeId) {
+  switch (routeId) {
+    case "RED":
+      return "Red Line";
+    case "BLUE":
+      return "Blue Line";
+    case "SLVR":
+      return "Silver Line";
+    case "GREEN":
+      return "Green Line";
+    case "ORANGE":
+      return "Orange Line";
+    case "GOLD":
+      return "Gold Line";
+    default:
+      return routeId;
+  }
+}
+
+function isTrackRelationMember(member) {
+  const role = String(member?.role || "").toLowerCase();
+  return (
+    member?.type === "way" &&
+    role !== "platform" &&
+    role !== "platform_inactive" &&
+    role !== "stop" &&
+    role !== "station"
+  );
+}
+
+function getCoordinateKey(coord) {
+  const [lon, lat] = coord;
+  return `${lon.toFixed(7)},${lat.toFixed(7)}`;
+}
+
+function reverseIfNeeded(coords, endpointKey, alignToEnd = true) {
+  const startKey = getCoordinateKey(coords[0]);
+  const endKey = getCoordinateKey(coords[coords.length - 1]);
+
+  if (alignToEnd) {
+    if (startKey === endpointKey) return coords;
+    if (endKey === endpointKey) return [...coords].reverse();
+  } else {
+    if (endKey === endpointKey) return coords;
+    if (startKey === endpointKey) return [...coords].reverse();
+  }
+
+  return null;
+}
+
+function mergeContiguousWays(wayCoordinateSets) {
+  if (wayCoordinateSets.length <= 1) {
+    return wayCoordinateSets;
+  }
+
+  const endpoints = new Map();
+  wayCoordinateSets.forEach((coords, index) => {
+    if (!coords || coords.length < 2) return;
+    const startKey = getCoordinateKey(coords[0]);
+    const endKey = getCoordinateKey(coords[coords.length - 1]);
+
+    if (!endpoints.has(startKey)) endpoints.set(startKey, []);
+    if (!endpoints.has(endKey)) endpoints.set(endKey, []);
+
+    endpoints.get(startKey).push(index);
+    endpoints.get(endKey).push(index);
+  });
+
+  const unused = new Set(wayCoordinateSets.map((_, index) => index));
+  const merged = [];
+
+  while (unused.size > 0) {
+    let seedIndex = null;
+
+    for (const index of unused) {
+      const coords = wayCoordinateSets[index];
+      const startDegree = endpoints.get(getCoordinateKey(coords[0]))?.length || 0;
+      const endDegree =
+        endpoints.get(getCoordinateKey(coords[coords.length - 1]))?.length || 0;
+      if (startDegree === 1 || endDegree === 1) {
+        seedIndex = index;
+        break;
+      }
+    }
+
+    if (seedIndex == null) {
+      seedIndex = unused.values().next().value;
+    }
+
+    unused.delete(seedIndex);
+    let chain = [...wayCoordinateSets[seedIndex]];
+
+    let extended = true;
+    while (extended) {
+      extended = false;
+
+      const chainStartKey = getCoordinateKey(chain[0]);
+      const chainEndKey = getCoordinateKey(chain[chain.length - 1]);
+
+      for (const candidateIndex of Array.from(unused)) {
+        const candidate = wayCoordinateSets[candidateIndex];
+        const appendCandidate = reverseIfNeeded(candidate, chainEndKey, true);
+        if (appendCandidate) {
+          chain = chain.concat(appendCandidate.slice(1));
+          unused.delete(candidateIndex);
+          extended = true;
+          break;
+        }
+
+        const prependCandidate = reverseIfNeeded(candidate, chainStartKey, false);
+        if (prependCandidate) {
+          chain = prependCandidate.slice(0, -1).concat(chain);
+          unused.delete(candidateIndex);
+          extended = true;
+          break;
+        }
+      }
+    }
+
+    merged.push(chain);
+  }
+
+  return merged.sort((a, b) => b.length - a.length);
+}
+
+async function fetchRouteRelations(cityKey) {
+  const city = CITIES[cityKey];
+  const [south, west, north, east] = city.bbox;
+
+  console.log(`\n📍 Fetching route relations for ${city.name}...`);
+  console.log(`   Bounding box: ${south}, ${west}, ${north}, ${east}`);
+
+  const relationQuery = `
+[out:json][timeout:90];
+(
+  relation["route"="${city.routeType}"](${south},${west},${north},${east});
+);
+out body;
+`;
+
+  try {
+    const relationData = await fetchOverpass(relationQuery);
+    const relations = relationData.elements.filter((el) => el.type === "relation");
+
+    console.log(`   Found ${relations.length} route relations`);
+
+    const routeSegments = new Map();
+    const routeRelationIds = new Map();
+
+    for (const relation of relations) {
+      const routeId = getRouteIdFromTags(relation.tags);
+      if (!city.lineColors[routeId]) continue;
+
+      if (!routeSegments.has(routeId)) {
+        routeSegments.set(routeId, {
+          route_id: routeId,
+          route_name: getRouteName(routeId),
+          route_color: city.lineColors[routeId],
+          coordinates: [],
+          seenWays: new Set(),
+        });
+      }
+      if (!routeRelationIds.has(routeId)) {
+        routeRelationIds.set(routeId, []);
+      }
+      routeRelationIds.get(routeId).push(relation.id);
+    }
+
+    for (const [routeId, relationIds] of routeRelationIds) {
+      const route = routeSegments.get(routeId);
+      const wayQuery = `
+[out:json][timeout:90];
+relation(id:${relationIds.join(",")});
+way(r);
+out body geom;
+`;
+      const wayData = await fetchOverpass(wayQuery);
+      const allowedWayIds = new Set();
+      for (const relation of relations) {
+        const relationRouteId = getRouteIdFromTags(relation.tags);
+        if (relationRouteId !== routeId) continue;
+        for (const member of relation.members || []) {
+          if (isTrackRelationMember(member)) {
+            allowedWayIds.add(member.ref);
+          }
+        }
+      }
+
+      const ways = wayData.elements.filter(
+        (el) =>
+          el.type === "way" &&
+          el.geometry?.length > 1 &&
+          allowedWayIds.has(el.id),
+      );
+
+      console.log(`   ${routeId}: ${ways.length} member ways`);
+
+      for (const way of ways) {
+        if (route.seenWays.has(way.id)) continue;
+        route.seenWays.add(way.id);
+        route.coordinates.push(
+          way.geometry.map((pt) => [pt.lon, pt.lat]),
+        );
+      }
+
+      route.coordinates = mergeContiguousWays(route.coordinates);
+      console.log(`   ${routeId}: merged into ${route.coordinates.length} line strings`);
+    }
+
+    const features = Array.from(routeSegments.values())
+      .filter((route) => route.coordinates.length > 0)
+      .map((route) => ({
+        type: "Feature",
+        properties: {
+          route_id: route.route_id,
+          route_name: route.route_name,
+          route_color: route.route_color,
+        },
+        geometry: {
+          type: "MultiLineString",
+          coordinates: route.coordinates,
+        },
+      }));
+
+    console.log(`   Created ${features.length} route features`);
+
+    const geojson = {
+      type: "FeatureCollection",
+      features,
+    };
+
+    const outputPath = path.join(DATA_DIR, city.outputRoutesFile);
+    fs.writeFileSync(outputPath, JSON.stringify(geojson, null, 2));
+    console.log(`   ✅ Saved routes to ${city.outputRoutesFile}`);
+
+    return features.length;
+  } catch (error) {
+    console.error(
+      `   ❌ Error fetching route relations for ${city.name}:`,
+      error.message,
+    );
+    return 0;
+  }
+}
+
 // Fetch railway ways for a city
 async function fetchRailwayWays(cityKey) {
   const city = CITIES[cityKey];
@@ -134,21 +432,7 @@ out body geom;
       .filter((el) => el.geometry && el.geometry.length > 1)
       .map((element) => {
         // Determine route_id from tags or use 'default'
-        let route_id = "default";
-        if (element.tags) {
-          if (element.tags.ref) {
-            route_id = element.tags.ref;
-          } else if (element.tags.name) {
-            // Try to extract color from name
-            const name = element.tags.name.toLowerCase();
-            if (name.includes("red")) route_id = "RED";
-            else if (name.includes("blue")) route_id = "BLUE";
-            else if (name.includes("green")) route_id = "GREEN";
-            else if (name.includes("orange")) route_id = "ORANGE";
-            else if (name.includes("silver")) route_id = "SLVR";
-            else if (name.includes("gold")) route_id = "GOLD";
-          }
-        }
+        const route_id = getRouteIdFromTags(element.tags);
 
         // Get color from our line colors or use default
         const color =
@@ -273,8 +557,16 @@ async function main() {
 
   const results = {};
 
-  for (const cityKey of Object.keys(CITIES)) {
-    const routeCount = await fetchRailwayWays(cityKey);
+  const args = process.argv.slice(2);
+  const cityKeys =
+    args.length > 0
+      ? args.filter((key) => CITIES[key])
+      : Object.keys(CITIES);
+
+  for (const cityKey of cityKeys) {
+    const routeCount = CITIES[cityKey].useRouteRelations
+      ? await fetchRouteRelations(cityKey)
+      : await fetchRailwayWays(cityKey);
     await delay(3000); // Respect rate limits
 
     const stopCount = await fetchRailwayStops(cityKey);
