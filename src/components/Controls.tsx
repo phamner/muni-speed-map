@@ -1355,7 +1355,7 @@ export function Controls({
                 onMouseEnter={(e) =>
                   showTooltip(
                     e,
-                    "Shows rail–road level crossings where tracks intersect roads at grade. Street-running intersections excluded.",
+                    "Shows rail–road level crossings where tracks intersect roads at grade.",
                   )
                 }
                 onMouseLeave={hideTooltip}
