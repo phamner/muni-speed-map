@@ -6,16 +6,11 @@
       "properties": {
         "stop_id": "51405",
         "stop_name": "Mall of America Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.238877,
-          44.854277
-        ]
+        "coordinates": [-93.238877, 44.854277]
       }
     },
     {
@@ -23,17 +18,11 @@
       "properties": {
         "stop_id": "51408",
         "stop_name": "Nicollet Mall Station",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.26996,
-          44.978541
-        ]
+        "coordinates": [-93.26996, 44.978541]
       }
     },
     {
@@ -41,17 +30,11 @@
       "properties": {
         "stop_id": "51409",
         "stop_name": "Government Plaza Station",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.265899,
-          44.976796
-        ]
+        "coordinates": [-93.265899, 44.976796]
       }
     },
     {
@@ -59,16 +42,11 @@
       "properties": {
         "stop_id": "51411",
         "stop_name": "Cedar Riverside Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.251064,
-          44.968395
-        ]
+        "coordinates": [-93.251064, 44.968395]
       }
     },
     {
@@ -76,16 +54,11 @@
       "properties": {
         "stop_id": "51412",
         "stop_name": "Franklin Ave Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.247072,
-          44.962518
-        ]
+        "coordinates": [-93.247072, 44.962518]
       }
     },
     {
@@ -93,16 +66,11 @@
       "properties": {
         "stop_id": "51413",
         "stop_name": "Lake St Midtown Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.238902,
-          44.948353
-        ]
+        "coordinates": [-93.238902, 44.948353]
       }
     },
     {
@@ -110,16 +78,11 @@
       "properties": {
         "stop_id": "51414",
         "stop_name": "38th St Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.229461,
-          44.934651
-        ]
+        "coordinates": [-93.229461, 44.934651]
       }
     },
     {
@@ -127,16 +90,11 @@
       "properties": {
         "stop_id": "51415",
         "stop_name": "46th St Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.21992,
-          44.920736
-        ]
+        "coordinates": [-93.21992, 44.920736]
       }
     },
     {
@@ -144,16 +102,11 @@
       "properties": {
         "stop_id": "51416",
         "stop_name": "50th St / Minnehaha Park Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.210193,
-          44.91241
-        ]
+        "coordinates": [-93.210193, 44.91241]
       }
     },
     {
@@ -161,16 +114,11 @@
       "properties": {
         "stop_id": "51417",
         "stop_name": "VA Medical Center Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.202297,
-          44.902785
-        ]
+        "coordinates": [-93.202297, 44.902785]
       }
     },
     {
@@ -178,16 +126,11 @@
       "properties": {
         "stop_id": "51418",
         "stop_name": "Fort Snelling Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.19812,
-          44.893229
-        ]
+        "coordinates": [-93.19812, 44.893229]
       }
     },
     {
@@ -195,16 +138,11 @@
       "properties": {
         "stop_id": "51419",
         "stop_name": "Terminal 1 Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.205,
-          44.88077
-        ]
+        "coordinates": [-93.205, 44.88077]
       }
     },
     {
@@ -212,33 +150,11 @@
       "properties": {
         "stop_id": "51420",
         "stop_name": "Terminal 2 Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.224116,
-          44.874102
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "51421",
-        "stop_name": "Bloomington Central Station",
-        "routes": [
-          "Blue"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -93.226485,
-          44.856387
-        ]
+        "coordinates": [-93.224116, 44.874102]
       }
     },
     {
@@ -246,16 +162,11 @@
       "properties": {
         "stop_id": "51422",
         "stop_name": "30th Ave Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.231942,
-          44.855597
-        ]
+        "coordinates": [-93.231942, 44.855597]
       }
     },
     {
@@ -263,17 +174,11 @@
       "properties": {
         "stop_id": "51423",
         "stop_name": "Nicollet Mall Station",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.269919,
-          44.978597
-        ]
+        "coordinates": [-93.269919, 44.978597]
       }
     },
     {
@@ -281,17 +186,11 @@
       "properties": {
         "stop_id": "51424",
         "stop_name": "Government Plaza Station",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.265879,
-          44.976863
-        ]
+        "coordinates": [-93.265879, 44.976863]
       }
     },
     {
@@ -299,16 +198,11 @@
       "properties": {
         "stop_id": "51426",
         "stop_name": "Cedar Riverside Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.251029,
-          44.968406
-        ]
+        "coordinates": [-93.251029, 44.968406]
       }
     },
     {
@@ -316,16 +210,11 @@
       "properties": {
         "stop_id": "51427",
         "stop_name": "Franklin Ave Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.247027,
-          44.962525
-        ]
+        "coordinates": [-93.247027, 44.962525]
       }
     },
     {
@@ -333,16 +222,11 @@
       "properties": {
         "stop_id": "51428",
         "stop_name": "Lake St - Midtown Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.238864,
-          44.94836
-        ]
+        "coordinates": [-93.238864, 44.94836]
       }
     },
     {
@@ -350,16 +234,11 @@
       "properties": {
         "stop_id": "51429",
         "stop_name": "38th St Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.229449,
-          44.934655
-        ]
+        "coordinates": [-93.229449, 44.934655]
       }
     },
     {
@@ -367,16 +246,11 @@
       "properties": {
         "stop_id": "51430",
         "stop_name": "46th St Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.219847,
-          44.920758
-        ]
+        "coordinates": [-93.219847, 44.920758]
       }
     },
     {
@@ -384,16 +258,11 @@
       "properties": {
         "stop_id": "51431",
         "stop_name": "50th St / Minnehaha Park Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.210163,
-          44.912429
-        ]
+        "coordinates": [-93.210163, 44.912429]
       }
     },
     {
@@ -401,16 +270,11 @@
       "properties": {
         "stop_id": "51432",
         "stop_name": "VA Medical Center Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.202266,
-          44.90279
-        ]
+        "coordinates": [-93.202266, 44.90279]
       }
     },
     {
@@ -418,16 +282,11 @@
       "properties": {
         "stop_id": "51433",
         "stop_name": "Fort Snelling Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.198084,
-          44.893222
-        ]
+        "coordinates": [-93.198084, 44.893222]
       }
     },
     {
@@ -435,16 +294,11 @@
       "properties": {
         "stop_id": "51434",
         "stop_name": "Terminal 1 Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.204922,
-          44.88077
-        ]
+        "coordinates": [-93.204922, 44.88077]
       }
     },
     {
@@ -452,16 +306,11 @@
       "properties": {
         "stop_id": "51435",
         "stop_name": "Terminal 2 Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.224068,
-          44.874119
-        ]
+        "coordinates": [-93.224068, 44.874119]
       }
     },
     {
@@ -469,16 +318,11 @@
       "properties": {
         "stop_id": "51436",
         "stop_name": "Bloomington Central Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.226485,
-          44.856369
-        ]
+        "coordinates": [-93.226485, 44.856369]
       }
     },
     {
@@ -486,16 +330,11 @@
       "properties": {
         "stop_id": "51437",
         "stop_name": "30th Ave Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.231499,
-          44.855876
-        ]
+        "coordinates": [-93.231499, 44.855876]
       }
     },
     {
@@ -503,16 +342,11 @@
       "properties": {
         "stop_id": "53279",
         "stop_name": "American Blvd Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.223185,
-          44.857944
-        ]
+        "coordinates": [-93.223185, 44.857944]
       }
     },
     {
@@ -520,16 +354,11 @@
       "properties": {
         "stop_id": "53280",
         "stop_name": "American Blvd Station",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.223109,
-          44.859536
-        ]
+        "coordinates": [-93.223109, 44.859536]
       }
     },
     {
@@ -537,16 +366,11 @@
       "properties": {
         "stop_id": "56000",
         "stop_name": "Blue Line Rail & Green Line Rail",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.253367,
-          44.971812
-        ]
+        "coordinates": [-93.253367, 44.971812]
       }
     },
     {
@@ -554,16 +378,11 @@
       "properties": {
         "stop_id": "56001",
         "stop_name": "West Bank Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.246128,
-          44.971941
-        ]
+        "coordinates": [-93.246128, 44.971941]
       }
     },
     {
@@ -571,16 +390,11 @@
       "properties": {
         "stop_id": "56002",
         "stop_name": "East Bank Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.231064,
-          44.973645
-        ]
+        "coordinates": [-93.231064, 44.973645]
       }
     },
     {
@@ -588,16 +402,11 @@
       "properties": {
         "stop_id": "56003",
         "stop_name": "Stadium Village Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.222757,
-          44.974753
-        ]
+        "coordinates": [-93.222757, 44.974753]
       }
     },
     {
@@ -605,16 +414,11 @@
       "properties": {
         "stop_id": "56004",
         "stop_name": "Prospect Park Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.215303,
-          44.971754
-        ]
+        "coordinates": [-93.215303, 44.971754]
       }
     },
     {
@@ -622,16 +426,11 @@
       "properties": {
         "stop_id": "56005",
         "stop_name": "Westgate Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.20574,
-          44.967132
-        ]
+        "coordinates": [-93.20574, 44.967132]
       }
     },
     {
@@ -639,16 +438,11 @@
       "properties": {
         "stop_id": "56006",
         "stop_name": "Raymond Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.195466,
-          44.963067
-        ]
+        "coordinates": [-93.195466, 44.963067]
       }
     },
     {
@@ -656,16 +450,11 @@
       "properties": {
         "stop_id": "56007",
         "stop_name": "Fairview Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.178742,
-          44.956386
-        ]
+        "coordinates": [-93.178742, 44.956386]
       }
     },
     {
@@ -673,16 +462,11 @@
       "properties": {
         "stop_id": "56008",
         "stop_name": "Snelling Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.166107,
-          44.95565
-        ]
+        "coordinates": [-93.166107, 44.95565]
       }
     },
     {
@@ -690,16 +474,11 @@
       "properties": {
         "stop_id": "56009",
         "stop_name": "Hamline Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.155934,
-          44.95569
-        ]
+        "coordinates": [-93.155934, 44.95569]
       }
     },
     {
@@ -707,16 +486,11 @@
       "properties": {
         "stop_id": "56010",
         "stop_name": "Lexington Pkwy Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.145702,
-          44.955705
-        ]
+        "coordinates": [-93.145702, 44.955705]
       }
     },
     {
@@ -724,16 +498,11 @@
       "properties": {
         "stop_id": "56011",
         "stop_name": "Victoria St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.135578,
-          44.95571
-        ]
+        "coordinates": [-93.135578, 44.95571]
       }
     },
     {
@@ -741,16 +510,11 @@
       "properties": {
         "stop_id": "56012",
         "stop_name": "Dale St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.125412,
-          44.955697
-        ]
+        "coordinates": [-93.125412, 44.955697]
       }
     },
     {
@@ -758,16 +522,11 @@
       "properties": {
         "stop_id": "56013",
         "stop_name": "Western Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.115269,
-          44.955736
-        ]
+        "coordinates": [-93.115269, 44.955736]
       }
     },
     {
@@ -775,16 +534,11 @@
       "properties": {
         "stop_id": "56014",
         "stop_name": "Capitol / Rice St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.105177,
-          44.955682
-        ]
+        "coordinates": [-93.105177, 44.955682]
       }
     },
     {
@@ -792,16 +546,11 @@
       "properties": {
         "stop_id": "56015",
         "stop_name": "Robert St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.097507,
-          44.954023
-        ]
+        "coordinates": [-93.097507, 44.954023]
       }
     },
     {
@@ -809,16 +558,11 @@
       "properties": {
         "stop_id": "56016",
         "stop_name": "10th St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.097608,
-          44.950612
-        ]
+        "coordinates": [-93.097608, 44.950612]
       }
     },
     {
@@ -826,16 +570,11 @@
       "properties": {
         "stop_id": "56017",
         "stop_name": "Central Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.092306,
-          44.94613
-        ]
+        "coordinates": [-93.092306, 44.94613]
       }
     },
     {
@@ -843,16 +582,11 @@
       "properties": {
         "stop_id": "56018",
         "stop_name": "Union Depot Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.086735,
-          44.948208
-        ]
+        "coordinates": [-93.086735, 44.948208]
       }
     },
     {
@@ -860,16 +594,11 @@
       "properties": {
         "stop_id": "56021",
         "stop_name": "Junction & Blue Green Crossover",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.253428,
-          44.971794
-        ]
+        "coordinates": [-93.253428, 44.971794]
       }
     },
     {
@@ -877,16 +606,11 @@
       "properties": {
         "stop_id": "56026",
         "stop_name": "Union Depot Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.08672,
-          44.948226
-        ]
+        "coordinates": [-93.08672, 44.948226]
       }
     },
     {
@@ -894,16 +618,11 @@
       "properties": {
         "stop_id": "56027",
         "stop_name": "Central Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.092297,
-          44.946164
-        ]
+        "coordinates": [-93.092297, 44.946164]
       }
     },
     {
@@ -911,16 +630,11 @@
       "properties": {
         "stop_id": "56028",
         "stop_name": "10th St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.097492,
-          44.950663
-        ]
+        "coordinates": [-93.097492, 44.950663]
       }
     },
     {
@@ -928,16 +642,11 @@
       "properties": {
         "stop_id": "56029",
         "stop_name": "Robert St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.097459,
-          44.954047
-        ]
+        "coordinates": [-93.097459, 44.954047]
       }
     },
     {
@@ -945,16 +654,11 @@
       "properties": {
         "stop_id": "56030",
         "stop_name": "Capitol / Rice St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.105179,
-          44.955728
-        ]
+        "coordinates": [-93.105179, 44.955728]
       }
     },
     {
@@ -962,16 +666,11 @@
       "properties": {
         "stop_id": "56031",
         "stop_name": "Western Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.117045,
-          44.955776
-        ]
+        "coordinates": [-93.117045, 44.955776]
       }
     },
     {
@@ -979,16 +678,11 @@
       "properties": {
         "stop_id": "56032",
         "stop_name": "Dale St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.127216,
-          44.955741
-        ]
+        "coordinates": [-93.127216, 44.955741]
       }
     },
     {
@@ -996,16 +690,11 @@
       "properties": {
         "stop_id": "56033",
         "stop_name": "Victoria St Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.137323,
-          44.95575
-        ]
+        "coordinates": [-93.137323, 44.95575]
       }
     },
     {
@@ -1013,16 +702,11 @@
       "properties": {
         "stop_id": "56034",
         "stop_name": "Lexington Pkwy Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.147502,
-          44.955739
-        ]
+        "coordinates": [-93.147502, 44.955739]
       }
     },
     {
@@ -1030,16 +714,11 @@
       "properties": {
         "stop_id": "56035",
         "stop_name": "Hamline Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.157728,
-          44.955718
-        ]
+        "coordinates": [-93.157728, 44.955718]
       }
     },
     {
@@ -1047,16 +726,11 @@
       "properties": {
         "stop_id": "56036",
         "stop_name": "Snelling Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.167894,
-          44.955696
-        ]
+        "coordinates": [-93.167894, 44.955696]
       }
     },
     {
@@ -1064,16 +738,11 @@
       "properties": {
         "stop_id": "56037",
         "stop_name": "Fairview Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.17872,
-          44.956409
-        ]
+        "coordinates": [-93.17872, 44.956409]
       }
     },
     {
@@ -1081,16 +750,11 @@
       "properties": {
         "stop_id": "56038",
         "stop_name": "Raymond Ave Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.195441,
-          44.963091
-        ]
+        "coordinates": [-93.195441, 44.963091]
       }
     },
     {
@@ -1098,16 +762,11 @@
       "properties": {
         "stop_id": "56039",
         "stop_name": "Westgate Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.207226,
-          44.967838
-        ]
+        "coordinates": [-93.207226, 44.967838]
       }
     },
     {
@@ -1115,16 +774,11 @@
       "properties": {
         "stop_id": "56040",
         "stop_name": "Prospect Park Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.215229,
-          44.971754
-        ]
+        "coordinates": [-93.215229, 44.971754]
       }
     },
     {
@@ -1132,16 +786,11 @@
       "properties": {
         "stop_id": "56041",
         "stop_name": "Stadium Village Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.222881,
-          44.974799
-        ]
+        "coordinates": [-93.222881, 44.974799]
       }
     },
     {
@@ -1149,16 +798,11 @@
       "properties": {
         "stop_id": "56042",
         "stop_name": "East Bank Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.231063,
-          44.973713
-        ]
+        "coordinates": [-93.231063, 44.973713]
       }
     },
     {
@@ -1166,16 +810,11 @@
       "properties": {
         "stop_id": "56043",
         "stop_name": "West Bank Station",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.246139,
-          44.971988
-        ]
+        "coordinates": [-93.246139, 44.971988]
       }
     },
     {
@@ -1183,17 +822,11 @@
       "properties": {
         "stop_id": "56330",
         "stop_name": "U.S. Bank Stadium Station",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.259722,
-          44.975101
-        ]
+        "coordinates": [-93.259722, 44.975101]
       }
     },
     {
@@ -1201,17 +834,11 @@
       "properties": {
         "stop_id": "56332",
         "stop_name": "Warehouse District Hennepin Ave Station",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.273202,
-          44.980177
-        ]
+        "coordinates": [-93.273202, 44.980177]
       }
     },
     {
@@ -1219,17 +846,11 @@
       "properties": {
         "stop_id": "56333",
         "stop_name": "Target Field Station Platform 1",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.277453,
-          44.983045
-        ]
+        "coordinates": [-93.277453, 44.983045]
       }
     },
     {
@@ -1237,17 +858,11 @@
       "properties": {
         "stop_id": "56334",
         "stop_name": "Target Field Station Platform 2",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.278615,
-          44.983442
-        ]
+        "coordinates": [-93.278615, 44.983442]
       }
     },
     {
@@ -1255,17 +870,11 @@
       "properties": {
         "stop_id": "56335",
         "stop_name": "Target Field Station Platform 1",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.277396,
-          44.982905
-        ]
+        "coordinates": [-93.277396, 44.982905]
       }
     },
     {
@@ -1273,17 +882,11 @@
       "properties": {
         "stop_id": "56336",
         "stop_name": "Warehouse District Hennepin Ave Station",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.273244,
-          44.980074
-        ]
+        "coordinates": [-93.273244, 44.980074]
       }
     },
     {
@@ -1291,17 +894,11 @@
       "properties": {
         "stop_id": "56338",
         "stop_name": "U.S. Bank Stadium Station",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.259658,
-          44.97496
-        ]
+        "coordinates": [-93.259658, 44.97496]
       }
     },
     {
@@ -1309,17 +906,11 @@
       "properties": {
         "stop_id": "56339",
         "stop_name": "Target Field Station Platform 2",
-        "routes": [
-          "Blue",
-          "Green"
-        ]
+        "routes": ["Blue", "Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.278703,
-          44.983543
-        ]
+        "coordinates": [-93.278703, 44.983543]
       }
     },
     {
@@ -1327,16 +918,11 @@
       "properties": {
         "stop_id": "57174",
         "stop_name": "Union Depot Crossing",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.088139,
-          44.94751
-        ]
+        "coordinates": [-93.088139, 44.94751]
       }
     },
     {
@@ -1344,16 +930,11 @@
       "properties": {
         "stop_id": "57175",
         "stop_name": "Union Depot Crossing",
-        "routes": [
-          "Green"
-        ]
+        "routes": ["Green"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.088165,
-          44.947534
-        ]
+        "coordinates": [-93.088165, 44.947534]
       }
     },
     {
@@ -1361,16 +942,11 @@
       "properties": {
         "stop_id": "57176",
         "stop_name": "Mall of America Crossing",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.238911,
-          44.853322
-        ]
+        "coordinates": [-93.238911, 44.853322]
       }
     },
     {
@@ -1378,16 +954,11 @@
       "properties": {
         "stop_id": "57177",
         "stop_name": "Mall of America Crossing",
-        "routes": [
-          "Blue"
-        ]
+        "routes": ["Blue"]
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [
-          -93.238932,
-          44.853329
-        ]
+        "coordinates": [-93.238932, 44.853329]
       }
     }
   ]
