@@ -370,47 +370,6 @@ function getBadgeWidthClass(city: City): string {
   }
 }
 
-// Get line info for tooltip
-function getLineInfo(line: string, city: City): string | undefined {
-  if (city === "LA") {
-    return LA_METRO_LINE_INFO[line as LAMetroLine]?.name;
-  } else if (city === "Seattle") {
-    return SEATTLE_LINK_LINE_INFO[line as SeattleLinkLine]?.name;
-  } else if (city === "Boston") {
-    return BOSTON_GREEN_LINE_INFO[line as BostonGreenLine]?.name;
-  } else if (city === "Portland") {
-    return (
-      PORTLAND_MAX_LINE_INFO[line as PortlandMaxLine]?.name ||
-      PORTLAND_STREETCAR_LINE_INFO[line as PortlandStreetcarLine]?.name
-    );
-  } else if (city === "San Diego") {
-    return SAN_DIEGO_TROLLEY_LINE_INFO[line as SanDiegoTrolleyLine]?.name;
-  } else if (city === "Toronto") {
-    return TORONTO_STREETCAR_LINE_INFO[line as TorontoStreetcarLine]?.name;
-  } else if (city === "Philadelphia") {
-    return PHILLY_TROLLEY_LINE_INFO[line as PhillyTrolleyLine]?.name;
-  } else if (city === "Pittsburgh") {
-    return PITTSBURGH_T_LINE_INFO[line as PittsburghTLine]?.name;
-  } else if (city === "Minneapolis") {
-    return MINNEAPOLIS_METRO_LINE_INFO[line as MinneapolisMetroLine]?.name;
-  } else if (city === "Denver") {
-    return DENVER_RTD_LINE_INFO[line as DenverRtdLine]?.name;
-  } else if (city === "Salt Lake City") {
-    return SLC_TRAX_LINE_INFO[line as SlcTraxLine]?.name;
-  } else if (city === "San Jose") {
-    return VTA_LIGHT_RAIL_LINE_INFO[line as VtaLightRailLine]?.name;
-  } else if (city === "Phoenix") {
-    return PHOENIX_LIGHT_RAIL_LINE_INFO[line as PhoenixLightRailLine]?.name;
-  } else if (city === "Cleveland") {
-    return CLEVELAND_RTA_LINE_INFO[line as ClevelandRtaLine]?.name;
-  } else if (city === "Charlotte") {
-    return CHARLOTTE_LYNX_LINE_INFO[line as CharlotteLynxLine]?.name;
-  } else if (city === "Baltimore") {
-    return BALTIMORE_LIGHT_RAIL_LINE_INFO[line as BaltimoreLightRailLine]?.name;
-  }
-  return undefined;
-}
-
 interface ControlsProps {
   city: City;
   setCity: (city: City) => void;
