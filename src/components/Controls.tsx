@@ -977,15 +977,11 @@ export function Controls({
       </div>
       {/* City Selector - alphabetical by city name */}
       <div className="city-selector">
-        {CITY_SELECTOR_ITEMS.map(({ id, label, emoji, tooltip }) => (
+        {CITY_SELECTOR_ITEMS.map(({ id, label, emoji }) => (
           <button
             key={id}
             className={`city-btn ${city === id ? "active" : ""}`}
             onClick={() => setCity(id)}
-            {...(tooltip && {
-              onMouseEnter: (e: React.MouseEvent) => showTooltip(e, tooltip),
-              onMouseLeave: hideTooltip,
-            })}
           >
             {emoji} {label}
           </button>
@@ -1211,15 +1207,6 @@ export function Controls({
               onClick={() => {
                 toggleLine(line);
               }}
-              onMouseEnter={(e) =>
-                showTooltip(
-                  e,
-                  city === "Toronto" && line === "805"
-                    ? "Line 5 Eglinton - Under Construction (route data from OpenStreetMap)"
-                    : getLineInfo(line, city) || "",
-                )
-              }
-              onMouseLeave={hideTooltip}
             >
               {city === "Toronto" ? (
                 <>
@@ -1488,10 +1475,6 @@ export function Controls({
                   <span
                     className={`line-stat-badge ${getBadgeWidthClass(city)}`}
                     style={{ backgroundColor: getLineColor(stat.line, city) }}
-                    onMouseEnter={(e) =>
-                      showTooltip(e, getLineInfo(stat.line, city) || "")
-                    }
-                    onMouseLeave={hideTooltip}
                   >
                     {getLineLabel(stat.line, city)}
                   </span>
