@@ -192,7 +192,7 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Phoenix",
-    note: "Valley Metro is almost entirely at-grade and street-running, which makes it a good baseline for what mixed-traffic light rail looks like. You can see the effect of major intersections in the speed data. Compare this with a system like Denver or Charlotte to see how much grade separation matters.",
+    note: "Valley Metro is almost entirely at-grade and (separated) street-running, which makes it a good baseline for what this kind of light rail looks like. You can see the effect of major intersections in the speed data.",
   },
   {
     city: "Pittsburgh",
