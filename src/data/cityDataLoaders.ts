@@ -50,6 +50,107 @@ const cityToCommuterRailContextFilename: Partial<Record<City, string>> = {
 
 const railContextModules = import.meta.glob("./*RailContext*.json");
 
+type Coordinate = [number, number];
+type LineStringCoordinates = Coordinate[];
+type MultiLineStringCoordinates = LineStringCoordinates[];
+
+function endpointDistance(a: Coordinate, b: Coordinate): number {
+  return Math.hypot(a[0] - b[0], a[1] - b[1]);
+}
+
+function stitchNorthboundSegments(
+  segments: MultiLineStringCoordinates,
+): LineStringCoordinates {
+  if (segments.length === 0) return [];
+  if (segments.length === 1) return segments[0];
+
+  const remaining = segments.map((segment) => [...segment]);
+  let startIndex = 0;
+  let startLat = Infinity;
+
+  for (let i = 0; i < remaining.length; i++) {
+    const segment = remaining[i];
+    const firstLat = segment[0]?.[1] ?? Infinity;
+    const lastLat = segment[segment.length - 1]?.[1] ?? Infinity;
+    const minLat = Math.min(firstLat, lastLat);
+    if (minLat < startLat) {
+      startLat = minLat;
+      startIndex = i;
+    }
+  }
+
+  const initial = remaining.splice(startIndex, 1)[0];
+  let merged =
+    initial[0][1] <= initial[initial.length - 1][1]
+      ? [...initial]
+      : [...initial].reverse();
+
+  while (remaining.length > 0) {
+    let bestIndex = 0;
+    let bestSegment = remaining[0];
+    let bestDistance = Infinity;
+
+    for (let i = 0; i < remaining.length; i++) {
+      const segment = remaining[i];
+      const forwardDistance = endpointDistance(
+        merged[merged.length - 1],
+        segment[0],
+      );
+      const reversedDistance = endpointDistance(
+        merged[merged.length - 1],
+        segment[segment.length - 1],
+      );
+
+      if (forwardDistance < bestDistance) {
+        bestDistance = forwardDistance;
+        bestIndex = i;
+        bestSegment = [...segment];
+      }
+
+      if (reversedDistance < bestDistance) {
+        bestDistance = reversedDistance;
+        bestIndex = i;
+        bestSegment = [...segment].reverse();
+      }
+    }
+
+    remaining.splice(bestIndex, 1);
+    const last = merged[merged.length - 1];
+    const first = bestSegment[0];
+    merged = merged.concat(
+      last[0] === first[0] && last[1] === first[1]
+        ? bestSegment.slice(1)
+        : bestSegment,
+    );
+  }
+
+  return merged;
+}
+
+function normalizeTorontoCommuterRailContext(data: any | null): any | null {
+  if (!data?.features) return data;
+
+  return {
+    ...data,
+    features: data.features.map((feature: any) => {
+      if (
+        feature?.properties?.route_id !== "01260426-ST" ||
+        feature?.geometry?.type !== "MultiLineString"
+      ) {
+        return feature;
+      }
+
+      return {
+        ...feature,
+        geometry: {
+          type: "LineString",
+          coordinates: stitchNorthboundSegments(feature.geometry.coordinates),
+        },
+      };
+    }),
+  };
+}
+
 async function loadRailContextData(city: City): Promise<{
   railContextHeavy: any | null;
   railContextCommuter: any | null;
@@ -99,7 +200,10 @@ async function loadRailContextData(city: City): Promise<{
 
   return {
     railContextHeavy: (heavy as any)?.default || null,
-    railContextCommuter: (commuter as any)?.default || null,
+    railContextCommuter:
+      city === "Toronto"
+        ? normalizeTorontoCommuterRailContext((commuter as any)?.default || null)
+        : (commuter as any)?.default || null,
   };
 }
 

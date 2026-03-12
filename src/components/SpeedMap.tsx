@@ -88,6 +88,142 @@ interface SpeedMapProps {
   ) => void;
 }
 
+const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
+  Record<City, Record<string, string>>
+> = {
+  SF: {
+    "001": "Alameda County",
+    "041": "Marin County",
+    "075": "San Francisco County",
+    "081": "San Mateo County",
+    "085": "Santa Clara County",
+  },
+  LA: {
+    "037": "Los Angeles County",
+    "059": "Orange County",
+  },
+  Boston: {
+    "009": "Essex County",
+    "017": "Middlesex County",
+    "021": "Norfolk County",
+    "025": "Suffolk County",
+  },
+  Philadelphia: {
+    "005": "Burlington County",
+    "007": "Camden County",
+    "015": "Gloucester County",
+    "017": "Bucks County",
+    "021": "Mercer County",
+    "029": "Chester County",
+    "045": "Delaware County",
+    "091": "Montgomery County",
+    "101": "Philadelphia County",
+  },
+  Seattle: {
+    "033": "King County",
+    "053": "Pierce County",
+    "061": "Snohomish County",
+  },
+  Portland: {
+    "005": "Clackamas County",
+    "011": "Clark County",
+    "051": "Multnomah County",
+    "067": "Washington County",
+  },
+  "San Diego": {
+    "073": "San Diego County",
+  },
+  "San Jose": {
+    "001": "Alameda County",
+    "075": "San Francisco County",
+    "081": "San Mateo County",
+    "085": "Santa Clara County",
+  },
+  Pittsburgh: {
+    "003": "Allegheny County",
+    "125": "Washington County",
+  },
+  Minneapolis: {
+    "037": "Dakota County",
+    "053": "Hennepin County",
+    "123": "Ramsey County",
+  },
+  Denver: {
+    "001": "Adams County",
+    "005": "Arapahoe County",
+    "013": "Boulder County",
+    "031": "Denver County",
+    "035": "Douglas County",
+    "059": "Jefferson County",
+  },
+  "Salt Lake City": {
+    "003": "Box Elder County",
+    "011": "Davis County",
+    "035": "Salt Lake County",
+    "049": "Utah County",
+    "057": "Weber County",
+  },
+  Phoenix: {
+    "013": "Maricopa County",
+  },
+  Cleveland: {
+    "035": "Cuyahoga County",
+    "085": "Lake County",
+    "093": "Lorain County",
+  },
+  Charlotte: {
+    "071": "Gaston County",
+    "119": "Mecklenburg County",
+    "179": "Union County",
+  },
+  Baltimore: {
+    "003": "Anne Arundel County",
+    "005": "Baltimore County",
+    "027": "Howard County",
+    "510": "Baltimore City",
+  },
+};
+
+const TORONTO_POPULATION_DENSITY_AREAS: Record<string, string> = {
+  "532": "Oshawa CMA",
+  "535": "Toronto CMA",
+  "537": "Hamilton CMA",
+  "541": "Kitchener-Cambridge-Waterloo CMA",
+  "550": "Guelph CMA",
+  "568": "Barrie CMA",
+};
+
+function formatUsTractLabel(geoid: string): string | null {
+  if (!/^\d{11}$/.test(geoid)) return null;
+  const tractCode = geoid.slice(5);
+  const whole = `${parseInt(tractCode.slice(0, 4), 10)}`;
+  const fractional = tractCode.slice(4);
+  return fractional === "00" ? whole : `${whole}.${fractional}`;
+}
+
+function formatCanadianTractLabel(geoid: string): string | null {
+  const match = geoid.match(/^(\d{3})(.+)$/);
+  if (!match) return null;
+  const tract = match[2].replace(/^0+/, "");
+  return tract || match[2];
+}
+
+function getPopulationDensityAreaLabel(city: City, geoid: string): string | null {
+  if (city === "Toronto") {
+    return TORONTO_POPULATION_DENSITY_AREAS[geoid.slice(0, 3)] || null;
+  }
+
+  const counties = POPULATION_DENSITY_COUNTIES_BY_CITY[city];
+  if (!counties || !/^\d{11}$/.test(geoid)) return null;
+  return counties[geoid.slice(2, 5)] || null;
+}
+
+function getPopulationDensityTractLabel(city: City, geoid: string): string | null {
+  return city === "Toronto"
+    ? formatCanadianTractLabel(geoid)
+    : formatUsTractLabel(geoid);
+}
+
 export function SpeedMap({
   city,
   selectedLines,
@@ -3447,7 +3583,9 @@ export function SpeedMap({
                   ["linear"],
                   ["get", "density"],
                   0,
-                  "rgba(20, 20, 35, 0.2)", // Very dark/muted - no population
+                  "#0f1724", // Very dark slate - still visibly covered at near-zero density
+                  250,
+                  "#132434", // Sparse rural coverage
                   1000,
                   "#1a3a4a", // Dark blue-grey - rural/industrial
                   2500,
@@ -3465,7 +3603,21 @@ export function SpeedMap({
                   45000,
                   "#ff0066", // Hot pink - extremely dense
                 ],
-                "fill-opacity": 0.65,
+                "fill-opacity": [
+                  "interpolate",
+                  ["linear"],
+                  ["get", "density"],
+                  0,
+                  0.82,
+                  1000,
+                  0.76,
+                  5000,
+                  0.68,
+                  12000,
+                  0.62,
+                  45000,
+                  0.58,
+                ],
               },
               layout: {
                 visibility: "none",
@@ -3537,7 +3689,8 @@ export function SpeedMap({
           const showDensityPopup = (e: maplibregl.MapLayerMouseEvent) => {
             if (!e.features?.length || !map.current) return;
             const props = e.features[0].properties;
-            const newTractId = props.GEOID;
+            const geoid = String(props.GEOID || "");
+            const newTractId = geoid;
 
             if (newTractId !== hoveredTractId.current) {
               if (hoveredTractId.current) {
@@ -3555,6 +3708,14 @@ export function SpeedMap({
 
             const density = props.density || 0;
             const population = props.POP100 || 0;
+            const areaLabel = getPopulationDensityAreaLabel(city, geoid);
+            const tractLabel = getPopulationDensityTractLabel(city, geoid);
+            const placeLine = areaLabel
+              ? `<div class="popup-detail">${escapeHtml(areaLabel)}</div>`
+              : "";
+            const tractLine = tractLabel
+              ? `<div class="popup-detail">Tract: ${escapeHtml(tractLabel)}</div>`
+              : "";
 
             const getDensityColor = (d: number): string => {
               if (d >= 45000) return "#ff0066";
@@ -3575,6 +3736,8 @@ export function SpeedMap({
                   <span class="density-value" style="color: ${densityColor}">${density.toLocaleString()}</span>
                   <span class="density-unit">people/km²</span>
                 </div>
+                ${placeLine}
+                ${tractLine}
                 <div class="popup-detail">Population: ${population.toLocaleString()}</div>
               </div>`,
               )
@@ -3591,7 +3754,7 @@ export function SpeedMap({
 
         // Toggle visibility and adjust opacity for satellite overlay
         const isVisible = showPopulationDensity ? "visible" : "none";
-        const fillOpacity = showSatellite ? 0.45 : 0.65;
+        const fillOpacityMultiplier = showSatellite ? 0.7 : 1;
 
         if (map.current.getLayer("population-density-fill")) {
           map.current.setLayoutProperty(
@@ -3602,7 +3765,21 @@ export function SpeedMap({
           map.current.setPaintProperty(
             "population-density-fill",
             "fill-opacity",
-            fillOpacity,
+            [
+              "interpolate",
+              ["linear"],
+              ["get", "density"],
+              0,
+              0.82 * fillOpacityMultiplier,
+              1000,
+              0.76 * fillOpacityMultiplier,
+              5000,
+              0.68 * fillOpacityMultiplier,
+              12000,
+              0.62 * fillOpacityMultiplier,
+              45000,
+              0.58 * fillOpacityMultiplier,
+            ],
           );
         }
         if (map.current.getLayer("population-density-outline")) {

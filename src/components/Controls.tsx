@@ -1434,7 +1434,7 @@ export function Controls({
               onMouseEnter={(e) =>
                 showTooltip(
                   e,
-                  "Excludes vehicles under 0.5 mph (stopped trains, yards) to reflect operational speeds.",
+                  "Excludes vehicles under 0.5 mph. Many networks have large numbers of trains sitting parked at the ends of lines, which drag down the line average and make the statistic much less representative of actual in-service operations. This decision is not especially elegant, but it seems to work well in practice.",
                 )
               }
               onMouseLeave={hideTooltip}
@@ -1640,9 +1640,9 @@ export function Controls({
           )}{" "}
           tracts:{" "}
           {city === "Toronto"
-            ? "Toronto CMA"
+            ? "Toronto, Oshawa, Hamilton, Kitchener-Cambridge-Waterloo, Guelph, Barrie CMAs"
             : city === "SF"
-              ? "San Francisco, San Mateo, Alameda counties"
+              ? "San Francisco, San Mateo, Alameda, Marin, Santa Clara counties"
               : city === "LA"
                 ? "Los Angeles, Orange counties"
                 : city === "Boston"
@@ -1666,7 +1666,7 @@ export function Controls({
                                   : city === "Salt Lake City"
                                     ? "Salt Lake, Davis, Weber, Utah, Box Elder counties"
                                     : city === "San Jose"
-                                      ? "Santa Clara, Alameda, San Mateo counties"
+                                      ? "Santa Clara, Alameda, San Mateo, San Francisco counties"
                                       : city === "Phoenix"
                                         ? "Maricopa County"
                                         : city === "Cleveland"

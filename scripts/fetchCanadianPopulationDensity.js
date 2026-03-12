@@ -38,8 +38,9 @@ const POPULATION_URL =
 const CITY_CONFIGS = {
   toronto: {
     file: "torontoPopulationDensity.json",
-    cmaCode: "535",
-    label: "Toronto CMA",
+    areaCodes: ["535", "532", "537", "541", "550", "568"],
+    label:
+      "Toronto + Oshawa + Hamilton + Kitchener-Cambridge-Waterloo + Guelph + Barrie CMAs",
   },
 };
 
@@ -76,11 +77,16 @@ async function fetchPopulationData() {
   return popByCtuid;
 }
 
-async function fetchBoundaries(cmaCode, label) {
-  console.log(`  Fetching boundaries for ${label} (CMA ${cmaCode})...`);
+async function fetchBoundaries(areaCodes, label) {
+  const codes = Array.isArray(areaCodes) ? areaCodes : [areaCodes];
+  console.log(
+    `  Fetching boundaries for ${label} (${codes.length} CMA codes)...`,
+  );
+
+  const where = codes.map((code) => `CTUID LIKE '${code}%'`).join(" OR ");
 
   const params = new URLSearchParams({
-    where: `CTUID LIKE '${cmaCode}%'`,
+    where,
     outFields: "CTUID,CTNAME,LANDAREA",
     returnGeometry: "true",
     f: "geojson",
@@ -117,7 +123,7 @@ async function fetchCity(cityKey) {
 
   const [popByCtuid, features] = await Promise.all([
     fetchPopulationData(),
-    fetchBoundaries(config.cmaCode, config.label),
+    fetchBoundaries(config.areaCodes, config.label),
   ]);
 
   let matched = 0;
@@ -172,7 +178,9 @@ const args = process.argv.slice(2);
 if (args.includes("--list")) {
   console.log("\nAvailable Canadian cities:\n");
   for (const [key, config] of Object.entries(CITY_CONFIGS)) {
-    console.log(`  ${key.padEnd(12)} → ${config.file} (CMA ${config.cmaCode})`);
+    console.log(
+      `  ${key.padEnd(12)} → ${config.file} (${config.areaCodes.join(", ")})`,
+    );
   }
   process.exit(0);
 }

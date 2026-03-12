@@ -50,6 +50,8 @@ const CITY_CONFIGS = {
       [STATE.CA, "075", "San Francisco County"],
       [STATE.CA, "081", "San Mateo County"],
       [STATE.CA, "001", "Alameda County"],
+      [STATE.CA, "041", "Marin County"],
+      [STATE.CA, "085", "Santa Clara County"],
     ],
   },
   la: {
@@ -109,6 +111,7 @@ const CITY_CONFIGS = {
       [STATE.CA, "085", "Santa Clara County"],
       [STATE.CA, "001", "Alameda County"],
       [STATE.CA, "081", "San Mateo County"],
+      [STATE.CA, "075", "San Francisco County"],
     ],
   },
   pittsburgh: {
