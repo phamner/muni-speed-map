@@ -1,5 +1,14 @@
+import { useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import type { City } from "../../types";
 import type { SpeedUnit } from "../../App";
+
+const GRADE_SEPARATION_TOOLTIP = `Classifies how rail tracks interact with surrounding streets and traffic.
+• Tunnel / Trench: Tracks run underground or below street level.
+• Elevated: Tracks run above street level on viaducts or elevated structures.
+• Separated At-Grade: Tracks run at street level but on a dedicated right-of-way separated from cars.
+• Mixed Traffic: Tracks run directly in street lanes with car traffic.
+• Unknown: Infrastructure type not identified in available data.`;
 
 interface SpeedLegendProps {
   speedUnit: SpeedUnit;
@@ -74,9 +83,47 @@ export function SpeedLegend({ speedUnit }: SpeedLegendProps) {
 }
 
 export function SeparationLegend() {
+  const [tooltip, setTooltip] = useState<{ x: number; y: number } | null>(null);
+  const tooltipTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const showTooltip = (e: React.MouseEvent) => {
+    const x = e.clientX + 12;
+    const y = e.clientY + 12;
+    tooltipTimer.current = setTimeout(() => setTooltip({ x, y }), 500);
+  };
+  const hideTooltip = () => {
+    if (tooltipTimer.current) clearTimeout(tooltipTimer.current);
+    tooltipTimer.current = null;
+    setTooltip(null);
+  };
+
   return (
     <div className="map-separation-legend">
-      <div className="map-separation-legend-title">Grade Separation</div>
+      <div className="map-separation-legend-title-row">
+        <span className="map-separation-legend-title">Grade Separation</span>
+        <span
+          className="speed-by-line-info-icon map-separation-legend-info"
+          onMouseEnter={showTooltip}
+          onMouseLeave={hideTooltip}
+        >
+          ⓘ
+        </span>
+      </div>
+      {tooltip &&
+        createPortal(
+          <div
+            className="speed-info-tooltip map-separation-tooltip"
+            style={{
+              position: "fixed",
+              left: tooltip.x,
+              top: tooltip.y,
+              zIndex: 2147483647,
+            }}
+          >
+            {GRADE_SEPARATION_TOOLTIP}
+          </div>,
+          document.body,
+        )}
       <div className="separation-legend-item">
         <span
           className="separation-legend-line"
