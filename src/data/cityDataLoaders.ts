@@ -770,6 +770,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         maxspeed,
         tunnelsBridges,
         separation,
+        separationOverrides,
         trafficLights,
         busRoutesOverlay,
       ] = await Promise.all([
@@ -780,12 +781,27 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         import("./phoenixMaxspeed.json"),
         import("./phoenixTunnelsBridges.json").catch(() => ({ default: null })),
         import("./phoenixSeparation.json").catch(() => ({ default: null })),
+        import("./phoenixSeparationOverrides.json").catch(() => ({
+          default: null,
+        })),
         import("./phoenixTrafficLightsConsolidated.json").catch(() => ({
           default: null,
         })),
         import("./phoenixBusRoutesTest.json").catch(() => ({ default: null })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
+
+      // Merge separation data with manual overrides (overrides render on top)
+      let mergedSeparation: any = separation.default;
+      if (separationOverrides.default?.features?.length) {
+        const osmFeatures = separation.default?.features || [];
+        const overrideFeatures = separationOverrides.default.features;
+        mergedSeparation = {
+          type: "FeatureCollection",
+          features: [...overrideFeatures, ...osmFeatures],
+        };
+      }
+
       return {
         routes: routes.default,
         stops: stops.default,
@@ -793,7 +809,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         switches: switches.default,
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
-        separation: separation.default,
+        separation: mergedSeparation,
         trafficLights: trafficLights.default,
         busRoutesOverlay: busRoutesOverlay.default,
       };
