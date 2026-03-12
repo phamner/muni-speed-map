@@ -512,6 +512,9 @@ export function Controls({
     text: string;
   } | null>(null);
   const tooltipTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isTouchTooltipMode = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: none), (pointer: coarse)").matches;
   const showTooltip = (e: React.MouseEvent, text: string) => {
     const x = e.clientX + 12;
     const y = e.clientY + 12;
@@ -519,11 +522,39 @@ export function Controls({
       setTooltip({ x, y, text });
     }, 500);
   };
+  const toggleTouchTooltip = (
+    e: {
+      currentTarget: EventTarget & HTMLElement;
+      preventDefault: () => void;
+      stopPropagation: () => void;
+    },
+    text: string,
+  ) => {
+    if (!isTouchTooltipMode()) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (tooltipTimer.current) clearTimeout(tooltipTimer.current);
+    tooltipTimer.current = null;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.bottom + 12;
+    setTooltip((current) =>
+      current?.text === text ? null : { x, y, text },
+    );
+  };
   const hideTooltip = () => {
     if (tooltipTimer.current) clearTimeout(tooltipTimer.current);
     tooltipTimer.current = null;
     setTooltip(null);
   };
+  useEffect(() => {
+    if (!tooltip || !isTouchTooltipMode()) return;
+    const dismissTooltip = () => setTooltip(null);
+    document.addEventListener("pointerdown", dismissTooltip);
+    return () => {
+      document.removeEventListener("pointerdown", dismissTooltip);
+    };
+  }, [tooltip]);
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [aboutActiveTab, setAboutActiveTab] = useState<AboutTab>("overview");
   const [showTransitMapModal, setShowTransitMapModal] = useState(false);
@@ -1106,6 +1137,12 @@ export function Controls({
                   "Excludes stopped vehicles from raw data and segment averages. Toggling causes segment averages to recalculate, raising displayed speeds.",
                 )
               }
+              onClick={(e) =>
+                toggleTouchTooltip(
+                  e,
+                  "Excludes stopped vehicles from raw data and segment averages. Toggling causes segment averages to recalculate, raising displayed speeds.",
+                )
+              }
               onMouseLeave={hideTooltip}
             >
               ⓘ
@@ -1228,6 +1265,12 @@ export function Controls({
                     "Speed limit data is not available for this city",
                   )
                 }
+                onClick={(e) =>
+                  toggleTouchTooltip(
+                    e,
+                    "Speed limit data is not available for this city",
+                  )
+                }
                 onMouseLeave={hideTooltip}
               >
                 Speed Limit
@@ -1335,6 +1378,12 @@ export function Controls({
                   "Grade crossing data is not available for this city",
                 )
               }
+              onClick={(e) =>
+                toggleTouchTooltip(
+                  e,
+                  "Grade crossing data is not available for this city",
+                )
+              }
               onMouseLeave={hideTooltip}
             >
               <input type="checkbox" checked={false} disabled />
@@ -1354,6 +1403,12 @@ export function Controls({
                 className="speed-by-line-info-icon"
                 onMouseEnter={(e) =>
                   showTooltip(
+                    e,
+                    "Shows rail–road level crossings where tracks intersect roads at grade.",
+                  )
+                }
+                onClick={(e) =>
+                  toggleTouchTooltip(
                     e,
                     "Shows rail–road level crossings where tracks intersect roads at grade.",
                   )
@@ -1379,6 +1434,12 @@ export function Controls({
               className="speed-by-line-info-icon"
               onMouseEnter={(e) =>
                 showTooltip(
+                  e,
+                  "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.",
+                )
+              }
+              onClick={(e) =>
+                toggleTouchTooltip(
                   e,
                   "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.",
                 )
@@ -1433,6 +1494,12 @@ export function Controls({
               className="speed-by-line-info-icon"
               onMouseEnter={(e) =>
                 showTooltip(
+                  e,
+                  "Excludes vehicles under 0.5 mph. Many networks have large numbers of trains sitting parked at the ends of lines, which drag down the line average and make the statistic much less representative of actual in-service operations. This decision is not especially elegant, but it seems to work well in practice.",
+                )
+              }
+              onClick={(e) =>
+                toggleTouchTooltip(
                   e,
                   "Excludes vehicles under 0.5 mph. Many networks have large numbers of trains sitting parked at the ends of lines, which drag down the line average and make the statistic much less representative of actual in-service operations. This decision is not especially elegant, but it seems to work well in practice.",
                 )
@@ -2110,18 +2177,22 @@ export function Controls({
           </div>,
           document.body,
         )}
-      {tooltip && (
-        <div
-          className="speed-info-tooltip"
-          style={{
-            position: "fixed",
-            left: tooltip.x,
-            top: tooltip.y,
-          }}
-        >
-          {tooltip.text}
-        </div>
-      )}
+      {tooltip &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="speed-info-tooltip"
+            style={{
+              position: "fixed",
+              left: tooltip.x,
+              top: tooltip.y,
+              zIndex: 2147483647,
+            }}
+          >
+            {tooltip.text}
+          </div>,
+          document.body,
+        )}
     </div>
   );
 }

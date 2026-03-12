@@ -1163,7 +1163,7 @@
   align-items: baseline;
   justify-content: center;
   gap: 4px;
-  margin: 6px 0;
+  margin: 6px 0 2px;
 }
 
 .density-value {
@@ -1175,6 +1175,26 @@
 .density-unit {
   font-size: 0.7rem;
   color: rgba(255, 255, 255, 0.6);
+}
+
+.popup-population {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.82);
+  text-align: center;
+  margin-top: 2px;
+}
+
+.popup-meta {
+  margin-top: 8px;
+  padding-top: 7px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.popup-meta-line {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.52);
+  text-align: center;
 }
 
 .popup-coords {

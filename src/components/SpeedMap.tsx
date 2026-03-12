@@ -3416,7 +3416,13 @@ export function SpeedMap({
           source: "speed-segments",
           layout: {
             "line-join": "round",
-            "line-cap": "butt",
+            "line-cap": [
+              "step",
+              ["zoom"],
+              "round",
+              11,
+              "butt",
+            ],
           },
           paint: {
             "line-width": 6,
@@ -3711,10 +3717,10 @@ export function SpeedMap({
             const areaLabel = getPopulationDensityAreaLabel(city, geoid);
             const tractLabel = getPopulationDensityTractLabel(city, geoid);
             const placeLine = areaLabel
-              ? `<div class="popup-detail">${escapeHtml(areaLabel)}</div>`
+              ? `<div class="popup-meta-line">${escapeHtml(areaLabel)}</div>`
               : "";
             const tractLine = tractLabel
-              ? `<div class="popup-detail">Tract: ${escapeHtml(tractLabel)}</div>`
+              ? `<div class="popup-meta-line">Tract: ${escapeHtml(tractLabel)}</div>`
               : "";
 
             const getDensityColor = (d: number): string => {
@@ -3736,9 +3742,11 @@ export function SpeedMap({
                   <span class="density-value" style="color: ${densityColor}">${density.toLocaleString()}</span>
                   <span class="density-unit">people/km²</span>
                 </div>
-                ${placeLine}
-                ${tractLine}
-                <div class="popup-detail">Population: ${population.toLocaleString()}</div>
+                <div class="popup-population">Population: ${population.toLocaleString()}</div>
+                <div class="popup-meta">
+                  ${placeLine}
+                  ${tractLine}
+                </div>
               </div>`,
               )
               .addTo(map.current);

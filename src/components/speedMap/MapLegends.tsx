@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { City } from "../../types";
 import type { SpeedUnit } from "../../App";
@@ -85,17 +85,43 @@ export function SpeedLegend({ speedUnit }: SpeedLegendProps) {
 export function SeparationLegend() {
   const [tooltip, setTooltip] = useState<{ x: number; y: number } | null>(null);
   const tooltipTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isTouchTooltipMode = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
   const showTooltip = (e: React.MouseEvent) => {
     const x = e.clientX + 12;
     const y = e.clientY + 12;
     tooltipTimer.current = setTimeout(() => setTooltip({ x, y }), 500);
   };
+  const toggleTouchTooltip = (e: {
+    currentTarget: EventTarget & HTMLElement;
+    preventDefault: () => void;
+    stopPropagation: () => void;
+  }) => {
+    if (!isTouchTooltipMode()) return;
+    e.preventDefault();
+    e.stopPropagation();
+    if (tooltipTimer.current) clearTimeout(tooltipTimer.current);
+    tooltipTimer.current = null;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.bottom + 12;
+    setTooltip((current) => (current ? null : { x, y }));
+  };
   const hideTooltip = () => {
     if (tooltipTimer.current) clearTimeout(tooltipTimer.current);
     tooltipTimer.current = null;
     setTooltip(null);
   };
+  useEffect(() => {
+    if (!tooltip || !isTouchTooltipMode()) return;
+    const dismissTooltip = () => setTooltip(null);
+    document.addEventListener("pointerdown", dismissTooltip);
+    return () => {
+      document.removeEventListener("pointerdown", dismissTooltip);
+    };
+  }, [tooltip]);
 
   return (
     <div className="map-separation-legend">
@@ -104,6 +130,7 @@ export function SeparationLegend() {
         <span
           className="speed-by-line-info-icon map-separation-legend-info"
           onMouseEnter={showTooltip}
+          onClick={toggleTouchTooltip}
           onMouseLeave={hideTooltip}
         >
           ⓘ
