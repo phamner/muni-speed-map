@@ -43,6 +43,11 @@ const cityToRailContextPrefix: Partial<Record<City, string>> = {
   Baltimore: "baltimore",
 };
 
+const cityToCommuterRailContextFilename: Partial<Record<City, string>> = {
+  SF: "bayAreaRailContextCommuter.json",
+  "San Jose": "bayAreaRailContextCommuter.json",
+};
+
 const railContextModules = import.meta.glob("./*RailContext*.json");
 
 async function loadRailContextData(city: City): Promise<{
@@ -63,7 +68,9 @@ async function loadRailContextData(city: City): Promise<{
   }
 
   const heavyFilename = `${prefix}RailContextHeavy.json`;
-  const commuterFilename = `${prefix}RailContextCommuter.json`;
+  const commuterFilename =
+    cityToCommuterRailContextFilename[city] ||
+    `${prefix}RailContextCommuter.json`;
 
   const getFilename = (key: string) => {
     const noQuery = key.split("?")[0];
