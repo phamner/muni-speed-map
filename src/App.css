@@ -26,6 +26,7 @@
   flex-direction: column;
   gap: 14px;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-x: hidden;
   overflow-y: auto;
   scrollbar-gutter: stable;
 }
@@ -208,12 +209,14 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 0;
 }
 
 /* Collapsible Sections */
 .collapsible-section {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   padding-bottom: 4px;
+  min-width: 0;
 }
 
 .collapsible-section:last-of-type {
@@ -406,6 +409,8 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
+  max-width: 100%;
+  min-width: 0;
 }
 
 .line-buttons.four-lines {
@@ -413,6 +418,9 @@
 }
 
 .line-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 12px 8px;
   border: 2px solid var(--line-color);
   border-radius: 8px;
@@ -422,6 +430,7 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
+  min-width: 0;
 }
 
 .line-button.active {

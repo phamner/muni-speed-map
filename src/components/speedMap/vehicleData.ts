@@ -6,6 +6,7 @@ import {
   SEGMENT_SIZE_METERS,
   SEGMENT_SIZE_500_METERS,
   CITIES_WITH_PARALLEL_TRACKS,
+  pickLongestRouteFeature,
 } from "./segmentUtils";
 
 const routeFeatureCache = new Map<string, Map<string, any[]>>();
@@ -61,7 +62,7 @@ export function findSegmentForVehicle(
     const usesParallelMerge =
       city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
     const featuresToProcess = usesParallelMerge
-      ? routeFeatures.slice(0, 1)
+      ? pickLongestRouteFeature(routeFeatures)
       : routeFeatures;
 
     for (const feature of featuresToProcess) {
@@ -135,7 +136,7 @@ export function findSegmentsForVehicle(
     const usesParallelMerge =
       city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
     const featuresToProcess = usesParallelMerge
-      ? routeFeatures.slice(0, 1)
+      ? pickLongestRouteFeature(routeFeatures)
       : routeFeatures;
 
     for (const feature of featuresToProcess) {

@@ -1,6 +1,39 @@
 import { haversineDistance, distanceToSegment } from "./geoUtils";
 
 export const SEGMENT_SIZE_METERS = 200;
+
+function getFeatureLineLength(feature: any): number {
+  const geometry = feature?.geometry;
+  if (!geometry) return 0;
+  const lineStrings =
+    geometry.type === "MultiLineString"
+      ? geometry.coordinates
+      : [geometry.coordinates];
+  let total = 0;
+  for (const coords of lineStrings) {
+    for (let i = 0; i < coords.length - 1; i++) {
+      const [x1, y1] = coords[i];
+      const [x2, y2] = coords[i + 1];
+      total += haversineDistance(y1, x1, y2, x2);
+    }
+  }
+  return total;
+}
+
+/** For parallel-track cities: pick the feature with the longest geometry (most complete coverage). */
+export function pickLongestRouteFeature(features: any[]): any[] {
+  if (features.length <= 1) return features;
+  let longest = features[0];
+  let maxLen = getFeatureLineLength(longest);
+  for (let i = 1; i < features.length; i++) {
+    const len = getFeatureLineLength(features[i]);
+    if (len > maxLen) {
+      maxLen = len;
+      longest = features[i];
+    }
+  }
+  return [longest];
+}
 export const SEGMENT_SIZE_500_METERS = 500;
 
 export const CITIES_WITH_PARALLEL_TRACKS = [
@@ -255,14 +288,44 @@ function projectPointOntoLine(
   };
 }
 
-export function buildAllSegments(routes: any, city?: string, segmentSizeMeters: number = SEGMENT_SIZE_METERS): SegmentData[] {
+export function buildAllSegments(
+  routes: any,
+  city?: string,
+  segmentSizeMeters: number = SEGMENT_SIZE_METERS,
+): SegmentData[] {
   const allSegments: SegmentData[] = [];
   const routeSegmentOffsets = new Map<string, number>();
 
   const referenceSegmentsByRoute = new Map<string, SegmentData[]>();
   const processedRoutes = new Set<string>();
 
-  routes.features.forEach((feature: any) => {
+  const usesParallelMerge =
+    city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
+  const featuresToProcess =
+    usesParallelMerge
+      ? (() => {
+          const byRoute = new Map<string, any[]>();
+          const routeOrder: string[] = [];
+          for (const f of routes.features || []) {
+            const rid = f.properties?.route_id;
+            if (!rid) continue;
+            if (!byRoute.has(rid)) {
+              byRoute.set(rid, []);
+              routeOrder.push(rid);
+            }
+            byRoute.get(rid)!.push(f);
+          }
+          const ordered: any[] = [];
+          for (const rid of routeOrder) {
+            const group = byRoute.get(rid)!;
+            group.sort((a, b) => getFeatureLineLength(b) - getFeatureLineLength(a));
+            ordered.push(...group);
+          }
+          return ordered;
+        })()
+      : routes.features || [];
+
+  featuresToProcess.forEach((feature: any) => {
     const routeId = feature.properties.route_id;
     const geometry = feature.geometry;
     const geomType = geometry.type;
@@ -274,8 +337,6 @@ export function buildAllSegments(routes: any, city?: string, segmentSizeMeters: 
       lineStrings = [geometry.coordinates];
     }
 
-    const usesParallelMerge =
-      city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
     const isParallelTrack = usesParallelMerge && processedRoutes.has(routeId);
 
     if (usesParallelMerge && !processedRoutes.has(routeId)) {
@@ -283,7 +344,12 @@ export function buildAllSegments(routes: any, city?: string, segmentSizeMeters: 
       const routeRefSegments: SegmentData[] = [];
 
       for (const coordinates of lineStrings) {
-        const segments = createSegments(coordinates, routeId, "combined", segmentSizeMeters);
+        const segments = createSegments(
+          coordinates,
+          routeId,
+          "combined",
+          segmentSizeMeters,
+        );
 
         segments.forEach((seg) => {
           const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
@@ -358,7 +424,12 @@ export function buildAllSegments(routes: any, city?: string, segmentSizeMeters: 
       let cumulativeSegmentOffset = routeSegmentOffsets.get(routeId) || 0;
 
       for (const coordinates of lineStrings) {
-        const segments = createSegments(coordinates, routeId, "combined", segmentSizeMeters);
+        const segments = createSegments(
+          coordinates,
+          routeId,
+          "combined",
+          segmentSizeMeters,
+        );
 
         segments.forEach((seg) => {
           const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
