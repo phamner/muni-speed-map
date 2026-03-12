@@ -505,6 +505,23 @@
   cursor: pointer;
 }
 
+/* Align info icons in a column when present */
+.route-lines-toggle label.toggle-with-info-icon {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.route-lines-toggle label.toggle-with-info-icon .toggle-label-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.route-lines-toggle label.toggle-with-info-icon .speed-by-line-info-icon {
+  flex-shrink: 0;
+  margin-left: 0;
+}
+
 .route-lines-toggle input[type="checkbox"] {
   width: 16px;
   height: 16px;

@@ -1341,24 +1341,40 @@ export function Controls({
               Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
             </label>
           ) : (
-            <label>
-              <input
-                type="checkbox"
-                checked={showCrossings}
-                onChange={(e) => setShowCrossings(e.target.checked)}
-              />
-              Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
+            <label className="toggle-with-info-icon">
+              <span className="toggle-label-content">
+                <input
+                  type="checkbox"
+                  checked={showCrossings}
+                  onChange={(e) => setShowCrossings(e.target.checked)}
+                />
+                Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
+              </span>
+              <span
+                className="speed-by-line-info-icon"
+                onMouseEnter={(e) =>
+                  showTooltip(
+                    e,
+                    "Shows rail–road level crossings where tracks intersect roads at grade. Street-running intersections excluded.",
+                  )
+                }
+                onMouseLeave={hideTooltip}
+              >
+                ⓘ
+              </span>
             </label>
           )}
         </div>
         <div className="route-lines-toggle">
-          <label>
-            <input
-              type="checkbox"
-              checked={showTrafficLights}
-              onChange={(e) => setShowTrafficLights(e.target.checked)}
-            />
-            Show traffic lights 🚦
+          <label className="toggle-with-info-icon">
+            <span className="toggle-label-content">
+              <input
+                type="checkbox"
+                checked={showTrafficLights}
+                onChange={(e) => setShowTrafficLights(e.target.checked)}
+              />
+              Show traffic lights 🚦
+            </span>
             <span
               className="speed-by-line-info-icon"
               onMouseEnter={(e) =>
