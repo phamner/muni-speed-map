@@ -388,10 +388,13 @@ export function SpeedMap({
         longName: string,
         routeId: string,
       ) => {
+        const stripDirectionalSuffix = (value: string) =>
+          value.length > 1 ? value.replace(/[-\s]?[NSEW]$/, "") : value;
+
         // For BART-style names with direction suffixes, just use the color
         let name = shortName || longName || routeId;
         // Strip -N, -S, -E, -W suffixes
-        name = name.replace(/[-\s]?[NSEW]$/, "");
+        name = stripDirectionalSuffix(name);
         // If we have a long name that's more descriptive (like "Fairmount Line"), prefer it
         if (!shortName && longName) {
           name = longName;
@@ -399,7 +402,7 @@ export function SpeedMap({
           // If long name doesn't have "X to Y" format, it might be better (e.g., "Fairmount Line")
           name = longName;
         } else if (shortName) {
-          name = shortName.replace(/[-\s]?[NSEW]$/, "");
+          name = stripDirectionalSuffix(shortName);
         }
         return name;
       };
