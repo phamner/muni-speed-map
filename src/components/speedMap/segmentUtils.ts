@@ -37,17 +37,17 @@ export function pickLongestRouteFeature(features: any[]): any[] {
 export const SEGMENT_SIZE_500_METERS = 500;
 
 export const CITIES_WITH_PARALLEL_TRACKS = [
-  "LA",
-  "Seattle",
-  "Boston",
+  "LA", //yes
+  "Boston", 
   "Toronto",
   "Philadelphia",
-  "Denver",
+  "Denver", //yes
   "Salt Lake City",
   "Cleveland",
   "Charlotte",
-  "Portland",
-  "Pittsburgh"
+  "Portland", //yes
+  "Pittsburgh", //yes
+  "Seattle", //the 2 line has parallel tracks.
 ];
 
 export interface SegmentData {
