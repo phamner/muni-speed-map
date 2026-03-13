@@ -1,0 +1,823 @@
+{
+  "type": "FeatureCollection",
+  "generated": "2026-01-21T06:05:34.620Z",
+  "source": "OpenStreetMap via Overpass API",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30030707,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.8918022,
+            33.4147653
+          ],
+          [
+            -111.8908464,
+            33.4147697
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30030754,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.8848702,
+            33.4147899
+          ],
+          [
+            -111.8846293,
+            33.4147913
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30031799,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.9439943,
+            33.4353208
+          ],
+          [
+            -111.9439236,
+            33.4351174
+          ],
+          [
+            -111.9438807,
+            33.4349799
+          ],
+          [
+            -111.9438433,
+            33.434821
+          ],
+          [
+            -111.9438127,
+            33.4346368
+          ],
+          [
+            -111.9435231,
+            33.4318491
+          ],
+          [
+            -111.9435057,
+            33.4314852
+          ],
+          [
+            -111.9435006,
+            33.4308294
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 30122358,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0737575,
+            33.503998
+          ],
+          [
+            -112.0737588,
+            33.5038269
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 136566025,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.9434559,
+            33.4308303
+          ],
+          [
+            -111.9434603,
+            33.4314728
+          ],
+          [
+            -111.9434734,
+            33.4318517
+          ],
+          [
+            -111.9437711,
+            33.4346716
+          ],
+          [
+            -111.9438014,
+            33.4348546
+          ],
+          [
+            -111.9438369,
+            33.4350065
+          ],
+          [
+            -111.9439453,
+            33.4353298
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 136566027,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.9908093,
+            33.4481226
+          ],
+          [
+            -111.9906361,
+            33.4481229
+          ],
+          [
+            -111.9900629,
+            33.4481231
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 136566029,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.9901618,
+            33.4481673
+          ],
+          [
+            -111.9903529,
+            33.4481619
+          ],
+          [
+            -111.9907018,
+            33.4481597
+          ],
+          [
+            -111.9908742,
+            33.4481594
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 136876976,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.8908512,
+            33.4148062
+          ],
+          [
+            -111.8918119,
+            33.4148043
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138279756,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0737913,
+            33.4610375
+          ],
+          [
+            -112.0737798,
+            33.4612273
+          ],
+          [
+            -112.0737674,
+            33.4613408
+          ],
+          [
+            -112.0737554,
+            33.4616077
+          ],
+          [
+            -112.0737588,
+            33.4617404
+          ],
+          [
+            -112.0737952,
+            33.4621315
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 138279757,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 5
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0738825,
+            33.4621281
+          ],
+          [
+            -112.0739196,
+            33.4617575
+          ],
+          [
+            -112.0739299,
+            33.4616234
+          ],
+          [
+            -112.0739316,
+            33.4615192
+          ],
+          [
+            -112.0739196,
+            33.4613536
+          ],
+          [
+            -112.0739094,
+            33.461238
+          ],
+          [
+            -112.0738871,
+            33.4610366
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 155109494,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0738062,
+            33.5040014
+          ],
+          [
+            -112.0738075,
+            33.5038301
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 316620035,
+        "separationType": "elevated",
+        "name": "Valley Metro Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -111.8845921,
+            33.4148279
+          ],
+          [
+            -111.8848354,
+            33.4148267
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 899063943,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0737911,
+            33.4439754
+          ],
+          [
+            -112.0737989,
+            33.4441542
+          ],
+          [
+            -112.0738048,
+            33.4442563
+          ],
+          [
+            -112.073806,
+            33.4443321
+          ],
+          [
+            -112.073802,
+            33.4444074
+          ],
+          [
+            -112.073805,
+            33.4444522
+          ],
+          [
+            -112.0738023,
+            33.4444862
+          ],
+          [
+            -112.0738033,
+            33.4446068
+          ],
+          [
+            -112.0738096,
+            33.4449509
+          ],
+          [
+            -112.0738126,
+            33.4450424
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 899063949,
+        "separationType": "separated_at_grade",
+        "name": null,
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": true,
+        "embankment": false,
+        "layer": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0737888,
+            33.443477
+          ],
+          [
+            -112.0737911,
+            33.4439754
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 899063950,
+        "separationType": "separated_at_grade",
+        "name": null,
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": true,
+        "embankment": false,
+        "layer": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0738126,
+            33.4450424
+          ],
+          [
+            -112.0738335,
+            33.4455203
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 899063953,
+        "separationType": "separated_at_grade",
+        "name": null,
+        "tunnel": false,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": true,
+        "embankment": false,
+        "layer": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0749752,
+            33.4458346
+          ],
+          [
+            -112.0748942,
+            33.4454344
+          ],
+          [
+            -112.0748712,
+            33.4451768
+          ],
+          [
+            -112.0748723,
+            33.444921
+          ],
+          [
+            -112.0748605,
+            33.4444164
+          ],
+          [
+            -112.0748701,
+            33.4441882
+          ],
+          [
+            -112.0748668,
+            33.4441014
+          ],
+          [
+            -112.0748596,
+            33.4439758
+          ],
+          [
+            -112.0748792,
+            33.4436203
+          ],
+          [
+            -112.0749329,
+            33.4432933
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 899066430,
+        "separationType": "elevated",
+        "name": "B Line (South Central Extension)",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0733642,
+            33.4233375
+          ],
+          [
+            -112.0733462,
+            33.420782
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 899068525,
+        "separationType": "elevated",
+        "name": "B Line (South Central Extension)",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0733731,
+            33.4201278
+          ],
+          [
+            -112.0733983,
+            33.4199057
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1393149584,
+        "separationType": "elevated",
+        "name": "B Line (South Central Extension)",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0732876,
+            33.3792278
+          ],
+          [
+            -112.0732888,
+            33.3790912
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1393149585,
+        "separationType": "elevated",
+        "name": "B Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0732496,
+            33.3790973
+          ],
+          [
+            -112.0732512,
+            33.379239
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1393149590,
+        "separationType": "elevated",
+        "name": "B Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0733416,
+            33.4199043
+          ],
+          [
+            -112.0733219,
+            33.4201052
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1393149591,
+        "separationType": "elevated",
+        "name": "B Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -112.0732948,
+            33.4207813
+          ],
+          [
+            -112.0733128,
+            33.4233378
+          ]
+        ]
+      }
+    }
+  ]
+}

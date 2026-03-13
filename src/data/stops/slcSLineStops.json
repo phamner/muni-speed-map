@@ -1,0 +1,233 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1,
+        "stop_name": "200 South / 900 East (EB)",
+        "name": "200 South / 900 East (EB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South / 900 East (EB)",
+        "parknride": null,
+        "status": "Constructed",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.8649663343288, 40.76488880217656],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2,
+        "stop_name": "200 South / 1300 East",
+        "name": "200 South / 1300 East",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South / 1300 East",
+        "parknride": null,
+        "status": "No design available",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.85357274238808, 40.76489216114438],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3,
+        "stop_name": "200 South / University St",
+        "name": "200 South / University St",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South / University St",
+        "parknride": null,
+        "status": "No design available",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.85261612633315, 40.765120831761],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 37,
+        "stop_name": "200 South/State Street (WB)",
+        "name": "200 South/State Street (WB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/State Street (WB)",
+        "parknride": null,
+        "status": "Preliminary design available",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.88781255690397, 40.76514065461757],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 38,
+        "stop_name": "200 South/State Street (EB)",
+        "name": "200 South/State Street (EB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/State Street (EB)",
+        "parknride": null,
+        "status": "Preliminary design available",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.88782203306032, 40.764866670760334],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 39,
+        "stop_name": "200 South/300 East (WB)",
+        "name": "200 South/300 East (WB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/300 East (WB)",
+        "parknride": null,
+        "status": "Under Construction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.8820779741192, 40.765173611173296],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 40,
+        "stop_name": "200 South/300 East (EB)",
+        "name": "200 South/300 East (EB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/300 East (EB)",
+        "parknride": null,
+        "status": "Under Construction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.88292707892148, 40.76483388687447],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 41,
+        "stop_name": "200 South/500 East (WB)",
+        "name": "200 South/500 East (WB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/500 East (WB)",
+        "parknride": null,
+        "status": "Under Construction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.8775611300421, 40.76512285613499],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 42,
+        "stop_name": "200 South/500 East (EB)",
+        "name": "200 South/500 East (EB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/500 East (EB)",
+        "parknride": null,
+        "status": "Under Construction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.87715444402228, 40.76483489411512],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 43,
+        "stop_name": "200 South/700 East (WB)",
+        "name": "200 South/700 East (WB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/700 East (WB)",
+        "parknride": null,
+        "status": "Under Construction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.8705279154309, 40.7651129617938],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 44,
+        "stop_name": "200 South/700 East (EB)",
+        "name": "200 South/700 East (EB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/700 East (EB)",
+        "parknride": null,
+        "status": "Under Construction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.87016915518237, 40.76483841496093],
+        "crs": null
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 45,
+        "stop_name": "200 South/900 East (WB)",
+        "name": "200 South/900 East (WB)",
+        "routes": "[\"S-Line\"]",
+        "routename": "S-Line",
+        "address": "200 South/900 East (WB)",
+        "parknride": null,
+        "status": "Under Construction",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.86642654464933, 40.7651223803937],
+        "crs": null
+      }
+    }
+  ]
+}

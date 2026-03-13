@@ -1,0 +1,1371 @@
+{
+  "type": "FeatureCollection",
+  "generated": "2026-01-20T05:25:21.791Z",
+  "source": "OpenStreetMap via Overpass API",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 24648484,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6243579,
+            39.2693099
+          ],
+          [
+            -76.6246331,
+            39.2689381
+          ],
+          [
+            -76.6247752,
+            39.268775
+          ],
+          [
+            -76.6249237,
+            39.2686164
+          ],
+          [
+            -76.6250564,
+            39.2684851
+          ],
+          [
+            -76.6252057,
+            39.2683534
+          ],
+          [
+            -76.625351,
+            39.2682513
+          ],
+          [
+            -76.6255023,
+            39.2681493
+          ],
+          [
+            -76.6256518,
+            39.2680546
+          ],
+          [
+            -76.6258138,
+            39.2679613
+          ],
+          [
+            -76.6260385,
+            39.2678531
+          ],
+          [
+            -76.6262847,
+            39.2677459
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 24669960,
+        "infraType": "bridge",
+        "name": "Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6194212,
+            39.30875
+          ],
+          [
+            -76.6197267,
+            39.3086073
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 26953238,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6208156,
+            39.2772009
+          ],
+          [
+            -76.622119,
+            39.2744134
+          ],
+          [
+            -76.6221987,
+            39.2742408
+          ],
+          [
+            -76.6222859,
+            39.2740353
+          ],
+          [
+            -76.6223836,
+            39.2737798
+          ],
+          [
+            -76.6224718,
+            39.2735346
+          ],
+          [
+            -76.6225495,
+            39.2732887
+          ],
+          [
+            -76.6227269,
+            39.2727007
+          ],
+          [
+            -76.622908,
+            39.2720811
+          ],
+          [
+            -76.6230047,
+            39.271772
+          ],
+          [
+            -76.6230654,
+            39.2715885
+          ],
+          [
+            -76.6231432,
+            39.2713778
+          ],
+          [
+            -76.6232077,
+            39.2712265
+          ],
+          [
+            -76.6233016,
+            39.2710298
+          ],
+          [
+            -76.6234543,
+            39.2707755
+          ],
+          [
+            -76.6235817,
+            39.2705714
+          ],
+          [
+            -76.6243579,
+            39.2693099
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31136328,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6295616,
+            39.243041
+          ],
+          [
+            -76.6296879,
+            39.2427467
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31136462,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.639708,
+            39.2249456
+          ],
+          [
+            -76.6402316,
+            39.2239178
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31136500,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6444937,
+            39.2163649
+          ],
+          [
+            -76.6446199,
+            39.2162064
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31136912,
+        "infraType": "bridge",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6425637,
+            39.1867735
+          ],
+          [
+            -76.6424191,
+            39.1866366
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 31137154,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6300785,
+            39.264836
+          ],
+          [
+            -76.6304019,
+            39.2642866
+          ],
+          [
+            -76.6307014,
+            39.2638092
+          ],
+          [
+            -76.6308229,
+            39.2636223
+          ],
+          [
+            -76.6309279,
+            39.2634833
+          ],
+          [
+            -76.6310144,
+            39.2633714
+          ],
+          [
+            -76.6311118,
+            39.2632632
+          ],
+          [
+            -76.6312046,
+            39.2631624
+          ],
+          [
+            -76.6312983,
+            39.2630628
+          ],
+          [
+            -76.6314729,
+            39.2628675
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70517951,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6477436,
+            39.3474373
+          ],
+          [
+            -76.6479168,
+            39.3470836
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70794523,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6594839,
+            39.476288
+          ],
+          [
+            -76.6592589,
+            39.4762218
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70794533,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6592059,
+            39.4762471
+          ],
+          [
+            -76.6594523,
+            39.4763158
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70799810,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6433834,
+            39.3822969
+          ],
+          [
+            -76.6433106,
+            39.3825509
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70799828,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6433574,
+            39.3825587
+          ],
+          [
+            -76.6434321,
+            39.382305
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70848673,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6482208,
+            39.3386797
+          ],
+          [
+            -76.6481711,
+            39.338534
+          ],
+          [
+            -76.6481114,
+            39.3383795
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70848684,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6515301,
+            39.3677553
+          ],
+          [
+            -76.6516665,
+            39.3679093
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70848685,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6517198,
+            39.3679039
+          ],
+          [
+            -76.6515878,
+            39.3677511
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70848686,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6480586,
+            39.3383728
+          ],
+          [
+            -76.6481274,
+            39.3385392
+          ],
+          [
+            -76.6481741,
+            39.3386837
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70848700,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6478538,
+            39.3471033
+          ],
+          [
+            -76.6476826,
+            39.3474605
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70856110,
+        "infraType": "bridge",
+        "name": "Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6197176,
+            39.3085789
+          ],
+          [
+            -76.6194212,
+            39.30875
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 70856126,
+        "infraType": "bridge",
+        "name": "Light Rail",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6194212,
+            39.30875
+          ],
+          [
+            -76.6191815,
+            39.3088686
+          ],
+          [
+            -76.619146,
+            39.3088827
+          ],
+          [
+            -76.6191057,
+            39.3088951
+          ],
+          [
+            -76.6190756,
+            39.3089031
+          ],
+          [
+            -76.6190385,
+            39.3089089
+          ],
+          [
+            -76.6190071,
+            39.3089126
+          ],
+          [
+            -76.6189646,
+            39.3089146
+          ],
+          [
+            -76.6189346,
+            39.3089143
+          ],
+          [
+            -76.6188946,
+            39.3089118
+          ],
+          [
+            -76.6188607,
+            39.308907
+          ],
+          [
+            -76.6188138,
+            39.308897
+          ],
+          [
+            -76.6187697,
+            39.3088844
+          ],
+          [
+            -76.6187428,
+            39.3088742
+          ],
+          [
+            -76.6187178,
+            39.308864
+          ],
+          [
+            -76.6183355,
+            39.3086916
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71214986,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6243117,
+            39.2692839
+          ],
+          [
+            -76.6235361,
+            39.2705533
+          ],
+          [
+            -76.6234096,
+            39.2707605
+          ],
+          [
+            -76.6232778,
+            39.2709703
+          ],
+          [
+            -76.6231915,
+            39.2711399
+          ],
+          [
+            -76.6231119,
+            39.2713183
+          ],
+          [
+            -76.6230332,
+            39.2715121
+          ],
+          [
+            -76.6229526,
+            39.2717294
+          ],
+          [
+            -76.6227231,
+            39.2725025
+          ],
+          [
+            -76.6224528,
+            39.2733952
+          ],
+          [
+            -76.6223779,
+            39.2736242
+          ],
+          [
+            -76.6222774,
+            39.2738914
+          ],
+          [
+            -76.6222205,
+            39.274036
+          ],
+          [
+            -76.6221361,
+            39.2742401
+          ],
+          [
+            -76.6220631,
+            39.2744016
+          ],
+          [
+            -76.6207635,
+            39.2771859
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71215004,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6314342,
+            39.2628469
+          ],
+          [
+            -76.6312635,
+            39.2630369
+          ],
+          [
+            -76.6311715,
+            39.2631358
+          ],
+          [
+            -76.6310782,
+            39.2632356
+          ],
+          [
+            -76.6309751,
+            39.2633496
+          ],
+          [
+            -76.6308818,
+            39.2634627
+          ],
+          [
+            -76.6307775,
+            39.2636005
+          ],
+          [
+            -76.6306597,
+            39.2637829
+          ],
+          [
+            -76.6303553,
+            39.2642723
+          ],
+          [
+            -76.6300313,
+            39.2648187
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71215007,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6262559,
+            39.2677113
+          ],
+          [
+            -76.6260031,
+            39.2678158
+          ],
+          [
+            -76.6257772,
+            39.2679203
+          ],
+          [
+            -76.6256029,
+            39.2680201
+          ],
+          [
+            -76.6254655,
+            39.2681065
+          ],
+          [
+            -76.6253096,
+            39.2682187
+          ],
+          [
+            -76.6251672,
+            39.268327
+          ],
+          [
+            -76.6250028,
+            39.2684695
+          ],
+          [
+            -76.6248763,
+            39.2685864
+          ],
+          [
+            -76.624734,
+            39.2687403
+          ],
+          [
+            -76.624594,
+            39.2689047
+          ],
+          [
+            -76.6243117,
+            39.2692839
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71271202,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6296388,
+            39.2427335
+          ],
+          [
+            -76.6295161,
+            39.2430309
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71271218,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6401932,
+            39.2239072
+          ],
+          [
+            -76.6396633,
+            39.2249373
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71271227,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6445986,
+            39.2161706
+          ],
+          [
+            -76.6444735,
+            39.2163255
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 71478747,
+        "infraType": "bridge",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6423766,
+            39.1866629
+          ],
+          [
+            -76.6425201,
+            39.1867978
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 83634326,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6447498,
+            39.4741494
+          ],
+          [
+            -76.6447443,
+            39.4740829
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 83634345,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6466181,
+            39.475372
+          ],
+          [
+            -76.6464139,
+            39.4753579
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 83634350,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6464115,
+            39.4753928
+          ],
+          [
+            -76.646617,
+            39.4754084
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 83634358,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6446981,
+            39.4740866
+          ],
+          [
+            -76.6447033,
+            39.474151
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 92791528,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6270043,
+            39.4261733
+          ],
+          [
+            -76.627037,
+            39.4260908
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 92791537,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6269918,
+            39.4260779
+          ],
+          [
+            -76.6269587,
+            39.4261618
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 92791587,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6347831,
+            39.4201969
+          ],
+          [
+            -76.634658,
+            39.4202821
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 92791611,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6346886,
+            39.4203114
+          ],
+          [
+            -76.6348164,
+            39.4202246
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 92802029,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6398096,
+            39.4167656
+          ],
+          [
+            -76.639636,
+            39.4168851
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 92802063,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6396624,
+            39.4169149
+          ],
+          [
+            -76.6398358,
+            39.4167942
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 997250632,
+        "infraType": "bridge",
+        "name": "Baltimore Light RailLink",
+        "tunnel": false,
+        "bridge": true,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6606495,
+            39.4877448
+          ],
+          [
+            -76.6606315,
+            39.4875725
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1015702542,
+        "infraType": "tunnel",
+        "name": "Baltimore Light RailLink",
+        "tunnel": true,
+        "bridge": false,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6451817,
+            39.4090987
+          ],
+          [
+            -76.6451506,
+            39.4092996
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1015702544,
+        "infraType": "tunnel",
+        "name": "Baltimore Light RailLink",
+        "tunnel": true,
+        "bridge": false,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -76.6452393,
+            39.4093059
+          ],
+          [
+            -76.6452729,
+            39.4091055
+          ]
+        ]
+      }
+    }
+  ]
+}

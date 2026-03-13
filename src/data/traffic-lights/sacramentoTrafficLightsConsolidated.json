@@ -1,0 +1,1057 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-0",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1449132808"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4978324,
+          38.5839661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-1",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90498327,1991377322,6157430112,6157430113"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4893205,
+          38.582972999999996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-2",
+        "type": "traffic_signal",
+        "count": 4,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "3877392866,3877392867,3877392928,3877392929"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.44660302499999,
+          38.46257865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-3",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90336836,3877392872,3877392942,3877392943"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.428450675,
+          38.458457249999995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-4",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90298915,90498496"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4941715,
+          38.57186505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-5",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1449132758,1449132766,1449132802,1801298680"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.496559525,
+          38.583565525000004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-6",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1433924889,1991377312"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.48983835,
+          38.581775449999995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-7",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1433924891,1991377308"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49395469999999,
+          38.579213100000004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-9",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "373349890,1885892427"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.48582870000001,
+          38.5904852
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-10",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "373349425,1885892467"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4810021,
+          38.5927614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-11",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "373349366"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4783523,
+          38.5942951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-12",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "445669733,1885892463"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.48788909999999,
+          38.58614925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-13",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1449132724"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4993351,
+          38.5769219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-14",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90401531"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4981156,
+          38.5765948
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-15",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1433924929,1991377317"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49528749999999,
+          38.57956745
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-16",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90416242,90416243"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4971888,
+          38.57516955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-17",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1449132737"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4974199,
+          38.5813612
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-19",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1433924803,1991377309"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.490783,
+          38.5795942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-20",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90642602,90642604"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4554419,
+          38.60627485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-21",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90484964,90653384,1574775186,1574775190"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.448595075,
+          38.606253025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-22",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1282343985,4821490412"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.26916595,
+          38.6054301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-23",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "90482881,90653831"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.46553449999999,
+          38.562986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-24",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90516405,1991377320"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.48886895,
+          38.58396515
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-25",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90498484,90526360"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49369139999999,
+          38.57296345
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-26",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1279087954,1279087985,2012986033"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.35062493333334,
+          38.5651284
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-27",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1282008989,2012986028,5302504630,5302504631,7025609506,7025609507,7025609508"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.30985411428571,
+          38.58539741428571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-29",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1879947846"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4965896,
+          38.5799361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-31",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "427494366,1433924906"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49762515,
+          38.577718950000005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-32",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90566990,90566992"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49849309999999,
+          38.5755621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-33",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1449132807"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.498371,
+          38.5791693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-34",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1449132716,1449132717"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4988511,
+          38.578044500000004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-35",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1885892460,1991377319"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4874377,
+          38.5872435
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-36",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1449132760"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4969559,
+          38.5824578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-37",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1433924835,1965297710"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49031035,
+          38.580682550000006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-38",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "90764661,1282343981,1326667535"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.25466863333332,
+          38.6126711
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-39",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1449132719,1941822774"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49782335,
+          38.58026855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-40",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90498313,1991377311"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.48837295,
+          38.585051750000005
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-41",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1433924839,1433924846,1879947858"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49129926666667,
+          38.57859533333333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-42",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "3873723928,3877392880,3877393062,3877393063"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.4183114,
+          38.45283475
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-43",
+        "type": "traffic_signal",
+        "count": 3,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1282343933,1326667536,1326667542"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.23830156666666,
+          38.620529866666665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-44",
+        "type": "traffic_signal",
+        "count": 4,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "2122292176,2122292177,2122292184,2122292185"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.458615725,
+          38.6062806
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-45",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold",
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90325021,90498459"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.49588600000001,
+          38.5747536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-46",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1281892986,1281892995,1281892998,3590629208,3590629209,3590629210"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.34455566666666,
+          38.568160549999995
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-47",
+        "type": "traffic_signal",
+        "count": 3,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "90379292,1282292966,1282292970"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.28198696666668,
+          38.59917623333334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-48",
+        "type": "traffic_signal",
+        "count": 3,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "90414663,1282008990,1282292937,1282292955,1282292982,1282292986"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.28874681666666,
+          38.59584063333333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-49",
+        "type": "traffic_signal",
+        "count": 3,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1282343954,1326667538,1326667540,12926780391,12926780392,12926780393"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.22989896666667,
+          38.623709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-50",
+        "type": "traffic_signal",
+        "count": 2,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1865920321,9266753896"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.37467285,
+          38.5529439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-51",
+        "type": "traffic_signal",
+        "count": 3,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "1281900520,9266753895"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.37492965,
+          38.55281825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-52",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "90405960,90626917,1876689783,4216163159,4831787476"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.48829984,
+          38.5523973
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-54",
+        "type": "traffic_signal",
+        "count": 3,
+        "routes": [
+          "Blue"
+        ],
+        "snapped": true,
+        "crossing_id": "1885928274,1885928282"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.46757790000001,
+          38.601662149999996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-57",
+        "type": "traffic_signal",
+        "count": 3,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "90404704,1282292939,1282292964"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.29655003333335,
+          38.5919835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "cluster-63",
+        "type": "traffic_signal",
+        "count": 3,
+        "routes": [
+          "Gold"
+        ],
+        "snapped": true,
+        "crossing_id": "90365599,1282292974,1282292987"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.27566746666668,
+          38.60231853333334
+        ]
+      }
+    }
+  ]
+}

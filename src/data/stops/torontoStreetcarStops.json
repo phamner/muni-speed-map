@@ -1,0 +1,7025 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9856",
+        "stop_name": "Dundas St West at Bloor St West",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.452572, 43.656442]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13702",
+        "stop_name": "Dundas St West at Dundas West Outer Platform",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.453253, 43.656768]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9855",
+        "stop_name": "Edna Ave at Dundas St West",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.453027, 43.657134]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4187",
+        "stop_name": "King St West at Strachan Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.412095, 43.641936]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13366",
+        "stop_name": "Exhibition Loop at Manitoba Dr",
+        "routes": ["509"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.41471, 43.636511]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12584",
+        "stop_name": "Exhibition Loop",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.415373, 43.636331]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6523",
+        "stop_name": "Humber Loop at The Queensway",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.47873, 43.631002]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10927",
+        "stop_name": "Queens Quay Loop at Lower Spadina Ave",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.39184, 43.638419]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "11845",
+        "stop_name": "Queen St East at Kingston Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.312948, 43.667029]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1262",
+        "stop_name": "Main St at Danforth Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.301635, 43.688037]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13923",
+        "stop_name": "Main St at Gerrard St East",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.300207, 43.684182]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1451",
+        "stop_name": "Parliament St at Carlton St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.36772, 43.663906]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1452",
+        "stop_name": "Parliament St at Gerrard St East",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.367169, 43.662048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10210",
+        "stop_name": "Fleet St at Bathurst St",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.400131, 43.63647]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9536",
+        "stop_name": "Front St East at Berkeley St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.363737, 43.651396]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1080",
+        "stop_name": "Gerrard St East at Blackburn St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.355383, 43.664667]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3087",
+        "stop_name": "Queen St West at Soho St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.393288, 43.649465]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3052",
+        "stop_name": "Queen St East at Jones Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.332569, 43.662783]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4557",
+        "stop_name": "Queen St East at Emdaabiimok Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.316789, 43.666193]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1126",
+        "stop_name": "Gerrard St East at Norwood Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.302731, 43.683463]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4186",
+        "stop_name": "King St West at Spencer Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.430997, 43.638134]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4190",
+        "stop_name": "King St West at Tecumseth St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.405049, 43.643488]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1115",
+        "stop_name": "Gerrard St East at Bowmore Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.315075, 43.677874]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1099",
+        "stop_name": "Gerrard St East at Marjory Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.337448, 43.668855]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4571",
+        "stop_name": "Roncesvalles Ave at Fermanagh Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.448917, 43.646167]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "843",
+        "stop_name": "College St at Spadina Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.400435, 43.657863]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "752",
+        "stop_name": "Carlton St at Church St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.37919, 43.661975]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13371",
+        "stop_name": "Queens Quay West at Bathurst St East Side Billy Bishop Airport",
+        "routes": ["509"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.397767, 43.636048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "827",
+        "stop_name": "College St at Dufferin St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.432423, 43.652635]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2127",
+        "stop_name": "Dundas St East at River St",
+        "routes": ["501", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358, 43.661284]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2160",
+        "stop_name": "Dundas St West at Dufferin St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.431565, 43.649587]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "187",
+        "stop_name": "Bathurst St at Queen St West",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.404131, 43.647375]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3039",
+        "stop_name": "Queen St East at Carroll St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.352103, 43.658422]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5164",
+        "stop_name": "Lake Shore Blvd West at Thirty Seventh St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.538348, 43.593334]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6845",
+        "stop_name": "Queen St West at O'Hara Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.434064, 43.641174]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4569",
+        "stop_name": "Roncesvalles Ave at Boustead Ave South Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.45167, 43.653079]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1103",
+        "stop_name": "Gerrard St East at Prust Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.330316, 43.670451]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7349",
+        "stop_name": "Spadina Ave at Dundas St West North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.398172, 43.653388]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4142",
+        "stop_name": "King St East at River St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.35597, 43.657079]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3049",
+        "stop_name": "Queen St East at Greenwood Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.325179, 43.664452]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "988",
+        "stop_name": "Dundas St West at Sorauren Ave",
+        "routes": ["505", "506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.445012, 43.651198]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1118",
+        "stop_name": "Gerrard St East at Glenmount Park Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.306185, 43.682547]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2190",
+        "stop_name": "Dundas St West at Spadina Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.397708, 43.653064]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4568",
+        "stop_name": "Roncesvalles Ave at Boustead Ave North Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.451549, 43.653173]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5200",
+        "stop_name": "Opposite 2111 Lake Shore Blvd West",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.478392, 43.628942]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5160",
+        "stop_name": "Lake Shore Blvd West at Twenty Eighth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.527699, 43.595685]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5151",
+        "stop_name": "Lake Shore Blvd West at Tenth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.508496, 43.600155]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6810",
+        "stop_name": "Queen St East at Sarah Ashbridge Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.309305, 43.667893]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1123",
+        "stop_name": "Gerrard St East at Kingsmount Park Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.312662, 43.67986]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7356",
+        "stop_name": "Spadina Ave at Sullivan St North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.397326, 43.651288]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13367",
+        "stop_name": "Queens Quay West at Dan Leckie Way West Side",
+        "routes": ["509"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.397299, 43.636492]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3064",
+        "stop_name": "Queen St East at Parliament St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.364679, 43.655473]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5168",
+        "stop_name": "Lake Shore Blvd West at Third St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.500644, 43.601881]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2186",
+        "stop_name": "Dundas St West at Sheridan Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.433841, 43.649721]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4141",
+        "stop_name": "King St East at Parliament St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.363021, 43.65291]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4164",
+        "stop_name": "King St West at Dowling Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.438719, 43.636552]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "811",
+        "stop_name": "College St at Bathurst St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.407836, 43.656336]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2158",
+        "stop_name": "Dundas St West at Dovercourt Rd",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.424889, 43.649365]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "837",
+        "stop_name": "College St at McCaul St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.393721, 43.659061]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8149",
+        "stop_name": "St Clair Ave West at Avenue Rd East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.400882, 43.686666]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10945",
+        "stop_name": "Queens Quay/Ferry Docks Station",
+        "routes": ["509", "510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.377186, 43.641806]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "812",
+        "stop_name": "College St at Bathurst St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.407339, 43.65657]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4139",
+        "stop_name": "King St East at Ontario St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.365876, 43.651864]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5156",
+        "stop_name": "Lake Shore Blvd West at Twenty Second St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.521251, 43.597338]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2170",
+        "stop_name": "Dundas St West at Lansdowne Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.440135, 43.650111]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8150",
+        "stop_name": "St Clair Ave West at Avenue Rd West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.402103, 43.686535]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3088",
+        "stop_name": "Queen St West at Spadina Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.396062, 43.648886]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "818",
+        "stop_name": "College St at Brock Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.436456, 43.651699]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "756",
+        "stop_name": "Carlton St at Ontario St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.370401, 43.663821]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4143",
+        "stop_name": "King St East at Sackville St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.360379, 43.6543]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5163",
+        "stop_name": "Lake Shore Blvd West at Thirty First St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.530407, 43.595155]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5162",
+        "stop_name": "Lake Shore Blvd West at Thirtieth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.52966, 43.595472]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3030",
+        "stop_name": "Queen St East at Jones Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.332925, 43.662578]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3034",
+        "stop_name": "Queen St East at Brooklyn Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.335808, 43.662069]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5511",
+        "stop_name": "Long Branch Loop",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.544124, 43.591811]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "826",
+        "stop_name": "College St at Dufferin St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.43266, 43.652456]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4194",
+        "stop_name": "King St West at Wilson Park Rd",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.442453, 43.636938]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4148",
+        "stop_name": "King St East at Sumach St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358705, 43.65528]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5155",
+        "stop_name": "Lake Shore Blvd West at Fifteenth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.513857, 43.598973]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "758",
+        "stop_name": "Carlton St at Sherbourne St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.373237, 43.66307]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3062",
+        "stop_name": "Queen St East at Pape Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.338074, 43.661429]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4146",
+        "stop_name": "King St East at Sherbourne St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.368135, 43.651347]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3372",
+        "stop_name": "Broadview Ave at Dundas St East",
+        "routes": ["501", "504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.351175, 43.662248]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1079",
+        "stop_name": "Gerrard St East at Ashdale Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.321719, 43.67239]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5175",
+        "stop_name": "2155 Lake Shore Blvd West",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.479741, 43.625705]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6859",
+        "stop_name": "Queen St West at University Ave - Osgoode Station",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.386257, 43.65097]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8131",
+        "stop_name": "Spadina Ave at Sullivan St",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.397338, 43.651021]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2152",
+        "stop_name": "Dundas St West at Brock Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.4355, 43.649938]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13131",
+        "stop_name": "Queens Quay West at Lower Spadina Ave East Side",
+        "routes": ["509", "510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.391176, 43.637757]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13370",
+        "stop_name": "Queens Quay West at Lower Spadina Ave West Side",
+        "routes": ["509"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.392624, 43.637528]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6835",
+        "stop_name": "Queen St West at Dunn Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.434664, 43.640919]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6850",
+        "stop_name": "Queen St West at Shaw St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.416511, 43.64456]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5202",
+        "stop_name": "Lake Shore Blvd West at Superior Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.48869, 43.615096]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5192",
+        "stop_name": "Lake Shore Blvd West at Mimico Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.489314, 43.613542]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2151",
+        "stop_name": "Dundas St West at Brock Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.435721, 43.649826]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "127",
+        "stop_name": "Bathurst St at Dundas St West - Toronto Western Hospital",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.406185, 43.652475]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8160",
+        "stop_name": "St Clair Ave West at Deer Park Cres East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.397451, 43.687341]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "839",
+        "stop_name": "College St at Ossington Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.42294, 43.654255]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "11021",
+        "stop_name": "King St West at Sudbury St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.417183, 43.641064]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "987",
+        "stop_name": "Dundas St West at Sorauren Ave",
+        "routes": ["505", "506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.445756, 43.651247]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2143",
+        "stop_name": "Dundas St West at Bay St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.383493, 43.655845]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7351",
+        "stop_name": "Spadina Ave at Harbord St North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.402228, 43.663544]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4179",
+        "stop_name": "King St West at Niagara St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.407539, 43.642987]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3035",
+        "stop_name": "Queen St East at Carlaw Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.340208, 43.660953]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2165",
+        "stop_name": "Dundas St West at Gladstone Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.429626, 43.649633]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "757",
+        "stop_name": "Carlton St at Parliament St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.36819, 43.664144]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2147",
+        "stop_name": "Dundas St West at Beverley St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.393724, 43.653887]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13672",
+        "stop_name": "Bathurst St at Fort York Blvd",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.400466, 43.638684]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2159",
+        "stop_name": "Dundas St West at Dovercourt Rd",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.424553, 43.649513]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4189",
+        "stop_name": "King St West at Tecumseth St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.405362, 43.643296]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4188",
+        "stop_name": "King St West at Strachan Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.411783, 43.642127]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "823",
+        "stop_name": "College St at Crawford St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.418874, 43.65523]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1107",
+        "stop_name": "Gerrard St East at Sackville St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.363903, 43.662685]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1128",
+        "stop_name": "Gerrard St East at Woodbine Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.310592, 43.680919]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2130",
+        "stop_name": "Dundas St East at Sherbourne St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.371303, 43.65822]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3063",
+        "stop_name": "Queen St East at Pape Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.337625, 43.66166]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1109",
+        "stop_name": "Gerrard St East at Sumach St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.361596, 43.663061]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2131",
+        "stop_name": "Dundas St East at Sherbourne St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.370878, 43.658406]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "759",
+        "stop_name": "Carlton St at Sherbourne St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.372902, 43.663289]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "815",
+        "stop_name": "College St at Beverley St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.396368, 43.658547]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2122",
+        "stop_name": "Dundas St East at Ontario St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.368653, 43.658752]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3371",
+        "stop_name": "Broadview Ave at Danforth Ave",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.359041, 43.676342]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2142",
+        "stop_name": "Dundas St West at Bay St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.384014, 43.655582]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "817",
+        "stop_name": "College St at Borden St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.405017, 43.657064]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2183",
+        "stop_name": "Dundas St West at Rusholme Rd",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.426473, 43.649553]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2167",
+        "stop_name": "Dundas St West at Howard Park Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.448522, 43.652232]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5159",
+        "stop_name": "Lake Shore Blvd West at Twenty Seventh St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.525043, 43.596328]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1150",
+        "stop_name": "Howard Park Ave at Indian Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.455063, 43.650555]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1110",
+        "stop_name": "Gerrard St East at Sumach St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.361269, 43.66327]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2171",
+        "stop_name": "Dundas St West at Lansdowne Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.43948, 43.650206]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4178",
+        "stop_name": "King St West at Niagara St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.40776, 43.642809]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3048",
+        "stop_name": "Queen St East at Greenwood Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.325493, 43.664281]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "834",
+        "stop_name": "College St at Havelock St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.429269, 43.653051]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2117",
+        "stop_name": "Dundas St East at Church St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.376993, 43.656583]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8128",
+        "stop_name": "Spadina Ave at Nassau St South Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.399077, 43.655393]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1101",
+        "stop_name": "Gerrard St East at Pape Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.340247, 43.668233]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2118",
+        "stop_name": "Dundas St East at Jarvis St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.374706, 43.656947]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6817",
+        "stop_name": "Queen St East at Silver Birch Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.28497, 43.673262]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "847",
+        "stop_name": "College St at University Ave - Queen's Park Station",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.390773, 43.659697]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1106",
+        "stop_name": "Gerrard St East at Sackville St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.364115, 43.662508]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1093",
+        "stop_name": "Gerrard St East at Jones Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.335419, 43.669327]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8120",
+        "stop_name": "Spadina Ave at College St South Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.399868, 43.657372]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5172",
+        "stop_name": "Lake Shore Blvd West at Seventh St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.505392, 43.600638]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6915",
+        "stop_name": "The Queensway at South Kingsway",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.473392, 43.635656]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3031",
+        "stop_name": "Queen St East at Boulton Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.346553, 43.65966]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3029",
+        "stop_name": "Queen St East at Alton Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.327688, 43.66388]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6856",
+        "stop_name": "Queen St West at Tecumseth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.406716, 43.646569]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1769",
+        "stop_name": "Broadview Ave at Wolfrey Ave",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.357342, 43.674457]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3032",
+        "stop_name": "Queen St East at Broadview Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.35006, 43.658746]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "110",
+        "stop_name": "Bathurst St at College St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.407513, 43.656244]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2116",
+        "stop_name": "Dundas St East at Church St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.377358, 43.656371]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1127",
+        "stop_name": "Gerrard St East at Woodbine Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.310829, 43.680644]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "11895",
+        "stop_name": "Broadview Ave at Queen St East North Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.349975, 43.659461]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "760",
+        "stop_name": "Carlton St at Yonge St - College Station",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.382912, 43.66144]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1112",
+        "stop_name": "Gerrard St East at Woodfield Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.324168, 43.671677]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5506",
+        "stop_name": "Humber Loop at The Queensway",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.478505, 43.631194]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3036",
+        "stop_name": "Queen St East at Carlaw Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.339954, 43.661142]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3080",
+        "stop_name": "Queen St West at Augusta Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.399534, 43.648153]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2140",
+        "stop_name": "Dundas St West at Bathurst St - Toronto Western Hospital",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.406259, 43.652163]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2175",
+        "stop_name": "Dundas St West at Ossington Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.420944, 43.64927]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5179",
+        "stop_name": "Lake Shore Blvd West at Hillside Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.490136, 43.611265]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1761",
+        "stop_name": "Broadview Ave at Millbrook Cres",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.354734, 43.671897]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8134",
+        "stop_name": "Spadina Ave at Willcocks St",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.401512, 43.66145]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1083",
+        "stop_name": "Gerrard St East at Carlaw Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.342998, 43.667491]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1085",
+        "stop_name": "Gerrard St East at Coxwell Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.319529, 43.672761]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6852",
+        "stop_name": "Queen St West at Sorauren Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.440785, 43.639824]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3058",
+        "stop_name": "Queen St East at Logan Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.342681, 43.660394]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10892",
+        "stop_name": "Richmond St West at Yonge St - Queen Station",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.379372, 43.651654]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1263",
+        "stop_name": "Main St at Danforth Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.302006, 43.688299]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2197",
+        "stop_name": "Dundas St West at Yonge St - TMU Station",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.38119, 43.65619]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9317",
+        "stop_name": "Broadview Ave at Mountstephen St",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.35187, 43.663942]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6844",
+        "stop_name": "Queen St West at Niagara St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.410006, 43.645898]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1081",
+        "stop_name": "Gerrard St East at Broadview Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.352906, 43.665376]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13369",
+        "stop_name": "Queens Quay West at Dan Leckie Way East Side",
+        "routes": ["509"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.396172, 43.636798]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "751",
+        "stop_name": "Carlton St at Church St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.379621, 43.661721]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "825",
+        "stop_name": "College St at Dovercourt Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.426251, 43.653692]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3045",
+        "stop_name": "Queen St East at Coxwell Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.316446, 43.666427]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3374",
+        "stop_name": "Broadview Ave at Queen St East",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.350021, 43.659107]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6813",
+        "stop_name": "Queen St East at Neville Park Blvd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.281723, 43.673911]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2125",
+        "stop_name": "Dundas St East at Parliament St",
+        "routes": ["501", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.365882, 43.65951]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1760",
+        "stop_name": "Broadview Ave at Langley Ave-Hennick Bridgepoint Hospital",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.353319, 43.668079]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5171",
+        "stop_name": "Lake Shore Blvd West at Fifth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.502863, 43.601388]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6908",
+        "stop_name": "The Queensway at Parkside Dr",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.453923, 43.639665]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "126",
+        "stop_name": "Bathurst St at Dundas St West - Toronto Western Hospital",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.405874, 43.652178]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1090",
+        "stop_name": "Gerrard St East at Greenwood Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.327856, 43.671001]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4166",
+        "stop_name": "King St West at Dufferin St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.427001, 43.639085]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6824",
+        "stop_name": "Queen St East at Woodbine Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.305945, 43.668635]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9535",
+        "stop_name": "Parliament St at Front St East",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.362867, 43.65167]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "11683",
+        "stop_name": "Queen St East at Neville Park Blvd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.282531, 43.673616]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6811",
+        "stop_name": "Queen St East at Lockwood Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.308924, 43.668108]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "178",
+        "stop_name": "Bathurst St at Nassau St - Toronto Western Hospital",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.406946, 43.654353]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2092",
+        "stop_name": "Dufferin St at Springhurst Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.425934, 43.635014]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2428",
+        "stop_name": "Erindale Ave at Broadview Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358416, 43.677531]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1121",
+        "stop_name": "Gerrard St East at Golfview Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.308289, 43.682091]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13362",
+        "stop_name": "Fleet St at Bathurst St West Side",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.400545, 43.63642]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1114",
+        "stop_name": "Gerrard St East at Beaton Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.316879, 43.67629]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3056",
+        "stop_name": "Queen St East at Leslie St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.330376, 43.663143]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2141",
+        "stop_name": "Dundas St West at Bathurst St - Toronto Western Hospital",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.405874, 43.652424]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6827",
+        "stop_name": "Queen St West at Bathurst St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.40418, 43.647084]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1153",
+        "stop_name": "Howard Park Ave at Parkside Dr",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.457476, 43.649162]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2166",
+        "stop_name": "Dundas St West at Grace St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.413806, 43.650777]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2157",
+        "stop_name": "Dundas St West at Denison Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.402165, 43.652113]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4167",
+        "stop_name": "King St West at Dufferin St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.427487, 43.638819]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1082",
+        "stop_name": "Gerrard St East at Broadview Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.352365, 43.665547]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3070",
+        "stop_name": "Queen St East at Sherbourne St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.369555, 43.654424]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10158",
+        "stop_name": "Queen St East at Silver Birch Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.285343, 43.673035]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "816",
+        "stop_name": "College St at Borden St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.405276, 43.656855]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1117",
+        "stop_name": "Gerrard St East at Coxwell Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.319842, 43.675659]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6857",
+        "stop_name": "Queen St West at Triller Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.44338, 43.639319]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1122",
+        "stop_name": "Gerrard St East at Kingsmount Park Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.312986, 43.679449]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5187",
+        "stop_name": "Lake Shore Blvd West at Long Branch Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.53413, 43.594303]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5157",
+        "stop_name": "Lake Shore Blvd West at Twenty Second St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.521413, 43.597116]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "754",
+        "stop_name": "Carlton St at Jarvis St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.376575, 43.662511]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "848",
+        "stop_name": "College St at Yonge St - College Station",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.383245, 43.661259]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1094",
+        "stop_name": "Gerrard St East at Leslie St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.333264, 43.669663]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1759",
+        "stop_name": "Broadview Ave at Langley Ave-Hennick Bridgepoint Hospital",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.353308, 43.667664]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "990",
+        "stop_name": "Dundas St West at Sterling Rd",
+        "routes": ["505", "506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.442777, 43.650684]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1092",
+        "stop_name": "Gerrard St East at Jones Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.33578, 43.669085]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "845",
+        "stop_name": "College St at St George St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.395745, 43.658801]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5150",
+        "stop_name": "Lake Shore Blvd West at Tenth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.508796, 43.599877]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2182",
+        "stop_name": "Dundas St West at Roncesvalles Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.451357, 43.653685]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4175",
+        "stop_name": "King St West at Jefferson Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.422082, 43.640065]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "986",
+        "stop_name": "Dundas St West at Howard Park Ave",
+        "routes": ["505", "506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.447458, 43.651921]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8124",
+        "stop_name": "Spadina Ave at Harbord St South Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.401984, 43.662648]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4169",
+        "stop_name": "King St West at Dunn Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.433063, 43.637837]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5198",
+        "stop_name": "Lake Shore Blvd West at Royal York Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.493033, 43.60382]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6854",
+        "stop_name": "Queen St West at Strachan Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.413308, 43.645241]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7353",
+        "stop_name": "Spadina Ave at King St West North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.395149, 43.645998]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10176",
+        "stop_name": "King St West at Portland St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.39994, 43.644527]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1252",
+        "stop_name": "High Park Loop",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.458045, 43.647681]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6842",
+        "stop_name": "Queen St West at Lansdowne Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.436463, 43.640685]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "186",
+        "stop_name": "Bathurst St at Queen St West",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.4039, 43.647066]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4162",
+        "stop_name": "King St West at Shaw St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.415217, 43.641309]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6646",
+        "stop_name": "Parliament St at Shuter St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.364855, 43.656843]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4168",
+        "stop_name": "King St West at Dunn Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.433376, 43.637647]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "813",
+        "stop_name": "College St at Bay St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.386165, 43.660672]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4155",
+        "stop_name": "King St West at Atlantic Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.421415, 43.640051]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "162",
+        "stop_name": "Bathurst St at King St West",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.402833, 43.644139]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5152",
+        "stop_name": "Lake Shore Blvd West at Thirteenth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.51196, 43.599214]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5201",
+        "stop_name": "Lake Shore Blvd West at Superior Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.488619, 43.614817]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5188",
+        "stop_name": "Lake Shore Blvd West at Long Branch Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.53303, 43.594693]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5174",
+        "stop_name": "Lake Shore Blvd West at Burlington St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.48738, 43.617446]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5186",
+        "stop_name": "Lake Shore Blvd West at Legion Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.483163, 43.620622]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5185",
+        "stop_name": "Lake Shore Blvd West at Legion Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.483407, 43.620372]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3071",
+        "stop_name": "Queen St East at Sherbourne St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.369316, 43.654602]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4632",
+        "stop_name": "St Clair Ave West at Tweedsmuir Ave West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.41371, 43.684089]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8159",
+        "stop_name": "St Clair Ave West at Deer Park Cres West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.398655, 43.687185]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8163",
+        "stop_name": "St Clair Ave West at Dunvegan Rd West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.40547, 43.685864]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13890",
+        "stop_name": "King St West at Spencer Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.430761, 43.63831]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6825",
+        "stop_name": "Queen St West at Abell St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.424466, 43.642976]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7357",
+        "stop_name": "Spadina Ave at Sussex Ave",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.40261, 43.664513]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "841",
+        "stop_name": "College St at Queen's Park - Queen's Park Station",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.390138, 43.659999]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "96",
+        "stop_name": "Bathurst St at Bloor St West",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.411065, 43.665012]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2124",
+        "stop_name": "Dundas St East at Parliament St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.366291, 43.659283]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "753",
+        "stop_name": "Carlton St at Jarvis St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.376843, 43.662306]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1120",
+        "stop_name": "Gerrard St East at Golfview Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.30886, 43.681652]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2189",
+        "stop_name": "Dundas St West at Spadina Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.398341, 43.652776]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12085",
+        "stop_name": "Spadina Ave at Queens Quay West North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.39201, 43.638141]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2032",
+        "stop_name": "Dufferin Gate Loop",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.425872, 43.634401]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2072",
+        "stop_name": "Dufferin St at Liberty St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.426893, 43.637414]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7358",
+        "stop_name": "Spadina Ave at Willcocks St",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.401263, 43.661123]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1757",
+        "stop_name": "Broadview Ave at Gerrard St East",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.352444, 43.665274]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14281",
+        "stop_name": "The Queensway at Ellis Ave East Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.465682, 43.637929]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1104",
+        "stop_name": "Gerrard St East at River St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.359334, 43.663559]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6841",
+        "stop_name": "Queen St West at John St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.391191, 43.649759]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2185",
+        "stop_name": "Dundas St West at Shaw St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.418489, 43.649703]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "803",
+        "stop_name": "Church St at Richmond St East",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.375624, 43.652637]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "830",
+        "stop_name": "College St at Euclid Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.41145, 43.655597]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2161",
+        "stop_name": "Dundas St West at Dufferin St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.431314, 43.649675]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13946",
+        "stop_name": "Lake Shore Blvd West at First St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.498592, 43.60214]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2153",
+        "stop_name": "Dundas St West at Chestnut St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.386129, 43.655136]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8182",
+        "stop_name": "St Clair Ave West at Russell Hill Rd West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.408389, 43.685262]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5161",
+        "stop_name": "Lake Shore Blvd West at Twenty Ninth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.528185, 43.595809]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5203",
+        "stop_name": "Lake Shore Blvd West at Symons St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.490452, 43.608629]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1755",
+        "stop_name": "Broadview Ave at Danforth Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358601, 43.676051]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6838",
+        "stop_name": "Queen St West at Gladstone Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.427, 43.642608]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "11986",
+        "stop_name": "Spadina Ave at Nassau St",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.399071, 43.655658]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4181",
+        "stop_name": "King St West at Peter St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.39201, 43.646161]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "213",
+        "stop_name": "Bathurst St at Ulster St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.409188, 43.659869]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2181",
+        "stop_name": "Dundas St West at Roncesvalles Ave East Side",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.451258, 43.65348]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10929",
+        "stop_name": "Spadina Ave at Bremner Blvd",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.393172, 43.640814]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1116",
+        "stop_name": "Gerrard St East at Bowmore Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.314912, 43.67819]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3038",
+        "stop_name": "Queen St East at Carroll St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.352454, 43.658204]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3047",
+        "stop_name": "Queen St East at Empire Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.344102, 43.660216]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2156",
+        "stop_name": "Dundas St West at Denison Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.40236, 43.651939]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2126",
+        "stop_name": "Dundas St East at River St",
+        "routes": ["501", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358286, 43.661093]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7347",
+        "stop_name": "Spadina Ave at College St North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.400214, 43.658504]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13368",
+        "stop_name": "Bathurst St at Queens Quay West North Side Billy Bishop Airport",
+        "routes": ["509"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.398844, 43.636011]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "809",
+        "stop_name": "College St at Augusta Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.403252, 43.65724]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6644",
+        "stop_name": "Parliament St at Queen St East",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.364606, 43.655756]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5180",
+        "stop_name": "Lake Shore Blvd West at Islington Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.505092, 43.600896]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5196",
+        "stop_name": "Lake Shore Blvd West at Park Lawn Rd West Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.481558, 43.622602]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2136",
+        "stop_name": "Dundas St East at Yonge St - TMU Station",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.380755, 43.656426]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3084",
+        "stop_name": "Queen St West at John St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.390954, 43.649947]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3059",
+        "stop_name": "Queen St East at Logan Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.342373, 43.660599]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8123",
+        "stop_name": "Spadina Ave at Front St West",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.394028, 43.642934]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1089",
+        "stop_name": "Gerrard St East at Greenwood Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.328156, 43.670802]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6804",
+        "stop_name": "Queen St East at Glen Manor Dr",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.292442, 43.671698]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6829",
+        "stop_name": "Queen St West at Peter St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.393771, 43.64922]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1102",
+        "stop_name": "Gerrard St East at Parliament St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.3667, 43.662071]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10181",
+        "stop_name": "Dundas St West at Grace St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.41422, 43.650581]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8132",
+        "stop_name": "Spadina Ave at Sussex Ave South Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.402616, 43.664224]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2146",
+        "stop_name": "Dundas St West at Beverley St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.393961, 43.65371]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2187",
+        "stop_name": "Dundas St West at Sheridan Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.433524, 43.649825]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "161",
+        "stop_name": "Bathurst St at King St West",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.402522, 43.643664]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4156",
+        "stop_name": "King St West at Bathurst St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.40189, 43.644142]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3046",
+        "stop_name": "Queen St East at Empire Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.344501, 43.659991]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5170",
+        "stop_name": "Lake Shore Blvd West at Fifth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.503113, 43.601151]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2154",
+        "stop_name": "Dundas St West at Chestnut St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.385867, 43.655337]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2164",
+        "stop_name": "Dundas St West at Gladstone Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.429975, 43.649516]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2193",
+        "stop_name": "Dundas St West at University Ave - St Patrick Station",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.388742, 43.654679]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "148",
+        "stop_name": "Bathurst St at Harbord St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.409618, 43.66142]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6858",
+        "stop_name": "Queen St West at University Ave - Osgoode Station",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.386931, 43.650683]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1105",
+        "stop_name": "Gerrard St East at River St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.359047, 43.66382]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3033",
+        "stop_name": "Queen St East at Broadview Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.349497, 43.658999]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6864",
+        "stop_name": "Queens Quay West at Rees St West Side",
+        "routes": ["509", "510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.387157, 43.63876]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "828",
+        "stop_name": "College St at Elizabeth St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.387562, 43.660394]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4174",
+        "stop_name": "King St West at Jameson Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.435861, 43.637264]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "100",
+        "stop_name": "Bathurst St at Fort York Blvd",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.400771, 43.638947]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3060",
+        "stop_name": "Queen St East at Ontario St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.367262, 43.654914]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "991",
+        "stop_name": "Dundas St West at Sterling Rd",
+        "routes": ["505", "506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.443251, 43.650631]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7355",
+        "stop_name": "Spadina Ave at Queen St West North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.396495, 43.649178]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5167",
+        "stop_name": "Lake Shore Blvd West at Third St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.500866, 43.601653]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4144",
+        "stop_name": "King St East at Sackville St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.360165, 43.654602]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6855",
+        "stop_name": "Queen St West at Strachan Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.413052, 43.645421]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3072",
+        "stop_name": "Queen St East at Saulter St East Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.347097, 43.659402]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1756",
+        "stop_name": "Broadview Ave at Dundas St East",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.351506, 43.6626]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1086",
+        "stop_name": "Gerrard St East at De Grassi St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.348419, 43.66641]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6839",
+        "stop_name": "Queen St West at Brock Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.432245, 43.641545]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1098",
+        "stop_name": "Gerrard St East at Marjory Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.337632, 43.668684]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1062",
+        "stop_name": "Manitoba Dr at Strachan Ave",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.410145, 43.636172]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1767",
+        "stop_name": "Broadview Ave at Withrow Ave",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.353435, 43.669859]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1763",
+        "stop_name": "Broadview Ave at Jack Layton Way",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.353132, 43.666481]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6916",
+        "stop_name": "The Queensway at South Kingsway",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.473052, 43.635819]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10152",
+        "stop_name": "Queen St West at Beaty Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.441272, 43.639599]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2150",
+        "stop_name": "Dundas St West at Bloor St West",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.45233, 43.6561]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6848",
+        "stop_name": "Queen St West at Palmerston Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.406434, 43.646763]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "755",
+        "stop_name": "Carlton St at Ontario St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.37064, 43.663621]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1095",
+        "stop_name": "Gerrard St East at Leslie St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.332933, 43.66988]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4573",
+        "stop_name": "Roncesvalles Ave at Galley Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.447845, 43.642982]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3061",
+        "stop_name": "Queen St East at Ontario St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.366816, 43.655161]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "814",
+        "stop_name": "College St at Bay St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.385569, 43.66092]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5182",
+        "stop_name": "Lake Shore Blvd West at Colonel Samuel Smith Park Dr",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.517179, 43.598047]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1119",
+        "stop_name": "Gerrard St East at Glenmount Park Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.305845, 43.682773]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "7346",
+        "stop_name": "Spadina Ave at Front St West North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.394027, 43.643182]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3050",
+        "stop_name": "Queen St East at Jarvis St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.373383, 43.653602]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "149",
+        "stop_name": "Bathurst St at Harbord St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.409887, 43.661614]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "836",
+        "stop_name": "College St at Lansdowne Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.439866, 43.651168]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4140",
+        "stop_name": "King St East at Parliament St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.363371, 43.652556]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9318",
+        "stop_name": "Broadview Ave at Mountstephen St",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.35214, 43.664096]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4576",
+        "stop_name": "Roncesvalles Ave at Grenadier Rd",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.449872, 43.648639]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6831",
+        "stop_name": "Queen St West at Dovercourt Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.422528, 43.643394]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6826",
+        "stop_name": "Queen St West at Augusta Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.399869, 43.647951]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "831",
+        "stop_name": "College St at Euclid Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.411298, 43.655822]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2123",
+        "stop_name": "Dundas St East at Ontario St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.368357, 43.658961]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "842",
+        "stop_name": "College St at Rusholme Park Cres",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.429769, 43.652817]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4145",
+        "stop_name": "King St East at Sherbourne St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.368367, 43.651169]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "11985",
+        "stop_name": "Spadina Ave at Richmond St West",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.395827, 43.6476]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "840",
+        "stop_name": "College St at Ossington Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.422554, 43.654475]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "835",
+        "stop_name": "College St at Lansdowne Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.440227, 43.650681]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "833",
+        "stop_name": "College St at Grace St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.415437, 43.654987]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6830",
+        "stop_name": "Queen St West at Claremont St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.409404, 43.646157]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5165",
+        "stop_name": "Lake Shore Blvd West at Thirty Seventh St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.537978, 43.593494]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1151",
+        "stop_name": "Howard Park Ave at Indian Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.454889, 43.650763]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1762",
+        "stop_name": "Broadview Ave at Millbrook Cres",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.355165, 43.672144]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1124",
+        "stop_name": "Gerrard St East at Main St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.300386, 43.683838]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "212",
+        "stop_name": "Bathurst St at Ulster St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.408924, 43.65973]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4163",
+        "stop_name": "King St West at Shaw St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.414775, 43.641529]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1113",
+        "stop_name": "Gerrard St East at Beaton Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.317086, 43.676047]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1152",
+        "stop_name": "Howard Park Ave at Parkside Dr East Side",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.457394, 43.649054]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6647",
+        "stop_name": "Parliament St at Shuter St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.365124, 43.657021]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6851",
+        "stop_name": "Queen St West at Shaw St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.416155, 43.64479]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1084",
+        "stop_name": "Gerrard St East at Carlaw Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.342605, 43.667717]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6803",
+        "stop_name": "Queen St East at Elmer Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.303443, 43.669336]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1154",
+        "stop_name": "Howard Park Ave at Roncesvalles Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.451176, 43.651426]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5173",
+        "stop_name": "Lake Shore Blvd West at Burlington St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.487284, 43.617151]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2115",
+        "stop_name": "Dundas St East at Broadview Ave",
+        "routes": ["501", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.351814, 43.662249]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5190",
+        "stop_name": "Lake Shore Blvd West at Louisa St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.486446, 43.619048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2071",
+        "stop_name": "Dufferin St at Liberty St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.426505, 43.636946]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14334",
+        "stop_name": "St Clair Ave West at Vaughan Rd West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.420844, 43.682656]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14335",
+        "stop_name": "St Clair Ave West at Vaughan Rd East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.419348, 43.682875]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14336",
+        "stop_name": "St Clair Ave West at Bathurst St East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.417671, 43.683213]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14337",
+        "stop_name": "St Clair Ave West at Bathurst St West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.418852, 43.683061]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14343",
+        "stop_name": "St Clair Ave West at Tweedsmuir Ave",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.413336, 43.684084]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14344",
+        "stop_name": "St Clair Ave West at Spadina Rd East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.410569, 43.684699]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14345",
+        "stop_name": "St Clair Ave West at Yonge St West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.394607, 43.688014]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3057",
+        "stop_name": "Queen St East at Leslie St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.330109, 43.66333]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14280",
+        "stop_name": "The Queensway at Colborne Lodge Dr East Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.458635, 43.639566]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "829",
+        "stop_name": "College St at Elizabeth St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.387271, 43.660618]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6909",
+        "stop_name": "The Queensway at Parkside Dr",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.454176, 43.639746]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6888",
+        "stop_name": "The Queensway at Glendale Ave East Side - St Joseph's Health Centre",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.450773, 43.639168]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "11596",
+        "stop_name": "King St West at Queen St West",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.445863, 43.638597]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8181",
+        "stop_name": "St Clair Ave West at Russell Hill Rd East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.407321, 43.685403]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1800",
+        "stop_name": "Coxwell Ave at Gerrard St East",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.320091, 43.675096]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1096",
+        "stop_name": "Gerrard St East at Logan Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.345317, 43.666983]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1108",
+        "stop_name": "Gerrard St East at St Matthews Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.354903, 43.664968]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13344",
+        "stop_name": "King St West at Sudbury St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.417479, 43.640853]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1149",
+        "stop_name": "Howard Park Ave at Dundas St West",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.448329, 43.651965]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2173",
+        "stop_name": "Dundas St West at McCaul St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.391552, 43.654219]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2119",
+        "stop_name": "Dundas St East at Jarvis St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.374378, 43.657163]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6847",
+        "stop_name": "Queen St West at Ossington Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.41869, 43.644283]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6846",
+        "stop_name": "Queen St West at Ossington Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.418976, 43.64406]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1155",
+        "stop_name": "Howard Park Ave at Roncesvalles Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.45081, 43.651592]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6806",
+        "stop_name": "Queen St East at Kingston Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.312137, 43.667398]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5193",
+        "stop_name": "Lake Shore Blvd West at Mimico Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.489387, 43.613855]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "844",
+        "stop_name": "College St at Spadina Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.399632, 43.658013]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8129",
+        "stop_name": "Spadina Ave at Queen St West South Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.396223, 43.64822]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5153",
+        "stop_name": "Lake Shore Blvd West at Thirteenth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.511706, 43.599445]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10935",
+        "stop_name": "Union Station",
+        "routes": ["509", "510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.37921, 43.645652]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10777",
+        "stop_name": "Spadina Ave at Bremner Blvd North Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.393194, 43.641232]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6834",
+        "stop_name": "Queen St West at Dufferin St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.428787, 43.642115]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3051",
+        "stop_name": "Queen St East at Jarvis St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.373076, 43.653797]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5158",
+        "stop_name": "Lake Shore Blvd West at Twenty Sixth St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.524268, 43.596668]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1087",
+        "stop_name": "Gerrard St East at De Grassi St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.348755, 43.666207]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "824",
+        "stop_name": "College St at Dovercourt Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.426497, 43.653509]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6832",
+        "stop_name": "Queen St West at Dovercourt Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.422228, 43.643567]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5181",
+        "stop_name": "Lake Shore Blvd West at Kipling Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.516749, 43.598331]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4578",
+        "stop_name": "Roncesvalles Ave at Howard Park Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.450841, 43.651156]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5199",
+        "stop_name": "2111 Lake Shore Blvd West",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.478151, 43.629066]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2176",
+        "stop_name": "Dundas St West at Ossington Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.42049, 43.64943]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5195",
+        "stop_name": "Lake Shore Blvd West at Park Lawn Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.481308, 43.62278]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6849",
+        "stop_name": "Queen St West at Roncesvalles Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.445773, 43.638864]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "822",
+        "stop_name": "College St at Crawford St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.419148, 43.655048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2172",
+        "stop_name": "Dundas St West at Lisgar St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.426882, 43.649434]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6836",
+        "stop_name": "Queen St West at Brock Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.432411, 43.641387]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "167",
+        "stop_name": "Bathurst St at Lennox St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.410537, 43.663726]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "193",
+        "stop_name": "Bathurst St at Robinson St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.40483, 43.649099]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1768",
+        "stop_name": "Broadview Ave at Wolfrey Ave",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.356904, 43.674192]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "832",
+        "stop_name": "College St at Grace St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.415821, 43.654902]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2194",
+        "stop_name": "Dundas St West at University Ave - St Patrick Station",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.387813, 43.654919]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1125",
+        "stop_name": "Gerrard St East at Norwood Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.303202, 43.683235]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4574",
+        "stop_name": "Roncesvalles Ave at Garden Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.447901, 43.643538]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4193",
+        "stop_name": "King St West at Wilson Park Rd West Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.442107, 43.637035]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3037",
+        "stop_name": "Queen St East at Caroline Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.335437, 43.662018]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13874",
+        "stop_name": "Richmond St West at York St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.38422, 43.650603]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1097",
+        "stop_name": "Gerrard St East at Logan Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.345079, 43.667162]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "819",
+        "stop_name": "College St at Brock Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.4362, 43.651884]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6822",
+        "stop_name": "Queen St East at Wineva Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.295327, 43.671104]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8121",
+        "stop_name": "Spadina Ave at Dundas St West South Side",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.397924, 43.65248]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1766",
+        "stop_name": "Broadview Ave at Withrow Ave",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.35303, 43.669638]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3081",
+        "stop_name": "Queen St West at Bathurst St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.4037, 43.647313]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8126",
+        "stop_name": "Spadina Ave at King St West",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.395169, 43.645671]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4149",
+        "stop_name": "King St East at Sumach St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358336, 43.655658]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5189",
+        "stop_name": "Lake Shore Blvd West at Louisa St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.486469, 43.618786]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4165",
+        "stop_name": "King St West at Dowling Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.438379, 43.636773]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14282",
+        "stop_name": "The Queensway at Windermere Ave East Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.469205, 43.637256]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4173",
+        "stop_name": "King St West at Jameson Ave",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.436215, 43.637078]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1794",
+        "stop_name": "Coxwell Ave at Lower Gerrard St East",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.319449, 43.673091]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6853",
+        "stop_name": "Queen St West at Spadina Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.397609, 43.648381]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1077",
+        "stop_name": "Gerrard St East at Alton Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.330793, 43.670216]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1100",
+        "stop_name": "Gerrard St East at Pape Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.340492, 43.668045]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13947",
+        "stop_name": "Lake Shore Blvd West at First St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.498357, 43.602383]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6840",
+        "stop_name": "Queen St West at Jameson Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.437517, 43.64039]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4582",
+        "stop_name": "Roncesvalles Ave at Queen St West",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.446287, 43.638925]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "111",
+        "stop_name": "Bathurst St at College St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.407861, 43.656632]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1758",
+        "stop_name": "Broadview Ave at Gerrard St East",
+        "routes": ["504", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.352794, 43.665663]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "838",
+        "stop_name": "College St at McCaul St",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.393278, 43.659317]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6801",
+        "stop_name": "Queen St East at Beech Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.287687, 43.672555]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10946",
+        "stop_name": "Queens Quay/Ferry Docks Station",
+        "routes": ["509", "510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.377093, 43.641422]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1063",
+        "stop_name": "Manitoba Dr at Strachan Ave West Side",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.410411, 43.6363]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14355",
+        "stop_name": "St Clair Ave West at Spadina Rd West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.4117, 43.684535]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14400",
+        "stop_name": "King St West at Joe Shuster Way",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.423411, 43.639804]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14395",
+        "stop_name": "The Queensway at Windermere Ave West Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.470625, 43.637125]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14394",
+        "stop_name": "The Queensway at Ellis Ave West Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.467157, 43.637677]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14351",
+        "stop_name": "St Clair Ave West at Dunvegan Rd",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.404757, 43.685922]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14393",
+        "stop_name": "The Queensway at Colborne Lodge Dr West Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.460301, 43.639445]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14511",
+        "stop_name": "Fleet St at Bastion St West Side",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.404148, 43.635968]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14512",
+        "stop_name": "Fleet St at Bastion St",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.403771, 43.63585]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14508",
+        "stop_name": "Fleet St at Fort York Blvd East Side",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.406278, 43.636256]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14509",
+        "stop_name": "Fleet St at Fort York Blvd West Side",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.407397, 43.636422]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14619",
+        "stop_name": "Bathurst Station",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.411286, 43.666532]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14639",
+        "stop_name": "Broadview Station",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358147, 43.677013]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14640",
+        "stop_name": "Broadview Station",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358206, 43.677134]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14665",
+        "stop_name": "Dundas West Station",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.453463, 43.656821]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14666",
+        "stop_name": "Dundas West Station",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.45346, 43.656698]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14741",
+        "stop_name": "Main Street Station",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.301804, 43.688861]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14778",
+        "stop_name": "St Clair Station",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.391958, 43.687857]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14780",
+        "stop_name": "St Clair West Station",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.415555, 43.684447]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14816",
+        "stop_name": "Spadina Station",
+        "routes": ["510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.403665, 43.667221]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14889",
+        "stop_name": "St Clair Ave West at Lansdowne Ave East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.450021, 43.676353]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14887",
+        "stop_name": "St Clair Ave West at Earlscourt Ave East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.446847, 43.677045]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14885",
+        "stop_name": "St Clair Ave West at Dufferin St East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.442476, 43.678011]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14883",
+        "stop_name": "St Clair Ave West at Northcliffe Blvd East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.440298, 43.678485]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14881",
+        "stop_name": "St Clair Ave West at Glenholme Ave East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.438072, 43.678985]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14879",
+        "stop_name": "St Clair Ave West at Oakwood Ave East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.43507, 43.679661]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14877",
+        "stop_name": "St Clair Ave West at Winona Dr East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.431948, 43.680326]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14874",
+        "stop_name": "St Clair Ave West at Arlington Ave East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.428315, 43.681096]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14872",
+        "stop_name": "St Clair Ave West at Christie St East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.425152, 43.681758]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14870",
+        "stop_name": "St Clair Ave West at Wychwood Ave East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.422895, 43.682189]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14871",
+        "stop_name": "St Clair Ave West at Wychwood Ave West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.424035, 43.68208]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14873",
+        "stop_name": "St Clair Ave West at Christie St West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.426289, 43.681621]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14875",
+        "stop_name": "St Clair Ave West at Arlington Ave West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.429411, 43.680962]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14878",
+        "stop_name": "St Clair Ave West at Winona Dr West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.433048, 43.680191]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14880",
+        "stop_name": "St Clair Ave West at Oakwood Ave",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.43546, 43.679668]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14882",
+        "stop_name": "St Clair Ave West at Glenholme Ave West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.439285, 43.678811]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14884",
+        "stop_name": "St Clair Ave West at Northcliffe Blvd West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.441377, 43.678342]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14886",
+        "stop_name": "St Clair Ave West at Dufferin St West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.443635, 43.677855]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14888",
+        "stop_name": "St Clair Ave West at Earlscourt Ave",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.447244, 43.677042]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "13173",
+        "stop_name": "St Clair Ave West at Lansdowne Ave West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.451121, 43.676186]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14931",
+        "stop_name": "St Clair Ave West at Caledonia Rd East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.454201, 43.675437]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14932",
+        "stop_name": "St Clair Ave West at Caledonia Rd West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.455281, 43.675275]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14933",
+        "stop_name": "St Clair Ave West at Laughton Ave East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.457079, 43.67479]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14934",
+        "stop_name": "St Clair Ave West at Laughton Ave West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.458176, 43.674639]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14935",
+        "stop_name": "St Clair Ave West at Hounslow Heath Rd East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.459436, 43.674274]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14936",
+        "stop_name": "St Clair Ave West at Silverthorn Ave West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.460547, 43.674107]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14937",
+        "stop_name": "St Clair Ave West at Old Weston Rd East Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.462439, 43.673599]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14938",
+        "stop_name": "St Clair Ave West at Old Weston Rd West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.463578, 43.673427]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14939",
+        "stop_name": "St Clair Ave West at Keele St/ Weston Rd",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.467842, 43.672451]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14940",
+        "stop_name": "St Clair Ave West at Weston Rd/ Keele St West Side",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.468189, 43.672435]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14958",
+        "stop_name": "Gunns Loop at St Clair Ave West",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.471837, 43.671912]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14977",
+        "stop_name": "Queen St West at Dufferin St West Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.429333, 43.642145]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14992",
+        "stop_name": "Roncesvalles Ave at Marion St South Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.446945, 43.640654]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14993",
+        "stop_name": "Roncesvalles Ave at High Park Blvd South Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.448985, 43.645921]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "14994",
+        "stop_name": "Roncesvalles Ave at Grenadier Rd",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.450121, 43.648885]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15038",
+        "stop_name": "Roncesvalles Ave at Marion St North Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.447086, 43.641432]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15039",
+        "stop_name": "Roncesvalles Ave at Howard Park Ave South Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.450927, 43.650939]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15059",
+        "stop_name": "Roncesvalles Ave at Queen St West North Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.44617, 43.639232]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15050",
+        "stop_name": "St Clair Ave West at Old Stock Yards Rd",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.470488, 43.671859]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15190",
+        "stop_name": "Exhibition Loop",
+        "routes": ["509", "511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.417054, 43.635874]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15218",
+        "stop_name": "Parliament St at Dundas St East",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.365861, 43.65935]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15224",
+        "stop_name": "Bathurst St at Niagara St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.401753, 43.641779]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15225",
+        "stop_name": "Bathurst St at Niagara St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.401977, 43.642032]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15331",
+        "stop_name": "Queens Quay West at Rees St",
+        "routes": ["509", "510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.386798, 43.638746]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15332",
+        "stop_name": "Queens Quay West at Harbourfront Centre",
+        "routes": ["509", "510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.381765, 43.639613]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15333",
+        "stop_name": "Queens Quay West at Harbourfront Centre",
+        "routes": ["509", "510"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.381319, 43.639782]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15334",
+        "stop_name": "Bathurst St at Lennox St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.410809, 43.663902]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15335",
+        "stop_name": "Bathurst St at Carr St",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.404431, 43.648599]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15336",
+        "stop_name": "Queen St East at Woodfield Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.32153, 43.665141]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15337",
+        "stop_name": "Queen St East at Woodfield Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.321174, 43.665353]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15338",
+        "stop_name": "Queen St East at Bellefair Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.299922, 43.669987]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15339",
+        "stop_name": "Queen St East at Bellefair Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.299743, 43.670148]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15340",
+        "stop_name": "Queen St West at St Patrick St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.388482, 43.65048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15341",
+        "stop_name": "Queen St West at Triller Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.443874, 43.639092]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15342",
+        "stop_name": "Queen St East at Elmer Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.303645, 43.669159]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15343",
+        "stop_name": "Queen St East at Woodbine Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.305659, 43.668835]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15344",
+        "stop_name": "Queen St East at Glen Manor Dr",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.292818, 43.671493]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15347",
+        "stop_name": "Queen St East at Beech Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.287448, 43.672733]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15348",
+        "stop_name": "Queen St West at Sudbury St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.427345, 43.642398]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15351",
+        "stop_name": "King St East at Lower River St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.356254, 43.65673]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15352",
+        "stop_name": "King St East at Ontario St",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.366167, 43.651647]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15353",
+        "stop_name": "King St West at Joe Shuster Way",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.423721, 43.639591]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15354",
+        "stop_name": "Dundas St West at Manning Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.411029, 43.651197]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15355",
+        "stop_name": "Dundas St West at Manning Ave",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.410818, 43.651375]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15356",
+        "stop_name": "Dundas St West at Shaw St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.418123, 43.649911]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15357",
+        "stop_name": "Gerrard St East at Woodfield Rd",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.323676, 43.671946]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15516",
+        "stop_name": "Dufferin St at King St West",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.42715, 43.638676]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15460",
+        "stop_name": "Cherry St at Front St East",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.357841, 43.652513]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15461",
+        "stop_name": "Cherry St at Front St East",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.358092, 43.65284]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15462",
+        "stop_name": "Distillery Loop",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.356822, 43.650856]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15518",
+        "stop_name": "Bathurst St at Bloor St West",
+        "routes": ["511"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.411347, 43.665235]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15308",
+        "stop_name": "St Clair West Station",
+        "routes": ["512"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.415609, 43.684297]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15633",
+        "stop_name": "Queen St West at Abell St",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.424093, 43.643197]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15635",
+        "stop_name": "King St West at Jarvis St West Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.372454, 43.650391]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15636",
+        "stop_name": "King St West at Jarvis St East Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.371287, 43.650541]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15637",
+        "stop_name": "King St West at Yonge St West Side - King Station",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.378565, 43.649058]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15638",
+        "stop_name": "King St West at Yonge St East Side - King Station",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.377256, 43.649232]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15639",
+        "stop_name": "King St West at Bay St West Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.380619, 43.648622]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15640",
+        "stop_name": "King St West at Bay St East Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.379621, 43.648724]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15641",
+        "stop_name": "King St West at Simcoe St - St. Andrew Station",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.385957, 43.647487]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15642",
+        "stop_name": "King St West at York St - St Andrew Station",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.383692, 43.647809]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15643",
+        "stop_name": "King St West at John St West Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.390161, 43.646538]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15644",
+        "stop_name": "King St West at John St East Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.389267, 43.646614]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15646",
+        "stop_name": "King St West at Blue Jays Way East Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.391644, 43.646101]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15647",
+        "stop_name": "King St West at Spadina Ave West Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.395811, 43.64537]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15648",
+        "stop_name": "King St West at Spadina Ave East Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.394296, 43.645507]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15649",
+        "stop_name": "King St West at Portland St East Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.399504, 43.644458]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15650",
+        "stop_name": "King St West at Bathurst St East Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.401815, 43.64399]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12537",
+        "stop_name": "King St East at Church St East Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.373826, 43.649982]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12538",
+        "stop_name": "King St East at Church St West Side",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.374971, 43.64984]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15699",
+        "stop_name": "Queen St East at Alton Ave",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.328109, 43.663648]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15721",
+        "stop_name": "Lake Shore Blvd West at Miles Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.490239, 43.608194]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15720",
+        "stop_name": "Lake Shore Blvd West at Norris Cres",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.489952, 43.610819]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15722",
+        "stop_name": "Lake Shore Blvd West at Royal York Rd",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.493189, 43.603544]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15746",
+        "stop_name": "2155 Lake Shore Blvd West",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.479707, 43.626148]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15839",
+        "stop_name": "Berkeley St at King St East",
+        "routes": ["504"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.364142, 43.65176]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15873",
+        "stop_name": "Dundas St East at Regent Park Blvd",
+        "routes": ["501", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.361655, 43.660471]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15872",
+        "stop_name": "Dundas St East at Regent Park Blvd",
+        "routes": ["501", "505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.361966, 43.660247]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16064",
+        "stop_name": "Dundas St West at St Patrick St",
+        "routes": ["505"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.390141, 43.654566]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12314",
+        "stop_name": "Church St at Queen St East",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.375613, 43.653061]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16402",
+        "stop_name": "The Queensway at Glendale Ave - St Joseph's Health Centre",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.451838, 43.639553]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12338",
+        "stop_name": "College St at Augusta Ave",
+        "routes": ["506"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.403078, 43.657485]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16429",
+        "stop_name": "Queen St West at Roncesvalles Ave East Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.445427, 43.638812]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16520",
+        "stop_name": "Queen St East at Wineva Ave East Side",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.295031, 43.671048]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16578",
+        "stop_name": "Adelaide St West at Yonge St - King Station",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.378551, 43.650274]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16716",
+        "stop_name": "York St at Adelaide St West",
+        "routes": ["501"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-79.384314, 43.649422]
+      }
+    }
+  ]
+}

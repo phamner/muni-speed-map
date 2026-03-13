@@ -1,0 +1,2258 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4731",
+        "stop_name": "Ohlone-Chynoweth Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.859666,
+          37.257993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4733",
+        "stop_name": "Ohlone-Chynoweth Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.860279,
+          37.257423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4736",
+        "stop_name": "Santa Teresa Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.789141,
+          37.236668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4737",
+        "stop_name": "Cottle Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.803159,
+          37.242732
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4738",
+        "stop_name": "Snell Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.831339,
+          37.248055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4739",
+        "stop_name": "Blossom Hill Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.841811,
+          37.25315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4740",
+        "stop_name": "Branham Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.859381,
+          37.267296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4741",
+        "stop_name": "Capitol Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.863269,
+          37.275293
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4742",
+        "stop_name": "Curtner Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.872703,
+          37.293955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4743",
+        "stop_name": "Tamien Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.884809,
+          37.311927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4744",
+        "stop_name": "Virginia Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.890104,
+          37.319828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4745",
+        "stop_name": "Children's Discovery Museum Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.893665,
+          37.327765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4746",
+        "stop_name": "Convention Center Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.889754,
+          37.330168
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4747",
+        "stop_name": "San Antonio Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.887979,
+          37.332782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4748",
+        "stop_name": "Santa Clara Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.890354,
+          37.335924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4749",
+        "stop_name": "Saint James Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.892183,
+          37.338402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4750",
+        "stop_name": "Japantown/Ayer Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.897559,
+          37.345557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4751",
+        "stop_name": "Civic Center Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.902434,
+          37.352016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4752",
+        "stop_name": "Gish Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.91016,
+          37.362544
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4753",
+        "stop_name": "Metro/Airport Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.91599,
+          37.370364
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4754",
+        "stop_name": "Karina Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.920405,
+          37.376278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4755",
+        "stop_name": "Component Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.925777,
+          37.383483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4756",
+        "stop_name": "Bonaventura Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.929742,
+          37.388749
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4757",
+        "stop_name": "Orchard Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.934869,
+          37.39573
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4758",
+        "stop_name": "River Oaks Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.940027,
+          37.402847
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4759",
+        "stop_name": "Tasman Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.944463,
+          37.408669
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4760",
+        "stop_name": "Baypointe Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.941526,
+          37.410779
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4761",
+        "stop_name": "Baypointe Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.942311,
+          37.410438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4762",
+        "stop_name": "Tasman Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.943998,
+          37.408056
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4763",
+        "stop_name": "River Oaks Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.938972,
+          37.401188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4764",
+        "stop_name": "Orchard Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.933837,
+          37.394082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4765",
+        "stop_name": "Bonaventura Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.928715,
+          37.387197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4766",
+        "stop_name": "Component Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.924755,
+          37.381937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4767",
+        "stop_name": "Karina Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.919317,
+          37.374609
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4768",
+        "stop_name": "Metro/Airport Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.914883,
+          37.368664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4769",
+        "stop_name": "Gish Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.909099,
+          37.360938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4770",
+        "stop_name": "Civic Center Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.901956,
+          37.35138
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4771",
+        "stop_name": "Japantown/Ayer Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.897116,
+          37.344964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4772",
+        "stop_name": "Saint James Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.890805,
+          37.338358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4773",
+        "stop_name": "Santa Clara Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.88891,
+          37.335796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4774",
+        "stop_name": "San Antonio Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.887188,
+          37.333481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4775",
+        "stop_name": "Convention Center Station",
+        "routes": [
+          "Blue",
+          "Blue",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.890538,
+          37.329809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4776",
+        "stop_name": "Children's Discovery Museum Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.893114,
+          37.327223
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4777",
+        "stop_name": "Virginia Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.889948,
+          37.319164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4778",
+        "stop_name": "Tamien Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8843,
+          37.311257
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4779",
+        "stop_name": "Curtner Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.872343,
+          37.293044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4780",
+        "stop_name": "Capitol Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.862964,
+          37.273901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4781",
+        "stop_name": "Branham Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.859213,
+          37.266578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4782",
+        "stop_name": "Blossom Hill Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.841025,
+          37.252767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4783",
+        "stop_name": "Snell Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.830547,
+          37.247641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4784",
+        "stop_name": "Cottle Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.802252,
+          37.242505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4785",
+        "stop_name": "Santa Teresa Station",
+        "routes": [
+          "Blue",
+          "Blue"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.789491,
+          37.235966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4786",
+        "stop_name": "Mountain View Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.077596,
+          37.395283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4788",
+        "stop_name": "Whisman Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.05822,
+          37.392205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4789",
+        "stop_name": "Middlefield Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.051959,
+          37.39607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4790",
+        "stop_name": "Bayshore Nasa Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.049167,
+          37.404327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4791",
+        "stop_name": "Lockheed Martin Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.026891,
+          37.410048
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4792",
+        "stop_name": "Borregas Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.016702,
+          37.411326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4793",
+        "stop_name": "Crossman Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.01118,
+          37.408841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4794",
+        "stop_name": "Fair Oaks Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.008638,
+          37.402578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4795",
+        "stop_name": "Vienna Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.998254,
+          37.403354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4796",
+        "stop_name": "Reamwood Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.987407,
+          37.40351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4797",
+        "stop_name": "Old Ironsides Station",
+        "routes": [
+          "Green",
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.978871,
+          37.403299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4798",
+        "stop_name": "Great America Station",
+        "routes": [
+          "Green",
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.974058,
+          37.403555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4799",
+        "stop_name": "Lick Mill Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.962925,
+          37.407795
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4800",
+        "stop_name": "Champion Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.951936,
+          37.408898
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4801",
+        "stop_name": "Baypointe Station",
+        "routes": [
+          "Blue",
+          "Green",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.941523,
+          37.410877
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4802",
+        "stop_name": "Cisco Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.928312,
+          37.412348
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4803",
+        "stop_name": "Alder Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.917118,
+          37.413572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4804",
+        "stop_name": "Alder Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.9177,
+          37.413129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4805",
+        "stop_name": "Cisco Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.929051,
+          37.412659
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4806",
+        "stop_name": "Baypointe Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.942317,
+          37.410531
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4807",
+        "stop_name": "Champion Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.952616,
+          37.409423
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4808",
+        "stop_name": "Lick Mill Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.963679,
+          37.407616
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4809",
+        "stop_name": "Great America Station",
+        "routes": [
+          "Green",
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.974908,
+          37.403468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4810",
+        "stop_name": "Old Ironsides Station",
+        "routes": [
+          "Green",
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.979862,
+          37.403309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4811",
+        "stop_name": "Reamwood Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.989663,
+          37.403572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4812",
+        "stop_name": "Vienna Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.000874,
+          37.403396
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4813",
+        "stop_name": "Fair Oaks Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.009551,
+          37.402777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4814",
+        "stop_name": "Crossman Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.011703,
+          37.409466
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4815",
+        "stop_name": "Borregas Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.019315,
+          37.411985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4816",
+        "stop_name": "Lockheed Martin Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.027132,
+          37.409404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4817",
+        "stop_name": "Bayshore Nasa Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.049989,
+          37.404703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4818",
+        "stop_name": "Middlefield Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.05221,
+          37.395428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4819",
+        "stop_name": "Whisman Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.059,
+          37.391773
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4821",
+        "stop_name": "Mountain View Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.076789,
+          37.394952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5023",
+        "stop_name": "Moffett Park Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.03346,
+          37.402367
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5024",
+        "stop_name": "Moffett Park Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.034331,
+          37.402439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5235",
+        "stop_name": "Great Mall Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.901434,
+          37.413925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5236",
+        "stop_name": "Milpitas Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.890618,
+          37.408549
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5237",
+        "stop_name": "Cropley Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.881069,
+          37.402644
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5238",
+        "stop_name": "Hostetter Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.87029,
+          37.395649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5239",
+        "stop_name": "Berryessa Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.861477,
+          37.387386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5240",
+        "stop_name": "Penitencia Creek Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.854417,
+          37.380958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5241",
+        "stop_name": "Mckee Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.844036,
+          37.371057
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5242",
+        "stop_name": "Alum Rock Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.83212,
+          37.358134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5243",
+        "stop_name": "Alum Rock Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.832239,
+          37.358369
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5244",
+        "stop_name": "Mckee Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.845477,
+          37.372648
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5245",
+        "stop_name": "Penitencia Creek Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.8554,
+          37.382025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5246",
+        "stop_name": "Berryessa Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.863113,
+          37.389085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5247",
+        "stop_name": "Hostetter Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.869629,
+          37.395116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5248",
+        "stop_name": "Cropley Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.883077,
+          37.404006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5249",
+        "stop_name": "Milpitas Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.891365,
+          37.408945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5250",
+        "stop_name": "Great Mall Station",
+        "routes": [
+          "Orange",
+          "Orange"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.902123,
+          37.41439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5374",
+        "stop_name": "Diridon Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.903511,
+          37.328947
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5375",
+        "stop_name": "Race Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.910314,
+          37.317567
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5376",
+        "stop_name": "Fruitdale Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.918017,
+          37.310482
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5377",
+        "stop_name": "Bascom Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.92983,
+          37.299851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5378",
+        "stop_name": "Hamilton Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.936167,
+          37.294064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5379",
+        "stop_name": "Campbell Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.943027,
+          37.2859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5380",
+        "stop_name": "Winchester Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.947906,
+          37.27961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5381",
+        "stop_name": "Diridon Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.903588,
+          37.328296
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5382",
+        "stop_name": "Race Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.910753,
+          37.317155
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5383",
+        "stop_name": "Fruitdale Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.918483,
+          37.310122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5384",
+        "stop_name": "Bascom Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.930304,
+          37.299467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5385",
+        "stop_name": "Hamilton Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.936576,
+          37.293691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5386",
+        "stop_name": "Campbell Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.943395,
+          37.285483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5387",
+        "stop_name": "Winchester Station",
+        "routes": [
+          "Green",
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.948307,
+          37.279178
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5388",
+        "stop_name": "San Fernando Station",
+        "routes": [
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.898116,
+          37.330367
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5389",
+        "stop_name": "San Fernando Station",
+        "routes": [
+          "Green",
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.899045,
+          37.330248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "5866",
+        "stop_name": "Patrick Henry Pocket Track (NOT A PUBLIC STOP)",
+        "routes": [
+          "Green"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -121.984251,
+          37.403489
+        ]
+      }
+    }
+  ]
+}

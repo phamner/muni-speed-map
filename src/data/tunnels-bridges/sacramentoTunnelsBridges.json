@@ -1,0 +1,59 @@
+{
+  "type": "FeatureCollection",
+  "generated": "2026-01-19T04:35:12.338Z",
+  "source": "OpenStreetMap",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 657415003,
+        "infraType": "tunnel",
+        "name": "SacRT Blue North",
+        "tunnel": true,
+        "bridge": false,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -121.4869296,
+            38.588309
+          ],
+          [
+            -121.4867344,
+            38.5887574
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 657415004,
+        "infraType": "tunnel",
+        "name": "SacRT Blue South",
+        "tunnel": true,
+        "bridge": false,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -121.4867728,
+            38.5887676
+          ],
+          [
+            -121.4869683,
+            38.5883195
+          ]
+        ]
+      }
+    }
+  ]
+}

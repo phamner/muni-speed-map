@@ -1,0 +1,1937 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 69479948,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "106+56",
+        "railway:switch": "default",
+        "ref": "9",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1295422,
+          42.3316024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 69483185,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "158+70",
+        "railway:switch": "default",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1469572,
+          42.3353174
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 69485001,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "148+82",
+        "railway:switch": "default",
+        "ref": "26A",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1434555,
+          42.3359867
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 69491181,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1422357,
+          42.3446565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 336109108,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1158015,
+          42.4065241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 944751043,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0870179,
+          42.3755217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 944751117,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0867778,
+          42.3754944
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 944751121,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.08137,
+          42.3746526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1887734249,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0822319,
+          42.3749975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1887734252,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0824126,
+          42.3750073
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2272144682,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "188+73",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1535395,
+          42.3380802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2378746872,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "87+54",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1026835,
+          42.33498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2446018229,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.062115,
+          42.3563892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2446048079,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0594077,
+          42.3593605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2446063565,
+        "type": "switch",
+        "railway": "switch",
+        "railway:position": "17+94"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1059965,
+          42.3443214
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 2446063567,
+        "type": "switch",
+        "railway": "switch",
+        "railway:position": "16+91"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1057936,
+          42.3444997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3324638067,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "80+24",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1220725,
+          42.3419325
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3472458136,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "86+91",
+        "railway:switch": "default",
+        "ref": "87",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0643155,
+          42.3535457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3787125239,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.110274,
+          42.3286393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 3887838055,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "342+61",
+        "railway:switch": "default",
+        "ref": "22",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2065131,
+          42.3214381
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4132027308,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "114+71",
+        "railway:switch": "default",
+        "ref": "88",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0589007,
+          42.3599643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4572279103,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "150+12",
+        "railway:switch": "default",
+        "ref": "1B",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0635052,
+          42.3659208
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4572492969,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "121+71",
+        "railway:switch": "default",
+        "ref": "89",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.057899,
+          42.3616467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4573964876,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "123+87",
+        "railway:switch": "default",
+        "ref": "74",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0580338,
+          42.3616361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4725578882,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1668274,
+          42.340146
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4725579230,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "218+98",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1641536,
+          42.3401219
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4725579231,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "219+92",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1645078,
+          42.3401443
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4725579240,
+        "type": "switch",
+        "railway": "switch",
+        "railway:position": "225+95"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1667296,
+          42.3401084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184102395,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "343+10",
+        "railway:switch": "default",
+        "ref": "23",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2066652,
+          42.3212871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184175223,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "344+12",
+        "railway:switch": "default",
+        "ref": "24",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2068543,
+          42.321037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184175224,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "341+52",
+        "railway:switch": "default",
+        "ref": "21",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2062844,
+          42.3216068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184302920,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "161+31",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1479274,
+          42.3352016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184303323,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "158+87",
+        "railway:switch": "default",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1469626,
+          42.3352856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184303338,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "146+02",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1422213,
+          42.3360025
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184303390,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "108+20",
+        "railway:switch": "default",
+        "ref": "11",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1300876,
+          42.3316172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184303391,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "108+98",
+        "railway:switch": "default",
+        "ref": "12",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1304361,
+          42.3316876
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184303392,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "107+70",
+        "railway:switch": "default",
+        "ref": "10",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1299023,
+          42.3316016
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184489131,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "157+27",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1491992,
+          42.3361699
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184489140,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "154+73",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1483851,
+          42.3363561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184489143,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "154+15",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1482041,
+          42.3364282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184538692,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "81+11",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1224244,
+          42.3418658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5184996606,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "187+08",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1530216,
+          42.338216
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185047631,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "25=29",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1034081,
+          42.349638
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185047633,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "22+57",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1024048,
+          42.3495017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185047635,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "18+46",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1008561,
+          42.3493449
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185047704,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "145+54",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1420234,
+          42.3448879
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185047821,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "23+49",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1027081,
+          42.349511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185057903,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "54+83",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0920252,
+          42.3391475
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185057907,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "51+71",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0909986,
+          42.3395526
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185057915,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "52+61",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0912268,
+          42.3394258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185057917,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "54+22",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0917421,
+          42.3392218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185075706,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "86+52",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1023991,
+          42.3351075
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185076324,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "55+34",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0921088,
+          42.3390774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5185076328,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "51+52",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.090878,
+          42.3395635
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 5428511579,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "158+28",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1468517,
+          42.3352952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6042744631,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "0+00",
+        "railway:switch": "default",
+        "ref": "61",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0941163,
+          42.3489771
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6042744638,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "0+00",
+        "railway:switch": "default",
+        "ref": "81",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0941208,
+          42.3490172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6042744651,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "20+55",
+        "railway:switch": "default",
+        "ref": "79",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1018044,
+          42.3475678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6042744654,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "20+42",
+        "railway:switch": "default",
+        "ref": "93",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1017649,
+          42.3475431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6042756252,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "2+40",
+        "railway:switch": "default",
+        "ref": "94",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0948992,
+          42.3488412
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6043079036,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "43+08",
+        "railway:switch": "default",
+        "ref": "85",
+        "switch:mode": "power"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0790649,
+          42.3496164
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6049627736,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "188+71",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1535436,
+          42.3380445
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6450288640,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1076646,
+          42.3955724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6673518411,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0812038,
+          42.3743457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6789537038,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0799163,
+          42.3733417
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6794210734,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.079823,
+          42.3732864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6794210735,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0795523,
+          42.3730731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6794300938,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0902213,
+          42.3759792
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6794300939,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0907771,
+          42.3760738
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6800900701,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.107432,
+          42.395105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6800976673,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1164044,
+          42.4072334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6804364560,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1161808,
+          42.4068639
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7687947315,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1142797,
+          42.4044763
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771283045,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "80+93",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.123688,
+          42.3520821
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771283046,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "79+99",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1233354,
+          42.3520081
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771379395,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "39+86",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.10805,
+          42.3457307
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771379396,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "40+43",
+        "railway:switch": "default",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1082211,
+          42.3457144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771494474,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "428+60",
+        "railway:switch": "default",
+        "ref": "28",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2323204,
+          42.3270923
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771494475,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "427+89",
+        "railway:switch": "default",
+        "ref": "27",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.2321342,
+          42.3269078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771494479,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "174+07",
+        "railway:switch": "default",
+        "ref": "16",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1519671,
+          42.3335701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771494480,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "173+00",
+        "railway:switch": "default",
+        "ref": "15",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1517283,
+          42.3337676
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771494481,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "172+50",
+        "railway:switch": "default",
+        "ref": "14",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1515886,
+          42.3338527
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7771494482,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "171+40",
+        "railway:switch": "default",
+        "ref": "13",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.151216,
+          42.3340248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7773725260,
+        "type": "switch",
+        "railway": "switch",
+        "railway:position": "17+17"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1057458,
+          42.3444796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8032337482,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0815918,
+          42.3752364
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8032656731,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0858548,
+          42.3755093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8032656732,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0868762,
+          42.3755627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8032656740,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.081551,
+          42.3751905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8032656743,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.083055,
+          42.3751733
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8083253779,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "62+81",
+        "railway:switch": "default",
+        "ref": "A1",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0719982,
+          42.3515172
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8083253780,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "63+87",
+        "railway:switch": "default",
+        "ref": "A2",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0717693,
+          42.3516191
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8083253781,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "80+61",
+        "railway:switch": "default",
+        "ref": "65",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.065576,
+          42.3525523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8083253782,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "81+37",
+        "railway:switch": "default",
+        "ref": "86",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0653651,
+          42.3525106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8083253784,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "74+20",
+        "railway:switch": "default",
+        "ref": "C1",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0679566,
+          42.3525646
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8085760443,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "87+92",
+        "railway:switch": "default",
+        "ref": "T1",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0641683,
+          42.3538378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10679603179,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0923863,
+          42.3763588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10679603180,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0918274,
+          42.3762629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10679658228,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1160592,
+          42.4067014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 10679658229,
+        "type": "switch",
+        "railway": "switch"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1157383,
+          42.4063384
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11210898406,
+        "type": "switch",
+        "railway": "switch",
+        "railway:position": "18+18"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1060963,
+          42.3442585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11210898407,
+        "type": "switch",
+        "railway": "switch",
+        "railway:position": "19+26"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.1063833,
+          42.3441285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12468017969,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "133+44",
+        "railway:switch": "default",
+        "ref": "377",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0590712,
+          42.3640129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 12468017970,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "130+72",
+        "railway:switch": "default",
+        "ref": "356",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0588647,
+          42.3638953
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13315829948,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "40+26",
+        "railway:switch": "default",
+        "ref": "83",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0799836,
+          42.3493661
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13315829951,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "37+30",
+        "railway:switch": "default",
+        "ref": "82",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0804814,
+          42.3492305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13322552340,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "19+39",
+        "railway:switch": "default",
+        "ref": "91",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0816486,
+          42.345439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 13322552341,
+        "type": "switch",
+        "operator": "Massachusetts Bay Transportation Authority",
+        "railway": "switch",
+        "railway:position": "20+29",
+        "railway:switch": "default",
+        "ref": "78",
+        "switch:mode": "manual"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.0817842,
+          42.3453691
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1895 @@
+{
+  "type": "FeatureCollection",
+  "generated": "2026-01-21T23:25:27.495Z",
+  "source": "OpenStreetMap via Overpass API",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208126,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8794384,
+            35.1774664
+          ],
+          [
+            -80.8794805,
+            35.1778348
+          ],
+          [
+            -80.879491,
+            35.1780378
+          ],
+          [
+            -80.8795007,
+            35.1782218
+          ],
+          [
+            -80.8795016,
+            35.178444
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208145,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8487262,
+            35.2202846
+          ],
+          [
+            -80.8479802,
+            35.2208153
+          ],
+          [
+            -80.8478798,
+            35.2208827
+          ],
+          [
+            -80.8477385,
+            35.2209628
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208150,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8465981,
+            35.2215216
+          ],
+          [
+            -80.8464754,
+            35.2215826
+          ],
+          [
+            -80.8464287,
+            35.2216063
+          ],
+          [
+            -80.8463839,
+            35.2216301
+          ],
+          [
+            -80.8463267,
+            35.2216626
+          ],
+          [
+            -80.8462677,
+            35.2216996
+          ],
+          [
+            -80.8462102,
+            35.2217374
+          ],
+          [
+            -80.8461747,
+            35.2217617
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208159,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8431761,
+            35.2236236
+          ],
+          [
+            -80.8428621,
+            35.2238478
+          ],
+          [
+            -80.842835,
+            35.2238671
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208161,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8421153,
+            35.2243613
+          ],
+          [
+            -80.8417073,
+            35.2246455
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208165,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8410796,
+            35.225147
+          ],
+          [
+            -80.8406916,
+            35.2254555
+          ],
+          [
+            -80.8406664,
+            35.2254755
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208843,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8829879,
+            35.1072848
+          ],
+          [
+            -80.8829401,
+            35.1069575
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208852,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8806014,
+            35.1222206
+          ],
+          [
+            -80.880788,
+            35.1218832
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208855,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8768903,
+            35.1378919
+          ],
+          [
+            -80.8768165,
+            35.1375195
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208860,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8774625,
+            35.153359
+          ],
+          [
+            -80.8775976,
+            35.1527179
+          ],
+          [
+            -80.8776676,
+            35.152386
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 55208863,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8775897,
+            35.1659209
+          ],
+          [
+            -80.8775398,
+            35.1650304
+          ],
+          [
+            -80.8775408,
+            35.1647722
+          ],
+          [
+            -80.8775523,
+            35.1644252
+          ],
+          [
+            -80.8775634,
+            35.1641011
+          ],
+          [
+            -80.8775756,
+            35.1637501
+          ],
+          [
+            -80.8775853,
+            35.1633597
+          ],
+          [
+            -80.8776077,
+            35.1627219
+          ],
+          [
+            -80.8776153,
+            35.1623506
+          ],
+          [
+            -80.877632,
+            35.1618139
+          ],
+          [
+            -80.8776538,
+            35.1611251
+          ],
+          [
+            -80.8776633,
+            35.1608019
+          ],
+          [
+            -80.8776733,
+            35.1605178
+          ],
+          [
+            -80.8776745,
+            35.1602968
+          ],
+          [
+            -80.8776662,
+            35.1601235
+          ],
+          [
+            -80.8776507,
+            35.1599735
+          ],
+          [
+            -80.8776306,
+            35.1598395
+          ],
+          [
+            -80.8776,
+            35.1596916
+          ],
+          [
+            -80.8775606,
+            35.1595579
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 453372258,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8795488,
+            35.1784419
+          ],
+          [
+            -80.8795453,
+            35.1782351
+          ],
+          [
+            -80.8795398,
+            35.1780303
+          ],
+          [
+            -80.8795255,
+            35.177805
+          ],
+          [
+            -80.8794888,
+            35.1774627
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 454589481,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8828472,
+            35.106967
+          ],
+          [
+            -80.8828962,
+            35.107294
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 454589486,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8806596,
+            35.1219661
+          ],
+          [
+            -80.8804219,
+            35.1223985
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 454589492,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.876745,
+            35.137534
+          ],
+          [
+            -80.8768236,
+            35.1379037
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 454589497,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8775789,
+            35.1523694
+          ],
+          [
+            -80.8774203,
+            35.1531231
+          ],
+          [
+            -80.8773727,
+            35.1533494
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 454589501,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8774996,
+            35.1595668
+          ],
+          [
+            -80.8775303,
+            35.1597412
+          ],
+          [
+            -80.8775494,
+            35.1598992
+          ],
+          [
+            -80.8775587,
+            35.1600552
+          ],
+          [
+            -80.8775631,
+            35.1601772
+          ],
+          [
+            -80.8775609,
+            35.1603164
+          ],
+          [
+            -80.8775411,
+            35.1608793
+          ],
+          [
+            -80.877519,
+            35.1615032
+          ],
+          [
+            -80.8775062,
+            35.162001
+          ],
+          [
+            -80.8774849,
+            35.1625917
+          ],
+          [
+            -80.8774724,
+            35.1629166
+          ],
+          [
+            -80.8774661,
+            35.163172
+          ],
+          [
+            -80.877451,
+            35.1636709
+          ],
+          [
+            -80.87744,
+            35.1641301
+          ],
+          [
+            -80.8774434,
+            35.164381
+          ],
+          [
+            -80.8774583,
+            35.1647617
+          ],
+          [
+            -80.8774794,
+            35.1650347
+          ],
+          [
+            -80.8775469,
+            35.1659233
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535123129,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8477591,
+            35.2209875
+          ],
+          [
+            -80.8478334,
+            35.2209484
+          ],
+          [
+            -80.8479183,
+            35.2208995
+          ],
+          [
+            -80.8480161,
+            35.2208355
+          ],
+          [
+            -80.8487532,
+            35.2203105
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535304244,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8302366,
+            35.2332151
+          ],
+          [
+            -80.8306643,
+            35.2329358
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535304250,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8306376,
+            35.2329071
+          ],
+          [
+            -80.8302053,
+            35.2331829
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535321043,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8152018,
+            35.2432071
+          ],
+          [
+            -80.815581,
+            35.2429324
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535321047,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8117902,
+            35.2459856
+          ],
+          [
+            -80.8116141,
+            35.2463361
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535321050,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8116611,
+            35.2463487
+          ],
+          [
+            -80.8118315,
+            35.2460042
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535321058,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7715795,
+            35.2633051
+          ],
+          [
+            -80.7718129,
+            35.2630914
+          ],
+          [
+            -80.7719618,
+            35.2629491
+          ],
+          [
+            -80.7720865,
+            35.2628067
+          ],
+          [
+            -80.7722179,
+            35.2626217
+          ],
+          [
+            -80.7722957,
+            35.2624946
+          ],
+          [
+            -80.7723587,
+            35.2623676
+          ],
+          [
+            -80.7723936,
+            35.2622904
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535327938,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8058501,
+            35.2492458
+          ],
+          [
+            -80.8060721,
+            35.2491952
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535327942,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8060161,
+            35.24913
+          ],
+          [
+            -80.8058591,
+            35.2491645
+          ],
+          [
+            -80.8057953,
+            35.2491786
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535327943,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7964609,
+            35.2509167
+          ],
+          [
+            -80.7966763,
+            35.2508832
+          ],
+          [
+            -80.7969064,
+            35.2508405
+          ],
+          [
+            -80.7971093,
+            35.2507917
+          ],
+          [
+            -80.7972966,
+            35.2507303
+          ],
+          [
+            -80.7975002,
+            35.2506594
+          ],
+          [
+            -80.7980598,
+            35.2504464
+          ],
+          [
+            -80.7981999,
+            35.2503958
+          ],
+          [
+            -80.7983179,
+            35.2503537
+          ],
+          [
+            -80.7984607,
+            35.2503093
+          ],
+          [
+            -80.7985867,
+            35.2502765
+          ],
+          [
+            -80.7987517,
+            35.2502414
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535327948,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7987418,
+            35.2502064
+          ],
+          [
+            -80.7985849,
+            35.2502414
+          ],
+          [
+            -80.7984521,
+            35.2502765
+          ],
+          [
+            -80.7983072,
+            35.2503203
+          ],
+          [
+            -80.7981838,
+            35.2503636
+          ],
+          [
+            -80.7980415,
+            35.2504151
+          ],
+          [
+            -80.7974773,
+            35.2506274
+          ],
+          [
+            -80.7972796,
+            35.2507004
+          ],
+          [
+            -80.7970955,
+            35.2507583
+          ],
+          [
+            -80.7969005,
+            35.2508098
+          ],
+          [
+            -80.7966658,
+            35.2508536
+          ],
+          [
+            -80.7964539,
+            35.2508843
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535327954,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7723549,
+            35.2622791
+          ],
+          [
+            -80.772283,
+            35.2624306
+          ],
+          [
+            -80.7722092,
+            35.2625653
+          ],
+          [
+            -80.7721194,
+            35.2627011
+          ],
+          [
+            -80.7719611,
+            35.2628807
+          ],
+          [
+            -80.7718324,
+            35.2630142
+          ],
+          [
+            -80.7715463,
+            35.2632784
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535335512,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7638926,
+            35.283666
+          ],
+          [
+            -80.7636244,
+            35.2840142
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535335515,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7636579,
+            35.284035
+          ],
+          [
+            -80.7639288,
+            35.2836923
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535348698,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7501647,
+            35.3051024
+          ],
+          [
+            -80.7498825,
+            35.3055154
+          ],
+          [
+            -80.7497366,
+            35.3057289
+          ],
+          [
+            -80.7495767,
+            35.3059719
+          ],
+          [
+            -80.7495298,
+            35.3060432
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535348705,
+        "separationType": "tunnel",
+        "name": "LYNX Blue Line",
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7412999,
+            35.3144345
+          ],
+          [
+            -80.7411412,
+            35.3145621
+          ],
+          [
+            -80.7409671,
+            35.3146756
+          ],
+          [
+            -80.7407796,
+            35.3147737
+          ],
+          [
+            -80.7405806,
+            35.3148554
+          ],
+          [
+            -80.7403723,
+            35.3149199
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535348718,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7377077,
+            35.3142155
+          ],
+          [
+            -80.7375547,
+            35.3140273
+          ],
+          [
+            -80.7367322,
+            35.3129533
+          ],
+          [
+            -80.7365901,
+            35.3127662
+          ],
+          [
+            -80.736482,
+            35.3126434
+          ],
+          [
+            -80.7363743,
+            35.3125461
+          ],
+          [
+            -80.7362441,
+            35.3124587
+          ],
+          [
+            -80.7361404,
+            35.3123957
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535353741,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7495662,
+            35.3060719
+          ],
+          [
+            -80.7496116,
+            35.306005
+          ],
+          [
+            -80.7497256,
+            35.3058368
+          ],
+          [
+            -80.7499203,
+            35.3055462
+          ],
+          [
+            -80.7502042,
+            35.3051224
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535353746,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7361047,
+            35.3124592
+          ],
+          [
+            -80.7361982,
+            35.3125062
+          ],
+          [
+            -80.7363053,
+            35.3125717
+          ],
+          [
+            -80.7363932,
+            35.3126318
+          ],
+          [
+            -80.7364737,
+            35.3127106
+          ],
+          [
+            -80.7365818,
+            35.312829
+          ],
+          [
+            -80.7366984,
+            35.3129746
+          ],
+          [
+            -80.7375171,
+            35.3140471
+          ],
+          [
+            -80.7376693,
+            35.3142347
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535353749,
+        "separationType": "tunnel",
+        "name": "LYNX Blue Line",
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7403878,
+            35.3149552
+          ],
+          [
+            -80.7406005,
+            35.3148895
+          ],
+          [
+            -80.7408037,
+            35.3148061
+          ],
+          [
+            -80.7409952,
+            35.3147059
+          ],
+          [
+            -80.7411728,
+            35.3145899
+          ],
+          [
+            -80.7413346,
+            35.3144595
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 535354704,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8155415,
+            35.2428935
+          ],
+          [
+            -80.815171,
+            35.2431709
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 557523977,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7570949,
+            35.2905095
+          ],
+          [
+            -80.756796,
+            35.2909492
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 557523979,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.7568466,
+            35.29095
+          ],
+          [
+            -80.7571484,
+            35.2905092
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 681001949,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8462023,
+            35.2217897
+          ],
+          [
+            -80.8462465,
+            35.2217609
+          ],
+          [
+            -80.8462959,
+            35.2217287
+          ],
+          [
+            -80.8463484,
+            35.2216964
+          ],
+          [
+            -80.8464053,
+            35.221663
+          ],
+          [
+            -80.8464909,
+            35.2216178
+          ],
+          [
+            -80.8465579,
+            35.2215837
+          ],
+          [
+            -80.8466273,
+            35.221549
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 854403673,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8417343,
+            35.2246717
+          ],
+          [
+            -80.8421424,
+            35.2243875
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 906691493,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.842863,
+            35.2238937
+          ],
+          [
+            -80.8431931,
+            35.2236591
+          ],
+          [
+            -80.8432054,
+            35.2236504
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 906691498,
+        "separationType": "elevated",
+        "name": "LYNX Blue Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8406973,
+            35.2255015
+          ],
+          [
+            -80.8410866,
+            35.2251898
+          ],
+          [
+            -80.8411091,
+            35.2251718
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 983930796,
+        "separationType": "elevated",
+        "name": "CityLynx Gold Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8194644,
+            35.2180456
+          ],
+          [
+            -80.8193231,
+            35.2182454
+          ],
+          [
+            -80.8192298,
+            35.2184151
+          ],
+          [
+            -80.8191458,
+            35.2185923
+          ],
+          [
+            -80.8191197,
+            35.2186841
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 983930797,
+        "separationType": "elevated",
+        "name": "CityLynx Gold Line",
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8193699,
+            35.2180365
+          ],
+          [
+            -80.8192307,
+            35.2182232
+          ],
+          [
+            -80.8191359,
+            35.218395
+          ],
+          [
+            -80.8190607,
+            35.2185678
+          ],
+          [
+            -80.8190286,
+            35.2186672
+          ]
+        ]
+      }
+    }
+  ]
+}

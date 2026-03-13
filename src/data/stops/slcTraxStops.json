@@ -1,0 +1,1361 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18376",
+        "stop_name": "Gallivan Plaza Station",
+        "routes": ["Blue", "Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.891102, 40.763087]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18377",
+        "stop_name": "Library Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.884956, 40.760643]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18378",
+        "stop_name": "Library Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.883942, 40.760637]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18379",
+        "stop_name": "Trolley Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.873552, 40.760672]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18380",
+        "stop_name": "Trolley Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.872527, 40.760664]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18381",
+        "stop_name": "900 East Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.866732, 40.760671]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18382",
+        "stop_name": "900 East Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.865711, 40.760661]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18383",
+        "stop_name": "Stadium Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.852171, 40.760126]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18384",
+        "stop_name": "Stadium Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.852178, 40.759286]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18385",
+        "stop_name": "City Center Station",
+        "routes": ["Blue", "Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.891081, 40.768217]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18386",
+        "stop_name": "City Center Station",
+        "routes": ["Blue", "Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.891101, 40.767452]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18387",
+        "stop_name": "Millcreek Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896939, 40.701067]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18388",
+        "stop_name": "Millcreek Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896952, 40.700365]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18389",
+        "stop_name": "Meadowbrook Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896725, 40.688026]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18390",
+        "stop_name": "Meadowbrook Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896553, 40.687328]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18391",
+        "stop_name": "Murray North Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.894053, 40.677155]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18392",
+        "stop_name": "Murray North Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.894079, 40.676454]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18393",
+        "stop_name": "Murray Central Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.895282, 40.660269]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18394",
+        "stop_name": "Murray Central Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.895661, 40.659631]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18395",
+        "stop_name": "Fashion Place West Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.898319, 40.633823]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18396",
+        "stop_name": "Fashion Place West Station",
+        "routes": ["Blue", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.898355, 40.633116]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18397",
+        "stop_name": "Midvale Fort Union Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.898381, 40.619458]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18398",
+        "stop_name": "Midvale Fort Union Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.898291, 40.618761]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18399",
+        "stop_name": "Midvale Center Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.893216, 40.610541]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18400",
+        "stop_name": "Midvale Center Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.892645, 40.609975]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18401",
+        "stop_name": "Historic Sandy Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.885661, 40.589811]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18402",
+        "stop_name": "Historic Sandy Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.885744, 40.589114]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18403",
+        "stop_name": "Sandy Civic Center Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.884681, 40.571127]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18404",
+        "stop_name": "Sandy Civic Center Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.884471, 40.570273]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18405",
+        "stop_name": "Arena Station",
+        "routes": ["Blue", "Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.901146, 40.769344]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18406",
+        "stop_name": "Arena Station",
+        "routes": ["Blue", "Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.900051, 40.769343]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18407",
+        "stop_name": "Temple Square Station",
+        "routes": ["Blue", "Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.895321, 40.769353]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18408",
+        "stop_name": "Temple Square Station",
+        "routes": ["Blue", "Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.894303, 40.769335]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18409",
+        "stop_name": "Courthouse Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.891071, 40.759536]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18410",
+        "stop_name": "Courthouse Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.891096, 40.758762]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18411",
+        "stop_name": "Ballpark Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896781, 40.742583]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18412",
+        "stop_name": "Ballpark Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896785, 40.741876]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18413",
+        "stop_name": "Central Pointe Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896861, 40.724801]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18414",
+        "stop_name": "Central Pointe Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896892, 40.724091]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18415",
+        "stop_name": "Gallivan Plaza Station",
+        "routes": ["Blue", "Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.891071, 40.763855]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "19166",
+        "stop_name": "University South Campus Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.839146, 40.760509]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "19167",
+        "stop_name": "University South Campus Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.839976, 40.760085]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "19168",
+        "stop_name": "Fort Douglas Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.836793, 40.764766]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "19169",
+        "stop_name": "Fort Douglas Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.836427, 40.764059]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "19170",
+        "stop_name": "University Medical Center",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.839201, 40.769871]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "19171",
+        "stop_name": "University Medical Center",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.838503, 40.769208]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20973",
+        "stop_name": "900 South Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896818, 40.750058]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20982",
+        "stop_name": "900 South Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896788, 40.750822]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21225",
+        "stop_name": "Sandy Expo Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.886234, 40.581703]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21226",
+        "stop_name": "Sandy Expo Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.886429, 40.581007]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21761",
+        "stop_name": "Salt Lake Central Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.908296, 40.762533]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21762",
+        "stop_name": "Planetarium Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.902524, 40.766858]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21763",
+        "stop_name": "Old Greektown Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.905788, 40.765022]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21799",
+        "stop_name": "Salt Lake Central Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.908301, 40.761721]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21800",
+        "stop_name": "Planetarium Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.902558, 40.766096]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21801",
+        "stop_name": "Old Greektown Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.906778, 40.765022]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22620",
+        "stop_name": "Daybreak Parkway Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.014304, 40.544377]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22621",
+        "stop_name": "South Jordan Parkway Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.024643, 40.559038]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22622",
+        "stop_name": "South Jordan Parkway Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.024764, 40.558395]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22623",
+        "stop_name": "5600 W. Old Bingham Hwy Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.024871, 40.569441]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22624",
+        "stop_name": "5600 W. Old Bingham Hwy Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.024871, 40.568807]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22625",
+        "stop_name": "4800 W. Old Bingham Hwy Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.003837, 40.581652]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22626",
+        "stop_name": "4800 W. Old Bingham Hwy Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.004538, 40.581307]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22627",
+        "stop_name": "Jordan Valley Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.971375, 40.594939]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22628",
+        "stop_name": "Jordan Valley Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.972171, 40.594708]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22629",
+        "stop_name": "2700 W. Sugar Factory Rd Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.956458, 40.599207]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22630",
+        "stop_name": "2700 W. Sugar Factory Rd Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.957251, 40.598976]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22631",
+        "stop_name": "West Jordan City Center Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.936071, 40.605024]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22632",
+        "stop_name": "West Jordan City Center Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.936857, 40.604797]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22633",
+        "stop_name": "Historic Gardner Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.924005, 40.608219]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22634",
+        "stop_name": "Historic Gardner Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.924723, 40.607889]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22635",
+        "stop_name": "Bingham Junction Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.914906, 40.617138]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22636",
+        "stop_name": "Bingham Junction Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.915754, 40.617073]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22639",
+        "stop_name": "Daybreak Parkway Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.013905, 40.543811]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22645",
+        "stop_name": "River Trail Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.923801, 40.719897]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22646",
+        "stop_name": "River Trail Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.923811, 40.720605]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22647",
+        "stop_name": "Redwood Junction Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.939324, 40.711149]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22648",
+        "stop_name": "Redwood Junction Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.940293, 40.711146]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22649",
+        "stop_name": "Decker Lake Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.948675, 40.705035]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22650",
+        "stop_name": "Decker Lake Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.948681, 40.704288]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22651",
+        "stop_name": "West Valley Central Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.958917, 40.694366]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "22652",
+        "stop_name": "West Valley Central Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.959834, 40.694361]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23039",
+        "stop_name": "North Temple Bridge/Guadalupe",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.905195, 40.771587]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23040",
+        "stop_name": "North Temple Bridge/Guadalupe",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.904318, 40.771578]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23041",
+        "stop_name": "Jackson/Euclid Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.914486, 40.771502]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23042",
+        "stop_name": "Jackson/Euclid Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.915361, 40.771505]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23043",
+        "stop_name": "Fairpark Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.923759, 40.771468]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23044",
+        "stop_name": "Fairpark Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.924632, 40.77148]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23045",
+        "stop_name": "Power Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.933502, 40.771499]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23046",
+        "stop_name": "Power Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.934373, 40.771509]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23047",
+        "stop_name": "1940 W. North Temple Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.945736, 40.771536]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23048",
+        "stop_name": "1940 W. North Temple Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.946607, 40.77153]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23049",
+        "stop_name": "Airport Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.982117, 40.784356]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23050",
+        "stop_name": "Airport Station",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.983364, 40.784267]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23092",
+        "stop_name": "JORDAN RIVER SERVICE CENTER RELIEF",
+        "routes": ["Green"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.919923, 40.723584]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23318",
+        "stop_name": "Crescent View Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.878751, 40.545343]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23319",
+        "stop_name": "Crescent View Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.878506, 40.544591]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23320",
+        "stop_name": "Kimballs Lane Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.872436, 40.536528]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23321",
+        "stop_name": "Kimballs Lane Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.871887, 40.535876]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23322",
+        "stop_name": "Draper Town Center Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.859915, 40.525675]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23323",
+        "stop_name": "Draper Town Center Station",
+        "routes": ["Blue"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.858805, 40.525496]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23565",
+        "stop_name": "Central Pointe Station",
+        "routes": ["S-Line"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.896794, 40.723424]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23566",
+        "stop_name": "South Salt Lake City Station",
+        "routes": ["S-Line"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.890174, 40.722263]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23567",
+        "stop_name": "300 East Station",
+        "routes": ["S-Line"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.882335, 40.722324]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23568",
+        "stop_name": "500 East Station",
+        "routes": ["S-Line"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.877085, 40.722306]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23569",
+        "stop_name": "700 East Station",
+        "routes": ["S-Line"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.871612, 40.722798]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23570",
+        "stop_name": "Sugarmont Station",
+        "routes": ["S-Line"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.865092, 40.722818]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23571",
+        "stop_name": "Fairmont Station",
+        "routes": ["S-Line"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.861675, 40.722757]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "24144",
+        "stop_name": "MRSC OPERATOR RELIEF",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.906399, 40.627338]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25328",
+        "stop_name": "600 South Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.891096, 40.756057]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25329",
+        "stop_name": "600 South Station",
+        "routes": ["Blue", "Green", "Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-111.891095, 40.755113]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25479",
+        "stop_name": "South Jordan Downtown Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.019345, 40.549573]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25480",
+        "stop_name": "South Jordan Downtown Station",
+        "routes": ["Red"]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-112.020504, 40.550678]
+      }
+    }
+  ]
+}

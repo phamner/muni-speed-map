@@ -1,6 +1,1 @@
-{
-  "type": "FeatureCollection",
-  "description": "Manual overrides for Portland grade separation data. These take precedence over OSM data.",
-  "lastUpdated": "2026-01-19",
-  "features": []
-}
+./separation/portlandSeparationOverrides.json

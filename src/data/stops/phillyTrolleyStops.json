@@ -1,0 +1,9044 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "277",
+        "stop_name": "Lancaster Av & Girard Av",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.218615,
+          39.973059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "283",
+        "stop_name": "13th St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.162559,
+          39.952532
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "287",
+        "stop_name": "36th St Portal",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.194233,
+          39.955451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "290",
+        "stop_name": "Lancaster Av & 48th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.217035,
+          39.972244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "297",
+        "stop_name": "Woodland Av & 49th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212665,
+          39.940767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "301",
+        "stop_name": "40th St Portal",
+        "routes": [
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.203333,
+          39.949595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "302",
+        "stop_name": "Woodland Av & 49th St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212582,
+          39.940955
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "303",
+        "stop_name": "Woodland Av & 62nd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.230599,
+          39.928267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "304",
+        "stop_name": "Woodland Av & Island Av",
+        "routes": [
+          "11",
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.246245,
+          39.917304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "305",
+        "stop_name": "Darby Transit Center",
+        "routes": [
+          "11",
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.262376,
+          39.919085
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "317",
+        "stop_name": "Woodland Av & 50th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.213848,
+          39.940064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "319",
+        "stop_name": "Mt. Moriah",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.235461,
+          39.92889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "320",
+        "stop_name": "Chester Av & 58th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.228572,
+          39.935653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "321",
+        "stop_name": "Chester Av & 49th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.216622,
+          39.944041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "322",
+        "stop_name": "Chester Av & 49th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.216527,
+          39.944281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "323",
+        "stop_name": "Chester Av & 58th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.2285,
+          39.935832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "324",
+        "stop_name": "Mt. Moriah",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.235413,
+          39.929069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "325",
+        "stop_name": "Yeadon",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.252447,
+          39.924685
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "341",
+        "stop_name": "Richmond St & Westmoreland St Loop",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.099553,
+          39.984253
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "342",
+        "stop_name": "Girard Av & Front St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.136075,
+          39.968903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "343",
+        "stop_name": "Girard Av & Broad St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.159275,
+          39.971499
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "344",
+        "stop_name": "Girard Av & 40th St - FS",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.204543,
+          39.974159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "345",
+        "stop_name": "Girard Av & 59th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.237334,
+          39.970224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "349",
+        "stop_name": "Girard Av & 59th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.237523,
+          39.970099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "350",
+        "stop_name": "Girard Av & 40th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.204531,
+          39.974043
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "352",
+        "stop_name": "Girard Av & Broad St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.159594,
+          39.971428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "481",
+        "stop_name": "Frankford Av & Girard Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.134351,
+          39.968774
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "599",
+        "stop_name": "61st-Baltimore",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.246342,
+          39.943963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "600",
+        "stop_name": "Baltimore Av & 49th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.221404,
+          39.948101
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "601",
+        "stop_name": "Baltimore Av & 49th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.221109,
+          39.948261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "610",
+        "stop_name": "Elmwood Av & 73rd St",
+        "routes": [
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.241732,
+          39.914335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "611",
+        "stop_name": "Elmwood Loop",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.242642,
+          39.914015
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "649",
+        "stop_name": "Richmond St & Cumberland St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.118181,
+          39.974153
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "650",
+        "stop_name": "Richmond St & Cumberland St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.118038,
+          39.974331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1938",
+        "stop_name": "Avon Rd",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.269301,
+          39.957649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1939",
+        "stop_name": "Lansdowne Av",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.282422,
+          39.951694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1940",
+        "stop_name": "Drexel Hill Junction",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.292764,
+          39.947092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1943",
+        "stop_name": "Woodland Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.339812,
+          39.924707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1944",
+        "stop_name": "Springfield Mall",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.348885,
+          39.918278
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1946",
+        "stop_name": "Providence Rd/Media",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.380567,
+          39.916786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1947",
+        "stop_name": "Orange St/Media",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.393939,
+          39.918629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1948",
+        "stop_name": "Orange St/Media",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.393998,
+          39.918478
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1949",
+        "stop_name": "Providence Rd/Media",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.380614,
+          39.916626
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1951",
+        "stop_name": "Springfield Mall",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.348992,
+          39.918011
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1952",
+        "stop_name": "Woodland Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.339659,
+          39.924617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1953",
+        "stop_name": "Scenic Rd",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.325872,
+          39.940734
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1955",
+        "stop_name": "Drexel Hill Junction",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.292575,
+          39.947012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1957",
+        "stop_name": "Avon Rd",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.268888,
+          39.95772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1959",
+        "stop_name": "Baltimore Av",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.292912,
+          39.931233
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1961",
+        "stop_name": "North St",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.28555,
+          39.917498
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "1964",
+        "stop_name": "North St",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.285408,
+          39.917596
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "2099",
+        "stop_name": "MacDade Blvd",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.280973,
+          39.910255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4726",
+        "stop_name": "Bartram Av",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.284222,
+          39.914605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "10011",
+        "stop_name": "Magnolia Av",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.287045,
+          39.919517
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12048",
+        "stop_name": "Woodlawn-Providence",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.288705,
+          39.921643
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12196",
+        "stop_name": "Richmond St & Allegheny Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.101437,
+          39.983053
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "12218",
+        "stop_name": "Richmond St & Somerset St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.110697,
+          39.978159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15271",
+        "stop_name": "Lansdowne Av & 60th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240378,
+          39.975851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15319",
+        "stop_name": "Fairfield Av",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.263743,
+          39.960882
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15322",
+        "stop_name": "Congress Av",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.279101,
+          39.953092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15325",
+        "stop_name": "Garrettford",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.295958,
+          39.944052
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15326",
+        "stop_name": "Drexel Manor",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.296611,
+          39.942205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15327",
+        "stop_name": "Marshall Rd",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.296544,
+          39.940135
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15328",
+        "stop_name": "Creek Rd",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.295278,
+          39.9351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15329",
+        "stop_name": "Penn St",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.292008,
+          39.928938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15330",
+        "stop_name": "Springfield-Madison",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.292684,
+          39.927288
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15333",
+        "stop_name": "Andrews Av",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.281997,
+          39.911613
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15334",
+        "stop_name": "Andrews Av",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.281832,
+          39.911684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15339",
+        "stop_name": "Creek Rd",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.295136,
+          39.9351
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15340",
+        "stop_name": "Marshall Rd",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.296378,
+          39.94017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15341",
+        "stop_name": "Garrettford",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.295781,
+          39.944088
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15344",
+        "stop_name": "Congress Av",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.279078,
+          39.952976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15348",
+        "stop_name": "Fairfield Av",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.263613,
+          39.960864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15349",
+        "stop_name": "Huey Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.29764,
+          39.947597
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15355",
+        "stop_name": "Saxer Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.333645,
+          39.928772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15358",
+        "stop_name": "Pine Ridge",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.370004,
+          39.915024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15366",
+        "stop_name": "Pine Ridge",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.369922,
+          39.914872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15370",
+        "stop_name": "Saxer Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.333515,
+          39.928665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15376",
+        "stop_name": "Huey Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.297688,
+          39.94741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15379",
+        "stop_name": "Monroe St",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.387518,
+          39.917726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15380",
+        "stop_name": "Monroe St",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.387766,
+          39.917592
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "15497",
+        "stop_name": "69th St Transit Center",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.259677,
+          39.96217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16395",
+        "stop_name": "Aronimink",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.306033,
+          39.949203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "16402",
+        "stop_name": "Aronimink",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.306304,
+          39.949319
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18597",
+        "stop_name": "Walnut St",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.2667,
+          39.958851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18598",
+        "stop_name": "Hilltop Rd",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.273131,
+          39.955896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18599",
+        "stop_name": "Beverly Blvd",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.274822,
+          39.955095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18600",
+        "stop_name": "Drexel Park",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.286772,
+          39.949915
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18601",
+        "stop_name": "Irvington Rd",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.288982,
+          39.948864
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18602",
+        "stop_name": "School Ln",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.299799,
+          39.948751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18603",
+        "stop_name": "Anderson Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.312825,
+          39.94796
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18604",
+        "stop_name": "Drexelbrook",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.316144,
+          39.94724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18605",
+        "stop_name": "Drexeline",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.321757,
+          39.944666
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18606",
+        "stop_name": "Brookside-Springfield",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.32986,
+          39.933963
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18607",
+        "stop_name": "Thomson Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.345542,
+          39.921159
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18608",
+        "stop_name": "Beatty Rd",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.376967,
+          39.916249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18609",
+        "stop_name": "Manchester Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.382738,
+          39.917055
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18610",
+        "stop_name": "Edgmont St",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.385524,
+          39.917467
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18611",
+        "stop_name": "Jackson St",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.389348,
+          39.917985
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18612",
+        "stop_name": "Olive St",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.390917,
+          39.9182
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18613",
+        "stop_name": "Veterans Sq",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.391897,
+          39.918343
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18614",
+        "stop_name": "Leamy Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.337378,
+          39.926338
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18615",
+        "stop_name": "Veterans Sq",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.392145,
+          39.918209
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18616",
+        "stop_name": "Olive St",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.391165,
+          39.918066
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18617",
+        "stop_name": "Jackson St",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.389584,
+          39.917843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18618",
+        "stop_name": "Edgmont St",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.385772,
+          39.917333
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18619",
+        "stop_name": "Manchester Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.382998,
+          39.91693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18620",
+        "stop_name": "Beatty Rd",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.376861,
+          39.916071
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18621",
+        "stop_name": "Thomson Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.345353,
+          39.921167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18622",
+        "stop_name": "Leamy Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.337154,
+          39.926267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18623",
+        "stop_name": "Brookside-Springfield",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.329458,
+          39.934409
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18624",
+        "stop_name": "Drexeline",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.321592,
+          39.944559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18625",
+        "stop_name": "Drexelbrook",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.315955,
+          39.947106
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18626",
+        "stop_name": "Anderson Av",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.312636,
+          39.947826
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18627",
+        "stop_name": "School Ln",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.29987,
+          39.94859
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18628",
+        "stop_name": "Irvington Rd",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.289148,
+          39.948668
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18629",
+        "stop_name": "Drexel Park",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.286949,
+          39.949709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18630",
+        "stop_name": "Beverly Blvd",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.274066,
+          39.955326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18631",
+        "stop_name": "Hilltop Rd",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.272718,
+          39.955967
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18632",
+        "stop_name": "Walnut St",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.266263,
+          39.958921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18636",
+        "stop_name": "Clifton-Aldan",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.290161,
+          39.925723
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18842",
+        "stop_name": "Bartram Av",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.284092,
+          39.914703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18843",
+        "stop_name": "Magnolia Av",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.28675,
+          39.919419
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18844",
+        "stop_name": "Woodlawn-Providence",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.288575,
+          39.921777
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "18846",
+        "stop_name": "Drexel Manor",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.296446,
+          39.942196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20024",
+        "stop_name": "Paper Mill Rd",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.358036,
+          39.915428
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20025",
+        "stop_name": "Paper Mill Rd",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.357953,
+          39.915276
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20431",
+        "stop_name": "Chester Pike/Sharon Hill",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.278314,
+          39.906673
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20610",
+        "stop_name": "Malvern Av & 63rd St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.247009,
+          39.983697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20611",
+        "stop_name": "63rd St & Lebanon Av",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.246661,
+          39.980912
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20612",
+        "stop_name": "63rd St & Jefferson St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.246184,
+          39.97835
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20613",
+        "stop_name": "Lansdowne Av & 63rd - FS",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244986,
+          39.975332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20614",
+        "stop_name": "Lansdowne Av & 62nd St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.243651,
+          39.975499
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20615",
+        "stop_name": "Lansdowne Av & 61st St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.241879,
+          39.975693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20616",
+        "stop_name": "Lansdowne Av & 59th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.238653,
+          39.976054
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20617",
+        "stop_name": "Lansdowne Av & 58th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.236904,
+          39.976248
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20618",
+        "stop_name": "Lansdowne Av & 57th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.235403,
+          39.976406
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20619",
+        "stop_name": "Lansdowne Av & 56th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.233761,
+          39.976591
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20622",
+        "stop_name": "Lansdowne Av & 55th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231858,
+          39.976811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20623",
+        "stop_name": "Lansdowne Av & 54th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229908,
+          39.977013
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20624",
+        "stop_name": "Lansdowne Av & Lancaster Av",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227451,
+          39.977295
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20625",
+        "stop_name": "Lancaster Av & Bible Way",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.226176,
+          39.976855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20626",
+        "stop_name": "Lancaster Av & 50th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22259,
+          39.975207
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20627",
+        "stop_name": "Lancaster Av & Thompson St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219747,
+          39.973748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20628",
+        "stop_name": "Lancaster Av & 47th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.216115,
+          39.971555
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20630",
+        "stop_name": "Lancaster Av & 45th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212991,
+          39.969667
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20631",
+        "stop_name": "Lancaster Av & 44th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211541,
+          39.968772
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20632",
+        "stop_name": "Lancaster Av & 43th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.209878,
+          39.967725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20633",
+        "stop_name": "Lancaster Av & 42nd St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.207662,
+          39.966391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20634",
+        "stop_name": "Lancaster Av & 41st St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.205564,
+          39.965093
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20635",
+        "stop_name": "Lancaster Av & 40th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.20244,
+          39.963151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20636",
+        "stop_name": "Lancaster Av & Spring Garden St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.200353,
+          39.962004
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20638",
+        "stop_name": "Lancaster Av & 38th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.197016,
+          39.960267
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20639",
+        "stop_name": "Lancaster Av & 36th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.193786,
+          39.958565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20640",
+        "stop_name": "36th St & Market St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.194218,
+          39.956281
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20641",
+        "stop_name": "36th St Portal",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.194162,
+          39.955335
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20642",
+        "stop_name": "33rd St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.189523,
+          39.954782
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20643",
+        "stop_name": "Drexel Station at 30th St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1835,
+          39.954815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20645",
+        "stop_name": "22nd St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.176736,
+          39.953962
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20646",
+        "stop_name": "19th St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.171637,
+          39.953327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20658",
+        "stop_name": "33rd St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.189499,
+          39.954871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20659",
+        "stop_name": "15th St/City Hall",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.165345,
+          39.952672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20660",
+        "stop_name": "19th St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.171483,
+          39.953425
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20661",
+        "stop_name": "22nd St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.176571,
+          39.954051
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20662",
+        "stop_name": "Drexel Station at 30th St",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.183169,
+          39.954894
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20663",
+        "stop_name": "Lancaster Av & 38th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.196721,
+          39.96024
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20664",
+        "stop_name": "36th St & Market St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.194113,
+          39.956058
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20665",
+        "stop_name": "36th St & Lancaster Av",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.193585,
+          39.958404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20668",
+        "stop_name": "Lancaster Av & Spring Garden St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.199952,
+          39.961923
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20669",
+        "stop_name": "Lancaster Av & Haverford Av",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.201826,
+          39.9629
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20670",
+        "stop_name": "Lancaster Av & Wallace St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.203371,
+          39.963857
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20671",
+        "stop_name": "Lancaster Av & 41st St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.205386,
+          39.965102
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20672",
+        "stop_name": "Lancaster Av & 42nd St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.207485,
+          39.966399
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20673",
+        "stop_name": "Lancaster Av & Parrish St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.20956,
+          39.96767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20674",
+        "stop_name": "Lancaster Av & Ogden St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.210998,
+          39.968565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20675",
+        "stop_name": "Lancaster Av & Westminster St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212283,
+          39.969353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20677",
+        "stop_name": "Lancaster Av & 47th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.215938,
+          39.971564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20678",
+        "stop_name": "Lancaster Av & 49th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219464,
+          39.973703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20679",
+        "stop_name": "Lancaster Av & 50th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.222389,
+          39.975234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20681",
+        "stop_name": "Lancaster Av & 52nd St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.2266,
+          39.977186
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20683",
+        "stop_name": "Lansdowne Av & 54th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229755,
+          39.977129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20684",
+        "stop_name": "Lansdowne Av & 55th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231704,
+          39.976927
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20685",
+        "stop_name": "Lansdowne Av & 56th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.233607,
+          39.976707
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20686",
+        "stop_name": "Lansdowne Av & 57th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.235249,
+          39.976522
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20687",
+        "stop_name": "Lansdowne Av & 58th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.23675,
+          39.976363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20688",
+        "stop_name": "Lansdowne Av & 59th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.238499,
+          39.97617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20689",
+        "stop_name": "Lansdowne Av & 60th St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240153,
+          39.975976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20690",
+        "stop_name": "Lansdowne Av & 61st St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.241725,
+          39.975809
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20691",
+        "stop_name": "Lansdowne Av & 62nd St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.243497,
+          39.975615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20692",
+        "stop_name": "Lansdowne Av & 63rd St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.245435,
+          39.975404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20693",
+        "stop_name": "63rd St & Jefferson St",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.24603,
+          39.978234
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20695",
+        "stop_name": "63rd St & Columbia Av",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.246461,
+          39.980582
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20697",
+        "stop_name": "Main St & Summit St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.257315,
+          39.918088
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20698",
+        "stop_name": "Main St & 6th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.255852,
+          39.917791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20699",
+        "stop_name": "Main St & 5th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.254613,
+          39.917504
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20700",
+        "stop_name": "Main St & 4th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.253044,
+          39.917144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20701",
+        "stop_name": "Main St & 3rd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.251841,
+          39.916866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20702",
+        "stop_name": "Main St & 2nd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.250567,
+          39.916579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20703",
+        "stop_name": "Main St & Front St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.24921,
+          39.916363
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20704",
+        "stop_name": "Woodland Av & Island Av",
+        "routes": [
+          "11",
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.246376,
+          39.917099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20705",
+        "stop_name": "Woodland Av & 72nd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244412,
+          39.918432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20706",
+        "stop_name": "Woodland Av & 71st St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.243077,
+          39.919361
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20707",
+        "stop_name": "Woodland Av & 70th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.24148,
+          39.920483
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20708",
+        "stop_name": "Woodland Av & 69th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240097,
+          39.921463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20709",
+        "stop_name": "Woodland Av & 68th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.238441,
+          39.922621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20710",
+        "stop_name": "Woodland Av & 67th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.236927,
+          39.923689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20711",
+        "stop_name": "Woodland Av & 66th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.235614,
+          39.924615
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20712",
+        "stop_name": "Woodland Av & 65th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.234396,
+          39.925479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20713",
+        "stop_name": "Woodland Av & 64th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.233142,
+          39.926352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20714",
+        "stop_name": "Woodland Av & 63rd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231782,
+          39.927314
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20715",
+        "stop_name": "Woodland Av & 62nd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.230765,
+          39.928017
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20716",
+        "stop_name": "Woodland Av & 60th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227642,
+          39.930217
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20717",
+        "stop_name": "Woodland Av & 61st St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229287,
+          39.929041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20718",
+        "stop_name": "Woodland Av & 58th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.224673,
+          39.932309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20719",
+        "stop_name": "Woodland Av & 57th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.223289,
+          39.933297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20720",
+        "stop_name": "Woodland Av & 56th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22181,
+          39.934339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20721",
+        "stop_name": "Woodland Av & 55th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22045,
+          39.935292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20722",
+        "stop_name": "Woodland Av & 54th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219054,
+          39.936262
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20723",
+        "stop_name": "Woodland Av & 52nd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.216297,
+          39.938203
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20724",
+        "stop_name": "Woodland Av & 51st St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.215197,
+          39.938987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20725",
+        "stop_name": "Woodland Av & 50th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.213907,
+          39.939886
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20726",
+        "stop_name": "Woodland Av & 48th St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211728,
+          39.941953
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20727",
+        "stop_name": "Woodland Av & 46th St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.209797,
+          39.944323
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20728",
+        "stop_name": "Woodland Av & 45th St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.208565,
+          39.94541
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20729",
+        "stop_name": "Woodland Av & 42nd St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.207121,
+          39.946675
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20731",
+        "stop_name": "37th-Spruce",
+        "routes": [
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.196586,
+          39.950993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20732",
+        "stop_name": "36th-Sansom",
+        "routes": [
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.194533,
+          39.953854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20733",
+        "stop_name": "36th-Sansom",
+        "routes": [
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.194722,
+          39.95389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20734",
+        "stop_name": "37th-Spruce",
+        "routes": [
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.197306,
+          39.951048
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20736",
+        "stop_name": "Woodland Av & 42nd St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.206907,
+          39.946987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20737",
+        "stop_name": "Woodland Av & 43rd St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.20834,
+          39.945767
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20739",
+        "stop_name": "Woodland Av & 46th St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.209725,
+          39.944537
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20740",
+        "stop_name": "Woodland Av & 48th St",
+        "routes": [
+          "11",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211716,
+          39.942176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20741",
+        "stop_name": "Woodland Av & 51st St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.215102,
+          39.939192
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20742",
+        "stop_name": "Woodland Av & 52nd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.216214,
+          39.938408
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20743",
+        "stop_name": "Woodland Av & 53rd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.217598,
+          39.937438
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20744",
+        "stop_name": "Woodland Av & 54th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.218947,
+          39.936485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20745",
+        "stop_name": "Woodland Av & 55th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.220308,
+          39.935524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20746",
+        "stop_name": "Woodland Av & 56th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.221703,
+          39.934553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20747",
+        "stop_name": "Woodland Av & 57th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.223218,
+          39.933485
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20748",
+        "stop_name": "Woodland Av & 58th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.224448,
+          39.93263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20749",
+        "stop_name": "Woodland Av & 60th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227535,
+          39.930457
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20750",
+        "stop_name": "Woodland Av & 61st St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229191,
+          39.929282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20751",
+        "stop_name": "Woodland Av & 63rd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231675,
+          39.927519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20752",
+        "stop_name": "Woodland Av & 64th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.233047,
+          39.926557
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20753",
+        "stop_name": "Woodland Av & 65th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.234289,
+          39.925684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20754",
+        "stop_name": "Woodland Av & 66th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.235531,
+          39.924803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20755",
+        "stop_name": "Woodland Av & 67th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.236856,
+          39.923886
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20756",
+        "stop_name": "Woodland Av & 68th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.23837,
+          39.922817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20757",
+        "stop_name": "Woodland Av & 69th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240037,
+          39.921641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20758",
+        "stop_name": "Woodland Av & 70th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.241397,
+          39.920688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20759",
+        "stop_name": "Woodland Av & 71st St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.242958,
+          39.919584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20760",
+        "stop_name": "Woodland Av & 72nd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244342,
+          39.918622
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20761",
+        "stop_name": "Main St & Front St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.248915,
+          39.916451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20762",
+        "stop_name": "Main St & 2nd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.250319,
+          39.916614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20763",
+        "stop_name": "Main St & 3rd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.251534,
+          39.916892
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20764",
+        "stop_name": "Main St & 4th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.252737,
+          39.917171
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20765",
+        "stop_name": "Main St & 5th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.254295,
+          39.91753
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20766",
+        "stop_name": "Main St & 6th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.255486,
+          39.917808
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20767",
+        "stop_name": "Main St & Summit St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.25709,
+          39.91815
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20768",
+        "stop_name": "9th St & Ridge Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.260545,
+          39.919921
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20770",
+        "stop_name": "9th St & Summit St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.258866,
+          39.921142
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20771",
+        "stop_name": "9th St & Summit St - MBFS",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.257482,
+          39.92205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20772",
+        "stop_name": "9th St & Cedar Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.255994,
+          39.922566
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20773",
+        "stop_name": "Chester Av & Alfred Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.254279,
+          39.923697
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20774",
+        "stop_name": "Yeadon",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.252542,
+          39.924525
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20775",
+        "stop_name": "Chester Av & Stetser Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.250817,
+          39.925102
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20776",
+        "stop_name": "Chester Av & Duncan Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.249175,
+          39.925617
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20777",
+        "stop_name": "Chester Av & Yeadon Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.247486,
+          39.92607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20778",
+        "stop_name": "Chester Av & Church Ln",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.246565,
+          39.92631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20779",
+        "stop_name": "Chester Av & 65th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244762,
+          39.929359
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20781",
+        "stop_name": "65th St & Belmar Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.24108,
+          39.92905
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20782",
+        "stop_name": "65th St & Chester Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.238897,
+          39.928628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20784",
+        "stop_name": "Kingsessing Av & 61st St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.232386,
+          39.931045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20785",
+        "stop_name": "Kingsessing Av & 62nd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.233888,
+          39.929994
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20786",
+        "stop_name": "Kingsessing Av & 60th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.230316,
+          39.932479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20787",
+        "stop_name": "60th St & Chester Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231399,
+          39.933632
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20788",
+        "stop_name": "Chester Av & 59th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229944,
+          39.934754
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20789",
+        "stop_name": "Chester Av & 48th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.215344,
+          39.944958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20790",
+        "stop_name": "Chester Av & 47th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.213984,
+          39.945901
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20791",
+        "stop_name": "Chester Av & 57th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227187,
+          39.936642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20792",
+        "stop_name": "Chester Av & 56th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.225661,
+          39.937701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20793",
+        "stop_name": "Chester Av & 55th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.224301,
+          39.938654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20794",
+        "stop_name": "Chester Av & 54th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.222952,
+          39.939607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20795",
+        "stop_name": "Chester Av & 53rd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.221556,
+          39.940577
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20796",
+        "stop_name": "Chester Av & 52nd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.220184,
+          39.941539
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20797",
+        "stop_name": "Chester Av & 51st St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219048,
+          39.942349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20799",
+        "stop_name": "Chester Av & 46th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212682,
+          39.946827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20800",
+        "stop_name": "Chester Av & 45th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211428,
+          39.9477
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20801",
+        "stop_name": "Chester Av & 43rd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.209135,
+          39.948356
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20802",
+        "stop_name": "Chester Av & 42nd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.207151,
+          39.948424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20804",
+        "stop_name": "40th St Portal",
+        "routes": [
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.203333,
+          39.949533
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20807",
+        "stop_name": "Chester Av & 42nd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.206879,
+          39.948549
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20808",
+        "stop_name": "Chester Av & 43rd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.208945,
+          39.948481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20809",
+        "stop_name": "Chester Av & 45th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211403,
+          39.947878
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20810",
+        "stop_name": "Chester Av & 46th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212658,
+          39.947006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20811",
+        "stop_name": "Chester Av & 47th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.213959,
+          39.94608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20812",
+        "stop_name": "Chester Av & 48th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.215285,
+          39.945154
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20814",
+        "stop_name": "Chester Av & 51st St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219012,
+          39.942519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20815",
+        "stop_name": "Chester Av & 52nd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.220124,
+          39.941726
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20816",
+        "stop_name": "Chester Av & 53rd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.221485,
+          39.940764
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20817",
+        "stop_name": "Chester Av & 54th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.222893,
+          39.939785
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20818",
+        "stop_name": "Chester Av & 55th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.224253,
+          39.938832
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20819",
+        "stop_name": "Chester Av & 56th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.225625,
+          39.937871
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20820",
+        "stop_name": "Chester Av & 57th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227163,
+          39.936802
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20821",
+        "stop_name": "Chester Av & 59th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229849,
+          39.93495
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20822",
+        "stop_name": "Chester Av & 60th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231469,
+          39.933784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20823",
+        "stop_name": "60th St & Kingsessing Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.230339,
+          39.932595
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20824",
+        "stop_name": "Kingsessing Av & 61st St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.232291,
+          39.93125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20825",
+        "stop_name": "Kingsessing Av & 62nd St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.233793,
+          39.9302
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20826",
+        "stop_name": "Kingsessing Av & 65th St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.236963,
+          39.927982
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20827",
+        "stop_name": "65th St & Chester St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.238223,
+          39.92893
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20831",
+        "stop_name": "Chester Av & Church Ln",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.246044,
+          39.926577
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20833",
+        "stop_name": "Chester Av & Duncan Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.249045,
+          39.92576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20834",
+        "stop_name": "Chester Av & Stetser Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.250699,
+          39.925245
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20835",
+        "stop_name": "Chester Av & Alfred Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.254161,
+          39.923875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20836",
+        "stop_name": "Chester Av & Cedar Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.255946,
+          39.923012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20838",
+        "stop_name": "10th St & Mulberry Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.257349,
+          39.923621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20839",
+        "stop_name": "10th St & Wycombe Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.258471,
+          39.923096
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20840",
+        "stop_name": "10th St & Summit St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.259641,
+          39.922553
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20841",
+        "stop_name": "10th St & Ridge Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.261462,
+          39.921306
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20843",
+        "stop_name": "65th St & Kingsessing Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.23714,
+          39.927902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20859",
+        "stop_name": "Baltimore Av & 60th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244429,
+          39.944299
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20860",
+        "stop_name": "Baltimore Av & 59th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.241899,
+          39.945197
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20861",
+        "stop_name": "Baltimore Av & 58th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240304,
+          39.945783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20862",
+        "stop_name": "Baltimore Av & 57th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.237327,
+          39.946386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20863",
+        "stop_name": "Baltimore Av & 56th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.235602,
+          39.946785
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20864",
+        "stop_name": "Baltimore Av & 55th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.233746,
+          39.947246
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20865",
+        "stop_name": "Baltimore Av & 54th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231466,
+          39.947742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20866",
+        "stop_name": "Baltimore Av & 53rd St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229612,
+          39.947766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20867",
+        "stop_name": "Baltimore Av & Broomall St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227912,
+          39.947727
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20868",
+        "stop_name": "Baltimore Av & 51st St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.225456,
+          39.947715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20869",
+        "stop_name": "Baltimore Av & 50th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.223377,
+          39.947872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20870",
+        "stop_name": "Baltimore Av & Florence Av",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219503,
+          39.948312
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20871",
+        "stop_name": "Baltimore Av & 47th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.217188,
+          39.94854
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20872",
+        "stop_name": "Baltimore Av & 46th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.215061,
+          39.948786
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20873",
+        "stop_name": "Baltimore Av & 45th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.213018,
+          39.949006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20874",
+        "stop_name": "Baltimore Av & 44th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.21127,
+          39.949181
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20875",
+        "stop_name": "Baltimore Av & 43rd St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.20932,
+          39.949481
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20876",
+        "stop_name": "Baltimore Av & 42nd St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.207265,
+          39.949736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20879",
+        "stop_name": "Baltimore Av & 42nd St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.206945,
+          39.949861
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20880",
+        "stop_name": "Baltimore Av & 43rd St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.209154,
+          39.949641
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20881",
+        "stop_name": "Baltimore Av & 44th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211092,
+          39.949332
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20882",
+        "stop_name": "Baltimore Av & 45th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212828,
+          39.949148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20883",
+        "stop_name": "Baltimore Av & 46th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.214884,
+          39.948937
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20884",
+        "stop_name": "Baltimore Av & 47th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.21701,
+          39.948691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20885",
+        "stop_name": "Baltimore Av & 48th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219101,
+          39.948472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20886",
+        "stop_name": "Baltimore Av & 50th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.223199,
+          39.948041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20887",
+        "stop_name": "Baltimore Av & 51st St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.225266,
+          39.94783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20888",
+        "stop_name": "Baltimore Av & 52nd St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227309,
+          39.947842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20889",
+        "stop_name": "Baltimore Av & 53rd St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229317,
+          39.947846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20890",
+        "stop_name": "Baltimore Av & 54th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.232139,
+          39.947797
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20891",
+        "stop_name": "Baltimore Av & 55th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.233522,
+          39.947442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20892",
+        "stop_name": "Baltimore Av & 56th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.235519,
+          39.946936
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20893",
+        "stop_name": "Baltimore Av & 57th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.237763,
+          39.946431
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20894",
+        "stop_name": "Baltimore Av & 58th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.239937,
+          39.945988
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20895",
+        "stop_name": "Baltimore Av & 59th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.241698,
+          39.945411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20896",
+        "stop_name": "Baltimore Av & 60th St",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244322,
+          39.944468
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20897",
+        "stop_name": "49th St & Paschall Av",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211652,
+          39.93998
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20899",
+        "stop_name": "Grays Av & Lindbergh Blvd",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.213682,
+          39.936128
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20900",
+        "stop_name": "Lindbergh Blvd & Grays Av - FS",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.214429,
+          39.935282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20901",
+        "stop_name": "Lindbergh Blvd & 54th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.215579,
+          39.933588
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20902",
+        "stop_name": "Elmwood Av & 56th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.217711,
+          39.931173
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20903",
+        "stop_name": "Elmwood Av & 57th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219202,
+          39.930131
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20904",
+        "stop_name": "Elmwood Av & 58th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.220539,
+          39.929152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20905",
+        "stop_name": "Elmwood Av & 59th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.221958,
+          39.928226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20906",
+        "stop_name": "Elmwood Av & Edgewood Av",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22385,
+          39.926935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20907",
+        "stop_name": "Elmwood Av & 61st St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.224844,
+          39.926241
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20908",
+        "stop_name": "Elmwood Av & 62nd St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.226441,
+          39.925065
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20909",
+        "stop_name": "Elmwood Av & 63rd St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227671,
+          39.924157
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20910",
+        "stop_name": "Elmwood Av & 64th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229067,
+          39.923204
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20911",
+        "stop_name": "Elmwood Av & 65th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.230285,
+          39.922305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20912",
+        "stop_name": "Elmwood Av & 66th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231562,
+          39.921432
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20913",
+        "stop_name": "Elmwood Av & 67th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.23284,
+          39.920524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20914",
+        "stop_name": "Elmwood Av & 68th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.234401,
+          39.919446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20915",
+        "stop_name": "Elmwood Av & 69th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.236056,
+          39.918297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20916",
+        "stop_name": "Elmwood Av & 70th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.237428,
+          39.917327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20917",
+        "stop_name": "Elmwood Av & 71st St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.238965,
+          39.916249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20918",
+        "stop_name": "Elmwood Av & 72nd St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240349,
+          39.915305
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20932",
+        "stop_name": "Elmwood Av & 73rd St",
+        "routes": [
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.241816,
+          39.914129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20933",
+        "stop_name": "Elmwood Av & 72nd St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240408,
+          39.9151
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20934",
+        "stop_name": "Elmwood Av & 71st St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.239013,
+          39.91608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20935",
+        "stop_name": "Elmwood Av & 70th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.237452,
+          39.91713
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20936",
+        "stop_name": "Elmwood Av & 69th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.236081,
+          39.918101
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20937",
+        "stop_name": "Elmwood Av & 68th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.234425,
+          39.91925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20938",
+        "stop_name": "Elmwood Av & 67th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.232911,
+          39.920327
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20939",
+        "stop_name": "Elmwood Av & 66th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.231587,
+          39.921236
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20940",
+        "stop_name": "Elmwood Av & 65th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.230404,
+          39.922082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20941",
+        "stop_name": "Elmwood Av & 64th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.229126,
+          39.922972
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20942",
+        "stop_name": "Elmwood Av & 63rd St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.227778,
+          39.923934
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20943",
+        "stop_name": "Elmwood Av & 62nd St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22656,
+          39.924842
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20944",
+        "stop_name": "Elmwood Av & 61st St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.224868,
+          39.926044
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20946",
+        "stop_name": "Elmwood Av & 59th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.221994,
+          39.928039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20947",
+        "stop_name": "Elmwood Av & 58th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.220586,
+          39.928964
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20948",
+        "stop_name": "Elmwood Av & 57th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219226,
+          39.929935
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20949",
+        "stop_name": "Elmwood Av & 56th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.217747,
+          39.930986
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20950",
+        "stop_name": "Lindbergh Blvd & Wheeler St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.216232,
+          39.932402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20951",
+        "stop_name": "Lindbergh Blvd & 54th St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.215532,
+          39.9334
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20952",
+        "stop_name": "Lindbergh Blvd & 53rd St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.214358,
+          39.935121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20954",
+        "stop_name": "Grays Av & 51st St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212251,
+          39.936991
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20955",
+        "stop_name": "49th St & Paschall Av",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211286,
+          39.939819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20957",
+        "stop_name": "49th St & Woodland Av",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212429,
+          39.940794
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20958",
+        "stop_name": "Woodland Av & 47th St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.210839,
+          39.943245
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20978",
+        "stop_name": "Girard Av & Front St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.136358,
+          39.968851
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20979",
+        "stop_name": "Richmond St & Clearfield St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.103782,
+          39.981783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20981",
+        "stop_name": "Richmond St & Ann St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.107311,
+          39.979945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20982",
+        "stop_name": "Richmond St & Cambria St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.108862,
+          39.979092
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20983",
+        "stop_name": "Richmond St & Lehigh Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.113101,
+          39.976907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20984",
+        "stop_name": "Richmond St & Huntingdon St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.115552,
+          39.975628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20986",
+        "stop_name": "Girard Av & Berks St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.125833,
+          39.971869
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20988",
+        "stop_name": "Girard Av & Palmer St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.1284,
+          39.970983
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20989",
+        "stop_name": "Girard Av & Columbia Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.130423,
+          39.970265
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20993",
+        "stop_name": "Girard Av & 2nd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.13945,
+          39.9695
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20994",
+        "stop_name": "Girard Av & 3rd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.141386,
+          39.969799
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20995",
+        "stop_name": "Girard Av & 4th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.142968,
+          39.96999
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20996",
+        "stop_name": "Girard Av & 5th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.144905,
+          39.970218
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20998",
+        "stop_name": "Girard Av & 7th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.148022,
+          39.970484
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "20999",
+        "stop_name": "Girard Av & 8th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.149853,
+          39.970568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21001",
+        "stop_name": "Girard Av & 11th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.154021,
+          39.970845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21002",
+        "stop_name": "Girard Av & 12th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.155603,
+          39.971045
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21005",
+        "stop_name": "Girard Av & 16th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.162605,
+          39.971908
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21006",
+        "stop_name": "Girard Av & 17th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.164151,
+          39.972116
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21008",
+        "stop_name": "Girard Av & Ridge Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.166217,
+          39.97238
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21009",
+        "stop_name": "Girard Av & 20th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.168874,
+          39.972715
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21010",
+        "stop_name": "Girard Av & Corinthian Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.17022,
+          39.972888
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21014",
+        "stop_name": "Poplar St & 25th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.177403,
+          39.972492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21016",
+        "stop_name": "Girard Av & 26th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.178733,
+          39.973976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21017",
+        "stop_name": "Girard Av & 27th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.18028,
+          39.974202
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21018",
+        "stop_name": "Girard Av & 28th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.181756,
+          39.974375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21019",
+        "stop_name": "Girard Av & 29th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.183361,
+          39.974574
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21021",
+        "stop_name": "Girard Av & 31st St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.186549,
+          39.975009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21022",
+        "stop_name": "Girard Av & 33rd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.188002,
+          39.975199
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21025",
+        "stop_name": "Girard Av & 39th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.201683,
+          39.974511
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21026",
+        "stop_name": "Girard Av & 41st St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.206268,
+          39.973966
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21027",
+        "stop_name": "Girard Av & 42nd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.208797,
+          39.973658
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21028",
+        "stop_name": "Girard Av & Belmont Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212094,
+          39.973315
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21030",
+        "stop_name": "Girard Av & 49th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.219064,
+          39.972917
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21032",
+        "stop_name": "Girard Av & 51st St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.223438,
+          39.971987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21033",
+        "stop_name": "Girard Av & 52nd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.22579,
+          39.971473
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21035",
+        "stop_name": "Girard Av & 54th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.228614,
+          39.971165
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21037",
+        "stop_name": "Girard Av & 56th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.232477,
+          39.970761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21038",
+        "stop_name": "Girard Av & 57th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.234096,
+          39.970585
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21040",
+        "stop_name": "Girard Av & 60th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.238988,
+          39.970039
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21041",
+        "stop_name": "Haverford Av & 61st St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240781,
+          39.970899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21042",
+        "stop_name": "Haverford Av & 62nd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.242704,
+          39.971642
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21044",
+        "stop_name": "Girard Av & 63rd St - MBFS",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244598,
+          39.970226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21047",
+        "stop_name": "Girard Av & 61st St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.241221,
+          39.969801
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21048",
+        "stop_name": "Girard Av & 60th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.239366,
+          39.969897
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21050",
+        "stop_name": "Girard Av & 57th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.234285,
+          39.97046
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21051",
+        "stop_name": "Girard Av & 56th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.232667,
+          39.970636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21053",
+        "stop_name": "Girard Av & 54th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.228803,
+          39.971041
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21055",
+        "stop_name": "Girard Av & 52nd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.225908,
+          39.971357
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21056",
+        "stop_name": "Girard Av & 51st St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.223745,
+          39.971845
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21058",
+        "stop_name": "Girard Av & Lancaster Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.218521,
+          39.972978
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21060",
+        "stop_name": "Girard Av & Belmont Av - FS",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.211964,
+          39.973208
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21061",
+        "stop_name": "Girard Av & 42nd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.208975,
+          39.973542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21062",
+        "stop_name": "Girard Av & 41st St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.206528,
+          39.973823
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21063",
+        "stop_name": "Girard Av & 39th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.201802,
+          39.974297
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21067",
+        "stop_name": "Girard Av & 31st St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.18675,
+          39.974938
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21068",
+        "stop_name": "Girard Av & 29th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.183622,
+          39.974486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21069",
+        "stop_name": "Girard Av & 28th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.181969,
+          39.974286
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21070",
+        "stop_name": "Girard Av & 27th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.180504,
+          39.974113
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21071",
+        "stop_name": "Girard Av & 26th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.178946,
+          39.973896
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21072",
+        "stop_name": "26th St & Poplar St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.179198,
+          39.972701
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21073",
+        "stop_name": "Poplar St & Stillman St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.178171,
+          39.97244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21075",
+        "stop_name": "College Av & 24th St - FS",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.175384,
+          39.97239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21078",
+        "stop_name": "Girard Av & Corinthian Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.170421,
+          39.972817
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21079",
+        "stop_name": "Girard Av & 20th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.169087,
+          39.972636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21080",
+        "stop_name": "Girard Av & 19th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.16754,
+          39.972427
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21081",
+        "stop_name": "Girard Av & Ridge Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.166572,
+          39.972309
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21082",
+        "stop_name": "Girard Av & 17th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.164352,
+          39.972028
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21083",
+        "stop_name": "Girard Av & 16th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.162806,
+          39.971828
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21086",
+        "stop_name": "Girard Av & 12th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.155816,
+          39.970965
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21087",
+        "stop_name": "Girard Av & 11th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.154222,
+          39.970756
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21090",
+        "stop_name": "Girard Av & 8th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.150042,
+          39.97047
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21091",
+        "stop_name": "Girard Av & 7th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.148211,
+          39.970386
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21093",
+        "stop_name": "Girard Av & 5th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.145094,
+          39.970129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21095",
+        "stop_name": "Girard Av & 3rd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.141599,
+          39.969711
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21096",
+        "stop_name": "Girard Av & 2nd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.139805,
+          39.969439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21098",
+        "stop_name": "Girard Av & Frankford Av- FS",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.134244,
+          39.968855
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21100",
+        "stop_name": "Girard Av & Columbia Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.130542,
+          39.970122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21101",
+        "stop_name": "Girard Av & Palmer St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.128519,
+          39.97084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21103",
+        "stop_name": "Girard Av & Berks St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.125999,
+          39.971709
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21105",
+        "stop_name": "Girard Av & Richmond St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.119769,
+          39.972988
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21107",
+        "stop_name": "Richmond St & Huntingdon St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.11573,
+          39.975441
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21108",
+        "stop_name": "Richmond St & Lehigh Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.113302,
+          39.976729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21109",
+        "stop_name": "Richmond St & Somerset St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.110887,
+          39.977981
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21110",
+        "stop_name": "Richmond St & Cambria St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.109052,
+          39.978914
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21111",
+        "stop_name": "Richmond St & Ann St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.107536,
+          39.979758
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21113",
+        "stop_name": "Richmond St & Clearfield St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.104019,
+          39.981605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21114",
+        "stop_name": "Richmond St & Allegheny Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.101544,
+          39.982875
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21208",
+        "stop_name": "Woodland Av & 53rd St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.217681,
+          39.937242
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21209",
+        "stop_name": "Chester Av & 65th St - FS",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244703,
+          39.929565
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21432",
+        "stop_name": "42nd St & Baltimore Av",
+        "routes": [
+          "34"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.207241,
+          39.949879
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21433",
+        "stop_name": "42nd St & Chester Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.207174,
+          39.948594
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "21481",
+        "stop_name": "Haverford Av & 63rd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.244641,
+          39.971895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23992",
+        "stop_name": "Frankford Av & Richmond St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.134338,
+          39.966008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "24038",
+        "stop_name": "Frankford Av & Richmond St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.134492,
+          39.966124
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "24568",
+        "stop_name": "Main St & Mill St",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.260053,
+          39.918091
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25241",
+        "stop_name": "Main St & Powell Av",
+        "routes": [
+          "11"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.260608,
+          39.918244
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25779",
+        "stop_name": "Richmond St & Girard Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.119591,
+          39.973068
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "29523",
+        "stop_name": "MacDade Blvd",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.280832,
+          39.910282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30290",
+        "stop_name": "Girard Av & 19th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.167339,
+          39.972507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30291",
+        "stop_name": "Girard Av & 34th St - MBFS",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.196472,
+          39.975126
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30292",
+        "stop_name": "Girard Av & 34th St - MBFS",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.196733,
+          39.974841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30374",
+        "stop_name": "Clifton-Aldan",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.289984,
+          39.92575
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30375",
+        "stop_name": "Penn St",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.29202,
+          39.928653
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30376",
+        "stop_name": "Baltimore Av",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.292841,
+          39.931313
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30494",
+        "stop_name": "Lansdowne Av",
+        "routes": [
+          "101",
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.282328,
+          39.951614
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30544",
+        "stop_name": "Springfield-Madison",
+        "routes": [
+          "102"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.292519,
+          39.927288
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30550",
+        "stop_name": "Girard Av & Merion Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.216277,
+          39.972814
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30595",
+        "stop_name": "Grays Av & 51st St",
+        "routes": [
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.212227,
+          39.937188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30605",
+        "stop_name": "Girard Av & Merion Av",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.216431,
+          39.972725
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30607",
+        "stop_name": "Scenic Rd",
+        "routes": [
+          "101"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.32612,
+          39.940752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30791",
+        "stop_name": "Girard Av & 24th St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.175844,
+          39.972453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30865",
+        "stop_name": "Chester Av & Yeadon Av",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.247368,
+          39.926213
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "30866",
+        "stop_name": "10th St & Main St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.263141,
+          39.920121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "31140",
+        "stop_name": "15th St/City Hall",
+        "routes": [
+          "10",
+          "11",
+          "13",
+          "34",
+          "36"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.165369,
+          39.952502
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "31218",
+        "stop_name": "65th St & Belmar St",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.240879,
+          39.929104
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "31294",
+        "stop_name": "63rd-Malvern",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.245957,
+          39.983838
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "31347",
+        "stop_name": "Frankford Av & Delaware Av Loop",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.134154,
+          39.964945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "31443",
+        "stop_name": "Girard Av & 62nd St",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.243216,
+          39.970063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "31488",
+        "stop_name": "Lancaster Av & Powelton Av",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.195542,
+          39.959631
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "31540",
+        "stop_name": "Frankford Av & Girard Av - FS",
+        "routes": [
+          "15"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.134493,
+          39.96865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "32523",
+        "stop_name": "9th St & Main St - MBFS",
+        "routes": [
+          "13"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.261845,
+          39.918924
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "32722",
+        "stop_name": "Lancaster Av & Powelton Av",
+        "routes": [
+          "10"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.19612,
+          39.959774
+        ]
+      }
+    }
+  ]
+}

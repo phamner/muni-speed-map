@@ -1,0 +1,1954 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25974",
+        "stop_name": "Dayton Station",
+        "routes": [
+          "H",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.87767,
+          39.643119
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34582",
+        "stop_name": "2nd & Abilene Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.825879,
+          39.71895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "24882",
+        "stop_name": "Evans Station",
+        "routes": [
+          "D",
+          "E"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.992653,
+          39.678143
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34006",
+        "stop_name": "County Line Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.872231,
+          39.562189
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25973",
+        "stop_name": "Lincoln Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.86963,
+          39.54579
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33562",
+        "stop_name": "Lamar Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.066872,
+          39.736683
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23042",
+        "stop_name": "Alameda Station",
+        "routes": [
+          "D",
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.993143,
+          39.708706
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23060",
+        "stop_name": "Alameda Station",
+        "routes": [
+          "D",
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.992785,
+          39.708196
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25430",
+        "stop_name": "Union Station Track 11",
+        "routes": [
+          "E",
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.00297,
+          39.755422
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34581",
+        "stop_name": "2nd & Abilene Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.825491,
+          39.719781
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23054",
+        "stop_name": "20th & Welton Station",
+        "routes": [
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.987032,
+          39.747879
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33959",
+        "stop_name": "Lamar Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.06591,
+          39.736662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34015",
+        "stop_name": "Louisiana & Pearl Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.978684,
+          39.693283
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25978",
+        "stop_name": "Southmoor Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.9161,
+          39.648226
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23048",
+        "stop_name": "20th & Welton Station",
+        "routes": [
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.986647,
+          39.748074
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33960",
+        "stop_name": "Oak Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.119452,
+          39.73717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23043",
+        "stop_name": "10th & Osage Station",
+        "routes": [
+          "D",
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.005654,
+          39.732222
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34586",
+        "stop_name": "Colfax Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.826916,
+          39.739748
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "35383",
+        "stop_name": "I-25 & Broadway Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.990332,
+          39.701779
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25980",
+        "stop_name": "Colorado Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.937714,
+          39.679672
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "35209",
+        "stop_name": "Lone Tree City Center Station",
+        "routes": [
+          "E"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.863143,
+          39.528023
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34012",
+        "stop_name": "Yale Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.927293,
+          39.669084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33558",
+        "stop_name": "Decatur / Federal Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.024452,
+          39.737129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25436",
+        "stop_name": "Englewood Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.000065,
+          39.655291
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23049",
+        "stop_name": "25th & Welton Station",
+        "routes": [
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.979493,
+          39.753528
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33560",
+        "stop_name": "Perry Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.040409,
+          39.73479
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33948",
+        "stop_name": "Jeffco Government Center Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.201046,
+          39.726318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33966",
+        "stop_name": "Red Rocks Community College Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.151782,
+          39.725014
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23044",
+        "stop_name": "Colfax at Auraria Station",
+        "routes": [
+          "D",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.001608,
+          39.740285
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "35204",
+        "stop_name": "Sky Ridge Station",
+        "routes": [
+          "E"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.870263,
+          39.532059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23055",
+        "stop_name": "18th & Stout Station",
+        "routes": [
+          "D",
+          "H",
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.990429,
+          39.747997
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "24892",
+        "stop_name": "Oxford - City of Sheridan Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.00457,
+          39.64339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23051",
+        "stop_name": "30th & Downing Station",
+        "routes": [
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.973456,
+          39.759213
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34587",
+        "stop_name": "Fitzsimons Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.840933,
+          39.755008
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25990",
+        "stop_name": "Arapahoe at Village Center Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.888555,
+          39.600301
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34011",
+        "stop_name": "Southmoor Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.916439,
+          39.648971
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "24890",
+        "stop_name": "Englewood Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.999736,
+          39.655904
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23056",
+        "stop_name": "16th & Stout Station",
+        "routes": [
+          "D",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.992838,
+          39.746121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34007",
+        "stop_name": "Dry Creek Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.876957,
+          39.579326
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34574",
+        "stop_name": "Iliff Station",
+        "routes": [
+          "H",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.826472,
+          39.673649
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25428",
+        "stop_name": "Empower Field at Mile High Station",
+        "routes": [
+          "E",
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.013526,
+          39.743543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33566",
+        "stop_name": "Federal Center Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.12964,
+          39.720037
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33568",
+        "stop_name": "Jeffco Government Center Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.200985,
+          39.726394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25988",
+        "stop_name": "County Line Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.872282,
+          39.561818
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25991",
+        "stop_name": "Belleview Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.904568,
+          39.627686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33561",
+        "stop_name": "Sheridan Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.053616,
+          39.735147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34009",
+        "stop_name": "Orchard Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.896351,
+          39.613872
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34010",
+        "stop_name": "Belleview Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.904639,
+          39.628012
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23709",
+        "stop_name": "27th & Welton Station",
+        "routes": [
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.977791,
+          39.754909
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33967",
+        "stop_name": "Sheridan Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.052794,
+          39.735114
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34583",
+        "stop_name": "13th Ave Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.823497,
+          39.735376
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25983",
+        "stop_name": "Orchard Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.896079,
+          39.613379
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33970",
+        "stop_name": "Wadsworth Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.080761,
+          39.736607
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "24894",
+        "stop_name": "Littleton / Downtown Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.014684,
+          39.612258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "35266",
+        "stop_name": "16th & Stout Station",
+        "routes": [
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.99284,
+          39.746121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25431",
+        "stop_name": "Auraria West Station",
+        "routes": [
+          "E",
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.010685,
+          39.741316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34578",
+        "stop_name": "Florida Station",
+        "routes": [
+          "H",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.828474,
+          39.689534
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34580",
+        "stop_name": "Aurora Metro Center Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.819136,
+          39.70843
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25433",
+        "stop_name": "Ball Arena / Elitch Gardens Station",
+        "routes": [
+          "E",
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.009966,
+          39.748568
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25987",
+        "stop_name": "Nine Mile Station",
+        "routes": [
+          "H",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.845102,
+          39.657552
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "35207",
+        "stop_name": "Lone Tree City Center Station",
+        "routes": [
+          "E"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.863268,
+          39.527318
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25981",
+        "stop_name": "University of Denver Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.964706,
+          39.685254
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23041",
+        "stop_name": "I-25 & Broadway Station",
+        "routes": [
+          "D",
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.990075,
+          39.701958
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33563",
+        "stop_name": "Wadsworth Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.082063,
+          39.736664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33958",
+        "stop_name": "Decatur / Federal Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.023633,
+          39.737394
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34014",
+        "stop_name": "University of Denver Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.965175,
+          39.685437
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23061",
+        "stop_name": "I-25 & Broadway Station Center Track",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.990111,
+          39.701418
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "35205",
+        "stop_name": "Sky Ridge Station",
+        "routes": [
+          "E"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.870481,
+          39.532536
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25989",
+        "stop_name": "Dry Creek Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.876783,
+          39.579064
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34744",
+        "stop_name": "Peoria Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.849977,
+          39.767176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34745",
+        "stop_name": "Peoria Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.851022,
+          39.767391
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25438",
+        "stop_name": "Littleton / Downtown Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.015065,
+          39.611761
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25437",
+        "stop_name": "Oxford - City of Sheridan Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.004967,
+          39.642554
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33565",
+        "stop_name": "Oak Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.120463,
+          39.7374
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25429",
+        "stop_name": "Ball Arena / Elitch Gardens Station",
+        "routes": [
+          "E",
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.00943,
+          39.748736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33941",
+        "stop_name": "Knox Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.032364,
+          39.735353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25435",
+        "stop_name": "Evans Station",
+        "routes": [
+          "D",
+          "E"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.992946,
+          39.677331
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25439",
+        "stop_name": "Littleton / Mineral Ave Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.025202,
+          39.579865
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33567",
+        "stop_name": "Red Rocks Community College Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.152812,
+          39.725078
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34585",
+        "stop_name": "Colfax Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.826999,
+          39.740689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25884",
+        "stop_name": "Theatre District/Convention Ctr Station",
+        "routes": [
+          "D",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.996427,
+          39.743866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25432",
+        "stop_name": "Empower Field at Mile High Station",
+        "routes": [
+          "E",
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.012761,
+          39.743342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34003",
+        "stop_name": "Nine Mile Station",
+        "routes": [
+          "H",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.845575,
+          39.657344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25427",
+        "stop_name": "Auraria West Station",
+        "routes": [
+          "E",
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.010937,
+          39.742027
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33564",
+        "stop_name": "Garrison Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.099811,
+          39.736608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33957",
+        "stop_name": "Garrison Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.099125,
+          39.736524
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23047",
+        "stop_name": "18th & California Station",
+        "routes": [
+          "D",
+          "H",
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.989894,
+          39.746846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34584",
+        "stop_name": "13th Ave Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.82369,
+          39.73446
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25982",
+        "stop_name": "Louisiana & Pearl Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.978216,
+          39.692825
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34579",
+        "stop_name": "Aurora Metro Center Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.818993,
+          39.708951
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "35212",
+        "stop_name": "Ridgegate Parkway Station",
+        "routes": [
+          "E"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.86521,
+          39.520791
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34013",
+        "stop_name": "Colorado Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.938313,
+          39.679757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23708",
+        "stop_name": "27th & Welton Station",
+        "routes": [
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.977279,
+          39.755249
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23046",
+        "stop_name": "16th & California Station",
+        "routes": [
+          "D",
+          "H",
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.992421,
+          39.744907
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34005",
+        "stop_name": "Lincoln Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.869622,
+          39.546353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23059",
+        "stop_name": "10th & Osage Station",
+        "routes": [
+          "D",
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.005549,
+          39.731664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33559",
+        "stop_name": "Knox Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.033303,
+          39.735687
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33955",
+        "stop_name": "Federal Center Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.128448,
+          39.719895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34008",
+        "stop_name": "Arapahoe at Village Center Station",
+        "routes": [
+          "E",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.888539,
+          39.600442
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25979",
+        "stop_name": "Yale Station",
+        "routes": [
+          "E",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.927157,
+          39.668627
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "24896",
+        "stop_name": "Littleton / Mineral Ave Station",
+        "routes": [
+          "D"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.024812,
+          39.580413
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "25434",
+        "stop_name": "Union Station Track 12",
+        "routes": [
+          "E",
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.003351,
+          39.755125
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23058",
+        "stop_name": "Colfax at Auraria Station",
+        "routes": [
+          "D",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.002519,
+          39.74033
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34575",
+        "stop_name": "Iliff Station",
+        "routes": [
+          "H",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.827232,
+          39.672974
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34004",
+        "stop_name": "Dayton Station",
+        "routes": [
+          "H",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.878433,
+          39.642743
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "33965",
+        "stop_name": "Perry Station",
+        "routes": [
+          "W"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -105.039597,
+          39.734688
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "23053",
+        "stop_name": "25th & Welton Station",
+        "routes": [
+          "L"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.97998,
+          39.753227
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34588",
+        "stop_name": "Fitzsimons Station",
+        "routes": [
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.839819,
+          39.754789
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "34577",
+        "stop_name": "Florida Station",
+        "routes": [
+          "H",
+          "R"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.82847,
+          39.690358
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "29104",
+        "stop_name": "Theatre District / Convention Center Station",
+        "routes": [
+          "D",
+          "H"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.997481,
+          39.743652
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "35211",
+        "stop_name": "Ridgegate Parkway Station",
+        "routes": [
+          "E"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -104.865725,
+          39.520244
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,1425 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3626",
+        "stop_name": "WB 69 Street CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.188486,
+          51.037605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3627",
+        "stop_name": "EB 69 Street CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.188475,
+          51.037507
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3628",
+        "stop_name": "WB Sirocco CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.169585,
+          51.038152
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3629",
+        "stop_name": "EB Sirocco CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.169484,
+          51.038105
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3630",
+        "stop_name": "WB 45 Street CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.153369,
+          51.037942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3631",
+        "stop_name": "EB 45 Street CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.15358,
+          51.037868
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3632",
+        "stop_name": "WB Westbrook CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.136596,
+          51.040547
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3633",
+        "stop_name": "EB Westbrook CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.136348,
+          51.040433
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3634",
+        "stop_name": "WB Shaganappi Point CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.124256,
+          51.041603
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3635",
+        "stop_name": "EB Shaganappi Point CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.124181,
+          51.041523
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3636",
+        "stop_name": "WB Sunalta CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.100198,
+          51.044856
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3637",
+        "stop_name": "EB Sunalta CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.098818,
+          51.044572
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3638",
+        "stop_name": "WB Downtown-West Kerby Station (Free Fare Zone)",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.087697,
+          51.04723
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3639",
+        "stop_name": "EB Downtown West-Kerby Station (Free Fare Zone)",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.087684,
+          51.047123
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3640",
+        "stop_name": "NB Tuscany CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.235512,
+          51.13451
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3641",
+        "stop_name": "SB Tuscany CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.235681,
+          51.134439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3816",
+        "stop_name": "NB Crowfoot CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.206871,
+          51.122691
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3817",
+        "stop_name": "SB Crowfoot CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.207093,
+          51.122571
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "3960",
+        "stop_name": "SB Dalhousie CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.161068,
+          51.103403
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4155",
+        "stop_name": "NB Dalhousie CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.16096,
+          51.103527
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "4934",
+        "stop_name": "NB Brentwood CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.131247,
+          51.086846
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6747",
+        "stop_name": "SB Martindale CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.967428,
+          51.117778
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6801",
+        "stop_name": "NB Anderson CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.074394,
+          50.954258
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6802",
+        "stop_name": "NB Southland CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.076631,
+          50.964452
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6803",
+        "stop_name": "NB Heritage CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.073617,
+          50.979308
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6804",
+        "stop_name": "NB Chinook CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.065575,
+          50.997465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6805",
+        "stop_name": "NB 39 Avenue CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.061238,
+          51.017819
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6806",
+        "stop_name": "NB Erlton / Stampede CTrain Staion",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.058833,
+          51.031925
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6807",
+        "stop_name": "NB Victoria Park / Stampede CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.058209,
+          51.038395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6808",
+        "stop_name": "SB Whitehorn CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.981828,
+          51.087007
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6809",
+        "stop_name": "NB Rundle CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.981598,
+          51.07519
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6810",
+        "stop_name": "NB Marlborough CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.981582,
+          51.05899
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6811",
+        "stop_name": "NB Franklin CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.994604,
+          51.04703
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6812",
+        "stop_name": "EB Barlow - Max Bell CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.006665,
+          51.045409
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6813",
+        "stop_name": "EB Zoo CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.025497,
+          51.047263
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6814",
+        "stop_name": "EB Bridgeland - Memorial CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.039895,
+          51.0489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6815",
+        "stop_name": "SB Brentwood CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.131393,
+          51.086692
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6816",
+        "stop_name": "NB University CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.122996,
+          51.080252
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6817",
+        "stop_name": "NB Banff Trail CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.115637,
+          51.071148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6818",
+        "stop_name": "NB Lions Park CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.103653,
+          51.065076
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6819",
+        "stop_name": "NB SAIT / AUArts / Jubilee CTrain Stn",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.091046,
+          51.063063
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6820",
+        "stop_name": "NB Sunnyside CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.084356,
+          51.056393
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6822",
+        "stop_name": "WB City Hall/Bow Valley College (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.05672,
+          51.046354
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6823",
+        "stop_name": "WB 1 Street SW Station (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.064383,
+          51.046574
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6824",
+        "stop_name": "WB 4 Street SW Station (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.072416,
+          51.046803
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6825",
+        "stop_name": "WB 7 Street SW Station (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.077971,
+          51.046969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6827",
+        "stop_name": "EB 8 Street SW Station (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.079953,
+          51.046916
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6828",
+        "stop_name": "EB 6 Street SW Station (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.074858,
+          51.046765
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6829",
+        "stop_name": "EB 3 Street SW Station (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.068904,
+          51.046606
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6830",
+        "stop_name": "EB Centre Street Station (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.061241,
+          51.046378
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "6831",
+        "stop_name": "EB City Hall/Bow Valley College (Free Fare Zone)",
+        "routes": [
+          "201",
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.056726,
+          51.046255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8556",
+        "stop_name": "SB Victoria Park / Stampede CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.058465,
+          51.038401
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8557",
+        "stop_name": "SB Erlton / Stampede Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.059047,
+          51.031922
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8558",
+        "stop_name": "SB 39 Avenue CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.061407,
+          51.017841
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8559",
+        "stop_name": "SB Chinook CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.065832,
+          50.997453
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8560",
+        "stop_name": "SB Heritage CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.073814,
+          50.979349
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8561",
+        "stop_name": "SB Southland CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.076845,
+          50.964439
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8562",
+        "stop_name": "SB Sunnyside CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.084488,
+          51.056342
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8563",
+        "stop_name": "SB SAIT / AUArts / Jubilee CTrain Stn",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.091265,
+          51.062979
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8564",
+        "stop_name": "SB Lions Park CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.103114,
+          51.065009
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8565",
+        "stop_name": "SB Banff Trail CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.115739,
+          51.071114
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8566",
+        "stop_name": "SB University CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.123215,
+          51.080176
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8567",
+        "stop_name": "WB Bridgeland - Memorial CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.039855,
+          51.049003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8568",
+        "stop_name": "WB Zoo CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.02553,
+          51.047408
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8569",
+        "stop_name": "WB Barlow - Max Bell CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.006589,
+          51.045564
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8570",
+        "stop_name": "SB Franklin CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.994797,
+          51.047134
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8571",
+        "stop_name": "SB Marlborough CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.981824,
+          51.058996
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "8572",
+        "stop_name": "SB Rundle CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.981828,
+          51.075169
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9261",
+        "stop_name": "NB Fish Creek - Lacombe CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.073153,
+          50.923698
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9262",
+        "stop_name": "NB Canyon Meadows CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.069679,
+          50.936411
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9263",
+        "stop_name": "SB Anderson CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.074636,
+          50.954255
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9264",
+        "stop_name": "SB Canyon Meadows CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.069921,
+          50.936399
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9385",
+        "stop_name": "NB Whitehorn CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.981586,
+          51.087
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9386",
+        "stop_name": "SB Somerset - Bridlewood CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.068945,
+          50.89873
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9387",
+        "stop_name": "SB Fish Creek - Lacombe CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.073394,
+          50.923722
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9390",
+        "stop_name": "NB Somerset - Bridlewood CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.068687,
+          50.89876
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9391",
+        "stop_name": "NB Shawnessy CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.070508,
+          50.910769
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9392",
+        "stop_name": "SB Shawnessy CTrain Station",
+        "routes": [
+          "201"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -114.070652,
+          50.910736
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9396",
+        "stop_name": "NB Martindale CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.967973,
+          51.117409
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9398",
+        "stop_name": "NB Saddletowne CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.948277,
+          51.125542
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9781",
+        "stop_name": "SB Saddletowne CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.948358,
+          51.125895
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9896",
+        "stop_name": "NB McKnight - Westwinds CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.97516,
+          51.10953
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "stop_id": "9897",
+        "stop_name": "SB McKnight - Westwinds CTrain Station",
+        "routes": [
+          "202"
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -113.97537,
+          51.10961
+        ]
+      }
+    }
+  ]
+}

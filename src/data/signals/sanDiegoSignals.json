@@ -1,0 +1,1133 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6472415319,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O589"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2062171,
+          32.7884849
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6474778571,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O1221"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.23029,
+          32.8735336
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6474778572,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O1223"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2302455,
+          32.8735229
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6474778627,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O1257"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2317156,
+          32.8776404
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6474811091,
+        "type": "signal",
+        "railway": "signal",
+        "railway:position": "left",
+        "railway:signal:direction": "backward",
+        "ref": "O62RB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2220099,
+          32.8813674
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7473315383,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "both"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2261321,
+          32.820577
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7474495575,
+        "type": "signal",
+        "railway": "signal",
+        "railway:position": "13.99",
+        "railway:signal:direction": "backward",
+        "ref": "O1397"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.214024,
+          32.877339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7526861874,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O34RA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.20645,
+          32.7919277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7899943473,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0306261,
+          32.5456456
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7899943474,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0305919,
+          32.5456729
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7899943475,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0302333,
+          32.5452961
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7899943476,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0302007,
+          32.5453194
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7932129194,
+        "type": "signal",
+        "railway": "signal",
+        "railway:position": "13.99",
+        "railway:signal:direction": "forward",
+        "ref": "O1395"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.213979,
+          32.8773402
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608335,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:main": "US:main",
+        "railway:signal:position": "right",
+        "ref": "S154"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.153076,
+          32.7027618
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608336,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:position": "right",
+        "ref": "S16RA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.149712,
+          32.7001655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608337,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "railway:signal:position": "right",
+        "ref": "S16RB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.149683,
+          32.7001957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608338,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "railway:signal:position": "right",
+        "ref": "S10R"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.148711,
+          32.6994171
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608339,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "S16LA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1470322,
+          32.6983556
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608340,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "S16LB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1470627,
+          32.6983271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608341,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:main": "US:main",
+        "ref": "S226"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1425861,
+          32.6952353
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608342,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "railway:signal:main": "US:main",
+        "railway:signal:position": "right",
+        "ref": "S298"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1318492,
+          32.6908486
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608343,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:main": "US:main",
+        "railway:signal:position": "right",
+        "ref": "S296"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1318724,
+          32.6908148
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608344,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1251934,
+          32.6863465
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608345,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "S356"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.124205,
+          32.6856082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608346,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "S406"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.117353,
+          32.6808657
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608348,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "S32RB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1105403,
+          32.6683931
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8912608349,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "S32RA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1105862,
+          32.6683827
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8914403446,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1480479,
+          32.6989576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8915025058,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "railway:signal:main": "US:main",
+        "railway:signal:position": "right",
+        "ref": "S287"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1334439,
+          32.691459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8915025059,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "railway:signal:main": "US:main",
+        "railway:signal:position": "right",
+        "ref": "S285"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1334258,
+          32.6914953
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8926893912,
+        "type": "signal",
+        "railway": "signal",
+        "railway:position": "left",
+        "railway:signal:direction": "forward",
+        "ref": "O62RA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2220252,
+          32.8813277
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8927078123,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O1321"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2242957,
+          32.8821731
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8927078129,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O1323"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2243176,
+          32.8821372
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248134,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O1268"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2319601,
+          32.8791784
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248135,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O1270"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2320066,
+          32.8791766
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248136,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O1232"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2294563,
+          32.8751289
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248137,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O1234"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2295028,
+          32.8751459
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248138,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O1055"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2340432,
+          32.8500976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248139,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O1053"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2340776,
+          32.8501099
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248160,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O38LB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2154907,
+          32.8081239
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248161,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O38LA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2155394,
+          32.8081032
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248162,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O707"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2137106,
+          32.8051559
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248163,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O709"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2136644,
+          32.8051686
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248167,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O34RB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2065102,
+          32.7919167
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248168,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O587"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2062641,
+          32.788492
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248169,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O527"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2076071,
+          32.7806144
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248170,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O525"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2076565,
+          32.7806205
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248171,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O526"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2076606,
+          32.7805976
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9192248172,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O524"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.207611,
+          32.780593
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358353,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O1145"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2296314,
+          32.8622623
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358364,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O62LB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2176932,
+          32.8806717
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358365,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O62LA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2176732,
+          32.8807059
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358366,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O58LB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2279059,
+          32.8816272
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358367,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O58LA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2279287,
+          32.881662
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358368,
+        "type": "signal",
+        "railway": "signal",
+        "railway:position": "12.98",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2285062,
+          32.8813757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358369,
+        "type": "signal",
+        "railway": "signal",
+        "railway:position": "12.98",
+        "railway:signal:direction": "backward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2285262,
+          32.8814129
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358370,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O1259"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2316605,
+          32.8776489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358371,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O54LA"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2299861,
+          32.8704472
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358372,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O54LB"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2299398,
+          32.8704463
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358378,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2303733,
+          32.867663
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358379,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2304234,
+          32.8676634
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358381,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward",
+        "ref": "O1171"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2304806,
+          32.866095
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9281358382,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward",
+        "ref": "O1173"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.2304288,
+          32.8660922
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11004087574,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1998404,
+          32.7552489
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11004087581,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "forward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1882997,
+          32.7435952
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11004087583,
+        "type": "signal",
+        "railway": "signal",
+        "railway:signal:direction": "backward"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1899945,
+          32.7444911
+        ]
+      }
+    }
+  ]
+}

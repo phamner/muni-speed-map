@@ -1,6 +1,6 @@
 import type { City } from "../types";
 
-const densityModules = import.meta.glob("./*PopulationDensity.json");
+const densityModules = import.meta.glob("./population-density/*PopulationDensity.json");
 
 const cityToPrefix: Record<string, string> = {
   SF: "sf",

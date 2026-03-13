@@ -1,0 +1,35 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1699273546,
+        "type": "signal",
+        "railway": "signal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0255272,
+          40.3657942
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 4242024948,
+        "type": "signal",
+        "railway": "signal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.0247337,
+          40.365818
+        ]
+      }
+    }
+  ]
+}
