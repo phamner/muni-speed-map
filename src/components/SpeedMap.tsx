@@ -2220,6 +2220,7 @@ export function SpeedMap({
 
         // Click to expand/collapse clusters
         map.current.on("click", "stops", (e) => {
+          if (isTouchInteractionMode()) return;
           if (!e.features?.length) return;
           const props = e.features[0].properties;
           const clusterName = props.cluster_name;
@@ -2326,6 +2327,7 @@ export function SpeedMap({
         });
 
         map.current.on("click", "traffic-lights", (e) => {
+          if (isTouchInteractionMode()) return;
           if (!e.features?.length || !map.current) return;
 
           const feature = e.features[0];
@@ -2536,6 +2538,7 @@ export function SpeedMap({
 
         // Click to pin the popup
         map.current.on("click", "crossings", (e) => {
+          if (isTouchInteractionMode()) return;
           if (!e.features?.length || !map.current) return;
 
           // Get coordinates from the feature geometry
@@ -2580,42 +2583,59 @@ export function SpeedMap({
             return;
           }
 
-          // Check if click was on a crossing (handled above)
-          const crossingFeatures = map.current?.queryRenderedFeatures(e.point, {
-            layers: ["crossings"],
-          });
-          if (crossingFeatures && crossingFeatures.length > 0) return;
+          if (isTouchInteractionMode()) {
+            const vehicleFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["vehicles"],
+            });
+            if (vehicleFeatures && vehicleFeatures.length > 0) return;
 
-          // Check if click was on a stop (handled in stops layer)
-          const stopFeatures = map.current?.queryRenderedFeatures(e.point, {
-            layers: ["stops"],
-          });
-          if (stopFeatures && stopFeatures.length > 0) return;
+            const segmentFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["speed-segments"],
+            });
+            if (segmentFeatures && segmentFeatures.length > 0) return;
 
-          // Check if click was on a traffic light (handled in traffic lights layer)
-          const trafficLightFeatures = map.current?.queryRenderedFeatures(
-            e.point,
-            {
-              layers: ["traffic-lights"],
-            },
-          );
-          if (trafficLightFeatures && trafficLightFeatures.length > 0) return;
+            const densityFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["population-density-fill"],
+            });
+            if (densityFeatures && densityFeatures.length > 0) return;
+          } else {
+            // Check if click was on a crossing (handled above)
+            const crossingFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["crossings"],
+            });
+            if (crossingFeatures && crossingFeatures.length > 0) return;
 
-          // Check if click was on a switch (handled in switches layer)
-          const switchFeatures = map.current?.queryRenderedFeatures(e.point, {
-            layers: ["switches"],
-          });
-          if (switchFeatures && switchFeatures.length > 0) return;
+            // Check if click was on a stop (handled in stops layer)
+            const stopFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["stops"],
+            });
+            if (stopFeatures && stopFeatures.length > 0) return;
 
-          const vehicleFeatures = map.current?.queryRenderedFeatures(e.point, {
-            layers: ["vehicles"],
-          });
-          if (vehicleFeatures && vehicleFeatures.length > 0) return;
+            // Check if click was on a traffic light (handled in traffic lights layer)
+            const trafficLightFeatures = map.current?.queryRenderedFeatures(
+              e.point,
+              {
+                layers: ["traffic-lights"],
+              },
+            );
+            if (trafficLightFeatures && trafficLightFeatures.length > 0) return;
 
-          const segmentFeatures = map.current?.queryRenderedFeatures(e.point, {
-            layers: ["speed-segments"],
-          });
-          if (segmentFeatures && segmentFeatures.length > 0) return;
+            // Check if click was on a switch (handled in switches layer)
+            const switchFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["switches"],
+            });
+            if (switchFeatures && switchFeatures.length > 0) return;
+
+            const vehicleFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["vehicles"],
+            });
+            if (vehicleFeatures && vehicleFeatures.length > 0) return;
+
+            const segmentFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["speed-segments"],
+            });
+            if (segmentFeatures && segmentFeatures.length > 0) return;
+          }
 
           // Unpin and remove popup
           crossingPopupPinned.current = false;
@@ -2779,6 +2799,7 @@ export function SpeedMap({
 
       // Click to pin the popup
       map.current.on("click", "switches", (e) => {
+        if (isTouchInteractionMode()) return;
         if (!e.features?.length || !map.current) return;
 
         const feature = e.features[0];
