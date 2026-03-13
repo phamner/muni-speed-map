@@ -1529,7 +1529,7 @@ export function Controls({
                   </span>
                   <span className="line-stat-label">median</span>
                   <span className="line-stat-count">
-                    {stat.count.toLocaleString()} obs
+                    {stat.count.toLocaleString()}
                   </span>
                 </div>
               ))}
