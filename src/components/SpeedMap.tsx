@@ -53,6 +53,53 @@ import {
 } from "./speedMap/MapLegends";
 import { LayerSelector } from "./speedMap/LayerSelector";
 
+function buildImpossibleFilter(
+  propertyName: string,
+): maplibregl.FilterSpecification {
+  return [
+    "==",
+    ["to-string", ["get", propertyName]],
+    "__never_matches__",
+  ] as maplibregl.FilterSpecification;
+}
+
+function buildSelectedLineFilter(
+  selectedLines: readonly string[],
+  city: string,
+  routeProperty: string,
+  linesProperty?: string,
+): maplibregl.FilterSpecification {
+  if (selectedLines.length === 0) {
+    return buildImpossibleFilter(routeProperty);
+  }
+
+  const selected = selectedLines.map(String);
+  const conditions: maplibregl.ExpressionSpecification[] = [
+    ["in", ["to-string", ["get", routeProperty]], ["literal", selected]],
+  ];
+
+  if (
+    city === "Pittsburgh" &&
+    selected.some((line) => ["RED", "BLUE", "SLVR"].includes(line))
+  ) {
+    conditions.push(["==", ["to-string", ["get", routeProperty]], "shared"]);
+  }
+
+  if (linesProperty) {
+    for (const line of selected) {
+      conditions.push([
+        "in",
+        line,
+        ["coalesce", ["get", linesProperty], ["literal", []]],
+      ]);
+    }
+  }
+
+  return (conditions.length === 1
+    ? conditions[0]
+    : ["any", ...conditions]) as maplibregl.FilterSpecification;
+}
+
 interface SpeedMapProps {
   city: City;
   selectedLines: string[];
@@ -753,12 +800,34 @@ export function SpeedMap({
     () => buildAllSegments(cityConfig.routes, city, SEGMENT_SIZE_500_METERS),
     [cityConfig.routes, city],
   );
+  const allCityLines = useMemo(() => Array.from(getLinesForCity(city)), [city]);
+  const routeLayerFilter = useMemo(
+    () => buildSelectedLineFilter(selectedLines, city, "route_id", "lines"),
+    [selectedLines, city],
+  );
+  const segmentLayerFilter = useMemo(
+    () => buildSelectedLineFilter(selectedLines, city, "routeId"),
+    [selectedLines, city],
+  );
+  const vehicleRouteFilter = useMemo(() => {
+    if (selectedLines.length === 0) {
+      return buildImpossibleFilter("routeId");
+    }
+    if (city === "Denver") {
+      return [
+        "!=",
+        ["to-string", ["get", "routeId"]],
+        "__never_matches__",
+      ] as maplibregl.FilterSpecification;
+    }
+    return buildSelectedLineFilter(selectedLines, city, "routeId");
+  }, [selectedLines, city]);
 
   // Pre-computed GeoJSON for vehicle layers — avoids expensive rebuilds on mode switches
   const cachedVehicleGeoJSON = useMemo(() => {
     const filtered = vehicles.filter(
       (v) =>
-        shouldShowRoute(v.routeId, selectedLines, city) &&
+        shouldShowRoute(v.routeId, allCityLines, city) &&
         isOnRoute(v.lat, v.lon, v.routeId, routeGeometryMap, city),
     );
     return {
@@ -780,7 +849,7 @@ export function SpeedMap({
         },
       })),
     };
-  }, [vehicles, selectedLines, city, routeGeometryMap]);
+  }, [vehicles, city, routeGeometryMap, allCityLines]);
 
   // Compute live vehicles - only the latest position for each unique vehicle
   const liveVehicles = useMemo(() => {
@@ -804,7 +873,7 @@ export function SpeedMap({
   const cachedLiveVehicleGeoJSON = useMemo(() => {
     const filtered = liveVehicles.filter(
       (v) =>
-        shouldShowRoute(v.routeId, selectedLines, city) &&
+        shouldShowRoute(v.routeId, allCityLines, city) &&
         isOnRoute(v.lat, v.lon, v.routeId, routeGeometryMap, city),
     );
     return {
@@ -825,7 +894,7 @@ export function SpeedMap({
         },
       })),
     };
-  }, [liveVehicles, selectedLines, city, routeGeometryMap]);
+  }, [liveVehicles, city, routeGeometryMap, allCityLines]);
 
   // Fetch vehicle positions from Supabase filtered by city
   const fetchVehiclesFromSupabase = useCallback(async () => {
@@ -1186,64 +1255,22 @@ export function SpeedMap({
         showRouteLines && routeLineMode === "bySeparation";
       void _showByLine; // Silence unused variable warning
 
-      // If no lines selected, show no routes; otherwise filter to selected
-      // Skip filtering for cities with OSM-sourced route data that don't have line-specific routes
-      // These cities have route_id: "default" for all routes, so line filters won't work
-      const osmSourcedCities: string[] = [];
-      const skipRouteFiltering = osmSourcedCities.includes(city);
-
-      const filteredRoutes = {
-        ...cityConfig.routes,
-        features:
-          selectedLines.length === 0
-            ? [] // Show nothing when all lines deselected
-            : skipRouteFiltering
-              ? cityConfig.routes.features
-              : cityConfig.routes.features.filter((f: any) => {
-                  // Check if route matches any selected line
-                  if (selectedLines.includes(f.properties.route_id))
-                    return true;
-                  // For shared routes (Pittsburgh), show when Red, Blue, or Silver is selected
-                  if (
-                    f.properties.route_id === "shared" &&
-                    city === "Pittsburgh"
-                  ) {
-                    return (
-                      selectedLines.includes("RED") ||
-                      selectedLines.includes("BLUE") ||
-                      selectedLines.includes("SLVR")
-                    );
-                  }
-                  // For OSM routes with multiple lines, check if any line matches
-                  if (f.properties.lines && Array.isArray(f.properties.lines)) {
-                    return f.properties.lines.some((line: string) =>
-                      selectedLines.includes(line),
-                    );
-                  }
-                  return false;
-                }),
-      };
+      const allRoutes = cityConfig.routes;
 
       // Separate under-construction routes (like Line 5 Eglinton) for dashed styling
       const constructionRoutes = {
         type: "FeatureCollection",
-        features: filteredRoutes.features.filter(
+        features: allRoutes.features.filter(
           (f: any) => f.properties.under_construction,
         ),
       };
       const regularRoutes = {
         type: "FeatureCollection",
-        features: filteredRoutes.features.filter(
+        features: allRoutes.features.filter(
           (f: any) => !f.properties.under_construction,
         ),
       };
       const tunnelRoutes = { type: "FeatureCollection", features: [] };
-
-      const filteredSeparation = filterSeparationByRoutes(
-        cityConfig.separation,
-        filteredRoutes,
-        city,
-      );
 
       const emptyFC = { type: "FeatureCollection", features: [] } as any;
 
@@ -1268,11 +1295,6 @@ export function SpeedMap({
           if (map.current.getSource("speed-limit")) {
             (map.current.getSource("speed-limit") as any).setData(
               cityConfig.maxspeed || emptyFC,
-            );
-          }
-          if (map.current.getSource("separation")) {
-            (map.current.getSource("separation") as any).setData(
-              filteredSeparation || emptyFC,
             );
           }
         } catch {
@@ -1516,6 +1538,7 @@ export function SpeedMap({
         id: "routes-outline",
         type: "line",
         source: "routes",
+        filter: routeLayerFilter,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -1532,6 +1555,7 @@ export function SpeedMap({
         id: "routes",
         type: "line",
         source: "routes",
+        filter: routeLayerFilter,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -1553,6 +1577,7 @@ export function SpeedMap({
         id: "routes-construction-outline",
         type: "line",
         source: "routes-construction",
+        filter: routeLayerFilter,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -1570,6 +1595,7 @@ export function SpeedMap({
         id: "routes-construction",
         type: "line",
         source: "routes-construction",
+        filter: routeLayerFilter,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -1591,6 +1617,7 @@ export function SpeedMap({
         id: "routes-tunnel-outline",
         type: "line",
         source: "routes-tunnel",
+        filter: routeLayerFilter,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -1607,6 +1634,7 @@ export function SpeedMap({
         id: "routes-tunnel",
         type: "line",
         source: "routes-tunnel",
+        filter: routeLayerFilter,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -1733,9 +1761,7 @@ export function SpeedMap({
       // Separation layers (colored by separation type)
       map.current.addSource("separation", {
         type: "geojson",
-        data: (filteredSeparation?.features?.length > 0
-          ? filteredSeparation
-          : emptyFC) as any,
+        data: emptyFC,
       });
 
       {
@@ -1913,7 +1939,6 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
-    selectedLines,
     city,
     cityConfig.routes,
     cityConfig.maxspeed,
@@ -1989,6 +2014,81 @@ export function SpeedMap({
       // Layers might not exist yet
     }
   }, [mapLoaded, showRouteLines, routeLineMode]);
+
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+
+    try {
+      for (const id of [
+        "routes-outline",
+        "routes",
+        "routes-construction-outline",
+        "routes-construction",
+        "routes-tunnel-outline",
+        "routes-tunnel",
+      ]) {
+        if (map.current.getLayer(id)) {
+          map.current.setFilter(id, routeLayerFilter);
+        }
+      }
+    } catch {
+      // Layers might not exist yet
+    }
+  }, [mapLoaded, routeLayerFilter]);
+
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+    if (!map.current.getSource("separation")) return;
+    if (routeLineMode !== "bySeparation") return;
+
+    const selectedRoutes = {
+      ...cityConfig.routes,
+      features: cityConfig.routes.features.filter((feature: any) => {
+        const routeId = String(feature.properties?.route_id ?? "");
+        if (selectedLines.includes(routeId)) return true;
+        if (
+          city === "Pittsburgh" &&
+          routeId === "shared" &&
+          selectedLines.some((line) => ["RED", "BLUE", "SLVR"].includes(line))
+        ) {
+          return true;
+        }
+        if (
+          feature.properties?.lines &&
+          Array.isArray(feature.properties.lines) &&
+          feature.properties.lines.some((line: string) =>
+            selectedLines.includes(line),
+          )
+        ) {
+          return true;
+        }
+        return false;
+      }),
+    };
+
+    const filteredSeparation = filterSeparationByRoutes(
+      cityConfig.separation,
+      selectedRoutes,
+      city,
+    );
+
+    try {
+      (map.current.getSource("separation") as any).setData(
+        filteredSeparation?.features?.length > 0
+          ? filteredSeparation
+          : { type: "FeatureCollection", features: [] },
+      );
+    } catch {
+      // Source might have been removed externally
+    }
+  }, [
+    mapLoaded,
+    routeLineMode,
+    city,
+    cityConfig.routes,
+    cityConfig.separation,
+    selectedLines,
+  ]);
 
   // Keep rail-context / bus-overlay layer visibility in sync with toggle state
   useEffect(() => {
@@ -2899,10 +2999,11 @@ export function SpeedMap({
             initialFilters.push([">=", ["get", "speed"], 0.5]);
           }
         }
-        const initialFilter: maplibregl.FilterSpecification = [
+        const initialFilter = [
           "all",
+          vehicleRouteFilter as maplibregl.ExpressionSpecification,
           ...initialFilters,
-        ];
+        ] as maplibregl.FilterSpecification;
 
         map.current.addLayer({
           id: "vehicles-glow",
@@ -3169,14 +3270,21 @@ export function SpeedMap({
       }
     }
 
-    const filterExpression: maplibregl.FilterSpecification = [
+    const filterExpression = [
       "all",
+      vehicleRouteFilter as maplibregl.ExpressionSpecification,
       ...filters,
-    ];
+    ] as maplibregl.FilterSpecification;
 
     map.current.setFilter("vehicles", filterExpression);
     map.current.setFilter("vehicles-glow", filterExpression);
-  }, [speedFilter, hideStoppedTrains, hideAllTrains, mapLoaded]);
+  }, [
+    speedFilter,
+    hideStoppedTrains,
+    hideAllTrains,
+    mapLoaded,
+    vehicleRouteFilter,
+  ]);
 
   // Ensure proper layer ordering: routes at bottom, then data, then infrastructure on top
   // This function can be called anytime to fix layer order
@@ -3408,7 +3516,6 @@ export function SpeedMap({
         : cachedSegmentAverages;
 
     const segmentFeatures = activeSegments
-      .filter((seg) => shouldShowRoute(seg.routeId, selectedLines, city))
       .filter((seg) => activeAverages.has(seg.segmentId))
       .filter((seg) => {
         if (hideStoppedTrains) {
@@ -3469,6 +3576,7 @@ export function SpeedMap({
           id: "speed-segments",
           type: "line",
           source: "speed-segments",
+          filter: segmentLayerFilter,
           layout: {
             "line-join": "round",
             "line-cap": [
@@ -3559,11 +3667,21 @@ export function SpeedMap({
     hideStoppedTrains,
     viewMode,
     mapLoaded,
-    selectedLines,
     allRouteSegments,
     allRouteSegments500,
     city,
   ]);
+
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+    if (!map.current.getLayer("speed-segments")) return;
+
+    try {
+      map.current.setFilter("speed-segments", segmentLayerFilter);
+    } catch {
+      // Layer might not exist yet
+    }
+  }, [mapLoaded, segmentLayerFilter]);
 
   // Toggle satellite/dark base map
   useEffect(() => {
