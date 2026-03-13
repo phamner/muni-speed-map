@@ -342,9 +342,8 @@
   border-radius: 5px;
   padding: 1px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  height: 22px;
   box-sizing: border-box;
-  margin-right: 9px;
+  margin-right: 0;
   transition: none;
 }
 
@@ -355,11 +354,11 @@
   font-size: 0.65rem;
   font-weight: 500;
   cursor: pointer;
-  padding: 3px 0;
+  padding: 6px 0;
   border-radius: 3px;
   transition: background 0.2s, color 0.2s;
   text-align: center;
-  width: 35px;
+  width: 40px;
 }
 
 .toggle-button:hover {
@@ -732,23 +731,22 @@
 
 /* Train Visibility Toggle */
 .train-visibility-toggle {
-  height: 22px;
-  padding: 0 7px;
+  padding: 7px 8px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 5px;
+  border-radius: 6px;
   color: rgba(255, 255, 255, 0.85);
-  font-size: 0.65rem;
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
   white-space: nowrap;
   letter-spacing: 0.01em;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-  width: 82px;
   text-align: center;
   box-sizing: border-box;
-  margin-right: 9px;
+  margin-right: 0;
+  min-width: 96px;
 }
 
 .train-visibility-toggle:hover {

@@ -42,8 +42,7 @@
         "stop_id": "24882",
         "stop_name": "Evans Station",
         "routes": [
-          "D",
-          "E"
+          "D"
         ]
       },
       "geometry": {
@@ -1339,8 +1338,7 @@
         "stop_id": "25435",
         "stop_name": "Evans Station",
         "routes": [
-          "D",
-          "E"
+          "D"
         ]
       },
       "geometry": {

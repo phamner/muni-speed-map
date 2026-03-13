@@ -21,6 +21,7 @@ import {
   EMPTY_CITY_DATA,
   escapeHtml,
   distanceToLineString,
+  distanceToSegment,
 } from "./speedMap/geoUtils";
 import { filterSeparationByRoutes } from "./speedMap/separationUtils";
 import {
@@ -95,9 +96,156 @@ function buildSelectedLineFilter(
     }
   }
 
-  return (conditions.length === 1
-    ? conditions[0]
-    : ["any", ...conditions]) as maplibregl.FilterSpecification;
+  return (
+    conditions.length === 1 ? conditions[0] : ["any", ...conditions]
+  ) as maplibregl.FilterSpecification;
+}
+
+const MAXSPEED_ROUTE_MATCH_METERS = 75;
+const MAXSPEED_BEARING_TOLERANCE_DEG = 35;
+
+function getFeatureLineStrings(feature: any): number[][][] {
+  if (!feature?.geometry) return [];
+  if (feature.geometry.type === "LineString") {
+    return [feature.geometry.coordinates];
+  }
+  if (feature.geometry.type === "MultiLineString") {
+    return feature.geometry.coordinates;
+  }
+  return [];
+}
+
+function bearing(
+  lon1: number,
+  lat1: number,
+  lon2: number,
+  lat2: number,
+): number {
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const y1 = (lat1 * Math.PI) / 180;
+  const y2 = (lat2 * Math.PI) / 180;
+  const y = Math.sin(dLon) * Math.cos(y2);
+  const x =
+    Math.cos(y1) * Math.sin(y2) - Math.sin(y1) * Math.cos(y2) * Math.cos(dLon);
+  return ((Math.atan2(y, x) * 180) / Math.PI + 360) % 360;
+}
+
+function bearingsAligned(b1: number, b2: number, tolerance: number): boolean {
+  let diff = Math.abs(b1 - b2) % 360;
+  if (diff > 180) diff = 360 - diff;
+  if (diff > 90) diff = 180 - diff;
+  return diff <= tolerance;
+}
+
+function lineBearing(coords: number[][]): number | null {
+  if (coords.length < 2) return null;
+  return bearing(
+    coords[0][0],
+    coords[0][1],
+    coords[coords.length - 1][0],
+    coords[coords.length - 1][1],
+  );
+}
+
+function nearestSegmentBearing(
+  lat: number,
+  lon: number,
+  coordinates: number[][],
+): number | null {
+  let minDist = Infinity;
+  let bestIdx = -1;
+  for (let i = 0; i < coordinates.length - 1; i++) {
+    const [x1, y1] = coordinates[i];
+    const [x2, y2] = coordinates[i + 1];
+    const dist = distanceToSegment(lon, lat, x1, y1, x2, y2);
+    if (dist < minDist) {
+      minDist = dist;
+      bestIdx = i;
+    }
+  }
+  if (bestIdx < 0) return null;
+  const [x1, y1] = coordinates[bestIdx];
+  const [x2, y2] = coordinates[bestIdx + 1];
+  return bearing(x1, y1, x2, y2);
+}
+
+function annotateMaxspeedRoutes(maxspeed: any, routes: any, city: string): any {
+  if (!maxspeed?.features?.length) return maxspeed;
+
+  const routeLines = routes.features.flatMap((feature: any) => {
+    const routeId = feature.properties?.route_id;
+    if (!routeId) return [];
+    if (city === "SF" && String(routeId) === "F") return [];
+    return getFeatureLineStrings(feature).map((coordinates) => ({
+      routeId: String(routeId),
+      coordinates,
+    }));
+  });
+
+  const features = maxspeed.features.map((feature: any) => {
+    const existingRoutes = Array.isArray(feature.properties?.routes)
+      ? feature.properties.routes.map(String)
+      : [];
+
+    if (existingRoutes.length > 0) {
+      return feature;
+    }
+
+    const matchedRoutes = new Set<string>();
+    const lineStrings = getFeatureLineStrings(feature);
+
+    for (const coords of lineStrings) {
+      const featureBearing = lineBearing(coords);
+
+      for (const routeLine of routeLines) {
+        if (matchedRoutes.has(routeLine.routeId)) continue;
+
+        let pointsNear = 0;
+        let pointsAligned = 0;
+
+        for (const [lon, lat] of coords) {
+          const distance = distanceToLineString(
+            lat,
+            lon,
+            routeLine.coordinates,
+          );
+          if (distance <= MAXSPEED_ROUTE_MATCH_METERS) {
+            pointsNear++;
+            const routeBearing = nearestSegmentBearing(
+              lat,
+              lon,
+              routeLine.coordinates,
+            );
+            if (
+              featureBearing != null &&
+              routeBearing != null &&
+              bearingsAligned(
+                featureBearing,
+                routeBearing,
+                MAXSPEED_BEARING_TOLERANCE_DEG,
+              )
+            ) {
+              pointsAligned++;
+            }
+          }
+        }
+
+        if (pointsNear > 0 && (featureBearing == null || pointsAligned > 0)) {
+          matchedRoutes.add(routeLine.routeId);
+        }
+      }
+    }
+
+    return {
+      ...feature,
+      properties: {
+        ...feature.properties,
+        routes: Array.from(matchedRoutes),
+      },
+    };
+  });
+
+  return { ...maxspeed, features };
 }
 
 interface SpeedMapProps {
@@ -255,7 +403,10 @@ function formatCanadianTractLabel(geoid: string): string | null {
   return tract || match[2];
 }
 
-function getPopulationDensityAreaLabel(city: City, geoid: string): string | null {
+function getPopulationDensityAreaLabel(
+  city: City,
+  geoid: string,
+): string | null {
   if (city === "Toronto") {
     return TORONTO_POPULATION_DENSITY_AREAS[geoid.slice(0, 3)] || null;
   }
@@ -265,7 +416,10 @@ function getPopulationDensityAreaLabel(city: City, geoid: string): string | null
   return counties[geoid.slice(2, 5)] || null;
 }
 
-function getPopulationDensityTractLabel(city: City, geoid: string): string | null {
+function getPopulationDensityTractLabel(
+  city: City,
+  geoid: string,
+): string | null {
   return city === "Toronto"
     ? formatCanadianTractLabel(geoid)
     : formatUsTractLabel(geoid);
@@ -801,8 +955,16 @@ export function SpeedMap({
     [cityConfig.routes, city],
   );
   const allCityLines = useMemo(() => Array.from(getLinesForCity(city)), [city]);
+  const annotatedMaxspeed = useMemo(
+    () => annotateMaxspeedRoutes(cityConfig.maxspeed, cityConfig.routes, city),
+    [cityConfig.maxspeed, cityConfig.routes, city],
+  );
   const routeLayerFilter = useMemo(
     () => buildSelectedLineFilter(selectedLines, city, "route_id", "lines"),
+    [selectedLines, city],
+  );
+  const speedLimitLayerFilter = useMemo(
+    () => buildSelectedLineFilter(selectedLines, city, "__route__", "routes"),
     [selectedLines, city],
   );
   const segmentLayerFilter = useMemo(
@@ -812,13 +974,6 @@ export function SpeedMap({
   const vehicleRouteFilter = useMemo(() => {
     if (selectedLines.length === 0) {
       return buildImpossibleFilter("routeId");
-    }
-    if (city === "Denver") {
-      return [
-        "!=",
-        ["to-string", ["get", "routeId"]],
-        "__never_matches__",
-      ] as maplibregl.FilterSpecification;
     }
     return buildSelectedLineFilter(selectedLines, city, "routeId");
   }, [selectedLines, city]);
@@ -1294,7 +1449,7 @@ export function SpeedMap({
           );
           if (map.current.getSource("speed-limit")) {
             (map.current.getSource("speed-limit") as any).setData(
-              cityConfig.maxspeed || emptyFC,
+              annotatedMaxspeed || emptyFC,
             );
           }
         } catch {
@@ -1653,8 +1808,8 @@ export function SpeedMap({
       // Speed limit layers (colored by maxspeed)
       map.current.addSource("speed-limit", {
         type: "geojson",
-        data: (cityConfig.maxspeed?.features?.length > 0
-          ? cityConfig.maxspeed
+        data: (annotatedMaxspeed?.features?.length > 0
+          ? annotatedMaxspeed
           : emptyFC) as any,
       });
 
@@ -1663,6 +1818,7 @@ export function SpeedMap({
           id: "speed-limit-outline",
           type: "line",
           source: "speed-limit",
+          filter: speedLimitLayerFilter,
           layout: {
             "line-join": "round",
             "line-cap": "round",
@@ -1679,6 +1835,7 @@ export function SpeedMap({
           id: "speed-limit",
           type: "line",
           source: "speed-limit",
+          filter: speedLimitLayerFilter,
           layout: {
             "line-join": "round",
             "line-cap": "round",
@@ -1696,6 +1853,7 @@ export function SpeedMap({
           id: "speed-limit-labels",
           type: "symbol",
           source: "speed-limit",
+          filter: speedLimitLayerFilter,
           layout: {
             "symbol-placement": "line",
             "text-field": ["concat", ["get", "maxspeed_mph"], " mph"],
@@ -1944,6 +2102,7 @@ export function SpeedMap({
     cityConfig.maxspeed,
     cityConfig.separation,
     cityConfig.busRoutesOverlay,
+    annotatedMaxspeed,
     effectiveRailContext,
     // Used only in CREATE path (first run); stable across renders:
     maxspeedColorExpression,
@@ -2035,6 +2194,24 @@ export function SpeedMap({
       // Layers might not exist yet
     }
   }, [mapLoaded, routeLayerFilter]);
+
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+
+    try {
+      for (const id of [
+        "speed-limit-outline",
+        "speed-limit",
+        "speed-limit-labels",
+      ]) {
+        if (map.current.getLayer(id)) {
+          map.current.setFilter(id, speedLimitLayerFilter);
+        }
+      }
+    } catch {
+      // Layers might not exist yet
+    }
+  }, [mapLoaded, speedLimitLayerFilter]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
@@ -2486,6 +2663,9 @@ export function SpeedMap({
   // Filter grade crossings by selected lines
   // Note: F-line only crossings are already filtered out during the fetch script
   const filteredCrossings = useMemo(() => {
+    if (!showCrossings) {
+      return { ...cityConfig.crossings, features: [] };
+    }
     // Each crossing has a 'routes' property listing which transit lines it's near
     // For OSM-sourced cities without routes property, filter by proximity to route lines
     const nearbyFeatures = cityConfig.crossings.features.filter(
@@ -2525,7 +2705,7 @@ export function SpeedMap({
     );
 
     return { ...cityConfig.crossings, features: nearbyFeatures };
-  }, [cityConfig.crossings, cityConfig.routes, selectedLines]);
+  }, [cityConfig.crossings, cityConfig.routes, selectedLines, showCrossings]);
 
   // Add/update crossings layer
   useEffect(() => {
@@ -2684,25 +2864,37 @@ export function SpeedMap({
           }
 
           if (isTouchInteractionMode()) {
-            const vehicleFeatures = map.current?.queryRenderedFeatures(e.point, {
-              layers: ["vehicles"],
-            });
+            const vehicleFeatures = map.current?.queryRenderedFeatures(
+              e.point,
+              {
+                layers: ["vehicles"],
+              },
+            );
             if (vehicleFeatures && vehicleFeatures.length > 0) return;
 
-            const segmentFeatures = map.current?.queryRenderedFeatures(e.point, {
-              layers: ["speed-segments"],
-            });
+            const segmentFeatures = map.current?.queryRenderedFeatures(
+              e.point,
+              {
+                layers: ["speed-segments"],
+              },
+            );
             if (segmentFeatures && segmentFeatures.length > 0) return;
 
-            const densityFeatures = map.current?.queryRenderedFeatures(e.point, {
-              layers: ["population-density-fill"],
-            });
+            const densityFeatures = map.current?.queryRenderedFeatures(
+              e.point,
+              {
+                layers: ["population-density-fill"],
+              },
+            );
             if (densityFeatures && densityFeatures.length > 0) return;
           } else {
             // Check if click was on a crossing (handled above)
-            const crossingFeatures = map.current?.queryRenderedFeatures(e.point, {
-              layers: ["crossings"],
-            });
+            const crossingFeatures = map.current?.queryRenderedFeatures(
+              e.point,
+              {
+                layers: ["crossings"],
+              },
+            );
             if (crossingFeatures && crossingFeatures.length > 0) return;
 
             // Check if click was on a stop (handled in stops layer)
@@ -2726,14 +2918,20 @@ export function SpeedMap({
             });
             if (switchFeatures && switchFeatures.length > 0) return;
 
-            const vehicleFeatures = map.current?.queryRenderedFeatures(e.point, {
-              layers: ["vehicles"],
-            });
+            const vehicleFeatures = map.current?.queryRenderedFeatures(
+              e.point,
+              {
+                layers: ["vehicles"],
+              },
+            );
             if (vehicleFeatures && vehicleFeatures.length > 0) return;
 
-            const segmentFeatures = map.current?.queryRenderedFeatures(e.point, {
-              layers: ["speed-segments"],
-            });
+            const segmentFeatures = map.current?.queryRenderedFeatures(
+              e.point,
+              {
+                layers: ["speed-segments"],
+              },
+            );
             if (segmentFeatures && segmentFeatures.length > 0) return;
           }
 
@@ -2770,6 +2968,10 @@ export function SpeedMap({
       type: "FeatureCollection",
       features: [],
     };
+
+    if (!showSwitches) {
+      return { ...rawSwitches, features: [] };
+    }
 
     // Filter switches to only those near selected route lines
     const filteredFeatures = rawSwitches.features.filter((sw: any) => {
@@ -2811,7 +3013,7 @@ export function SpeedMap({
     });
 
     return { ...rawSwitches, features: filteredFeatures };
-  }, [cityConfig.switches, selectedLines]);
+  }, [cityConfig.switches, selectedLines, showSwitches]);
 
   // Add/update switches layer
   useEffect(() => {
@@ -3579,13 +3781,7 @@ export function SpeedMap({
           filter: segmentLayerFilter,
           layout: {
             "line-join": "round",
-            "line-cap": [
-              "step",
-              ["zoom"],
-              "round",
-              11,
-              "butt",
-            ],
+            "line-cap": ["step", ["zoom"], "round", 11, "butt"],
           },
           paint: {
             "line-width": 6,
