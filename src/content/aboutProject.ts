@@ -90,7 +90,7 @@ export const ABOUT_SECTIONS = {
       "The density overlay helps contextualize transit performance. Areas with higher population density often correlate with higher ridership demand and different operating conditions.",
     ],
     segmentAverages: [
-      "Route lines are divided into fixed 200-meter segments. Each vehicle position is assigned to the segment it falls within based on distance along the route.",
+      "Route lines are divided into fixed 200 and 500-meter segments. Each vehicle position is assigned to the segment it falls within based on distance along the route.",
       "For some cities (currently Los Angeles and Denver), the platform combines speed readings from both directions of travel into unified segment averages. Instead of splitting readings between parallel tracks, all readings contribute to one average per segment, which produces more statistically robust data.",
       "The result is a speed profile that answers 'how fast do trains move through this section' rather than tracking inbound vs outbound separately.",
     ],
@@ -101,10 +101,9 @@ export const ABOUT_SECTIONS = {
     ],
     limitations: [
       "GPS accuracy varies by agency and can be affected by tunnels, urban canyons, and signal quality",
-      "Update frequency differs between cities (typically 10-30 seconds)",
       "Speed calculations depend on GPS accuracy and update frequency, which varies by agency",
-      "Historical data depth varies by city and when collection began",
-      "Some cities may have gaps in coverage during service disruptions",
+      "Some cities may have gaps in coverage during service disruptions. Ex. Broadway Bridge closure in Portland",
+      "Some agencies appear to publish vehicle positions in a coarse or shape-snapped way, so raw data can look much clumpier in some cities than others even when I am sampling on the same 90-second interval. Ex. Seattle's Link data looks much clumpier than other cities, but I think that is a feed-quality quirk rather than a data collection problem.",
     ],
   },
 
@@ -220,7 +219,7 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Seattle",
-    note: "Link has sharp speed transitions where it moves between tunnel, elevated, and surface-running segments. The Rainier Valley surface section is (famously) slower than the rest of the 1 line. This is one of the clearest examples on the platform of how grade separation directly affects operating speed within a single line.",
+    note: "Link has sharp speed transitions where it moves between tunnel, elevated, and surface-running segments. The Rainier Valley surface section is (famously) slower than the rest of the 1 line. This is one of the clearest examples on the platform of how grade separation directly affects operating speed within a single line. However, because Seattle also has much clumpier raw-data coverage than most other cities, this phenomenon is less visually obvious. My guess is that Sound Transit is publishing positions in a fairly coarse or shape-snapped way, because I am querying on the same 90-second cadence I use elsewhere but the trains keep appearing in the same spots over and over. So if Seattle raw data looks spotty, I think that is mostly a feed-quality quirk rather than a data collection problem.",
   },
   {
     city: "Toronto",
