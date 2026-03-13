@@ -253,6 +253,7 @@ export function SpeedMap({
   const map = useRef<maplibregl.Map | null>(null);
   const popup = useRef<maplibregl.Popup | null>(null);
   const crossingPopupPinned = useRef(false);
+  const touchPopupPinned = useRef(false);
   const hoveredTractId = useRef<string | null>(null);
   const crossingHandlersRegistered = useRef(false);
   const suppressNextMapClickUnpin = useRef(false);
@@ -284,6 +285,10 @@ export function SpeedMap({
   const [cityDataLoading, setCityDataLoading] = useState(
     !isCityDataCached(city),
   );
+
+  const isTouchInteractionMode = () =>
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
   // Ref to avoid re-render loops with the callback
   const onVehicleUpdateRef = useRef(onVehicleUpdate);
@@ -2602,8 +2607,19 @@ export function SpeedMap({
           });
           if (switchFeatures && switchFeatures.length > 0) return;
 
+          const vehicleFeatures = map.current?.queryRenderedFeatures(e.point, {
+            layers: ["vehicles"],
+          });
+          if (vehicleFeatures && vehicleFeatures.length > 0) return;
+
+          const segmentFeatures = map.current?.queryRenderedFeatures(e.point, {
+            layers: ["speed-segments"],
+          });
+          if (segmentFeatures && segmentFeatures.length > 0) return;
+
           // Unpin and remove popup
           crossingPopupPinned.current = false;
+          touchPopupPinned.current = false;
           popup.current?.remove();
 
           // Collapse any expanded stop cluster
@@ -2906,10 +2922,15 @@ export function SpeedMap({
 
         map.current.on("mouseleave", "vehicles", () => {
           if (map.current) map.current.getCanvas().style.cursor = "";
-          if (!crossingPopupPinned.current) popup.current?.remove();
+          if (!crossingPopupPinned.current && !touchPopupPinned.current) {
+            popup.current?.remove();
+          }
         });
 
-        map.current.on("mousemove", "vehicles", (e) => {
+        const showVehiclePopup = (
+          e: maplibregl.MapLayerMouseEvent,
+          pinned = false,
+        ) => {
           if (!e.features?.length || !map.current) return;
           const props = e.features[0].properties;
           const speed =
@@ -2971,19 +2992,32 @@ export function SpeedMap({
           popup.current
             ?.setLngLat(e.lngLat)
             .setHTML(
-              `<div class="popup-content">
+              `<div class="popup-content${pinned ? " popup-pinned" : ""}">
                 <div class="popup-title">${titleLine}</div>
                 <div class="popup-detail">${detailLine}</div>
                 <div class="popup-speed">${speed}</div>
                 <div class="popup-time">${dateTime}</div>
+                ${
+                  pinned
+                    ? '<div class="popup-hint">Tap elsewhere to close</div>'
+                    : ""
+                }
               </div>`,
             )
             .addTo(map.current);
+        };
+
+        map.current.on("mousemove", "vehicles", (e) => {
+          if (isTouchInteractionMode() && touchPopupPinned.current) return;
+          showVehiclePopup(e);
         });
 
         map.current.on("click", "vehicles", (e) => {
           if (!e.features?.length) return;
-          // Click handler for debugging
+          if (!isTouchInteractionMode()) return;
+          touchPopupPinned.current = true;
+          showVehiclePopup(e, true);
+          e.originalEvent.stopPropagation();
         });
       }
     };
@@ -3456,23 +3490,45 @@ export function SpeedMap({
 
       map.current.on("mouseleave", "speed-segments", () => {
         if (map.current) map.current.getCanvas().style.cursor = "";
-        if (!crossingPopupPinned.current) popup.current?.remove();
+        if (!crossingPopupPinned.current && !touchPopupPinned.current) {
+          popup.current?.remove();
+        }
       });
 
-      map.current.on("mousemove", "speed-segments", (e) => {
+      const showSegmentPopup = (
+        e: maplibregl.MapLayerMouseEvent,
+        pinned = false,
+      ) => {
         if (!e.features?.length || !map.current) return;
         const props = e.features[0].properties;
 
         popup.current
           ?.setLngLat(e.lngLat)
           .setHTML(
-            `<div class="popup-content">
+            `<div class="popup-content${pinned ? " popup-pinned" : ""}">
               <div class="popup-title">${props.routeId} Segment</div>
               <div class="popup-speed">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
               <div class="popup-detail">${props.sampleCount} readings</div>
+              ${
+                pinned
+                  ? '<div class="popup-hint">Tap elsewhere to close</div>'
+                  : ""
+              }
             </div>`,
           )
           .addTo(map.current);
+      };
+
+      map.current.on("mousemove", "speed-segments", (e) => {
+        if (isTouchInteractionMode() && touchPopupPinned.current) return;
+        showSegmentPopup(e);
+      });
+
+      map.current.on("click", "speed-segments", (e) => {
+        if (!isTouchInteractionMode() || !e.features?.length) return;
+        touchPopupPinned.current = true;
+        showSegmentPopup(e, true);
+        e.originalEvent.stopPropagation();
       });
     }
   }, [
