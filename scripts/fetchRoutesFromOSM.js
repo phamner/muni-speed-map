@@ -64,10 +64,17 @@ const CITIES = {
     name: "Denver",
     bbox: [39.55, -105.15, 39.95, -104.75],
     railwayTypes: "light_rail",
+    routeType: "light_rail",
+    useRouteRelations: true,
     outputRoutesFile: "denverRtdRoutes.json",
     outputStopsFile: "denverRtdStops.json",
     lineColors: {
-      default: "#009CDE",
+      D: "#008348",
+      E: "#552683",
+      H: "#0075BE",
+      L: "#FFCE00",
+      R: "#C4D600",
+      W: "#009DAA",
     },
   },
   SaltLakeCity: {
