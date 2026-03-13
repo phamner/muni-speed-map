@@ -42,7 +42,6 @@ export const CITIES_WITH_PARALLEL_TRACKS = [
   "Boston",
   "Toronto",
   "Philadelphia",
-  "Minneapolis",
   "Denver",
   "Salt Lake City",
   "Cleveland",
