@@ -11,8 +11,8 @@ import {
   CITY_COORDS,
   type CityStaticData,
 } from "../data/cityDataLoaders";
-import slcRailContextHeavy from "../data/slcRailContextHeavy.json";
-import slcRailContextCommuter from "../data/slcRailContextCommuter.json";
+import slcRailContextHeavy from "../data/rail-context/slcRailContextHeavy.json";
+import slcRailContextCommuter from "../data/rail-context/slcRailContextCommuter.json";
 import { loadPopulationDensity } from "../data/populationDensityLoader";
 import type { SpeedFilter, ViewMode, LineStats } from "../App";
 import {
