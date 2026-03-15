@@ -51,7 +51,7 @@ export const ABOUT_SECTIONS = {
       "Use the speed filter: try max 5 mph to see where trains crawl, or min 40 mph to see where they move freely",
       "Toggle infrastructure layers (grade crossings, traffic lights, switches) to see how they correlate with slow zones",
       "Hit Show/Hide Trains to reveal the lines underneath, then switch between 'By Line,' 'Speed Limit,' and 'Grade Separation' for more network context",
-      "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network",
+      "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network. Turn on population density data to see how well transit covers where people live.",
       "Switch cities: your filter settings carry over, making it easy to compare networks side by side",
     ],
     views: [

@@ -190,17 +190,17 @@ const OFFICIAL_TRANSIT_MAP_URLS: Record<City, string> = {
 };
 
 const TRANSIT_MAP_DISPLAY_URLS: Partial<Record<City, string>> = {
-  SF: "/maps/sf-sfmta-map-33952.png",
-  LA: "/maps/la-metro-map-2025.png",
-  Seattle: "/maps/seattle-soundtransit-service-map.png",
-  Toronto: "/maps/toronto-ttc-subway-streetcar-lightrail-map.png",
-  Philadelphia: "/maps/philly-septa-system-map-v2-2.png",
-  Pittsburgh: "/maps/pittsburgh-prt-lrtmap.png",
-  Minneapolis: "/maps/minneapolis-metro-diagrammap.png",
-  "San Jose": "/maps/san-jose-vta-ada-lr-busconnect-011226.png",
-  "Salt Lake City": "/maps/uta-rail-map-nov2025.png",
-  Cleveland: "/maps/cleveland-system-map-rapid.png",
-  Baltimore: "/maps/baltimore-light-raillink-2.png",
+  SF: "/maps/sf-sfmta-map-33952.webp",
+  LA: "/maps/la-metro-map-2025.webp",
+  Seattle: "/maps/seattle-soundtransit-service-map.webp",
+  Toronto: "/maps/toronto-ttc-subway-streetcar-lightrail-map.webp",
+  Philadelphia: "/maps/philly-septa-system-map-v2-2.webp",
+  Pittsburgh: "/maps/pittsburgh-prt-lrtmap.webp",
+  Minneapolis: "/maps/minneapolis-metro-diagrammap.webp",
+  "San Jose": "/maps/san-jose-vta-ada-lr-busconnect-011226.webp",
+  "Salt Lake City": "/maps/uta-rail-map-nov2025.webp",
+  Cleveland: "/maps/cleveland-system-map-rapid.webp",
+  Baltimore: "/maps/baltimore-light-raillink-2.webp",
 };
 
 const TRANSIT_MAP_SOURCE_URLS: Partial<Record<City, string>> = {
