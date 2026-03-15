@@ -538,9 +538,7 @@ export function Controls({
     const rect = e.currentTarget.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.bottom + 12;
-    setTooltip((current) =>
-      current?.text === text ? null : { x, y, text },
-    );
+    setTooltip((current) => (current?.text === text ? null : { x, y, text }));
   };
   const hideTooltip = () => {
     if (tooltipTimer.current) clearTimeout(tooltipTimer.current);
@@ -1818,8 +1816,22 @@ export function Controls({
                     <p>{ABOUT_SECTIONS.overview.goal}</p>
                     <h3>{ABOUT_SECTIONS.overview.snapshotSummaryTitle}</h3>
                     <p>{ABOUT_SECTIONS.overview.snapshotSummary}</p>
-                    <h3>{ABOUT_SECTIONS.overview.dataCollectionTitle}</h3>
-                    <p>{ABOUT_SECTIONS.overview.dataCollection}</p>
+                    <div className="about-section-block">
+                      <h3>Technology Stack</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.overview.stack.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Source Code</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.overview.sourceCode.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )}
 
@@ -1827,12 +1839,12 @@ export function Controls({
                   <>
                     <p>{ABOUT_SECTIONS.howto.intro}</p>
                     <div className="about-section-block">
-                      <h3>Basic Controls</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.howto.controls.map((item) => (
+                      <h3>Getting Started</h3>
+                      <ol>
+                        {ABOUT_SECTIONS.howto.quickStart.map((item) => (
                           <li key={item}>{item}</li>
                         ))}
-                      </ul>
+                      </ol>
                     </div>
                     <div className="about-section-block">
                       <h3>View Modes</h3>
@@ -1860,41 +1872,19 @@ export function Controls({
                         ))}
                       </ul>
                     </div>
-                    <div className="about-section-block">
-                      <h3>Platform Capabilities</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.features.platformFeatures.map(
-                          (item) => (
-                            <li key={item}>{item}</li>
-                          ),
-                        )}
-                      </ul>
-                    </div>
-                    <div className="about-section-block">
-                      <h3>Visualizations</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.features.visualizations.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
                   </>
                 )}
 
                 {aboutActiveTab === "data" && (
                   <>
                     <div className="about-section-block">
+                      <h3>{ABOUT_SECTIONS.data.dataCollectionTitle}</h3>
+                      <p>{ABOUT_SECTIONS.data.dataCollection}</p>
+                    </div>
+                    <div className="about-section-block">
                       <h3>Data Sources</h3>
                       <ul>
                         {ABOUT_SECTIONS.data.sources.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="about-section-block">
-                      <h3>Population Density Overlay</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.data.populationDensity.map((item) => (
                           <li key={item}>{item}</li>
                         ))}
                       </ul>
@@ -1916,6 +1906,30 @@ export function Controls({
                       </ul>
                     </div>
                     <div className="about-section-block">
+                      <h3>Population Density Overlay</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.data.populationDensity.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Project Scope</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.data.scope.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
+                      <h3>Why Some Cities Are Excluded</h3>
+                      <ul>
+                        {ABOUT_SECTIONS.data.exclusions.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className="about-section-block">
                       <h3>Limitations</h3>
                       <ul>
                         {ABOUT_SECTIONS.data.limitations.map((item) => (
@@ -1927,31 +1941,35 @@ export function Controls({
                 )}
 
                 {aboutActiveTab === "cities" && (
-                  <div className="about-section-block">
-                    <h3>City-Specific Notes</h3>
-                    <ul>
-                      {ABOUT_CITY_NOTES.map((cityNote) => (
-                        <li key={cityNote.city}>
-                          <strong>{cityNote.city}:</strong> {cityNote.note}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {aboutActiveTab === "prospective" && (
                   <>
                     <div className="about-section-block">
-                      <h3>Prospective Cities I Want to Add</h3>
-                      <p>{ABOUT_SECTIONS.prospective.intro}</p>
-                      <p>{ABOUT_SECTIONS.prospective.outro}</p>
-                      <div className="about-prospective-list">
+                      <h3 className="about-city-section-header">
+                        Included Cities
+                      </h3>
+                      <div className="about-city-list">
+                        {ABOUT_CITY_NOTES.map((cityNote) => (
+                          <div
+                            key={cityNote.city}
+                            className="about-city-card included"
+                          >
+                            <h4>{cityNote.city}</h4>
+                            <p>{cityNote.note}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="about-section-block">
+                      <h3 className="about-city-section-header prospective">
+                        Cities I Want to Add
+                      </h3>
+                      <p>{ABOUT_SECTIONS.cities.prospectiveIntro}</p>
+                      <div className="about-city-list">
                         {[...ABOUT_PROSPECTIVE_CITIES]
                           .sort((a, b) => a.city.localeCompare(b.city))
                           .map((item) => (
                             <div
                               key={`${item.city}-${item.system}`}
-                              className="about-prospective-card"
+                              className="about-city-card prospective"
                             >
                               <h4>
                                 {item.city} <span>({item.system})</span>
@@ -1963,50 +1981,6 @@ export function Controls({
                             </div>
                           ))}
                       </div>
-                    </div>
-                  </>
-                )}
-
-                {aboutActiveTab === "technical" && (
-                  <>
-                    <div className="about-section-block">
-                      <h3>Project Scope</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.technical.scope.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="about-section-block">
-                      <h3>Why Some Cities Are Excluded</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.technical.exclusions.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="about-section-block">
-                      <h3>Technology Stack</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.technical.stack.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="about-section-block">
-                      <h3>Source Code</h3>
-                      <ul>
-                        <li>
-                          GitHub Repository:{" "}
-                          <a
-                            href="https://github.com/phamner/muni-speed-map"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            https://github.com/phamner/muni-speed-map
-                          </a>
-                        </li>
-                      </ul>
                     </div>
                   </>
                 )}

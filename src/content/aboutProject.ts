@@ -10,21 +10,13 @@ export interface AboutProspectiveCity {
   blocker: string;
 }
 
-export type AboutTab =
-  | "overview"
-  | "howto"
-  | "data"
-  | "cities"
-  | "prospective"
-  | "technical";
+export type AboutTab = "overview" | "howto" | "data" | "cities";
 
 export const ABOUT_TABS: { id: AboutTab; label: string }[] = [
   { id: "overview", label: "Overview" },
   { id: "howto", label: "How to Use" },
   { id: "data", label: "Data & Methodology" },
-  { id: "cities", label: "City Notes" },
-  { id: "prospective", label: "Prospective Cities" },
-  { id: "technical", label: "Technical Details" },
+  { id: "cities", label: "Cities" },
 ];
 
 export const ABOUT_SECTIONS = {
@@ -39,21 +31,29 @@ export const ABOUT_SECTIONS = {
     snapshotSummaryTitle: "What You're Looking At",
     snapshotSummary:
       "An aggregated snapshot of train speed and location observations collected from repeated weekday sampling sessions in February 2026. This is not live train tracking.",
-    dataCollectionTitle: "How the Speed Maps Were Built",
-    dataCollection:
-      "To capture the train speed data, I queried each transit agency's live vehicle endpoint every 90 seconds over several hours across multiple weekdays in February 2026. Each query returned the latest reported location and speed for the agency's entire active light rail fleet, not just a single train. I collected those system-wide snapshots and aggregated them into a city-level speed map showing where trains tend to move quickly or slow down.",
+    stack: [
+      "Frontend: React + TypeScript + MapLibre GL JS",
+      "Data Processing: Node.js + GTFS parsing libraries",
+      "Storage: Supabase (PostgreSQL)",
+      "Mapping: OpenStreetMap data + custom overlays",
+    ],
+    sourceCode: [
+      "GitHub Repository: https://github.com/phamner/muni-speed-map",
+    ],
   },
 
   howto: {
     intro:
       "The map interface provides multiple ways to explore light rail performance:",
-    controls: [
-      "Select a city from the top menu to load its light rail network",
-      "Use the speed filter sliders to focus on specific speed ranges",
-      "Toggle individual lines on/off to compare performance",
-      "Switch between 'By Line' and 'Separation' views to see infrastructure impacts",
-      "Enable infrastructure overlays (crossings, signals, switches) to identify bottlenecks",
-      "Click 'Reset All Filters' to return to default view",
+    quickStart: [
+      "Pick a city you know (or are curious about)",
+      "Switch between Raw / 200m / 500m views. Raw shows every individual observation, while 200m and 500m average nearby readings so broader patterns emerge",
+      "Use the speed filter: try max 5 mph to see where trains crawl, or min 40 mph to see where they move freely",
+      "Toggle infrastructure layers (grade crossings, traffic lights, switches) to see how they correlate with slow zones",
+      "Click on a data point to see its speed, route, and timestamp",
+      "Hit Show/Hide Trains to reveal the lines underneath, then switch between 'By Line,' 'Speed Limit,' and 'Grade Separation' for more network context",
+      "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network",
+      "Switch cities: your filter settings carry over, making it easy to compare networks side by side",
     ],
     views: [
       "Raw Data: Shows individual vehicle position and speed observations from the sampled dataset. Use this to inspect the underlying fleet-wide snapshots that feed the map.",
@@ -61,21 +61,24 @@ export const ABOUT_SECTIONS = {
       "500m Avg: Displays averaged speeds across 500-meter segments. Larger segments produce smoother averages with more readings per segment, useful for identifying broader speed trends along the route.",
       "Speed Limit: Compares actual speeds to posted limits (where available). Gray segments indicate missing speed limit data.",
     ],
-    tips: [
-      "Hover over route segments to see detailed speed information",
-      "Use the layer toggles (bottom-left) to switch between satellite and street views, or enable the population density overlay",
-      "The distance scale shows both kilometers and miles",
-      "Speed legend updates based on your selected unit (mph/km/h)",
-    ],
     infrastructureMarkers: [
       "Grade crossings (X) mark where rail and roads intersect at street level. The type of control (gates, signals, or signs) can affect train speeds.",
       "Streetcar systems (Toronto, Philly, Charlotte Gold, Portland streetcar segments, Seattle T Line) do not show grade-crossing markers, as these lines operate in streets rather than crossing them. Use the traffic light overlay instead to see intersection impacts.",
       "Track switches (Y) are movable rails at junctions and turnbacks. These often correlate with operational slow zones.",
       "Traffic lights mark intersections where trains must obey street traffic signals and may wait at red lights. Intersections with protective crossing gates are excluded, since trains have right-of-way there and do not stop for traffic.",
     ],
+    tips: [
+      "Hover over route segments to see detailed speed information",
+      "Use the layer toggles (bottom-left) to switch between satellite and street views, or enable the population density overlay",
+      "The distance scale shows both kilometers and miles",
+      "Speed legend updates based on your selected unit (mph/km/h)",
+    ],
   },
 
   data: {
+    dataCollectionTitle: "How the Speed Maps Were Built",
+    dataCollection:
+      "To capture the train speed data, I queried each transit agency's live vehicle endpoint every 90 seconds over several hours across multiple weekdays in February 2026. Each query returned the latest reported location and speed for the agency's entire active light rail fleet, not just a single train. I collected those system-wide snapshots and aggregated them into a city-level speed map showing where trains tend to move quickly or slow down.",
     sources: [
       "Vehicle positions come from agency GTFS-Realtime feeds or agency-specific APIs, sampled repeatedly and aggregated into snapshot-based datasets",
       "Speed is either reported directly by the agency or calculated from consecutive GPS position updates",
@@ -99,32 +102,6 @@ export const ABOUT_SECTIONS = {
       "This filtering removes trains stopped in yards and maintenance facilities, which would artificially lower averages without reflecting actual in-service performance.",
       "While this approach may exclude some trains stopped at stations during passenger loading, it provides a more accurate picture of how fast trains move when actually in motion on the network.",
     ],
-    limitations: [
-      "GPS accuracy varies by agency and can be affected by tunnels, urban canyons, and signal quality",
-      "Speed calculations depend on GPS accuracy and update frequency, which varies by agency",
-      "Some cities may have gaps in coverage during service disruptions. Ex. Broadway Bridge closure in Portland",
-      "Some agencies appear to publish vehicle positions in a coarse or shape-snapped way, so raw data can look much clumpier in some cities than others even when I am sampling on the same 90-second interval. Ex. Seattle's Link data looks much clumpier than other cities, but I think that is a feed-quality quirk rather than a data collection problem.",
-    ],
-  },
-
-  features: {
-    platformFeatures: [
-      "Collects repeated fleet-wide vehicle observations from transit agency feeds and APIs",
-      "Matches vehicles to route geometry",
-      "Computes segment-level speeds",
-      "Aggregates observations into city-level speed snapshots",
-      "Visualizes speed distributions and bottlenecks on interactive maps",
-    ],
-    visualizations: [
-      "Speed heatmaps showing performance across entire networks",
-      "Grade separation overlays (tunnel, elevated, at-grade, mixed traffic)",
-      "Infrastructure markers (grade crossings, traffic signals, track switches)",
-      "Regional and commuter rail context for understanding network connections",
-      "Comparative statistics across lines and cities",
-    ],
-  },
-
-  technical: {
     scope: [
       "This project focuses on North American light rail and tram systems.",
       "Speed analytics are derived from repeated fleet-wide observations. Regional and metro overlays provide context but do not include speed analytics.",
@@ -137,22 +114,17 @@ export const ABOUT_SECTIONS = {
       "Systems without public vehicle-position data that can support this snapshot-based methodology (e.g., Dallas DART, Houston METRORail, Sacramento SacRT, St. Louis MetroLink, New Jersey Hudson-Bergen Light Rail, New Jersey River Line, Calgary CTrain, Edmonton LRT, and several Mexican systems)",
       "I have actively tried to add several of these systems (including HBLR, River Line, Calgary, Edmonton, St. Louis, Dallas, and Houston) and will add them if I can find reliable data that supports the same fleet-wide snapshot methodology.",
     ],
-    stack: [
-      "Frontend: React + TypeScript + MapLibre GL JS",
-      "Data Processing: Node.js + GTFS parsing libraries",
-      "Storage: Supabase (PostgreSQL)",
-      "Mapping: OpenStreetMap data + custom overlays",
-    ],
-    sourceCode: [
-      "GitHub Repository: https://github.com/phamner/muni-speed-map",
+    limitations: [
+      "GPS accuracy varies by agency and can be affected by tunnels, urban canyons, and signal quality",
+      "Speed calculations depend on GPS accuracy and update frequency, which varies by agency",
+      "Some cities may have gaps in coverage during service disruptions. Ex. Broadway Bridge closure in Portland",
+      "Some agencies appear to publish vehicle positions in a coarse or shape-snapped way, so raw data can look much clumpier in some cities than others even when I am sampling on the same 90-second interval. Ex. Seattle's Link data looks much clumpier than other cities, but I think that is a feed-quality quirk rather than a data collection problem.",
     ],
   },
 
-  prospective: {
-    intro:
-      "These are systems I would like to include because they would add meaningful comparisons for street-running and at-grade light rail. The main blocker for each is access to reliable public vehicle-position data that supports the same fleet-wide snapshot methodology used elsewhere in the project.",
-    outro:
-      "If I can find usable vehicle-position data for any of these systems, I would love to add them.",
+  cities: {
+    prospectiveIntro:
+      "These are systems I would like to include. The main blocker for each is access to reliable public vehicle-position data that supports the same fleet-wide snapshot methodology used elsewhere in the project. If I can find usable vehicle-position data for any of these systems, I would love to add them.",
   },
 };
 

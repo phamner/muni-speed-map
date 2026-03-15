@@ -1849,38 +1849,69 @@
   font-size: 0.9rem;
 }
 
-.about-prospective-list {
+.about-city-section-header {
+  font-size: 0.8rem !important;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 10px 14px;
+  margin-bottom: 12px !important;
+  color: rgba(0, 200, 180, 0.85) !important;
+  background: rgba(0, 200, 180, 0.08);
+  border: 1px solid rgba(0, 200, 180, 0.2);
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.about-city-section-header.prospective {
+  color: rgba(220, 170, 50, 0.85) !important;
+  background: rgba(220, 170, 50, 0.08);
+  border-color: rgba(220, 170, 50, 0.2);
+  margin-top: 24px !important;
+}
+
+.about-city-list {
   display: grid;
   gap: 12px;
   margin-top: 10px;
+  margin-left: 20px;
 }
 
-.about-prospective-card {
+.about-city-card {
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.03);
 }
 
-.about-prospective-card h4 {
+.about-city-card.included {
+  border-left: 3px solid rgba(0, 200, 180, 0.5);
+  background: rgba(0, 200, 180, 0.04);
+}
+
+.about-city-card.prospective {
+  border-left: 3px solid rgba(220, 170, 50, 0.45);
+  background: rgba(220, 170, 50, 0.04);
+}
+
+.about-city-card h4 {
   margin: 0 0 8px 0;
   font-size: 0.95rem;
   color: rgba(255, 255, 255, 0.95);
 }
 
-.about-prospective-card h4 span {
+.about-city-card h4 span {
   color: rgba(255, 255, 255, 0.65);
   font-weight: 500;
 }
 
-.about-prospective-card p {
+.about-city-card p {
   margin: 0;
   color: rgba(255, 255, 255, 0.82);
   line-height: 1.45;
   font-size: 0.9rem;
 }
 
-.about-prospective-card p + p {
+.about-city-card p + p {
   margin-top: 6px;
 }
 
@@ -2822,7 +2853,7 @@
 
   .about-tab-content p,
   .about-section-block li,
-  .about-prospective-card p {
+  .about-city-card p {
     font-size: 0.9rem;
     line-height: 1.5;
   }
