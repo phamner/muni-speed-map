@@ -98,6 +98,13 @@ export const ABOUT_SECTIONS = {
       "Job density is available for all US cities on the platform. Toronto does not have job density data, as LODES is a US-only dataset.",
       "The job density overlay shows where employment is concentrated, which often differs significantly from where people live. Comparing population and job density side by side can reveal whether transit lines are well-positioned to serve commute patterns.",
     ],
+    transitCommute: [
+      "Transit commute share data comes from the American Community Survey (ACS) 5-Year Estimates (2018-2022), Table B08301: Means of Transportation to Work.",
+      "The percentage shown is workers who commute by public transportation (bus, streetcar, subway, railroad, or ferry), excluding taxicab, out of all workers age 16 and over in each census tract.",
+      "This is commute-to-work data only. It does not capture non-work trips such as errands, medical appointments, or school travel.",
+      "Transit commute share is available for all US cities on the platform. Toronto does not have this data, as the ACS is a US-only survey.",
+      "The transit commute overlay helps identify where transit ridership demand is highest and how well rail lines serve areas with high transit dependency. Areas with high transit commute share and slow rail service represent the biggest opportunities for improvement.",
+    ],
     segmentAverages: [
       "Route lines are divided into fixed 200 and 500-meter segments. Each vehicle position is assigned to the segment it falls within based on distance along the route.",
       "For some cities (currently Los Angeles and Denver), the platform combines speed readings from both directions of travel into unified segment averages. Instead of splitting readings between parallel tracks, all readings contribute to one average per segment, which produces more statistically robust data.",

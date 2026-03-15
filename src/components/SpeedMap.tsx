@@ -4190,21 +4190,48 @@ export function SpeedMap({
               if (d >= 1500) return "#2a3a8a";
               return "#1a2a5a";
             };
+            const getTransitColor = (pct: number): string => {
+              if (pct >= 35) return "#88eeee";
+              if (pct >= 20) return "#44cccc";
+              if (pct >= 10) return "#22aaaa";
+              if (pct >= 5) return "#1a6a6a";
+              if (pct >= 2) return "#1a3848";
+              return "#122030";
+            };
 
-            const isJobMode = densityModeRef.current === "jobs";
-            const activeDensity = isJobMode ? jobDensity : density;
-            const densityColor = isJobMode ? getJobDensityColor(jobDensity) : getPopDensityColor(density);
-            const unitLabel = isJobMode ? "jobs/km²" : "people/km²";
-            const countLabel = isJobMode
-              ? `Total jobs: ${jobs.toLocaleString()}`
-              : `Population: ${population.toLocaleString()}`;
+            const mode = densityModeRef.current;
+            const transitPct = props.TRANSIT_PCT || 0;
+            const transitWorkers = props.TRANSIT_WORKERS || 0;
+            const totalWorkers = props.TOTAL_WORKERS || 0;
+
+            let activeValue: string;
+            let densityColor: string;
+            let unitLabel: string;
+            let countLabel: string;
+
+            if (mode === "transit") {
+              activeValue = `${transitPct}%`;
+              densityColor = getTransitColor(transitPct);
+              unitLabel = "transit commute";
+              countLabel = `${transitWorkers.toLocaleString()} of ${totalWorkers.toLocaleString()} workers`;
+            } else if (mode === "jobs") {
+              activeValue = jobDensity.toLocaleString();
+              densityColor = getJobDensityColor(jobDensity);
+              unitLabel = "jobs/km²";
+              countLabel = `Total jobs: ${jobs.toLocaleString()}`;
+            } else {
+              activeValue = density.toLocaleString();
+              densityColor = getPopDensityColor(density);
+              unitLabel = "people/km²";
+              countLabel = `Population: ${population.toLocaleString()}`;
+            }
 
             popup.current
               ?.setLngLat(e.lngLat)
               .setHTML(
                 `<div class="popup-content density-popup">
                 <div class="popup-density">
-                  <span class="density-value" style="color: ${densityColor}">${activeDensity.toLocaleString()}</span>
+                  <span class="density-value" style="color: ${densityColor}">${activeValue}</span>
                   <span class="density-unit">${unitLabel}</span>
                 </div>
                 <div class="popup-population">${countLabel}</div>
@@ -4264,13 +4291,11 @@ export function SpeedMap({
     if (!map.current.getLayer("population-density-fill")) return;
 
     const fillOpacityMultiplier = showSatellite ? 0.7 : 1;
-    const isJobMode = densityMode === "jobs";
-    const densityProp = isJobMode ? "jobDensity" : "density";
+    const densityProp =
+      densityMode === "jobs" ? "jobDensity" : densityMode === "transit" ? "TRANSIT_PCT" : "density";
 
-    map.current.setPaintProperty(
-      "population-density-fill",
-      "fill-color",
-      isJobMode
+    const colorExpr =
+      densityMode === "jobs"
         ? [
             "interpolate", ["linear"], ["get", densityProp],
             0, "#0f1724",
@@ -4283,24 +4308,34 @@ export function SpeedMap({
             25000, "#ee5566",
             50000, "#ff3333",
           ]
-        : [
-            "interpolate", ["linear"], ["get", densityProp],
-            0, "#0f1724",
-            250, "#132434",
-            1000, "#1a3a4a",
-            2500, "#2a5a5a",
-            5000, "#3a7a6a",
-            8000, "#5a9a5a",
-            12000, "#aacc44",
-            18000, "#ffcc00",
-            28000, "#ff6600",
-            45000, "#ff0066",
-          ],
-    );
-    map.current.setPaintProperty(
-      "population-density-fill",
-      "fill-opacity",
-      isJobMode
+        : densityMode === "transit"
+          ? [
+              "interpolate", ["linear"], ["get", densityProp],
+              0, "#0f1724",
+              1, "#122030",
+              2, "#1a3848",
+              5, "#1a6a6a",
+              10, "#22aaaa",
+              20, "#44cccc",
+              35, "#88eeee",
+              50, "#ccffff",
+            ]
+          : [
+              "interpolate", ["linear"], ["get", densityProp],
+              0, "#0f1724",
+              250, "#132434",
+              1000, "#1a3a4a",
+              2500, "#2a5a5a",
+              5000, "#3a7a6a",
+              8000, "#5a9a5a",
+              12000, "#aacc44",
+              18000, "#ffcc00",
+              28000, "#ff6600",
+              45000, "#ff0066",
+            ];
+
+    const opacityExpr =
+      densityMode === "jobs"
         ? [
             "interpolate", ["linear"], ["get", densityProp],
             0, 0.82 * fillOpacityMultiplier,
@@ -4309,15 +4344,26 @@ export function SpeedMap({
             12000, 0.62 * fillOpacityMultiplier,
             50000, 0.58 * fillOpacityMultiplier,
           ]
-        : [
-            "interpolate", ["linear"], ["get", densityProp],
-            0, 0.82 * fillOpacityMultiplier,
-            1000, 0.76 * fillOpacityMultiplier,
-            5000, 0.68 * fillOpacityMultiplier,
-            12000, 0.62 * fillOpacityMultiplier,
-            45000, 0.58 * fillOpacityMultiplier,
-          ],
-    );
+        : densityMode === "transit"
+          ? [
+              "interpolate", ["linear"], ["get", densityProp],
+              0, 0.82 * fillOpacityMultiplier,
+              5, 0.76 * fillOpacityMultiplier,
+              15, 0.68 * fillOpacityMultiplier,
+              30, 0.62 * fillOpacityMultiplier,
+              50, 0.58 * fillOpacityMultiplier,
+            ]
+          : [
+              "interpolate", ["linear"], ["get", densityProp],
+              0, 0.82 * fillOpacityMultiplier,
+              1000, 0.76 * fillOpacityMultiplier,
+              5000, 0.68 * fillOpacityMultiplier,
+              12000, 0.62 * fillOpacityMultiplier,
+              45000, 0.58 * fillOpacityMultiplier,
+            ];
+
+    map.current.setPaintProperty("population-density-fill", "fill-color", colorExpr);
+    map.current.setPaintProperty("population-density-fill", "fill-opacity", opacityExpr);
   }, [mapLoaded, densityMode, showSatellite, showPopulationDensity]);
 
   // Update speed limit labels when speed unit changes

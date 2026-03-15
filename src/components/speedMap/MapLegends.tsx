@@ -215,10 +215,19 @@ const JOB_LEGEND = [
   { color: "#ff3333", label: "> 50k" },
 ];
 
+const TRANSIT_LEGEND = [
+  { color: "#1a3848", label: "< 2%" },
+  { color: "#1a6a6a", label: "2-5%" },
+  { color: "#22aaaa", label: "5-10%" },
+  { color: "#44cccc", label: "10-20%" },
+  { color: "#88eeee", label: "20-35%" },
+  { color: "#ccffff", label: "> 35%" },
+];
+
 export function DensityLegend({ mode, onModeChange, city }: DensityLegendProps) {
-  const items = mode === "jobs" ? JOB_LEGEND : POP_LEGEND;
-  const unitLabel = mode === "jobs" ? "jobs/km²" : "people/km²";
-  const noJobData = mode === "jobs" && city === "Toronto";
+  const items = mode === "jobs" ? JOB_LEGEND : mode === "transit" ? TRANSIT_LEGEND : POP_LEGEND;
+  const unitLabel = mode === "jobs" ? "jobs/km²" : mode === "transit" ? "% transit commute" : "people/km²";
+  const noData = (mode === "jobs" || mode === "transit") && city === "Toronto";
 
   return (
     <div className="map-density-legend">
@@ -227,7 +236,7 @@ export function DensityLegend({ mode, onModeChange, city }: DensityLegendProps) 
           className={`density-mode-btn ${mode === "population" ? "active" : ""}`}
           onClick={() => onModeChange?.("population")}
         >
-          Population
+          Pop.
         </button>
         <button
           className={`density-mode-btn ${mode === "jobs" ? "active" : ""}`}
@@ -235,9 +244,15 @@ export function DensityLegend({ mode, onModeChange, city }: DensityLegendProps) 
         >
           Jobs
         </button>
+        <button
+          className={`density-mode-btn ${mode === "transit" ? "active" : ""}`}
+          onClick={() => onModeChange?.("transit")}
+        >
+          Transit Use
+        </button>
       </div>
-      {noJobData ? (
-        <div className="density-no-data">Job data not available for Toronto</div>
+      {noData ? (
+        <div className="density-no-data">Not available for Toronto</div>
       ) : (
         <>
           <div className="map-density-legend-title">{unitLabel}</div>

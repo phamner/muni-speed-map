@@ -1750,6 +1750,27 @@ export function Controls({
                                           : city === "Charlotte"
                                             ? "Mecklenburg, Gaston, Union counties"
                                             : ""}
+          {city !== "Toronto" && (
+            <>
+              . Job density from{" "}
+              <a
+                href="https://lehd.ces.census.gov/data/#lodes"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LEHD LODES 2021
+              </a>
+              . Transit commute from{" "}
+              <a
+                href="https://data.census.gov/table/ACSDT5Y2022.B08301"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                ACS 2022
+              </a>{" "}
+              (same tracts)
+            </>
+          )}
         </p>
         <p className="data-attribution" style={{ marginTop: "8px" }}>
           Built by Philip Hamner ·{" "}
@@ -1977,6 +1998,19 @@ export function Controls({
                       {!collapsedSections.has("data-jobdensity") && (
                         <ul>
                           {ABOUT_SECTIONS.data.jobDensity.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="about-section-block">
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-transitcommute")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-transitcommute") ? "" : "expanded"}`}>&#9656;</span>
+                        Transit Commute Share Overlay
+                      </h3>
+                      {!collapsedSections.has("data-transitcommute") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.transitCommute.map((item) => (
                             <li key={item}>{item}</li>
                           ))}
                         </ul>

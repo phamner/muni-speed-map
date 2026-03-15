@@ -2546,6 +2546,18 @@
   );
 }
 
+/* Transit commute preview - dark-to-cyan gradient */
+.map-layer-tile .transit-preview {
+  background: linear-gradient(
+    135deg,
+    #0f1724 0%,
+    #1a3848 25%,
+    #1a6a6a 50%,
+    #22aaaa 75%,
+    #88eeee 100%
+  );
+}
+
 /* Coming soon badge on tile */
 .map-layer-tile .tile-badge {
   position: absolute;

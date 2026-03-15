@@ -19,7 +19,7 @@ export type RouteLineMode = "byLine" | "bySpeedLimit" | "bySeparation";
 
 export type SpeedUnit = "mph" | "kmh";
 
-export type DensityMode = "population" | "jobs";
+export type DensityMode = "population" | "jobs" | "transit";
 
 export interface LineStats {
   line: string;

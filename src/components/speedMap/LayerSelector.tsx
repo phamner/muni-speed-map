@@ -85,6 +85,22 @@ export function LayerSelector({
           <div className="layer-preview jobs-preview" />
           <span className="layer-label">Jobs</span>
         </div>
+
+        <div
+          className={`map-layer-tile ${showPopulationDensity && densityMode === "transit" ? "active" : ""}`}
+          onClick={() => {
+            if (showPopulationDensity && densityMode === "transit") {
+              onPopulationDensityToggle?.(false);
+            } else {
+              onDensityModeChange?.("transit");
+              onPopulationDensityToggle?.(true);
+            }
+          }}
+          title="Transit commute share"
+        >
+          <div className="layer-preview transit-preview" />
+          <span className="layer-label">Transit Use</span>
+        </div>
       </div>
     </div>
   );
