@@ -219,9 +219,9 @@ const TRANSIT_LEGEND = [
   { color: "#1a3848", label: "< 2%" },
   { color: "#1a6a6a", label: "2-5%" },
   { color: "#22aaaa", label: "5-10%" },
-  { color: "#44cccc", label: "10-20%" },
-  { color: "#88eeee", label: "20-35%" },
-  { color: "#ccffff", label: "> 35%" },
+  { color: "#66cc88", label: "10-20%" },
+  { color: "#dddd66", label: "20-35%" },
+  { color: "#fffbe6", label: "> 35%" },
 ];
 
 export function DensityLegend({ mode, onModeChange, city }: DensityLegendProps) {

@@ -4191,8 +4191,8 @@ export function SpeedMap({
               return "#1a2a5a";
             };
             const getTransitColor = (pct: number): string => {
-              if (pct >= 35) return "#88eeee";
-              if (pct >= 20) return "#44cccc";
+              if (pct >= 35) return "#dddd66";
+              if (pct >= 20) return "#66cc88";
               if (pct >= 10) return "#22aaaa";
               if (pct >= 5) return "#1a6a6a";
               if (pct >= 2) return "#1a3848";
@@ -4251,6 +4251,32 @@ export function SpeedMap({
           );
           map.current.on("click", "population-density-fill", showDensityPopup);
         } // end of else block (first-time layer creation)
+
+        // Apply correct paint for the current density mode (needed on first load
+        // when the paint effect may have run before layers existed)
+        if (map.current.getLayer("population-density-fill")) {
+          const curMode = densityModeRef.current;
+          const dp = curMode === "jobs" ? "jobDensity" : curMode === "transit" ? "TRANSIT_PCT" : "density";
+          const satMult = showSatellite ? 0.7 : 1;
+          map.current.setPaintProperty(
+            "population-density-fill",
+            "fill-color",
+            curMode === "jobs"
+              ? ["interpolate",["linear"],["get",dp],0,"#0f1724",100,"#131a34",500,"#1a2a5a",1500,"#2a3a8a",3000,"#4a4aaa",6000,"#7a5ab0",12000,"#bb55aa",25000,"#ee5566",50000,"#ff3333"]
+              : curMode === "transit"
+                ? ["interpolate",["linear"],["get",dp],0,"#0f1724",1,"#122030",2,"#1a3848",5,"#1a6a6a",10,"#22aaaa",20,"#66cc88",35,"#dddd66",50,"#fffbe6"]
+                : ["interpolate",["linear"],["get",dp],0,"#0f1724",250,"#132434",1000,"#1a3a4a",2500,"#2a5a5a",5000,"#3a7a6a",8000,"#5a9a5a",12000,"#aacc44",18000,"#ffcc00",28000,"#ff6600",45000,"#ff0066"],
+          );
+          map.current.setPaintProperty(
+            "population-density-fill",
+            "fill-opacity",
+            curMode === "jobs"
+              ? ["interpolate",["linear"],["get",dp],0,0.82*satMult,500,0.76*satMult,3000,0.68*satMult,12000,0.62*satMult,50000,0.58*satMult]
+              : curMode === "transit"
+                ? ["interpolate",["linear"],["get",dp],0,0.82*satMult,5,0.76*satMult,15,0.68*satMult,30,0.62*satMult,50,0.58*satMult]
+                : ["interpolate",["linear"],["get",dp],0,0.82*satMult,1000,0.76*satMult,5000,0.68*satMult,12000,0.62*satMult,45000,0.58*satMult],
+          );
+        }
 
         // Toggle visibility on/off
         const isVisible = showPopulationDensity ? "visible" : "none";
@@ -4316,9 +4342,9 @@ export function SpeedMap({
               2, "#1a3848",
               5, "#1a6a6a",
               10, "#22aaaa",
-              20, "#44cccc",
-              35, "#88eeee",
-              50, "#ccffff",
+              20, "#66cc88",
+              35, "#dddd66",
+              50, "#fffbe6",
             ]
           : [
               "interpolate", ["linear"], ["get", densityProp],

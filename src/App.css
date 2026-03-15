@@ -2546,15 +2546,15 @@
   );
 }
 
-/* Transit commute preview - dark-to-cyan gradient */
+/* Transit commute preview - dark teal to warm yellow gradient */
 .map-layer-tile .transit-preview {
   background: linear-gradient(
     135deg,
     #0f1724 0%,
-    #1a3848 25%,
-    #1a6a6a 50%,
-    #22aaaa 75%,
-    #88eeee 100%
+    #1a3848 20%,
+    #22aaaa 45%,
+    #66cc88 65%,
+    #dddd66 100%
   );
 }
 
