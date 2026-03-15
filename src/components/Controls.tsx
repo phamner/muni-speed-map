@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
 import { createPortal } from "react-dom";
 import type {
   MuniLine,
@@ -555,6 +555,17 @@ export function Controls({
   }, [tooltip]);
   const [showAboutModal, setShowAboutModal] = useState(false);
   const [aboutActiveTab, setAboutActiveTab] = useState<AboutTab>("overview");
+  const [collapsedSections, setCollapsedSections] = useState<Set<string>>(
+    new Set(),
+  );
+  const toggleSection = useCallback((key: string) => {
+    setCollapsedSections((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  }, []);
   const [showTransitMapModal, setShowTransitMapModal] = useState(false);
   const [transitMapZoom, setTransitMapZoom] = useState(MIN_TRANSIT_MAP_ZOOM);
   const [transitMapPan, setTransitMapPan] = useState({ x: 0, y: 0 });
@@ -1839,38 +1850,58 @@ export function Controls({
                   <>
                     <p>{ABOUT_SECTIONS.howto.intro}</p>
                     <div className="about-section-block">
-                      <h3>Getting Started</h3>
-                      <ol>
-                        {ABOUT_SECTIONS.howto.quickStart.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ol>
-                    </div>
-                    <div className="about-section-block">
-                      <h3>View Modes</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.howto.views.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="about-section-block">
-                      <h3>Understanding Infrastructure Markers</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.howto.infrastructureMarkers.map(
-                          (item) => (
+                      <h3 className="about-collapsible" onClick={() => toggleSection("howto-start")}>
+                        <span className={`about-chevron ${collapsedSections.has("howto-start") ? "" : "expanded"}`}>&#9656;</span>
+                        Getting Started
+                      </h3>
+                      {!collapsedSections.has("howto-start") && (
+                        <ol>
+                          {ABOUT_SECTIONS.howto.quickStart.map((item) => (
                             <li key={item}>{item}</li>
-                          ),
-                        )}
-                      </ul>
+                          ))}
+                        </ol>
+                      )}
                     </div>
                     <div className="about-section-block">
-                      <h3>Tips</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.howto.tips.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("howto-views")}>
+                        <span className={`about-chevron ${collapsedSections.has("howto-views") ? "" : "expanded"}`}>&#9656;</span>
+                        View Modes
+                      </h3>
+                      {!collapsedSections.has("howto-views") && (
+                        <ul>
+                          {ABOUT_SECTIONS.howto.views.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="about-section-block">
+                      <h3 className="about-collapsible" onClick={() => toggleSection("howto-infra")}>
+                        <span className={`about-chevron ${collapsedSections.has("howto-infra") ? "" : "expanded"}`}>&#9656;</span>
+                        Understanding Infrastructure Markers
+                      </h3>
+                      {!collapsedSections.has("howto-infra") && (
+                        <ul>
+                          {ABOUT_SECTIONS.howto.infrastructureMarkers.map(
+                            (item) => (
+                              <li key={item}>{item}</li>
+                            ),
+                          )}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="about-section-block">
+                      <h3 className="about-collapsible" onClick={() => toggleSection("howto-tips")}>
+                        <span className={`about-chevron ${collapsedSections.has("howto-tips") ? "" : "expanded"}`}>&#9656;</span>
+                        Tips
+                      </h3>
+                      {!collapsedSections.has("howto-tips") && (
+                        <ul>
+                          {ABOUT_SECTIONS.howto.tips.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </>
                 )}
@@ -1878,64 +1909,104 @@ export function Controls({
                 {aboutActiveTab === "data" && (
                   <>
                     <div className="about-section-block">
-                      <h3>{ABOUT_SECTIONS.data.dataCollectionTitle}</h3>
-                      <p>{ABOUT_SECTIONS.data.dataCollection}</p>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-collection")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-collection") ? "" : "expanded"}`}>&#9656;</span>
+                        {ABOUT_SECTIONS.data.dataCollectionTitle}
+                      </h3>
+                      {!collapsedSections.has("data-collection") && (
+                        <p>{ABOUT_SECTIONS.data.dataCollection}</p>
+                      )}
                     </div>
                     <div className="about-section-block">
-                      <h3>Data Sources</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.data.sources.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-sources")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-sources") ? "" : "expanded"}`}>&#9656;</span>
+                        Data Sources
+                      </h3>
+                      {!collapsedSections.has("data-sources") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.sources.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                     <div className="about-section-block">
-                      <h3>How Segment Averages Work</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.data.segmentAverages.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-segments")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-segments") ? "" : "expanded"}`}>&#9656;</span>
+                        How Segment Averages Work
+                      </h3>
+                      {!collapsedSections.has("data-segments") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.segmentAverages.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                     <div className="about-section-block">
-                      <h3>Speed by Line Statistics</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.data.lineStatistics.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-linestats")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-linestats") ? "" : "expanded"}`}>&#9656;</span>
+                        Speed by Line Statistics
+                      </h3>
+                      {!collapsedSections.has("data-linestats") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.lineStatistics.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                     <div className="about-section-block">
-                      <h3>Population Density Overlay</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.data.populationDensity.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-popdensity")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-popdensity") ? "" : "expanded"}`}>&#9656;</span>
+                        Population Density Overlay
+                      </h3>
+                      {!collapsedSections.has("data-popdensity") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.populationDensity.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                     <div className="about-section-block">
-                      <h3>Project Scope</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.data.scope.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-scope")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-scope") ? "" : "expanded"}`}>&#9656;</span>
+                        Project Scope
+                      </h3>
+                      {!collapsedSections.has("data-scope") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.scope.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                     <div className="about-section-block">
-                      <h3>Why Some Cities Are Excluded</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.data.exclusions.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-exclusions")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-exclusions") ? "" : "expanded"}`}>&#9656;</span>
+                        Why Some Cities Are Excluded
+                      </h3>
+                      {!collapsedSections.has("data-exclusions") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.exclusions.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                     <div className="about-section-block">
-                      <h3>Limitations</h3>
-                      <ul>
-                        {ABOUT_SECTIONS.data.limitations.map((item) => (
-                          <li key={item}>{item}</li>
-                        ))}
-                      </ul>
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-limitations")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-limitations") ? "" : "expanded"}`}>&#9656;</span>
+                        Limitations
+                      </h3>
+                      {!collapsedSections.has("data-limitations") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.limitations.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
                     </div>
                   </>
                 )}
@@ -1943,44 +2014,58 @@ export function Controls({
                 {aboutActiveTab === "cities" && (
                   <>
                     <div className="about-section-block">
-                      <h3 className="about-city-section-header">
+                      <h3
+                        className="about-city-section-header about-collapsible"
+                        onClick={() => toggleSection("cities-included")}
+                      >
+                        <span className={`about-chevron ${collapsedSections.has("cities-included") ? "" : "expanded"}`}>&#9656;</span>
                         Included Cities
                       </h3>
-                      <div className="about-city-list">
-                        {ABOUT_CITY_NOTES.map((cityNote) => (
-                          <div
-                            key={cityNote.city}
-                            className="about-city-card included"
-                          >
-                            <h4>{cityNote.city}</h4>
-                            <p>{cityNote.note}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="about-section-block">
-                      <h3 className="about-city-section-header prospective">
-                        Cities I Want to Add
-                      </h3>
-                      <p>{ABOUT_SECTIONS.cities.prospectiveIntro}</p>
-                      <div className="about-city-list">
-                        {[...ABOUT_PROSPECTIVE_CITIES]
-                          .sort((a, b) => a.city.localeCompare(b.city))
-                          .map((item) => (
+                      {!collapsedSections.has("cities-included") && (
+                        <div className="about-city-list">
+                          {ABOUT_CITY_NOTES.map((cityNote) => (
                             <div
-                              key={`${item.city}-${item.system}`}
-                              className="about-city-card prospective"
+                              key={cityNote.city}
+                              className="about-city-card included"
                             >
-                              <h4>
-                                {item.city} <span>({item.system})</span>
-                              </h4>
-                              <p>{item.value}</p>
-                              <p>
-                                <strong>Current blocker:</strong> {item.blocker}
-                              </p>
+                              <h4>{cityNote.city}</h4>
+                              <p>{cityNote.note}</p>
                             </div>
                           ))}
-                      </div>
+                        </div>
+                      )}
+                    </div>
+                    <div className="about-section-block">
+                      <h3
+                        className="about-city-section-header prospective about-collapsible"
+                        onClick={() => toggleSection("cities-prospective")}
+                      >
+                        <span className={`about-chevron ${collapsedSections.has("cities-prospective") ? "" : "expanded"}`}>&#9656;</span>
+                        Cities I Want to Add
+                      </h3>
+                      {!collapsedSections.has("cities-prospective") && (
+                        <>
+                          <p>{ABOUT_SECTIONS.cities.prospectiveIntro}</p>
+                          <div className="about-city-list">
+                            {[...ABOUT_PROSPECTIVE_CITIES]
+                              .sort((a, b) => a.city.localeCompare(b.city))
+                              .map((item) => (
+                                <div
+                                  key={`${item.city}-${item.system}`}
+                                  className="about-city-card prospective"
+                                >
+                                  <h4>
+                                    {item.city} <span>({item.system})</span>
+                                  </h4>
+                                  <p>{item.value}</p>
+                                  <p>
+                                    <strong>Current blocker:</strong> {item.blocker}
+                                  </p>
+                                </div>
+                              ))}
+                          </div>
+                        </>
+                      )}
                     </div>
                   </>
                 )}

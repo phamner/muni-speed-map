@@ -1814,6 +1814,30 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
+.about-collapsible {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.about-collapsible:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.about-chevron {
+  display: inline-block;
+  font-size: 0.7rem;
+  transition: transform 0.15s ease;
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.about-chevron.expanded {
+  transform: rotate(90deg);
+}
+
 .about-tab-content h3 {
   margin-top: 8px;
   margin-bottom: 4px;
@@ -1862,11 +1886,19 @@
   font-weight: 600;
 }
 
+.about-city-section-header .about-chevron {
+  color: rgba(0, 200, 180, 0.7);
+}
+
 .about-city-section-header.prospective {
   color: rgba(220, 170, 50, 0.85) !important;
   background: rgba(220, 170, 50, 0.08);
   border-color: rgba(220, 170, 50, 0.2);
   margin-top: 24px !important;
+}
+
+.about-city-section-header.prospective .about-chevron {
+  color: rgba(220, 170, 50, 0.7);
 }
 
 .about-city-list {
