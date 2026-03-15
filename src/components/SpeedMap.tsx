@@ -22,6 +22,7 @@ import {
   escapeHtml,
   distanceToLineString,
   distanceToSegment,
+  MAX_DISTANCE_FROM_ROUTE_METERS,
 } from "./speedMap/geoUtils";
 import { filterSeparationByRoutes } from "./speedMap/separationUtils";
 import {
