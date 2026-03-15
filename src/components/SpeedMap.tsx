@@ -288,6 +288,7 @@ const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
 > = {
   SF: {
     "001": "Alameda County",
+    "013": "Contra Costa County",
     "041": "Marin County",
     "075": "San Francisco County",
     "081": "San Mateo County",
@@ -296,6 +297,9 @@ const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
   LA: {
     "037": "Los Angeles County",
     "059": "Orange County",
+    "065": "Riverside County",
+    "071": "San Bernardino County",
+    "111": "Ventura County",
   },
   Boston: {
     "009": "Essex County",
@@ -330,6 +334,7 @@ const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
   },
   "San Jose": {
     "001": "Alameda County",
+    "013": "Contra Costa County",
     "075": "San Francisco County",
     "081": "San Mateo County",
     "085": "Santa Clara County",

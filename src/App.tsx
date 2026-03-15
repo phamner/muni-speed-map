@@ -87,7 +87,7 @@ function App() {
   const [busRoutesOverlayCount, setBusRoutesOverlayCount] = useState(0);
   const [hideStoppedTrains, setHideStoppedTrains] = useState(false);
   const [hideAllTrains, setHideAllTrains] = useState(false);
-  const [viewMode, setViewMode] = useState<ViewMode>("raw");
+  const [viewMode, setViewMode] = useState<ViewMode>("segments-500");
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
   const [showSatellite, setShowSatellite] = useState(false);
   const [showPopulationDensity, setShowPopulationDensity] = useState(false);
