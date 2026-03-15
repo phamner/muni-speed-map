@@ -477,6 +477,30 @@ export function SpeedMap({
   useEffect(() => {
     setExpandedStopCluster(null);
   }, [city]);
+  const segmentWorker = useRef<Worker | null>(null);
+  const segmentRequestId = useRef(0);
+
+  useEffect(() => {
+    try {
+      const worker = new Worker(
+        new URL("./speedMap/segmentWorker.ts", import.meta.url),
+        { type: "module" },
+      );
+      worker.onerror = (e) => {
+        console.warn("Segment worker error, falling back to main thread:", e);
+        segmentWorker.current = null;
+      };
+      segmentWorker.current = worker;
+    } catch (e) {
+      console.warn("Failed to create segment worker, using main thread:", e);
+      segmentWorker.current = null;
+    }
+    return () => {
+      segmentWorker.current?.terminate();
+      segmentWorker.current = null;
+    };
+  }, []);
+
   const [vehicles, setVehicles] = useState<Vehicle[]>([]);
   const [dataSource, setDataSource] = useState<"loading" | "supabase" | "none">(
     "loading",
@@ -1056,6 +1080,27 @@ export function SpeedMap({
     };
   }, [liveVehicles, city, routeGeometryMap, allCityLines]);
 
+  const computeOnMainThread = useCallback((rows: any[], routes: any, cityName: string): Vehicle[] => {
+    const routeFeatureMap = getRouteFeatureMap(routes);
+    return rows.map((row: any) => {
+      const segments = findSegmentsForVehicle(
+        row.lat, row.lon, row.route_id,
+        routes, routeFeatureMap, cityName,
+      );
+      return {
+        id: `${row.vehicle_id}-${row.id}`,
+        lat: row.lat, lon: row.lon, routeId: row.route_id,
+        direction: getDirection(row.direction_id),
+        speed: row.speed_calculated,
+        recordedAt: row.recorded_at,
+        segmentId: segments.segmentId,
+        segmentId500: segments.segmentId500,
+        headsign: row.headsign,
+        onRoute: segments.minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS,
+      };
+    });
+  }, []);
+
   // Fetch vehicle positions from Supabase filtered by city
   const fetchVehiclesFromSupabase = useCallback(async () => {
     if (!supabase) {
@@ -1157,62 +1202,62 @@ export function SpeedMap({
 
       console.timeEnd("Fetching data");
 
-      // Show processing phase
-      setLoadingProgress(
-        `Processing ${allData.length.toLocaleString()} positions...`,
-      );
-      setIsProcessing(true);
-
-      // Small delay to let React update UI before heavy processing
-      await new Promise((resolve) => setTimeout(resolve, 50));
-
-      // Filter to only valid lines for this city (removes data for removed lines like Mattapan)
+      // Filter to only valid lines for this city
       const validLines = getLinesForCity(city);
       const filteredData = allData.filter((row: any) => {
         return validLines.includes(row.route_id);
       });
 
-      // Pre-compute segment assignments
       setLoadingProgress(
         `Mapping ${filteredData.length.toLocaleString()} positions to track...`,
       );
-      await new Promise((resolve) => setTimeout(resolve, 10));
+      setIsProcessing(true);
+
       console.time("Pre-computing segments");
+      const thisRequestId = ++segmentRequestId.current;
 
-      // Build route feature map once (optimization: avoids filtering per-vehicle)
-      const routeFeatureMap = getRouteFeatureMap(cityConfig.routes);
+      const allPositions: Vehicle[] = await new Promise((resolve) => {
+        const worker = segmentWorker.current;
+        if (!worker) {
+          resolve(computeOnMainThread(filteredData, cityConfig.routes, city));
+          return;
+        }
 
-      const allPositions: Vehicle[] = filteredData.map((row: any) => {
-        const lat = row.lat;
-        const lon = row.lon;
-        const routeId = row.route_id;
-        const segments = findSegmentsForVehicle(
-          lat,
-          lon,
-          routeId,
-          cityConfig.routes,
-          routeFeatureMap,
-          city,
-        );
-        return {
-          id: `${row.vehicle_id}-${row.id}`,
-          lat,
-          lon,
-          routeId,
-          direction: getDirection(row.direction_id),
-          speed: row.speed_calculated,
-          recordedAt: row.recorded_at,
-          segmentId: segments.segmentId,
-          segmentId500: segments.segmentId500,
-          headsign: row.headsign,
+        const cleanup = () => {
+          worker.removeEventListener("message", handler);
+          worker.removeEventListener("error", errorHandler);
         };
+        const handler = (e: MessageEvent) => {
+          if (e.data.requestId !== thisRequestId) return;
+          cleanup();
+          resolve(e.data.vehicles);
+        };
+        const errorHandler = () => {
+          cleanup();
+          console.warn("Worker error during computation, falling back to main thread");
+          segmentWorker.current = null;
+          resolve(computeOnMainThread(filteredData, cityConfig.routes, city));
+        };
+        worker.addEventListener("message", handler);
+        worker.addEventListener("error", errorHandler);
+
+        worker.postMessage({
+          rows: filteredData,
+          routes: cityConfig.routes,
+          city,
+          requestId: thisRequestId,
+        });
       });
+
       console.timeEnd("Pre-computing segments");
+
+      if (thisRequestId !== segmentRequestId.current) {
+        return;
+      }
 
       // Cache the results for instant switching
       cityDataCache.set(city, allPositions);
 
-      // Show rendering phase
       setLoadingProgress(
         `Rendering ${allPositions.length.toLocaleString()} data points...`,
       );
@@ -1231,7 +1276,7 @@ export function SpeedMap({
       setLoadingProgress("");
       setIsProcessing(false);
     }
-  }, [city, cityConfig.routes]);
+  }, [city, cityConfig.routes, computeOnMainThread]);
 
   // Fetch data when city changes (but only after static data is loaded)
   useEffect(() => {

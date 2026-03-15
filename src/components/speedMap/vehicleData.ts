@@ -116,7 +116,7 @@ export function findSegmentsForVehicle(
   routes: any,
   routeFeatureMap?: Map<string, any[]>,
   city?: string,
-): { segmentId: string | null; segmentId500: string | null } {
+): { segmentId: string | null; segmentId500: string | null; minDistance: number } {
   const featureMap = routeFeatureMap || getRouteFeatureMap(routes);
   const directRouteFeatures = featureMap.get(routeId) || [];
   const candidateRouteEntries: Array<[string, any[]]> =
@@ -174,10 +174,11 @@ export function findSegmentsForVehicle(
     return {
       segmentId: bestSegmentIndex200 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex200}` : null,
       segmentId500: bestSegmentIndex500 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex500}` : null,
+      minDistance,
     };
   }
 
-  return { segmentId: null, segmentId500: null };
+  return { segmentId: null, segmentId500: null, minDistance: Infinity };
 }
 
 export function getDirection(directionId: any): string | undefined {
