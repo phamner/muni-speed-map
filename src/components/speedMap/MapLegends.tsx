@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { createPortal } from "react-dom";
 import type { City } from "../../types";
-import type { SpeedUnit } from "../../App";
+import type { SpeedUnit, DensityMode } from "../../App";
 
 const GRADE_SEPARATION_TOOLTIP = `Classifies how rail tracks interact with surrounding streets and traffic.
 • Tunnel / Trench: Tracks run underground or below street level.
@@ -190,54 +190,70 @@ export function SeparationLegend() {
   );
 }
 
-export function DensityLegend() {
+interface DensityLegendProps {
+  mode: DensityMode;
+  onModeChange?: (mode: DensityMode) => void;
+  city: City;
+}
+
+const POP_LEGEND = [
+  { color: "#2a5a5a", label: "< 5k" },
+  { color: "#5a9a5a", label: "5-12k" },
+  { color: "#aacc44", label: "12-18k" },
+  { color: "#ffcc00", label: "18-28k" },
+  { color: "#ff6600", label: "28-45k" },
+  { color: "#ff0066", label: "> 45k" },
+];
+
+const JOB_LEGEND = [
+  { color: "#1a2a5a", label: "< 1.5k" },
+  { color: "#2a3a8a", label: "1.5-3k" },
+  { color: "#4a4aaa", label: "3-6k" },
+  { color: "#7a5ab0", label: "6-12k" },
+  { color: "#bb55aa", label: "12-25k" },
+  { color: "#ee5566", label: "25-50k" },
+  { color: "#ff3333", label: "> 50k" },
+];
+
+export function DensityLegend({ mode, onModeChange, city }: DensityLegendProps) {
+  const items = mode === "jobs" ? JOB_LEGEND : POP_LEGEND;
+  const unitLabel = mode === "jobs" ? "jobs/km²" : "people/km²";
+  const noJobData = mode === "jobs" && city === "Toronto";
+
   return (
     <div className="map-density-legend">
-      <div className="map-density-legend-title">Density (people/km²)</div>
-      <div className="map-density-legend-scale">
-        <div className="density-legend-item">
-          <span
-            className="density-legend-swatch"
-            style={{ backgroundColor: "#2a5a5a" }}
-          ></span>
-          <span>&lt; 5k</span>
-        </div>
-        <div className="density-legend-item">
-          <span
-            className="density-legend-swatch"
-            style={{ backgroundColor: "#5a9a5a" }}
-          ></span>
-          <span>5-12k</span>
-        </div>
-        <div className="density-legend-item">
-          <span
-            className="density-legend-swatch"
-            style={{ backgroundColor: "#aacc44" }}
-          ></span>
-          <span>12-18k</span>
-        </div>
-        <div className="density-legend-item">
-          <span
-            className="density-legend-swatch"
-            style={{ backgroundColor: "#ffcc00" }}
-          ></span>
-          <span>18-28k</span>
-        </div>
-        <div className="density-legend-item">
-          <span
-            className="density-legend-swatch"
-            style={{ backgroundColor: "#ff6600" }}
-          ></span>
-          <span>28-45k</span>
-        </div>
-        <div className="density-legend-item">
-          <span
-            className="density-legend-swatch"
-            style={{ backgroundColor: "#ff0066" }}
-          ></span>
-          <span>&gt; 45k</span>
-        </div>
+      <div className="density-mode-toggle">
+        <button
+          className={`density-mode-btn ${mode === "population" ? "active" : ""}`}
+          onClick={() => onModeChange?.("population")}
+        >
+          Population
+        </button>
+        <button
+          className={`density-mode-btn ${mode === "jobs" ? "active" : ""}`}
+          onClick={() => onModeChange?.("jobs")}
+        >
+          Jobs
+        </button>
       </div>
+      {noJobData ? (
+        <div className="density-no-data">Job data not available for Toronto</div>
+      ) : (
+        <>
+          <div className="map-density-legend-title">{unitLabel}</div>
+          <div className="map-density-legend-scale">
+            {items.map((item) => (
+              <div className="density-legend-item" key={item.label}>
+                <span
+                  className="density-legend-swatch"
+                  style={{ backgroundColor: item.color }}
+                ></span>
+                <span>{item.label}</span>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -14,7 +14,7 @@ import {
 import slcRailContextHeavy from "../data/rail-context/slcRailContextHeavy.json";
 import slcRailContextCommuter from "../data/rail-context/slcRailContextCommuter.json";
 import { loadPopulationDensity } from "../data/populationDensityLoader";
-import type { SpeedFilter, ViewMode, LineStats } from "../App";
+import type { SpeedFilter, ViewMode, LineStats, DensityMode } from "../App";
 import {
   debounce,
   waitForNoLongTasks,
@@ -269,6 +269,8 @@ interface SpeedMapProps {
   onSatelliteToggle?: (show: boolean) => void;
   showPopulationDensity?: boolean;
   onPopulationDensityToggle?: (show: boolean) => void;
+  densityMode?: DensityMode;
+  onDensityModeChange?: (mode: DensityMode) => void;
   speedUnit: "mph" | "kmh";
   onMapReady?: () => void;
   onVehicleUpdate?: (
@@ -451,6 +453,8 @@ export function SpeedMap({
   onSatelliteToggle,
   showPopulationDensity,
   onPopulationDensityToggle,
+  densityMode = "population",
+  onDensityModeChange,
   speedUnit,
   onMapReady,
   onVehicleUpdate,
@@ -469,6 +473,8 @@ export function SpeedMap({
   routeLineModeRef.current = routeLineMode;
   const showRouteLinesRef = useRef(showRouteLines);
   showRouteLinesRef.current = showRouteLines;
+  const densityModeRef = useRef(densityMode);
+  densityModeRef.current = densityMode;
   const [mapLoaded, setMapLoaded] = useState(false);
   const [showMobileLegends, setShowMobileLegends] = useState(false);
   const [expandedStopCluster, setExpandedStopCluster] = useState<string | null>(
@@ -3992,18 +3998,17 @@ export function SpeedMap({
       try {
         const processedData = {
           ...rawData,
-          features: rawData.features.map((f: any) => ({
-            ...f,
-            properties: {
-              ...f.properties,
-              density:
-                f.properties.AREALAND > 0
-                  ? Math.round(
-                      f.properties.POP100 / (f.properties.AREALAND / 1000000),
-                    )
-                  : 0,
-            },
-          })),
+          features: rawData.features.map((f: any) => {
+            const areaKm2 = f.properties.AREALAND > 0 ? f.properties.AREALAND / 1000000 : 0;
+            return {
+              ...f,
+              properties: {
+                ...f.properties,
+                density: areaKm2 > 0 ? Math.round(f.properties.POP100 / areaKm2) : 0,
+                jobDensity: areaKm2 > 0 ? Math.round((f.properties.JOBS || 0) / areaKm2) : 0,
+              },
+            };
+          }),
         };
 
         const existingSource = map.current.getSource(
@@ -4155,7 +4160,9 @@ export function SpeedMap({
             }
 
             const density = props.density || 0;
+            const jobDensity = props.jobDensity || 0;
             const population = props.POP100 || 0;
+            const jobs = props.JOBS || 0;
             const areaLabel = getPopulationDensityAreaLabel(city, geoid);
             const tractLabel = getPopulationDensityTractLabel(city, geoid);
             const placeLine = areaLabel
@@ -4165,7 +4172,7 @@ export function SpeedMap({
               ? `<div class="popup-meta-line">Tract: ${escapeHtml(tractLabel)}</div>`
               : "";
 
-            const getDensityColor = (d: number): string => {
+            const getPopDensityColor = (d: number): string => {
               if (d >= 45000) return "#ff0066";
               if (d >= 28000) return "#ff6600";
               if (d >= 18000) return "#ffcc00";
@@ -4174,17 +4181,33 @@ export function SpeedMap({
               if (d >= 5000) return "#3a7a6a";
               return "#2a5a5a";
             };
-            const densityColor = getDensityColor(density);
+            const getJobDensityColor = (d: number): string => {
+              if (d >= 50000) return "#ff3333";
+              if (d >= 25000) return "#ee5566";
+              if (d >= 12000) return "#bb55aa";
+              if (d >= 6000) return "#7a5ab0";
+              if (d >= 3000) return "#4a4aaa";
+              if (d >= 1500) return "#2a3a8a";
+              return "#1a2a5a";
+            };
+
+            const isJobMode = densityModeRef.current === "jobs";
+            const activeDensity = isJobMode ? jobDensity : density;
+            const densityColor = isJobMode ? getJobDensityColor(jobDensity) : getPopDensityColor(density);
+            const unitLabel = isJobMode ? "jobs/km²" : "people/km²";
+            const countLabel = isJobMode
+              ? `Total jobs: ${jobs.toLocaleString()}`
+              : `Population: ${population.toLocaleString()}`;
 
             popup.current
               ?.setLngLat(e.lngLat)
               .setHTML(
                 `<div class="popup-content density-popup">
                 <div class="popup-density">
-                  <span class="density-value" style="color: ${densityColor}">${density.toLocaleString()}</span>
-                  <span class="density-unit">people/km²</span>
+                  <span class="density-value" style="color: ${densityColor}">${activeDensity.toLocaleString()}</span>
+                  <span class="density-unit">${unitLabel}</span>
                 </div>
-                <div class="popup-population">Population: ${population.toLocaleString()}</div>
+                <div class="popup-population">${countLabel}</div>
                 <div class="popup-meta">
                   ${placeLine}
                   ${tractLine}
@@ -4202,34 +4225,13 @@ export function SpeedMap({
           map.current.on("click", "population-density-fill", showDensityPopup);
         } // end of else block (first-time layer creation)
 
-        // Toggle visibility and adjust opacity for satellite overlay
+        // Toggle visibility on/off
         const isVisible = showPopulationDensity ? "visible" : "none";
-        const fillOpacityMultiplier = showSatellite ? 0.7 : 1;
-
         if (map.current.getLayer("population-density-fill")) {
           map.current.setLayoutProperty(
             "population-density-fill",
             "visibility",
             isVisible,
-          );
-          map.current.setPaintProperty(
-            "population-density-fill",
-            "fill-opacity",
-            [
-              "interpolate",
-              ["linear"],
-              ["get", "density"],
-              0,
-              0.82 * fillOpacityMultiplier,
-              1000,
-              0.76 * fillOpacityMultiplier,
-              5000,
-              0.68 * fillOpacityMultiplier,
-              12000,
-              0.62 * fillOpacityMultiplier,
-              45000,
-              0.58 * fillOpacityMultiplier,
-            ],
           );
         }
         if (map.current.getLayer("population-density-outline")) {
@@ -4254,7 +4256,69 @@ export function SpeedMap({
     return () => {
       cancelled = true;
     };
-  }, [mapLoaded, showPopulationDensity, showSatellite, city]);
+  }, [mapLoaded, showPopulationDensity, city]);
+
+  // Separate effect for density mode and satellite opacity — GPU-only paint updates, no data reload
+  useEffect(() => {
+    if (!map.current || !mapLoaded || !showPopulationDensity) return;
+    if (!map.current.getLayer("population-density-fill")) return;
+
+    const fillOpacityMultiplier = showSatellite ? 0.7 : 1;
+    const isJobMode = densityMode === "jobs";
+    const densityProp = isJobMode ? "jobDensity" : "density";
+
+    map.current.setPaintProperty(
+      "population-density-fill",
+      "fill-color",
+      isJobMode
+        ? [
+            "interpolate", ["linear"], ["get", densityProp],
+            0, "#0f1724",
+            100, "#131a34",
+            500, "#1a2a5a",
+            1500, "#2a3a8a",
+            3000, "#4a4aaa",
+            6000, "#7a5ab0",
+            12000, "#bb55aa",
+            25000, "#ee5566",
+            50000, "#ff3333",
+          ]
+        : [
+            "interpolate", ["linear"], ["get", densityProp],
+            0, "#0f1724",
+            250, "#132434",
+            1000, "#1a3a4a",
+            2500, "#2a5a5a",
+            5000, "#3a7a6a",
+            8000, "#5a9a5a",
+            12000, "#aacc44",
+            18000, "#ffcc00",
+            28000, "#ff6600",
+            45000, "#ff0066",
+          ],
+    );
+    map.current.setPaintProperty(
+      "population-density-fill",
+      "fill-opacity",
+      isJobMode
+        ? [
+            "interpolate", ["linear"], ["get", densityProp],
+            0, 0.82 * fillOpacityMultiplier,
+            500, 0.76 * fillOpacityMultiplier,
+            3000, 0.68 * fillOpacityMultiplier,
+            12000, 0.62 * fillOpacityMultiplier,
+            50000, 0.58 * fillOpacityMultiplier,
+          ]
+        : [
+            "interpolate", ["linear"], ["get", densityProp],
+            0, 0.82 * fillOpacityMultiplier,
+            1000, 0.76 * fillOpacityMultiplier,
+            5000, 0.68 * fillOpacityMultiplier,
+            12000, 0.62 * fillOpacityMultiplier,
+            45000, 0.58 * fillOpacityMultiplier,
+          ],
+    );
+  }, [mapLoaded, densityMode, showSatellite, showPopulationDensity]);
 
   // Update speed limit labels when speed unit changes
   useEffect(() => {
@@ -4293,7 +4357,13 @@ export function SpeedMap({
           <SeparationLegend />
         )}
 
-        {showPopulationDensity && <DensityLegend />}
+        {showPopulationDensity && (
+          <DensityLegend
+            mode={densityMode}
+            onModeChange={onDensityModeChange}
+            city={city}
+          />
+        )}
 
         <DynamicLegends
           city={city}
@@ -4315,8 +4385,10 @@ export function SpeedMap({
       <LayerSelector
         showSatellite={showSatellite}
         showPopulationDensity={showPopulationDensity ?? false}
+        densityMode={densityMode}
         onSatelliteToggle={onSatelliteToggle}
         onPopulationDensityToggle={onPopulationDensityToggle}
+        onDensityModeChange={onDensityModeChange}
       />
 
       {/* City data loading overlay */}

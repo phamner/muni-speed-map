@@ -1,15 +1,21 @@
+import type { DensityMode } from "../../App";
+
 interface LayerSelectorProps {
   showSatellite: boolean;
   showPopulationDensity: boolean;
+  densityMode: DensityMode;
   onSatelliteToggle?: (show: boolean) => void;
   onPopulationDensityToggle?: (show: boolean) => void;
+  onDensityModeChange?: (mode: DensityMode) => void;
 }
 
 export function LayerSelector({
   showSatellite,
   showPopulationDensity,
+  densityMode,
   onSatelliteToggle,
   onPopulationDensityToggle,
+  onDensityModeChange,
 }: LayerSelectorProps) {
   return (
     <div className="map-layer-selector">
@@ -49,14 +55,35 @@ export function LayerSelector({
         </div>
 
         <div
-          className={`map-layer-tile ${showPopulationDensity ? "active" : ""}`}
+          className={`map-layer-tile ${showPopulationDensity && densityMode === "population" ? "active" : ""}`}
           onClick={() => {
-            onPopulationDensityToggle?.(!showPopulationDensity);
+            if (showPopulationDensity && densityMode === "population") {
+              onPopulationDensityToggle?.(false);
+            } else {
+              onDensityModeChange?.("population");
+              onPopulationDensityToggle?.(true);
+            }
           }}
           title="Population density"
         >
           <div className="layer-preview population-preview" />
-          <span className="layer-label">Density</span>
+          <span className="layer-label">Pop.</span>
+        </div>
+
+        <div
+          className={`map-layer-tile ${showPopulationDensity && densityMode === "jobs" ? "active" : ""}`}
+          onClick={() => {
+            if (showPopulationDensity && densityMode === "jobs") {
+              onPopulationDensityToggle?.(false);
+            } else {
+              onDensityModeChange?.("jobs");
+              onPopulationDensityToggle?.(true);
+            }
+          }}
+          title="Job density"
+        >
+          <div className="layer-preview jobs-preview" />
+          <span className="layer-label">Jobs</span>
         </div>
       </div>
     </div>

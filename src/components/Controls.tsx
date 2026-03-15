@@ -1970,6 +1970,19 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
+                      <h3 className="about-collapsible" onClick={() => toggleSection("data-jobdensity")}>
+                        <span className={`about-chevron ${collapsedSections.has("data-jobdensity") ? "" : "expanded"}`}>&#9656;</span>
+                        Job Density Overlay
+                      </h3>
+                      {!collapsedSections.has("data-jobdensity") && (
+                        <ul>
+                          {ABOUT_SECTIONS.data.jobDensity.map((item) => (
+                            <li key={item}>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                    <div className="about-section-block">
                       <h3 className="about-collapsible" onClick={() => toggleSection("data-scope")}>
                         <span className={`about-chevron ${collapsedSections.has("data-scope") ? "" : "expanded"}`}>&#9656;</span>
                         Project Scope

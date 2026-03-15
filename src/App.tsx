@@ -19,6 +19,8 @@ export type RouteLineMode = "byLine" | "bySpeedLimit" | "bySeparation";
 
 export type SpeedUnit = "mph" | "kmh";
 
+export type DensityMode = "population" | "jobs";
+
 export interface LineStats {
   line: string;
   avgSpeed: number;
@@ -91,6 +93,7 @@ function App() {
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
   const [showSatellite, setShowSatellite] = useState(false);
   const [showPopulationDensity, setShowPopulationDensity] = useState(false);
+  const [densityMode, setDensityMode] = useState<DensityMode>("population");
   const [speedUnit, setSpeedUnit] = useState<SpeedUnit>("mph");
 
   // Reset state when city changes
@@ -202,6 +205,8 @@ function App() {
         onSatelliteToggle={setShowSatellite}
         showPopulationDensity={showPopulationDensity}
         onPopulationDensityToggle={setShowPopulationDensity}
+        densityMode={densityMode}
+        onDensityModeChange={setDensityMode}
         speedUnit={speedUnit}
         onRailContextUpdate={(heavyCount, commuterCount, busCount) => {
           setRailContextHeavyCount(heavyCount);

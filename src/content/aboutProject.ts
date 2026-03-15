@@ -51,7 +51,7 @@ export const ABOUT_SECTIONS = {
       "Use the speed filter: try max 5 mph to see where trains crawl, or min 40 mph to see where they move freely",
       "Toggle infrastructure layers (grade crossings, traffic lights, switches) to see how they correlate with slow zones",
       "Hit Show/Hide Trains to reveal the lines underneath, then switch between 'By Line,' 'Speed Limit,' and 'Grade Separation' for more network context",
-      "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network. Turn on population density data to see how well transit covers where people live.",
+      "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network. Turn on population density to see where people live, or job density to see where they work.",
       "Switch cities: your filter settings carry over, making it easy to compare networks side by side",
     ],
     views: [
@@ -68,7 +68,7 @@ export const ABOUT_SECTIONS = {
     ],
     tips: [
       "Hover over route segments to see detailed speed information",
-      "Use the layer toggles (bottom-left) to switch between satellite and street views, or enable the population density overlay",
+      "Use the layer toggles (bottom-left) to switch between satellite and street views, or enable the population or job density overlays",
       "The distance scale shows both kilometers and miles",
       "Speed legend updates based on your selected unit (mph/km/h)",
     ],
@@ -90,6 +90,13 @@ export const ABOUT_SECTIONS = {
       "Density is calculated as total population divided by land area, converted to people per square kilometer.",
       "Coverage includes all cities in the platform, with county-level or CMA-level coverage listed in each city's sidebar.",
       "The density overlay helps contextualize transit performance. Areas with higher population density often correlate with higher ridership demand and different operating conditions.",
+    ],
+    jobDensity: [
+      "Job density data comes from the US Census Bureau's LEHD LODES (Longitudinal Employer-Household Dynamics, LEHD Origin-Destination Employment Statistics) dataset, using 2021 Workplace Area Characteristics (WAC) files.",
+      "Raw LODES data reports job counts at the census block level. These are aggregated up to census tracts to match the same geographic units used for population density.",
+      "Job density is calculated as total jobs divided by land area, converted to jobs per square kilometer.",
+      "Job density is available for all US cities on the platform. Toronto does not have job density data, as LODES is a US-only dataset.",
+      "The job density overlay shows where employment is concentrated, which often differs significantly from where people live. Comparing population and job density side by side can reveal whether transit lines are well-positioned to serve commute patterns.",
     ],
     segmentAverages: [
       "Route lines are divided into fixed 200 and 500-meter segments. Each vehicle position is assigned to the segment it falls within based on distance along the route.",
