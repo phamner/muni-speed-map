@@ -50,7 +50,6 @@ export const ABOUT_SECTIONS = {
       "Switch between Raw / 200m / 500m views. Raw shows every individual observation, while 200m and 500m average nearby readings so broader patterns emerge",
       "Use the speed filter: try max 5 mph to see where trains crawl, or min 40 mph to see where they move freely",
       "Toggle infrastructure layers (grade crossings, traffic lights, switches) to see how they correlate with slow zones",
-      "Click on a data point to see its speed, route, and timestamp",
       "Hit Show/Hide Trains to reveal the lines underneath, then switch between 'By Line,' 'Speed Limit,' and 'Grade Separation' for more network context",
       "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network",
       "Switch cities: your filter settings carry over, making it easy to compare networks side by side",
