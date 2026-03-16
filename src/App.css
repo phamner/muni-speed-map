@@ -1246,6 +1246,14 @@
   margin-top: 2px;
 }
 
+.popup-small-sample {
+  font-size: 0.68rem;
+  color: rgba(255, 200, 150, 0.7);
+  text-align: center;
+  font-style: italic;
+  margin-top: 4px;
+}
+
 .popup-meta {
   margin-top: 8px;
   padding-top: 7px;
@@ -2575,12 +2583,13 @@
   background: linear-gradient(
     135deg,
     #0f1724 0%,
-    #1a4a4a 20%,
-    #22aaaa 40%,
-    #44cc88 55%,
-    #ccdd44 70%,
-    #ffee55 85%,
-    #ffaa55 100%
+    #1a4a4a 15%,
+    #22aaaa 30%,
+    #44cc88 45%,
+    #ccdd44 58%,
+    #ffee55 72%,
+    #ffaa55 86%,
+    #ff6655 100%
   );
 }
 

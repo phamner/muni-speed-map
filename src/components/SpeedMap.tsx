@@ -4007,11 +4007,13 @@ export function SpeedMap({
       if (cancelled || !map.current || !rawData) return;
 
       try {
+        const MIN_WORKERS_FOR_TRANSIT_PCT = 100;
         const processedData = {
           ...rawData,
           features: rawData.features.map((f: any) => {
             const areaKm2 =
               f.properties.AREALAND > 0 ? f.properties.AREALAND / 1000000 : 0;
+            const totalWorkers = f.properties.TOTAL_WORKERS || 0;
             return {
               ...f,
               properties: {
@@ -4021,6 +4023,11 @@ export function SpeedMap({
                 jobDensity:
                   areaKm2 > 0
                     ? Math.round((f.properties.JOBS || 0) / areaKm2)
+                    : 0,
+                TRANSIT_PCT_RAW: f.properties.TRANSIT_PCT || 0,
+                TRANSIT_PCT:
+                  totalWorkers >= MIN_WORKERS_FOR_TRANSIT_PCT
+                    ? f.properties.TRANSIT_PCT || 0
                     : 0,
               },
             };
@@ -4207,7 +4214,8 @@ export function SpeedMap({
               return "#5a6a99";
             };
             const getTransitColor = (pct: number): string => {
-              if (pct >= 40) return "#ffaa55";
+              if (pct >= 50) return "#ff6655";
+              if (pct >= 35) return "#ffaa55";
               if (pct >= 25) return "#ffee55";
               if (pct >= 15) return "#ccdd44";
               if (pct >= 10) return "#44cc88";
@@ -4217,20 +4225,25 @@ export function SpeedMap({
             };
 
             const mode = densityModeRef.current;
-            const transitPct = props.TRANSIT_PCT || 0;
+            const transitPctRaw = props.TRANSIT_PCT_RAW || props.TRANSIT_PCT || 0;
             const transitWorkers = props.TRANSIT_WORKERS || 0;
             const totalWorkers = props.TOTAL_WORKERS || 0;
+            const isSmallSample = totalWorkers > 0 && totalWorkers < 100;
 
             let activeValue: string;
             let densityColor: string;
             let unitLabel: string;
             let countLabel: string;
+            let smallSampleNote = "";
 
             if (mode === "transit") {
-              activeValue = `${transitPct}%`;
-              densityColor = getTransitColor(transitPct);
+              activeValue = `${transitPctRaw}%`;
+              densityColor = getTransitColor(transitPctRaw);
               unitLabel = "commute via transit";
               countLabel = `${transitWorkers.toLocaleString()} of ${totalWorkers.toLocaleString()} workers`;
+              if (isSmallSample) {
+                smallSampleNote = `<div class="popup-small-sample">Fewer than 100 workers; excluded from map shading</div>`;
+              }
             } else if (mode === "jobs") {
               activeValue = jobDensity.toLocaleString();
               densityColor = getJobDensityColor(jobDensity);
@@ -4252,6 +4265,7 @@ export function SpeedMap({
                   <span class="density-unit">${unitLabel}</span>
                 </div>
                 <div class="popup-population">${countLabel}</div>
+                ${smallSampleNote}
                 <div class="popup-meta">
                   ${placeLine}
                   ${tractLine}
@@ -4324,10 +4338,12 @@ export function SpeedMap({
                     "#44cc88",
                     25,
                     "#ccdd44",
-                    40,
+                    35,
                     "#ffee55",
-                    60,
+                    45,
                     "#ffaa55",
+                    60,
+                    "#ff6655",
                   ]
                 : [
                     "interpolate",
@@ -4498,10 +4514,12 @@ export function SpeedMap({
               "#44cc88",
               25,
               "#ccdd44",
-              40,
+              35,
               "#ffee55",
-              60,
+              45,
               "#ffaa55",
+              60,
+              "#ff6655",
             ]
           : [
               "interpolate",

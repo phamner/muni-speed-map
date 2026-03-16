@@ -1750,7 +1750,19 @@ export function Controls({
                                           : city === "Charlotte"
                                             ? "Mecklenburg, Gaston, Union counties"
                                             : ""}
-          {city !== "Toronto" && (
+          {city === "Toronto" ? (
+            <>
+              . Transit commute from{" "}
+              <a
+                href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                2021 Canadian Census
+              </a>{" "}
+              (same tracts)
+            </>
+          ) : (
             <>
               . Job density from{" "}
               <a

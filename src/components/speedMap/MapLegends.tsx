@@ -221,8 +221,9 @@ const TRANSIT_LEGEND = [
   { color: "#22aaaa", label: "5-10%" },
   { color: "#44cc88", label: "10-15%" },
   { color: "#ccdd44", label: "15-25%" },
-  { color: "#ffee55", label: "25-40%" },
-  { color: "#ffaa55", label: "> 40%" },
+  { color: "#ffee55", label: "25-35%" },
+  { color: "#ffaa55", label: "35-50%" },
+  { color: "#ff6655", label: "> 50%" },
 ];
 
 const DENSITY_TOOLTIPS: Record<DensityMode, string> = {
@@ -249,7 +250,7 @@ export function DensityLegend({
       : mode === "transit"
         ? "% transit commute"
         : "people/km²";
-  const noData = (mode === "jobs" || mode === "transit") && city === "Toronto";
+  const noData = mode === "jobs" && city === "Toronto";
 
   return (
     <div className="map-density-legend">
