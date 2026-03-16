@@ -226,10 +226,10 @@ const TRANSIT_LEGEND = [
 ];
 
 const DENSITY_TOOLTIPS: Record<DensityMode, string> = {
-  population: "Population per square kilometer from 2020 US Census tract data.",
-  jobs: "Jobs per square kilometer from LEHD LODES 2021 workplace data. Shows where employment is concentrated, which often differs significantly from where people live.",
+  population: "Population per square kilometer by census tract.",
+  jobs: "Jobs per square kilometer by census tract. Shows where employment is concentrated, which often differs from where people live.",
   transit:
-    "Percentage of workers who commute to work by public transit, from ACS 2022. Includes light rail, subway, commuter rail, streetcar, bus, and ferry.",
+    "Percentage of workers who commute by public transit. Includes light rail, subway, commuter rail, streetcar, bus, and ferry.",
 };
 
 export function DensityLegend({ mode, onModeChange }: DensityLegendProps) {
