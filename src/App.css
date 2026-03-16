@@ -2543,6 +2543,18 @@
   background-size: cover;
   background-position: center;
   border-radius: 6px 6px 0 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.layer-preview-icon {
+  width: 28px;
+  height: 28px;
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.6));
+  stroke-width: 2;
 }
 
 .map-layer-tile .layer-label {
@@ -2793,6 +2805,11 @@
 
   .map-layer-tile .layer-preview {
     height: 42px;
+  }
+
+  .layer-preview-icon {
+    width: 22px;
+    height: 22px;
   }
 
   .map-layer-tile .layer-label {
@@ -3108,6 +3125,11 @@
 
   .map-layer-tile .layer-preview {
     height: 36px;
+  }
+
+  .layer-preview-icon {
+    width: 18px;
+    height: 18px;
   }
 
   .map-layer-tile .layer-label {

@@ -68,6 +68,7 @@
     "adm-zip": "^0.5.16",
     "dotenv": "^17.2.3",
     "gtfs-realtime-bindings": "^1.1.1",
+    "lucide-react": "^0.577.0",
     "luxon": "^3.7.2",
     "maplibre-gl": "^5.15.0",
     "node-fetch": "^3.3.2",

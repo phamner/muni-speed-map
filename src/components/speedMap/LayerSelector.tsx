@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Users, BriefcaseBusiness, TramFront } from "lucide-react";
 import type { DensityMode } from "../../App";
 
 interface LayerSelectorProps {
@@ -73,8 +74,10 @@ export function LayerSelector({
           onClick={() => handleDensitySelect("population")}
           title="Population density"
         >
-          <div className="layer-preview population-preview" />
-          <span className="layer-label">Pop.</span>
+          <div className="layer-preview population-preview">
+            <Users className="layer-preview-icon" />
+          </div>
+          <span className="layer-label">Population</span>
         </div>
 
         <div
@@ -82,7 +85,9 @@ export function LayerSelector({
           onClick={() => handleDensitySelect("jobs")}
           title="Job density"
         >
-          <div className="layer-preview jobs-preview" />
+          <div className="layer-preview jobs-preview">
+            <BriefcaseBusiness className="layer-preview-icon" />
+          </div>
           <span className="layer-label">Jobs</span>
         </div>
 
@@ -91,8 +96,10 @@ export function LayerSelector({
           onClick={() => handleDensitySelect("transit")}
           title="Transit commute share"
         >
-          <div className="layer-preview transit-preview" />
-          <span className="layer-label">Transit Use</span>
+          <div className="layer-preview transit-preview">
+            <TramFront className="layer-preview-icon" />
+          </div>
+          <span className="layer-label">Transit</span>
         </div>
 
         {/* Mobile: single "Density" tile that opens a sub-menu */}
@@ -102,13 +109,17 @@ export function LayerSelector({
             onClick={() => setMobileDensityOpen(!mobileDensityOpen)}
             title="Density overlays"
           >
-            <div className={`layer-preview ${
-              showPopulationDensity
-                ? densityMode === "jobs" ? "jobs-preview"
-                  : densityMode === "transit" ? "transit-preview"
+            <div
+              className={`layer-preview ${
+                showPopulationDensity
+                  ? densityMode === "jobs"
+                    ? "jobs-preview"
+                    : densityMode === "transit"
+                      ? "transit-preview"
+                      : "population-preview"
                   : "population-preview"
-                : "population-preview"
-            }`} />
+              }`}
+            />
             <span className="layer-label">Density</span>
           </div>
 
