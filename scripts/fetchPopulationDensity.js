@@ -20,7 +20,7 @@ import { fileURLToPath } from "url";
 import fetch from "node-fetch";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const DATA_DIR = path.join(__dirname, "..", "src", "data");
+const DATA_DIR = path.join(__dirname, "..", "src", "data", "population-density");
 
 const TIGERWEB_URL =
   "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Census2020/MapServer/6/query";
@@ -50,8 +50,15 @@ const CITY_CONFIGS = {
       [STATE.CA, "075", "San Francisco County"],
       [STATE.CA, "081", "San Mateo County"],
       [STATE.CA, "001", "Alameda County"],
+      [STATE.CA, "013", "Contra Costa County"],
       [STATE.CA, "041", "Marin County"],
+      [STATE.CA, "055", "Napa County", { maxLat: 38.5 }],
+      [STATE.CA, "067", "Sacramento County"],
+      [STATE.CA, "077", "San Joaquin County"],
       [STATE.CA, "085", "Santa Clara County"],
+      [STATE.CA, "095", "Solano County"],
+      [STATE.CA, "097", "Sonoma County"],
+      [STATE.CA, "113", "Yolo County", { maxLat: 38.7 }],
     ],
   },
   la: {
@@ -110,8 +117,10 @@ const CITY_CONFIGS = {
     counties: [
       [STATE.CA, "085", "Santa Clara County"],
       [STATE.CA, "001", "Alameda County"],
+      [STATE.CA, "013", "Contra Costa County"],
       [STATE.CA, "081", "San Mateo County"],
       [STATE.CA, "075", "San Francisco County"],
+      [STATE.CA, "077", "San Joaquin County"],
     ],
   },
   pittsburgh: {
@@ -181,7 +190,16 @@ const CITY_CONFIGS = {
   },
 };
 
-async function fetchCountyTracts(stateFips, countyFips, countyName) {
+function getCentroidLat(geometry) {
+  const coords =
+    geometry.type === "MultiPolygon"
+      ? geometry.coordinates.flat(2)
+      : geometry.coordinates.flat(1);
+  const sum = coords.reduce((acc, c) => acc + c[1], 0);
+  return sum / coords.length;
+}
+
+async function fetchCountyTracts(stateFips, countyFips, countyName, opts = {}) {
   const params = new URLSearchParams({
     where: `STATE='${stateFips}' AND COUNTY='${countyFips}'`,
     outFields: "GEOID,POP100,AREALAND",
@@ -203,7 +221,7 @@ async function fetchCountyTracts(stateFips, countyFips, countyName) {
     throw new Error(`API error for ${countyName}: ${data.error.message}`);
   }
 
-  const features = (data.features || []).map((f) => ({
+  let features = (data.features || []).map((f) => ({
     type: "Feature",
     geometry: f.geometry,
     properties: {
@@ -213,7 +231,14 @@ async function fetchCountyTracts(stateFips, countyFips, countyName) {
     },
   }));
 
-  console.log(`    → ${features.length} tracts`);
+  if (opts.maxLat) {
+    const before = features.length;
+    features = features.filter((f) => getCentroidLat(f.geometry) <= opts.maxLat);
+    console.log(`    → ${before} tracts, ${features.length} after lat filter (≤${opts.maxLat}°)`);
+  } else {
+    console.log(`    → ${features.length} tracts`);
+  }
+
   return features;
 }
 
@@ -231,8 +256,9 @@ async function fetchCity(cityKey) {
   );
 
   const allFeatures = [];
-  for (const [stateFips, countyFips, countyName] of config.counties) {
-    const features = await fetchCountyTracts(stateFips, countyFips, countyName);
+  for (const entry of config.counties) {
+    const [stateFips, countyFips, countyName, opts] = entry;
+    const features = await fetchCountyTracts(stateFips, countyFips, countyName, opts);
     allFeatures.push(...features);
   }
 

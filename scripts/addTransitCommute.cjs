@@ -7,9 +7,9 @@ const DENSITY_DIR = path.join(__dirname, "../src/data/population-density");
 // City -> { stateFips, countyFipsList }
 // Philadelphia spans two states, so it has two entries
 const CITY_QUERIES = {
-  SF: [{ state: "06", counties: ["001", "013", "041", "075", "081", "085"] }],
+  SF: [{ state: "06", counties: ["001", "013", "041", "055", "067", "075", "077", "081", "085", "095", "097", "113"] }],
   LA: [{ state: "06", counties: ["037", "059", "065", "071", "111"] }],
-  "San Jose": [{ state: "06", counties: ["001", "013", "075", "081", "085"] }],
+  "San Jose": [{ state: "06", counties: ["001", "013", "075", "077", "081", "085"] }],
   "San Diego": [{ state: "06", counties: ["073"] }],
   Boston: [{ state: "25", counties: ["009", "017", "021", "025"] }],
   Philadelphia: [
@@ -88,9 +88,19 @@ async function fetchTransitDataForCounty(stateFips, countyFips) {
 }
 
 async function main() {
-  console.log("Downloading ACS transit commute data (Table B08301)...\n");
+  const filterCity = process.argv[2] || null;
+  if (filterCity && !CITY_QUERIES[filterCity]) {
+    console.error(`Unknown city: ${filterCity}. Available: ${Object.keys(CITY_QUERIES).join(", ")}`);
+    process.exit(1);
+  }
 
-  for (const [city, queries] of Object.entries(CITY_QUERIES)) {
+  const citiesToProcess = filterCity
+    ? { [filterCity]: CITY_QUERIES[filterCity] }
+    : CITY_QUERIES;
+
+  console.log(`Downloading ACS transit commute data (Table B08301)${filterCity ? ` for ${filterCity} only` : ""}...\n`);
+
+  for (const [city, queries] of Object.entries(citiesToProcess)) {
     const prefix = cityToPrefix[city];
     const filename = `${prefix}PopulationDensity.json`;
     const filepath = path.join(DENSITY_DIR, filename);

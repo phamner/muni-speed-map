@@ -99,30 +99,12 @@ async function loadLodesForState(stateAbbr) {
 }
 
 async function main() {
-  // Collect all unique states we need
-  const allStates = new Set();
-  for (const fipsList of Object.values(CITY_TO_STATE_FIPS)) {
-    for (const fips of fipsList) allStates.add(fips);
+  const filterCity = process.argv[2] || null;
+  if (filterCity && !CITY_TO_STATE_FIPS[filterCity]) {
+    console.error(`Unknown city: ${filterCity}. Available: ${Object.keys(CITY_TO_STATE_FIPS).join(", ")}`);
+    process.exit(1);
   }
 
-  // Download and aggregate LODES data per state
-  console.log(`\nDownloading LODES WAC data for ${allStates.size} states...\n`);
-  const stateData = new Map();
-  for (const fips of allStates) {
-    const abbr = STATE_FIPS_TO_ABBR[fips];
-    if (!abbr) {
-      console.warn(`  No abbreviation for state FIPS ${fips}, skipping`);
-      continue;
-    }
-    try {
-      const tractJobs = await loadLodesForState(abbr);
-      stateData.set(fips, tractJobs);
-    } catch (err) {
-      console.error(`  Failed to load LODES for ${abbr}: ${err.message}`);
-    }
-  }
-
-  // Now merge into each city's population density file
   const cityToPrefix = {
     SF: "sf",
     LA: "la",
@@ -142,9 +124,37 @@ async function main() {
     Baltimore: "baltimore",
   };
 
+  const citiesToProcess = filterCity
+    ? { [filterCity]: cityToPrefix[filterCity] }
+    : cityToPrefix;
+
+  // Collect only the states we need
+  const allStates = new Set();
+  for (const city of Object.keys(citiesToProcess)) {
+    const fipsList = CITY_TO_STATE_FIPS[city] || [];
+    for (const fips of fipsList) allStates.add(fips);
+  }
+
+  // Download and aggregate LODES data per state
+  console.log(`\nDownloading LODES WAC data for ${allStates.size} state(s)${filterCity ? ` (${filterCity} only)` : ""}...\n`);
+  const stateData = new Map();
+  for (const fips of allStates) {
+    const abbr = STATE_FIPS_TO_ABBR[fips];
+    if (!abbr) {
+      console.warn(`  No abbreviation for state FIPS ${fips}, skipping`);
+      continue;
+    }
+    try {
+      const tractJobs = await loadLodesForState(abbr);
+      stateData.set(fips, tractJobs);
+    } catch (err) {
+      console.error(`  Failed to load LODES for ${abbr}: ${err.message}`);
+    }
+  }
+
   console.log("\nMerging job data into population density files...\n");
 
-  for (const [city, prefix] of Object.entries(cityToPrefix)) {
+  for (const [city, prefix] of Object.entries(citiesToProcess)) {
     const filename = `${prefix}PopulationDensity.json`;
     const filepath = path.join(DENSITY_DIR, filename);
 
