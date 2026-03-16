@@ -472,7 +472,7 @@ export function getRouteDisplayName(routeId: string, city: City): string {
       );
     case "Boston":
       return (
-        BOSTON_GREEN_LINE_INFO[routeId as BostonGreenLineRoute]?.letter ||
+        BOSTON_GREEN_LINE_INFO[routeId as BostonGreenLine]?.letter ||
         routeId
       );
     case "Portland":
