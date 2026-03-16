@@ -30,21 +30,23 @@ Each city was selected because its light rail or streetcar system has **signific
 
 | City                  | System           | Why It's Interesting                                                                        |
 | --------------------- | ---------------- | ------------------------------------------------------------------------------------------- |
-| 🌉 **San Francisco**  | Muni Metro       | Surface lines (N, T, F) mix with traffic; subway portal queuing is a known bottleneck       |
-| 🌴 **Los Angeles**    | Metro Rail       | E Line (Expo) and A Line (Blue) have extensive street-running in Downtown LA and Long Beach |
-| ☕ **Seattle**        | Link Light Rail  | Rainier Valley section runs at-grade through neighborhoods with many crossings              |
-| 🦞 **Boston**         | Green Line       | The oldest US subway, with extensive street-running branches (B, C, E)                      |
-| 🚲 **Portland**       | MAX Light Rail   | Pioneer of modern US light rail, with downtown street-running and suburban grade crossings  |
-| 🔔 **Philadelphia**   | SEPTA Trolleys   | Historic trolley network with subway-surface lines and West Philadelphia street-running     |
-| 💻 **San Jose**       | VTA Light Rail   | Silicon Valley light rail with extensive street-running through downtown San Jose           |
-| 🍁 **Toronto**        | TTC Streetcars   | Largest streetcar network in North America with extensive mixed-traffic operation           |
-| 🌆 **Minneapolis**    | Metro Transit    | Blue and Green Lines have at-grade sections in urban areas                                  |
-| 🏔️ **Denver**         | RTD Light Rail   | Downtown street-running sections with grade crossings                                    |
-| 🏔️ **Salt Lake City** | UTA TRAX         | Four light rail lines with street-running through downtown Salt Lake City                   |
-| 🏗️ **Pittsburgh**     | The T Light Rail | Historic light rail system with downtown subway and South Hills surface sections            |
-| 🏛️ **Sacramento**     | SacRT Light Rail | Street-running through downtown Sacramento with Gold and Blue Lines                         |
 | 🦀 **Baltimore**      | MTA Light Rail   | 29-mile light rail with branches to BWI Airport, Glen Burnie, and Hunt Valley               |
+| 🦞 **Boston**         | Green Line       | The oldest US subway, with extensive street-running branches (B, C, E)                      |
+| 🏦 **Charlotte**      | CATS LYNX        | Blue Line has at-grade sections through South End; Gold Line is fully street-running         |
 | 🎸 **Cleveland**      | RTA Rapid        | Red Line rapid transit plus Blue/Green branches with downtown subway and suburban sections  |
+| 🏔️ **Denver**         | RTD Light Rail   | Downtown street-running sections with grade crossings                                       |
+| 🌴 **Los Angeles**    | Metro Rail       | E Line (Expo) and A Line (Blue) have extensive street-running in Downtown LA and Long Beach |
+| 🌆 **Minneapolis**    | Metro Transit    | Blue and Green Lines have at-grade sections in urban areas                                  |
+| 🔔 **Philadelphia**   | SEPTA Trolleys   | Historic trolley network with subway-surface lines and West Philadelphia street-running     |
+| 🌵 **Phoenix**        | Valley Metro     | Light rail runs at-grade through downtown Phoenix and Tempe with many grade crossings       |
+| 🏗️ **Pittsburgh**     | The T Light Rail | Historic light rail system with downtown subway and South Hills surface sections            |
+| 🚲 **Portland**       | MAX Light Rail   | Pioneer of modern US light rail, with downtown street-running and suburban grade crossings  |
+| 🏔️ **Salt Lake City** | UTA TRAX         | Four light rail lines with street-running through downtown Salt Lake City                   |
+| 🌊 **San Diego**      | MTS Trolley      | Four trolley lines with street-running through downtown San Diego and at-grade crossings    |
+| 🌉 **San Francisco**  | Muni Metro       | Surface lines (N, T, F) mix with traffic; subway portal queuing is a known bottleneck       |
+| 💻 **San Jose**       | VTA Light Rail   | Silicon Valley light rail with extensive street-running through downtown San Jose           |
+| ☕ **Seattle**        | Link Light Rail  | Rainier Valley section runs at-grade through neighborhoods with many crossings              |
+| 🍁 **Toronto**        | TTC Streetcars   | Largest streetcar network in North America with extensive mixed-traffic operation           |
 
 **Not included:** Heavy rail systems (BART, NYC Subway, DC Metro) that are fully grade-separated — they don't have traffic conflicts to analyze.
 
@@ -54,13 +56,14 @@ These systems have significant street-running and are strong candidates if I can
 
 | City                              | System                          | Why It's a Good Candidate                                                                      |
 | --------------------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------- |
-| 🤠 **Houston**                    | METRORail                       | Red Line runs at-grade through Midtown and Medical Center                                      |
 | 🇨🇦 **Calgary**                    | CTrain                          | One of North America's busiest light rail systems with downtown street-running                 |
+| 🤠 **Dallas**                     | DART Light Rail                 | Large light rail system with multiple corridors and at-grade running segments                  |
 | 🇨🇦 **Edmonton**                   | Edmonton LRT                    | Capital, Metro, and Valley Lines with urban at-grade sections                                  |
+| 🤠 **Houston**                    | METRORail                       | Red Line runs at-grade through Midtown and Medical Center                                      |
 | 🌉 **New Jersey**                 | Hudson-Bergen Light Rail (HBLR) | Extensive at-grade/light rail operation across Jersey City, Hoboken, and Bayonne               |
 | 🔔 **New Jersey / Philly region** | River Line                      | Interurban-style corridor linking Camden and Trenton; fits the regional light rail scope       |
+| 🏛️ **Sacramento**                 | SacRT Light Rail                | Street-running through downtown Sacramento; no public live light rail vehicle-position data    |
 | 🎸 **St. Louis**                  | MetroLink                       | Light rail network with at-grade sections that would benefit from segment-level speed analysis |
-| 🤠 **Dallas**                     | DART Light Rail                 | Large light rail system with multiple corridors and at-grade running segments                  |
 
 I would like to add these systems if I can find data access that is reliable enough to support the project methodology.
 
@@ -69,10 +72,10 @@ I would like to add these systems if I can find data access that is reliable eno
 | System                                   | Why Not                                                                                 |
 | ---------------------------------------- | --------------------------------------------------------------------------------------- |
 | **BART** (SF Bay Area)                   | Fully grade-separated heavy rail — no traffic conflicts to analyze                      |
-| **NYC Subway**                           | Underground/elevated heavy rail — speed issues are scheduling, not traffic              |
-| **DC Metro**                             | Fully grade-separated — no street-running sections                                      |
-| **Chicago L**                            | Elevated/subway heavy rail — traffic conflicts not a factor                             |
 | **Caltrain / Metrolink / Commuter Rail** | Mostly dedicated ROW with rural crossings — different problem than urban street-running |
+| **Chicago L**                            | Elevated/subway heavy rail — traffic conflicts not a factor                             |
+| **DC Metro**                             | Fully grade-separated — no street-running sections                                      |
+| **NYC Subway**                           | Underground/elevated heavy rail — speed issues are scheduling, not traffic              |
 
 The focus remains on **light rail and streetcars that compete with street traffic** — where ROW improvements can make the biggest difference.
 
@@ -82,26 +85,23 @@ The focus remains on **light rail and streetcars that compete with street traffi
 
 | City                  | System           | Lines                            | Status                             |
 | --------------------- | ---------------- | -------------------------------- | ---------------------------------- |
-| 🌉 **San Francisco**  | Muni Metro       | F, J, K, L, M, N, T              | ✅ Collecting                      |
-| 🌴 **Los Angeles**    | Metro Rail       | A, B, C, D, E, K                 | ✅ Collecting                      |
-| ☕ **Seattle**        | Link Light Rail  | 1 Line, 2 Line, T Line           | ✅ Collecting                      |
-| 🚲 **Portland**       | MAX Light Rail   | Blue, Green, Orange, Red, Yellow | ✅ Collecting                      |
-| 🦞 **Boston**         | MBTA Green Line  | B, C, D, E                       | ✅ Collecting                      |
-| 🔔 **Philadelphia**   | SEPTA Trolleys   | 10, 11, 13, 15, 34, 36, 101, 102 | ✅ Collecting                      |
-| 💻 **San Jose**       | VTA Light Rail   | Blue, Green, Orange              | ✅ Collecting                      |
-| 🍁 **Toronto**        | TTC Streetcars   | 501-512, Line 6 Finch West       | ✅ Collecting                      |
-| 🌆 **Minneapolis**    | Metro Transit    | Blue, Green                      | ✅ Collecting                      |
-| 🏔️ **Denver**         | RTD Light Rail   | A, B, C, D, E, F, G, H, L, R, W  | ✅ Collecting                      |
-| 🏔️ **Salt Lake City** | UTA TRAX         | Blue, Red, Green, S-Line         | ✅ Collecting                      |
-| 🏗️ **Pittsburgh**     | The T Light Rail | Red, Blue, Silver                | ✅ Collecting                      |
-| 🏛️ **Sacramento**     | SacRT Light Rail | Gold, Blue                       | ✅ Collecting                      |
-| 🌵 **Phoenix**        | Valley Metro     | A Line, B Line                   | ✅ Collecting                      |
-| 🚊 **Charlotte**      | CATS LYNX        | Blue Line, Gold Line             | ✅ Collecting                      |
 | 🦀 **Baltimore**      | MTA Light Rail   | Light RailLink                   | ✅ Collecting                      |
+| 🦞 **Boston**         | MBTA Green Line  | B, C, D, E                       | ✅ Collecting                      |
+| 🏦 **Charlotte**      | CATS LYNX        | Blue Line, Gold Line             | ✅ Collecting                      |
 | 🎸 **Cleveland**      | RTA Rapid        | Red, Blue, Green                 | ✅ Collecting                      |
-| 🍁 **Calgary**        | Calgary CTrain   | Red Line, Blue Line              | ❌ No public vehicle-position data |
-| 🌊 **San Diego**      | MTS Trolley      | Blue, Orange, Green, Copper      | ⏳ Needs key                       |
-| 🤠 **Dallas**         | DART Light Rail  | Red, Blue, Green, Orange         | ⏳ Needs key                       |
+| 🏔️ **Denver**         | RTD Light Rail   | A, B, C, D, E, F, G, H, L, R, W  | ✅ Collecting                      |
+| 🌴 **Los Angeles**    | Metro Rail       | A, B, C, D, E, K                 | ✅ Collecting                      |
+| 🌆 **Minneapolis**    | Metro Transit    | Blue, Green                      | ✅ Collecting                      |
+| 🔔 **Philadelphia**   | SEPTA Trolleys   | 10, 11, 13, 15, 34, 36, 101, 102 | ✅ Collecting                      |
+| 🌵 **Phoenix**        | Valley Metro     | A Line, B Line                   | ✅ Collecting                      |
+| 🏗️ **Pittsburgh**     | The T Light Rail | Red, Blue, Silver                | ✅ Collecting                      |
+| 🚲 **Portland**       | MAX Light Rail   | Blue, Green, Orange, Red, Yellow | ✅ Collecting                      |
+| 🏔️ **Salt Lake City** | UTA TRAX         | Blue, Red, Green, S-Line         | ✅ Collecting                      |
+| 🌊 **San Diego**      | MTS Trolley      | Blue, Orange, Green, Copper      | ✅ Collecting                      |
+| 🌉 **San Francisco**  | Muni Metro       | F, J, K, L, M, N, T              | ✅ Collecting                      |
+| 💻 **San Jose**       | VTA Light Rail   | Blue, Green, Orange              | ✅ Collecting                      |
+| ☕ **Seattle**        | Link Light Rail  | 1 Line, 2 Line, T Line           | ✅ Collecting                      |
+| 🍁 **Toronto**        | TTC Streetcars   | 501-512, Line 6 Finch West       | ✅ Collecting                      |
 
 ## ✨ Features
 
@@ -202,27 +202,24 @@ npm run collect:all
 
 | Command                              | City                 | Script                            | Status                             |
 | ------------------------------------ | -------------------- | --------------------------------- | ---------------------------------- |
-| `npm run collect:sf`                 | San Francisco        | `collectData.js`                  | ✅ Active                          |
+| `npm run collect:baltimore`          | Baltimore            | `collectDataBaltimore.js`         | ✅ Active                          |
+| `npm run collect:boston`             | Boston               | `collectDataBoston.js`            | ✅ Active                          |
+| `npm run collect:charlotte`          | Charlotte            | `collectDataCharlotte.js`         | ✅ Active                          |
+| `npm run collect:cleveland`          | Cleveland            | `collectDataCleveland.js`         | ✅ Active                          |
+| `npm run collect:denver`             | Denver               | `collectDataDenver.js`            | ✅ Active                          |
 | `npm run collect:la`                 | Los Angeles          | `collectDataLA.js`                | ✅ Active                          |
-| `npm run collect:seattle`            | Seattle              | `collectDataSeattle.js`           | ✅ Active                          |
+| `npm run collect:minneapolis`        | Minneapolis          | `collectDataMinneapolis.js`       | ✅ Active                          |
+| `npm run collect:philly`             | Philadelphia         | `collectDataPhilly.js`            | ✅ Active                          |
+| `npm run collect:phoenix`            | Phoenix              | `collectDataPhoenix.js`           | ✅ Active                          |
+| `npm run collect:pittsburgh`         | Pittsburgh           | `collectDataPittsburgh.js`        | ✅ Active                          |
 | `npm run collect:portland`           | Portland (MAX)       | `collectDataPortland.js`          | ✅ Active                          |
 | `npm run collect:portland-streetcar` | Portland (Streetcar) | `collectDataPortlandStreetcar.js` | ✅ Active                          |
-| `npm run collect:boston`             | Boston               | `collectDataBoston.js`            | ✅ Active                          |
-| `npm run collect:philly`             | Philadelphia         | `collectDataPhilly.js`            | ✅ Active                          |
-| `npm run collect:toronto`            | Toronto              | `collectDataToronto.js`           | ✅ Active                          |
-| `npm run collect:sacramento`         | Sacramento           | `collectDataSacramento.js`        | ✅ Active                          |
-| `npm run collect:minneapolis`        | Minneapolis          | `collectDataMinneapolis.js`       | ✅ Active                          |
-| `npm run collect:denver`             | Denver               | `collectDataDenver.js`            | ✅ Active                          |
+| `npm run collect:sandiego`           | San Diego            | `collectDataSanDiego.js`          | ✅ Active                          |
+| `npm run collect:sf`                 | San Francisco        | `collectData.js`                  | ✅ Active                          |
 | `npm run collect:slc`                | Salt Lake City       | `collectDataSaltLakeCity.js`      | ✅ Active                          |
-| `npm run collect:pittsburgh`         | Pittsburgh           | `collectDataPittsburgh.js`        | ✅ Active                          |
+| `npm run collect:seattle`            | Seattle              | `collectDataSeattle.js`           | ✅ Active                          |
+| `npm run collect:toronto`            | Toronto              | `collectDataToronto.js`           | ✅ Active                          |
 | `npm run collect:vta`                | San Jose (VTA)       | `collectDataVTA.js`               | ✅ Active                          |
-| `npm run collect:phoenix`            | Phoenix              | `collectDataPhoenix.js`           | ✅ Active                          |
-| `npm run collect:charlotte`          | Charlotte            | `collectDataCharlotte.js`         | ✅ Active                          |
-| `npm run collect:calgary`            | Calgary              | `collectDataCalgary.js`           | ❌ No public vehicle-position data |
-| `npm run collect:baltimore`          | Baltimore            | `collectDataBaltimore.js`         | ✅ Active                          |
-| `npm run collect:cleveland`          | Cleveland            | `collectDataCleveland.js`         | ✅ Active                          |
-| `npm run collect:sandiego`           | San Diego            | `collectDataSanDiego.js`          | ⏳ Needs API key                   |
-| `npm run collect:dallas`             | Dallas               | `collectDataDallas.js`            | ⏳ Needs API key                   |
 
 **Combined Scripts:**
 
@@ -236,30 +233,30 @@ npm run collect:all
 
 ### How Speed is Calculated
 
-- **SF, Seattle, Philadelphia, San Jose, Phoenix, Charlotte, Baltimore, Cleveland, Sacramento, San Diego**: Speed calculated from GPS distance ÷ time between consecutive readings (~90 seconds apart)
-- **LA, Boston, Portland, Toronto, Minneapolis, Denver, Salt Lake City, Pittsburgh**: Speed reported directly by the transit agency's API
+- **Baltimore, Charlotte, Cleveland, Philadelphia, Phoenix, San Diego, San Francisco, San Jose, Seattle**: Speed calculated from GPS distance ÷ time between consecutive readings (~90 seconds apart)
+- **Boston, Denver, Los Angeles, Minneapolis, Pittsburgh, Portland, Salt Lake City, Toronto**: Speed reported directly by the transit agency's API
 
 ### API Keys Required
 
 | City           | API                 | Key Required?                                                                                  |
 | -------------- | ------------------- | ---------------------------------------------------------------------------------------------- |
-| San Francisco  | 511.org GTFS-RT     | ✅ Yes - https://511.org/open-data                                                             |
-| Los Angeles    | Metro WebSocket     | ❌ No key needed                                                                               |
-| Seattle        | OneBusAway          | ✅ Yes - https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd |
-| Portland       | TriMet GTFS-RT      | ✅ Yes - https://developer.trimet.org/appid/registration/                                      |
-| Boston         | MBTA V3 API         | ✅ Yes - https://api-v3.mbta.com/                                                              |
-| Philadelphia   | SEPTA TransitView   | ❌ No key needed                                                                               |
-| San Jose (VTA) | 511.org GTFS-RT     | ✅ Yes - https://511.org/open-data                                                             |
-| Toronto        | TTC GTFS-RT/NextBus | ❌ No key needed                                                                               |
-| Minneapolis    | Metro Transit       | ❌ No key needed                                                                               |
-| Denver         | RTD GTFS-RT         | ❌ No key needed                                                                               |
-| Salt Lake City | UTA GTFS-RT         | ❌ No key needed                                                                               |
-| Pittsburgh     | PRT TrueTime        | ❌ No key needed                                                                               |
-| Sacramento     | SacRT GTFS-RT       | ❌ No key needed                                                                               |
-| Phoenix        | Valley Metro JSON   | ❌ No key needed                                                                               |
-| Charlotte      | CATS GTFS-RT        | ❌ No key needed                                                                               |
 | Baltimore      | Swiftly GTFS-RT     | ✅ Yes - https://www.goswift.ly/ (via MTA Maryland)                                            |
+| Boston         | MBTA V3 API         | ✅ Yes - https://api-v3.mbta.com/                                                              |
+| Charlotte      | CATS GTFS-RT        | ❌ No key needed                                                                               |
+| Cleveland      | RTA GTFS-RT         | ❌ No key needed                                                                               |
+| Denver         | RTD GTFS-RT         | ❌ No key needed                                                                               |
+| Los Angeles    | Metro WebSocket     | ❌ No key needed                                                                               |
+| Minneapolis    | Metro Transit       | ❌ No key needed                                                                               |
+| Philadelphia   | SEPTA TransitView   | ❌ No key needed                                                                               |
+| Phoenix        | Valley Metro JSON   | ❌ No key needed                                                                               |
+| Pittsburgh     | PRT TrueTime        | ❌ No key needed                                                                               |
+| Portland       | TriMet GTFS-RT      | ✅ Yes - https://developer.trimet.org/appid/registration/                                      |
+| Salt Lake City | UTA GTFS-RT         | ❌ No key needed                                                                               |
 | San Diego      | MTS GTFS-RT         | ✅ Yes - https://www.sdmts.com/business-center/app-developers                                  |
+| San Francisco  | 511.org GTFS-RT     | ✅ Yes - https://511.org/open-data                                                             |
+| San Jose (VTA) | 511.org GTFS-RT     | ✅ Yes - https://511.org/open-data                                                             |
+| Seattle        | OneBusAway          | ✅ Yes - https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd |
+| Toronto        | TTC GTFS-RT/NextBus | ❌ No key needed                                                                               |
 
 ## 🗂️ Project Structure
 
@@ -331,25 +328,26 @@ MIT License - feel free to use and adapt for transit advocacy in your city!
 
 ## 🙏 Data Sources
 
-- **San Francisco**: [511.org](https://511.org/open-data) GTFS-realtime
-- **Los Angeles**: [LA Metro API](https://developer.metro.net/)
-- **Seattle**: [Sound Transit OneBusAway](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd)
-- **Portland**: [TriMet Developer Resources](https://developer.trimet.org/)
-- **Boston**: [MBTA V3 API](https://api-v3.mbta.com/)
-- **Philadelphia**: [SEPTA API](https://www3.septa.org/developer/)
-- **San Jose**: [511.org](https://511.org/open-data) VTA GTFS-realtime
-- **Toronto**: [TTC BusTime GTFS-RT](https://bustime.ttc.ca/gtfsrt/) + NextBus API
-- **Minneapolis**: [Metro Transit GTFS-RT](https://svc.metrotransit.org/)
-- **Denver**: [RTD GTFS-RT](https://www.rtd-denver.com/developer-resources)
-- **Salt Lake City**: [UTA GTFS-RT](https://www.rideuta.com/Developer-Resources)
-- **Pittsburgh**: [PRT TrueTime GTFS-RT](https://truetime.portauthority.org/)
-- **Sacramento**: [SacRT Transit Data Portal](https://www.sacrt.com/transit-data-portal/)
-- **Phoenix**: [Valley Metro GTFS-RT](https://www.valleymetro.org/gtfs-real-time-data)
-- **Charlotte**: [CATS GTFS-RT](https://gtfsrealtime.ridetransit.org/)
 - **Baltimore**: [MTA Maryland GTFS-RT](https://www.mta.maryland.gov/developer-resources)
+- **Boston**: [MBTA V3 API](https://api-v3.mbta.com/)
+- **Charlotte**: [CATS GTFS-RT](https://gtfsrealtime.ridetransit.org/)
+- **Cleveland**: [RTA GTFS-RT](https://www.riderta.com/)
+- **Denver**: [RTD GTFS-RT](https://www.rtd-denver.com/developer-resources)
+- **Los Angeles**: [LA Metro API](https://developer.metro.net/)
+- **Minneapolis**: [Metro Transit GTFS-RT](https://svc.metrotransit.org/)
+- **Philadelphia**: [SEPTA API](https://www3.septa.org/developer/)
+- **Phoenix**: [Valley Metro GTFS-RT](https://www.valleymetro.org/gtfs-real-time-data)
+- **Pittsburgh**: [PRT TrueTime GTFS-RT](https://truetime.portauthority.org/)
+- **Portland**: [TriMet Developer Resources](https://developer.trimet.org/)
+- **Salt Lake City**: [UTA GTFS-RT](https://www.rideuta.com/Developer-Resources)
 - **San Diego**: [MTS Developer Resources](https://www.sdmts.com/business-center/app-developers)
-- **Grade Crossings**: [OpenStreetMap](https://www.openstreetmap.org/) via Overpass API
+- **San Francisco**: [511.org](https://511.org/open-data) GTFS-realtime
+- **San Jose**: [511.org](https://511.org/open-data) VTA GTFS-realtime
+- **Seattle**: [Sound Transit OneBusAway](https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd)
+- **Toronto**: [TTC BusTime GTFS-RT](https://bustime.ttc.ca/gtfsrt/) + NextBus API
 - **Base Map**: [CARTO Dark Matter](https://carto.com/basemaps/)
+- **Census Data**: [US Census TIGERweb](https://tigerweb.geo.census.gov/), [LEHD LODES](https://lehd.ces.census.gov/data/#lodes), [ACS](https://data.census.gov/)
+- **Grade Crossings**: [OpenStreetMap](https://www.openstreetmap.org/) via Overpass API
 
 ---
 
