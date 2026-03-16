@@ -925,15 +925,16 @@
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(4, auto);
   grid-auto-flow: column;
-  gap: 4px 12px;
+  gap: 4px 8px;
 }
 
 .density-legend-item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
 }
 
 .density-legend-swatch {

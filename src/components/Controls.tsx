@@ -1752,7 +1752,7 @@ export function Controls({
                                             : ""}
           {city === "Toronto" ? (
             <>
-              . Transit commute from{" "}
+              . Job density and transit commute from{" "}
               <a
                 href="https://www12.statcan.gc.ca/census-recensement/2021/dp-pd/prof/index.cfm?Lang=E"
                 target="_blank"

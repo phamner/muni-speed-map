@@ -193,7 +193,6 @@ export function SeparationLegend() {
 interface DensityLegendProps {
   mode: DensityMode;
   onModeChange?: (mode: DensityMode) => void;
-  city: City;
 }
 
 const POP_LEGEND = [
@@ -230,14 +229,10 @@ const DENSITY_TOOLTIPS: Record<DensityMode, string> = {
   population: "Population per square kilometer from 2020 US Census tract data.",
   jobs: "Jobs per square kilometer from LEHD LODES 2021 workplace data. Shows where employment is concentrated, which often differs significantly from where people live.",
   transit:
-    "Percentage of workers who commute by public transit, from ACS 2022. Includes bus, streetcar, subway, commuter rail, and ferry. Does not include taxicab, rideshare, biking, or walking. Commute-to-work data only.",
+    "Percentage of workers who commute to work by public transit, from ACS 2022. Includes light rail, subway, commuter rail, streetcar, bus, and ferry.",
 };
 
-export function DensityLegend({
-  mode,
-  onModeChange,
-  city,
-}: DensityLegendProps) {
+export function DensityLegend({ mode, onModeChange }: DensityLegendProps) {
   const items =
     mode === "jobs"
       ? JOB_LEGEND
@@ -250,8 +245,6 @@ export function DensityLegend({
       : mode === "transit"
         ? "% transit commute"
         : "people/km²";
-  const noData = mode === "jobs" && city === "Toronto";
-
   return (
     <div className="map-density-legend">
       <div className="density-mode-group-label">Census Data</div>
@@ -275,29 +268,23 @@ export function DensityLegend({
           Transit
         </button>
       </div>
-      {noData ? (
-        <div className="density-no-data">Not available for Toronto</div>
-      ) : (
-        <>
-          <div className="map-density-legend-title">
-            {unitLabel}
-            <span className="density-info-icon" title={DENSITY_TOOLTIPS[mode]}>
-              ⓘ
-            </span>
+      <div className="map-density-legend-title">
+        {unitLabel}
+        <span className="density-info-icon" title={DENSITY_TOOLTIPS[mode]}>
+          ⓘ
+        </span>
+      </div>
+      <div className="map-density-legend-scale">
+        {items.map((item) => (
+          <div className="density-legend-item" key={item.label}>
+            <span
+              className="density-legend-swatch"
+              style={{ backgroundColor: item.color }}
+            ></span>
+            <span>{item.label}</span>
           </div>
-          <div className="map-density-legend-scale">
-            {items.map((item) => (
-              <div className="density-legend-item" key={item.label}>
-                <span
-                  className="density-legend-swatch"
-                  style={{ backgroundColor: item.color }}
-                ></span>
-                <span>{item.label}</span>
-              </div>
-            ))}
-          </div>
-        </>
-      )}
+        ))}
+      </div>
     </div>
   );
 }

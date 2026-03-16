@@ -93,10 +93,9 @@ export const ABOUT_SECTIONS = {
       "The density overlay helps contextualize transit performance. Areas with higher population density often correlate with higher ridership demand and different operating conditions.",
     ],
     jobDensity: [
-      "Job density data comes from the US Census Bureau's LEHD LODES (Longitudinal Employer-Household Dynamics, LEHD Origin-Destination Employment Statistics) dataset, using 2021 Workplace Area Characteristics (WAC) files.",
-      "Raw LODES data reports job counts at the census block level. These are aggregated up to census tracts to match the same geographic units used for population density.",
+      "Job density data for US cities comes from the US Census Bureau's LEHD LODES (Longitudinal Employer-Household Dynamics, LEHD Origin-Destination Employment Statistics) dataset, using 2021 Workplace Area Characteristics (WAC) files. Raw LODES data reports job counts at the census block level, aggregated up to census tracts to match the same geographic units used for population density.",
+      "Toronto job density comes from the 2021 Canadian Census (Table 98-10-0504-01), which counts the total number of workers who commute to each census tract as their usual place of work. This is survey-based (25% sample) rather than the administrative employer records used by LODES, but it produces a comparable spatial pattern of employment concentration.",
       "Job density is calculated as total jobs divided by land area, converted to jobs per square kilometer.",
-      "Job density is available for all US cities on the platform. Toronto does not have job density data, as LODES is a US-only dataset.",
       "The job density overlay shows where employment is concentrated, which often differs significantly from where people live. Comparing population and job density side by side can reveal whether transit lines are well-positioned to serve commute patterns.",
     ],
     transitCommute: [

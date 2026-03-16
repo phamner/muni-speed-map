@@ -4225,7 +4225,8 @@ export function SpeedMap({
             };
 
             const mode = densityModeRef.current;
-            const transitPctRaw = props.TRANSIT_PCT_RAW || props.TRANSIT_PCT || 0;
+            const transitPctRaw =
+              props.TRANSIT_PCT_RAW || props.TRANSIT_PCT || 0;
             const transitWorkers = props.TRANSIT_WORKERS || 0;
             const totalWorkers = props.TOTAL_WORKERS || 0;
             const isSmallSample = totalWorkers > 0 && totalWorkers < 100;
@@ -4242,7 +4243,7 @@ export function SpeedMap({
               unitLabel = "commute via transit";
               countLabel = `${transitWorkers.toLocaleString()} of ${totalWorkers.toLocaleString()} workers`;
               if (isSmallSample) {
-                smallSampleNote = `<div class="popup-small-sample">Fewer than 100 workers; excluded from map shading</div>`;
+                smallSampleNote = `<div class="popup-small-sample">Sample too small (fewer than 100 workers); excluded from map shading</div>`;
               }
             } else if (mode === "jobs") {
               activeValue = jobDensity.toLocaleString();
@@ -4651,7 +4652,6 @@ export function SpeedMap({
           <DensityLegend
             mode={densityMode}
             onModeChange={onDensityModeChange}
-            city={city}
           />
         )}
 
