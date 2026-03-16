@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { DensityMode } from "../../App";
 
 interface LayerSelectorProps {
@@ -17,6 +18,18 @@ export function LayerSelector({
   onPopulationDensityToggle,
   onDensityModeChange,
 }: LayerSelectorProps) {
+  const [mobileDensityOpen, setMobileDensityOpen] = useState(false);
+
+  const handleDensitySelect = (mode: DensityMode) => {
+    if (showPopulationDensity && densityMode === mode) {
+      onPopulationDensityToggle?.(false);
+    } else {
+      onDensityModeChange?.(mode);
+      onPopulationDensityToggle?.(true);
+    }
+    setMobileDensityOpen(false);
+  };
+
   return (
     <div className="map-layer-selector">
       <div
@@ -54,16 +67,10 @@ export function LayerSelector({
           <span className="layer-label">Satellite</span>
         </div>
 
+        {/* Desktop: show all three density tiles directly */}
         <div
-          className={`map-layer-tile ${showPopulationDensity && densityMode === "population" ? "active" : ""}`}
-          onClick={() => {
-            if (showPopulationDensity && densityMode === "population") {
-              onPopulationDensityToggle?.(false);
-            } else {
-              onDensityModeChange?.("population");
-              onPopulationDensityToggle?.(true);
-            }
-          }}
+          className={`map-layer-tile density-tile-desktop ${showPopulationDensity && densityMode === "population" ? "active" : ""}`}
+          onClick={() => handleDensitySelect("population")}
           title="Population density"
         >
           <div className="layer-preview population-preview" />
@@ -71,15 +78,8 @@ export function LayerSelector({
         </div>
 
         <div
-          className={`map-layer-tile ${showPopulationDensity && densityMode === "jobs" ? "active" : ""}`}
-          onClick={() => {
-            if (showPopulationDensity && densityMode === "jobs") {
-              onPopulationDensityToggle?.(false);
-            } else {
-              onDensityModeChange?.("jobs");
-              onPopulationDensityToggle?.(true);
-            }
-          }}
+          className={`map-layer-tile density-tile-desktop ${showPopulationDensity && densityMode === "jobs" ? "active" : ""}`}
+          onClick={() => handleDensitySelect("jobs")}
           title="Job density"
         >
           <div className="layer-preview jobs-preview" />
@@ -87,19 +87,67 @@ export function LayerSelector({
         </div>
 
         <div
-          className={`map-layer-tile ${showPopulationDensity && densityMode === "transit" ? "active" : ""}`}
-          onClick={() => {
-            if (showPopulationDensity && densityMode === "transit") {
-              onPopulationDensityToggle?.(false);
-            } else {
-              onDensityModeChange?.("transit");
-              onPopulationDensityToggle?.(true);
-            }
-          }}
+          className={`map-layer-tile density-tile-desktop ${showPopulationDensity && densityMode === "transit" ? "active" : ""}`}
+          onClick={() => handleDensitySelect("transit")}
           title="Transit commute share"
         >
           <div className="layer-preview transit-preview" />
           <span className="layer-label">Transit Use</span>
+        </div>
+
+        {/* Mobile: single "Density" tile that opens a sub-menu */}
+        <div className="density-tile-mobile-wrapper">
+          <div
+            className={`map-layer-tile density-tile-mobile ${showPopulationDensity ? "active" : ""}`}
+            onClick={() => setMobileDensityOpen(!mobileDensityOpen)}
+            title="Density overlays"
+          >
+            <div className={`layer-preview ${
+              showPopulationDensity
+                ? densityMode === "jobs" ? "jobs-preview"
+                  : densityMode === "transit" ? "transit-preview"
+                  : "population-preview"
+                : "population-preview"
+            }`} />
+            <span className="layer-label">Density</span>
+          </div>
+
+          {mobileDensityOpen && (
+            <div className="density-submenu">
+              <div
+                className={`density-submenu-item ${showPopulationDensity && densityMode === "population" ? "active" : ""}`}
+                onClick={() => handleDensitySelect("population")}
+              >
+                <span className="density-submenu-swatch population-preview" />
+                <span>Pop.</span>
+              </div>
+              <div
+                className={`density-submenu-item ${showPopulationDensity && densityMode === "jobs" ? "active" : ""}`}
+                onClick={() => handleDensitySelect("jobs")}
+              >
+                <span className="density-submenu-swatch jobs-preview" />
+                <span>Jobs</span>
+              </div>
+              <div
+                className={`density-submenu-item ${showPopulationDensity && densityMode === "transit" ? "active" : ""}`}
+                onClick={() => handleDensitySelect("transit")}
+              >
+                <span className="density-submenu-swatch transit-preview" />
+                <span>Transit</span>
+              </div>
+              {showPopulationDensity && (
+                <div
+                  className="density-submenu-item density-submenu-off"
+                  onClick={() => {
+                    onPopulationDensityToggle?.(false);
+                    setMobileDensityOpen(false);
+                  }}
+                >
+                  <span>Off</span>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

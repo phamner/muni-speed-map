@@ -216,21 +216,44 @@ const JOB_LEGEND = [
 ];
 
 const TRANSIT_LEGEND = [
-  { color: "#1a3848", label: "< 2%" },
-  { color: "#1a6a6a", label: "2-5%" },
+  { color: "#111e2e", label: "< 2%" },
+  { color: "#1a4a4a", label: "2-5%" },
   { color: "#22aaaa", label: "5-10%" },
-  { color: "#66cc88", label: "10-20%" },
-  { color: "#dddd66", label: "20-35%" },
-  { color: "#fffbe6", label: "> 35%" },
+  { color: "#44cc88", label: "10-15%" },
+  { color: "#ccdd44", label: "15-25%" },
+  { color: "#ffee55", label: "25-40%" },
+  { color: "#ffaa55", label: "> 40%" },
 ];
 
-export function DensityLegend({ mode, onModeChange, city }: DensityLegendProps) {
-  const items = mode === "jobs" ? JOB_LEGEND : mode === "transit" ? TRANSIT_LEGEND : POP_LEGEND;
-  const unitLabel = mode === "jobs" ? "jobs/km²" : mode === "transit" ? "% transit commute" : "people/km²";
+const DENSITY_TOOLTIPS: Record<DensityMode, string> = {
+  population: "Population per square kilometer from 2020 US Census tract data.",
+  jobs: "Jobs per square kilometer from LEHD LODES 2021 workplace data. Shows where employment is concentrated, which often differs significantly from where people live.",
+  transit:
+    "Percentage of workers who commute by public transit, from ACS 2022. Includes bus, streetcar, subway, commuter rail, and ferry. Does not include taxicab, rideshare, biking, or walking. Commute-to-work data only.",
+};
+
+export function DensityLegend({
+  mode,
+  onModeChange,
+  city,
+}: DensityLegendProps) {
+  const items =
+    mode === "jobs"
+      ? JOB_LEGEND
+      : mode === "transit"
+        ? TRANSIT_LEGEND
+        : POP_LEGEND;
+  const unitLabel =
+    mode === "jobs"
+      ? "jobs/km²"
+      : mode === "transit"
+        ? "% transit commute"
+        : "people/km²";
   const noData = (mode === "jobs" || mode === "transit") && city === "Toronto";
 
   return (
     <div className="map-density-legend">
+      <div className="density-mode-group-label">Census Data</div>
       <div className="density-mode-toggle">
         <button
           className={`density-mode-btn ${mode === "population" ? "active" : ""}`}
@@ -248,14 +271,19 @@ export function DensityLegend({ mode, onModeChange, city }: DensityLegendProps) 
           className={`density-mode-btn ${mode === "transit" ? "active" : ""}`}
           onClick={() => onModeChange?.("transit")}
         >
-          Transit Use
+          Transit
         </button>
       </div>
       {noData ? (
         <div className="density-no-data">Not available for Toronto</div>
       ) : (
         <>
-          <div className="map-density-legend-title">{unitLabel}</div>
+          <div className="map-density-legend-title">
+            {unitLabel}
+            <span className="density-info-icon" title={DENSITY_TOOLTIPS[mode]}>
+              ⓘ
+            </span>
+          </div>
           <div className="map-density-legend-scale">
             {items.map((item) => (
               <div className="density-legend-item" key={item.label}>
@@ -290,8 +318,8 @@ export function DynamicLegends({
 }: DynamicLegendsProps) {
   const showCrossingLegend =
     false &&
-    (showCrossings &&
-      ["LA", "San Diego", "Salt Lake City", "Charlotte"].includes(city));
+    showCrossings &&
+    ["LA", "San Diego", "Salt Lake City", "Charlotte"].includes(city);
   const showRailContextLegend =
     showRailContextHeavy || showRailContextCommuter || showBusRoutesOverlay;
 

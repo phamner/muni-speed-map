@@ -1087,26 +1087,35 @@ export function SpeedMap({
     };
   }, [liveVehicles, city, routeGeometryMap, allCityLines]);
 
-  const computeOnMainThread = useCallback((rows: any[], routes: any, cityName: string): Vehicle[] => {
-    const routeFeatureMap = getRouteFeatureMap(routes);
-    return rows.map((row: any) => {
-      const segments = findSegmentsForVehicle(
-        row.lat, row.lon, row.route_id,
-        routes, routeFeatureMap, cityName,
-      );
-      return {
-        id: `${row.vehicle_id}-${row.id}`,
-        lat: row.lat, lon: row.lon, routeId: row.route_id,
-        direction: getDirection(row.direction_id),
-        speed: row.speed_calculated,
-        recordedAt: row.recorded_at,
-        segmentId: segments.segmentId,
-        segmentId500: segments.segmentId500,
-        headsign: row.headsign,
-        onRoute: segments.minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS,
-      };
-    });
-  }, []);
+  const computeOnMainThread = useCallback(
+    (rows: any[], routes: any, cityName: string): Vehicle[] => {
+      const routeFeatureMap = getRouteFeatureMap(routes);
+      return rows.map((row: any) => {
+        const segments = findSegmentsForVehicle(
+          row.lat,
+          row.lon,
+          row.route_id,
+          routes,
+          routeFeatureMap,
+          cityName,
+        );
+        return {
+          id: `${row.vehicle_id}-${row.id}`,
+          lat: row.lat,
+          lon: row.lon,
+          routeId: row.route_id,
+          direction: getDirection(row.direction_id),
+          speed: row.speed_calculated,
+          recordedAt: row.recorded_at,
+          segmentId: segments.segmentId,
+          segmentId500: segments.segmentId500,
+          headsign: row.headsign,
+          onRoute: segments.minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS,
+        };
+      });
+    },
+    [],
+  );
 
   // Fetch vehicle positions from Supabase filtered by city
   const fetchVehiclesFromSupabase = useCallback(async () => {
@@ -1241,7 +1250,9 @@ export function SpeedMap({
         };
         const errorHandler = () => {
           cleanup();
-          console.warn("Worker error during computation, falling back to main thread");
+          console.warn(
+            "Worker error during computation, falling back to main thread",
+          );
           segmentWorker.current = null;
           resolve(computeOnMainThread(filteredData, cityConfig.routes, city));
         };
@@ -3999,13 +4010,18 @@ export function SpeedMap({
         const processedData = {
           ...rawData,
           features: rawData.features.map((f: any) => {
-            const areaKm2 = f.properties.AREALAND > 0 ? f.properties.AREALAND / 1000000 : 0;
+            const areaKm2 =
+              f.properties.AREALAND > 0 ? f.properties.AREALAND / 1000000 : 0;
             return {
               ...f,
               properties: {
                 ...f.properties,
-                density: areaKm2 > 0 ? Math.round(f.properties.POP100 / areaKm2) : 0,
-                jobDensity: areaKm2 > 0 ? Math.round((f.properties.JOBS || 0) / areaKm2) : 0,
+                density:
+                  areaKm2 > 0 ? Math.round(f.properties.POP100 / areaKm2) : 0,
+                jobDensity:
+                  areaKm2 > 0
+                    ? Math.round((f.properties.JOBS || 0) / areaKm2)
+                    : 0,
               },
             };
           }),
@@ -4186,17 +4202,18 @@ export function SpeedMap({
               if (d >= 25000) return "#ee5566";
               if (d >= 12000) return "#bb55aa";
               if (d >= 6000) return "#7a5ab0";
-              if (d >= 3000) return "#4a4aaa";
-              if (d >= 1500) return "#2a3a8a";
-              return "#1a2a5a";
+              if (d >= 3000) return "#6a6acc";
+              if (d >= 1500) return "#5a6aaa";
+              return "#5a6a99";
             };
             const getTransitColor = (pct: number): string => {
-              if (pct >= 35) return "#dddd66";
-              if (pct >= 20) return "#66cc88";
-              if (pct >= 10) return "#22aaaa";
-              if (pct >= 5) return "#1a6a6a";
-              if (pct >= 2) return "#1a3848";
-              return "#122030";
+              if (pct >= 40) return "#ffaa55";
+              if (pct >= 25) return "#ffee55";
+              if (pct >= 15) return "#ccdd44";
+              if (pct >= 10) return "#44cc88";
+              if (pct >= 5) return "#22aaaa";
+              if (pct >= 2) return "#3a7a7a";
+              return "#3a6a6a";
             };
 
             const mode = densityModeRef.current;
@@ -4212,7 +4229,7 @@ export function SpeedMap({
             if (mode === "transit") {
               activeValue = `${transitPct}%`;
               densityColor = getTransitColor(transitPct);
-              unitLabel = "transit commute";
+              unitLabel = "commute via transit";
               countLabel = `${transitWorkers.toLocaleString()} of ${totalWorkers.toLocaleString()} workers`;
             } else if (mode === "jobs") {
               activeValue = jobDensity.toLocaleString();
@@ -4256,25 +4273,140 @@ export function SpeedMap({
         // when the paint effect may have run before layers existed)
         if (map.current.getLayer("population-density-fill")) {
           const curMode = densityModeRef.current;
-          const dp = curMode === "jobs" ? "jobDensity" : curMode === "transit" ? "TRANSIT_PCT" : "density";
+          const dp =
+            curMode === "jobs"
+              ? "jobDensity"
+              : curMode === "transit"
+                ? "TRANSIT_PCT"
+                : "density";
           const satMult = showSatellite ? 0.7 : 1;
           map.current.setPaintProperty(
             "population-density-fill",
             "fill-color",
             curMode === "jobs"
-              ? ["interpolate",["linear"],["get",dp],0,"#0f1724",100,"#131a34",500,"#1a2a5a",1500,"#2a3a8a",3000,"#4a4aaa",6000,"#7a5ab0",12000,"#bb55aa",25000,"#ee5566",50000,"#ff3333"]
+              ? [
+                  "interpolate",
+                  ["linear"],
+                  ["get", dp],
+                  0,
+                  "#0f1724",
+                  100,
+                  "#131a34",
+                  500,
+                  "#1a2a5a",
+                  1500,
+                  "#2a3a8a",
+                  3000,
+                  "#4a4aaa",
+                  6000,
+                  "#7a5ab0",
+                  12000,
+                  "#bb55aa",
+                  25000,
+                  "#ee5566",
+                  50000,
+                  "#ff3333",
+                ]
               : curMode === "transit"
-                ? ["interpolate",["linear"],["get",dp],0,"#0f1724",1,"#122030",2,"#1a3848",5,"#1a6a6a",10,"#22aaaa",20,"#66cc88",35,"#dddd66",50,"#fffbe6"]
-                : ["interpolate",["linear"],["get",dp],0,"#0f1724",250,"#132434",1000,"#1a3a4a",2500,"#2a5a5a",5000,"#3a7a6a",8000,"#5a9a5a",12000,"#aacc44",18000,"#ffcc00",28000,"#ff6600",45000,"#ff0066"],
+                ? [
+                    "interpolate",
+                    ["linear"],
+                    ["get", dp],
+                    0,
+                    "#0f1724",
+                    2,
+                    "#111e2e",
+                    5,
+                    "#1a4a4a",
+                    10,
+                    "#22aaaa",
+                    15,
+                    "#44cc88",
+                    25,
+                    "#ccdd44",
+                    40,
+                    "#ffee55",
+                    60,
+                    "#ffaa55",
+                  ]
+                : [
+                    "interpolate",
+                    ["linear"],
+                    ["get", dp],
+                    0,
+                    "#0f1724",
+                    250,
+                    "#132434",
+                    1000,
+                    "#1a3a4a",
+                    2500,
+                    "#2a5a5a",
+                    5000,
+                    "#3a7a6a",
+                    8000,
+                    "#5a9a5a",
+                    12000,
+                    "#aacc44",
+                    18000,
+                    "#ffcc00",
+                    28000,
+                    "#ff6600",
+                    45000,
+                    "#ff0066",
+                  ],
           );
           map.current.setPaintProperty(
             "population-density-fill",
             "fill-opacity",
             curMode === "jobs"
-              ? ["interpolate",["linear"],["get",dp],0,0.82*satMult,500,0.76*satMult,3000,0.68*satMult,12000,0.62*satMult,50000,0.58*satMult]
+              ? [
+                  "interpolate",
+                  ["linear"],
+                  ["get", dp],
+                  0,
+                  0.82 * satMult,
+                  500,
+                  0.76 * satMult,
+                  3000,
+                  0.68 * satMult,
+                  12000,
+                  0.62 * satMult,
+                  50000,
+                  0.58 * satMult,
+                ]
               : curMode === "transit"
-                ? ["interpolate",["linear"],["get",dp],0,0.82*satMult,5,0.76*satMult,15,0.68*satMult,30,0.62*satMult,50,0.58*satMult]
-                : ["interpolate",["linear"],["get",dp],0,0.82*satMult,1000,0.76*satMult,5000,0.68*satMult,12000,0.62*satMult,45000,0.58*satMult],
+                ? [
+                    "interpolate",
+                    ["linear"],
+                    ["get", dp],
+                    0,
+                    0.35 * satMult,
+                    2,
+                    0.45 * satMult,
+                    5,
+                    0.55 * satMult,
+                    10,
+                    0.7 * satMult,
+                    20,
+                    0.78 * satMult,
+                    40,
+                    0.85 * satMult,
+                  ]
+                : [
+                    "interpolate",
+                    ["linear"],
+                    ["get", dp],
+                    0,
+                    0.82 * satMult,
+                    1000,
+                    0.76 * satMult,
+                    5000,
+                    0.68 * satMult,
+                    12000,
+                    0.62 * satMult,
+                    45000,
+                    0.58 * satMult,
+                  ],
           );
         }
 
@@ -4318,78 +4450,146 @@ export function SpeedMap({
 
     const fillOpacityMultiplier = showSatellite ? 0.7 : 1;
     const densityProp =
-      densityMode === "jobs" ? "jobDensity" : densityMode === "transit" ? "TRANSIT_PCT" : "density";
+      densityMode === "jobs"
+        ? "jobDensity"
+        : densityMode === "transit"
+          ? "TRANSIT_PCT"
+          : "density";
 
     const colorExpr =
       densityMode === "jobs"
         ? [
-            "interpolate", ["linear"], ["get", densityProp],
-            0, "#0f1724",
-            100, "#131a34",
-            500, "#1a2a5a",
-            1500, "#2a3a8a",
-            3000, "#4a4aaa",
-            6000, "#7a5ab0",
-            12000, "#bb55aa",
-            25000, "#ee5566",
-            50000, "#ff3333",
+            "interpolate",
+            ["linear"],
+            ["get", densityProp],
+            0,
+            "#0f1724",
+            100,
+            "#131a34",
+            500,
+            "#1a2a5a",
+            1500,
+            "#2a3a8a",
+            3000,
+            "#4a4aaa",
+            6000,
+            "#7a5ab0",
+            12000,
+            "#bb55aa",
+            25000,
+            "#ee5566",
+            50000,
+            "#ff3333",
           ]
         : densityMode === "transit"
           ? [
-              "interpolate", ["linear"], ["get", densityProp],
-              0, "#0f1724",
-              1, "#122030",
-              2, "#1a3848",
-              5, "#1a6a6a",
-              10, "#22aaaa",
-              20, "#66cc88",
-              35, "#dddd66",
-              50, "#fffbe6",
+              "interpolate",
+              ["linear"],
+              ["get", densityProp],
+              0,
+              "#0f1724",
+              2,
+              "#111e2e",
+              5,
+              "#1a4a4a",
+              10,
+              "#22aaaa",
+              15,
+              "#44cc88",
+              25,
+              "#ccdd44",
+              40,
+              "#ffee55",
+              60,
+              "#ffaa55",
             ]
           : [
-              "interpolate", ["linear"], ["get", densityProp],
-              0, "#0f1724",
-              250, "#132434",
-              1000, "#1a3a4a",
-              2500, "#2a5a5a",
-              5000, "#3a7a6a",
-              8000, "#5a9a5a",
-              12000, "#aacc44",
-              18000, "#ffcc00",
-              28000, "#ff6600",
-              45000, "#ff0066",
+              "interpolate",
+              ["linear"],
+              ["get", densityProp],
+              0,
+              "#0f1724",
+              250,
+              "#132434",
+              1000,
+              "#1a3a4a",
+              2500,
+              "#2a5a5a",
+              5000,
+              "#3a7a6a",
+              8000,
+              "#5a9a5a",
+              12000,
+              "#aacc44",
+              18000,
+              "#ffcc00",
+              28000,
+              "#ff6600",
+              45000,
+              "#ff0066",
             ];
 
     const opacityExpr =
       densityMode === "jobs"
         ? [
-            "interpolate", ["linear"], ["get", densityProp],
-            0, 0.82 * fillOpacityMultiplier,
-            500, 0.76 * fillOpacityMultiplier,
-            3000, 0.68 * fillOpacityMultiplier,
-            12000, 0.62 * fillOpacityMultiplier,
-            50000, 0.58 * fillOpacityMultiplier,
+            "interpolate",
+            ["linear"],
+            ["get", densityProp],
+            0,
+            0.82 * fillOpacityMultiplier,
+            500,
+            0.76 * fillOpacityMultiplier,
+            3000,
+            0.68 * fillOpacityMultiplier,
+            12000,
+            0.62 * fillOpacityMultiplier,
+            50000,
+            0.58 * fillOpacityMultiplier,
           ]
         : densityMode === "transit"
           ? [
-              "interpolate", ["linear"], ["get", densityProp],
-              0, 0.82 * fillOpacityMultiplier,
-              5, 0.76 * fillOpacityMultiplier,
-              15, 0.68 * fillOpacityMultiplier,
-              30, 0.62 * fillOpacityMultiplier,
-              50, 0.58 * fillOpacityMultiplier,
+              "interpolate",
+              ["linear"],
+              ["get", densityProp],
+              0,
+              0.35 * fillOpacityMultiplier,
+              2,
+              0.45 * fillOpacityMultiplier,
+              5,
+              0.55 * fillOpacityMultiplier,
+              10,
+              0.7 * fillOpacityMultiplier,
+              20,
+              0.78 * fillOpacityMultiplier,
+              40,
+              0.85 * fillOpacityMultiplier,
             ]
           : [
-              "interpolate", ["linear"], ["get", densityProp],
-              0, 0.82 * fillOpacityMultiplier,
-              1000, 0.76 * fillOpacityMultiplier,
-              5000, 0.68 * fillOpacityMultiplier,
-              12000, 0.62 * fillOpacityMultiplier,
-              45000, 0.58 * fillOpacityMultiplier,
+              "interpolate",
+              ["linear"],
+              ["get", densityProp],
+              0,
+              0.82 * fillOpacityMultiplier,
+              1000,
+              0.76 * fillOpacityMultiplier,
+              5000,
+              0.68 * fillOpacityMultiplier,
+              12000,
+              0.62 * fillOpacityMultiplier,
+              45000,
+              0.58 * fillOpacityMultiplier,
             ];
 
-    map.current.setPaintProperty("population-density-fill", "fill-color", colorExpr);
-    map.current.setPaintProperty("population-density-fill", "fill-opacity", opacityExpr);
+    map.current.setPaintProperty(
+      "population-density-fill",
+      "fill-color",
+      colorExpr,
+    );
+    map.current.setPaintProperty(
+      "population-density-fill",
+      "fill-opacity",
+      opacityExpr,
+    );
   }, [mapLoaded, densityMode, showSatellite, showPopulationDensity]);
 
   // Update speed limit labels when speed unit changes

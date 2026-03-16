@@ -47,12 +47,13 @@ export const ABOUT_SECTIONS = {
       "The map interface provides multiple ways to explore light rail performance:",
     quickStart: [
       "Pick a city you know (or are curious about)",
-      "Switch between Raw / 200m / 500m views. Raw shows every individual observation, while 200m and 500m average nearby readings so broader patterns emerge",
-      "Use the speed filter: try max 5 mph to see where trains crawl, or min 40 mph to see where they move freely",
-      "Toggle infrastructure layers (grade crossings, traffic lights, switches) to see how they correlate with slow zones",
-      "Hit Show/Hide Trains to reveal the lines underneath, then switch between 'By Line,' 'Speed Limit,' and 'Grade Separation' for more network context",
-      "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network. Turn on population density to see where people live, or job density to see where they work.",
-      "Switch cities: your filter settings carry over, making it easy to compare networks side by side",
+      "Switch between Raw / 200m / 500m views. Raw shows every individual observation, while 200m and 500m average nearby readings so broader patterns emerge.",
+      "Use the speed filter: try max 5 mph to see where trains crawl, or min 40 mph to see where they move freely. This works best with raw data.",
+      "Toggle infrastructure layers (grade crossings, traffic lights, switches) to see how they correlate with slow zones.",
+      "Hit Show/Hide Trains to reveal the lines underneath, then switch between 'By Line,' 'Speed Limit,' and 'Grade Separation' for more network context.",
+      "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network.",
+      "Use the census data overlays (Pop./Jobs/Transit) to add demographic context. Population density shows where people live, job density shows where they work, and transit commute share highlights areas where residents actually depend on public transit. Hover any tract for exact numbers.",
+      "Switch cities: your filter settings carry over, making it easy to compare networks side by side.",
     ],
     views: [
       "Raw Data: Shows individual vehicle position and speed observations from the sampled dataset. Use this to inspect the underlying fleet-wide snapshots that feed the map.",
@@ -68,7 +69,7 @@ export const ABOUT_SECTIONS = {
     ],
     tips: [
       "Hover over route segments to see detailed speed information",
-      "Use the layer toggles (bottom-left) to switch between satellite and street views, or enable the population or job density overlays",
+      "Use the layer toggles (bottom-left) to switch between satellite and street views, or enable census data overlays (population, jobs, or transit commute share)",
       "The distance scale shows both kilometers and miles",
       "Speed legend updates based on your selected unit (mph/km/h)",
     ],

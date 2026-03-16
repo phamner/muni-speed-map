@@ -905,6 +905,19 @@
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+
+.density-info-icon {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: help;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1;
 }
 
 .map-density-legend-scale {
@@ -929,6 +942,16 @@
   border-radius: 2px;
   flex-shrink: 0;
   border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.density-mode-group-label {
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+  margin-bottom: 3px;
 }
 
 .density-mode-toggle {
@@ -2269,8 +2292,9 @@
 /* Separation Legend - on map, above speed legend when separation mode is active */
 .map-separation-legend {
   position: absolute;
-  bottom: 400px;
+  bottom: 475px;
   left: 10px;
+  width: 180px;
   background: rgba(26, 26, 46, 0.92);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
@@ -2546,15 +2570,17 @@
   );
 }
 
-/* Transit commute preview - dark teal to warm yellow gradient */
+/* Transit commute preview - dark base fades, bright where transit matters */
 .map-layer-tile .transit-preview {
   background: linear-gradient(
     135deg,
     #0f1724 0%,
-    #1a3848 20%,
-    #22aaaa 45%,
-    #66cc88 65%,
-    #dddd66 100%
+    #1a4a4a 20%,
+    #22aaaa 40%,
+    #44cc88 55%,
+    #ccdd44 70%,
+    #ffee55 85%,
+    #ffaa55 100%
   );
 }
 
@@ -2580,6 +2606,11 @@
 
 .map-layer-tile.coming-soon:hover {
   border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Hide mobile density wrapper on desktop */
+.density-tile-mobile-wrapper {
+  display: none;
 }
 
 /* Expandable tiles panel - appears on hover */
@@ -2765,6 +2796,76 @@
     opacity: 1;
     transform: none;
     pointer-events: auto;
+  }
+
+  /* Mobile: hide individual density tiles, show grouped density tile */
+  .density-tile-desktop {
+    display: none !important;
+  }
+
+  .density-tile-mobile-wrapper {
+    display: block;
+    position: relative;
+  }
+
+  .density-submenu {
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(26, 26, 46, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 1001;
+    min-width: 90px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  }
+
+  .density-submenu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .density-submenu-item:hover,
+  .density-submenu-item:active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .density-submenu-item.active {
+    background: rgba(77, 171, 247, 0.2);
+    color: #fff;
+    border: 1px solid rgba(77, 171, 247, 0.5);
+  }
+
+  .density-submenu-item:not(.active) {
+    border: 1px solid transparent;
+  }
+
+  .density-submenu-off {
+    color: rgba(255, 255, 255, 0.45);
+    font-style: italic;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    margin-top: 2px;
+    padding-top: 8px;
+  }
+
+  .density-submenu-swatch {
+    width: 18px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
   }
 
   /* Speed legend - above map selector, bottom left */
