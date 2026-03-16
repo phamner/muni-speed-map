@@ -2943,7 +2943,7 @@ export function SpeedMap({
             const segmentFeatures = map.current?.queryRenderedFeatures(
               e.point,
               {
-                layers: ["speed-segments"],
+                layers: ["speed-segments", "speed-segments-hitarea"],
               },
             );
             if (segmentFeatures && segmentFeatures.length > 0) return;
@@ -3688,9 +3688,23 @@ export function SpeedMap({
           "visible",
         );
       }
+      if (map.current.getLayer("speed-segments-hitarea")) {
+        map.current.setLayoutProperty(
+          "speed-segments-hitarea",
+          "visibility",
+          "visible",
+        );
+      }
     } else {
       if (map.current.getLayer("speed-segments")) {
         map.current.setLayoutProperty("speed-segments", "visibility", "none");
+      }
+      if (map.current.getLayer("speed-segments-hitarea")) {
+        map.current.setLayoutProperty(
+          "speed-segments-hitarea",
+          "visibility",
+          "none",
+        );
       }
     }
   }, [viewMode, cachedVehicleGeoJSON, cachedLiveVehicleGeoJSON, mapLoaded]);
@@ -3828,6 +3842,9 @@ export function SpeedMap({
     if (existingSource) {
       existingSource.setData(segmentGeoJSON);
       map.current.setLayoutProperty("speed-segments", "visibility", "visible");
+      if (map.current.getLayer("speed-segments-hitarea")) {
+        map.current.setLayoutProperty("speed-segments-hitarea", "visibility", "visible");
+      }
     } else {
       map.current.addSource("speed-segments", {
         type: "geojson",
@@ -3877,6 +3894,25 @@ export function SpeedMap({
         aboveLayer,
       );
 
+      // Wider invisible layer for easier mobile tap targets
+      map.current.addLayer(
+        {
+          id: "speed-segments-hitarea",
+          type: "line",
+          source: "speed-segments",
+          filter: segmentLayerFilter,
+          layout: {
+            "line-join": "round",
+            "line-cap": "round",
+          },
+          paint: {
+            "line-width": 30,
+            "line-opacity": 0,
+          },
+        },
+        aboveLayer,
+      );
+
       map.current.on("mouseenter", "speed-segments", () => {
         if (map.current) map.current.getCanvas().style.cursor = "pointer";
       });
@@ -3917,7 +3953,8 @@ export function SpeedMap({
         showSegmentPopup(e);
       });
 
-      map.current.on("click", "speed-segments", (e) => {
+      // Mobile tap uses the wider hit-area layer for easier targeting
+      map.current.on("click", "speed-segments-hitarea", (e) => {
         if (!isTouchInteractionMode() || !e.features?.length) return;
         touchPopupPinned.current = true;
         showSegmentPopup(e, true);
@@ -3942,6 +3979,13 @@ export function SpeedMap({
 
     try {
       map.current.setFilter("speed-segments", segmentLayerFilter);
+    } catch {
+      // Layer might not exist yet
+    }
+    try {
+      if (map.current.getLayer("speed-segments-hitarea")) {
+        map.current.setFilter("speed-segments-hitarea", segmentLayerFilter);
+      }
     } catch {
       // Layer might not exist yet
     }
