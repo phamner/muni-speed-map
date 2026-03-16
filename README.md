@@ -6,8 +6,6 @@ An aggregated snapshot visualization tool for analyzing light rail and streetcar
 
 ---
 
-## For Developers & Contributors
-
 ## 🎯 The Problem
 
 **Light rail and streetcars are slow when they share the street with cars.**
@@ -111,7 +109,7 @@ The focus remains on **light rail and streetcars that compete with street traffi
 
 - **Color-coded data points**: Red (slow) → Yellow → Cyan (fast)
 - **Raw data view**: Individual vehicle observations from the sampled snapshots
-- **Segment average view**: 100m track segments colored by aggregated average speed
+- **Segment average view**: 200m and 500m track segments colored by aggregated average speed
 
 ![Segment View](docs/screenshot-segments.png)
 
@@ -121,12 +119,22 @@ The focus remains on **light rail and streetcars that compete with street traffi
 - Filter by speed range (min/max mph)
 - Hide stopped trains (0 mph)
 - Toggle route lines, stations, and grade crossings
+- Speed unit toggle (mph / km/h)
 
-### Grade Crossings
+### Census Data Overlays
 
-- Street-level railroad crossings from OpenStreetMap
-- Identify potential conflict points that slow trains
-- Clustered markers to reduce visual clutter
+- **Population density**: Census tract-level population density (2020 US Census / 2021 Canadian Census)
+- **Job density**: Employment concentration from LEHD LODES data
+- **Transit commute share**: Percentage of workers commuting by transit from ACS data
+
+### Infrastructure Overlays
+
+- **Grade crossings**: Street-level railroad crossings from OpenStreetMap
+- **Traffic signals**: Signal locations along transit corridors
+- **Track switches**: Junction/turnout locations
+- **Rail context**: Nearby heavy rail and commuter rail lines for geographic context
+- **Bus route overlays**: Local bus networks shown alongside rail
+- **Satellite view**: Toggle between dark base map and satellite imagery
 
 ### Statistics
 
@@ -186,7 +194,7 @@ npm run dev
 # In another terminal, start data collection (see table below)
 npm run collect:sf
 
-# Or run all collectors at once (12 cities)
+# Or run all collectors at once
 npm run collect:all
 ```
 
@@ -220,7 +228,7 @@ npm run collect:all
 
 | Command                          | Cities                      | Script                        |
 | -------------------------------- | --------------------------- | ----------------------------- |
-| `npm run collect:all`            | All 15 active cities        | `collectAll.sh`               |
+| `npm run collect:all`            | All active cities           | `collectAll.sh`               |
 | `npm run collect:seattle-denver` | Seattle + Denver            | `collectDataSeattleDenver.js` |
 | `npm run collect:slc-pit`        | Salt Lake City + Pittsburgh | `collectDataSlcPittsburgh.js` |
 
@@ -228,7 +236,7 @@ npm run collect:all
 
 ### How Speed is Calculated
 
-- **SF, Seattle, Philadelphia, San Jose, Phoenix, Charlotte, Baltimore, Cleveland, San Diego**: Speed calculated from GPS distance ÷ time between consecutive readings (~90 seconds apart)
+- **SF, Seattle, Philadelphia, San Jose, Phoenix, Charlotte, Baltimore, Cleveland, Sacramento, San Diego**: Speed calculated from GPS distance ÷ time between consecutive readings (~90 seconds apart)
 - **LA, Boston, Portland, Toronto, Minneapolis, Denver, Salt Lake City, Pittsburgh**: Speed reported directly by the transit agency's API
 
 ### API Keys Required
@@ -259,19 +267,36 @@ npm run collect:all
 muni-speed-map/
 ├── src/
 │   ├── components/
-│   │   ├── SpeedMap.tsx      # Main map component
-│   │   └── Controls.tsx      # Sidebar with filters
-│   ├── data/                 # Generated GeoJSON files
-│   │   ├── *Routes.json      # Transit line geometries
-│   │   ├── *Stops.json       # Station locations
-│   │   └── *Crossings.json   # Grade crossing data
-│   └── types.ts              # TypeScript definitions
+│   │   ├── SpeedMap.tsx              # Main map component
+│   │   ├── Controls.tsx              # Sidebar with filters and about modal
+│   │   └── speedMap/                 # Map sub-components and utilities
+│   │       ├── MapLegends.tsx        # Speed and density legends
+│   │       ├── LayerSelector.tsx     # Layer toggle controls
+│   │       ├── vehicleData.ts        # Vehicle position processing
+│   │       ├── segmentWorker.ts      # Web worker for segment computation
+│   │       └── geoUtils.ts           # Geographic helper functions
+│   ├── data/
+│   │   ├── routes/                   # Transit line geometries (GeoJSON)
+│   │   ├── stops/                    # Station locations (GeoJSON)
+│   │   ├── crossings/                # Grade crossing data
+│   │   ├── population-density/       # Census tract data (pop, jobs, transit)
+│   │   ├── rail-context/             # Heavy/commuter rail overlays
+│   │   ├── bus-routes/               # Bus route overlays
+│   │   ├── traffic-lights/           # Signal locations
+│   │   ├── switches/                 # Track switch locations
+│   │   ├── separation/               # ROW separation classifications
+│   │   └── maxspeed/                 # Speed limit data
+│   ├── content/                      # About/description text content
+│   └── types.ts                      # TypeScript definitions
 ├── scripts/
-│   ├── collectData*.js       # Data collection scripts
-│   ├── parseGtfs*.js         # GTFS route parsers
-│   ├── parseStops*.js        # GTFS stop parsers
-│   └── fetchCrossings.js     # Grade crossing fetcher
-└── gtfs_*/                   # Raw GTFS data (not in git)
+│   ├── collectData*.js               # Data collection scripts (per city)
+│   ├── parseGtfs*.js                 # GTFS route parsers
+│   ├── parseStops*.js                # GTFS stop parsers
+│   ├── fetchPopulationDensity.js     # Census tract geometry fetcher
+│   ├── addJobDensity.cjs             # LODES job data enrichment
+│   ├── addTransitCommute.cjs         # ACS transit commute enrichment
+│   └── fetchCrossings.js             # Grade crossing fetcher
+└── gtfs_*/                           # Raw GTFS data (not in git)
 ```
 
 ## 🔄 Updating GTFS Data
