@@ -52,7 +52,7 @@ export const ABOUT_SECTIONS = {
       "Toggle infrastructure layers (grade crossings, traffic lights, switches) to see how they correlate with slow zones.",
       "Hit Show/Hide Trains to reveal the lines underneath, then switch between 'By Line,' 'Speed Limit,' and 'Grade Separation' for more network context.",
       "Try the regional overlays (bus, subway, regional rail) to see how light rail fits into the larger transit network.",
-      "Use the census data overlays (Pop./Jobs/Transit) to add demographic context. Population density shows where people live, job density shows where they work, and transit commute share highlights areas where residents rely on public transit. Hover any tract for exact values. Turning on commuter rail and subway can help show how well the network serves different areas.",
+      "Use the census data overlays to add demographic context. Population density shows where people live, job density shows where they work, and transit commute share shows how many use public transit to get between the two. Hover any tract for exact values. Turning on commuter rail and subway can help show how well the network serves different areas.",
       "Switch cities: your filter settings carry over, making it easy to compare networks side by side.",
     ],
     views: [
