@@ -117,10 +117,20 @@ export function LayerSelector({
                     : densityMode === "transit"
                       ? "transit-preview"
                       : "population-preview"
-                  : "population-preview"
+                  : "census-neutral-preview"
               }`}
-            />
-            <span className="layer-label">Density</span>
+            >
+              {showPopulationDensity && densityMode === "population" && (
+                <Users className="layer-preview-icon" />
+              )}
+              {showPopulationDensity && densityMode === "jobs" && (
+                <BriefcaseBusiness className="layer-preview-icon" />
+              )}
+              {showPopulationDensity && densityMode === "transit" && (
+                <TramFront className="layer-preview-icon" />
+              )}
+            </div>
+            <span className="layer-label">Census</span>
           </div>
 
           {mobileDensityOpen && (
@@ -129,21 +139,21 @@ export function LayerSelector({
                 className={`density-submenu-item ${showPopulationDensity && densityMode === "population" ? "active" : ""}`}
                 onClick={() => handleDensitySelect("population")}
               >
-                <span className="density-submenu-swatch population-preview" />
-                <span>Pop.</span>
+                <Users className="density-submenu-icon" />
+                <span>Population</span>
               </div>
               <div
                 className={`density-submenu-item ${showPopulationDensity && densityMode === "jobs" ? "active" : ""}`}
                 onClick={() => handleDensitySelect("jobs")}
               >
-                <span className="density-submenu-swatch jobs-preview" />
+                <BriefcaseBusiness className="density-submenu-icon" />
                 <span>Jobs</span>
               </div>
               <div
                 className={`density-submenu-item ${showPopulationDensity && densityMode === "transit" ? "active" : ""}`}
                 onClick={() => handleDensitySelect("transit")}
               >
-                <span className="density-submenu-swatch transit-preview" />
+                <TramFront className="density-submenu-icon" />
                 <span>Transit</span>
               </div>
               {showPopulationDensity && (

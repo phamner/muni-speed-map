@@ -2606,6 +2606,10 @@
   );
 }
 
+.map-layer-tile .census-neutral-preview {
+  background: linear-gradient(135deg, #1a1a2e 0%, #2a2a3e 50%, #3a3a4e 100%);
+}
+
 /* Coming soon badge on tile */
 .map-layer-tile .tile-badge {
   position: absolute;
@@ -2893,6 +2897,18 @@
     height: 14px;
     border-radius: 3px;
     flex-shrink: 0;
+  }
+
+  .density-submenu-icon {
+    width: 18px;
+    height: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    stroke-width: 2;
+    flex-shrink: 0;
+  }
+
+  .density-submenu-item.active .density-submenu-icon {
+    color: #4dabf7;
   }
 
   /* Speed legend - above map selector, bottom left */
