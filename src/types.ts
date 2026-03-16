@@ -461,3 +461,80 @@ export function getLinesForCity(city: City): readonly string[] {
       return BALTIMORE_LIGHT_RAIL_LINES;
   }
 }
+
+export function getRouteDisplayName(routeId: string, city: City): string {
+  switch (city) {
+    case "LA":
+      return LA_METRO_LINE_INFO[routeId as LAMetroLine]?.letter || routeId;
+    case "Seattle":
+      return (
+        SEATTLE_LINK_LINE_INFO[routeId as SeattleLinkLine]?.letter || routeId
+      );
+    case "Boston":
+      return (
+        BOSTON_GREEN_LINE_INFO[routeId as BostonGreenLineRoute]?.letter ||
+        routeId
+      );
+    case "Portland":
+      return (
+        PORTLAND_MAX_LINE_INFO[routeId as PortlandMaxLine]?.letter ||
+        PORTLAND_STREETCAR_LINE_INFO[routeId as PortlandStreetcarLine]
+          ?.letter ||
+        routeId
+      );
+    case "San Diego":
+      return (
+        SAN_DIEGO_TROLLEY_LINE_INFO[routeId as SanDiegoTrolleyLine]?.letter ||
+        routeId
+      );
+    case "Toronto":
+      return (
+        TORONTO_STREETCAR_LINE_INFO[routeId as TorontoStreetcarLine]?.letter ||
+        routeId
+      );
+    case "Philadelphia":
+      return (
+        PHILLY_TROLLEY_LINE_INFO[routeId as PhillyTrolleyLine]?.letter ||
+        routeId
+      );
+    case "Pittsburgh":
+      return (
+        PITTSBURGH_T_LINE_INFO[routeId as PittsburghTLine]?.letter || routeId
+      );
+    case "Minneapolis":
+      return (
+        MINNEAPOLIS_METRO_LINE_INFO[routeId as MinneapolisMetroLine]?.letter ||
+        routeId
+      );
+    case "Denver":
+      return DENVER_RTD_LINE_INFO[routeId as DenverRtdLine]?.letter || routeId;
+    case "Salt Lake City":
+      return SLC_TRAX_LINE_INFO[routeId as SlcTraxLine]?.letter || routeId;
+    case "San Jose":
+      return (
+        VTA_LIGHT_RAIL_LINE_INFO[routeId as VtaLightRailLine]?.letter ||
+        routeId
+      );
+    case "Phoenix":
+      return (
+        PHOENIX_LIGHT_RAIL_LINE_INFO[routeId as PhoenixLightRailLine]
+          ?.letter || routeId
+      );
+    case "Cleveland":
+      return (
+        CLEVELAND_RTA_LINE_INFO[routeId as ClevelandRtaLine]?.letter || routeId
+      );
+    case "Charlotte":
+      return (
+        CHARLOTTE_LYNX_LINE_INFO[routeId as CharlotteLynxLine]?.letter ||
+        routeId
+      );
+    case "Baltimore":
+      return (
+        BALTIMORE_LIGHT_RAIL_LINE_INFO[routeId as BaltimoreLightRailLine]
+          ?.letter || routeId
+      );
+    default:
+      return routeId;
+  }
+}

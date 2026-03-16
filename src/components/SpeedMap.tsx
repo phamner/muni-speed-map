@@ -2,7 +2,11 @@ import { useEffect, useRef, useState, useCallback, useMemo } from "react";
 import maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import type { City, LAMetroLine } from "../types";
-import { getLinesForCity, LA_METRO_LINE_INFO } from "../types";
+import {
+  getLinesForCity,
+  LA_METRO_LINE_INFO,
+  getRouteDisplayName,
+} from "../types";
 import { supabase } from "../lib/supabase";
 import {
   loadCityData,
@@ -598,6 +602,17 @@ export function SpeedMap({
     return unit === "kmh"
       ? `${value.toFixed(1)} km/h`
       : `${value.toFixed(1)} mph`;
+  };
+
+  const getSpeedColor = (mph: number | null | undefined): string => {
+    if (mph == null) return "#666666";
+    if (mph <= 5) return "#9b2d6b";
+    if (mph < 10) return "#ff3333";
+    if (mph < 15) return "#ff9933";
+    if (mph < 25) return "#ffdd33";
+    if (mph < 35) return "#88ff33";
+    if (mph < 50) return "#33eebb";
+    return "#22ccff";
   };
 
   // Load city static data when city changes
@@ -3329,6 +3344,7 @@ export function SpeedMap({
             props.speed != null
               ? formatSpeedFromRef(props.speed)
               : "Speed unknown";
+          const speedColor = getSpeedColor(props.speed);
           const dateTime = new Date(props.recordedAt).toLocaleString("en-US", {
             month: "short",
             day: "numeric",
@@ -3387,7 +3403,7 @@ export function SpeedMap({
               `<div class="popup-content${pinned ? " popup-pinned" : ""}">
                 <div class="popup-title">${titleLine}</div>
                 <div class="popup-detail">${detailLine}</div>
-                <div class="popup-speed">${speed}</div>
+                <div class="popup-speed" style="color: ${speedColor}">${speed}</div>
                 <div class="popup-time">${dateTime}</div>
                 ${
                   pinned
@@ -3930,13 +3946,15 @@ export function SpeedMap({
       ) => {
         if (!e.features?.length || !map.current) return;
         const props = e.features[0].properties;
+        const segColor = getSpeedColor(props.avgSpeed);
+        const lineLabel = getRouteDisplayName(props.routeId, city);
 
         popup.current
           ?.setLngLat(e.lngLat)
           .setHTML(
             `<div class="popup-content${pinned ? " popup-pinned" : ""}">
-              <div class="popup-title">${props.routeId} Segment</div>
-              <div class="popup-speed">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
+              <div class="popup-title">${lineLabel} Segment</div>
+              <div class="popup-speed" style="color: ${segColor}">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
               <div class="popup-detail">${props.sampleCount} readings</div>
               ${
                 pinned
@@ -4224,6 +4242,20 @@ export function SpeedMap({
                 { source: "census-tracts", id: newTractId },
                 { hover: true },
               );
+            }
+
+            // On desktop, let speed data popups take priority over census
+            if (!isTouchInteractionMode()) {
+              const speedLayers: string[] = [];
+              if (map.current.getLayer("vehicles")) speedLayers.push("vehicles");
+              if (map.current.getLayer("speed-segments"))
+                speedLayers.push("speed-segments");
+              if (speedLayers.length > 0) {
+                const hits = map.current.queryRenderedFeatures(e.point, {
+                  layers: speedLayers,
+                });
+                if (hits.length > 0) return;
+              }
             }
 
             const density = props.density || 0;
