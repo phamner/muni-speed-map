@@ -331,7 +331,7 @@ MIT License - feel free to use and adapt for transit advocacy in your city!
 ## 👤 Author
 
 **Philip Hamner**
-[LinkedIn](https://www.linkedin.com/in/philip-hamner/) · [GitHub](https://github.com/phamner)
+[GitHub](https://github.com/phamner)
 
 ---
 

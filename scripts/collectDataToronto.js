@@ -193,13 +193,6 @@ async function fetchLrtVehicles() {
       });
     }
 
-    // Log every route (route_id + vehicle count) we see in the GTFS-RT feed
-    // const routesList = Object.entries(allRouteCounts)
-    //   .sort((a, b) => b[1] - a[1])
-    //   .map(([route, count]) => `${route}: ${count}`)
-    //   .join(", ");
-    // console.log(`philip9991    📋 GTFS-RT feed routes: ${routesList}`);
-
     // Log LRT route status
     console.log("   🚈 LRT Status:");
     for (const route of LRT_ROUTES) {
