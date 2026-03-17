@@ -713,23 +713,32 @@
 
 .unit-toggle-group {
   display: flex;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 6px;
-  padding: 2px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-sizing: border-box;
+  transition: all 0.25s ease;
+}
+
+.unit-toggle-group:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
 }
 
 .unit-toggle-btn {
-  padding: 3px 6px;
+  padding: 6px 6px;
   background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   border-radius: 4px;
-  transition: all 0.2s;
-  letter-spacing: 0;
+  transition: background 0.2s, color 0.2s;
+  text-align: center;
+  flex: 1;
+  min-width: 0;
 }
 
 .unit-toggle-btn:hover {
@@ -738,7 +747,7 @@
 
 .unit-toggle-btn.active {
   background: rgba(0, 217, 255, 0.2);
-  color: #00d9ff;
+  color: #66e6ff;
 }
 
 .unit-toggle-btn:disabled {
@@ -751,10 +760,11 @@
   margin-left: auto;
   flex-shrink: 0;
   width: 82px;
+  height: 22px;
 }
 
 .status-unit-toggle .unit-toggle-btn {
-  padding: 2px 6px;
+  padding: 0 6px;
 }
 
 /* Train Visibility Toggle */
