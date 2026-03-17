@@ -256,10 +256,10 @@
 
 .collapsible-title {
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.7);
   flex: 1;
 }
 
