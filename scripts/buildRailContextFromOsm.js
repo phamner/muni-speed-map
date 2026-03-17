@@ -27,6 +27,41 @@ const PROFILES = {
   way["railway"~"subway|light_rail"]["network"="BART"]["service"!~"yard|crossover|siding|spur"](36.5,-123.0,38.5,-121.0);
 );
 out body;>;out skel qt;`,
+    extraLines: [
+      {
+        name: "OAK Airport Connector",
+        coords: [
+          [-122.196165, 37.752401],
+          [-122.196845, 37.751681],
+          [-122.196998, 37.751201],
+          [-122.196684, 37.749602],
+          [-122.196281, 37.748705],
+          [-122.196033, 37.746615],
+          [-122.196117, 37.744307],
+          [-122.196874, 37.741833],
+          [-122.19705, 37.73931],
+          [-122.196689, 37.738262],
+          [-122.196773, 37.737308],
+          [-122.197056, 37.736038],
+          [-122.198931, 37.731927],
+          [-122.199945, 37.729992],
+          [-122.199937, 37.727483],
+          [-122.199472, 37.72559],
+          [-122.199544, 37.725259],
+          [-122.200136, 37.724499],
+          [-122.20032, 37.724051],
+          [-122.200334, 37.722411],
+          [-122.200576, 37.72139],
+          [-122.20094, 37.720615],
+          [-122.201611, 37.719676],
+          [-122.203192, 37.718238],
+          [-122.2045, 37.717547],
+          [-122.209474, 37.715808],
+          [-122.210415, 37.715145],
+          [-122.212028, 37.713445],
+        ],
+      },
+    ],
     properties: {
       route_id: "BART",
       route_short_name: "BART",
@@ -233,6 +268,13 @@ async function main() {
   console.log(
     `Filtered: ${merged.length} -> ${significantLines.length} (removed ${merged.length - significantLines.length} short segments)`,
   );
+
+  if (profile.extraLines) {
+    for (const extra of profile.extraLines) {
+      significantLines.push(extra.coords);
+      console.log(`Added extra line: ${extra.name} (${extra.coords.length} pts)`);
+    }
+  }
 
   const totalPtsBefore = significantLines.reduce((s, c) => s + c.length, 0);
   const simplified = significantLines.map((c) => simplifyLine(c));
