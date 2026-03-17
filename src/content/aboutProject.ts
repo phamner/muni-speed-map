@@ -147,7 +147,7 @@ export const ABOUT_CITY_NOTES: AboutCityNote[] = [
   },
   {
     city: "Boston",
-    note: "The Green Line branches show how much grade crossings matter. The D Line runs mostly in reserved right-of-way with far fewer grade crossings than the B, C, or E branches, and it shows up as noticeably faster on the map. The B and E lines, with more intersections and interactions with cars/pedestrians, slow down more. The data becomes pretty patchy downtown, possibly because the routes are underground.",
+    note: "The Green Line branches show how much grade crossings matter. The D Line runs mostly in reserved right-of-way with far fewer grade crossings than the B, C, or E branches, and it shows up as noticeably faster on the map. The B and E lines, with more intersections and interactions with cars/pedestrians, slow down more. The data becomes pretty patchy downtown, possibly because the routes are underground. ",
   },
   {
     city: "Charlotte",
