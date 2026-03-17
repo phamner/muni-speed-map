@@ -345,6 +345,7 @@
   box-sizing: border-box;
   margin-right: 0;
   min-width: 82px;
+  height: 25px;
   transition: all 0.25s ease;
 }
 
