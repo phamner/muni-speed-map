@@ -470,6 +470,7 @@ export function SpeedMap({
   const crossingPopupPinned = useRef(false);
   const touchPopupPinned = useRef(false);
   const hoveredTractId = useRef<string | null>(null);
+  const clickedTractId = useRef<string | null>(null);
   const crossingHandlersRegistered = useRef(false);
   const suppressNextMapClickUnpin = useRef(false);
   const prevViewMode = useRef<ViewMode>(viewMode);
@@ -4233,15 +4234,20 @@ export function SpeedMap({
             if (
               isTouchInteractionMode() &&
               e.type === "click" &&
-              newTractId === hoveredTractId.current
+              newTractId === clickedTractId.current
             ) {
               popup.current?.remove();
               map.current.setFeatureState(
-                { source: "census-tracts", id: hoveredTractId.current },
+                { source: "census-tracts", id: newTractId },
                 { hover: false },
               );
               hoveredTractId.current = null;
+              clickedTractId.current = null;
               return;
+            }
+
+            if (isTouchInteractionMode() && e.type === "click") {
+              clickedTractId.current = newTractId;
             }
 
             if (newTractId !== hoveredTractId.current) {
