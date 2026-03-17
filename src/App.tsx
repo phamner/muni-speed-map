@@ -72,7 +72,7 @@ function App() {
   const [vehicleCount, setVehicleCount] = useState(0);
   const [speedFilter, setSpeedFilter] = useState<SpeedFilter>({
     minSpeed: 0,
-    maxSpeed: 50,
+    maxSpeed: 60,
     showNoData: true,
   });
   const [showRouteLines, setShowRouteLines] = useState(true);

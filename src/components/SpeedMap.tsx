@@ -3278,8 +3278,8 @@ export function SpeedMap({
             // For other cities: normal speed filtering
             initialFilters.push([">=", ["get", "speed"], speedFilter.minSpeed]);
           }
-          // Only add max filter if not at 50 (50 means 50+ / no upper limit)
-          if (speedFilter.maxSpeed < 50) {
+          // Only add max filter if not at 60 (60 means 60+ / no upper limit)
+          if (speedFilter.maxSpeed < 60) {
             initialFilters.push(["<=", ["get", "speed"], speedFilter.maxSpeed]);
           }
           // Use 0.5 threshold so speeds that round to 0 (like 0.3 mph) are also hidden
@@ -3547,8 +3547,8 @@ export function SpeedMap({
         // For other cities: normal speed filtering
         filters.push([">=", ["get", "speed"], speedFilter.minSpeed]);
       }
-      // Only add max filter if not at 50 (50 means 50+ / no upper limit)
-      if (speedFilter.maxSpeed < 50) {
+      // Only add max filter if not at 60 (60 means 60+ / no upper limit)
+      if (speedFilter.maxSpeed < 60) {
         filters.push(["<=", ["get", "speed"], speedFilter.maxSpeed]);
       }
 
@@ -3828,7 +3828,7 @@ export function SpeedMap({
         const data = activeAverages.get(seg.segmentId);
         if (!data) return false;
         if (data.avg < speedFilter.minSpeed) return false;
-        if (speedFilter.maxSpeed < 50 && data.avg > speedFilter.maxSpeed)
+        if (speedFilter.maxSpeed < 60 && data.avg > speedFilter.maxSpeed)
           return false;
         return true;
       })

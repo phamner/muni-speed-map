@@ -1086,7 +1086,7 @@ export function Controls({
             <input
               type="range"
               min="0"
-              max="50"
+              max="60"
               value={speedFilter.minSpeed}
               onChange={(e) =>
                 setSpeedFilter({
@@ -1104,15 +1104,15 @@ export function Controls({
           <div className="speed-slider-row">
             <label>
               Max:{" "}
-              {speedFilter.maxSpeed === 50
-                ? `${Math.round(convertSpeed(50))}+`
+              {speedFilter.maxSpeed === 60
+                ? `${Math.round(convertSpeed(60))}+`
                 : Math.round(convertSpeed(speedFilter.maxSpeed))}{" "}
               {unitLabelLower}
             </label>
             <input
               type="range"
               min="0"
-              max="50"
+              max="60"
               value={speedFilter.maxSpeed}
               onChange={(e) =>
                 setSpeedFilter({
@@ -1480,7 +1480,7 @@ export function Controls({
       <button
         className="reset-filter-btn"
         onClick={() => {
-          setSpeedFilter({ minSpeed: 0, maxSpeed: 50, showNoData: true });
+          setSpeedFilter({ minSpeed: 0, maxSpeed: 60, showNoData: true });
           setSelectedLines([...allLines] as string[]);
           setShowRouteLines(true);
           setRouteLineMode("byLine");
