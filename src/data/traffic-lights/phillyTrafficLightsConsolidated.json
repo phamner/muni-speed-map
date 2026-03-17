@@ -1804,20 +1804,6 @@
     {
       "type": "Feature",
       "properties": {
-        "id": "cluster-150",
-        "type": "traffic_signal",
-        "count": 1,
-        "routes": ["101"],
-        "snapped": null
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [-75.3453552, 39.9212284]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
         "id": "cluster-151",
         "type": "traffic_signal",
         "count": 1,
