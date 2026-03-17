@@ -7,9 +7,9 @@ const DENSITY_DIR = path.join(__dirname, "../src/data/population-density");
 // City -> { stateFips, countyFipsList }
 // Philadelphia spans two states, so it has two entries
 const CITY_QUERIES = {
-  SF: [{ state: "06", counties: ["001", "013", "041", "055", "067", "075", "077", "081", "085", "095", "097", "113"] }],
+  SF: [{ state: "06", counties: ["001", "013", "041", "055", "067", "075", "077", "081", "085", "087", "095", "097", "113"] }],
   LA: [{ state: "06", counties: ["037", "059", "065", "071", "111"] }],
-  "San Jose": [{ state: "06", counties: ["001", "013", "075", "077", "081", "085"] }],
+  "San Jose": [{ state: "06", counties: ["001", "013", "075", "077", "081", "085", "087"] }],
   "San Diego": [{ state: "06", counties: ["073"] }],
   Boston: [{ state: "25", counties: ["009", "017", "021", "025"] }],
   Philadelphia: [

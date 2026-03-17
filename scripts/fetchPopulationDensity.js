@@ -56,6 +56,7 @@ const CITY_CONFIGS = {
       [STATE.CA, "067", "Sacramento County"],
       [STATE.CA, "077", "San Joaquin County"],
       [STATE.CA, "085", "Santa Clara County"],
+      [STATE.CA, "087", "Santa Cruz County"],
       [STATE.CA, "095", "Solano County"],
       [STATE.CA, "097", "Sonoma County"],
       [STATE.CA, "113", "Yolo County", { maxLat: 38.7 }],
@@ -121,6 +122,7 @@ const CITY_CONFIGS = {
       [STATE.CA, "081", "San Mateo County"],
       [STATE.CA, "075", "San Francisco County"],
       [STATE.CA, "077", "San Joaquin County"],
+      [STATE.CA, "087", "Santa Cruz County"],
     ],
   },
   pittsburgh: {

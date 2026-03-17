@@ -300,6 +300,7 @@ const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
     "075": "San Francisco County",
     "081": "San Mateo County",
     "085": "Santa Clara County",
+    "087": "Santa Cruz County",
   },
   LA: {
     "037": "Los Angeles County",
@@ -345,6 +346,7 @@ const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
     "075": "San Francisco County",
     "081": "San Mateo County",
     "085": "Santa Clara County",
+    "087": "Santa Cruz County",
   },
   Pittsburgh: {
     "003": "Allegheny County",
@@ -1397,7 +1399,7 @@ export function SpeedMap({
       },
       center: cityConfig.center,
       zoom: cityConfig.zoom,
-      minZoom: 9,
+      minZoom: 8.5,
       maxZoom: 18,
     });
 
@@ -3860,7 +3862,11 @@ export function SpeedMap({
       existingSource.setData(segmentGeoJSON);
       map.current.setLayoutProperty("speed-segments", "visibility", "visible");
       if (map.current.getLayer("speed-segments-hitarea")) {
-        map.current.setLayoutProperty("speed-segments-hitarea", "visibility", "visible");
+        map.current.setLayoutProperty(
+          "speed-segments-hitarea",
+          "visibility",
+          "visible",
+        );
       }
     } else {
       map.current.addSource("speed-segments", {
@@ -4268,7 +4274,8 @@ export function SpeedMap({
             // On desktop, let speed data popups take priority over census
             if (!isTouchInteractionMode()) {
               const speedLayers: string[] = [];
-              if (map.current.getLayer("vehicles")) speedLayers.push("vehicles");
+              if (map.current.getLayer("vehicles"))
+                speedLayers.push("vehicles");
               if (map.current.getLayer("speed-segments"))
                 speedLayers.push("speed-segments");
               if (speedLayers.length > 0) {
