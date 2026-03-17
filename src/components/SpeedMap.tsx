@@ -4227,6 +4227,7 @@ export function SpeedMap({
 
           const showDensityPopup = (e: maplibregl.MapLayerMouseEvent) => {
             if (!e.features?.length || !map.current) return;
+            if (isTouchInteractionMode() && e.type !== "click") return;
             const props = e.features[0].properties;
             const geoid = String(props.GEOID || "");
             const newTractId = geoid;
