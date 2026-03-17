@@ -1,4 +1,10 @@
-import { useState, useEffect, useRef, useCallback, type ReactNode } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  type ReactNode,
+} from "react";
 import { createPortal } from "react-dom";
 import type {
   MuniLine,
@@ -595,7 +601,6 @@ export function Controls({
   const [sections, setSections] = useState({
     speedView: true,
     linesContext: true,
-    infrastructure: true,
   });
 
   // Allow Escape key to close open informational modals.
@@ -1013,9 +1018,9 @@ export function Controls({
         </div>
       </div>
 
-      {/* Speed View & Filter */}
+      {/* Speed & Analysis */}
       <CollapsibleSection
-        title="Speed View & Filter"
+        title="Speed & Analysis"
         isExpanded={sections.speedView}
         onToggle={() => setSections((s) => ({ ...s, speedView: !s.speedView }))}
         rightElement={
@@ -1158,6 +1163,112 @@ export function Controls({
             </span>
           </label>
         </div>
+
+        <div className="control-label" style={{ marginTop: "10px" }}>
+          Infrastructure
+        </div>
+        <div className="route-lines-toggle">
+          <label>
+            <input
+              type="checkbox"
+              checked={showStops}
+              onChange={(e) => setShowStops(e.target.checked)}
+            />
+            Show stations ◆
+          </label>
+        </div>
+        <div className="route-lines-toggle">
+          {city === "Philadelphia" || city === "Toronto" ? (
+            <label
+              style={{ opacity: 0.5, cursor: "not-allowed" }}
+              onMouseEnter={(e) =>
+                showTooltip(
+                  e,
+                  "Grade crossing data is not available for this city",
+                )
+              }
+              onClick={(e) =>
+                toggleTouchTooltip(
+                  e,
+                  "Grade crossing data is not available for this city",
+                )
+              }
+              onMouseLeave={hideTooltip}
+            >
+              <input type="checkbox" checked={false} disabled />
+              Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
+            </label>
+          ) : (
+            <label className="toggle-with-info-icon">
+              <span className="toggle-label-content">
+                <input
+                  type="checkbox"
+                  checked={showCrossings}
+                  onChange={(e) => setShowCrossings(e.target.checked)}
+                />
+                Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
+              </span>
+              <span
+                className="speed-by-line-info-icon"
+                onMouseEnter={(e) =>
+                  showTooltip(
+                    e,
+                    "Shows rail–road level crossings where tracks intersect roads at grade.",
+                  )
+                }
+                onClick={(e) =>
+                  toggleTouchTooltip(
+                    e,
+                    "Shows rail–road level crossings where tracks intersect roads at grade.",
+                  )
+                }
+                onMouseLeave={hideTooltip}
+              >
+                ⓘ
+              </span>
+            </label>
+          )}
+        </div>
+        <div className="route-lines-toggle">
+          <label className="toggle-with-info-icon">
+            <span className="toggle-label-content">
+              <input
+                type="checkbox"
+                checked={showTrafficLights}
+                onChange={(e) => setShowTrafficLights(e.target.checked)}
+              />
+              Show traffic lights 🚦
+            </span>
+            <span
+              className="speed-by-line-info-icon"
+              onMouseEnter={(e) =>
+                showTooltip(
+                  e,
+                  "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.",
+                )
+              }
+              onClick={(e) =>
+                toggleTouchTooltip(
+                  e,
+                  "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.",
+                )
+              }
+              onMouseLeave={hideTooltip}
+            >
+              ⓘ
+            </span>
+          </label>
+        </div>
+        <div className="route-lines-toggle">
+          <label>
+            <input
+              type="checkbox"
+              checked={showSwitches}
+              onChange={(e) => setShowSwitches(e.target.checked)}
+            />
+            Show track switches <span style={{ color: "#00d4ff" }}>Y</span>
+          </label>
+        </div>
       </CollapsibleSection>
 
       {/* Lines & Regional Context */}
@@ -1169,10 +1280,13 @@ export function Controls({
         }
         rightElement={
           <div
-            className="toggle-group"
-            style={{
-              visibility: sections.linesContext ? "visible" : "hidden",
-            }}
+            className={`toggle-group ${
+              selectedLines.length === allLines.length
+                ? "all-selected"
+                : selectedLines.length === 0
+                  ? "none-selected"
+                  : ""
+            }`}
           >
             <button
               className={`toggle-button ${
@@ -1201,9 +1315,7 @@ export function Controls({
               key={line}
               className={`line-button ${
                 selectedLines.includes(line) ? "active" : "inactive"
-              }${city === "Toronto" ? " toronto-line-button" : ""}${
-                city === "Toronto" && line === "805" ? " line-coming-soon" : ""
-              }`}
+              }${city === "Toronto" ? " toronto-line-button" : ""}`}
               style={
                 {
                   "--line-color": getLineColor(line, city),
@@ -1227,7 +1339,6 @@ export function Controls({
                       TORONTO_STREETCAR_LINE_INFO[line as TorontoStreetcarLine]
                         ?.corridor
                     }
-                    {line === "805" ? " 🚧" : ""}
                   </span>
                 </>
               ) : (
@@ -1236,6 +1347,12 @@ export function Controls({
             </button>
           ))}
         </div>
+        {city === "Toronto" && (
+          <p className="lrt-data-note">
+            Lines 5 and 6 are not yet included in TTC's public vehicle position
+            feed. Speed data will appear once TTC makes it available.
+          </p>
+        )}
         <div className="route-lines-section">
           <div className="route-lines-toggle">
             <label>
@@ -1357,118 +1474,6 @@ export function Controls({
             </label>
           </div>
         )}
-      </CollapsibleSection>
-
-      {/* Infrastructure */}
-      <CollapsibleSection
-        title="Infrastructure"
-        isExpanded={sections.infrastructure}
-        onToggle={() =>
-          setSections((s) => ({ ...s, infrastructure: !s.infrastructure }))
-        }
-      >
-        <div className="route-lines-toggle">
-          <label>
-            <input
-              type="checkbox"
-              checked={showStops}
-              onChange={(e) => setShowStops(e.target.checked)}
-            />
-            Show stations ◆
-          </label>
-        </div>
-        <div className="route-lines-toggle">
-          {city === "Philadelphia" || city === "Toronto" ? (
-            <label
-              style={{ opacity: 0.5, cursor: "not-allowed" }}
-              onMouseEnter={(e) =>
-                showTooltip(
-                  e,
-                  "Grade crossing data is not available for this city",
-                )
-              }
-              onClick={(e) =>
-                toggleTouchTooltip(
-                  e,
-                  "Grade crossing data is not available for this city",
-                )
-              }
-              onMouseLeave={hideTooltip}
-            >
-              <input type="checkbox" checked={false} disabled />
-              Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
-            </label>
-          ) : (
-            <label className="toggle-with-info-icon">
-              <span className="toggle-label-content">
-                <input
-                  type="checkbox"
-                  checked={showCrossings}
-                  onChange={(e) => setShowCrossings(e.target.checked)}
-                />
-                Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
-              </span>
-              <span
-                className="speed-by-line-info-icon"
-                onMouseEnter={(e) =>
-                  showTooltip(
-                    e,
-                    "Shows rail–road level crossings where tracks intersect roads at grade.",
-                  )
-                }
-                onClick={(e) =>
-                  toggleTouchTooltip(
-                    e,
-                    "Shows rail–road level crossings where tracks intersect roads at grade.",
-                  )
-                }
-                onMouseLeave={hideTooltip}
-              >
-                ⓘ
-              </span>
-            </label>
-          )}
-        </div>
-        <div className="route-lines-toggle">
-          <label className="toggle-with-info-icon">
-            <span className="toggle-label-content">
-              <input
-                type="checkbox"
-                checked={showTrafficLights}
-                onChange={(e) => setShowTrafficLights(e.target.checked)}
-              />
-              Show traffic lights 🚦
-            </span>
-            <span
-              className="speed-by-line-info-icon"
-              onMouseEnter={(e) =>
-                showTooltip(
-                  e,
-                  "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.",
-                )
-              }
-              onClick={(e) =>
-                toggleTouchTooltip(
-                  e,
-                  "Shows intersections where trains obey traffic signals. Gate-protected crossings excluded.",
-                )
-              }
-              onMouseLeave={hideTooltip}
-            >
-              ⓘ
-            </span>
-          </label>
-        </div>
-        <div className="route-lines-toggle">
-          <label>
-            <input
-              type="checkbox"
-              checked={showSwitches}
-              onChange={(e) => setShowSwitches(e.target.checked)}
-            />
-            Show track switches <span style={{ color: "#00d4ff" }}>Y</span>
-          </label>
-        </div>
       </CollapsibleSection>
 
       {/* Reset All Filters */}
@@ -1883,8 +1888,15 @@ export function Controls({
                   <>
                     <p>{ABOUT_SECTIONS.howto.intro}</p>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("howto-start")}>
-                        <span className={`about-chevron ${collapsedSections.has("howto-start") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("howto-start")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("howto-start") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Getting Started
                       </h3>
                       {!collapsedSections.has("howto-start") && (
@@ -1896,8 +1908,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("howto-views")}>
-                        <span className={`about-chevron ${collapsedSections.has("howto-views") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("howto-views")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("howto-views") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         View Modes
                       </h3>
                       {!collapsedSections.has("howto-views") && (
@@ -1909,8 +1928,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("howto-infra")}>
-                        <span className={`about-chevron ${collapsedSections.has("howto-infra") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("howto-infra")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("howto-infra") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Understanding Infrastructure Markers
                       </h3>
                       {!collapsedSections.has("howto-infra") && (
@@ -1924,8 +1950,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("howto-tips")}>
-                        <span className={`about-chevron ${collapsedSections.has("howto-tips") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("howto-tips")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("howto-tips") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Tips
                       </h3>
                       {!collapsedSections.has("howto-tips") && (
@@ -1942,8 +1975,15 @@ export function Controls({
                 {aboutActiveTab === "data" && (
                   <>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-collection")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-collection") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-collection")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-collection") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         {ABOUT_SECTIONS.data.dataCollectionTitle}
                       </h3>
                       {!collapsedSections.has("data-collection") && (
@@ -1951,8 +1991,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-sources")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-sources") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-sources")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-sources") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Data Sources
                       </h3>
                       {!collapsedSections.has("data-sources") && (
@@ -1964,8 +2011,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-segments")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-segments") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-segments")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-segments") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         How Segment Averages Work
                       </h3>
                       {!collapsedSections.has("data-segments") && (
@@ -1977,8 +2031,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-linestats")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-linestats") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-linestats")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-linestats") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Speed by Line Statistics
                       </h3>
                       {!collapsedSections.has("data-linestats") && (
@@ -1990,8 +2051,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-popdensity")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-popdensity") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-popdensity")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-popdensity") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Population Density Overlay
                       </h3>
                       {!collapsedSections.has("data-popdensity") && (
@@ -2003,8 +2071,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-jobdensity")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-jobdensity") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-jobdensity")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-jobdensity") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Job Density Overlay
                       </h3>
                       {!collapsedSections.has("data-jobdensity") && (
@@ -2016,8 +2091,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-transitcommute")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-transitcommute") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-transitcommute")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-transitcommute") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Transit Commute Share Overlay
                       </h3>
                       {!collapsedSections.has("data-transitcommute") && (
@@ -2029,8 +2111,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-scope")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-scope") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-scope")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-scope") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Project Scope
                       </h3>
                       {!collapsedSections.has("data-scope") && (
@@ -2042,8 +2131,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-exclusions")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-exclusions") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-exclusions")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-exclusions") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Why Some Cities Are Excluded
                       </h3>
                       {!collapsedSections.has("data-exclusions") && (
@@ -2055,8 +2151,15 @@ export function Controls({
                       )}
                     </div>
                     <div className="about-section-block">
-                      <h3 className="about-collapsible" onClick={() => toggleSection("data-limitations")}>
-                        <span className={`about-chevron ${collapsedSections.has("data-limitations") ? "" : "expanded"}`}>&#9656;</span>
+                      <h3
+                        className="about-collapsible"
+                        onClick={() => toggleSection("data-limitations")}
+                      >
+                        <span
+                          className={`about-chevron ${collapsedSections.has("data-limitations") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Limitations
                       </h3>
                       {!collapsedSections.has("data-limitations") && (
@@ -2077,7 +2180,11 @@ export function Controls({
                         className="about-city-section-header about-collapsible"
                         onClick={() => toggleSection("cities-included")}
                       >
-                        <span className={`about-chevron ${collapsedSections.has("cities-included") ? "" : "expanded"}`}>&#9656;</span>
+                        <span
+                          className={`about-chevron ${collapsedSections.has("cities-included") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Included Cities
                       </h3>
                       {!collapsedSections.has("cities-included") && (
@@ -2099,7 +2206,11 @@ export function Controls({
                         className="about-city-section-header prospective about-collapsible"
                         onClick={() => toggleSection("cities-prospective")}
                       >
-                        <span className={`about-chevron ${collapsedSections.has("cities-prospective") ? "" : "expanded"}`}>&#9656;</span>
+                        <span
+                          className={`about-chevron ${collapsedSections.has("cities-prospective") ? "" : "expanded"}`}
+                        >
+                          &#9656;
+                        </span>
                         Cities I Want to Add
                       </h3>
                       {!collapsedSections.has("cities-prospective") && (
@@ -2118,7 +2229,8 @@ export function Controls({
                                   </h4>
                                   <p>{item.value}</p>
                                   <p>
-                                    <strong>Current blocker:</strong> {item.blocker}
+                                    <strong>Current blocker:</strong>{" "}
+                                    {item.blocker}
                                   </p>
                                 </div>
                               ))}

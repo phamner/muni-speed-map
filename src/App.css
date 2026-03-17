@@ -338,27 +338,46 @@
 .toggle-group {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 5px;
-  padding: 1px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   box-sizing: border-box;
   margin-right: 0;
-  transition: none;
+  min-width: 82px;
+  transition: all 0.25s ease;
+}
+
+.toggle-group:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.toggle-group.all-selected {
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.2) 0%, rgba(0, 255, 136, 0.15) 100%);
+  border-color: rgba(0, 217, 255, 0.4);
+  box-shadow: 0 1px 4px rgba(0, 217, 255, 0.2);
+}
+
+.toggle-group.all-selected:hover {
+  background: linear-gradient(135deg, rgba(0, 217, 255, 0.28) 0%, rgba(0, 255, 136, 0.22) 100%);
+  border-color: rgba(0, 217, 255, 0.5);
+  box-shadow: 0 2px 8px rgba(0, 217, 255, 0.3);
 }
 
 .toggle-button {
   background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 0.65rem;
-  font-weight: 500;
+  font-size: 0.7rem;
+  font-weight: 600;
   cursor: pointer;
-  padding: 6px 0;
-  border-radius: 3px;
+  padding: 6px 6px;
+  border-radius: 4px;
   transition: background 0.2s, color 0.2s;
   text-align: center;
-  width: 40px;
+  flex: 1;
+  min-width: 0;
 }
 
 .toggle-button:hover {
@@ -367,7 +386,7 @@
 
 .toggle-button.active {
   background: rgba(0, 217, 255, 0.2);
-  color: #00d9ff;
+  color: #66e6ff;
 }
 
 .button-group {
@@ -467,6 +486,14 @@
   line-height: 1.1;
   opacity: 0.85;
   white-space: nowrap;
+}
+
+.lrt-data-note {
+  font-size: 10px;
+  color: #999;
+  margin: 4px 0 8px;
+  line-height: 1.4;
+  font-style: italic;
 }
 
 /* Coming soon / not operational lines */
@@ -731,12 +758,12 @@
 
 /* Train Visibility Toggle */
 .train-visibility-toggle {
-  padding: 7px 8px;
+  padding: 5px 6px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 6px;
   color: rgba(255, 255, 255, 0.85);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
@@ -746,7 +773,7 @@
   text-align: center;
   box-sizing: border-box;
   margin-right: 0;
-  min-width: 96px;
+  min-width: 82px;
 }
 
 .train-visibility-toggle:hover {
