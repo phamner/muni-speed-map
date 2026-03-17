@@ -4230,6 +4230,20 @@ export function SpeedMap({
             const geoid = String(props.GEOID || "");
             const newTractId = geoid;
 
+            if (
+              isTouchInteractionMode() &&
+              e.type === "click" &&
+              newTractId === hoveredTractId.current
+            ) {
+              popup.current?.remove();
+              map.current.setFeatureState(
+                { source: "census-tracts", id: hoveredTractId.current },
+                { hover: false },
+              );
+              hoveredTractId.current = null;
+              return;
+            }
+
             if (newTractId !== hoveredTractId.current) {
               if (hoveredTractId.current) {
                 map.current.setFeatureState(
