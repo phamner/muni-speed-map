@@ -518,7 +518,7 @@
       "properties": {
         "id": "123386746,2193446249",
         "type": "level_crossing",
-        "routes": ["804", "807"],
+        "routes": ["804"],
         "crossingCount": 2,
         "crossing_barrier": "yes",
         "crossing_light": null,
