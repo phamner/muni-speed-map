@@ -353,6 +353,70 @@
         "type": "Point",
         "coordinates": [-122.27882015, 47.51342175]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-sea-belred-1",
+        "type": "level_crossing",
+        "routes": ["100479"],
+        "crossingCount": 1,
+        "crossing_barrier": null,
+        "crossing_light": null,
+        "crossing_bell": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.16710477028582, 47.62447015014463]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-sea-belred-2",
+        "type": "level_crossing",
+        "routes": ["100479"],
+        "crossingCount": 1,
+        "crossing_barrier": null,
+        "crossing_light": null,
+        "crossing_bell": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.16441884811564, 47.62444091733557]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-sea-belred-3",
+        "type": "level_crossing",
+        "routes": ["100479"],
+        "crossingCount": 1,
+        "crossing_barrier": null,
+        "crossing_light": null,
+        "crossing_bell": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.15934925547238, 47.624682852456644]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-sea-belred-4",
+        "type": "level_crossing",
+        "routes": ["100479"],
+        "crossingCount": 1,
+        "crossing_barrier": null,
+        "crossing_light": null,
+        "crossing_bell": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.15712452453671, 47.62798861036073]
+      }
     }
   ]
 }

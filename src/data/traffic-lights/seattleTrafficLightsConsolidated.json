@@ -646,6 +646,36 @@
         "type": "Point",
         "coordinates": [-122.44253528798222, 47.261087882589635]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-sea-belred-tlight-1",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["100479"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.15934925547238, 47.624682852456644]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "manual-sea-belred-tlight-2",
+        "type": "traffic_signal",
+        "count": 1,
+        "routes": ["100479"],
+        "snapped": false,
+        "crossing_id": null
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.15712452453671, 47.62798861036073]
+      }
     }
   ]
 }
