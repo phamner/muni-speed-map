@@ -1,5 +1,5 @@
 // Parse Seattle Sound Transit GTFS data and extract Link Light Rail stops as GeoJSON
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -102,7 +102,8 @@ function main() {
   };
 
   // Write output
-  const outputPath = join(outputDir, "seattleLinkStops.json");
+  const outputPath = join(outputDir, "stops", "seattleLinkStops.json");
+  mkdirSync(join(outputDir, "stops"), { recursive: true });
   writeFileSync(outputPath, JSON.stringify(geojson, null, 2));
   console.log(`\nWrote ${features.length} stops to ${outputPath}`);
 

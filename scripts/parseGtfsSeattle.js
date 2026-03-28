@@ -1,5 +1,5 @@
 // Parse Seattle Sound Transit GTFS data and extract Link Light Rail lines as GeoJSON
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { join, dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -79,9 +79,16 @@ function main() {
 
   // Parse trips to get shape_ids for each route
   const trips = parseCSV("trips.txt");
+  const stopTimes = parseCSV("stop_times.txt");
   console.log(`Total trips: ${trips.length}`);
   const linkTrips = trips.filter((t) => LINK_LINES.includes(t.route_id));
   console.log(`Link Light Rail trips: ${linkTrips.length}`);
+
+  // Count stops per trip so we can prefer the full-service shape over short-turns.
+  const tripStopCounts = {};
+  stopTimes.forEach((st) => {
+    tripStopCounts[st.trip_id] = (tripStopCounts[st.trip_id] || 0) + 1;
+  });
 
   // Count trips per shape_id for each route/direction
   const shapeCounts = {};
@@ -99,18 +106,29 @@ function main() {
       shapeCounts[key].shapes[shapeId] = {
         count: 0,
         headsign: trip.trip_headsign || "",
+        max_stop_count: 0,
       };
     }
-    shapeCounts[key].shapes[shapeId].count++;
+    shapeCounts[key].shapes[shapeId].count += 1;
+    const stopCount = tripStopCounts[trip.trip_id] || 0;
+    if (stopCount > shapeCounts[key].shapes[shapeId].max_stop_count) {
+      shapeCounts[key].shapes[shapeId].max_stop_count = stopCount;
+      shapeCounts[key].shapes[shapeId].headsign = trip.trip_headsign || "";
+    }
   });
 
-  // Pick the most common shape for each route/direction
+  // Pick the shape with the most stops for each route/direction,
+  // then break ties by trip frequency.
   const selectedShapes = {};
   Object.entries(shapeCounts).forEach(([key, data]) => {
     const shapes = Object.entries(data.shapes);
 
-    // Sort by count (descending) and pick the most common
-    shapes.sort((a, b) => b[1].count - a[1].count);
+    shapes.sort((a, b) => {
+      if (b[1].max_stop_count !== a[1].max_stop_count) {
+        return b[1].max_stop_count - a[1].max_stop_count;
+      }
+      return b[1].count - a[1].count;
+    });
 
     const [shapeId, info] = shapes[0];
     selectedShapes[shapeId] = {
@@ -118,10 +136,11 @@ function main() {
       direction_id: data.direction_id,
       headsign: info.headsign,
       trip_count: info.count,
+      stop_count: info.max_stop_count,
     };
 
     console.log(
-      `${data.route_id} dir ${data.direction_id}: picked shape ${shapeId} (${info.headsign || "no headsign"}, ${info.count} trips)`,
+      `${data.route_id} dir ${data.direction_id}: picked shape ${shapeId} (${info.headsign || "no headsign"}, ${info.max_stop_count} stops, ${info.count} trips)`,
     );
   });
 
@@ -184,7 +203,8 @@ function main() {
   };
 
   // Write output
-  const outputPath = join(outputDir, "seattleLinkRoutes.json");
+  const outputPath = join(outputDir, "routes", "seattleLinkRoutes.json");
+  mkdirSync(join(outputDir, "routes"), { recursive: true });
   writeFileSync(outputPath, JSON.stringify(geojson, null, 2));
   console.log(`\nWrote ${features.length} features to ${outputPath}`);
 
