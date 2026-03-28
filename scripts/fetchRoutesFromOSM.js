@@ -17,11 +17,35 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DATA_DIR = path.join(__dirname, "..", "src", "data");
 
-const OVERPASS_API = "https://overpass-api.de/api/interpreter";
-const OVERPASS_FALLBACK_API = "https://overpass.kumi.systems/api/interpreter";
+const OVERPASS_ENDPOINTS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
+  "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
+  "https://overpass.private.coffee/api/interpreter",
+];
 
 // City configurations with their bounding boxes and route filters
 const CITIES = {
+  Seattle: {
+    name: "Seattle",
+    bbox: [47.15, -122.62, 47.83, -122.08],
+    railwayTypes: "light_rail|tram|subway",
+    routeTypesRegex: "light_rail|tram",
+    useRouteRelations: true,
+    fetchStops: false,
+    outputRoutesFile: path.join("routes", "seattleLinkRoutes.json"),
+    outputStopsFile: path.join("stops", "seattleLinkStops.json"),
+    lineColors: {
+      100479: "#28813F", // 1 Line
+      "2LINE": "#007CAD", // 2 Line
+      TLINE: "#F38B00", // T Line
+    },
+    lineNames: {
+      100479: "1 Line",
+      "2LINE": "2 Line",
+      TLINE: "T Line",
+    },
+  },
   Pittsburgh: {
     name: "Pittsburgh",
     bbox: [40.3, -80.15, 40.55, -79.85],
@@ -109,31 +133,51 @@ function delay(ms) {
 async function fetchOverpass(query) {
   let lastError = null;
 
-  for (const endpoint of [OVERPASS_API, OVERPASS_FALLBACK_API]) {
-    try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: `data=${encodeURIComponent(query)}`,
-      });
+  for (const endpoint of OVERPASS_ENDPOINTS) {
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: `data=${encodeURIComponent(query)}`,
+        });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error: ${response.status}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
+
+        return await response.json();
+      } catch (error) {
+        lastError = error;
+        console.warn(
+          `   Overpass request failed via ${endpoint} (attempt ${attempt}/2): ${error.message}`,
+        );
+        if (attempt < 2) {
+          await delay(1200);
+        }
       }
-
-      return await response.json();
-    } catch (error) {
-      lastError = error;
-      console.warn(`   Overpass request failed via ${endpoint}: ${error.message}`);
     }
   }
 
   throw lastError || new Error("Overpass request failed");
 }
 
-function getRouteIdFromTags(tags = {}) {
+function getRouteIdFromTags(tags = {}, city = null) {
+  if (city?.name === "Seattle") {
+    const ref = String(tags.ref || "")
+      .trim()
+      .toUpperCase();
+    const name = String(tags.name || "")
+      .trim()
+      .toUpperCase();
+
+    if (ref === "1" || ref === "1 LINE" || name.includes("1 LINE")) return "100479";
+    if (ref === "2" || ref === "2 LINE" || name.includes("2 LINE")) return "2LINE";
+    if (ref === "T" || ref === "T LINE" || name.includes("T LINE")) return "TLINE";
+  }
+
   if (tags.ref) {
     const ref = String(tags.ref).trim().toUpperCase();
     if (ref.includes("RED")) return "RED";
@@ -170,6 +214,12 @@ function getRouteName(routeId) {
       return "Orange Line";
     case "GOLD":
       return "Gold Line";
+    case "100479":
+      return "1 Line";
+    case "2LINE":
+      return "2 Line";
+    case "TLINE":
+      return "T Line";
     default:
       return routeId;
   }
@@ -281,9 +331,31 @@ function mergeContiguousWays(wayCoordinateSets) {
   return merged.sort((a, b) => b.length - a.length);
 }
 
+function collectWayRefsRecursive(relationId, relationMembers, visited = new Set()) {
+  if (visited.has(relationId)) return new Set();
+  visited.add(relationId);
+
+  const members = relationMembers.get(relationId) || [];
+  const refs = new Set();
+
+  for (const member of members) {
+    if (member?.type === "way" && isTrackRelationMember(member)) {
+      refs.add(member.ref);
+    } else if (member?.type === "relation") {
+      const nestedRefs = collectWayRefsRecursive(member.ref, relationMembers, visited);
+      for (const ref of nestedRefs) refs.add(ref);
+    }
+  }
+
+  return refs;
+}
+
 async function fetchRouteRelations(cityKey) {
   const city = CITIES[cityKey];
   const [south, west, north, east] = city.bbox;
+  const routeSelector = city.routeTypesRegex
+    ? `["route"~"${city.routeTypesRegex}"]`
+    : `["route"="${city.routeType}"]`;
 
   console.log(`\n📍 Fetching route relations for ${city.name}...`);
   console.log(`   Bounding box: ${south}, ${west}, ${north}, ${east}`);
@@ -291,7 +363,7 @@ async function fetchRouteRelations(cityKey) {
   const relationQuery = `
 [out:json][timeout:90];
 (
-  relation["route"="${city.routeType}"](${south},${west},${north},${east});
+  relation${routeSelector}(${south},${west},${north},${east});
 );
 out body;
 `;
@@ -306,13 +378,13 @@ out body;
     const routeRelationIds = new Map();
 
     for (const relation of relations) {
-      const routeId = getRouteIdFromTags(relation.tags);
+      const routeId = getRouteIdFromTags(relation.tags, city);
       if (!city.lineColors[routeId]) continue;
 
       if (!routeSegments.has(routeId)) {
         routeSegments.set(routeId, {
           route_id: routeId,
-          route_name: getRouteName(routeId),
+          route_name: city.lineNames?.[routeId] || getRouteName(routeId),
           route_color: city.lineColors[routeId],
           coordinates: [],
           seenWays: new Set(),
@@ -324,32 +396,39 @@ out body;
       routeRelationIds.get(routeId).push(relation.id);
     }
 
-    for (const [routeId, relationIds] of routeRelationIds) {
-      const route = routeSegments.get(routeId);
-      const wayQuery = `
+    const allRelationIds = Array.from(routeRelationIds.values()).flat();
+    if (allRelationIds.length === 0) {
+      console.log("   No matching route relations after filtering");
+      return 0;
+    }
+
+    const wayQuery = `
 [out:json][timeout:90];
-relation(id:${relationIds.join(",")});
-way(r);
+(
+  relation(id:${allRelationIds.join(",")});
+);
+(._;>>;);
 out body geom;
 `;
-      const wayData = await fetchOverpass(wayQuery);
-      const allowedWayIds = new Set();
-      for (const relation of relations) {
-        const relationRouteId = getRouteIdFromTags(relation.tags);
-        if (relationRouteId !== routeId) continue;
-        for (const member of relation.members || []) {
-          if (isTrackRelationMember(member)) {
-            allowedWayIds.add(member.ref);
-          }
-        }
+    const wayData = await fetchOverpass(wayQuery);
+    const wayElements = wayData.elements.filter(
+      (el) => el.type === "way" && el.geometry?.length > 1,
+    );
+    const relationMembers = new Map();
+    for (const el of wayData.elements) {
+      if (el.type === "relation") {
+        relationMembers.set(el.id, el.members || []);
       }
+    }
 
-      const ways = wayData.elements.filter(
-        (el) =>
-          el.type === "way" &&
-          el.geometry?.length > 1 &&
-          allowedWayIds.has(el.id),
-      );
+    for (const [routeId, relationIds] of routeRelationIds) {
+      const route = routeSegments.get(routeId);
+      const allowedWayIds = new Set();
+      for (const relationId of relationIds) {
+        const refs = collectWayRefsRecursive(relationId, relationMembers);
+        for (const ref of refs) allowedWayIds.add(ref);
+      }
+      const ways = wayElements.filter((el) => allowedWayIds.has(el.id));
 
       console.log(`   ${routeId}: ${ways.length} member ways`);
 
@@ -388,6 +467,7 @@ out body geom;
     };
 
     const outputPath = path.join(DATA_DIR, city.outputRoutesFile);
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, JSON.stringify(geojson, null, 2));
     console.log(`   ✅ Saved routes to ${city.outputRoutesFile}`);
 
@@ -439,7 +519,7 @@ out body geom;
       .filter((el) => el.geometry && el.geometry.length > 1)
       .map((element) => {
         // Determine route_id from tags or use 'default'
-        const route_id = getRouteIdFromTags(element.tags);
+        const route_id = getRouteIdFromTags(element.tags, city);
 
         // Get color from our line colors or use default
         const color =
@@ -450,6 +530,7 @@ out body geom;
           properties: {
             id: element.id,
             route_id: route_id,
+            route_name: city.lineNames?.[route_id] || getRouteName(route_id),
             route_color: color,
             railway: element.tags?.railway || "light_rail",
             name: element.tags?.name || "",
@@ -471,6 +552,7 @@ out body geom;
     };
 
     const outputPath = path.join(DATA_DIR, city.outputRoutesFile);
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, JSON.stringify(geojson, null, 2));
     console.log(`   ✅ Saved routes to ${city.outputRoutesFile}`);
 
@@ -542,6 +624,7 @@ out body;
     };
 
     const outputPath = path.join(DATA_DIR, city.outputStopsFile);
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, JSON.stringify(geojson, null, 2));
     console.log(
       `   ✅ Saved ${features.length} stops to ${city.outputStopsFile}`
@@ -576,8 +659,13 @@ async function main() {
       : await fetchRailwayWays(cityKey);
     await delay(3000); // Respect rate limits
 
-    const stopCount = await fetchRailwayStops(cityKey);
-    await delay(3000);
+    let stopCount = 0;
+    if (CITIES[cityKey].fetchStops !== false) {
+      stopCount = await fetchRailwayStops(cityKey);
+      await delay(3000);
+    } else {
+      console.log(`   Skipping stop fetch for ${CITIES[cityKey].name}`);
+    }
 
     results[cityKey] = { routes: routeCount, stops: stopCount };
   }

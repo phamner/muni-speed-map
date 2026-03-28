@@ -301,6 +301,7 @@ export function buildAllSegments(
 
   const usesParallelMerge =
     city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
+  const PARALLEL_MATCH_MAX_DISTANCE_METERS = 70;
   const featuresToProcess =
     usesParallelMerge
       ? (() => {
@@ -341,31 +342,118 @@ export function buildAllSegments(
 
     if (usesParallelMerge && !processedRoutes.has(routeId)) {
       processedRoutes.add(routeId);
+      let cumulativeSegmentOffset = routeSegmentOffsets.get(routeId) || 0;
+      const lineLengths = lineStrings.map((coordinates) =>
+        coordinates.reduce((sum, _, i) => {
+          if (i === 0) return sum;
+          const [x1, y1] = coordinates[i - 1];
+          const [x2, y2] = coordinates[i];
+          return sum + haversineDistance(y1, x1, y2, x2);
+        }, 0),
+      );
+      const referenceLineIndex = lineLengths.reduce(
+        (bestIdx, len, idx, arr) => (len > arr[bestIdx] ? idx : bestIdx),
+        0,
+      );
+      const referenceLineCoords = lineStrings[referenceLineIndex] || [];
+
+      const refSegmentsRaw = createSegments(
+        referenceLineCoords,
+        routeId,
+        "combined",
+        segmentSizeMeters,
+      );
       const routeRefSegments: SegmentData[] = [];
-
-      for (const coordinates of lineStrings) {
-        const segments = createSegments(
-          coordinates,
+      refSegmentsRaw.forEach((seg) => {
+        const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
+        const adjustedIndex = cumulativeSegmentOffset + originalIndex;
+        const segmentId = `${routeId}_${adjustedIndex}`;
+        const segmentData: SegmentData = {
+          segmentId,
           routeId,
-          "combined",
-          segmentSizeMeters,
+          coordinates: seg.coords,
+          startDistance: seg.startDistance,
+          endDistance: seg.endDistance,
+        };
+        allSegments.push(segmentData);
+        routeRefSegments.push(segmentData);
+      });
+      if (refSegmentsRaw.length > 0) {
+        const lastIndex = parseInt(
+          refSegmentsRaw[refSegmentsRaw.length - 1].segmentId.split("_").pop() || "0",
         );
-
-        segments.forEach((seg) => {
-          const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
-          const segmentId = `${routeId}_${originalIndex}`;
-          const segmentData: SegmentData = {
-            segmentId,
-            routeId,
-            coordinates: seg.coords,
-            startDistance: seg.startDistance,
-            endDistance: seg.endDistance,
-          };
-          allSegments.push(segmentData);
-          routeRefSegments.push(segmentData);
-        });
+        cumulativeSegmentOffset += lastIndex + 1;
       }
 
+      // Create parallel-track display segments by projecting each reference boundary
+      // onto the parallel line so segment boundaries stay aligned visually.
+      let parallelLineCounter = 0;
+      lineStrings.forEach((coordinates, lineIndex) => {
+        if (lineIndex === referenceLineIndex) return;
+        routeRefSegments.forEach((refSeg, idx) => {
+          const refStart = refSeg.coordinates[0];
+          const refEnd = refSeg.coordinates[refSeg.coordinates.length - 1];
+          if (!refStart || !refEnd) return;
+
+          const startProjection = projectPointOntoLine(
+            refStart[1],
+            refStart[0],
+            coordinates,
+          );
+          const endProjection = projectPointOntoLine(
+            refEnd[1],
+            refEnd[0],
+            coordinates,
+          );
+          if (!startProjection || !endProjection) return;
+
+          const startOffset = haversineDistance(
+            refStart[1],
+            refStart[0],
+            startProjection.projectedPoint[1],
+            startProjection.projectedPoint[0],
+          );
+          const endOffset = haversineDistance(
+            refEnd[1],
+            refEnd[0],
+            endProjection.projectedPoint[1],
+            endProjection.projectedPoint[0],
+          );
+          if (
+            startOffset > PARALLEL_MATCH_MAX_DISTANCE_METERS ||
+            endOffset > PARALLEL_MATCH_MAX_DISTANCE_METERS
+          ) {
+            return;
+          }
+
+          const startDist = Math.min(
+            startProjection.distanceAlong,
+            endProjection.distanceAlong,
+          );
+          const endDist = Math.max(
+            startProjection.distanceAlong,
+            endProjection.distanceAlong,
+          );
+          const parallelCoords = extractLineSubsection(
+            coordinates,
+            startDist,
+            endDist,
+          );
+          if (parallelCoords.length < 2) return;
+
+          allSegments.push({
+            segmentId: `${routeId}_p_${parallelLineCounter}_${idx}`,
+            routeId,
+            coordinates: parallelCoords,
+            startDistance: startDist,
+            endDistance: endDist,
+            referenceSegmentId: refSeg.segmentId,
+          });
+        });
+        parallelLineCounter++;
+      });
+
+      routeSegmentOffsets.set(routeId, cumulativeSegmentOffset);
       referenceSegmentsByRoute.set(routeId, routeRefSegments);
     } else if (isParallelTrack) {
       const refSegments = referenceSegmentsByRoute.get(routeId) || [];
