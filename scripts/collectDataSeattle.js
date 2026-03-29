@@ -13,6 +13,8 @@
 import fetch, { Headers, Request, Response } from 'node-fetch';
 import { createClient } from "@supabase/supabase-js";
 import dotenv from "dotenv";
+import { appendFile, mkdir } from "node:fs/promises";
+import path from "node:path";
 
 dotenv.config();
 
@@ -28,6 +30,9 @@ if (!globalThis.fetch) {
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const OBA_API_KEY = process.env.OBA_API_KEY;
+const DEBUG_LOGGING = process.env.SEATTLE_COLLECTOR_DEBUG === "1";
+const SAVED_POINTS_LOG_FILE =
+  process.env.SEATTLE_SAVED_POINTS_LOG_FILE || "logs/seattle-saved-points.ndjson";
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
   console.error("❌ Error: SUPABASE_URL and SUPABASE_SERVICE_KEY environment variables are required");
@@ -57,6 +62,8 @@ const LINK_LINES = {
 
 // Store previous positions for speed calculation
 const previousPositions = new Map();
+// Store last raw observation to skip stale duplicate API snapshots
+const lastRawObservations = new Map();
 
 // Haversine distance between two points in meters
 function haversineDistance(lat1, lon1, lat2, lon2) {
@@ -158,6 +165,48 @@ function calculateSpeed(vehicleId, lat, lon, timestamp) {
   return speedMph;
 }
 
+function isStaleObservation(vehicleId, lat, lon, timestamp) {
+  const prev = lastRawObservations.get(vehicleId);
+  if (!prev) return false;
+  return prev.lat === lat && prev.lon === lon && prev.timestamp === timestamp;
+}
+
+function rememberObservation(vehicleId, lat, lon, timestamp) {
+  lastRawObservations.set(vehicleId, { lat, lon, timestamp });
+}
+
+function percentile(values, p) {
+  if (!values.length) return null;
+  const sorted = [...values].sort((a, b) => a - b);
+  const idx = Math.min(
+    sorted.length - 1,
+    Math.max(0, Math.floor((p / 100) * sorted.length)),
+  );
+  return sorted[idx];
+}
+
+async function appendSavedPointsLog(positions, pollTimeMs) {
+  // if (!positions.length) return;
+  // const absolutePath = path.resolve(process.cwd(), SAVED_POINTS_LOG_FILE);
+  // await mkdir(path.dirname(absolutePath), { recursive: true });
+  // const insertedAt = new Date(pollTimeMs).toISOString();
+  // const lines = positions
+  //   .map((position) =>
+  //     JSON.stringify({
+  //       inserted_at: insertedAt,
+  //       vehicle_id: position.vehicle_id,
+  //       route_id: position.route_id,
+  //       lat: position.lat,
+  //       lon: position.lon,
+  //       recorded_at: position.recorded_at,
+  //       speed_calculated: position.speed_calculated,
+  //     }),
+  //   )
+  //   .join("\n");
+  // await appendFile(absolutePath, `${lines}\n`, "utf8");
+  console.log('fake save append seattle data')
+}
+
 // Main collection loop
 async function collectData() {
   console.log(
@@ -173,16 +222,29 @@ async function collectData() {
       return routeId !== null;
     });
 
-    console.log(`   Found ${linkVehicles.length} Link Light Rail vehicles`);
+    console.log(
+      `   Found ${linkVehicles.length} Link vehicles (agency total: ${vehicles.length})`,
+    );
 
     if (linkVehicles.length === 0) {
       console.log("   No Link vehicles found, skipping...");
       return;
     }
 
-    const now = new Date();
+    const nowMs = Date.now();
     const positionsToInsert = [];
     let speedCount = 0;
+    let staleSkipped = 0;
+    let missingFieldSkipped = 0;
+    let sameCoordsNewTimestamp = 0;
+    let sameTimestampMoved = 0;
+    const staleByVehicle = new Map();
+    const ageSeconds = [];
+    const perRouteFreshCounts = {
+      "100479": 0,
+      "2LINE": 0,
+      "TLINE": 0,
+    };
 
     for (const vehicle of linkVehicles) {
       const vehicleId =
@@ -193,11 +255,29 @@ async function collectData() {
       const directionId = null; // Not directly available in this API
       const timestamp = vehicle.lastLocationUpdateTime || Date.now();
 
-      if (!lat || !lon || !routeId) continue;
+      if (!lat || !lon || !routeId) {
+        missingFieldSkipped++;
+        continue;
+      }
+      const prevRaw = lastRawObservations.get(vehicleId);
+      if (prevRaw) {
+        const sameCoords = prevRaw.lat === lat && prevRaw.lon === lon;
+        const sameTimestamp = prevRaw.timestamp === timestamp;
+        if (sameCoords && !sameTimestamp) sameCoordsNewTimestamp++;
+        if (!sameCoords && sameTimestamp) sameTimestampMoved++;
+      }
+      if (isStaleObservation(vehicleId, lat, lon, timestamp)) {
+        staleSkipped++;
+        staleByVehicle.set(vehicleId, (staleByVehicle.get(vehicleId) || 0) + 1);
+        continue;
+      }
+      rememberObservation(vehicleId, lat, lon, timestamp);
 
       // Calculate speed from consecutive readings
       const speed = calculateSpeed(vehicleId, lat, lon, timestamp);
       if (speed !== null) speedCount++;
+      ageSeconds.push(Math.max(0, (nowMs - timestamp) / 1000));
+      perRouteFreshCounts[routeId] = (perRouteFreshCounts[routeId] || 0) + 1;
 
       positionsToInsert.push({
         vehicle_id: vehicleId,
@@ -211,6 +291,14 @@ async function collectData() {
       });
     }
 
+    const avgAge =
+      ageSeconds.length > 0
+        ? ageSeconds.reduce((a, b) => a + b, 0) / ageSeconds.length
+        : null;
+    const p50Age = percentile(ageSeconds, 50);
+    const p90Age = percentile(ageSeconds, 90);
+    const maxAge = ageSeconds.length > 0 ? Math.max(...ageSeconds) : null;
+
     if (positionsToInsert.length > 0) {
       const startTime = Date.now();
       const { error } = await supabase
@@ -220,11 +308,40 @@ async function collectData() {
       if (error) {
         console.error("   Error saving to Supabase:", error.message);
       } else {
+        try {
+          await appendSavedPointsLog(positionsToInsert, nowMs);
+        } catch (logError) {
+          console.error("   Warning: failed to write local saved-points log:", logError.message);
+        }
         const duration = Date.now() - startTime;
         console.log(
-          `[${formatTime(new Date())}] Saved ${positionsToInsert.length} positions (${speedCount} with speed) in ${duration}ms`,
+          `[${formatTime(new Date())}] Saved ${positionsToInsert.length} positions (${speedCount} with speed, skipped ${staleSkipped} stale) in ${duration}ms`,
         );
+        console.log(
+          `   Logged saved coordinates to ${path.resolve(process.cwd(), SAVED_POINTS_LOG_FILE)}`,
+        );
+        console.log(
+          `   Fresh by route: 1=${perRouteFreshCounts["100479"]}, 2=${perRouteFreshCounts["2LINE"]}, T=${perRouteFreshCounts["TLINE"]}`,
+        );
+        console.log(
+          `   Diagnostics: missing=${missingFieldSkipped}, sameCoords+newTs=${sameCoordsNewTimestamp}, sameTs+moved=${sameTimestampMoved}`,
+        );
+        if (avgAge != null) {
+          console.log(
+            `   OBA location age (sec): avg=${avgAge.toFixed(1)} p50=${p50Age?.toFixed(1)} p90=${p90Age?.toFixed(1)} max=${maxAge?.toFixed(1)}`,
+          );
+        }
+        if (DEBUG_LOGGING && staleByVehicle.size > 0) {
+          const topStale = Array.from(staleByVehicle.entries())
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 5)
+            .map(([id, c]) => `${id}:${c}`)
+            .join(", ");
+          console.log(`   Debug stale top vehicles: ${topStale}`);
+        }
       }
+    } else if (staleSkipped > 0) {
+      console.log(`   Skipped ${staleSkipped} stale duplicate observations`);
     }
   } catch (error) {
     console.error(`[${formatTime(new Date())}] Error:`, error.message);
@@ -245,6 +362,9 @@ async function main() {
   console.log("🚃 Seattle Sound Transit Link Light Rail Collector");
   console.log(`   Polling every ${POLL_INTERVAL_MS / 1000} seconds`);
   console.log(`   Tracking lines: ${Object.values(LINK_LINES).join(", ")}`);
+  console.log(
+    `   Logging saved coordinates to ${path.resolve(process.cwd(), SAVED_POINTS_LOG_FILE)}`,
+  );
   console.log("");
 
   if (OBA_API_KEY === "YOUR_API_KEY_HERE" || !OBA_API_KEY) {
@@ -264,105 +384,6 @@ async function main() {
 
   // Then poll at interval
   setInterval(collectData, POLL_INTERVAL_MS);
-}
-
-// Generate fake data for demo/testing purposes
-async function generateFakeData() {
-  console.log("Generating demo data for Seattle Link Light Rail...\n");
-
-  // Sample stations along the 1 Line
-  const line1Stations = [
-    { name: "Lynnwood City Center", lat: 47.8144, lon: -122.2954 },
-    { name: "Mountlake Terrace", lat: 47.7879, lon: -122.3039 },
-    { name: "Northgate", lat: 47.7016, lon: -122.3299 },
-    { name: "U District", lat: 47.6607, lon: -122.3147 },
-    { name: "Capitol Hill", lat: 47.6196, lon: -122.321 },
-    { name: "Westlake", lat: 47.6113, lon: -122.3375 },
-    { name: "Pioneer Square", lat: 47.6011, lon: -122.3319 },
-    { name: "International District", lat: 47.598, lon: -122.3279 },
-    { name: "SODO", lat: 47.5808, lon: -122.3278 },
-    { name: "Rainier Beach", lat: 47.5222, lon: -122.2793 },
-    { name: "Angle Lake", lat: 47.4213, lon: -122.2969 },
-    { name: "Federal Way", lat: 47.3168, lon: -122.3115 },
-  ];
-
-  const line2Stations = [
-    { name: "South Bellevue", lat: 47.5896, lon: -122.1787 },
-    { name: "East Main", lat: 47.6093, lon: -122.1819 },
-    { name: "Bellevue Downtown", lat: 47.6161, lon: -122.1961 },
-    { name: "Wilburton", lat: 47.6245, lon: -122.1829 },
-    { name: "Spring District", lat: 47.6369, lon: -122.1609 },
-    { name: "BelRed", lat: 47.6415, lon: -122.1366 },
-    { name: "Overlake", lat: 47.6438, lon: -122.1336 },
-    { name: "Redmond Technology", lat: 47.6442, lon: -122.1315 },
-    { name: "Downtown Redmond", lat: 47.6764, lon: -122.1186 },
-  ];
-
-  const tLineStations = [
-    { name: "Tacoma Dome", lat: 47.2387, lon: -122.4274 },
-    { name: "Freighthouse Square", lat: 47.241, lon: -122.4257 },
-    { name: "Tacoma Convention Center", lat: 47.2524, lon: -122.4374 },
-    { name: "Theater District", lat: 47.2565, lon: -122.4399 },
-    { name: "Old City Hall", lat: 47.2518, lon: -122.4434 },
-    { name: "St Joseph", lat: 47.2476, lon: -122.4551 },
-  ];
-
-  // Generate random positions along each line
-  const positionsToInsert = [];
-  const now = new Date();
-
-  // Helper to generate positions along a line
-  function generateLinePositions(lineId, stations, numVehicles) {
-    for (let v = 0; v < numVehicles; v++) {
-      // Pick a random position between two adjacent stations
-      const stationIdx = Math.floor(Math.random() * (stations.length - 1));
-      const t = Math.random(); // Position between stations
-
-      const lat =
-        stations[stationIdx].lat +
-        t * (stations[stationIdx + 1].lat - stations[stationIdx].lat);
-      const lon =
-        stations[stationIdx].lon +
-        t * (stations[stationIdx + 1].lon - stations[stationIdx].lon);
-
-      // Random speed (higher in tunnels, lower at-grade)
-      const speed = Math.random() * 35 + 5; // 5-40 mph
-
-      // Random time offset within last hour for variety
-      const timeOffset = Math.random() * 60 * 60 * 1000;
-
-      positionsToInsert.push({
-        vehicle_id: `SEA-${lineId}-${v + 1}`,
-        route_id: lineId,
-        direction_id: Math.random() > 0.5 ? "0" : "1",
-        lat: lat,
-        lon: lon,
-        speed_calculated: speed,
-        recorded_at: new Date(now.getTime() - timeOffset).toISOString(),
-        city: "Seattle",
-      });
-    }
-  }
-
-  // Generate positions for each line (more for 1 Line since it's longer)
-  generateLinePositions("100479", line1Stations, 30);
-  generateLinePositions("2LINE", line2Stations, 15);
-  generateLinePositions("TLINE", tLineStations, 8);
-
-  console.log(`Generated ${positionsToInsert.length} demo positions`);
-
-  // Insert into database
-  const { error } = await supabase
-    .from("vehicle_positions")
-    .insert(positionsToInsert);
-
-  if (error) {
-    console.error("Error saving demo data:", error.message);
-  } else {
-    console.log("✅ Demo data saved to database!");
-    console.log("   You can now view Seattle data in the frontend.");
-    console.log("   To collect real data, set SOUND_TRANSIT_API_KEY in .env");
-  }
 }
 
 main();

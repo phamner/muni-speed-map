@@ -43,6 +43,8 @@ const POLL_INTERVAL_MS = 90000; // 90 seconds
 
 // Store previous positions for speed calculation (keyed by city-vehicleId)
 const previousPositions = new Map();
+// Store last raw observation to skip stale duplicate API snapshots
+const lastRawObservations = new Map();
 
 // ============ SEATTLE CONFIG ============
 const SEATTLE_OBA_BASE_URL = "https://api.pugetsound.onebusaway.org/api/where";
@@ -102,6 +104,18 @@ function calculateSpeed(city, vehicleId, lat, lon, timestamp) {
   return Math.round(speedMph * 10) / 10;
 }
 
+function isStaleObservation(city, vehicleId, lat, lon, timestamp) {
+  const key = `${city}-${vehicleId}`;
+  const prev = lastRawObservations.get(key);
+  if (!prev) return false;
+  return prev.lat === lat && prev.lon === lon && prev.timestamp === timestamp;
+}
+
+function rememberObservation(city, vehicleId, lat, lon, timestamp) {
+  const key = `${city}-${vehicleId}`;
+  lastRawObservations.set(key, { lat, lon, timestamp });
+}
+
 function formatTime(date, timezone) {
   return date.toLocaleString('en-US', {
     month: '2-digit',
@@ -140,6 +154,7 @@ async function collectSeattle() {
     
     const positions = [];
     let speedCount = 0;
+    let staleSkipped = 0;
     
     for (const vehicle of linkVehicles) {
       const vehicleId = vehicle.vehicleId?.split("_").pop() || vehicle.vehicleId;
@@ -147,9 +162,14 @@ async function collectSeattle() {
       const lat = vehicle.location?.lat;
       const lon = vehicle.location?.lon;
       const timestamp = vehicle.lastLocationUpdateTime || Date.now();
-      
+
       if (!lat || !lon || !routeId) continue;
-      
+      if (isStaleObservation('Seattle', vehicleId, lat, lon, timestamp)) {
+        staleSkipped++;
+        continue;
+      }
+      rememberObservation('Seattle', vehicleId, lat, lon, timestamp);
+
       const speed = calculateSpeed('Seattle', vehicleId, lat, lon, timestamp);
       if (speed !== null) speedCount++;
       
@@ -165,6 +185,9 @@ async function collectSeattle() {
       });
     }
     
+    if (staleSkipped > 0) {
+      console.log(`   Seattle: skipped ${staleSkipped} stale duplicate observations`);
+    }
     return { positions, speedCount, vehicleCount: linkVehicles.length };
   } catch (error) {
     console.error(`   ❌ Seattle error: ${error.message}`);
