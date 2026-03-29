@@ -2573,7 +2573,7 @@ export function SpeedMap({
             ?.setLngLat(e.lngLat)
             .setHTML(
               `<div class="popup-content">
-                <div class="popup-title">${props.stop_name}</div>
+                <div class="popup-title">${props.stop_name} <span style="color:#ffffff">◆</span></div>
                 <div class="popup-detail">Lines: ${routes.join(", ")}</div>
                 ${clusterHint}
               </div>`,
@@ -2895,7 +2895,7 @@ export function SpeedMap({
             ?.setLngLat(e.lngLat)
             .setHTML(
               `<div class="popup-content">
-                  <div class="popup-title">Grade Crossing${barrierStatus ? ` <span style="color: ${props.crossing_barrier === "yes" ? "#22c55e" : "#ff9500"}">${barrierStatus}</span>` : ""}</div>
+                  <div class="popup-title">Grade Crossing <span style="color:#ff9500">✕</span>${barrierStatus ? ` <span style="color: ${props.crossing_barrier === "yes" ? "#22c55e" : "#ff9500"}">${barrierStatus}</span>` : ""}</div>
                   <div class="popup-coords">${lat}, ${lon}</div>
                 </div>`,
             )
@@ -2931,7 +2931,7 @@ export function SpeedMap({
             ?.setLngLat(e.lngLat)
             .setHTML(
               `<div class="popup-content popup-pinned">
-                  <div class="popup-title">Grade Crossing${barrierStatus ? ` <span style="color: ${props.crossing_barrier === "yes" ? "#22c55e" : "#ff9500"}">${barrierStatus}</span>` : ""} 📌</div>
+                  <div class="popup-title">Grade Crossing <span style="color:#ff9500">✕</span>${barrierStatus ? ` <span style="color: ${props.crossing_barrier === "yes" ? "#22c55e" : "#ff9500"}">${barrierStatus}</span>` : ""} 📌</div>
                   <div class="popup-coords">${lat}, ${lon}</div>
                   <div class="popup-hint">Click elsewhere to close</div>
                 </div>`,
@@ -3178,7 +3178,7 @@ export function SpeedMap({
           ?.setLngLat(e.lngLat)
           .setHTML(
             `<div class="popup-content">
-                <div class="popup-title">⚡ Track Switch</div>
+                <div class="popup-title">Track Switch <span style="color:#00d4ff">Y</span></div>
                 <div class="popup-coords">${lat}, ${lon}</div>
               </div>`,
           )
@@ -3204,7 +3204,7 @@ export function SpeedMap({
           ?.setLngLat(e.lngLat)
           .setHTML(
             `<div class="popup-content popup-pinned">
-                <div class="popup-title">⚡ Track Switch 📌</div>
+                <div class="popup-title">Track Switch <span style="color:#00d4ff">Y</span> 📌</div>
                 <div class="popup-coords">${lat}, ${lon}</div>
                 <div class="popup-hint">Click elsewhere to close</div>
               </div>`,
