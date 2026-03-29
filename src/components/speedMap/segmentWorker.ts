@@ -3,6 +3,7 @@ const SEGMENT_SIZE_METERS = 200;
 const SEGMENT_SIZE_500_METERS = 500;
 
 const CITIES_WITH_PARALLEL_TRACKS = [
+  "SF",
   "LA",
   "Boston",
   "Toronto",

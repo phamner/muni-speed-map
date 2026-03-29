@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Fetch San Francisco Muni light rail and cable car route geometry from OSM.
+ * Fetch San Francisco Muni rail and streetcar route geometry from OSM.
  *
  * This script queries Overpass route relations, extracts their track member ways,
  * merges contiguous geometry, and writes a separate GeoJSON file so we can
@@ -40,27 +40,13 @@ const OVERPASS_ENDPOINTS = [
 const SF_BBOX = [37.68, -122.53, 37.84, -122.35];
 
 const ROUTE_DEFS = {
+  F: { route_id: "F", route_name: "F MARKET & WHARVES", route_color: "#85754E" },
   J: { route_id: "J", route_name: "J CHURCH", route_color: "#A96614" },
   K: { route_id: "K", route_name: "K INGLESIDE", route_color: "#437C93" },
   L: { route_id: "L", route_name: "L TARAVAL", route_color: "#942D83" },
   M: { route_id: "M", route_name: "M OCEAN VIEW", route_color: "#008547" },
   N: { route_id: "N", route_name: "N JUDAH", route_color: "#005B95" },
   T: { route_id: "T", route_name: "T THIRD", route_color: "#BF2B45" },
-  CA: {
-    route_id: "CA",
-    route_name: "California Street Cable Car",
-    route_color: "#36afb6",
-  },
-  PH: {
-    route_id: "PH",
-    route_name: "Powell-Hyde Cable Car",
-    route_color: "#36afb6",
-  },
-  PM: {
-    route_id: "PM",
-    route_name: "Powell-Mason Cable Car",
-    route_color: "#36afb6",
-  },
 };
 
 function delay(ms) {
@@ -134,36 +120,15 @@ function getSfRouteKey(tags = {}) {
   const to = normalizeText(tags.to);
   const joined = `${ref} ${name} ${from} ${to}`;
 
+  if (ref === "F" || joined.includes("F MARKET") || joined.includes("MARKET & WHARVES")) {
+    return "F";
+  }
   if (ref === "J" || joined.includes("J CHURCH")) return "J";
   if (ref === "K" || joined.includes("K INGLESIDE")) return "K";
   if (ref === "L" || joined.includes("L TARAVAL")) return "L";
   if (ref === "M" || joined.includes("M OCEAN VIEW")) return "M";
   if (ref === "N" || joined.includes("N JUDAH")) return "N";
   if (ref === "T" || joined.includes("T THIRD")) return "T";
-
-  if (
-    ref === "CA" ||
-    joined.includes("CALIFORNIA STREET") ||
-    joined.includes("CALIFORNIA CABLE CAR")
-  ) {
-    return "CA";
-  }
-
-  if (
-    ref === "PH" ||
-    joined.includes("POWELL-HYDE") ||
-    joined.includes("POWELL HYDE")
-  ) {
-    return "PH";
-  }
-
-  if (
-    ref === "PM" ||
-    joined.includes("POWELL-MASON") ||
-    joined.includes("POWELL MASON")
-  ) {
-    return "PM";
-  }
 
   return null;
 }
@@ -295,7 +260,7 @@ function collectWayRefsRecursive(relationId, relationMembers, visited = new Set(
 async function main() {
   const [south, west, north, east] = SF_BBOX;
 
-  console.log("Fetching San Francisco Muni light rail + cable car routes from OSM...");
+  console.log("Fetching San Francisco Muni rail + streetcar routes from OSM...");
   console.log(`Bounding box: ${south}, ${west}, ${north}, ${east}`);
 
   const relationQuery = `
@@ -333,7 +298,7 @@ out body;
 
   const selectedRelationIds = Array.from(routeRelationIds.values()).flat();
   if (selectedRelationIds.length === 0) {
-    throw new Error("No matching Muni light rail or cable car relations found");
+    throw new Error("No matching Muni route relations found");
   }
 
   console.log(
@@ -411,7 +376,7 @@ out body geom;
   fs.writeFileSync(OUTPUT_PATH, JSON.stringify(geojson, null, 2));
 
   console.log(`Saved ${features.length} route feature(s) to ${OUTPUT_PATH}`);
-  console.log("Cable car routes are forced to #36afb6 in the output file.");
+  console.log("Saved OSM route shapes for F/J/K/L/M/N/T.");
 }
 
 main().catch((error) => {

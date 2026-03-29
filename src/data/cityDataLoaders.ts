@@ -54,6 +54,203 @@ type Coordinate = [number, number];
 type LineStringCoordinates = Coordinate[];
 type MultiLineStringCoordinates = LineStringCoordinates[];
 
+function splitSfRouteAtExtremum(
+  routes: any,
+  routeId: string,
+  selector: (coord: Coordinate) => number,
+): any {
+  if (!routes?.features) return routes;
+
+  const features = routes.features.flatMap((feature: any) => {
+    if (
+      feature?.properties?.route_id !== routeId ||
+      feature?.geometry?.type !== "MultiLineString" ||
+      feature.geometry.coordinates.length !== 1
+    ) {
+      return [feature];
+    }
+
+    const coordinates: LineStringCoordinates = feature.geometry.coordinates[0];
+    if (coordinates.length < 4) return [feature];
+
+    let splitIndex = 0;
+    let bestScore = Infinity;
+    for (let i = 0; i < coordinates.length; i += 1) {
+      const score = selector(coordinates[i]);
+      if (score < bestScore) {
+        bestScore = score;
+        splitIndex = i;
+      }
+    }
+
+    if (splitIndex <= 0 || splitIndex >= coordinates.length - 1) {
+      return [feature];
+    }
+
+    const firstTrack = coordinates.slice(0, splitIndex + 1);
+    const secondTrack = coordinates.slice(splitIndex);
+
+    return [
+      {
+        ...feature,
+        properties: {
+          ...feature.properties,
+          split_track_index: 0,
+          split_track_anchor: coordinates[splitIndex],
+        },
+        geometry: {
+          type: "LineString",
+          coordinates: firstTrack,
+        },
+      },
+      {
+        ...feature,
+        properties: {
+          ...feature.properties,
+          split_track_index: 1,
+          split_track_anchor: coordinates[splitIndex],
+        },
+        geometry: {
+          type: "LineString",
+          coordinates: secondTrack,
+        },
+      },
+    ];
+  });
+
+  return {
+    ...routes,
+    features,
+  };
+}
+
+function splitSfRouteAtNearestPoint(
+  routes: any,
+  routeId: string,
+  target: Coordinate,
+): any {
+  return splitSfRouteAtExtremum(
+    routes,
+    routeId,
+    (coord) => Math.hypot(coord[0] - target[0], coord[1] - target[1]),
+  );
+}
+
+function splitSfRouteAtNearestPoints(
+  routes: any,
+  routeId: string,
+  targets: Coordinate[],
+): any {
+  if (!routes?.features) return routes;
+
+  const features = routes.features.flatMap((feature: any) => {
+    if (
+      feature?.properties?.route_id !== routeId ||
+      feature?.geometry?.type !== "MultiLineString" ||
+      feature.geometry.coordinates.length !== 1
+    ) {
+      return [feature];
+    }
+
+    const coordinates: LineStringCoordinates = feature.geometry.coordinates[0];
+    if (coordinates.length < 6) return [feature];
+
+    const splitIndices = Array.from(
+      new Set(
+        targets
+          .map((target) => {
+            let bestIndex = 0;
+            let bestDistance = Infinity;
+            for (let i = 0; i < coordinates.length; i += 1) {
+              const candidate = coordinates[i];
+              const distance = Math.hypot(
+                candidate[0] - target[0],
+                candidate[1] - target[1],
+              );
+              if (distance < bestDistance) {
+                bestDistance = distance;
+                bestIndex = i;
+              }
+            }
+            return bestIndex;
+          })
+          .filter((index) => index > 0 && index < coordinates.length - 1),
+      ),
+    ).sort((a, b) => a - b);
+
+    if (splitIndices.length !== 2) {
+      return [feature];
+    }
+
+    const [firstIndex, secondIndex] = splitIndices.sort((a, b) => a - b);
+    const anchors = [
+      coordinates[firstIndex],
+      coordinates[secondIndex],
+    ];
+
+    const firstTrack = coordinates.slice(firstIndex, secondIndex + 1);
+    const secondTrack = coordinates
+      .slice(secondIndex)
+      .concat(coordinates.slice(0, firstIndex + 1));
+
+    if (firstTrack.length < 2 || secondTrack.length < 2) {
+      return [feature];
+    }
+
+    return [
+      {
+        ...feature,
+        properties: {
+          ...feature.properties,
+          split_track_index: 0,
+          split_track_anchors: anchors,
+        },
+        geometry: {
+          type: "LineString",
+          coordinates: firstTrack,
+        },
+      },
+      {
+        ...feature,
+        properties: {
+          ...feature.properties,
+          split_track_index: 1,
+          split_track_anchors: anchors,
+        },
+        geometry: {
+          type: "LineString",
+          coordinates: secondTrack,
+        },
+      },
+    ];
+  });
+
+  return {
+    ...routes,
+    features,
+  };
+}
+
+function splitSfSpecialTerminalRoutes(routes: any): any {
+  const withNSplit = splitSfRouteAtExtremum(
+    routes,
+    "N",
+    (coord) => coord[0],
+  );
+  return splitSfRouteAtExtremum(
+    splitSfRouteAtNearestPoint(
+      splitSfRouteAtNearestPoints(withNSplit, "F", [
+        [-122.43518991583765, 37.762458195794686],
+        [-122.41753648746798, 37.807537125931184],
+      ]),
+      "M",
+      [-122.44531991339838, 37.72022653991381],
+    ),
+    "L",
+    (coord) => coord[0] + coord[1],
+  );
+}
+
 function endpointDistance(a: Coordinate, b: Coordinate): number {
   return Math.hypot(a[0] - b[0], a[1] - b[1]);
 }
@@ -318,7 +515,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         trafficLights,
         busRoutesOverlay,
       ] = await Promise.all([
-        import("./routes/muniMetroRoutes.json"),
+        import("./routes/sfMuniOsmRoutes.json"),
         import("./routes/sfCableCarRoutes.json"),
         import("./stops/muniMetroStops.json"),
         import("./crossings/sfGradeCrossings.json"),
@@ -333,6 +530,8 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         import("./bus-routes/sfBusRoutesTest.json").catch(() => ({ default: null })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
+
+      const sfRoutes = splitSfSpecialTerminalRoutes(routes.default);
 
       // Merge separation data with manual overrides (overrides take precedence)
       let mergedSeparation: any = separation.default;
@@ -349,7 +548,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         routes: {
           type: "FeatureCollection",
           features: [
-            ...(routes.default?.features || []),
+            ...(sfRoutes?.features || []),
             ...(cableCarRoutes.default?.features || []),
           ],
         },
