@@ -38,7 +38,7 @@ function getCityFromUrl(): City {
   const params = new URLSearchParams(window.location.search);
   const raw = params.get("city");
   if (raw && (CITIES as readonly string[]).includes(raw)) return raw as City;
-  return "SF";
+  return "Seattle";
 }
 
 function App() {
