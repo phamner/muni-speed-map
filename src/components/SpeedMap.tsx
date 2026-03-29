@@ -6,6 +6,7 @@ import {
   getLinesForCity,
   LA_METRO_LINE_INFO,
   getRouteDisplayName,
+  SF_CABLE_CARS_TOGGLE,
 } from "../types";
 import { supabase } from "../lib/supabase";
 import {
@@ -104,6 +105,49 @@ function buildSelectedLineFilter(
   return (
     conditions.length === 1 ? conditions[0] : ["any", ...conditions]
   ) as maplibregl.FilterSpecification;
+}
+
+const SF_CABLE_CAR_ROUTE_IDS = ["CA", "PH", "PM"] as const;
+const SF_CABLE_CAR_OUTLINE_WIDTH = 3.5;
+const SF_CABLE_CAR_LINE_WIDTH = 2.1;
+
+function buildCableCarWidthExpression(
+  defaultWidth: number,
+  cableCarWidth: number,
+): maplibregl.ExpressionSpecification {
+  return [
+    "match",
+    ["to-string", ["get", "route_id"]],
+    Array.from(SF_CABLE_CAR_ROUTE_IDS),
+    cableCarWidth,
+    defaultWidth,
+  ];
+}
+
+function buildSfRouteLayerFilter(
+  selectedLines: readonly string[],
+  routeLineMode: "byLine" | "bySpeedLimit" | "bySeparation",
+): maplibregl.FilterSpecification {
+  const selectedFilter = buildSelectedLineFilter(selectedLines, "SF", "route_id", "lines");
+  const showCableCars = selectedLines.includes(SF_CABLE_CARS_TOGGLE);
+
+  if (routeLineMode !== "byLine") {
+    return selectedFilter;
+  }
+
+  if (!showCableCars) {
+    return selectedFilter;
+  }
+
+  return [
+    "any",
+    selectedFilter,
+    [
+      "in",
+      ["to-string", ["get", "route_id"]],
+      ["literal", Array.from(SF_CABLE_CAR_ROUTE_IDS)],
+    ],
+  ] as maplibregl.FilterSpecification;
 }
 
 const MAXSPEED_ROUTE_MATCH_METERS = 75;
@@ -1014,8 +1058,11 @@ export function SpeedMap({
     [cityConfig.maxspeed, cityConfig.routes, city],
   );
   const routeLayerFilter = useMemo(
-    () => buildSelectedLineFilter(selectedLines, city, "route_id", "lines"),
-    [selectedLines, city],
+    () =>
+      city === "SF"
+        ? buildSfRouteLayerFilter(selectedLines, routeLineMode)
+        : buildSelectedLineFilter(selectedLines, city, "route_id", "lines"),
+    [selectedLines, city, routeLineMode],
   );
   const speedLimitLayerFilter = useMemo(
     () => buildSelectedLineFilter(selectedLines, city, "__route__", "routes"),
@@ -1787,7 +1834,10 @@ export function SpeedMap({
         },
         paint: {
           "line-color": "#000",
-          "line-width": 7,
+          "line-width": buildCableCarWidthExpression(
+            7,
+            SF_CABLE_CAR_OUTLINE_WIDTH,
+          ),
           "line-opacity": 0.6,
         },
       });
@@ -1808,7 +1858,10 @@ export function SpeedMap({
             showBySpeed || showBySeparation
               ? "#6b7280"
               : ["get", "route_color"],
-          "line-width": 4,
+          "line-width": buildCableCarWidthExpression(
+            4,
+            SF_CABLE_CAR_LINE_WIDTH,
+          ),
           "line-opacity": 0.9,
         },
       });
@@ -1826,7 +1879,10 @@ export function SpeedMap({
         },
         paint: {
           "line-color": "#000",
-          "line-width": 7,
+          "line-width": buildCableCarWidthExpression(
+            7,
+            SF_CABLE_CAR_OUTLINE_WIDTH,
+          ),
           "line-opacity": 0.5,
           "line-dasharray": [2, 2], // Dashed pattern for construction
         },
@@ -1847,7 +1903,10 @@ export function SpeedMap({
             showBySpeed || showBySeparation
               ? "#6b7280"
               : ["get", "route_color"],
-          "line-width": 4,
+          "line-width": buildCableCarWidthExpression(
+            4,
+            SF_CABLE_CAR_LINE_WIDTH,
+          ),
           "line-opacity": 0.8,
           "line-dasharray": [2, 2], // Dashed pattern for construction
         },
@@ -1866,7 +1925,10 @@ export function SpeedMap({
         },
         paint: {
           "line-color": "#000",
-          "line-width": 7,
+          "line-width": buildCableCarWidthExpression(
+            7,
+            SF_CABLE_CAR_OUTLINE_WIDTH,
+          ),
           "line-opacity": 0.3, // Reduced opacity for faded tunnel look
         },
       });
@@ -1886,7 +1948,10 @@ export function SpeedMap({
             showBySpeed || showBySeparation
               ? "#6b7280"
               : ["get", "route_color"],
-          "line-width": 4,
+          "line-width": buildCableCarWidthExpression(
+            4,
+            SF_CABLE_CAR_LINE_WIDTH,
+          ),
           "line-opacity": 0.45, // Reduced opacity - faded tunnel appearance like OpenRailwayMap
         },
       });

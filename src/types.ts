@@ -21,8 +21,9 @@ export const CITIES = [
 export type City = (typeof CITIES)[number];
 
 // San Francisco Muni Metro lines
-export const MUNI_LINES = ["F", "J", "K", "L", "M", "N", "T"] as const;
+export const MUNI_LINES = ["J", "K", "L", "M", "N", "T", "F"] as const;
 export type MuniLine = (typeof MUNI_LINES)[number];
+export const SF_CABLE_CARS_TOGGLE = "Cable Cars" as const;
 
 // LA Metro Rail lines (using route codes as identifiers)
 // 801 = A Line (Blue), 802 = B Line (Red), 803 = C Line (Green)
@@ -426,7 +427,7 @@ export const BALTIMORE_LIGHT_RAIL_LINE_INFO: Record<
 export function getLinesForCity(city: City): readonly string[] {
   switch (city) {
     case "SF":
-      return MUNI_LINES;
+      return [...MUNI_LINES, SF_CABLE_CARS_TOGGLE];
     case "LA":
       return LA_METRO_LINES;
     case "Seattle":

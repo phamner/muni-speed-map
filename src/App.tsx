@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { SpeedMap } from "./components/SpeedMap";
 import { Controls } from "./components/Controls";
-import { CITIES, getLinesForCity } from "./types";
+import { CITIES, getLinesForCity, SF_CABLE_CARS_TOGGLE } from "./types";
 import type { City } from "./types";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -60,7 +60,8 @@ function App() {
   const [selectedLines, setSelectedLines] = useState<string[]>(() => {
     const c = getCityFromUrl();
     const lines = getLinesForCity(c);
-    if (c === "SF") return lines.filter((l) => l !== "F") as string[];
+    if (c === "SF")
+      return lines.filter((l) => l !== "F" && l !== SF_CABLE_CARS_TOGGLE) as string[];
     return [...lines] as string[];
   });
 
@@ -105,7 +106,11 @@ function App() {
       setSelectedLines([]);
     } else if (city === "SF") {
       // For SF, exclude F by default
-      setSelectedLines(lines.filter((line) => line !== "F") as string[]);
+      setSelectedLines(
+        lines.filter(
+          (line) => line !== "F" && line !== SF_CABLE_CARS_TOGGLE,
+        ) as string[],
+      );
     } else {
       // For other cities, select all
       setSelectedLines([...lines] as string[]);

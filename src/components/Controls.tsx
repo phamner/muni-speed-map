@@ -3,6 +3,7 @@ import {
   useEffect,
   useRef,
   useCallback,
+  type CSSProperties,
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
@@ -46,6 +47,7 @@ import {
   CHARLOTTE_LYNX_LINE_INFO,
   BALTIMORE_LIGHT_RAIL_LINE_INFO,
   getLinesForCity,
+  SF_CABLE_CARS_TOGGLE,
 } from "../types";
 import {
   ABOUT_CITY_NOTES,
@@ -236,10 +238,12 @@ const MUNI_COLORS: Record<MuniLine, string> = {
   N: "#005B95",
   T: "#BF2B45",
 };
+const SF_CABLE_CAR_COLOR = "#36afb6";
 
 // Get color for any line
 function getLineColor(line: string, city: City): string {
   if (city === "SF") {
+    if (line === SF_CABLE_CARS_TOGGLE) return SF_CABLE_CAR_COLOR;
     return MUNI_COLORS[line as MuniLine] || "#666";
   } else if (city === "LA") {
     return LA_METRO_LINE_INFO[line as LAMetroLine]?.color || "#666";
@@ -1315,11 +1319,15 @@ export function Controls({
               key={line}
               className={`line-button ${
                 selectedLines.includes(line) ? "active" : "inactive"
-              }${city === "Toronto" ? " toronto-line-button" : ""}`}
+              }${city === "Toronto" ? " toronto-line-button" : ""}${
+                city === "SF" && line === SF_CABLE_CARS_TOGGLE
+                  ? " sf-cable-cars-button"
+                  : ""
+              }`}
               style={
                 {
                   "--line-color": getLineColor(line, city),
-                } as React.CSSProperties
+                } as CSSProperties
               }
               onClick={() => {
                 toggleLine(line);

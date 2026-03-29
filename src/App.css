@@ -489,6 +489,16 @@
   white-space: nowrap;
 }
 
+.sf-cable-cars-button {
+  font-size: 0.84rem;
+  line-height: 0.95;
+  text-align: center;
+  white-space: normal;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  padding: 8px 7px;
+}
+
 .lrt-data-note {
   font-size: 10px;
   color: #999;
