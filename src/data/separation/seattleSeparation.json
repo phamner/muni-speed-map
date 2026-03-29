@@ -22092,6 +22092,3124 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23615652,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.1961729,
+            47.5798998
+          ],
+          [
+            -122.1963074,
+            47.579878
+          ],
+          [
+            -122.1963996,
+            47.5798624
+          ],
+          [
+            -122.1965396,
+            47.5798366
+          ],
+          [
+            -122.1966596,
+            47.5798124
+          ],
+          [
+            -122.1968277,
+            47.5797763
+          ],
+          [
+            -122.1969474,
+            47.5797489
+          ],
+          [
+            -122.1970603,
+            47.579722
+          ],
+          [
+            -122.1971729,
+            47.5796927
+          ],
+          [
+            -122.1972761,
+            47.579667
+          ],
+          [
+            -122.1974082,
+            47.5796326
+          ],
+          [
+            -122.2024653,
+            47.5783061
+          ],
+          [
+            -122.2026711,
+            47.5782552
+          ],
+          [
+            -122.2028055,
+            47.5782211
+          ],
+          [
+            -122.2029262,
+            47.5781916
+          ],
+          [
+            -122.2030771,
+            47.5781585
+          ],
+          [
+            -122.2031954,
+            47.5781341
+          ],
+          [
+            -122.2033321,
+            47.5781074
+          ],
+          [
+            -122.2034438,
+            47.5780861
+          ],
+          [
+            -122.2035653,
+            47.5780655
+          ],
+          [
+            -122.2036803,
+            47.5780461
+          ],
+          [
+            -122.2038086,
+            47.578028
+          ],
+          [
+            -122.203923,
+            47.5780115
+          ],
+          [
+            -122.2040379,
+            47.5779964
+          ],
+          [
+            -122.2041546,
+            47.5779821
+          ],
+          [
+            -122.2042778,
+            47.5779692
+          ],
+          [
+            -122.2044029,
+            47.5779565
+          ],
+          [
+            -122.2045192,
+            47.5779461
+          ],
+          [
+            -122.2046855,
+            47.5779343
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23615658,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.239701,
+            47.5909503
+          ],
+          [
+            -122.2401895,
+            47.5912129
+          ],
+          [
+            -122.2405984,
+            47.5914115
+          ],
+          [
+            -122.2410675,
+            47.5916034
+          ],
+          [
+            -122.2415051,
+            47.5917523
+          ],
+          [
+            -122.2419398,
+            47.5918748
+          ],
+          [
+            -122.2423915,
+            47.5919773
+          ],
+          [
+            -122.2428462,
+            47.5920568
+          ],
+          [
+            -122.2432952,
+            47.5921134
+          ],
+          [
+            -122.2437454,
+            47.5921489
+          ],
+          [
+            -122.24421,
+            47.5921638
+          ],
+          [
+            -122.244663,
+            47.5921574
+          ],
+          [
+            -122.2451013,
+            47.5921314
+          ],
+          [
+            -122.2455753,
+            47.5920809
+          ],
+          [
+            -122.2460539,
+            47.5920056
+          ],
+          [
+            -122.2464608,
+            47.5919213
+          ],
+          [
+            -122.2468931,
+            47.5918102
+          ],
+          [
+            -122.2472988,
+            47.5916839
+          ],
+          [
+            -122.2477112,
+            47.5915315
+          ],
+          [
+            -122.2480822,
+            47.5913715
+          ],
+          [
+            -122.2484263,
+            47.5912008
+          ],
+          [
+            -122.2498193,
+            47.5904614
+          ],
+          [
+            -122.2500713,
+            47.5903321
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 23615724,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.252749,
+            47.5895735
+          ],
+          [
+            -122.2529083,
+            47.5895568
+          ],
+          [
+            -122.2530209,
+            47.5895478
+          ],
+          [
+            -122.2531319,
+            47.5895396
+          ],
+          [
+            -122.2533228,
+            47.5895286
+          ],
+          [
+            -122.2534922,
+            47.5895222
+          ],
+          [
+            -122.2536514,
+            47.5895186
+          ],
+          [
+            -122.2538146,
+            47.5895173
+          ],
+          [
+            -122.2540119,
+            47.5895183
+          ],
+          [
+            -122.2544218,
+            47.5895248
+          ],
+          [
+            -122.2551161,
+            47.5895433
+          ],
+          [
+            -122.2559513,
+            47.589562
+          ],
+          [
+            -122.2619209,
+            47.5897105
+          ],
+          [
+            -122.2792914,
+            47.5901004
+          ],
+          [
+            -122.2816911,
+            47.5901473
+          ],
+          [
+            -122.2835898,
+            47.5901876
+          ],
+          [
+            -122.2844542,
+            47.5902074
+          ],
+          [
+            -122.2851383,
+            47.5902219
+          ],
+          [
+            -122.285503,
+            47.5902356
+          ],
+          [
+            -122.2858446,
+            47.5902576
+          ],
+          [
+            -122.2875005,
+            47.5903926
+          ],
+          [
+            -122.2877111,
+            47.590406
+          ],
+          [
+            -122.2878416,
+            47.5904143
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 120052013,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2131885,
+            47.5789271
+          ],
+          [
+            -122.2129462,
+            47.5788745
+          ],
+          [
+            -122.212569,
+            47.5787976
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 120054302,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2194488,
+            47.5822467
+          ],
+          [
+            -122.2192211,
+            47.582125
+          ],
+          [
+            -122.2190639,
+            47.5820369
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 123889304,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2885834,
+            47.5904426
+          ],
+          [
+            -122.2888148,
+            47.5904462
+          ],
+          [
+            -122.2946851,
+            47.5905011
+          ],
+          [
+            -122.295095,
+            47.5905018
+          ],
+          [
+            -122.2955007,
+            47.5904924
+          ],
+          [
+            -122.2958999,
+            47.5904738
+          ],
+          [
+            -122.2975697,
+            47.5903614
+          ],
+          [
+            -122.2979529,
+            47.5903434
+          ],
+          [
+            -122.2983346,
+            47.5903349
+          ],
+          [
+            -122.2988069,
+            47.5903338
+          ],
+          [
+            -122.299277,
+            47.5903358
+          ],
+          [
+            -122.2998609,
+            47.5903404
+          ],
+          [
+            -122.3003616,
+            47.5903465
+          ],
+          [
+            -122.3015461,
+            47.5903689
+          ],
+          [
+            -122.3019545,
+            47.5903712
+          ],
+          [
+            -122.3028228,
+            47.5903634
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 124945630,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.231527,
+            47.5876543
+          ],
+          [
+            -122.2324262,
+            47.5879714
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 157773897,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2070712,
+            47.5780216
+          ],
+          [
+            -122.2075647,
+            47.5780908
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 160640889,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2278449,
+            47.5859876
+          ],
+          [
+            -122.2267293,
+            47.5854556
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 310001064,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.3066808,
+            47.5903117
+          ],
+          [
+            -122.3069307,
+            47.5903101
+          ],
+          [
+            -122.3074458,
+            47.5903074
+          ],
+          [
+            -122.3076113,
+            47.5903067
+          ],
+          [
+            -122.3078428,
+            47.590313
+          ],
+          [
+            -122.3079974,
+            47.5903241
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 310001337,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.3079826,
+            47.5902417
+          ],
+          [
+            -122.3078985,
+            47.5902364
+          ],
+          [
+            -122.3077426,
+            47.590229
+          ],
+          [
+            -122.3075487,
+            47.5902245
+          ],
+          [
+            -122.3073796,
+            47.5902243
+          ],
+          [
+            -122.3066181,
+            47.5902304
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 364420470,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2341922,
+            47.5885857
+          ],
+          [
+            -122.2348197,
+            47.5887992
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 364421020,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2294596,
+            47.5867533
+          ],
+          [
+            -122.2299146,
+            47.5869684
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 613947889,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.1909005,
+            47.5794551
+          ],
+          [
+            -122.1909664,
+            47.5794541
+          ],
+          [
+            -122.1910217,
+            47.5794544
+          ],
+          [
+            -122.1910844,
+            47.5794559
+          ],
+          [
+            -122.191144,
+            47.5794591
+          ],
+          [
+            -122.1911967,
+            47.5794625
+          ],
+          [
+            -122.1912657,
+            47.5794683
+          ],
+          [
+            -122.1913362,
+            47.5794763
+          ],
+          [
+            -122.1914083,
+            47.5794856
+          ],
+          [
+            -122.1914787,
+            47.5794955
+          ],
+          [
+            -122.1915553,
+            47.5795084
+          ],
+          [
+            -122.1916212,
+            47.5795208
+          ],
+          [
+            -122.1916879,
+            47.5795329
+          ],
+          [
+            -122.1917583,
+            47.5795465
+          ],
+          [
+            -122.1918269,
+            47.5795594
+          ],
+          [
+            -122.1919156,
+            47.5795763
+          ],
+          [
+            -122.1929584,
+            47.5797794
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 668869625,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.3191162,
+            47.5944628
+          ],
+          [
+            -122.3192842,
+            47.5944307
+          ],
+          [
+            -122.3194342,
+            47.594403
+          ],
+          [
+            -122.3198731,
+            47.5943224
+          ],
+          [
+            -122.3200211,
+            47.5942959
+          ],
+          [
+            -122.3204507,
+            47.5942181
+          ],
+          [
+            -122.3206436,
+            47.5941814
+          ],
+          [
+            -122.3208009,
+            47.5941508
+          ],
+          [
+            -122.3209014,
+            47.594129
+          ],
+          [
+            -122.3210347,
+            47.594099
+          ],
+          [
+            -122.3211557,
+            47.5940704
+          ],
+          [
+            -122.3212522,
+            47.5940461
+          ],
+          [
+            -122.3213584,
+            47.5940174
+          ],
+          [
+            -122.3214416,
+            47.5939938
+          ],
+          [
+            -122.32153,
+            47.593968
+          ],
+          [
+            -122.3216276,
+            47.5939372
+          ],
+          [
+            -122.3217682,
+            47.5938883
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 668869626,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 2
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.3190986,
+            47.5944263
+          ],
+          [
+            -122.3192038,
+            47.5944053
+          ],
+          [
+            -122.3192937,
+            47.5943878
+          ],
+          [
+            -122.3194109,
+            47.5943645
+          ],
+          [
+            -122.3195966,
+            47.5943321
+          ],
+          [
+            -122.3202981,
+            47.5942024
+          ],
+          [
+            -122.3205685,
+            47.5941537
+          ],
+          [
+            -122.3206963,
+            47.5941282
+          ],
+          [
+            -122.3208429,
+            47.5940976
+          ],
+          [
+            -122.3209555,
+            47.5940717
+          ],
+          [
+            -122.3210739,
+            47.5940431
+          ],
+          [
+            -122.3211491,
+            47.5940237
+          ],
+          [
+            -122.3212219,
+            47.5940044
+          ],
+          [
+            -122.3213069,
+            47.5939806
+          ],
+          [
+            -122.3213927,
+            47.5939557
+          ],
+          [
+            -122.3214398,
+            47.5939414
+          ],
+          [
+            -122.3215078,
+            47.5939199
+          ],
+          [
+            -122.321575,
+            47.5938983
+          ],
+          [
+            -122.3216509,
+            47.5938732
+          ],
+          [
+            -122.321713,
+            47.5938508
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669100934,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -3
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.3028061,
+            47.5902592
+          ],
+          [
+            -122.3017228,
+            47.5902772
+          ],
+          [
+            -122.3014134,
+            47.5902775
+          ],
+          [
+            -122.2988059,
+            47.5902669
+          ],
+          [
+            -122.2983323,
+            47.5902671
+          ],
+          [
+            -122.2979516,
+            47.5902774
+          ],
+          [
+            -122.2975651,
+            47.590296
+          ],
+          [
+            -122.2958914,
+            47.5904084
+          ],
+          [
+            -122.2954974,
+            47.5904269
+          ],
+          [
+            -122.2950919,
+            47.5904362
+          ],
+          [
+            -122.2946824,
+            47.5904355
+          ],
+          [
+            -122.2885847,
+            47.5903786
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669100936,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2878453,
+            47.5903662
+          ],
+          [
+            -122.2877104,
+            47.5903602
+          ],
+          [
+            -122.2875322,
+            47.5903522
+          ],
+          [
+            -122.2872191,
+            47.5903322
+          ],
+          [
+            -122.2858544,
+            47.5902207
+          ],
+          [
+            -122.2855075,
+            47.5901995
+          ],
+          [
+            -122.2851393,
+            47.5901848
+          ],
+          [
+            -122.2844536,
+            47.590168
+          ],
+          [
+            -122.2835887,
+            47.5901497
+          ],
+          [
+            -122.2816921,
+            47.5901091
+          ],
+          [
+            -122.2792931,
+            47.5900649
+          ],
+          [
+            -122.261941,
+            47.5896733
+          ],
+          [
+            -122.2559542,
+            47.5895224
+          ],
+          [
+            -122.2551172,
+            47.5895031
+          ],
+          [
+            -122.2544283,
+            47.5894849
+          ],
+          [
+            -122.2540031,
+            47.5894773
+          ],
+          [
+            -122.2538852,
+            47.589476
+          ],
+          [
+            -122.2537544,
+            47.589476
+          ],
+          [
+            -122.2536218,
+            47.5894776
+          ],
+          [
+            -122.253472,
+            47.5894805
+          ],
+          [
+            -122.2533037,
+            47.5894865
+          ],
+          [
+            -122.2531202,
+            47.5894972
+          ],
+          [
+            -122.2530047,
+            47.5895059
+          ],
+          [
+            -122.2528451,
+            47.5895198
+          ],
+          [
+            -122.252743,
+            47.5895297
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669100938,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2500126,
+            47.5902844
+          ],
+          [
+            -122.2497594,
+            47.5904097
+          ],
+          [
+            -122.2483689,
+            47.591148
+          ],
+          [
+            -122.2480293,
+            47.5913164
+          ],
+          [
+            -122.2476558,
+            47.5914773
+          ],
+          [
+            -122.2472519,
+            47.5916261
+          ],
+          [
+            -122.2468572,
+            47.5917488
+          ],
+          [
+            -122.246428,
+            47.5918592
+          ],
+          [
+            -122.2460213,
+            47.5919431
+          ],
+          [
+            -122.245558,
+            47.5920158
+          ],
+          [
+            -122.2450919,
+            47.5920655
+          ],
+          [
+            -122.2446602,
+            47.5920912
+          ],
+          [
+            -122.2442095,
+            47.5920976
+          ],
+          [
+            -122.2437588,
+            47.5920831
+          ],
+          [
+            -122.2433101,
+            47.5920479
+          ],
+          [
+            -122.2428691,
+            47.5919925
+          ],
+          [
+            -122.2424144,
+            47.5919128
+          ],
+          [
+            -122.2419758,
+            47.5918133
+          ],
+          [
+            -122.2415441,
+            47.5916917
+          ],
+          [
+            -122.2411101,
+            47.5915439
+          ],
+          [
+            -122.2406511,
+            47.5913561
+          ],
+          [
+            -122.2402494,
+            47.5911612
+          ],
+          [
+            -122.2397606,
+            47.5908982
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669100940,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.234885,
+            47.5887134
+          ],
+          [
+            -122.2342022,
+            47.5884757
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669100943,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2320978,
+            47.5877493
+          ],
+          [
+            -122.2316495,
+            47.5875846
+          ],
+          [
+            -122.2315213,
+            47.5875447
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669100944,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2299686,
+            47.5869227
+          ],
+          [
+            -122.2298453,
+            47.5868693
+          ],
+          [
+            -122.2296456,
+            47.5867779
+          ],
+          [
+            -122.229504,
+            47.5867142
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669100947,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2278872,
+            47.5859533
+          ],
+          [
+            -122.2267719,
+            47.5854163
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669358675,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2194645,
+            47.5821995
+          ],
+          [
+            -122.2192297,
+            47.5820747
+          ],
+          [
+            -122.2190895,
+            47.581994
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669358678,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2131912,
+            47.5788814
+          ],
+          [
+            -122.2130476,
+            47.5788499
+          ],
+          [
+            -122.2128038,
+            47.5787989
+          ],
+          [
+            -122.212569,
+            47.5787531
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669358680,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2075832,
+            47.5780483
+          ],
+          [
+            -122.2074659,
+            47.5780325
+          ],
+          [
+            -122.2070818,
+            47.5779805
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669358683,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2046795,
+            47.5778932
+          ],
+          [
+            -122.2045608,
+            47.577902
+          ],
+          [
+            -122.2044354,
+            47.5779123
+          ],
+          [
+            -122.2043163,
+            47.5779234
+          ],
+          [
+            -122.2041995,
+            47.5779359
+          ],
+          [
+            -122.2040761,
+            47.5779504
+          ],
+          [
+            -122.2039583,
+            47.5779653
+          ],
+          [
+            -122.2038358,
+            47.5779828
+          ],
+          [
+            -122.2037248,
+            47.5779986
+          ],
+          [
+            -122.2035993,
+            47.5780183
+          ],
+          [
+            -122.2034841,
+            47.5780378
+          ],
+          [
+            -122.2033703,
+            47.5780582
+          ],
+          [
+            -122.2032499,
+            47.5780811
+          ],
+          [
+            -122.2031333,
+            47.5781048
+          ],
+          [
+            -122.2030189,
+            47.5781301
+          ],
+          [
+            -122.2029036,
+            47.5781569
+          ],
+          [
+            -122.2027892,
+            47.5781844
+          ],
+          [
+            -122.2026747,
+            47.5782128
+          ],
+          [
+            -122.2025606,
+            47.5782416
+          ],
+          [
+            -122.2024455,
+            47.5782715
+          ],
+          [
+            -122.1973937,
+            47.5795942
+          ],
+          [
+            -122.1972234,
+            47.5796386
+          ],
+          [
+            -122.1971102,
+            47.5796671
+          ],
+          [
+            -122.1969967,
+            47.5796955
+          ],
+          [
+            -122.1968685,
+            47.5797255
+          ],
+          [
+            -122.196729,
+            47.5797571
+          ],
+          [
+            -122.1965765,
+            47.579789
+          ],
+          [
+            -122.1964499,
+            47.5798144
+          ],
+          [
+            -122.1963477,
+            47.5798324
+          ],
+          [
+            -122.1962564,
+            47.5798475
+          ],
+          [
+            -122.1961621,
+            47.5798616
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 669358686,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.1929702,
+            47.5797418
+          ],
+          [
+            -122.1917665,
+            47.5795018
+          ],
+          [
+            -122.1916934,
+            47.5794877
+          ],
+          [
+            -122.1916314,
+            47.5794756
+          ],
+          [
+            -122.1915618,
+            47.5794631
+          ],
+          [
+            -122.191505,
+            47.5794542
+          ],
+          [
+            -122.1914312,
+            47.5794424
+          ],
+          [
+            -122.1913653,
+            47.5794341
+          ],
+          [
+            -122.1913093,
+            47.5794274
+          ],
+          [
+            -122.1912463,
+            47.5794214
+          ],
+          [
+            -122.1911858,
+            47.5794172
+          ],
+          [
+            -122.1911194,
+            47.5794131
+          ],
+          [
+            -122.1910672,
+            47.5794114
+          ],
+          [
+            -122.1910091,
+            47.57941
+          ],
+          [
+            -122.1909438,
+            47.5794094
+          ],
+          [
+            -122.1908695,
+            47.5794106
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 726626572,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 4
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.1888961,
+            47.5800442
+          ],
+          [
+            -122.1889545,
+            47.5800073
+          ],
+          [
+            -122.1890211,
+            47.5799685
+          ],
+          [
+            -122.1890889,
+            47.5799318
+          ],
+          [
+            -122.1891661,
+            47.5798907
+          ],
+          [
+            -122.1892471,
+            47.5798515
+          ],
+          [
+            -122.1893007,
+            47.5798262
+          ],
+          [
+            -122.1893626,
+            47.5797977
+          ],
+          [
+            -122.189424,
+            47.5797719
+          ],
+          [
+            -122.1894849,
+            47.5797472
+          ],
+          [
+            -122.189552,
+            47.5797221
+          ],
+          [
+            -122.1896146,
+            47.5796985
+          ],
+          [
+            -122.1896791,
+            47.5796764
+          ],
+          [
+            -122.1897446,
+            47.5796552
+          ],
+          [
+            -122.189808,
+            47.5796358
+          ],
+          [
+            -122.1898791,
+            47.5796147
+          ],
+          [
+            -122.1899433,
+            47.5795978
+          ],
+          [
+            -122.1900163,
+            47.5795792
+          ],
+          [
+            -122.1900836,
+            47.5795634
+          ],
+          [
+            -122.1901529,
+            47.5795478
+          ],
+          [
+            -122.1902245,
+            47.579533
+          ],
+          [
+            -122.1902891,
+            47.579521
+          ],
+          [
+            -122.19036,
+            47.5795087
+          ],
+          [
+            -122.1904319,
+            47.5794975
+          ],
+          [
+            -122.1905057,
+            47.5794878
+          ],
+          [
+            -122.1905718,
+            47.579479
+          ],
+          [
+            -122.1906462,
+            47.5794704
+          ],
+          [
+            -122.190734,
+            47.5794626
+          ],
+          [
+            -122.1908157,
+            47.5794577
+          ],
+          [
+            -122.1909005,
+            47.5794551
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 726626573,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 4
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.1908695,
+            47.5794106
+          ],
+          [
+            -122.1907966,
+            47.5794142
+          ],
+          [
+            -122.1907257,
+            47.5794188
+          ],
+          [
+            -122.1906497,
+            47.5794261
+          ],
+          [
+            -122.1905784,
+            47.579434
+          ],
+          [
+            -122.1905197,
+            47.5794405
+          ],
+          [
+            -122.1904505,
+            47.5794497
+          ],
+          [
+            -122.1903983,
+            47.5794577
+          ],
+          [
+            -122.1903328,
+            47.5794684
+          ],
+          [
+            -122.1902817,
+            47.5794765
+          ],
+          [
+            -122.1902233,
+            47.5794879
+          ],
+          [
+            -122.1901549,
+            47.5795019
+          ],
+          [
+            -122.1900849,
+            47.5795164
+          ],
+          [
+            -122.1900146,
+            47.5795327
+          ],
+          [
+            -122.1899471,
+            47.5795493
+          ],
+          [
+            -122.18988,
+            47.5795672
+          ],
+          [
+            -122.1898114,
+            47.5795868
+          ],
+          [
+            -122.1897478,
+            47.5796067
+          ],
+          [
+            -122.1896818,
+            47.5796278
+          ],
+          [
+            -122.1896152,
+            47.5796503
+          ],
+          [
+            -122.189559,
+            47.5796702
+          ],
+          [
+            -122.1894908,
+            47.5796954
+          ],
+          [
+            -122.1894215,
+            47.5797231
+          ],
+          [
+            -122.1893626,
+            47.5797473
+          ],
+          [
+            -122.1892507,
+            47.5797969
+          ],
+          [
+            -122.1891812,
+            47.5798292
+          ],
+          [
+            -122.1891209,
+            47.5798604
+          ],
+          [
+            -122.1890615,
+            47.5798908
+          ],
+          [
+            -122.1890078,
+            47.5799193
+          ],
+          [
+            -122.1889481,
+            47.5799533
+          ],
+          [
+            -122.1888904,
+            47.5799874
+          ],
+          [
+            -122.1888401,
+            47.580019
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 726626574,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.1888401,
+            47.580019
+          ],
+          [
+            -122.1887841,
+            47.5800572
+          ],
+          [
+            -122.1887268,
+            47.5800967
+          ],
+          [
+            -122.1886777,
+            47.5801328
+          ],
+          [
+            -122.1886246,
+            47.5801733
+          ],
+          [
+            -122.1885755,
+            47.5802112
+          ],
+          [
+            -122.1885381,
+            47.5802433
+          ],
+          [
+            -122.1885105,
+            47.5802671
+          ],
+          [
+            -122.1884799,
+            47.5802938
+          ],
+          [
+            -122.1884514,
+            47.5803198
+          ],
+          [
+            -122.1884211,
+            47.5803472
+          ],
+          [
+            -122.188391,
+            47.5803765
+          ],
+          [
+            -122.1883439,
+            47.5804222
+          ],
+          [
+            -122.1883037,
+            47.5804668
+          ],
+          [
+            -122.1882563,
+            47.5805169
+          ],
+          [
+            -122.1882209,
+            47.5805593
+          ],
+          [
+            -122.1881869,
+            47.5806009
+          ],
+          [
+            -122.1881599,
+            47.5806372
+          ],
+          [
+            -122.1881404,
+            47.5806616
+          ],
+          [
+            -122.1881123,
+            47.5807022
+          ],
+          [
+            -122.1880649,
+            47.580772
+          ],
+          [
+            -122.1880229,
+            47.5808461
+          ],
+          [
+            -122.1879952,
+            47.5808982
+          ],
+          [
+            -122.187965,
+            47.5809585
+          ],
+          [
+            -122.1879401,
+            47.5810123
+          ],
+          [
+            -122.1879184,
+            47.5810646
+          ],
+          [
+            -122.1879023,
+            47.5811075
+          ],
+          [
+            -122.1878793,
+            47.5811722
+          ],
+          [
+            -122.1878632,
+            47.5812248
+          ],
+          [
+            -122.1878451,
+            47.5812954
+          ],
+          [
+            -122.1878327,
+            47.5813486
+          ],
+          [
+            -122.1878247,
+            47.5813915
+          ],
+          [
+            -122.1878154,
+            47.5814549
+          ],
+          [
+            -122.1878062,
+            47.5815017
+          ],
+          [
+            -122.1878041,
+            47.5815481
+          ],
+          [
+            -122.1878013,
+            47.5816033
+          ],
+          [
+            -122.1877992,
+            47.5816518
+          ],
+          [
+            -122.1877992,
+            47.5816968
+          ],
+          [
+            -122.1878003,
+            47.5817592
+          ],
+          [
+            -122.1878102,
+            47.5819042
+          ],
+          [
+            -122.1878621,
+            47.5825743
+          ],
+          [
+            -122.1878659,
+            47.5826218
+          ],
+          [
+            -122.1878706,
+            47.5826719
+          ],
+          [
+            -122.1878755,
+            47.582718
+          ],
+          [
+            -122.1878818,
+            47.5827596
+          ],
+          [
+            -122.1878897,
+            47.5828101
+          ],
+          [
+            -122.1878998,
+            47.5828583
+          ],
+          [
+            -122.1879123,
+            47.5829072
+          ],
+          [
+            -122.1879246,
+            47.5829522
+          ],
+          [
+            -122.1879396,
+            47.583
+          ],
+          [
+            -122.1879591,
+            47.5830565
+          ],
+          [
+            -122.1879797,
+            47.5831078
+          ],
+          [
+            -122.1879992,
+            47.5831519
+          ],
+          [
+            -122.1880235,
+            47.5832012
+          ],
+          [
+            -122.1880478,
+            47.5832474
+          ],
+          [
+            -122.1880736,
+            47.5832929
+          ],
+          [
+            -122.1881017,
+            47.5833412
+          ],
+          [
+            -122.1881324,
+            47.5833891
+          ],
+          [
+            -122.1881622,
+            47.5834356
+          ],
+          [
+            -122.188192,
+            47.5834805
+          ],
+          [
+            -122.1882222,
+            47.5835245
+          ],
+          [
+            -122.1887764,
+            47.5843221
+          ],
+          [
+            -122.189164,
+            47.5848836
+          ],
+          [
+            -122.1893694,
+            47.58518
+          ],
+          [
+            -122.1894082,
+            47.5852361
+          ],
+          [
+            -122.1894469,
+            47.5852937
+          ],
+          [
+            -122.1895135,
+            47.5853874
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 882820606,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.1895868,
+            47.5853461
+          ],
+          [
+            -122.1895445,
+            47.5852972
+          ],
+          [
+            -122.1895017,
+            47.5852451
+          ],
+          [
+            -122.1894592,
+            47.5851912
+          ],
+          [
+            -122.1894288,
+            47.5851508
+          ],
+          [
+            -122.1893718,
+            47.5850708
+          ],
+          [
+            -122.1892272,
+            47.5848652
+          ],
+          [
+            -122.1888377,
+            47.5843056
+          ],
+          [
+            -122.1882813,
+            47.5835069
+          ],
+          [
+            -122.1882519,
+            47.5834612
+          ],
+          [
+            -122.1882119,
+            47.5833994
+          ],
+          [
+            -122.1881684,
+            47.5833301
+          ],
+          [
+            -122.1881343,
+            47.5832739
+          ],
+          [
+            -122.1881023,
+            47.583218
+          ],
+          [
+            -122.1880784,
+            47.5831729
+          ],
+          [
+            -122.1880555,
+            47.5831254
+          ],
+          [
+            -122.1880245,
+            47.5830491
+          ],
+          [
+            -122.1880062,
+            47.5829969
+          ],
+          [
+            -122.1879918,
+            47.5829485
+          ],
+          [
+            -122.187978,
+            47.5829002
+          ],
+          [
+            -122.1879665,
+            47.5828539
+          ],
+          [
+            -122.1879556,
+            47.5828046
+          ],
+          [
+            -122.1879482,
+            47.5827547
+          ],
+          [
+            -122.1879427,
+            47.5827125
+          ],
+          [
+            -122.1879369,
+            47.5826698
+          ],
+          [
+            -122.1879327,
+            47.5826203
+          ],
+          [
+            -122.1879286,
+            47.5825729
+          ],
+          [
+            -122.1878833,
+            47.5819808
+          ],
+          [
+            -122.1878772,
+            47.5818981
+          ],
+          [
+            -122.1878709,
+            47.5818098
+          ],
+          [
+            -122.187868,
+            47.5817474
+          ],
+          [
+            -122.1878668,
+            47.5816953
+          ],
+          [
+            -122.1878675,
+            47.5816251
+          ],
+          [
+            -122.1878688,
+            47.5815761
+          ],
+          [
+            -122.1878727,
+            47.5815222
+          ],
+          [
+            -122.187876,
+            47.581476
+          ],
+          [
+            -122.1878827,
+            47.5814252
+          ],
+          [
+            -122.1878913,
+            47.581376
+          ],
+          [
+            -122.1879017,
+            47.5813261
+          ],
+          [
+            -122.1879137,
+            47.5812784
+          ],
+          [
+            -122.1879276,
+            47.5812308
+          ],
+          [
+            -122.1879428,
+            47.5811819
+          ],
+          [
+            -122.1879583,
+            47.5811365
+          ],
+          [
+            -122.187978,
+            47.5810841
+          ],
+          [
+            -122.1879967,
+            47.5810375
+          ],
+          [
+            -122.1880186,
+            47.5809852
+          ],
+          [
+            -122.1880396,
+            47.5809423
+          ],
+          [
+            -122.1880654,
+            47.5808959
+          ],
+          [
+            -122.1880927,
+            47.5808491
+          ],
+          [
+            -122.1881213,
+            47.5808011
+          ],
+          [
+            -122.1881497,
+            47.5807562
+          ],
+          [
+            -122.1881804,
+            47.5807106
+          ],
+          [
+            -122.1882096,
+            47.5806691
+          ],
+          [
+            -122.188244,
+            47.5806239
+          ],
+          [
+            -122.188279,
+            47.5805801
+          ],
+          [
+            -122.1883147,
+            47.5805371
+          ],
+          [
+            -122.188354,
+            47.5804919
+          ],
+          [
+            -122.1883939,
+            47.5804522
+          ],
+          [
+            -122.1884307,
+            47.580414
+          ],
+          [
+            -122.1884677,
+            47.5803773
+          ],
+          [
+            -122.1884988,
+            47.5803486
+          ],
+          [
+            -122.1885219,
+            47.5803266
+          ],
+          [
+            -122.1885534,
+            47.5802995
+          ],
+          [
+            -122.1885874,
+            47.5802697
+          ],
+          [
+            -122.1886253,
+            47.5802373
+          ],
+          [
+            -122.1886631,
+            47.580208
+          ],
+          [
+            -122.1887006,
+            47.5801793
+          ],
+          [
+            -122.1887398,
+            47.5801499
+          ],
+          [
+            -122.1888001,
+            47.5801078
+          ],
+          [
+            -122.1888515,
+            47.5800732
+          ],
+          [
+            -122.1888961,
+            47.5800442
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 882820608,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.1887764,
+            47.5843221
+          ],
+          [
+            -122.1888656,
+            47.5844403
+          ],
+          [
+            -122.1888955,
+            47.5844764
+          ],
+          [
+            -122.1890128,
+            47.5846123
+          ],
+          [
+            -122.1890903,
+            47.5847011
+          ],
+          [
+            -122.1891368,
+            47.5847493
+          ],
+          [
+            -122.1892272,
+            47.5848652
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 882820609,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.189164,
+            47.5848836
+          ],
+          [
+            -122.1891018,
+            47.5847828
+          ],
+          [
+            -122.1890128,
+            47.5846123
+          ],
+          [
+            -122.1889384,
+            47.5844684
+          ],
+          [
+            -122.1889222,
+            47.58444
+          ],
+          [
+            -122.1888377,
+            47.5843056
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 882831233,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2835898,
+            47.5901876
+          ],
+          [
+            -122.2837507,
+            47.590187
+          ],
+          [
+            -122.2838535,
+            47.5901843
+          ],
+          [
+            -122.2840198,
+            47.5901787
+          ],
+          [
+            -122.2841834,
+            47.5901717
+          ],
+          [
+            -122.2842808,
+            47.5901682
+          ],
+          [
+            -122.2844536,
+            47.590168
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 882831234,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2844542,
+            47.5902074
+          ],
+          [
+            -122.2842621,
+            47.5901991
+          ],
+          [
+            -122.2841888,
+            47.590194
+          ],
+          [
+            -122.2840198,
+            47.5901787
+          ],
+          [
+            -122.2838571,
+            47.5901663
+          ],
+          [
+            -122.2837562,
+            47.5901585
+          ],
+          [
+            -122.2835887,
+            47.5901497
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 882831235,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2559542,
+            47.5895224
+          ],
+          [
+            -122.255762,
+            47.5895232
+          ],
+          [
+            -122.2556867,
+            47.5895266
+          ],
+          [
+            -122.2555334,
+            47.5895325
+          ],
+          [
+            -122.2552985,
+            47.5895395
+          ],
+          [
+            -122.2552233,
+            47.5895419
+          ],
+          [
+            -122.2551161,
+            47.5895433
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 882831236,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2551172,
+            47.5895031
+          ],
+          [
+            -122.2552261,
+            47.5895093
+          ],
+          [
+            -122.2552942,
+            47.5895136
+          ],
+          [
+            -122.2555334,
+            47.5895325
+          ],
+          [
+            -122.2557085,
+            47.5895483
+          ],
+          [
+            -122.2557781,
+            47.5895542
+          ],
+          [
+            -122.2559513,
+            47.589562
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1215633141,
+        "separationType": "elevated",
+        "name": null,
+        "tunnel": false,
+        "bridge": true,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": 1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.3066557,
+            47.5902773
+          ],
+          [
+            -122.307453,
+            47.5902663
+          ],
+          [
+            -122.3076741,
+            47.5902682
+          ],
+          [
+            -122.3078674,
+            47.5902787
+          ],
+          [
+            -122.3080023,
+            47.5902855
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1453375151,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2374563,
+            47.5897983
+          ],
+          [
+            -122.237765,
+            47.5899398
+          ],
+          [
+            -122.2378727,
+            47.5899913
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 1453375153,
+        "separationType": "tunnel",
+        "name": null,
+        "tunnel": true,
+        "bridge": false,
+        "embedded": false,
+        "railwayRun": null,
+        "trafficMode": null,
+        "segregated": null,
+        "cutting": false,
+        "embankment": false,
+        "layer": -1
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -122.2378796,
+            47.5899098
+          ],
+          [
+            -122.2378253,
+            47.5898822
+          ],
+          [
+            -122.2374831,
+            47.5897223
+          ],
+          [
+            -122.237452,
+            47.5897082
+          ]
+        ]
+      }
     }
   ]
 }
