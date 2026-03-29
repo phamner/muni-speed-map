@@ -307,6 +307,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     case "SF": {
       const [
         routes,
+        cableCarRoutes,
         stops,
         crossings,
         switches,
@@ -318,6 +319,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         busRoutesOverlay,
       ] = await Promise.all([
         import("./routes/muniMetroRoutes.json"),
+        import("./routes/sfCableCarRoutes.json"),
         import("./stops/muniMetroStops.json"),
         import("./crossings/sfGradeCrossings.json"),
         import("./switches/sfSwitches.json"),
@@ -344,7 +346,13 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       }
 
       return {
-        routes: routes.default,
+        routes: {
+          type: "FeatureCollection",
+          features: [
+            ...(routes.default?.features || []),
+            ...(cableCarRoutes.default?.features || []),
+          ],
+        },
         stops: stops.default,
         crossings: crossings.default,
         switches: switches.default,
