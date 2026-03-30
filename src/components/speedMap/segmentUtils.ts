@@ -104,6 +104,13 @@ export function shouldUseParallelTrackMerge(
   return true;
 }
 
+export function shouldUsePairedArcMerge(
+  city?: string,
+  routeId?: string,
+): boolean {
+  return city === "SF" && routeId === "F";
+}
+
 export interface SegmentData {
   segmentId: string;
   routeId: string;
@@ -414,14 +421,27 @@ function getParallelSegmentSubsection(
     endProjection.projectedPoint[0],
   );
   const PARALLEL_MATCH_MAX_DISTANCE_METERS = 70;
+  const TERMINAL_PARALLEL_MATCH_MAX_DISTANCE_METERS = 150;
+  const isTerminalSegment =
+    idx <= 1 || idx >= totalRefSegments - 2;
   if (
-    startOffset > PARALLEL_MATCH_MAX_DISTANCE_METERS ||
-    endOffset > PARALLEL_MATCH_MAX_DISTANCE_METERS
+    startOffset >
+      (isTerminalSegment
+        ? TERMINAL_PARALLEL_MATCH_MAX_DISTANCE_METERS
+        : PARALLEL_MATCH_MAX_DISTANCE_METERS) ||
+    endOffset >
+      (isTerminalSegment
+        ? TERMINAL_PARALLEL_MATCH_MAX_DISTANCE_METERS
+        : PARALLEL_MATCH_MAX_DISTANCE_METERS)
   ) {
     return null;
   }
 
   const lineLength = getLineStringLength(coordinates);
+  const referenceSegmentLength = Math.max(
+    0,
+    refSeg.endDistance - refSeg.startDistance,
+  );
   let startDist = Math.min(
     startProjection.distanceAlong,
     endProjection.distanceAlong,
@@ -442,10 +462,89 @@ function getParallelSegmentSubsection(
     endDist = lineLength;
   }
 
+  if (
+    idx === totalRefSegments - 1 &&
+    endDist <= segmentSizeMeters &&
+    startDist <= segmentSizeMeters
+  ) {
+    startDist = 0;
+    endDist = Math.min(lineLength, Math.max(endDist, referenceSegmentLength));
+  }
+
+  if (
+    idx === 0 &&
+    lineLength - startDist <= segmentSizeMeters &&
+    lineLength - endDist <= segmentSizeMeters
+  ) {
+    endDist = lineLength;
+    startDist = Math.max(
+      0,
+      lineLength - Math.max(lineLength - startDist, referenceSegmentLength),
+    );
+  }
+
   const coords = extractLineSubsection(coordinates, startDist, endDist);
   if (coords.length < 2) return null;
 
   return { coords, startDistance: startDist, endDistance: endDist };
+}
+
+function getNormalizedSegmentSubsection(
+  coordinates: number[][],
+  referenceCoordinates: number[][],
+  refSeg: SegmentData,
+  idx: number,
+  totalRefSegments: number,
+  segmentSizeMeters: number,
+): { coords: number[][]; startDistance: number; endDistance: number } | null {
+  const lineLength = getLineStringLength(coordinates);
+  const referenceLength = getLineStringLength(referenceCoordinates);
+  if (lineLength <= 0 || referenceLength <= 0) {
+    return null;
+  }
+
+  const { sameDirection, reverseDirection } = getEndpointAlignmentScore(
+    coordinates,
+    referenceCoordinates,
+  );
+  const isReversed = reverseDirection < sameDirection;
+
+  let startRatio = refSeg.startDistance / referenceLength;
+  let endRatio = refSeg.endDistance / referenceLength;
+  startRatio = Math.max(0, Math.min(1, startRatio));
+  endRatio = Math.max(0, Math.min(1, endRatio));
+
+  let startDist = startRatio * lineLength;
+  let endDist = endRatio * lineLength;
+
+  if (isReversed) {
+    startDist = lineLength - endRatio * lineLength;
+    endDist = lineLength - startRatio * lineLength;
+  }
+
+  if (idx === 0 && startDist > 0 && startDist < segmentSizeMeters) {
+    startDist = 0;
+  }
+  if (
+    idx === totalRefSegments - 1 &&
+    lineLength - endDist > 0 &&
+    lineLength - endDist < segmentSizeMeters
+  ) {
+    endDist = lineLength;
+  }
+
+  const coords = extractLineSubsection(
+    coordinates,
+    Math.min(startDist, endDist),
+    Math.max(startDist, endDist),
+  );
+  if (coords.length < 2) return null;
+
+  return {
+    coords,
+    startDistance: Math.min(startDist, endDist),
+    endDistance: Math.max(startDist, endDist),
+  };
 }
 
 export function buildAllSegments(
@@ -497,7 +596,9 @@ export function buildAllSegments(
     }
 
     const useRouteParallelMerge = shouldUseParallelTrackMerge(city, routeId);
+    const useRoutePairedArcMerge = shouldUsePairedArcMerge(city, routeId);
     const isParallelTrack = useRouteParallelMerge && processedRoutes.has(routeId);
+    const isPairedArcRoute = useRoutePairedArcMerge && processedRoutes.has(routeId);
 
     if (useRouteParallelMerge && !processedRoutes.has(routeId)) {
       processedRoutes.add(routeId);
@@ -573,6 +674,83 @@ export function buildAllSegments(
 
       routeSegmentOffsets.set(routeId, cumulativeSegmentOffset);
       referenceSegmentsByRoute.set(routeId, routeRefSegments);
+    } else if (useRoutePairedArcMerge && !processedRoutes.has(routeId)) {
+      processedRoutes.add(routeId);
+
+      const groupedFeatures = (routes.features || []).filter(
+        (candidate: any) => candidate.properties?.route_id === routeId,
+      );
+      const groupedLineStrings = groupedFeatures.flatMap((groupedFeature: any) => {
+        const groupedGeometry = groupedFeature.geometry;
+        if (groupedGeometry.type === "MultiLineString") {
+          return groupedGeometry.coordinates;
+        }
+        return [groupedGeometry.coordinates];
+      });
+      if (groupedLineStrings.length === 0) {
+        return;
+      }
+
+      const referenceLineCoords = groupedLineStrings.reduce(
+        (longest: number[][], current: number[][]) =>
+          getLineStringLength(current) > getLineStringLength(longest)
+            ? current
+            : longest,
+      );
+
+      const refSegmentsRaw = createSegments(
+        referenceLineCoords,
+        routeId,
+        "combined",
+        segmentSizeMeters,
+      );
+      const routeRefSegments: SegmentData[] = [];
+
+      refSegmentsRaw.forEach((seg) => {
+        const originalIndex = parseInt(seg.segmentId.split("_").pop() || "0");
+        const segmentId = `${routeId}_${originalIndex}`;
+        const segmentData: SegmentData = {
+          segmentId,
+          routeId,
+          coordinates: seg.coords,
+          startDistance: seg.startDistance,
+          endDistance: seg.endDistance,
+        };
+        allSegments.push(segmentData);
+        routeRefSegments.push(segmentData);
+      });
+
+      let pairedArcCounter = 0;
+      groupedLineStrings.forEach((coordinates: number[][]) => {
+        if (coordinates === referenceLineCoords) return;
+
+        routeRefSegments.forEach((refSeg, idx) => {
+          const pairedSegment = getNormalizedSegmentSubsection(
+            coordinates,
+            referenceLineCoords,
+            refSeg,
+            idx,
+            routeRefSegments.length,
+            segmentSizeMeters,
+          );
+          if (!pairedSegment) return;
+
+          allSegments.push({
+            segmentId: `${routeId}_p_${pairedArcCounter}_${idx}`,
+            routeId,
+            coordinates: pairedSegment.coords,
+            startDistance: pairedSegment.startDistance,
+            endDistance: pairedSegment.endDistance,
+            referenceSegmentId: refSeg.segmentId,
+          });
+        });
+
+        pairedArcCounter++;
+      });
+
+      referenceSegmentsByRoute.set(routeId, routeRefSegments);
+    } else if (isPairedArcRoute) {
+      return;
     } else if (isParallelTrack) {
       const refSegments = referenceSegmentsByRoute.get(routeId) || [];
 

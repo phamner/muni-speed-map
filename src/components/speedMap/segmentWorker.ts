@@ -240,6 +240,10 @@ function shouldUseParallelTrackMerge(city: string, routeId: string): boolean {
   return true;
 }
 
+function shouldUsePairedArcMerge(city: string, routeId: string): boolean {
+  return city === "SF" && routeId === "F";
+}
+
 function findSegmentsForVehicle(
   lat: number,
   lon: number,
@@ -266,9 +270,28 @@ function findSegmentsForVehicle(
       city,
       candidateRouteId,
     );
+    const usesPairedArcMerge = shouldUsePairedArcMerge(
+      city,
+      candidateRouteId,
+    );
     const featuresToProcess = usesParallelMerge
       ? pickLongestRouteFeature(routeFeatures)
       : routeFeatures;
+    const usesSharedSegmentSpace = usesParallelMerge || usesPairedArcMerge;
+    const referenceLineCoords = usesSharedSegmentSpace
+      ? routeFeatures
+          .flatMap((feature: any) =>
+            feature.geometry.type === "MultiLineString"
+              ? feature.geometry.coordinates
+              : [feature.geometry.coordinates],
+          )
+          .reduce((longest: number[][] | null, current: number[][]) => {
+            if (!longest) return current;
+            return getLineStringLength(current) > getLineStringLength(longest)
+              ? current
+              : longest;
+          }, null)
+      : null;
 
     for (const feature of featuresToProcess) {
       const geometry = feature.geometry;
@@ -280,15 +303,6 @@ function findSegmentsForVehicle(
       } else {
         lineStrings = [geometry.coordinates];
       }
-
-      const referenceLineCoords =
-        usesParallelMerge && lineStrings.length > 1
-          ? lineStrings.reduce((longest, current) =>
-              getLineStringLength(current) > getLineStringLength(longest)
-                ? current
-                : longest,
-            )
-          : null;
 
       for (const coordinates of lineStrings) {
         const result = findNearestPointOnLine(lat, lon, coordinates);
