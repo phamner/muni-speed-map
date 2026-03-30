@@ -2,7 +2,7 @@ import { haversineDistance, distanceToSegment } from "./geoUtils";
 
 export const SEGMENT_SIZE_METERS = 200;
 
-function getLineStringLength(coordinates: number[][]): number {
+export function getLineStringLength(coordinates: number[][]): number {
   let total = 0;
   for (let i = 0; i < coordinates.length - 1; i++) {
     const [x1, y1] = coordinates[i];
@@ -10,6 +10,32 @@ function getLineStringLength(coordinates: number[][]): number {
     total += haversineDistance(y1, x1, y2, x2);
   }
   return total;
+}
+
+function getEndpointAlignmentScore(
+  coordinates: number[][],
+  referenceCoordinates: number[][],
+): { sameDirection: number; reverseDirection: number } {
+  const start = coordinates[0];
+  const end = coordinates[coordinates.length - 1];
+  const refStart = referenceCoordinates[0];
+  const refEnd = referenceCoordinates[referenceCoordinates.length - 1];
+
+  if (!start || !end || !refStart || !refEnd) {
+    return {
+      sameDirection: Number.POSITIVE_INFINITY,
+      reverseDirection: Number.POSITIVE_INFINITY,
+    };
+  }
+
+  return {
+    sameDirection:
+      haversineDistance(start[1], start[0], refStart[1], refStart[0]) +
+      haversineDistance(end[1], end[0], refEnd[1], refEnd[0]),
+    reverseDirection:
+      haversineDistance(start[1], start[0], refEnd[1], refEnd[0]) +
+      haversineDistance(end[1], end[0], refStart[1], refStart[0]),
+  };
 }
 
 function getFeatureLineLength(feature: any): number {
@@ -60,6 +86,23 @@ export const CITIES_WITH_PARALLEL_TRACKS = [
   "Pittsburgh", //yes
   "Seattle", //the 2 line has parallel tracks.
 ];
+
+export function shouldUseParallelTrackMerge(
+  city?: string,
+  routeId?: string,
+): boolean {
+  if (!city || !CITIES_WITH_PARALLEL_TRACKS.includes(city)) {
+    return false;
+  }
+
+  // F in SF is a loop we intentionally cut into two arcs for display/segmenting.
+  // It should be segmented directly on both halves, not mirrored as a parallel pair.
+  if (city === "SF" && routeId === "F") {
+    return false;
+  }
+
+  return true;
+}
 
 export interface SegmentData {
   segmentId: string;
@@ -121,6 +164,42 @@ export function findNearestPointOnLine(
     distanceAlong: bestDistanceAlong,
     totalLength,
   };
+}
+
+export function normalizeDistanceAlongReference(
+  distanceAlong: number,
+  lineTotalLength: number,
+  coordinates: number[][],
+  referenceCoordinates: number[][],
+): number {
+  if (
+    coordinates.length < 2 ||
+    referenceCoordinates.length < 2 ||
+    lineTotalLength <= 0
+  ) {
+    return distanceAlong;
+  }
+
+  const referenceLength = getLineStringLength(referenceCoordinates);
+  if (referenceLength <= 0) {
+    return distanceAlong;
+  }
+
+  const { sameDirection, reverseDirection } = getEndpointAlignmentScore(
+    coordinates,
+    referenceCoordinates,
+  );
+  const lengthRatio = referenceLength / lineTotalLength;
+  const scaledDistance = Math.max(
+    0,
+    Math.min(referenceLength, distanceAlong * lengthRatio),
+  );
+
+  if (reverseDirection < sameDirection) {
+    return Math.max(0, referenceLength - scaledDistance);
+  }
+
+  return scaledDistance;
 }
 
 function createSegments(
@@ -380,8 +459,7 @@ export function buildAllSegments(
   const referenceSegmentsByRoute = new Map<string, SegmentData[]>();
   const processedRoutes = new Set<string>();
 
-  const usesParallelMerge =
-    city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
+  const usesParallelMerge = !!city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
   const featuresToProcess =
     usesParallelMerge
       ? (() => {
@@ -418,9 +496,10 @@ export function buildAllSegments(
       lineStrings = [geometry.coordinates];
     }
 
-    const isParallelTrack = usesParallelMerge && processedRoutes.has(routeId);
+    const useRouteParallelMerge = shouldUseParallelTrackMerge(city, routeId);
+    const isParallelTrack = useRouteParallelMerge && processedRoutes.has(routeId);
 
-    if (usesParallelMerge && !processedRoutes.has(routeId)) {
+    if (useRouteParallelMerge && !processedRoutes.has(routeId)) {
       processedRoutes.add(routeId);
       let cumulativeSegmentOffset = routeSegmentOffsets.get(routeId) || 0;
       const lineLengths = lineStrings.map((coordinates) =>

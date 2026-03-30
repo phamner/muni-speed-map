@@ -3,10 +3,12 @@ import { supabase } from "../../lib/supabase";
 import { MAX_DISTANCE_FROM_ROUTE_METERS } from "./geoUtils";
 import {
   findNearestPointOnLine,
+  getLineStringLength,
+  normalizeDistanceAlongReference,
   SEGMENT_SIZE_METERS,
   SEGMENT_SIZE_500_METERS,
-  CITIES_WITH_PARALLEL_TRACKS,
   pickLongestRouteFeature,
+  shouldUseParallelTrackMerge,
 } from "./segmentUtils";
 
 const routeFeatureCache = new Map<string, Map<string, any[]>>();
@@ -59,8 +61,10 @@ export function findSegmentForVehicle(
   for (const [candidateRouteId, routeFeatures] of candidateRouteEntries) {
     let cumulativeSegmentOffset = 0;
 
-    const usesParallelMerge =
-      city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
+    const usesParallelMerge = shouldUseParallelTrackMerge(
+      city,
+      candidateRouteId,
+    );
     const featuresToProcess = usesParallelMerge
       ? pickLongestRouteFeature(routeFeatures)
       : routeFeatures;
@@ -76,24 +80,43 @@ export function findSegmentForVehicle(
         lineStrings = [geometry.coordinates];
       }
 
+      const referenceLineCoords =
+        usesParallelMerge && lineStrings.length > 1
+          ? lineStrings.reduce((longest, current) =>
+              getLineStringLength(current) > getLineStringLength(longest)
+                ? current
+                : longest,
+            )
+          : null;
+
       for (const coordinates of lineStrings) {
         const result = findNearestPointOnLine(lat, lon, coordinates);
+        const distanceAlong = referenceLineCoords
+          ? normalizeDistanceAlongReference(
+              result.distanceAlong,
+              result.totalLength,
+              coordinates,
+              referenceLineCoords,
+            )
+          : result.distanceAlong;
 
         if (
           result.distance < minDistance &&
           result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
         ) {
           minDistance = result.distance;
-          const localSegmentIndex = Math.floor(
-            result.distanceAlong / segmentSizeMeters,
-          );
-          bestSegmentIndex = cumulativeSegmentOffset + localSegmentIndex;
+          const localSegmentIndex = Math.floor(distanceAlong / segmentSizeMeters);
+          bestSegmentIndex = referenceLineCoords
+            ? localSegmentIndex
+            : cumulativeSegmentOffset + localSegmentIndex;
           bestSegmentRouteId = candidateRouteId;
         }
 
         const lineLength = result.totalLength;
-        const segmentsInLine = Math.floor(lineLength / segmentSizeMeters) + 1;
-        cumulativeSegmentOffset += segmentsInLine;
+        if (!referenceLineCoords) {
+          const segmentsInLine = Math.floor(lineLength / segmentSizeMeters) + 1;
+          cumulativeSegmentOffset += segmentsInLine;
+        }
       }
     }
   }
@@ -133,8 +156,10 @@ export function findSegmentsForVehicle(
     let cumulativeOffset200 = 0;
     let cumulativeOffset500 = 0;
 
-    const usesParallelMerge =
-      city && CITIES_WITH_PARALLEL_TRACKS.includes(city);
+    const usesParallelMerge = shouldUseParallelTrackMerge(
+      city,
+      candidateRouteId,
+    );
     const featuresToProcess = usesParallelMerge
       ? pickLongestRouteFeature(routeFeatures)
       : routeFeatures;
@@ -150,22 +175,46 @@ export function findSegmentsForVehicle(
         lineStrings = [geometry.coordinates];
       }
 
+      const referenceLineCoords =
+        usesParallelMerge && lineStrings.length > 1
+          ? lineStrings.reduce((longest, current) =>
+              getLineStringLength(current) > getLineStringLength(longest)
+                ? current
+                : longest,
+            )
+          : null;
+
       for (const coordinates of lineStrings) {
         const result = findNearestPointOnLine(lat, lon, coordinates);
+        const distanceAlong = referenceLineCoords
+          ? normalizeDistanceAlongReference(
+              result.distanceAlong,
+              result.totalLength,
+              coordinates,
+              referenceLineCoords,
+            )
+          : result.distanceAlong;
 
         if (
           result.distance < minDistance &&
           result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
         ) {
           minDistance = result.distance;
-          bestSegmentIndex200 = cumulativeOffset200 + Math.floor(result.distanceAlong / SEGMENT_SIZE_METERS);
-          bestSegmentIndex500 = cumulativeOffset500 + Math.floor(result.distanceAlong / SEGMENT_SIZE_500_METERS);
+          bestSegmentIndex200 =
+            (referenceLineCoords ? 0 : cumulativeOffset200) +
+            Math.floor(distanceAlong / SEGMENT_SIZE_METERS);
+          bestSegmentIndex500 =
+            (referenceLineCoords ? 0 : cumulativeOffset500) +
+            Math.floor(distanceAlong / SEGMENT_SIZE_500_METERS);
           bestSegmentRouteId = candidateRouteId;
         }
 
         const lineLength = result.totalLength;
-        cumulativeOffset200 += Math.floor(lineLength / SEGMENT_SIZE_METERS) + 1;
-        cumulativeOffset500 += Math.floor(lineLength / SEGMENT_SIZE_500_METERS) + 1;
+        if (!referenceLineCoords) {
+          cumulativeOffset200 += Math.floor(lineLength / SEGMENT_SIZE_METERS) + 1;
+          cumulativeOffset500 +=
+            Math.floor(lineLength / SEGMENT_SIZE_500_METERS) + 1;
+        }
       }
     }
   }
