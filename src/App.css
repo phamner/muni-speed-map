@@ -551,6 +551,12 @@
   cursor: pointer;
 }
 
+.route-lines-toggle label.heritage-local-circulators-toggle {
+  gap: 6px;
+  font-size: 0.76rem;
+  white-space: nowrap;
+}
+
 /* Align info icons in a column when present */
 .route-lines-toggle label.toggle-with-info-icon {
   justify-content: space-between;

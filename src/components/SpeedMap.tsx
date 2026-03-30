@@ -6,7 +6,6 @@ import {
   getLinesForCity,
   LA_METRO_LINE_INFO,
   getRouteDisplayName,
-  SF_CABLE_CARS_TOGGLE,
 } from "../types";
 import { supabase } from "../lib/supabase";
 import {
@@ -128,26 +127,8 @@ function buildSfRouteLayerFilter(
   selectedLines: readonly string[],
   routeLineMode: "byLine" | "bySpeedLimit" | "bySeparation",
 ): maplibregl.FilterSpecification {
-  const selectedFilter = buildSelectedLineFilter(selectedLines, "SF", "route_id", "lines");
-  const showCableCars = selectedLines.includes(SF_CABLE_CARS_TOGGLE);
-
-  if (routeLineMode !== "byLine") {
-    return selectedFilter;
-  }
-
-  if (!showCableCars) {
-    return selectedFilter;
-  }
-
-  return [
-    "any",
-    selectedFilter,
-    [
-      "in",
-      ["to-string", ["get", "route_id"]],
-      ["literal", Array.from(SF_CABLE_CAR_ROUTE_IDS)],
-    ],
-  ] as maplibregl.FilterSpecification;
+  void routeLineMode;
+  return buildSelectedLineFilter(selectedLines, "SF", "route_id", "lines");
 }
 
 const MAXSPEED_ROUTE_MATCH_METERS = 75;
@@ -310,6 +291,7 @@ interface SpeedMapProps {
   showRailContextHeavy: boolean;
   showRailContextCommuter: boolean;
   showBusRoutesOverlay: boolean;
+  showCableCarsOverlay: boolean;
   hideStoppedTrains: boolean;
   hideAllTrains: boolean;
   viewMode: ViewMode;
@@ -331,6 +313,7 @@ interface SpeedMapProps {
     heavyCount: number,
     commuterCount: number,
     busCount: number,
+    heritageCount: number,
   ) => void;
 }
 
@@ -496,6 +479,7 @@ export function SpeedMap({
   showRailContextHeavy,
   showRailContextCommuter,
   showBusRoutesOverlay,
+  showCableCarsOverlay,
   hideStoppedTrains,
   hideAllTrains,
   viewMode,
@@ -749,6 +733,17 @@ export function SpeedMap({
   const railContextCounts = useMemo(() => {
     const busFeatures = cityConfig.busRoutesOverlay?.features || [];
     const uniqueBusRoutes = new Set<string>();
+    const uniqueHeritageRoutes = new Set<string>();
+
+    if (city === "SF") {
+      for (const feature of cityConfig.routes?.features || []) {
+        const routeId = String(feature?.properties?.route_id || "").trim();
+        if (routeId && SF_CABLE_CAR_ROUTE_IDS.includes(routeId as any)) {
+          uniqueHeritageRoutes.add(routeId);
+        }
+      }
+    }
+
     for (const feature of busFeatures as any[]) {
       const props = feature?.properties || {};
       const routeKey = String(
@@ -761,14 +756,16 @@ export function SpeedMap({
       heavy: effectiveRailContext.heavy?.features?.length || 0,
       commuter: effectiveRailContext.commuter?.features?.length || 0,
       bus: uniqueBusRoutes.size,
+      heritage: uniqueHeritageRoutes.size,
     };
-  }, [effectiveRailContext, cityConfig.busRoutesOverlay]);
+  }, [city, cityConfig.busRoutesOverlay, cityConfig.routes, effectiveRailContext]);
 
   useEffect(() => {
     onRailContextUpdate?.(
       railContextCounts.heavy,
       railContextCounts.commuter,
       railContextCounts.bus,
+      railContextCounts.heritage,
     );
   }, [onRailContextUpdate, railContextCounts]);
 
@@ -1609,6 +1606,10 @@ export function SpeedMap({
           map.current.removeLayer("rail-context-heavy");
         if (map.current.getLayer("rail-context-commuter"))
           map.current.removeLayer("rail-context-commuter");
+        if (map.current.getLayer("cable-cars-outline"))
+          map.current.removeLayer("cable-cars-outline");
+        if (map.current.getLayer("cable-cars"))
+          map.current.removeLayer("cable-cars");
         if (map.current.getLayer("bus-routes-overlay"))
           map.current.removeLayer("bus-routes-overlay");
         if (map.current.getLayer("bus-routes-overlay-labels"))
@@ -1716,6 +1717,48 @@ export function SpeedMap({
         paint: {
           "line-color": "#77c4ff",
           "line-width": 2.1,
+          "line-opacity": 0.95,
+        },
+      });
+
+      map.current.addLayer({
+        id: "cable-cars-outline",
+        type: "line",
+        source: "routes",
+        filter: [
+          "in",
+          ["to-string", ["get", "route_id"]],
+          ["literal", Array.from(SF_CABLE_CAR_ROUTE_IDS)],
+        ],
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+          visibility: showCableCarsOverlay ? "visible" : "none",
+        },
+        paint: {
+          "line-color": "#000",
+          "line-width": SF_CABLE_CAR_OUTLINE_WIDTH,
+          "line-opacity": 0.6,
+        },
+      });
+
+      map.current.addLayer({
+        id: "cable-cars",
+        type: "line",
+        source: "routes",
+        filter: [
+          "in",
+          ["to-string", ["get", "route_id"]],
+          ["literal", Array.from(SF_CABLE_CAR_ROUTE_IDS)],
+        ],
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+          visibility: showCableCarsOverlay ? "visible" : "none",
+        },
+        paint: {
+          "line-color": ["get", "route_color"],
+          "line-width": SF_CABLE_CAR_LINE_WIDTH,
           "line-opacity": 0.95,
         },
       });
@@ -2264,6 +2307,7 @@ export function SpeedMap({
     routeLineMode,
     showRailContextHeavy,
     showRailContextCommuter,
+    showCableCarsOverlay,
     showBusRoutesOverlay,
   ]);
 
@@ -2436,6 +2480,20 @@ export function SpeedMap({
           showRailContextCommuter ? "visible" : "none",
         );
       }
+      if (map.current.getLayer("cable-cars-outline")) {
+        map.current.setLayoutProperty(
+          "cable-cars-outline",
+          "visibility",
+          showCableCarsOverlay ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("cable-cars")) {
+        map.current.setLayoutProperty(
+          "cable-cars",
+          "visibility",
+          showCableCarsOverlay ? "visible" : "none",
+        );
+      }
       if (map.current.getLayer("bus-routes-overlay")) {
         map.current.setLayoutProperty(
           "bus-routes-overlay",
@@ -2457,6 +2515,7 @@ export function SpeedMap({
     mapLoaded,
     showRailContextHeavy,
     showRailContextCommuter,
+    showCableCarsOverlay,
     showBusRoutesOverlay,
   ]);
 
@@ -4830,6 +4889,7 @@ export function SpeedMap({
           showRailContextHeavy={showRailContextHeavy}
           showRailContextCommuter={showRailContextCommuter}
           showBusRoutesOverlay={showBusRoutesOverlay}
+          showCableCarsOverlay={showCableCarsOverlay}
         />
       </div>
 

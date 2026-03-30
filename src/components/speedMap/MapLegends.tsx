@@ -295,6 +295,7 @@ interface DynamicLegendsProps {
   showRailContextHeavy: boolean;
   showRailContextCommuter: boolean;
   showBusRoutesOverlay: boolean;
+  showCableCarsOverlay: boolean;
 }
 
 export function DynamicLegends({
@@ -303,13 +304,17 @@ export function DynamicLegends({
   showRailContextHeavy,
   showRailContextCommuter,
   showBusRoutesOverlay,
+  showCableCarsOverlay,
 }: DynamicLegendsProps) {
   const showCrossingLegend =
     false &&
     showCrossings &&
     ["LA", "San Diego", "Salt Lake City", "Charlotte"].includes(city);
   const showRailContextLegend =
-    showRailContextHeavy || showRailContextCommuter || showBusRoutesOverlay;
+    showRailContextHeavy ||
+    showRailContextCommuter ||
+    showBusRoutesOverlay ||
+    showCableCarsOverlay;
 
   if (!showCrossingLegend && !showRailContextLegend) return null;
 
@@ -346,6 +351,24 @@ export function DynamicLegends({
             <span className="rail-context-legend-line commuter"></span>
             <span>Regional / Commuter</span>
           </div>
+          {city === "SF" && (
+            <div
+              className={`rail-context-legend-item ${
+                showCableCarsOverlay ? "" : "disabled"
+              }`}
+            >
+              <span
+                className="rail-context-legend-line"
+                style={{
+                  borderTopColor: "#36afb6",
+                  borderTopWidth: 2.4,
+                  borderTopStyle: "solid",
+                  opacity: 0.95,
+                }}
+              ></span>
+              <span>Cable cars</span>
+            </div>
+          )}
           <div
             className={`rail-context-legend-item ${
               showBusRoutesOverlay ? "" : "disabled"

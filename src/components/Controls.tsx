@@ -47,7 +47,6 @@ import {
   CHARLOTTE_LYNX_LINE_INFO,
   BALTIMORE_LIGHT_RAIL_LINE_INFO,
   getLinesForCity,
-  SF_CABLE_CARS_TOGGLE,
 } from "../types";
 import {
   ABOUT_CITY_NOTES,
@@ -238,12 +237,9 @@ const MUNI_COLORS: Record<MuniLine, string> = {
   N: "#005B95",
   T: "#BF2B45",
 };
-const SF_CABLE_CAR_COLOR = "#36afb6";
-
 // Get color for any line
 function getLineColor(line: string, city: City): string {
   if (city === "SF") {
-    if (line === SF_CABLE_CARS_TOGGLE) return SF_CABLE_CAR_COLOR;
     return MUNI_COLORS[line as MuniLine] || "#666";
   } else if (city === "LA") {
     return LA_METRO_LINE_INFO[line as LAMetroLine]?.color || "#666";
@@ -406,9 +402,12 @@ interface ControlsProps {
   setShowRailContextCommuter: (show: boolean) => void;
   showBusRoutesOverlay: boolean;
   setShowBusRoutesOverlay: (show: boolean) => void;
+  showCableCarsOverlay: boolean;
+  setShowCableCarsOverlay: (show: boolean) => void;
   railContextHeavyCount: number;
   railContextCommuterCount: number;
   busRoutesOverlayCount: number;
+  heritageLocalCirculatorCount: number;
   hideStoppedTrains: boolean;
   setHideStoppedTrains: (hide: boolean) => void;
   hideAllTrains: boolean;
@@ -494,9 +493,12 @@ export function Controls({
   setShowRailContextCommuter,
   showBusRoutesOverlay,
   setShowBusRoutesOverlay,
+  showCableCarsOverlay,
+  setShowCableCarsOverlay,
   railContextHeavyCount,
   railContextCommuterCount,
   busRoutesOverlayCount,
+  heritageLocalCirculatorCount,
   hideStoppedTrains,
   setHideStoppedTrains,
   hideAllTrains,
@@ -1319,11 +1321,7 @@ export function Controls({
               key={line}
               className={`line-button ${
                 selectedLines.includes(line) ? "active" : "inactive"
-              }${city === "Toronto" ? " toronto-line-button" : ""}${
-                city === "SF" && line === SF_CABLE_CARS_TOGGLE
-                  ? " sf-cable-cars-button"
-                  : ""
-              }`}
+              }${city === "Toronto" ? " toronto-line-button" : ""}`}
               style={
                 {
                   "--line-color": getLineColor(line, city),
@@ -1454,6 +1452,18 @@ export function Controls({
             Regional / Commuter rail ({railContextCommuterCount})
           </label>
         </div>
+        {city === "SF" && (
+          <div className="route-lines-toggle">
+            <label className="heritage-local-circulators-toggle">
+              <input
+                type="checkbox"
+                checked={showCableCarsOverlay}
+                onChange={(e) => setShowCableCarsOverlay(e.target.checked)}
+              />
+              Heritage & Local Circulators ({heritageLocalCirculatorCount})
+            </label>
+          </div>
+        )}
         {(city === "SF" ||
           city === "LA" ||
           city === "Baltimore" ||
@@ -1499,6 +1509,7 @@ export function Controls({
           setShowRailContextHeavy(false);
           setShowRailContextCommuter(false);
           setShowBusRoutesOverlay(false);
+          setShowCableCarsOverlay(false);
           setHideStoppedTrains(false);
           setHideAllTrains(false);
           onResetPopulationDensity?.();

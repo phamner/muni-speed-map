@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { SpeedMap } from "./components/SpeedMap";
 import { Controls } from "./components/Controls";
-import { CITIES, getLinesForCity, SF_CABLE_CARS_TOGGLE } from "./types";
+import { CITIES, getLinesForCity } from "./types";
 import type { City } from "./types";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -61,7 +61,7 @@ function App() {
     const c = getCityFromUrl();
     const lines = getLinesForCity(c);
     if (c === "SF")
-      return lines.filter((l) => l !== "F" && l !== SF_CABLE_CARS_TOGGLE) as string[];
+      return lines.filter((l) => l !== "F") as string[];
     return [...lines] as string[];
   });
 
@@ -85,9 +85,12 @@ function App() {
   const [showRailContextHeavy, setShowRailContextHeavy] = useState(false);
   const [showRailContextCommuter, setShowRailContextCommuter] = useState(false);
   const [showBusRoutesOverlay, setShowBusRoutesOverlay] = useState(false);
+  const [showCableCarsOverlay, setShowCableCarsOverlay] = useState(false);
   const [railContextHeavyCount, setRailContextHeavyCount] = useState(0);
   const [railContextCommuterCount, setRailContextCommuterCount] = useState(0);
   const [busRoutesOverlayCount, setBusRoutesOverlayCount] = useState(0);
+  const [heritageLocalCirculatorCount, setHeritageLocalCirculatorCount] =
+    useState(0);
   const [hideStoppedTrains, setHideStoppedTrains] = useState(false);
   const [hideAllTrains, setHideAllTrains] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("segments-500");
@@ -107,9 +110,7 @@ function App() {
     } else if (city === "SF") {
       // For SF, exclude F by default
       setSelectedLines(
-        lines.filter(
-          (line) => line !== "F" && line !== SF_CABLE_CARS_TOGGLE,
-        ) as string[],
+        lines.filter((line) => line !== "F") as string[],
       );
     } else {
       // For other cities, select all
@@ -121,6 +122,7 @@ function App() {
     setRailContextHeavyCount(0);
     setRailContextCommuterCount(0);
     setBusRoutesOverlayCount(0);
+    setHeritageLocalCirculatorCount(0);
     // If switching away from live mode, default to raw
     if (viewMode === "live") {
       setViewMode("raw");
@@ -174,9 +176,12 @@ function App() {
         setShowRailContextCommuter={setShowRailContextCommuter}
         showBusRoutesOverlay={showBusRoutesOverlay}
         setShowBusRoutesOverlay={setShowBusRoutesOverlay}
+        showCableCarsOverlay={showCableCarsOverlay}
+        setShowCableCarsOverlay={setShowCableCarsOverlay}
         railContextHeavyCount={railContextHeavyCount}
         railContextCommuterCount={railContextCommuterCount}
         busRoutesOverlayCount={busRoutesOverlayCount}
+        heritageLocalCirculatorCount={heritageLocalCirculatorCount}
         hideStoppedTrains={hideStoppedTrains}
         setHideStoppedTrains={setHideStoppedTrains}
         hideAllTrains={hideAllTrains}
@@ -203,6 +208,7 @@ function App() {
         showRailContextHeavy={showRailContextHeavy}
         showRailContextCommuter={showRailContextCommuter}
         showBusRoutesOverlay={showBusRoutesOverlay}
+        showCableCarsOverlay={showCableCarsOverlay}
         hideStoppedTrains={hideStoppedTrains}
         hideAllTrains={hideAllTrains}
         viewMode={viewMode}
@@ -213,10 +219,16 @@ function App() {
         densityMode={densityMode}
         onDensityModeChange={setDensityMode}
         speedUnit={speedUnit}
-        onRailContextUpdate={(heavyCount, commuterCount, busCount) => {
+        onRailContextUpdate={(
+          heavyCount,
+          commuterCount,
+          busCount,
+          heritageCount,
+        ) => {
           setRailContextHeavyCount(heavyCount);
           setRailContextCommuterCount(commuterCount);
           setBusRoutesOverlayCount(busCount ?? 0);
+          setHeritageLocalCirculatorCount(heritageCount ?? 0);
         }}
         onVehicleUpdate={(count, _time, stats) => {
           setVehicleCount(count);
