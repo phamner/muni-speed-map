@@ -54,6 +54,27 @@ type Coordinate = [number, number];
 type LineStringCoordinates = Coordinate[];
 type MultiLineStringCoordinates = LineStringCoordinates[];
 
+function markAsHeritageLocalCirculator(routes: any): any {
+  if (!routes?.features) return routes;
+  return {
+    ...routes,
+    features: routes.features.map((feature: any) => ({
+      ...feature,
+      properties: {
+        ...feature.properties,
+        overlay_category: "heritage_local_circulator",
+      },
+    })),
+  };
+}
+
+function mergeRouteCollections(...collections: Array<any | null | undefined>): any {
+  return {
+    type: "FeatureCollection",
+    features: collections.flatMap((collection) => collection?.features || []),
+  };
+}
+
 function splitSfRouteAtExtremum(
   routes: any,
   routeId: string,
@@ -545,13 +566,10 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       }
 
       return {
-        routes: {
-          type: "FeatureCollection",
-          features: [
-            ...(sfRoutes?.features || []),
-            ...(cableCarRoutes.default?.features || []),
-          ],
-        },
+        routes: mergeRouteCollections(
+          sfRoutes,
+          markAsHeritageLocalCirculator(cableCarRoutes.default),
+        ),
         stops: stops.default,
         crossings: crossings.default,
         switches: switches.default,
@@ -619,6 +637,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     case "Seattle": {
       const [
         routes,
+        heritageRoutes,
         stops,
         crossings,
         switches,
@@ -629,6 +648,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         busRoutesOverlay,
       ] = await Promise.all([
         import("./routes/seattleLinkRoutes.json"),
+        import("./routes/seattleHeritageLocalCirculatorRoutes.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
         import("./stops/seattleLinkStops.json"),
         import("./crossings/seattleGradeCrossings.json"),
         import("./switches/seattleSwitches.json"),
@@ -642,7 +664,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       ]);
       console.timeEnd(`Loading ${city} static data`);
       return {
-        routes: routes.default,
+        routes: mergeRouteCollections(routes.default, heritageRoutes.default),
         stops: stops.default,
         crossings: crossings.default,
         switches: switches.default,
@@ -1082,6 +1104,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     case "Phoenix": {
       const [
         routes,
+        heritageRoutes,
         stops,
         crossings,
         switches,
@@ -1093,6 +1116,11 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         busRoutesOverlay,
       ] = await Promise.all([
         import("./routes/phoenixLightRailRoutes.json"),
+        import("./routes/phoenixHeritageLocalCirculatorRoutes.json").catch(
+          () => ({
+            default: { type: "FeatureCollection", features: [] },
+          }),
+        ),
         import("./stops/phoenixLightRailStops.json"),
         import("./crossings/phoenixGradeCrossings.json"),
         import("./switches/phoenixSwitches.json"),
@@ -1121,7 +1149,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       }
 
       return {
-        routes: routes.default,
+        routes: mergeRouteCollections(routes.default, heritageRoutes.default),
         stops: stops.default,
         crossings: crossings.default,
         switches: switches.default,

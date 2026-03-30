@@ -511,6 +511,11 @@ export function Controls({
   isSidebarOpen,
   onResetPopulationDensity,
 }: ControlsProps) {
+  const metroOverlayDisabled = railContextHeavyCount === 0;
+  const commuterOverlayDisabled = railContextCommuterCount === 0;
+  const heritageOverlayDisabled = heritageLocalCirculatorCount === 0;
+  const busOverlayDisabled = busRoutesOverlayCount === 0;
+
   const MIN_TRANSIT_MAP_ZOOM = 1;
   const MAX_TRANSIT_MAP_ZOOM = 4;
   const TRANSIT_MAP_ZOOM_STEP = 0.1;
@@ -1433,20 +1438,24 @@ export function Controls({
           Regional & Metro Overlay
         </div>
         <div className="route-lines-toggle">
-          <label>
+          <label className={metroOverlayDisabled ? "overlay-toggle-disabled" : ""}>
             <input
               type="checkbox"
-              checked={showRailContextHeavy}
+              checked={!metroOverlayDisabled && showRailContextHeavy}
+              disabled={metroOverlayDisabled}
               onChange={(e) => setShowRailContextHeavy(e.target.checked)}
             />
             Metro / Subway ({railContextHeavyCount})
           </label>
         </div>
         <div className="route-lines-toggle">
-          <label>
+          <label
+            className={commuterOverlayDisabled ? "overlay-toggle-disabled" : ""}
+          >
             <input
               type="checkbox"
-              checked={showRailContextCommuter}
+              checked={!commuterOverlayDisabled && showRailContextCommuter}
+              disabled={commuterOverlayDisabled}
               onChange={(e) => setShowRailContextCommuter(e.target.checked)}
             />
             Regional / Commuter rail ({railContextCommuterCount})
@@ -1454,10 +1463,49 @@ export function Controls({
         </div>
         {city === "SF" && (
           <div className="route-lines-toggle">
-            <label className="heritage-local-circulators-toggle">
+            <label
+              className={`heritage-local-circulators-toggle ${
+                heritageOverlayDisabled ? "overlay-toggle-disabled" : ""
+              }`}
+            >
               <input
                 type="checkbox"
-                checked={showCableCarsOverlay}
+                checked={!heritageOverlayDisabled && showCableCarsOverlay}
+                disabled={heritageOverlayDisabled}
+                onChange={(e) => setShowCableCarsOverlay(e.target.checked)}
+              />
+              Heritage & Local Circulators ({heritageLocalCirculatorCount})
+            </label>
+          </div>
+        )}
+        {city === "Seattle" && (
+          <div className="route-lines-toggle">
+            <label
+              className={`heritage-local-circulators-toggle ${
+                heritageOverlayDisabled ? "overlay-toggle-disabled" : ""
+              }`}
+            >
+              <input
+                type="checkbox"
+                checked={!heritageOverlayDisabled && showCableCarsOverlay}
+                disabled={heritageOverlayDisabled}
+                onChange={(e) => setShowCableCarsOverlay(e.target.checked)}
+              />
+              Heritage & Local Circulators ({heritageLocalCirculatorCount})
+            </label>
+          </div>
+        )}
+        {city === "Phoenix" && (
+          <div className="route-lines-toggle">
+            <label
+              className={`heritage-local-circulators-toggle ${
+                heritageOverlayDisabled ? "overlay-toggle-disabled" : ""
+              }`}
+            >
+              <input
+                type="checkbox"
+                checked={!heritageOverlayDisabled && showCableCarsOverlay}
+                disabled={heritageOverlayDisabled}
                 onChange={(e) => setShowCableCarsOverlay(e.target.checked)}
               />
               Heritage & Local Circulators ({heritageLocalCirculatorCount})
@@ -1482,10 +1530,11 @@ export function Controls({
           city === "Cleveland" ||
           city === "Pittsburgh") && (
           <div className="route-lines-toggle">
-            <label>
+            <label className={busOverlayDisabled ? "overlay-toggle-disabled" : ""}>
               <input
                 type="checkbox"
-                checked={showBusRoutesOverlay}
+                checked={!busOverlayDisabled && showBusRoutesOverlay}
+                disabled={busOverlayDisabled}
                 onChange={(e) => setShowBusRoutesOverlay(e.target.checked)}
               />
               Bus routes ({busRoutesOverlayCount})

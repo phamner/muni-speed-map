@@ -557,6 +557,16 @@
   white-space: nowrap;
 }
 
+.route-lines-toggle label.overlay-toggle-disabled {
+  color: rgba(255, 255, 255, 0.35);
+  cursor: not-allowed;
+}
+
+.route-lines-toggle label.overlay-toggle-disabled input[type="checkbox"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
 /* Align info icons in a column when present */
 .route-lines-toggle label.toggle-with-info-icon {
   justify-content: space-between;

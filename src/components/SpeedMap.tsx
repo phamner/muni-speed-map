@@ -106,18 +106,25 @@ function buildSelectedLineFilter(
   ) as maplibregl.FilterSpecification;
 }
 
-const SF_CABLE_CAR_ROUTE_IDS = ["CA", "PH", "PM"] as const;
-const SF_CABLE_CAR_OUTLINE_WIDTH = 3.5;
-const SF_CABLE_CAR_LINE_WIDTH = 2.1;
+const HERITAGE_LOCAL_CIRCULATOR_OUTLINE_WIDTH = 2.9;
+const HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH = 2.1;
+const HERITAGE_LOCAL_CIRCULATOR_FILTER = [
+  "==",
+  ["to-string", ["get", "overlay_category"]],
+  "heritage_local_circulator",
+] as maplibregl.FilterSpecification;
 
 function buildCableCarWidthExpression(
   defaultWidth: number,
   cableCarWidth: number,
 ): maplibregl.ExpressionSpecification {
   return [
-    "match",
-    ["to-string", ["get", "route_id"]],
-    Array.from(SF_CABLE_CAR_ROUTE_IDS),
+    "case",
+    [
+      "==",
+      ["to-string", ["get", "overlay_category"]],
+      "heritage_local_circulator",
+    ],
     cableCarWidth,
     defaultWidth,
   ];
@@ -735,12 +742,13 @@ export function SpeedMap({
     const uniqueBusRoutes = new Set<string>();
     const uniqueHeritageRoutes = new Set<string>();
 
-    if (city === "SF") {
-      for (const feature of cityConfig.routes?.features || []) {
-        const routeId = String(feature?.properties?.route_id || "").trim();
-        if (routeId && SF_CABLE_CAR_ROUTE_IDS.includes(routeId as any)) {
-          uniqueHeritageRoutes.add(routeId);
-        }
+    for (const feature of cityConfig.routes?.features || []) {
+      const overlayCategory = String(
+        feature?.properties?.overlay_category || "",
+      ).trim();
+      const routeId = String(feature?.properties?.route_id || "").trim();
+      if (overlayCategory === "heritage_local_circulator" && routeId) {
+        uniqueHeritageRoutes.add(routeId);
       }
     }
 
@@ -777,6 +785,27 @@ export function SpeedMap({
     if (map.current) map.current.getCanvas().style.cursor = "";
     if (!crossingPopupPinned.current) popup.current?.remove();
   }, []);
+
+  const handleHeritageLocalCirculatorMouseMove = useCallback(
+    (e: maplibregl.MapMouseEvent & { features?: maplibregl.MapGeoJSONFeature[] }) => {
+      if (!map.current || !e.features?.length) return;
+      const props = (e.features[0].properties || {}) as Record<string, any>;
+      const routeName = String(
+        props.route_name || props.route_id || "Unknown route",
+      ).trim();
+      const routeColor = String(props.route_color || "#d1d5db").trim();
+
+      popup.current
+        ?.setLngLat(e.lngLat)
+        .setHTML(
+          `<div class="popup-content">
+            <div class="popup-title" style="color: ${escapeHtml(routeColor)}">${escapeHtml(routeName)}</div>
+          </div>`,
+        )
+        .addTo(map.current);
+    },
+    [],
+  );
 
   const handleRailContextMouseMove = useCallback(
     (e: maplibregl.MapMouseEvent & { point: maplibregl.PointLike }) => {
@@ -1606,10 +1635,10 @@ export function SpeedMap({
           map.current.removeLayer("rail-context-heavy");
         if (map.current.getLayer("rail-context-commuter"))
           map.current.removeLayer("rail-context-commuter");
-        if (map.current.getLayer("cable-cars-outline"))
-          map.current.removeLayer("cable-cars-outline");
-        if (map.current.getLayer("cable-cars"))
-          map.current.removeLayer("cable-cars");
+        if (map.current.getLayer("heritage-local-circulators-outline"))
+          map.current.removeLayer("heritage-local-circulators-outline");
+        if (map.current.getLayer("heritage-local-circulators"))
+          map.current.removeLayer("heritage-local-circulators");
         if (map.current.getLayer("bus-routes-overlay"))
           map.current.removeLayer("bus-routes-overlay");
         if (map.current.getLayer("bus-routes-overlay-labels"))
@@ -1722,14 +1751,10 @@ export function SpeedMap({
       });
 
       map.current.addLayer({
-        id: "cable-cars-outline",
+        id: "heritage-local-circulators-outline",
         type: "line",
         source: "routes",
-        filter: [
-          "in",
-          ["to-string", ["get", "route_id"]],
-          ["literal", Array.from(SF_CABLE_CAR_ROUTE_IDS)],
-        ],
+        filter: HERITAGE_LOCAL_CIRCULATOR_FILTER,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -1737,20 +1762,16 @@ export function SpeedMap({
         },
         paint: {
           "line-color": "#000",
-          "line-width": SF_CABLE_CAR_OUTLINE_WIDTH,
+          "line-width": HERITAGE_LOCAL_CIRCULATOR_OUTLINE_WIDTH,
           "line-opacity": 0.6,
         },
       });
 
       map.current.addLayer({
-        id: "cable-cars",
+        id: "heritage-local-circulators",
         type: "line",
         source: "routes",
-        filter: [
-          "in",
-          ["to-string", ["get", "route_id"]],
-          ["literal", Array.from(SF_CABLE_CAR_ROUTE_IDS)],
-        ],
+        filter: HERITAGE_LOCAL_CIRCULATOR_FILTER,
         layout: {
           "line-join": "round",
           "line-cap": "round",
@@ -1758,7 +1779,7 @@ export function SpeedMap({
         },
         paint: {
           "line-color": ["get", "route_color"],
-          "line-width": SF_CABLE_CAR_LINE_WIDTH,
+          "line-width": HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH,
           "line-opacity": 0.95,
         },
       });
@@ -1862,6 +1883,37 @@ export function SpeedMap({
         map.current.on("mousemove", layerId, handleRailContextMouseMove);
       }
 
+      map.current.off(
+        "mouseenter",
+        "heritage-local-circulators",
+        handleRailContextMouseEnter,
+      );
+      map.current.off(
+        "mouseleave",
+        "heritage-local-circulators",
+        handleRailContextMouseLeave,
+      );
+      map.current.off(
+        "mousemove",
+        "heritage-local-circulators",
+        handleHeritageLocalCirculatorMouseMove,
+      );
+      map.current.on(
+        "mouseenter",
+        "heritage-local-circulators",
+        handleRailContextMouseEnter,
+      );
+      map.current.on(
+        "mouseleave",
+        "heritage-local-circulators",
+        handleRailContextMouseLeave,
+      );
+      map.current.on(
+        "mousemove",
+        "heritage-local-circulators",
+        handleHeritageLocalCirculatorMouseMove,
+      );
+
       // Regular route layers
       // When "byLine" mode: colored by transit line
       // When "bySpeedLimit" mode: grey as fallback for segments without speed data
@@ -1879,7 +1931,7 @@ export function SpeedMap({
           "line-color": "#000",
           "line-width": buildCableCarWidthExpression(
             7,
-            SF_CABLE_CAR_OUTLINE_WIDTH,
+            HERITAGE_LOCAL_CIRCULATOR_OUTLINE_WIDTH,
           ),
           "line-opacity": 0.6,
         },
@@ -1903,7 +1955,7 @@ export function SpeedMap({
               : ["get", "route_color"],
           "line-width": buildCableCarWidthExpression(
             4,
-            SF_CABLE_CAR_LINE_WIDTH,
+            HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH,
           ),
           "line-opacity": 0.9,
         },
@@ -1924,7 +1976,7 @@ export function SpeedMap({
           "line-color": "#000",
           "line-width": buildCableCarWidthExpression(
             7,
-            SF_CABLE_CAR_OUTLINE_WIDTH,
+            HERITAGE_LOCAL_CIRCULATOR_OUTLINE_WIDTH,
           ),
           "line-opacity": 0.5,
           "line-dasharray": [2, 2], // Dashed pattern for construction
@@ -1948,7 +2000,7 @@ export function SpeedMap({
               : ["get", "route_color"],
           "line-width": buildCableCarWidthExpression(
             4,
-            SF_CABLE_CAR_LINE_WIDTH,
+            HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH,
           ),
           "line-opacity": 0.8,
           "line-dasharray": [2, 2], // Dashed pattern for construction
@@ -1970,7 +2022,7 @@ export function SpeedMap({
           "line-color": "#000",
           "line-width": buildCableCarWidthExpression(
             7,
-            SF_CABLE_CAR_OUTLINE_WIDTH,
+            HERITAGE_LOCAL_CIRCULATOR_OUTLINE_WIDTH,
           ),
           "line-opacity": 0.3, // Reduced opacity for faded tunnel look
         },
@@ -1993,7 +2045,7 @@ export function SpeedMap({
               : ["get", "route_color"],
           "line-width": buildCableCarWidthExpression(
             4,
-            SF_CABLE_CAR_LINE_WIDTH,
+            HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH,
           ),
           "line-opacity": 0.45, // Reduced opacity - faded tunnel appearance like OpenRailwayMap
         },
@@ -2480,16 +2532,16 @@ export function SpeedMap({
           showRailContextCommuter ? "visible" : "none",
         );
       }
-      if (map.current.getLayer("cable-cars-outline")) {
+      if (map.current.getLayer("heritage-local-circulators-outline")) {
         map.current.setLayoutProperty(
-          "cable-cars-outline",
+          "heritage-local-circulators-outline",
           "visibility",
           showCableCarsOverlay ? "visible" : "none",
         );
       }
-      if (map.current.getLayer("cable-cars")) {
+      if (map.current.getLayer("heritage-local-circulators")) {
         map.current.setLayoutProperty(
-          "cable-cars",
+          "heritage-local-circulators",
           "visibility",
           showCableCarsOverlay ? "visible" : "none",
         );
@@ -3712,6 +3764,8 @@ export function SpeedMap({
     const layerOrder = [
       "rail-context-heavy",
       "rail-context-commuter",
+      "heritage-local-circulators-outline",
+      "heritage-local-circulators",
       "routes-outline",
       "routes",
       "routes-tunnel-outline",

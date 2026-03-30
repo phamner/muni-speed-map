@@ -306,6 +306,14 @@ export function DynamicLegends({
   showBusRoutesOverlay,
   showCableCarsOverlay,
 }: DynamicLegendsProps) {
+  const heritageLabel =
+    city === "SF"
+      ? "Cable cars"
+      : city === "Seattle"
+        ? "Streetcars / monorail"
+        : city === "Phoenix"
+          ? "Tempe Streetcar"
+          : "Heritage & local circulators";
   const showCrossingLegend =
     false &&
     showCrossings &&
@@ -351,7 +359,7 @@ export function DynamicLegends({
             <span className="rail-context-legend-line commuter"></span>
             <span>Regional / Commuter</span>
           </div>
-          {city === "SF" && (
+          {(city === "SF" || city === "Seattle" || city === "Phoenix") && (
             <div
               className={`rail-context-legend-item ${
                 showCableCarsOverlay ? "" : "disabled"
@@ -360,13 +368,13 @@ export function DynamicLegends({
               <span
                 className="rail-context-legend-line"
                 style={{
-                  borderTopColor: "#36afb6",
+                  borderTopColor: "#aeb8c6",
                   borderTopWidth: 2.4,
                   borderTopStyle: "solid",
                   opacity: 0.95,
                 }}
               ></span>
-              <span>Cable cars</span>
+              <span>{heritageLabel}</span>
             </div>
           )}
           <div
