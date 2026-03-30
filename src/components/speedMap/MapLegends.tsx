@@ -314,6 +314,21 @@ export function DynamicLegends({
         : city === "Phoenix"
           ? "#16A085"
           : "#aeb8c6";
+  const heritageLegendStyle =
+    city === "Seattle"
+      ? {
+          borderTopWidth: 0,
+          height: 3,
+          borderRadius: 999,
+          background:
+            "linear-gradient(to right, #C8102E 0 33.333%, #F28C28 33.333% 66.666%, #7E57C2 66.666% 100%)",
+        }
+      : {
+          borderTopColor: heritageLegendColor,
+          borderTopWidth: 2.4,
+          borderTopStyle: "solid",
+          opacity: 0.95,
+        };
   const heritageLabel =
     city === "SF"
       ? "Cable cars"
@@ -380,12 +395,7 @@ export function DynamicLegends({
             >
               <span
                 className="rail-context-legend-line"
-                style={{
-                  borderTopColor: heritageLegendColor,
-                  borderTopWidth: 2.4,
-                  borderTopStyle: "solid",
-                  opacity: 0.95,
-                }}
+                style={heritageLegendStyle}
               ></span>
               <span>{heritageLabel}</span>
             </div>
