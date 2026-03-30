@@ -38,6 +38,7 @@ import {
   buildAllSegments,
   CITIES_WITH_PARALLEL_TRACKS,
   SEGMENT_SIZE_500_METERS,
+  SEGMENT_SIZE_1000_METERS,
 } from "./speedMap/segmentUtils";
 import {
   type Vehicle,
@@ -1093,6 +1094,10 @@ export function SpeedMap({
     () => buildAllSegments(cityConfig.routes, city, SEGMENT_SIZE_500_METERS),
     [cityConfig.routes, city],
   );
+  const allRouteSegments1000 = useMemo(
+    () => buildAllSegments(cityConfig.routes, city, SEGMENT_SIZE_1000_METERS),
+    [cityConfig.routes, city],
+  );
   const allCityLines = useMemo(() => Array.from(getLinesForCity(city)), [city]);
   const annotatedMaxspeed = useMemo(
     () => annotateMaxspeedRoutes(cityConfig.maxspeed, cityConfig.routes, city),
@@ -1215,6 +1220,7 @@ export function SpeedMap({
           recordedAt: row.recorded_at,
           segmentId: segments.segmentId,
           segmentId500: segments.segmentId500,
+          segmentId1000: segments.segmentId1000,
           headsign: row.headsign,
           onRoute: segments.minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS,
         };
@@ -3891,7 +3897,10 @@ export function SpeedMap({
     }
     prevViewMode.current = viewMode;
 
-    const showSegments = viewMode === "segments" || viewMode === "segments-500";
+    const showSegments =
+      viewMode === "segments" ||
+      viewMode === "segments-500" ||
+      viewMode === "segments-1000";
     if (showSegments) {
       if (map.current.getLayer("speed-segments")) {
         map.current.setLayoutProperty(
@@ -3999,17 +4008,67 @@ export function SpeedMap({
     return segmentAverages;
   }, [vehicles, hideStoppedTrains, hideAllTrains, city, allRouteSegments500]);
 
+  const cachedSegmentAverages1000 = useMemo(() => {
+    if (hideAllTrains) {
+      return new Map();
+    }
+
+    const segmentSpeeds: Map<string, number[]> = new Map();
+
+    vehicles.forEach((v) => {
+      if (v.speed == null) return;
+      if (hideStoppedTrains && v.speed < 0.5) return;
+      if (!v.segmentId1000) return;
+
+      if (!segmentSpeeds.has(v.segmentId1000)) {
+        segmentSpeeds.set(v.segmentId1000, []);
+      }
+      segmentSpeeds.get(v.segmentId1000)!.push(v.speed);
+    });
+
+    const segmentAverages: Map<string, { avg: number; count: number }> =
+      new Map();
+    segmentSpeeds.forEach((speeds, segmentId) => {
+      const avg = speeds.reduce((a, b) => a + b, 0) / speeds.length;
+      segmentAverages.set(segmentId, { avg, count: speeds.length });
+    });
+
+    if (city && CITIES_WITH_PARALLEL_TRACKS.includes(city)) {
+      allRouteSegments1000.forEach((seg) => {
+        if (!seg.referenceSegmentId) return;
+        const refAverage = segmentAverages.get(seg.referenceSegmentId);
+        if (refAverage) {
+          segmentAverages.set(seg.segmentId, refAverage);
+        }
+      });
+    }
+
+    return segmentAverages;
+  }, [vehicles, hideStoppedTrains, hideAllTrains, city, allRouteSegments1000]);
+
   // Display effect for segments - uses cached averages, only re-runs when selectedLines changes
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
-    if (viewMode !== "segments" && viewMode !== "segments-500") return;
+    if (
+      viewMode !== "segments" &&
+      viewMode !== "segments-500" &&
+      viewMode !== "segments-1000"
+    ) {
+      return;
+    }
 
     const activeSegments =
-      viewMode === "segments-500" ? allRouteSegments500 : allRouteSegments;
+      viewMode === "segments"
+        ? allRouteSegments
+        : viewMode === "segments-500"
+          ? allRouteSegments500
+          : allRouteSegments1000;
     const activeAverages =
-      viewMode === "segments-500"
-        ? cachedSegmentAverages500
-        : cachedSegmentAverages;
+      viewMode === "segments"
+        ? cachedSegmentAverages
+        : viewMode === "segments-500"
+          ? cachedSegmentAverages500
+          : cachedSegmentAverages1000;
 
     const segmentFeatures = activeSegments
       .filter((seg) => activeAverages.has(seg.segmentId))
@@ -4104,7 +4163,7 @@ export function SpeedMap({
               "#33eebb", // teal - fast (35-50 mph)
               "#22ccff", // cyan - very fast (50+ mph)
             ],
-            "line-opacity": 0.9,
+            "line-opacity": 1,
           },
         },
         aboveLayer,
@@ -4182,12 +4241,14 @@ export function SpeedMap({
   }, [
     cachedSegmentAverages,
     cachedSegmentAverages500,
+    cachedSegmentAverages1000,
     speedFilter,
     hideStoppedTrains,
     viewMode,
     mapLoaded,
     allRouteSegments,
     allRouteSegments500,
+    allRouteSegments1000,
     city,
   ]);
 

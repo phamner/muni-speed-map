@@ -1044,37 +1044,50 @@ export function Controls({
         }
       >
         <div
-          className="view-mode-toggle"
+          className="view-mode-stack"
           style={{
             opacity: hideAllTrains ? 0.4 : 1,
             pointerEvents: hideAllTrains ? "none" : "auto",
           }}
         >
-          <button
-            className={`view-mode-btn ${viewMode === "raw" ? "active" : ""}`}
-            onClick={() => setViewMode("raw")}
-            disabled={hideAllTrains}
-          >
-            Raw Data
-          </button>
-          <button
-            className={`view-mode-btn ${
-              viewMode === "segments" ? "active" : ""
-            }`}
-            onClick={() => setViewMode("segments")}
-            disabled={hideAllTrains}
-          >
-            200m Avg
-          </button>
-          <button
-            className={`view-mode-btn ${
-              viewMode === "segments-500" ? "active" : ""
-            }`}
-            onClick={() => setViewMode("segments-500")}
-            disabled={hideAllTrains}
-          >
-            500m Avg
-          </button>
+          <div className="view-mode-toggle">
+            <button
+              className={`view-mode-btn ${viewMode === "raw" ? "active" : ""}`}
+              onClick={() => setViewMode("raw")}
+              disabled={hideAllTrains}
+            >
+              Raw Data
+            </button>
+          </div>
+          <div className="view-mode-toggle view-mode-toggle--segments">
+            <button
+              className={`view-mode-btn ${
+                viewMode === "segments" ? "active" : ""
+              }`}
+              onClick={() => setViewMode("segments")}
+              disabled={hideAllTrains}
+            >
+              200m Avg
+            </button>
+            <button
+              className={`view-mode-btn ${
+                viewMode === "segments-500" ? "active" : ""
+              }`}
+              onClick={() => setViewMode("segments-500")}
+              disabled={hideAllTrains}
+            >
+              500m Avg
+            </button>
+            <button
+              className={`view-mode-btn ${
+                viewMode === "segments-1000" ? "active" : ""
+              }`}
+              onClick={() => setViewMode("segments-1000")}
+              disabled={hideAllTrains}
+            >
+              1km Avg
+            </button>
+          </div>
         </div>
         <div
           className="control-label"

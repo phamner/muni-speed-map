@@ -7,6 +7,7 @@ import {
   normalizeDistanceAlongReference,
   SEGMENT_SIZE_METERS,
   SEGMENT_SIZE_500_METERS,
+  SEGMENT_SIZE_1000_METERS,
   pickLongestRouteFeature,
   shouldUsePairedArcMerge,
   shouldUseParallelTrackMerge,
@@ -108,6 +109,7 @@ export function findSegmentForVehicle(
               result.totalLength,
               coordinates,
               referenceLineCoords,
+              usesPairedArcMerge,
             )
           : result.distanceAlong;
 
@@ -150,7 +152,12 @@ export function findSegmentsForVehicle(
   routes: any,
   routeFeatureMap?: Map<string, any[]>,
   city?: string,
-): { segmentId: string | null; segmentId500: string | null; minDistance: number } {
+): {
+  segmentId: string | null;
+  segmentId500: string | null;
+  segmentId1000: string | null;
+  minDistance: number;
+} {
   const featureMap = routeFeatureMap || getRouteFeatureMap(routes);
   const directRouteFeatures = featureMap.get(routeId) || [];
   const candidateRouteEntries: Array<[string, any[]]> =
@@ -160,12 +167,14 @@ export function findSegmentsForVehicle(
 
   let bestSegmentIndex200: number | null = null;
   let bestSegmentIndex500: number | null = null;
+  let bestSegmentIndex1000: number | null = null;
   let bestSegmentRouteId: string | null = null;
   let minDistance = Infinity;
 
   for (const [candidateRouteId, routeFeatures] of candidateRouteEntries) {
     let cumulativeOffset200 = 0;
     let cumulativeOffset500 = 0;
+    let cumulativeOffset1000 = 0;
 
     const usesParallelMerge = shouldUseParallelTrackMerge(
       city,
@@ -213,6 +222,7 @@ export function findSegmentsForVehicle(
               result.totalLength,
               coordinates,
               referenceLineCoords,
+              usesPairedArcMerge,
             )
           : result.distanceAlong;
 
@@ -227,6 +237,9 @@ export function findSegmentsForVehicle(
           bestSegmentIndex500 =
             (referenceLineCoords ? 0 : cumulativeOffset500) +
             Math.floor(distanceAlong / SEGMENT_SIZE_500_METERS);
+          bestSegmentIndex1000 =
+            (referenceLineCoords ? 0 : cumulativeOffset1000) +
+            Math.floor(distanceAlong / SEGMENT_SIZE_1000_METERS);
           bestSegmentRouteId = candidateRouteId;
         }
 
@@ -235,6 +248,8 @@ export function findSegmentsForVehicle(
           cumulativeOffset200 += Math.floor(lineLength / SEGMENT_SIZE_METERS) + 1;
           cumulativeOffset500 +=
             Math.floor(lineLength / SEGMENT_SIZE_500_METERS) + 1;
+          cumulativeOffset1000 +=
+            Math.floor(lineLength / SEGMENT_SIZE_1000_METERS) + 1;
         }
       }
     }
@@ -244,11 +259,17 @@ export function findSegmentsForVehicle(
     return {
       segmentId: bestSegmentIndex200 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex200}` : null,
       segmentId500: bestSegmentIndex500 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex500}` : null,
+      segmentId1000: bestSegmentIndex1000 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex1000}` : null,
       minDistance,
     };
   }
 
-  return { segmentId: null, segmentId500: null, minDistance: Infinity };
+  return {
+    segmentId: null,
+    segmentId500: null,
+    segmentId1000: null,
+    minDistance: Infinity,
+  };
 }
 
 export function getDirection(directionId: any): string | undefined {
@@ -305,6 +326,7 @@ export interface Vehicle {
   recordedAt: string;
   segmentId?: string | null;
   segmentId500?: string | null;
+  segmentId1000?: string | null;
   headsign?: string | null;
 }
 

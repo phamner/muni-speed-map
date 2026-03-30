@@ -644,6 +644,12 @@
 }
 
 /* View Mode Toggle */
+.view-mode-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .view-mode-toggle {
   display: flex;
   background: rgba(255, 255, 255, 0.05);
@@ -653,17 +659,24 @@
   gap: 2px;
 }
 
+.view-mode-toggle--segments {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .view-mode-btn {
   flex: 1;
+  min-width: 0;
   padding: 7px 8px;
   background: transparent;
   border: none;
   color: rgba(255, 255, 255, 0.5);
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 500;
   cursor: pointer;
   border-radius: 4px;
   transition: all 0.2s;
+  white-space: nowrap;
 }
 
 .view-mode-btn:hover {

@@ -1,6 +1,7 @@
 const MAX_DISTANCE_FROM_ROUTE_METERS = 100;
 const SEGMENT_SIZE_METERS = 200;
 const SEGMENT_SIZE_500_METERS = 500;
+const SEGMENT_SIZE_1000_METERS = 1000;
 
 const CITIES_WITH_PARALLEL_TRACKS = [
   "SF",
@@ -10,6 +11,7 @@ const CITIES_WITH_PARALLEL_TRACKS = [
   "Philadelphia",
   "Denver",
   "Salt Lake City",
+  "Phoenix",
   "Cleveland",
   "Charlotte",
   "Portland",
@@ -184,6 +186,7 @@ function normalizeDistanceAlongReference(
   lineTotalLength: number,
   coordinates: number[][],
   referenceCoordinates: number[][],
+  useOverlapAnchors: boolean = false,
 ): number {
   if (
     coordinates.length < 2 ||
@@ -202,14 +205,77 @@ function normalizeDistanceAlongReference(
     coordinates,
     referenceCoordinates,
   );
-  const lengthRatio = referenceLength / lineTotalLength;
+
+  let lineAnchorStart = 0;
+  let lineAnchorEnd = lineTotalLength;
+  let referenceAnchorStart = 0;
+  let referenceAnchorEnd = referenceLength;
+
+  if (useOverlapAnchors) {
+    const lineStart = coordinates[0];
+    const lineEnd = coordinates[coordinates.length - 1];
+    const refStart = referenceCoordinates[0];
+    const refEnd = referenceCoordinates[referenceCoordinates.length - 1];
+
+    const lineStartOnReference =
+      lineStart &&
+      findNearestPointOnLine(lineStart[1], lineStart[0], referenceCoordinates);
+    const lineEndOnReference =
+      lineEnd && findNearestPointOnLine(lineEnd[1], lineEnd[0], referenceCoordinates);
+    const refStartOnLine =
+      refStart && findNearestPointOnLine(refStart[1], refStart[0], coordinates);
+    const refEndOnLine =
+      refEnd && findNearestPointOnLine(refEnd[1], refEnd[0], coordinates);
+
+    if (
+      lineStartOnReference &&
+      lineEndOnReference &&
+      refStartOnLine &&
+      refEndOnLine
+    ) {
+      lineAnchorStart = Math.min(
+        refStartOnLine.distanceAlong,
+        refEndOnLine.distanceAlong,
+      );
+      lineAnchorEnd = Math.max(
+        refStartOnLine.distanceAlong,
+        refEndOnLine.distanceAlong,
+      );
+      referenceAnchorStart = Math.min(
+        lineStartOnReference.distanceAlong,
+        lineEndOnReference.distanceAlong,
+      );
+      referenceAnchorEnd = Math.max(
+        lineStartOnReference.distanceAlong,
+        lineEndOnReference.distanceAlong,
+      );
+    }
+  }
+
+  const anchorLineLength = Math.max(1, lineAnchorEnd - lineAnchorStart);
+  const anchorReferenceLength = Math.max(
+    1,
+    referenceAnchorEnd - referenceAnchorStart,
+  );
+  const clampedDistanceAlong = Math.max(
+    lineAnchorStart,
+    Math.min(lineAnchorEnd, distanceAlong),
+  );
+  const distanceWithinAnchor = clampedDistanceAlong - lineAnchorStart;
+  const lengthRatio = anchorReferenceLength / anchorLineLength;
   const scaledDistance = Math.max(
-    0,
-    Math.min(referenceLength, distanceAlong * lengthRatio),
+    referenceAnchorStart,
+    Math.min(
+      referenceAnchorEnd,
+      referenceAnchorStart + distanceWithinAnchor * lengthRatio,
+    ),
   );
 
   if (reverseDirection < sameDirection) {
-    return Math.max(0, referenceLength - scaledDistance);
+    return Math.max(
+      referenceAnchorStart,
+      referenceAnchorEnd - (scaledDistance - referenceAnchorStart),
+    );
   }
 
   return scaledDistance;
@@ -250,7 +316,12 @@ function findSegmentsForVehicle(
   routeId: string,
   routeFeatureMap: Map<string, any[]>,
   city: string,
-): { segmentId: string | null; segmentId500: string | null; minDistance: number } {
+): {
+  segmentId: string | null;
+  segmentId500: string | null;
+  segmentId1000: string | null;
+  minDistance: number;
+} {
   const directRouteFeatures = routeFeatureMap.get(routeId) || [];
   const candidateRouteEntries: Array<[string, any[]]> =
     directRouteFeatures.length > 0
@@ -259,12 +330,14 @@ function findSegmentsForVehicle(
 
   let bestSegmentIndex200: number | null = null;
   let bestSegmentIndex500: number | null = null;
+  let bestSegmentIndex1000: number | null = null;
   let bestSegmentRouteId: string | null = null;
   let minDistance = Infinity;
 
   for (const [candidateRouteId, routeFeatures] of candidateRouteEntries) {
     let cumulativeOffset200 = 0;
     let cumulativeOffset500 = 0;
+    let cumulativeOffset1000 = 0;
 
     const usesParallelMerge = shouldUseParallelTrackMerge(
       city,
@@ -312,6 +385,7 @@ function findSegmentsForVehicle(
               result.totalLength,
               coordinates,
               referenceLineCoords,
+              usesPairedArcMerge,
             )
           : result.distanceAlong;
 
@@ -326,6 +400,9 @@ function findSegmentsForVehicle(
           bestSegmentIndex500 =
             (referenceLineCoords ? 0 : cumulativeOffset500) +
             Math.floor(distanceAlong / SEGMENT_SIZE_500_METERS);
+          bestSegmentIndex1000 =
+            (referenceLineCoords ? 0 : cumulativeOffset1000) +
+            Math.floor(distanceAlong / SEGMENT_SIZE_1000_METERS);
           bestSegmentRouteId = candidateRouteId;
         }
 
@@ -334,6 +411,8 @@ function findSegmentsForVehicle(
           cumulativeOffset200 += Math.floor(lineLength / SEGMENT_SIZE_METERS) + 1;
           cumulativeOffset500 +=
             Math.floor(lineLength / SEGMENT_SIZE_500_METERS) + 1;
+          cumulativeOffset1000 +=
+            Math.floor(lineLength / SEGMENT_SIZE_1000_METERS) + 1;
         }
       }
     }
@@ -343,11 +422,17 @@ function findSegmentsForVehicle(
     return {
       segmentId: bestSegmentIndex200 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex200}` : null,
       segmentId500: bestSegmentIndex500 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex500}` : null,
+      segmentId1000: bestSegmentIndex1000 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex1000}` : null,
       minDistance,
     };
   }
 
-  return { segmentId: null, segmentId500: null, minDistance: Infinity };
+  return {
+    segmentId: null,
+    segmentId500: null,
+    segmentId1000: null,
+    minDistance: Infinity,
+  };
 }
 
 function getDirection(directionId: any): string | undefined {
@@ -386,6 +471,7 @@ export interface SegmentWorkerOutput {
     recordedAt: string;
     segmentId: string | null;
     segmentId500: string | null;
+    segmentId1000: string | null;
     headsign: string | null;
     onRoute: boolean;
   }>;
@@ -415,6 +501,7 @@ self.onmessage = (e: MessageEvent<SegmentWorkerInput>) => {
       recordedAt: row.recorded_at,
       segmentId: segments.segmentId,
       segmentId500: segments.segmentId500,
+      segmentId1000: segments.segmentId1000,
       headsign: row.headsign,
       onRoute: segments.minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS,
     };

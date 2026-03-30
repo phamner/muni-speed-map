@@ -1,6 +1,8 @@
 import { haversineDistance, distanceToSegment } from "./geoUtils";
 
 export const SEGMENT_SIZE_METERS = 200;
+export const SEGMENT_SIZE_500_METERS = 500;
+export const SEGMENT_SIZE_1000_METERS = 1000;
 
 export function getLineStringLength(coordinates: number[][]): number {
   let total = 0;
@@ -70,8 +72,6 @@ export function pickLongestRouteFeature(features: any[]): any[] {
   }
   return [longest];
 }
-export const SEGMENT_SIZE_500_METERS = 500;
-
 export const CITIES_WITH_PARALLEL_TRACKS = [
   "SF",
   "LA", //yes
@@ -80,6 +80,7 @@ export const CITIES_WITH_PARALLEL_TRACKS = [
   "Philadelphia",
   "Denver", //yes
   "Salt Lake City",
+  "Phoenix",
   "Cleveland",
   "Charlotte",
   "Portland", //yes
@@ -178,6 +179,7 @@ export function normalizeDistanceAlongReference(
   lineTotalLength: number,
   coordinates: number[][],
   referenceCoordinates: number[][],
+  useOverlapAnchors: boolean = false,
 ): number {
   if (
     coordinates.length < 2 ||
@@ -196,14 +198,77 @@ export function normalizeDistanceAlongReference(
     coordinates,
     referenceCoordinates,
   );
-  const lengthRatio = referenceLength / lineTotalLength;
+
+  let lineAnchorStart = 0;
+  let lineAnchorEnd = lineTotalLength;
+  let referenceAnchorStart = 0;
+  let referenceAnchorEnd = referenceLength;
+
+  if (useOverlapAnchors) {
+    const lineStart = coordinates[0];
+    const lineEnd = coordinates[coordinates.length - 1];
+    const refStart = referenceCoordinates[0];
+    const refEnd = referenceCoordinates[referenceCoordinates.length - 1];
+
+    const lineStartOnReference =
+      lineStart &&
+      findNearestPointOnLine(lineStart[1], lineStart[0], referenceCoordinates);
+    const lineEndOnReference =
+      lineEnd && findNearestPointOnLine(lineEnd[1], lineEnd[0], referenceCoordinates);
+    const refStartOnLine =
+      refStart && findNearestPointOnLine(refStart[1], refStart[0], coordinates);
+    const refEndOnLine =
+      refEnd && findNearestPointOnLine(refEnd[1], refEnd[0], coordinates);
+
+    if (
+      lineStartOnReference &&
+      lineEndOnReference &&
+      refStartOnLine &&
+      refEndOnLine
+    ) {
+      lineAnchorStart = Math.min(
+        refStartOnLine.distanceAlong,
+        refEndOnLine.distanceAlong,
+      );
+      lineAnchorEnd = Math.max(
+        refStartOnLine.distanceAlong,
+        refEndOnLine.distanceAlong,
+      );
+      referenceAnchorStart = Math.min(
+        lineStartOnReference.distanceAlong,
+        lineEndOnReference.distanceAlong,
+      );
+      referenceAnchorEnd = Math.max(
+        lineStartOnReference.distanceAlong,
+        lineEndOnReference.distanceAlong,
+      );
+    }
+  }
+
+  const anchorLineLength = Math.max(1, lineAnchorEnd - lineAnchorStart);
+  const anchorReferenceLength = Math.max(
+    1,
+    referenceAnchorEnd - referenceAnchorStart,
+  );
+  const clampedDistanceAlong = Math.max(
+    lineAnchorStart,
+    Math.min(lineAnchorEnd, distanceAlong),
+  );
+  const distanceWithinAnchor = clampedDistanceAlong - lineAnchorStart;
+  const lengthRatio = anchorReferenceLength / anchorLineLength;
   const scaledDistance = Math.max(
-    0,
-    Math.min(referenceLength, distanceAlong * lengthRatio),
+    referenceAnchorStart,
+    Math.min(
+      referenceAnchorEnd,
+      referenceAnchorStart + distanceWithinAnchor * lengthRatio,
+    ),
   );
 
   if (reverseDirection < sameDirection) {
-    return Math.max(0, referenceLength - scaledDistance);
+    return Math.max(
+      referenceAnchorStart,
+      referenceAnchorEnd - (scaledDistance - referenceAnchorStart),
+    );
   }
 
   return scaledDistance;
@@ -342,6 +407,7 @@ function projectPointOntoLine(
   lat: number,
   lon: number,
   coordinates: number[][],
+  maxDistanceMeters: number = 200,
 ): { distanceAlong: number; projectedPoint: [number, number] } | null {
   let minDistance = Infinity;
   let bestDistanceAlong = 0;
@@ -375,7 +441,7 @@ function projectPointOntoLine(
     distanceAlong += segmentLength;
   }
 
-  if (minDistance > 200) {
+  if (minDistance > maxDistanceMeters) {
     return null;
   }
 
@@ -391,20 +457,28 @@ function getParallelSegmentSubsection(
   idx: number,
   totalRefSegments: number,
   segmentSizeMeters: number,
+  city?: string,
+  routeId?: string,
 ): { coords: number[][]; startDistance: number; endDistance: number } | null {
   const refStart = refSeg.coordinates[0];
   const refEnd = refSeg.coordinates[refSeg.coordinates.length - 1];
   if (!refStart || !refEnd) return null;
 
+  const isPhoenixDirectionalCouplet =
+    city === "Phoenix" && (routeId === "A" || routeId === "B");
+  const projectionMaxDistanceMeters = isPhoenixDirectionalCouplet ? 320 : 200;
+
   const startProjection = projectPointOntoLine(
     refStart[1],
     refStart[0],
     coordinates,
+    projectionMaxDistanceMeters,
   );
   const endProjection = projectPointOntoLine(
     refEnd[1],
     refEnd[0],
     coordinates,
+    projectionMaxDistanceMeters,
   );
   if (!startProjection || !endProjection) return null;
 
@@ -420,8 +494,12 @@ function getParallelSegmentSubsection(
     endProjection.projectedPoint[1],
     endProjection.projectedPoint[0],
   );
-  const PARALLEL_MATCH_MAX_DISTANCE_METERS = 70;
-  const TERMINAL_PARALLEL_MATCH_MAX_DISTANCE_METERS = 150;
+  const PARALLEL_MATCH_MAX_DISTANCE_METERS = isPhoenixDirectionalCouplet
+    ? 180
+    : 70;
+  const TERMINAL_PARALLEL_MATCH_MAX_DISTANCE_METERS = isPhoenixDirectionalCouplet
+    ? 220
+    : 150;
   const isTerminalSegment =
     idx <= 1 || idx >= totalRefSegments - 2;
   if (
@@ -509,28 +587,49 @@ function getNormalizedSegmentSubsection(
   );
   const isReversed = reverseDirection < sameDirection;
 
+  const refStart = referenceCoordinates[0];
+  const refEnd = referenceCoordinates[referenceCoordinates.length - 1];
+  const startAnchorProjection =
+    refStart && projectPointOntoLine(refStart[1], refStart[0], coordinates);
+  const endAnchorProjection =
+    refEnd && projectPointOntoLine(refEnd[1], refEnd[0], coordinates);
+
+  let anchorStart = 0;
+  let anchorEnd = lineLength;
+  if (startAnchorProjection && endAnchorProjection) {
+    anchorStart = Math.min(
+      startAnchorProjection.distanceAlong,
+      endAnchorProjection.distanceAlong,
+    );
+    anchorEnd = Math.max(
+      startAnchorProjection.distanceAlong,
+      endAnchorProjection.distanceAlong,
+    );
+  }
+  const anchorLength = Math.max(0, anchorEnd - anchorStart) || lineLength;
+
   let startRatio = refSeg.startDistance / referenceLength;
   let endRatio = refSeg.endDistance / referenceLength;
   startRatio = Math.max(0, Math.min(1, startRatio));
   endRatio = Math.max(0, Math.min(1, endRatio));
 
-  let startDist = startRatio * lineLength;
-  let endDist = endRatio * lineLength;
+  let startDist = anchorStart + startRatio * anchorLength;
+  let endDist = anchorStart + endRatio * anchorLength;
 
   if (isReversed) {
-    startDist = lineLength - endRatio * lineLength;
-    endDist = lineLength - startRatio * lineLength;
+    startDist = anchorEnd - endRatio * anchorLength;
+    endDist = anchorEnd - startRatio * anchorLength;
   }
 
-  if (idx === 0 && startDist > 0 && startDist < segmentSizeMeters) {
-    startDist = 0;
+  if (idx === 0 && startDist > anchorStart && startDist < anchorStart + segmentSizeMeters) {
+    startDist = anchorStart;
   }
   if (
     idx === totalRefSegments - 1 &&
-    lineLength - endDist > 0 &&
-    lineLength - endDist < segmentSizeMeters
+    anchorEnd - endDist > 0 &&
+    anchorEnd - endDist < segmentSizeMeters
   ) {
-    endDist = lineLength;
+    endDist = anchorEnd;
   }
 
   const coords = extractLineSubsection(
@@ -657,6 +756,8 @@ export function buildAllSegments(
             idx,
             routeRefSegments.length,
             segmentSizeMeters,
+            city,
+            routeId,
           );
           if (!parallelSegment) return;
 
@@ -762,6 +863,8 @@ export function buildAllSegments(
             idx,
             refSegments.length,
             segmentSizeMeters,
+            city,
+            routeId,
           );
           if (!parallelSegment) {
             return;
