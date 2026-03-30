@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type CSSProperties } from "react";
 import { createPortal } from "react-dom";
 import type { City } from "../../types";
 import type { SpeedUnit, DensityMode } from "../../App";
@@ -314,7 +314,7 @@ export function DynamicLegends({
         : city === "Phoenix"
           ? "#16A085"
           : "#aeb8c6";
-  const heritageLegendStyle =
+  const heritageLegendStyle: CSSProperties =
     city === "Seattle"
       ? {
           borderTopWidth: 0,
