@@ -584,6 +584,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     case "LA": {
       const [
         routes,
+        heritageRoutes,
         stops,
         crossings,
         switches,
@@ -595,6 +596,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         busRoutesOverlay,
       ] = await Promise.all([
         import("./routes/laMetroRoutes.json"),
+        import("./routes/laHeritageLocalCirculatorRoutes.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
         import("./stops/laMetroStops.json"),
         import("./crossings/laGradeCrossings.json"),
         import("./switches/laSwitches.json"),
@@ -622,7 +626,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       }
 
       return {
-        routes: routes.default,
+        routes: mergeRouteCollections(routes.default, heritageRoutes.default),
         stops: stops.default,
         crossings: crossings.default,
         switches: switches.default,

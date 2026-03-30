@@ -1461,41 +1461,10 @@ export function Controls({
             Regional / Commuter rail ({railContextCommuterCount})
           </label>
         </div>
-        {city === "SF" && (
-          <div className="route-lines-toggle">
-            <label
-              className={`heritage-local-circulators-toggle ${
-                heritageOverlayDisabled ? "overlay-toggle-disabled" : ""
-              }`}
-            >
-              <input
-                type="checkbox"
-                checked={!heritageOverlayDisabled && showCableCarsOverlay}
-                disabled={heritageOverlayDisabled}
-                onChange={(e) => setShowCableCarsOverlay(e.target.checked)}
-              />
-              Heritage & Local Circulators ({heritageLocalCirculatorCount})
-            </label>
-          </div>
-        )}
-        {city === "Seattle" && (
-          <div className="route-lines-toggle">
-            <label
-              className={`heritage-local-circulators-toggle ${
-                heritageOverlayDisabled ? "overlay-toggle-disabled" : ""
-              }`}
-            >
-              <input
-                type="checkbox"
-                checked={!heritageOverlayDisabled && showCableCarsOverlay}
-                disabled={heritageOverlayDisabled}
-                onChange={(e) => setShowCableCarsOverlay(e.target.checked)}
-              />
-              Heritage & Local Circulators ({heritageLocalCirculatorCount})
-            </label>
-          </div>
-        )}
-        {city === "Phoenix" && (
+        {(city === "SF" ||
+          city === "LA" ||
+          city === "Seattle" ||
+          city === "Phoenix") && (
           <div className="route-lines-toggle">
             <label
               className={`heritage-local-circulators-toggle ${

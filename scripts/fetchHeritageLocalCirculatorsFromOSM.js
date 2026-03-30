@@ -3,6 +3,7 @@
  * One-off OSM fetcher for local-circulator / heritage-style rail overlays.
  *
  * Downloads route relations for:
+ * - OC Streetcar
  * - Seattle Streetcar (First Hill + South Lake Union)
  * - Seattle Center Monorail
  * - Phoenix Streetcar
@@ -27,6 +28,27 @@ const OVERPASS_ENDPOINTS = [
 ];
 
 const CITIES = [
+  {
+    name: "LA",
+    bbox: [33.70, -117.98, 33.80, -117.84],
+    outputFile: "laHeritageLocalCirculatorRoutes.json",
+    routeTypesRegex: "tram",
+    fetchMode: "construction_ways",
+    lineDefinitions: [
+      {
+        routeId: "OCSC",
+        routeName: "OC Streetcar",
+        routeColor: "#F28C28",
+        matches: (tags) => {
+          const text = collectTagText(tags);
+          return (
+            text.includes("oc streetcar") ||
+            text.includes("orange county streetcar")
+          );
+        },
+      },
+    ],
+  },
   {
     name: "Seattle",
     bbox: [47.45, -122.43, 47.66, -122.26],
@@ -269,7 +291,40 @@ function collectWayRefsRecursive(relationId, relationMembers, visited = new Set(
 
 async function fetchCity(config) {
   const [south, west, north, east] = config.bbox;
-  const relationQuery = `
+  console.log(`\nFetching ${config.name} heritage/local circulator routes...`);
+  const matchedByRouteId = new Map();
+  for (const definition of config.lineDefinitions) {
+    matchedByRouteId.set(definition.routeId, {
+      definition,
+      relationIds: [],
+      coordinates: [],
+    });
+  }
+
+  if (config.fetchMode === "construction_ways") {
+    const wayQuery = `
+[out:json][timeout:90];
+(
+  way["railway"="construction"]["name"](${south},${west},${north},${east});
+  way["construction:railway"~"tram|light_rail"]["name"](${south},${west},${north},${east});
+);
+out body geom;
+`;
+    const wayData = await fetchOverpass(wayQuery);
+    const wayElements = wayData.elements.filter(
+      (el) => el.type === "way" && Array.isArray(el.geometry) && el.geometry.length > 1,
+    );
+
+    for (const way of wayElements) {
+      const tags = way.tags || {};
+      for (const entry of matchedByRouteId.values()) {
+        if (entry.definition.matches(tags)) {
+          entry.coordinates.push(way.geometry.map((pt) => [pt.lon, pt.lat]));
+        }
+      }
+    }
+  } else {
+    const relationQuery = `
 [out:json][timeout:90];
 (
   relation["route"~"${config.routeTypesRegex}"](${south},${west},${north},${east});
@@ -277,36 +332,27 @@ async function fetchCity(config) {
 out body;
 `;
 
-  console.log(`\nFetching ${config.name} heritage/local circulator routes...`);
-  const relationData = await fetchOverpass(relationQuery);
-  const relations = relationData.elements.filter((el) => el.type === "relation");
+    const relationData = await fetchOverpass(relationQuery);
+    const relations = relationData.elements.filter((el) => el.type === "relation");
 
-  const matchedByRouteId = new Map();
-  for (const definition of config.lineDefinitions) {
-    matchedByRouteId.set(definition.routeId, {
-      definition,
-      relationIds: [],
-    });
-  }
-
-  for (const relation of relations) {
-    const tags = relation.tags || {};
-    for (const definition of config.lineDefinitions) {
-      if (definition.matches(tags)) {
-        matchedByRouteId.get(definition.routeId).relationIds.push(relation.id);
+    for (const relation of relations) {
+      const tags = relation.tags || {};
+      for (const entry of matchedByRouteId.values()) {
+        if (entry.definition.matches(tags)) {
+          entry.relationIds.push(relation.id);
+        }
       }
     }
-  }
 
-  const selectedRelationIds = Array.from(matchedByRouteId.values())
-    .flatMap((entry) => entry.relationIds)
-    .filter((id, index, arr) => arr.indexOf(id) === index);
+    const selectedRelationIds = Array.from(matchedByRouteId.values())
+      .flatMap((entry) => entry.relationIds)
+      .filter((id, index, arr) => arr.indexOf(id) === index);
 
-  if (selectedRelationIds.length === 0) {
-    throw new Error(`No matching route relations found for ${config.name}`);
-  }
+    if (selectedRelationIds.length === 0) {
+      throw new Error(`No matching route relations found for ${config.name}`);
+    }
 
-  const wayQuery = `
+    const wayQuery = `
 [out:json][timeout:90];
 (
   relation(id:${selectedRelationIds.join(",")});
@@ -315,43 +361,48 @@ out body;
 out body geom;
 `;
 
-  const wayData = await fetchOverpass(wayQuery);
-  const wayElements = wayData.elements.filter(
-    (el) => el.type === "way" && Array.isArray(el.geometry) && el.geometry.length > 1,
-  );
-  const relationMembers = new Map();
-  for (const element of wayData.elements) {
-    if (element.type === "relation") {
-      relationMembers.set(element.id, element.members || []);
+    const wayData = await fetchOverpass(wayQuery);
+    const wayElements = wayData.elements.filter(
+      (el) => el.type === "way" && Array.isArray(el.geometry) && el.geometry.length > 1,
+    );
+    const relationMembers = new Map();
+    for (const element of wayData.elements) {
+      if (element.type === "relation") {
+        relationMembers.set(element.id, element.members || []);
+      }
+    }
+
+    for (const entry of matchedByRouteId.values()) {
+      if (entry.relationIds.length === 0) continue;
+
+      const allowedWayIds = new Set();
+      for (const relationId of entry.relationIds) {
+        const refs = collectWayRefsRecursive(relationId, relationMembers);
+        for (const ref of refs) allowedWayIds.add(ref);
+      }
+
+      entry.coordinates = wayElements
+        .filter((element) => allowedWayIds.has(element.id))
+        .map((element) => element.geometry.map((pt) => [pt.lon, pt.lat]));
     }
   }
 
   const features = [];
-  for (const { definition, relationIds } of matchedByRouteId.values()) {
-    if (relationIds.length === 0) continue;
-
-    const allowedWayIds = new Set();
-    for (const relationId of relationIds) {
-      const refs = collectWayRefsRecursive(relationId, relationMembers);
-      for (const ref of refs) allowedWayIds.add(ref);
-    }
-
-    const coordinates = mergeContiguousWays(
-      wayElements
-        .filter((element) => allowedWayIds.has(element.id))
-        .map((element) => element.geometry.map((pt) => [pt.lon, pt.lat])),
-    );
-
+  for (const entry of matchedByRouteId.values()) {
+    const coordinates = mergeContiguousWays(entry.coordinates);
     if (coordinates.length === 0) continue;
 
     features.push({
       type: "Feature",
       properties: {
-        route_id: definition.routeId,
-        route_name: definition.routeName,
-        route_color: definition.routeColor,
+        route_id: entry.definition.routeId,
+        route_name: entry.definition.routeName,
+        route_color: entry.definition.routeColor,
         overlay_category: "heritage_local_circulator",
-        source: "OpenStreetMap route relation",
+        source:
+          config.fetchMode === "construction_ways"
+            ? "OpenStreetMap construction railway ways"
+            : "OpenStreetMap route relation",
       },
       geometry: {
         type: "MultiLineString",

@@ -306,11 +306,21 @@ export function DynamicLegends({
   showBusRoutesOverlay,
   showCableCarsOverlay,
 }: DynamicLegendsProps) {
+  const heritageLegendColor =
+    city === "SF"
+      ? "#36afb6"
+      : city === "LA"
+        ? "#F28C28"
+        : city === "Phoenix"
+          ? "#16A085"
+          : "#aeb8c6";
   const heritageLabel =
     city === "SF"
       ? "Cable cars"
-      : city === "Seattle"
-        ? "Streetcars / monorail"
+      : city === "LA"
+        ? "OC Streetcar (August 2026)"
+        : city === "Seattle"
+          ? "Streetcars / monorail"
         : city === "Phoenix"
           ? "Tempe Streetcar"
           : "Heritage & local circulators";
@@ -359,7 +369,10 @@ export function DynamicLegends({
             <span className="rail-context-legend-line commuter"></span>
             <span>Regional / Commuter</span>
           </div>
-          {(city === "SF" || city === "Seattle" || city === "Phoenix") && (
+          {(city === "SF" ||
+            city === "LA" ||
+            city === "Seattle" ||
+            city === "Phoenix") && (
             <div
               className={`rail-context-legend-item ${
                 showCableCarsOverlay ? "" : "disabled"
@@ -368,7 +381,7 @@ export function DynamicLegends({
               <span
                 className="rail-context-legend-line"
                 style={{
-                  borderTopColor: "#aeb8c6",
+                  borderTopColor: heritageLegendColor,
                   borderTopWidth: 2.4,
                   borderTopStyle: "solid",
                   opacity: 0.95,

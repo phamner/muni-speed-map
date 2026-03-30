@@ -969,6 +969,19 @@ export function SpeedMap({
   const clusteredStops = useMemo(() => {
     const rawFeatures = cityConfig.stops?.features || [];
 
+    const normalizeStopClusterName = (stopName: string) => {
+      const trimmed = stopName.trim();
+
+      if (city === "Cleveland") {
+        return trimmed
+          .replace(/\s+TRACK\s+.*$/i, "")
+          .replace(/\s+/g, " ")
+          .trim();
+      }
+
+      return trimmed;
+    };
+
     // Normalize stop feature schemas across city data sources.
     // Some cities (e.g. Minneapolis) use OSM-style `name` instead of `stop_name`.
     const features = rawFeatures
@@ -982,6 +995,7 @@ export function SpeedMap({
           properties: {
             ...props,
             stop_name: stopName,
+            cluster_name: normalizeStopClusterName(stopName),
             routes: Array.isArray(props.routes)
               ? props.routes
               : props.routes
@@ -995,7 +1009,8 @@ export function SpeedMap({
     // Group stops by name
     const byName: Record<string, any[]> = {};
     for (const f of features) {
-      const name = f.properties?.stop_name || "Unknown";
+      const name =
+        f.properties?.cluster_name || f.properties?.stop_name || "Unknown";
       if (!byName[name]) byName[name] = [];
       byName[name].push(f);
     }
