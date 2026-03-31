@@ -325,6 +325,22 @@ interface SpeedMapProps {
   ) => void;
 }
 
+interface GoogleTileSession {
+  session: string;
+  expiry?: string;
+  tileWidth?: number;
+  tileHeight?: number;
+  imageFormat?: string;
+}
+
+function shouldUseGoogleSatelliteFromUrl(): boolean {
+  if (typeof window === "undefined") return false;
+  const params = new URLSearchParams(window.location.search);
+  return (
+    params.get("satellite") === "google" || params.get("dev") === "true"
+  );
+}
+
 const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
   Record<City, Record<string, string>>
 > = {
@@ -557,6 +573,14 @@ export function SpeedMap({
   );
   const [loadingProgress, setLoadingProgress] = useState<string>("");
   const [isProcessing, setIsProcessing] = useState(false);
+  const [googleTileSession, setGoogleTileSession] =
+    useState<GoogleTileSession | null>(null);
+  const [googleTileError, setGoogleTileError] = useState<string | null>(null);
+  const [googleViewportCopyright, setGoogleViewportCopyright] =
+    useState<string>("");
+  const wantsGoogleSatellite = useMemo(shouldUseGoogleSatelliteFromUrl, []);
+  const shouldUseGoogleSatellite =
+    wantsGoogleSatellite && googleTileSession !== null && !googleTileError;
 
   // City static data - loaded lazily on-demand
   const [cityStaticData, setCityStaticData] = useState<CityStaticData | null>(
@@ -693,6 +717,44 @@ export function SpeedMap({
       cancelled = true;
     };
   }, [city]);
+
+  useEffect(() => {
+    if (!wantsGoogleSatellite) return;
+
+    let cancelled = false;
+
+    async function loadGoogleTileSession() {
+      try {
+        const response = await fetch("/api/google-map-tiles/session");
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data?.error || "Failed to create Google tile session");
+        }
+
+        if (!cancelled) {
+          setGoogleTileSession(data);
+          setGoogleTileError(null);
+        }
+      } catch (error: any) {
+        console.warn(
+          "Google satellite session unavailable, falling back to Esri:",
+          error,
+        );
+        if (!cancelled) {
+          setGoogleTileSession(null);
+          setGoogleTileError(
+            error?.message || "Failed to create Google tile session",
+          );
+        }
+      }
+    }
+
+    loadGoogleTileSession();
+    return () => {
+      cancelled = true;
+    };
+  }, [wantsGoogleSatellite]);
 
   // Use loaded city data or empty placeholder
   const cityConfig = useMemo(
@@ -1388,18 +1450,16 @@ export function SpeedMap({
       // Cache the results for instant switching
       cityDataCache.set(city, allPositions);
 
-      setLoadingProgress(
-        `Rendering ${allPositions.length.toLocaleString()} data points...`,
-      );
       await new Promise((resolve) => setTimeout(resolve, 10));
 
       setVehicles(allPositions);
       setDataSource("supabase");
       // The vehicles useEffect will automatically update count/stats
 
-      // Show rendering phase - will be cleared by idle event listener
-      // after MapLibre finishes rendering all the data
-      setLoadingProgress("Rendering...");
+      // Let the map paint data immediately instead of blocking on the
+      // follow-up idle/quiet-time bookkeeping.
+      setLoadingProgress("");
+      setIsProcessing(false);
     } catch (error) {
       console.error("Error fetching vehicles:", error);
       setDataSource("none");
@@ -1422,7 +1482,8 @@ export function SpeedMap({
       // Instant switch - use cached data
       setVehicles(cached);
       setDataSource("supabase");
-      setLoadingProgress("Rendering...");
+      setLoadingProgress("");
+      setIsProcessing(false);
       return;
     }
     // No cache - show loading and fetch
@@ -1462,7 +1523,7 @@ export function SpeedMap({
             tileSize: 256,
             attribution: "&copy; OpenStreetMap &copy; CARTO",
           },
-          "esri-satellite": {
+          "satellite-esri": {
             type: "raster",
             tiles: [
               "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
@@ -1480,9 +1541,9 @@ export function SpeedMap({
             maxzoom: 19,
           },
           {
-            id: "satellite-layer",
+            id: "satellite-layer-esri",
             type: "raster",
-            source: "esri-satellite",
+            source: "satellite-esri",
             minzoom: 0,
             maxzoom: 19,
             layout: {
@@ -1529,6 +1590,36 @@ export function SpeedMap({
       map.current = null;
     };
   }, [city]); // Re-initialize map when city changes
+
+  useEffect(() => {
+    if (!mapLoaded || !map.current || !googleTileSession?.session) return;
+    if (map.current.getSource("satellite-google")) return;
+
+    map.current.addSource("satellite-google", {
+      type: "raster",
+      tiles: [
+        `/api/google-map-tiles/tile?session=${encodeURIComponent(
+          googleTileSession.session,
+        )}&z={z}&x={x}&y={y}`,
+      ],
+      tileSize: 256,
+      attribution: "Google Maps",
+    });
+
+    map.current.addLayer(
+      {
+        id: "satellite-layer-google",
+        type: "raster",
+        source: "satellite-google",
+        minzoom: 0,
+        maxzoom: 22,
+        layout: {
+          visibility: "none",
+        },
+      },
+      "carto-dark-layer",
+    );
+  }, [mapLoaded, googleTileSession]);
 
   // Speed-based color scale (memoized to prevent re-renders)
   // Uses same scale as speed limits for consistency
@@ -3659,8 +3750,6 @@ export function SpeedMap({
         if (finished) return;
         if (longTasksDone && mapIdle) {
           finished = true;
-          setLoadingProgress("");
-          setIsProcessing(false);
           // Notify parent that map is ready
           onMapReady?.();
         }
@@ -3682,8 +3771,6 @@ export function SpeedMap({
       setTimeout(() => {
         if (!finished) {
           finished = true;
-          setLoadingProgress("");
-          setIsProcessing(false);
         }
         // Clean up render monitoring
         clearInterval(renderCheckInterval);
@@ -4281,14 +4368,69 @@ export function SpeedMap({
         showSatellite ? "none" : "visible",
       );
       map.current.setLayoutProperty(
-        "satellite-layer",
+        "satellite-layer-esri",
         "visibility",
-        showSatellite ? "visible" : "none",
+        showSatellite && !shouldUseGoogleSatellite ? "visible" : "none",
       );
+      if (map.current.getLayer("satellite-layer-google")) {
+        map.current.setLayoutProperty(
+          "satellite-layer-google",
+          "visibility",
+          showSatellite && shouldUseGoogleSatellite ? "visible" : "none",
+        );
+      }
     } catch (e) {
       // Layers may not exist yet
     }
-  }, [mapLoaded, showSatellite]);
+  }, [mapLoaded, showSatellite, shouldUseGoogleSatellite]);
+
+  useEffect(() => {
+    if (!mapLoaded || !map.current || !showSatellite || !shouldUseGoogleSatellite) {
+      setGoogleViewportCopyright("");
+      return;
+    }
+
+    let cancelled = false;
+
+    const updateViewportAttribution = async () => {
+      if (!map.current || !googleTileSession?.session) return;
+      const bounds = map.current.getBounds();
+      const zoom = Math.max(0, Math.round(map.current.getZoom()));
+      const params = new URLSearchParams({
+        session: googleTileSession.session,
+        zoom: String(zoom),
+        north: String(bounds.getNorth()),
+        south: String(bounds.getSouth()),
+        east: String(bounds.getEast()),
+        west: String(bounds.getWest()),
+      });
+
+      try {
+        const response = await fetch(`/api/google-map-tiles/viewport?${params}`);
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(
+            data?.error || "Failed to fetch Google viewport attribution",
+          );
+        }
+
+        if (!cancelled) {
+          setGoogleViewportCopyright(data?.copyright || "");
+        }
+      } catch (error) {
+        console.warn("Failed to update Google map attribution:", error);
+      }
+    };
+
+    updateViewportAttribution();
+    map.current.on("moveend", updateViewportAttribution);
+
+    return () => {
+      cancelled = true;
+      map.current?.off("moveend", updateViewportAttribution);
+    };
+  }, [mapLoaded, showSatellite, shouldUseGoogleSatellite, googleTileSession]);
 
   // Toggle population density layer (using US Census tract data)
   useEffect(() => {
@@ -5055,6 +5197,29 @@ export function SpeedMap({
           <div className="loading-text">
             {loadingProgress || "Finishing up..."}
           </div>
+        </div>
+      )}
+
+      {showSatellite && shouldUseGoogleSatellite && (
+        <div
+          style={{
+            position: "absolute",
+            right: 12,
+            bottom: 12,
+            zIndex: 30,
+            padding: "6px 9px",
+            borderRadius: 6,
+            background: "rgba(255, 255, 255, 0.9)",
+            color: "#111827",
+            fontSize: 11,
+            lineHeight: 1.35,
+            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.18)",
+            pointerEvents: "none",
+            maxWidth: 280,
+          }}
+        >
+          <strong>Google Maps</strong>
+          {googleViewportCopyright ? ` | ${googleViewportCopyright}` : ""}
         </div>
       )}
 
