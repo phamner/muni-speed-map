@@ -2605,6 +2605,7 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
+    basemapMode,
     city,
     cityConfig.routes,
     cityConfig.maxspeed,
@@ -2681,7 +2682,7 @@ export function SpeedMap({
     } catch {
       // Layers might not exist yet
     }
-  }, [mapLoaded, showRouteLines, routeLineMode]);
+  }, [mapLoaded, basemapMode, showRouteLines, routeLineMode]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
@@ -2702,7 +2703,7 @@ export function SpeedMap({
     } catch {
       // Layers might not exist yet
     }
-  }, [mapLoaded, routeLayerFilter]);
+  }, [mapLoaded, basemapMode, routeLayerFilter]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
@@ -2720,7 +2721,7 @@ export function SpeedMap({
     } catch {
       // Layers might not exist yet
     }
-  }, [mapLoaded, speedLimitLayerFilter]);
+  }, [mapLoaded, basemapMode, speedLimitLayerFilter]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
@@ -2769,6 +2770,7 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
+    basemapMode,
     routeLineMode,
     city,
     cityConfig.routes,
@@ -2827,6 +2829,7 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
+    basemapMode,
     showRailContextHeavy,
     showRailContextCommuter,
     showCableCarsOverlay,
@@ -3175,6 +3178,7 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
+    basemapMode,
     showStops,
     showTrafficLights,
     selectedLines,
@@ -3484,7 +3488,7 @@ export function SpeedMap({
       };
       setTimeout(waitForStyle, 50);
     }
-  }, [mapLoaded, showCrossings, filteredCrossings, city]);
+  }, [mapLoaded, basemapMode, showCrossings, filteredCrossings, city]);
 
   // Get switches and signals data for current city, filtered by selected lines
   const switchesData = useMemo(() => {
@@ -3668,7 +3672,7 @@ export function SpeedMap({
       };
       setTimeout(waitForStyle, 50);
     }
-  }, [mapLoaded, showSwitches, switchesData]);
+  }, [mapLoaded, basemapMode, showSwitches, switchesData]);
 
   // Update vehicle data source
   useEffect(() => {
@@ -3950,6 +3954,7 @@ export function SpeedMap({
     cachedLiveVehicleGeoJSON,
     viewMode,
     mapLoaded,
+    basemapMode,
     isProcessing,
   ]);
 
@@ -4006,6 +4011,7 @@ export function SpeedMap({
     hideStoppedTrains,
     hideAllTrains,
     mapLoaded,
+    basemapMode,
     vehicleRouteFilter,
   ]);
 
@@ -4072,6 +4078,7 @@ export function SpeedMap({
     return () => clearTimeout(timeoutId);
   }, [
     mapLoaded,
+    basemapMode,
     vehicles,
     showStops,
     showCrossings,
@@ -4098,7 +4105,7 @@ export function SpeedMap({
       map.current?.off("sourcedata", debouncedReorder);
       debouncedReorder.cancel();
     };
-  }, [mapLoaded, reorderLayers]);
+  }, [mapLoaded, basemapMode, reorderLayers]);
 
   // Handle view mode toggle
   useEffect(() => {
@@ -4165,7 +4172,7 @@ export function SpeedMap({
         );
       }
     }
-  }, [viewMode, cachedVehicleGeoJSON, cachedLiveVehicleGeoJSON, mapLoaded]);
+  }, [viewMode, cachedVehicleGeoJSON, cachedLiveVehicleGeoJSON, mapLoaded, basemapMode]);
 
   // Memoized segment averages — computed from ALL readings (no speed filter).
   // Speed filtering happens in the display effect, which hides whole segments by average.
@@ -4483,6 +4490,7 @@ export function SpeedMap({
     hideStoppedTrains,
     viewMode,
     mapLoaded,
+    basemapMode,
     allRouteSegments,
     allRouteSegments500,
     allRouteSegments1000,
@@ -4505,7 +4513,7 @@ export function SpeedMap({
     } catch {
       // Layer might not exist yet
     }
-  }, [mapLoaded, segmentLayerFilter]);
+  }, [mapLoaded, basemapMode, segmentLayerFilter]);
 
   // Toggle satellite/dark base map
   useEffect(() => {
@@ -5148,7 +5156,7 @@ export function SpeedMap({
     return () => {
       cancelled = true;
     };
-  }, [mapLoaded, showPopulationDensity, city]);
+  }, [mapLoaded, basemapMode, showPopulationDensity, city]);
 
   // Separate effect for density mode and satellite opacity — GPU-only paint updates, no data reload
   useEffect(() => {
@@ -5299,7 +5307,7 @@ export function SpeedMap({
       "fill-opacity",
       opacityExpr,
     );
-  }, [mapLoaded, densityMode, isImageryBasemap, showPopulationDensity]);
+  }, [mapLoaded, basemapMode, densityMode, isImageryBasemap, showPopulationDensity]);
 
   // Update speed limit labels when speed unit changes
   useEffect(() => {
@@ -5323,7 +5331,7 @@ export function SpeedMap({
     } catch (e) {
       // Layer may not exist
     }
-  }, [mapLoaded, speedUnit]);
+  }, [mapLoaded, basemapMode, speedUnit]);
 
   return (
     <div className="map-wrapper">
