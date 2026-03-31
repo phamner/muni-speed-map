@@ -25,6 +25,7 @@ export type RouteLineMode = "byLine" | "bySpeedLimit" | "bySeparation";
 export type SpeedUnit = "mph" | "kmh";
 
 export type DensityMode = "population" | "jobs" | "transit";
+export type BasemapMode = "map" | "satellite" | "topo";
 
 export interface LineStats {
   line: string;
@@ -101,7 +102,7 @@ function App() {
   const [hideAllTrains, setHideAllTrains] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("segments-500");
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
-  const [showSatellite, setShowSatellite] = useState(false);
+  const [basemapMode, setBasemapMode] = useState<BasemapMode>("map");
   const [showPopulationDensity, setShowPopulationDensity] = useState(false);
   const [densityMode, setDensityMode] = useState<DensityMode>("population");
   const [speedUnit, setSpeedUnit] = useState<SpeedUnit>("mph");
@@ -225,8 +226,8 @@ function App() {
         hideStoppedTrains={hideStoppedTrains}
         hideAllTrains={hideAllTrains}
         viewMode={viewMode}
-        showSatellite={showSatellite}
-        onSatelliteToggle={setShowSatellite}
+        basemapMode={basemapMode}
+        onBasemapModeChange={setBasemapMode}
         showPopulationDensity={showPopulationDensity}
         onPopulationDensityToggle={setShowPopulationDensity}
         densityMode={densityMode}

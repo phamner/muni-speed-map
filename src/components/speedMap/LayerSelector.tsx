@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { Users, BriefcaseBusiness, TramFront } from "lucide-react";
-import type { DensityMode } from "../../App";
+import type { BasemapMode, DensityMode } from "../../App";
 
 interface LayerSelectorProps {
-  showSatellite: boolean;
+  basemapMode: BasemapMode;
   showPopulationDensity: boolean;
   densityMode: DensityMode;
-  onSatelliteToggle?: (show: boolean) => void;
+  showTopo?: boolean;
+  onBasemapModeChange?: (mode: BasemapMode) => void;
   onPopulationDensityToggle?: (show: boolean) => void;
   onDensityModeChange?: (mode: DensityMode) => void;
 }
 
 export function LayerSelector({
-  showSatellite,
+  basemapMode,
   showPopulationDensity,
   densityMode,
-  onSatelliteToggle,
+  showTopo = false,
+  onBasemapModeChange,
   onPopulationDensityToggle,
   onDensityModeChange,
 }: LayerSelectorProps) {
@@ -34,9 +36,9 @@ export function LayerSelector({
   return (
     <div className="map-layer-selector">
       <div
-        className={`map-layer-tile ${!showSatellite ? "active" : ""}`}
+        className={`map-layer-tile ${basemapMode === "map" ? "active" : ""}`}
         onClick={() => {
-          if (showSatellite) onSatelliteToggle?.(false);
+          if (basemapMode !== "map") onBasemapModeChange?.("map");
         }}
         title="Dark map"
       >
@@ -52,9 +54,11 @@ export function LayerSelector({
 
       <div className="layer-tiles-panel">
         <div
-          className={`map-layer-tile ${showSatellite ? "active" : ""}`}
+          className={`map-layer-tile ${basemapMode === "satellite" ? "active" : ""}`}
           onClick={() => {
-            onSatelliteToggle?.(!showSatellite);
+            onBasemapModeChange?.(
+              basemapMode === "satellite" ? "map" : "satellite",
+            );
           }}
           title="Satellite view"
         >
@@ -67,6 +71,25 @@ export function LayerSelector({
           />
           <span className="layer-label">Satellite</span>
         </div>
+
+        {showTopo && (
+          <div
+            className={`map-layer-tile ${basemapMode === "topo" ? "active" : ""}`}
+            onClick={() => {
+              onBasemapModeChange?.(basemapMode === "topo" ? "map" : "topo");
+            }}
+            title="Topographic view"
+          >
+            <div
+              className="layer-preview"
+              style={{
+                backgroundImage:
+                  "linear-gradient(180deg, #c7d4b6 0%, #a8c48c 35%, #d6c4a6 36%, #c6b18d 62%, #dde5cf 100%)",
+              }}
+            />
+            <span className="layer-label">Topo</span>
+          </div>
+        )}
 
         {/* Desktop: show all three density tiles directly */}
         <div

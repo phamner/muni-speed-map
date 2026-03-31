@@ -14,13 +14,14 @@ export default async function handler(req: any, res: any) {
   }
 
   try {
+    const mapType = req.query?.mapType === "terrain" ? "terrain" : "satellite";
     const response = await fetch(`${GOOGLE_TILE_SESSION_URL}?key=${apiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        mapType: "satellite",
+        mapType,
         language: "en-US",
         region: "US",
         imageFormat: "jpeg",
@@ -43,6 +44,7 @@ export default async function handler(req: any, res: any) {
     res.setHeader("Cache-Control", "private, max-age=300");
     res.status(200).json({
       session: data.session,
+      mapType,
       expiry: data.expiry,
       tileWidth: data.tileWidth,
       tileHeight: data.tileHeight,

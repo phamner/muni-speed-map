@@ -18,7 +18,13 @@ import {
 import slcRailContextHeavy from "../data/rail-context/slcRailContextHeavy.json";
 import slcRailContextCommuter from "../data/rail-context/slcRailContextCommuter.json";
 import { loadPopulationDensity } from "../data/populationDensityLoader";
-import type { SpeedFilter, ViewMode, LineStats, DensityMode } from "../App";
+import type {
+  BasemapMode,
+  SpeedFilter,
+  ViewMode,
+  LineStats,
+  DensityMode,
+} from "../App";
 import {
   debounce,
   waitForNoLongTasks,
@@ -310,8 +316,8 @@ interface SpeedMapProps {
   hideStoppedTrains: boolean;
   hideAllTrains: boolean;
   viewMode: ViewMode;
-  showSatellite: boolean;
-  onSatelliteToggle?: (show: boolean) => void;
+  basemapMode: BasemapMode;
+  onBasemapModeChange?: (mode: BasemapMode) => void;
   showPopulationDensity?: boolean;
   onPopulationDensityToggle?: (show: boolean) => void;
   densityMode?: DensityMode;
@@ -334,13 +340,14 @@ interface SpeedMapProps {
 
 interface GoogleTileSession {
   session: string;
+  mapType?: "satellite" | "terrain";
   expiry?: string;
   tileWidth?: number;
   tileHeight?: number;
   imageFormat?: string;
 }
 
-function shouldUseGoogleSatelliteFromUrl(): boolean {
+function shouldUseGoogleTilesFromUrl(): boolean {
   if (typeof window === "undefined") return false;
   const params = new URLSearchParams(window.location.search);
   return (
@@ -524,8 +531,8 @@ export function SpeedMap({
   hideStoppedTrains,
   hideAllTrains,
   viewMode,
-  showSatellite,
-  onSatelliteToggle,
+  basemapMode,
+  onBasemapModeChange,
   showPopulationDensity,
   onPopulationDensityToggle,
   densityMode = "population",
@@ -595,9 +602,18 @@ export function SpeedMap({
   const [googleTileError, setGoogleTileError] = useState<string | null>(null);
   const [googleViewportCopyright, setGoogleViewportCopyright] =
     useState<string>("");
-  const wantsGoogleSatellite = useMemo(shouldUseGoogleSatelliteFromUrl, []);
-  const shouldUseGoogleSatellite =
-    wantsGoogleSatellite && googleTileSession !== null && !googleTileError;
+  const wantsGoogleTiles = useMemo(shouldUseGoogleTilesFromUrl, []);
+  const showSatellite = basemapMode === "satellite";
+  const showTopo = basemapMode === "topo";
+  const isGoogleBasemapMode = showSatellite || showTopo;
+  const isImageryBasemap = basemapMode !== "map";
+  const googleMapType = showTopo ? "terrain" : "satellite";
+  const shouldUseGoogleTiles =
+    wantsGoogleTiles &&
+    isGoogleBasemapMode &&
+    googleTileSession !== null &&
+    googleTileSession.mapType === googleMapType &&
+    !googleTileError;
 
   // City static data - loaded lazily on-demand
   const [cityStaticData, setCityStaticData] = useState<CityStaticData | null>(
@@ -736,13 +752,15 @@ export function SpeedMap({
   }, [city]);
 
   useEffect(() => {
-    if (!wantsGoogleSatellite) return;
+    if (!wantsGoogleTiles || !isGoogleBasemapMode) return;
 
     let cancelled = false;
 
     async function loadGoogleTileSession() {
       try {
-        const response = await fetch("/api/google-map-tiles/session");
+        const response = await fetch(
+          `/api/google-map-tiles/session?mapType=${encodeURIComponent(googleMapType)}`,
+        );
         const data = await response.json();
 
         if (!response.ok) {
@@ -755,7 +773,7 @@ export function SpeedMap({
         }
       } catch (error: any) {
         console.warn(
-          "Google satellite session unavailable, falling back to Esri:",
+          `Google ${googleMapType} session unavailable, falling back to default basemap:`,
           error,
         );
         if (!cancelled) {
@@ -771,7 +789,7 @@ export function SpeedMap({
     return () => {
       cancelled = true;
     };
-  }, [wantsGoogleSatellite]);
+  }, [wantsGoogleTiles, isGoogleBasemapMode, googleMapType]);
 
   // Use loaded city data or empty placeholder
   const cityConfig = useMemo(
@@ -1645,9 +1663,17 @@ export function SpeedMap({
 
   useEffect(() => {
     if (!mapLoaded || !map.current || !googleTileSession?.session) return;
-    if (map.current.getSource("satellite-google")) return;
 
-    map.current.addSource("satellite-google", {
+    if (map.current.getSource("google-basemap")) {
+      try {
+        map.current.removeLayer("google-basemap-layer");
+      } catch {}
+      try {
+        map.current.removeSource("google-basemap");
+      } catch {}
+    }
+
+    map.current.addSource("google-basemap", {
       type: "raster",
       tiles: [
         `/api/google-map-tiles/tile?session=${encodeURIComponent(
@@ -1660,9 +1686,9 @@ export function SpeedMap({
 
     map.current.addLayer(
       {
-        id: "satellite-layer-google",
+        id: "google-basemap-layer",
         type: "raster",
-        source: "satellite-google",
+        source: "google-basemap",
         minzoom: 0,
         maxzoom: 22,
         layout: {
@@ -4414,30 +4440,32 @@ export function SpeedMap({
     if (!mapLoaded || !map.current) return;
 
     try {
+      const showDarkMap =
+        basemapMode === "map" || (showTopo && !shouldUseGoogleTiles);
       map.current.setLayoutProperty(
         "carto-dark-layer",
         "visibility",
-        showSatellite ? "none" : "visible",
+        showDarkMap ? "visible" : "none",
       );
       map.current.setLayoutProperty(
         "satellite-layer-esri",
         "visibility",
-        showSatellite && !shouldUseGoogleSatellite ? "visible" : "none",
+        showSatellite && !shouldUseGoogleTiles ? "visible" : "none",
       );
-      if (map.current.getLayer("satellite-layer-google")) {
+      if (map.current.getLayer("google-basemap-layer")) {
         map.current.setLayoutProperty(
-          "satellite-layer-google",
+          "google-basemap-layer",
           "visibility",
-          showSatellite && shouldUseGoogleSatellite ? "visible" : "none",
+          basemapMode !== "map" && shouldUseGoogleTiles ? "visible" : "none",
         );
       }
     } catch (e) {
       // Layers may not exist yet
     }
-  }, [mapLoaded, showSatellite, shouldUseGoogleSatellite]);
+  }, [mapLoaded, basemapMode, showSatellite, showTopo, shouldUseGoogleTiles]);
 
   useEffect(() => {
-    if (!mapLoaded || !map.current || !showSatellite || !shouldUseGoogleSatellite) {
+    if (!mapLoaded || !map.current || basemapMode === "map" || !shouldUseGoogleTiles) {
       setGoogleViewportCopyright("");
       return;
     }
@@ -4482,7 +4510,7 @@ export function SpeedMap({
       cancelled = true;
       map.current?.off("moveend", updateViewportAttribution);
     };
-  }, [mapLoaded, showSatellite, shouldUseGoogleSatellite, googleTileSession]);
+  }, [mapLoaded, basemapMode, shouldUseGoogleTiles, googleTileSession]);
 
   // Toggle population density layer (using US Census tract data)
   useEffect(() => {
@@ -4846,7 +4874,7 @@ export function SpeedMap({
               : curMode === "transit"
                 ? "TRANSIT_PCT"
                 : "density";
-          const satMult = showSatellite ? 0.7 : 1;
+          const satMult = isImageryBasemap ? 0.7 : 1;
           map.current.setPaintProperty(
             "population-density-fill",
             "fill-color",
@@ -5017,7 +5045,7 @@ export function SpeedMap({
     if (!map.current || !mapLoaded || !showPopulationDensity) return;
     if (!map.current.getLayer("population-density-fill")) return;
 
-    const fillOpacityMultiplier = showSatellite ? 0.7 : 1;
+    const fillOpacityMultiplier = isImageryBasemap ? 0.7 : 1;
     const densityProp =
       densityMode === "jobs"
         ? "jobDensity"
@@ -5161,7 +5189,7 @@ export function SpeedMap({
       "fill-opacity",
       opacityExpr,
     );
-  }, [mapLoaded, densityMode, showSatellite, showPopulationDensity]);
+  }, [mapLoaded, densityMode, isImageryBasemap, showPopulationDensity]);
 
   // Update speed limit labels when speed unit changes
   useEffect(() => {
@@ -5226,10 +5254,11 @@ export function SpeedMap({
       </button>
 
       <LayerSelector
-        showSatellite={showSatellite}
+        basemapMode={basemapMode}
         showPopulationDensity={showPopulationDensity ?? false}
         densityMode={densityMode}
-        onSatelliteToggle={onSatelliteToggle}
+        showTopo={wantsGoogleTiles}
+        onBasemapModeChange={onBasemapModeChange}
         onPopulationDensityToggle={onPopulationDensityToggle}
         onDensityModeChange={onDensityModeChange}
       />
@@ -5252,7 +5281,7 @@ export function SpeedMap({
         </div>
       )}
 
-      {showSatellite && shouldUseGoogleSatellite && (
+      {basemapMode !== "map" && shouldUseGoogleTiles && (
         <div
           style={{
             position: "absolute",
@@ -5270,7 +5299,7 @@ export function SpeedMap({
             maxWidth: 280,
           }}
         >
-          <strong>Google Maps</strong>
+          <strong>{showTopo ? "Google Terrain" : "Google Maps"}</strong>
           {googleViewportCopyright ? ` | ${googleViewportCopyright}` : ""}
         </div>
       )}
