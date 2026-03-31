@@ -353,6 +353,51 @@ function shouldUseGoogleTilesFromUrl(): boolean {
   return true;
 }
 
+function createDefaultBasemapStyle(): maplibregl.StyleSpecification {
+  return {
+    version: 8,
+    sources: {
+      "carto-dark": {
+        type: "raster",
+        tiles: [
+          "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+          "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+          "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+        ],
+        tileSize: 256,
+        attribution: "&copy; OpenStreetMap &copy; CARTO",
+      },
+      "satellite-esri": {
+        type: "raster",
+        tiles: [
+          "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+        ],
+        tileSize: 256,
+        attribution: "&copy; Esri, Maxar, Earthstar Geographics",
+      },
+    },
+    layers: [
+      {
+        id: "carto-dark-layer",
+        type: "raster",
+        source: "carto-dark",
+        minzoom: 0,
+        maxzoom: 19,
+      },
+      {
+        id: "satellite-layer-esri",
+        type: "raster",
+        source: "satellite-esri",
+        minzoom: 0,
+        maxzoom: 19,
+        layout: {
+          visibility: "none",
+        },
+      },
+    ],
+  };
+}
+
 const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
   Record<City, Record<string, string>>
 > = {
@@ -613,6 +658,7 @@ export function SpeedMap({
   const googleSatelliteSession = googleTileSessions.satellite;
   const googleTerrainSession = googleTileSessions.terrain;
   const googleSatelliteError = googleTileErrors.satellite || null;
+  const topoStyleActiveRef = useRef(basemapMode === "topo");
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     showSatellite &&
@@ -1594,66 +1640,10 @@ export function SpeedMap({
 
     map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: {
-        version: 8,
-        sources: {
-          "carto-dark": {
-            type: "raster",
-            tiles: [
-              "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-              "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-              "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-            ],
-            tileSize: 256,
-            attribution: "&copy; OpenStreetMap &copy; CARTO",
-          },
-          "satellite-esri": {
-            type: "raster",
-            tiles: [
-              "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-            ],
-            tileSize: 256,
-            attribution: "&copy; Esri, Maxar, Earthstar Geographics",
-          },
-          "topo-esri": {
-            type: "raster",
-            tiles: [
-              "/api/maptiler-topo/tile?z={z}&x={x}&y={y}",
-            ],
-            tileSize: 256,
-            attribution: "&copy; MapTiler",
-          },
-        },
-        layers: [
-          {
-            id: "carto-dark-layer",
-            type: "raster",
-            source: "carto-dark",
-            minzoom: 0,
-            maxzoom: 19,
-          },
-          {
-            id: "satellite-layer-esri",
-            type: "raster",
-            source: "satellite-esri",
-            minzoom: 0,
-            maxzoom: 19,
-            layout: {
-              visibility: "none", // Hidden by default
-            },
-          },
-          {
-            id: "topo-layer-esri",
-            type: "raster",
-            source: "topo-esri",
-            minzoom: 0,
-            maxzoom: 19,
-            layout: {
-              visibility: "none",
-            },
-          },
-        ],
-      },
+      style:
+        basemapMode === "topo"
+          ? "/api/maptiler-topo/style"
+          : createDefaultBasemapStyle(),
       center: cityConfig.center,
       zoom: cityConfig.zoom,
       minZoom: 8.5,
@@ -1687,11 +1677,30 @@ export function SpeedMap({
       setMapLoaded(true);
     });
 
+    map.current.on("style.load", () => {
+      setMapLoaded(true);
+    });
+
     return () => {
       map.current?.remove();
       map.current = null;
     };
   }, [city]); // Re-initialize map when city changes
+
+  useEffect(() => {
+    if (!map.current) return;
+
+    const shouldUseTopoStyle = basemapMode === "topo";
+    if (topoStyleActiveRef.current === shouldUseTopoStyle) return;
+
+    topoStyleActiveRef.current = shouldUseTopoStyle;
+    setMapLoaded(false);
+    map.current.setStyle(
+      shouldUseTopoStyle
+        ? "/api/maptiler-topo/style"
+        : createDefaultBasemapStyle(),
+    );
+  }, [basemapMode]);
 
   useEffect(() => {
     if (!mapLoaded || !map.current) return;
@@ -4512,19 +4521,14 @@ export function SpeedMap({
       map.current.setLayoutProperty(
         "satellite-layer-esri",
         "visibility",
-        showSatellite
-          ? "visible"
-          : "none",
+        showSatellite ? "visible" : "none",
       );
-      if (map.current.getLayer("topo-layer-esri")) {
-        map.current.setLayoutProperty(
-          "topo-layer-esri",
-          "visibility",
-          showTopo ? "visible" : "none",
-        );
-      }
       if (map.current.getLayer("topo-reference-layer-esri")) {
-        map.current.setLayoutProperty("topo-reference-layer-esri", "visibility", "none");
+        map.current.setLayoutProperty(
+          "topo-reference-layer-esri",
+          "visibility",
+          "none",
+        );
       }
       if (map.current.getLayer("google-satellite-layer")) {
         map.current.setLayoutProperty(
