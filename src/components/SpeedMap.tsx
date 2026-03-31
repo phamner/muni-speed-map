@@ -1794,100 +1794,91 @@ export function SpeedMap({
         attribution: "MapTiler Contours",
       });
 
-      mapInstance.addLayer(
-        {
-          id: "maptiler-contours-casing",
-          type: "line",
-          source: "maptiler-contours",
-          "source-layer": "contour",
-          minzoom: 9,
-          maxzoom: 15,
-          layout: {
-            visibility: "none",
-            "line-join": "round",
-            "line-cap": "round",
-          },
-          paint: {
-            "line-color": "rgba(54, 35, 12, 0.42)",
-            "line-width": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              9,
-              0.6,
-              12,
-              1.2,
-              15,
-              2.2,
-            ],
-          },
+      mapInstance.addLayer({
+        id: "maptiler-contours-casing",
+        type: "line",
+        source: "maptiler-contours",
+        "source-layer": "contour",
+        minzoom: 9,
+        maxzoom: 15,
+        layout: {
+          visibility: "none",
+          "line-join": "round",
+          "line-cap": "round",
         },
-        "route-lines",
-      );
+        paint: {
+          "line-color": "rgba(54, 35, 12, 0.42)",
+          "line-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            9,
+            0.6,
+            12,
+            1.2,
+            15,
+            2.2,
+          ],
+        },
+      });
 
-      mapInstance.addLayer(
-        {
-          id: "maptiler-contours-minor",
-          type: "line",
-          source: "maptiler-contours",
-          "source-layer": "contour",
-          minzoom: 9,
-          maxzoom: 15,
-          layout: {
-            visibility: "none",
-            "line-join": "round",
-            "line-cap": "round",
-          },
-          filter: ["!=", "nth_line", 5],
-          paint: {
-            "line-color": "rgba(244, 232, 199, 0.38)",
-            "line-width": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              9,
-              0.35,
-              12,
-              0.65,
-              15,
-              1.05,
-            ],
-          },
+      mapInstance.addLayer({
+        id: "maptiler-contours-minor",
+        type: "line",
+        source: "maptiler-contours",
+        "source-layer": "contour",
+        minzoom: 9,
+        maxzoom: 15,
+        layout: {
+          visibility: "none",
+          "line-join": "round",
+          "line-cap": "round",
         },
-        "route-lines",
-      );
+        filter: ["!=", "nth_line", 5],
+        paint: {
+          "line-color": "rgba(244, 232, 199, 0.38)",
+          "line-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            9,
+            0.35,
+            12,
+            0.65,
+            15,
+            1.05,
+          ],
+        },
+      });
 
-      mapInstance.addLayer(
-        {
-          id: "maptiler-contours-major",
-          type: "line",
-          source: "maptiler-contours",
-          "source-layer": "contour",
-          minzoom: 9,
-          maxzoom: 15,
-          layout: {
-            visibility: "none",
-            "line-join": "round",
-            "line-cap": "round",
-          },
-          filter: ["==", "nth_line", 5],
-          paint: {
-            "line-color": "rgba(255, 249, 228, 0.82)",
-            "line-width": [
-              "interpolate",
-              ["linear"],
-              ["zoom"],
-              9,
-              0.7,
-              12,
-              1.3,
-              15,
-              2,
-            ],
-          },
+      mapInstance.addLayer({
+        id: "maptiler-contours-major",
+        type: "line",
+        source: "maptiler-contours",
+        "source-layer": "contour",
+        minzoom: 9,
+        maxzoom: 15,
+        layout: {
+          visibility: "none",
+          "line-join": "round",
+          "line-cap": "round",
         },
-        "route-lines",
-      );
+        filter: ["==", "nth_line", 5],
+        paint: {
+          "line-color": "rgba(255, 249, 228, 0.82)",
+          "line-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            9,
+            0.7,
+            12,
+            1.3,
+            15,
+            2,
+          ],
+        },
+      });
 
       setMapTilerContoursAvailable(true);
     } catch (error) {
@@ -4649,7 +4640,10 @@ export function SpeedMap({
       map.current.setLayoutProperty(
         "satellite-layer-esri",
         "visibility",
-        showSatellite && !shouldUseGoogleSatellite ? "visible" : "none",
+        ((showSatellite && !shouldUseGoogleSatellite) ||
+          (showTopo && !shouldUseGoogleSatellite))
+          ? "visible"
+          : "none",
       );
       if (map.current.getLayer("google-satellite-layer")) {
         map.current.setLayoutProperty(
