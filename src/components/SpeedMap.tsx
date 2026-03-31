@@ -4513,16 +4513,20 @@ export function SpeedMap({
 
     try {
       const showDarkMap = basemapMode === "map";
-      map.current.setLayoutProperty(
-        "carto-dark-layer",
-        "visibility",
-        showDarkMap ? "visible" : "none",
-      );
-      map.current.setLayoutProperty(
-        "satellite-layer-esri",
-        "visibility",
-        showSatellite ? "visible" : "none",
-      );
+      if (map.current.getLayer("carto-dark-layer")) {
+        map.current.setLayoutProperty(
+          "carto-dark-layer",
+          "visibility",
+          showDarkMap ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("satellite-layer-esri")) {
+        map.current.setLayoutProperty(
+          "satellite-layer-esri",
+          "visibility",
+          showSatellite ? "visible" : "none",
+        );
+      }
       if (map.current.getLayer("topo-reference-layer-esri")) {
         map.current.setLayoutProperty(
           "topo-reference-layer-esri",
