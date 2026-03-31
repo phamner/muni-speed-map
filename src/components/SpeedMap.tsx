@@ -610,6 +610,8 @@ export function SpeedMap({
   >({});
   const [googleViewportCopyright, setGoogleViewportCopyright] =
     useState<string>("");
+  const [mapTilerContoursAvailable, setMapTilerContoursAvailable] =
+    useState(true);
   const wantsGoogleTiles = useMemo(shouldUseGoogleTilesFromUrl, []);
   const showSatellite = basemapMode === "satellite";
   const showTopo = basemapMode === "topo";
@@ -618,19 +620,13 @@ export function SpeedMap({
   const googleSatelliteSession = googleTileSessions.satellite;
   const googleTerrainSession = googleTileSessions.terrain;
   const googleSatelliteError = googleTileErrors.satellite || null;
-  const googleTerrainError = googleTileErrors.terrain || null;
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     isGoogleBasemapMode &&
     googleSatelliteSession !== null &&
     googleSatelliteSession.mapType === "satellite" &&
     !googleSatelliteError;
-  const shouldUseGoogleTerrainOverlay =
-    wantsGoogleTiles &&
-    showTopo &&
-    googleTerrainSession !== null &&
-    googleTerrainSession.mapType === "terrain" &&
-    !googleTerrainError;
+  const shouldUseMapTilerContours = showTopo && mapTilerContoursAvailable;
 
   // City static data - loaded lazily on-demand
   const [cityStaticData, setCityStaticData] = useState<CityStaticData | null>(
@@ -772,9 +768,7 @@ export function SpeedMap({
     if (!wantsGoogleTiles || !isGoogleBasemapMode) return;
 
     let cancelled = false;
-    const requestedMapTypes: GoogleMapType[] = showTopo
-      ? ["satellite", "terrain"]
-      : ["satellite"];
+    const requestedMapTypes: GoogleMapType[] = ["satellite"];
 
     async function loadGoogleTileSessions() {
       await Promise.all(
@@ -1764,6 +1758,144 @@ export function SpeedMap({
       opacity: 0.38,
     });
   }, [mapLoaded, googleSatelliteSession, googleTerrainSession]);
+
+  useEffect(() => {
+    if (!mapLoaded || !map.current) return;
+
+    const mapInstance = map.current;
+
+    const removeContoursLayers = () => {
+      [
+        "maptiler-contours-major",
+        "maptiler-contours-minor",
+        "maptiler-contours-casing",
+      ].forEach((layerId) => {
+        if (mapInstance.getLayer(layerId)) {
+          try {
+            mapInstance.removeLayer(layerId);
+          } catch {}
+        }
+      });
+      if (mapInstance.getSource("maptiler-contours")) {
+        try {
+          mapInstance.removeSource("maptiler-contours");
+        } catch {}
+      }
+    };
+
+    removeContoursLayers();
+
+    try {
+      mapInstance.addSource("maptiler-contours", {
+        type: "vector",
+        tiles: ["/api/maptiler-contours/tile?z={z}&x={x}&y={y}"],
+        minzoom: 0,
+        maxzoom: 14,
+        attribution: "MapTiler Contours",
+      });
+
+      mapInstance.addLayer(
+        {
+          id: "maptiler-contours-casing",
+          type: "line",
+          source: "maptiler-contours",
+          "source-layer": "contour",
+          minzoom: 9,
+          maxzoom: 15,
+          layout: {
+            visibility: "none",
+            "line-join": "round",
+            "line-cap": "round",
+          },
+          paint: {
+            "line-color": "rgba(54, 35, 12, 0.42)",
+            "line-width": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              9,
+              0.6,
+              12,
+              1.2,
+              15,
+              2.2,
+            ],
+          },
+        },
+        "route-lines",
+      );
+
+      mapInstance.addLayer(
+        {
+          id: "maptiler-contours-minor",
+          type: "line",
+          source: "maptiler-contours",
+          "source-layer": "contour",
+          minzoom: 9,
+          maxzoom: 15,
+          layout: {
+            visibility: "none",
+            "line-join": "round",
+            "line-cap": "round",
+          },
+          filter: ["!=", "nth_line", 5],
+          paint: {
+            "line-color": "rgba(244, 232, 199, 0.38)",
+            "line-width": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              9,
+              0.35,
+              12,
+              0.65,
+              15,
+              1.05,
+            ],
+          },
+        },
+        "route-lines",
+      );
+
+      mapInstance.addLayer(
+        {
+          id: "maptiler-contours-major",
+          type: "line",
+          source: "maptiler-contours",
+          "source-layer": "contour",
+          minzoom: 9,
+          maxzoom: 15,
+          layout: {
+            visibility: "none",
+            "line-join": "round",
+            "line-cap": "round",
+          },
+          filter: ["==", "nth_line", 5],
+          paint: {
+            "line-color": "rgba(255, 249, 228, 0.82)",
+            "line-width": [
+              "interpolate",
+              ["linear"],
+              ["zoom"],
+              9,
+              0.7,
+              12,
+              1.3,
+              15,
+              2,
+            ],
+          },
+        },
+        "route-lines",
+      );
+
+      setMapTilerContoursAvailable(true);
+    } catch (error) {
+      console.warn("MapTiler contours unavailable:", error);
+      setMapTilerContoursAvailable(false);
+      removeContoursLayers();
+    }
+  }, [mapLoaded]);
 
   // Speed-based color scale (memoized to prevent re-renders)
   // Uses same scale as speed limits for consistency
@@ -4508,7 +4640,7 @@ export function SpeedMap({
     try {
       const showDarkMap =
         basemapMode === "map" ||
-        (showTopo && !shouldUseGoogleSatellite && !shouldUseGoogleTerrainOverlay);
+        (showTopo && !shouldUseGoogleSatellite);
       map.current.setLayoutProperty(
         "carto-dark-layer",
         "visibility",
@@ -4532,7 +4664,28 @@ export function SpeedMap({
         map.current.setLayoutProperty(
           "google-terrain-layer",
           "visibility",
-          showTopo && shouldUseGoogleTerrainOverlay ? "visible" : "none",
+          "none",
+        );
+      }
+      if (map.current.getLayer("maptiler-contours-casing")) {
+        map.current.setLayoutProperty(
+          "maptiler-contours-casing",
+          "visibility",
+          showTopo && shouldUseMapTilerContours ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("maptiler-contours-minor")) {
+        map.current.setLayoutProperty(
+          "maptiler-contours-minor",
+          "visibility",
+          showTopo && shouldUseMapTilerContours ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("maptiler-contours-major")) {
+        map.current.setLayoutProperty(
+          "maptiler-contours-major",
+          "visibility",
+          showTopo && shouldUseMapTilerContours ? "visible" : "none",
         );
       }
     } catch (e) {
@@ -4544,19 +4697,17 @@ export function SpeedMap({
     showSatellite,
     showTopo,
     shouldUseGoogleSatellite,
-    shouldUseGoogleTerrainOverlay,
+    shouldUseMapTilerContours,
   ]);
 
   useEffect(() => {
-    const attributionSession = showTopo
-      ? googleTerrainSession?.session || googleSatelliteSession?.session
-      : googleSatelliteSession?.session;
+    const attributionSession = googleSatelliteSession?.session;
 
     if (
       !mapLoaded ||
       !map.current ||
       basemapMode === "map" ||
-      !(showTopo ? shouldUseGoogleSatellite || shouldUseGoogleTerrainOverlay : shouldUseGoogleSatellite) ||
+      !shouldUseGoogleSatellite ||
       !attributionSession
     ) {
       setGoogleViewportCopyright("");
@@ -4608,9 +4759,7 @@ export function SpeedMap({
     basemapMode,
     showTopo,
     shouldUseGoogleSatellite,
-    shouldUseGoogleTerrainOverlay,
     googleSatelliteSession,
-    googleTerrainSession,
   ]);
 
   // Toggle population density layer (using US Census tract data)
@@ -5383,7 +5532,7 @@ export function SpeedMap({
       )}
 
       {basemapMode !== "map" &&
-        (shouldUseGoogleSatellite || shouldUseGoogleTerrainOverlay) && (
+        (shouldUseGoogleSatellite || shouldUseMapTilerContours) && (
         <div
           style={{
             position: "absolute",
@@ -5401,7 +5550,9 @@ export function SpeedMap({
             maxWidth: 280,
           }}
         >
-          <strong>{showTopo ? "Google Satellite + Terrain" : "Google Maps"}</strong>
+          <strong>
+            {showTopo ? "Google Satellite + MapTiler Contours" : "Google Maps"}
+          </strong>
           {googleViewportCopyright ? ` | ${googleViewportCopyright}` : ""}
         </div>
         )}
