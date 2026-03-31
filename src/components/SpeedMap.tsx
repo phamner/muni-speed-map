@@ -610,8 +610,6 @@ export function SpeedMap({
   >({});
   const [googleViewportCopyright, setGoogleViewportCopyright] =
     useState<string>("");
-  const [mapTilerHillshadeAvailable, setMapTilerHillshadeAvailable] =
-    useState(true);
   const wantsGoogleTiles = useMemo(shouldUseGoogleTilesFromUrl, []);
   const showSatellite = basemapMode === "satellite";
   const showTopo = basemapMode === "topo";
@@ -626,7 +624,6 @@ export function SpeedMap({
     googleSatelliteSession !== null &&
     googleSatelliteSession.mapType === "satellite" &&
     !googleSatelliteError;
-  const shouldUseMapTilerHillshade = showTopo && mapTilerHillshadeAvailable;
 
   // City static data - loaded lazily on-demand
   const [cityStaticData, setCityStaticData] = useState<CityStaticData | null>(
@@ -1623,6 +1620,22 @@ export function SpeedMap({
             tileSize: 256,
             attribution: "&copy; Esri, Maxar, Earthstar Geographics",
           },
+          "topo-esri": {
+            type: "raster",
+            tiles: [
+              "https://services.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}",
+            ],
+            tileSize: 256,
+            attribution: "&copy; Esri",
+          },
+          "topo-esri-reference": {
+            type: "raster",
+            tiles: [
+              "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{z}/{y}/{x}",
+            ],
+            tileSize: 256,
+            attribution: "&copy; Esri",
+          },
         },
         layers: [
           {
@@ -1640,6 +1653,26 @@ export function SpeedMap({
             maxzoom: 19,
             layout: {
               visibility: "none", // Hidden by default
+            },
+          },
+          {
+            id: "topo-layer-esri",
+            type: "raster",
+            source: "topo-esri",
+            minzoom: 0,
+            maxzoom: 19,
+            layout: {
+              visibility: "none",
+            },
+          },
+          {
+            id: "topo-reference-layer-esri",
+            type: "raster",
+            source: "topo-esri-reference",
+            minzoom: 0,
+            maxzoom: 19,
+            layout: {
+              visibility: "none",
             },
           },
         ],
@@ -1758,70 +1791,6 @@ export function SpeedMap({
       opacity: 0.38,
     });
   }, [mapLoaded, googleSatelliteSession, googleTerrainSession]);
-
-  useEffect(() => {
-    if (!mapLoaded || !map.current) return;
-
-    const mapInstance = map.current;
-
-    const removeHillshadeLayer = () => {
-      if (mapInstance.getLayer("maptiler-hillshade-layer")) {
-        try {
-          mapInstance.removeLayer("maptiler-hillshade-layer");
-        } catch {}
-      }
-      if (mapInstance.getSource("maptiler-hillshade")) {
-        try {
-          mapInstance.removeSource("maptiler-hillshade");
-        } catch {}
-      }
-    };
-
-    removeHillshadeLayer();
-
-    try {
-      mapInstance.addSource("maptiler-hillshade", {
-        type: "raster",
-        tiles: ["/api/maptiler-hillshade/tile?z={z}&x={x}&y={y}"],
-        tileSize: 256,
-        minzoom: 0,
-        maxzoom: 14,
-        attribution: "MapTiler Hillshade",
-      });
-
-      mapInstance.addLayer({
-        id: "maptiler-hillshade-layer",
-        type: "raster",
-        source: "maptiler-hillshade",
-        minzoom: 0,
-        maxzoom: 14,
-        layout: {
-          visibility: "none",
-        },
-        paint: {
-          "raster-opacity": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            8,
-            0.28,
-            10,
-            0.42,
-            12,
-            0.58,
-            14,
-            0.72,
-          ],
-        },
-      });
-
-      setMapTilerHillshadeAvailable(true);
-    } catch (error) {
-      console.warn("MapTiler hillshade unavailable:", error);
-      setMapTilerHillshadeAvailable(false);
-      removeHillshadeLayer();
-    }
-  }, [mapLoaded]);
 
   // Speed-based color scale (memoized to prevent re-renders)
   // Uses same scale as speed limits for consistency
@@ -4564,9 +4533,7 @@ export function SpeedMap({
     if (!mapLoaded || !map.current) return;
 
     try {
-      const showDarkMap =
-        basemapMode === "map" ||
-        (showTopo && !shouldUseGoogleSatellite);
+      const showDarkMap = basemapMode === "map";
       map.current.setLayoutProperty(
         "carto-dark-layer",
         "visibility",
@@ -4575,15 +4542,29 @@ export function SpeedMap({
       map.current.setLayoutProperty(
         "satellite-layer-esri",
         "visibility",
-        (showSatellite || showTopo)
+        (showSatellite && !shouldUseGoogleSatellite)
           ? "visible"
           : "none",
       );
+      if (map.current.getLayer("topo-layer-esri")) {
+        map.current.setLayoutProperty(
+          "topo-layer-esri",
+          "visibility",
+          showTopo ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("topo-reference-layer-esri")) {
+        map.current.setLayoutProperty(
+          "topo-reference-layer-esri",
+          "visibility",
+          showTopo ? "visible" : "none",
+        );
+      }
       if (map.current.getLayer("google-satellite-layer")) {
         map.current.setLayoutProperty(
           "google-satellite-layer",
           "visibility",
-          (showSatellite || showTopo) && shouldUseGoogleSatellite
+          showSatellite && shouldUseGoogleSatellite
             ? "visible"
             : "none",
         );
@@ -4595,13 +4576,6 @@ export function SpeedMap({
           "none",
         );
       }
-      if (map.current.getLayer("maptiler-hillshade-layer")) {
-        map.current.setLayoutProperty(
-          "maptiler-hillshade-layer",
-          "visibility",
-          showTopo && shouldUseMapTilerHillshade ? "visible" : "none",
-        );
-      }
     } catch (e) {
       // Layers may not exist yet
     }
@@ -4611,7 +4585,6 @@ export function SpeedMap({
     showSatellite,
     showTopo,
     shouldUseGoogleSatellite,
-    shouldUseMapTilerHillshade,
   ]);
 
   useEffect(() => {
@@ -4620,7 +4593,7 @@ export function SpeedMap({
     if (
       !mapLoaded ||
       !map.current ||
-      basemapMode === "map" ||
+      basemapMode !== "satellite" ||
       !shouldUseGoogleSatellite ||
       !attributionSession
     ) {
@@ -4671,7 +4644,6 @@ export function SpeedMap({
   }, [
     mapLoaded,
     basemapMode,
-    showTopo,
     shouldUseGoogleSatellite,
     googleSatelliteSession,
   ]);
@@ -5445,8 +5417,7 @@ export function SpeedMap({
         </div>
       )}
 
-      {basemapMode !== "map" &&
-        (shouldUseGoogleSatellite || shouldUseMapTilerHillshade) && (
+      {basemapMode === "satellite" && shouldUseGoogleSatellite && (
         <div
           style={{
             position: "absolute",
@@ -5464,9 +5435,7 @@ export function SpeedMap({
             maxWidth: 280,
           }}
         >
-          <strong>
-            {showTopo ? "Satellite + MapTiler Hillshade" : "Google Maps"}
-          </strong>
+          <strong>Google Maps</strong>
           {googleViewportCopyright ? ` | ${googleViewportCopyright}` : ""}
         </div>
         )}
