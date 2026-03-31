@@ -1555,7 +1555,7 @@ export function SpeedMap({
       center: cityConfig.center,
       zoom: cityConfig.zoom,
       minZoom: 8.5,
-      maxZoom: 18,
+      maxZoom: 21,
     });
 
     map.current.addControl(new maplibregl.NavigationControl(), "bottom-right");
