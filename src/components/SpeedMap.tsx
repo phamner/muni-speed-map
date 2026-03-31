@@ -610,7 +610,7 @@ export function SpeedMap({
   >({});
   const [googleViewportCopyright, setGoogleViewportCopyright] =
     useState<string>("");
-  const [mapTilerContoursAvailable, setMapTilerContoursAvailable] =
+  const [mapTilerHillshadeAvailable, setMapTilerHillshadeAvailable] =
     useState(true);
   const wantsGoogleTiles = useMemo(shouldUseGoogleTilesFromUrl, []);
   const showSatellite = basemapMode === "satellite";
@@ -626,7 +626,7 @@ export function SpeedMap({
     googleSatelliteSession !== null &&
     googleSatelliteSession.mapType === "satellite" &&
     !googleSatelliteError;
-  const shouldUseMapTilerContours = showTopo && mapTilerContoursAvailable;
+  const shouldUseMapTilerHillshade = showTopo && mapTilerHillshadeAvailable;
 
   // City static data - loaded lazily on-demand
   const [cityStaticData, setCityStaticData] = useState<CityStaticData | null>(
@@ -1764,127 +1764,62 @@ export function SpeedMap({
 
     const mapInstance = map.current;
 
-    const removeContoursLayers = () => {
-      [
-        "maptiler-contours-major",
-        "maptiler-contours-minor",
-        "maptiler-contours-casing",
-      ].forEach((layerId) => {
-        if (mapInstance.getLayer(layerId)) {
-          try {
-            mapInstance.removeLayer(layerId);
-          } catch {}
-        }
-      });
-      if (mapInstance.getSource("maptiler-contours")) {
+    const removeHillshadeLayer = () => {
+      if (mapInstance.getLayer("maptiler-hillshade-layer")) {
         try {
-          mapInstance.removeSource("maptiler-contours");
+          mapInstance.removeLayer("maptiler-hillshade-layer");
+        } catch {}
+      }
+      if (mapInstance.getSource("maptiler-hillshade")) {
+        try {
+          mapInstance.removeSource("maptiler-hillshade");
         } catch {}
       }
     };
 
-    removeContoursLayers();
+    removeHillshadeLayer();
 
     try {
-      mapInstance.addSource("maptiler-contours", {
-        type: "vector",
-        tiles: ["/api/maptiler-contours/tile?z={z}&x={x}&y={y}"],
+      mapInstance.addSource("maptiler-hillshade", {
+        type: "raster",
+        tiles: ["/api/maptiler-hillshade/tile?z={z}&x={x}&y={y}"],
+        tileSize: 256,
         minzoom: 0,
         maxzoom: 14,
-        attribution: "MapTiler Contours",
+        attribution: "MapTiler Hillshade",
       });
 
       mapInstance.addLayer({
-        id: "maptiler-contours-casing",
-        type: "line",
-        source: "maptiler-contours",
-        "source-layer": "contour",
-        minzoom: 9,
-        maxzoom: 15,
+        id: "maptiler-hillshade-layer",
+        type: "raster",
+        source: "maptiler-hillshade",
+        minzoom: 0,
+        maxzoom: 14,
         layout: {
           visibility: "none",
-          "line-join": "round",
-          "line-cap": "round",
         },
         paint: {
-          "line-color": "rgba(54, 35, 12, 0.42)",
-          "line-width": [
+          "raster-opacity": [
             "interpolate",
             ["linear"],
             ["zoom"],
-            9,
-            0.6,
+            8,
+            0.28,
+            10,
+            0.42,
             12,
-            1.2,
-            15,
-            2.2,
+            0.58,
+            14,
+            0.72,
           ],
         },
       });
 
-      mapInstance.addLayer({
-        id: "maptiler-contours-minor",
-        type: "line",
-        source: "maptiler-contours",
-        "source-layer": "contour",
-        minzoom: 9,
-        maxzoom: 15,
-        layout: {
-          visibility: "none",
-          "line-join": "round",
-          "line-cap": "round",
-        },
-        filter: ["!=", "nth_line", 5],
-        paint: {
-          "line-color": "rgba(244, 232, 199, 0.38)",
-          "line-width": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            9,
-            0.35,
-            12,
-            0.65,
-            15,
-            1.05,
-          ],
-        },
-      });
-
-      mapInstance.addLayer({
-        id: "maptiler-contours-major",
-        type: "line",
-        source: "maptiler-contours",
-        "source-layer": "contour",
-        minzoom: 9,
-        maxzoom: 15,
-        layout: {
-          visibility: "none",
-          "line-join": "round",
-          "line-cap": "round",
-        },
-        filter: ["==", "nth_line", 5],
-        paint: {
-          "line-color": "rgba(255, 249, 228, 0.82)",
-          "line-width": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            9,
-            0.7,
-            12,
-            1.3,
-            15,
-            2,
-          ],
-        },
-      });
-
-      setMapTilerContoursAvailable(true);
+      setMapTilerHillshadeAvailable(true);
     } catch (error) {
-      console.warn("MapTiler contours unavailable:", error);
-      setMapTilerContoursAvailable(false);
-      removeContoursLayers();
+      console.warn("MapTiler hillshade unavailable:", error);
+      setMapTilerHillshadeAvailable(false);
+      removeHillshadeLayer();
     }
   }, [mapLoaded]);
 
@@ -4640,8 +4575,7 @@ export function SpeedMap({
       map.current.setLayoutProperty(
         "satellite-layer-esri",
         "visibility",
-        ((showSatellite && !shouldUseGoogleSatellite) ||
-          (showTopo && !shouldUseGoogleSatellite))
+        (showSatellite || showTopo)
           ? "visible"
           : "none",
       );
@@ -4661,25 +4595,11 @@ export function SpeedMap({
           "none",
         );
       }
-      if (map.current.getLayer("maptiler-contours-casing")) {
+      if (map.current.getLayer("maptiler-hillshade-layer")) {
         map.current.setLayoutProperty(
-          "maptiler-contours-casing",
+          "maptiler-hillshade-layer",
           "visibility",
-          showTopo && shouldUseMapTilerContours ? "visible" : "none",
-        );
-      }
-      if (map.current.getLayer("maptiler-contours-minor")) {
-        map.current.setLayoutProperty(
-          "maptiler-contours-minor",
-          "visibility",
-          showTopo && shouldUseMapTilerContours ? "visible" : "none",
-        );
-      }
-      if (map.current.getLayer("maptiler-contours-major")) {
-        map.current.setLayoutProperty(
-          "maptiler-contours-major",
-          "visibility",
-          showTopo && shouldUseMapTilerContours ? "visible" : "none",
+          showTopo && shouldUseMapTilerHillshade ? "visible" : "none",
         );
       }
     } catch (e) {
@@ -4691,7 +4611,7 @@ export function SpeedMap({
     showSatellite,
     showTopo,
     shouldUseGoogleSatellite,
-    shouldUseMapTilerContours,
+    shouldUseMapTilerHillshade,
   ]);
 
   useEffect(() => {
@@ -5526,7 +5446,7 @@ export function SpeedMap({
       )}
 
       {basemapMode !== "map" &&
-        (shouldUseGoogleSatellite || shouldUseMapTilerContours) && (
+        (shouldUseGoogleSatellite || shouldUseMapTilerHillshade) && (
         <div
           style={{
             position: "absolute",
@@ -5545,7 +5465,7 @@ export function SpeedMap({
           }}
         >
           <strong>
-            {showTopo ? "Google Satellite + MapTiler Contours" : "Google Maps"}
+            {showTopo ? "Satellite + MapTiler Hillshade" : "Google Maps"}
           </strong>
           {googleViewportCopyright ? ` | ${googleViewportCopyright}` : ""}
         </div>
