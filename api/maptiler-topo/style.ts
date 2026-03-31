@@ -2,15 +2,8 @@ const MAPTILER_TOPO_STYLE_ID = "019d452b-cbcd-7652-aaf8-34e89d173128";
 const MAPTILER_TOPO_STYLE_URL = `https://api.maptiler.com/maps/${MAPTILER_TOPO_STYLE_ID}/style.json`;
 
 function appendKey(url: string, apiKey: string): string {
-  try {
-    const parsed = new URL(url);
-    if (!parsed.searchParams.has("key")) {
-      parsed.searchParams.set("key", apiKey);
-    }
-    return parsed.toString();
-  } catch {
-    return url;
-  }
+  if (url.includes("key=")) return url;
+  return `${url}${url.includes("?") ? "&" : "?"}key=${apiKey}`;
 }
 
 export default async function handler(req: any, res: any) {
