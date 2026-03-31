@@ -1623,18 +1623,10 @@ export function SpeedMap({
           "topo-esri": {
             type: "raster",
             tiles: [
-              "https://services.arcgisonline.com/ArcGIS/rest/services/World_Terrain_Base/MapServer/tile/{z}/{y}/{x}",
+              "/api/maptiler-topo/tile?z={z}&x={x}&y={y}",
             ],
             tileSize: 256,
-            attribution: "&copy; Esri",
-          },
-          "topo-esri-reference": {
-            type: "raster",
-            tiles: [
-              "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Reference_Overlay/MapServer/tile/{z}/{y}/{x}",
-            ],
-            tileSize: 256,
-            attribution: "&copy; Esri",
+            attribution: "&copy; MapTiler",
           },
         },
         layers: [
@@ -1659,16 +1651,6 @@ export function SpeedMap({
             id: "topo-layer-esri",
             type: "raster",
             source: "topo-esri",
-            minzoom: 0,
-            maxzoom: 19,
-            layout: {
-              visibility: "none",
-            },
-          },
-          {
-            id: "topo-reference-layer-esri",
-            type: "raster",
-            source: "topo-esri-reference",
             minzoom: 0,
             maxzoom: 19,
             layout: {
@@ -4554,11 +4536,7 @@ export function SpeedMap({
         );
       }
       if (map.current.getLayer("topo-reference-layer-esri")) {
-        map.current.setLayoutProperty(
-          "topo-reference-layer-esri",
-          "visibility",
-          showTopo ? "visible" : "none",
-        );
+        map.current.setLayoutProperty("topo-reference-layer-esri", "visibility", "none");
       }
       if (map.current.getLayer("google-satellite-layer")) {
         map.current.setLayoutProperty(
