@@ -347,6 +347,8 @@ interface GoogleTileSession {
   imageFormat?: string;
 }
 
+type GoogleMapType = "satellite" | "terrain";
+
 function shouldUseGoogleTilesFromUrl(): boolean {
   if (typeof window === "undefined") return false;
   const params = new URLSearchParams(window.location.search);
@@ -597,9 +599,15 @@ export function SpeedMap({
   );
   const [loadingProgress, setLoadingProgress] = useState<string>("");
   const [isProcessing, setIsProcessing] = useState(false);
-  const [googleTileSession, setGoogleTileSession] =
-    useState<GoogleTileSession | null>(null);
-  const [googleTileError, setGoogleTileError] = useState<string | null>(null);
+  const [googleTileSessions, setGoogleTileSessions] = useState<
+    Record<GoogleMapType, GoogleTileSession | null>
+  >({
+    satellite: null,
+    terrain: null,
+  });
+  const [googleTileErrors, setGoogleTileErrors] = useState<
+    Partial<Record<GoogleMapType, string>>
+  >({});
   const [googleViewportCopyright, setGoogleViewportCopyright] =
     useState<string>("");
   const wantsGoogleTiles = useMemo(shouldUseGoogleTilesFromUrl, []);
@@ -607,13 +615,22 @@ export function SpeedMap({
   const showTopo = basemapMode === "topo";
   const isGoogleBasemapMode = showSatellite || showTopo;
   const isImageryBasemap = basemapMode !== "map";
-  const googleMapType = showTopo ? "terrain" : "satellite";
-  const shouldUseGoogleTiles =
+  const googleSatelliteSession = googleTileSessions.satellite;
+  const googleTerrainSession = googleTileSessions.terrain;
+  const googleSatelliteError = googleTileErrors.satellite || null;
+  const googleTerrainError = googleTileErrors.terrain || null;
+  const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     isGoogleBasemapMode &&
-    googleTileSession !== null &&
-    googleTileSession.mapType === googleMapType &&
-    !googleTileError;
+    googleSatelliteSession !== null &&
+    googleSatelliteSession.mapType === "satellite" &&
+    !googleSatelliteError;
+  const shouldUseGoogleTerrainOverlay =
+    wantsGoogleTiles &&
+    showTopo &&
+    googleTerrainSession !== null &&
+    googleTerrainSession.mapType === "terrain" &&
+    !googleTerrainError;
 
   // City static data - loaded lazily on-demand
   const [cityStaticData, setCityStaticData] = useState<CityStaticData | null>(
@@ -755,41 +772,52 @@ export function SpeedMap({
     if (!wantsGoogleTiles || !isGoogleBasemapMode) return;
 
     let cancelled = false;
+    const requestedMapTypes: GoogleMapType[] = showTopo
+      ? ["satellite", "terrain"]
+      : ["satellite"];
 
-    async function loadGoogleTileSession() {
-      try {
-        const response = await fetch(
-          `/api/google-map-tiles/session?mapType=${encodeURIComponent(googleMapType)}`,
-        );
-        const data = await response.json();
+    async function loadGoogleTileSessions() {
+      await Promise.all(
+        requestedMapTypes.map(async (mapType) => {
+          try {
+            const response = await fetch(
+              `/api/google-map-tiles/session?mapType=${encodeURIComponent(mapType)}`,
+            );
+            const data = await response.json();
 
-        if (!response.ok) {
-          throw new Error(data?.error || "Failed to create Google tile session");
-        }
+            if (!response.ok) {
+              throw new Error(
+                data?.error || "Failed to create Google tile session",
+              );
+            }
 
-        if (!cancelled) {
-          setGoogleTileSession(data);
-          setGoogleTileError(null);
-        }
-      } catch (error: any) {
-        console.warn(
-          `Google ${googleMapType} session unavailable, falling back to default basemap:`,
-          error,
-        );
-        if (!cancelled) {
-          setGoogleTileSession(null);
-          setGoogleTileError(
-            error?.message || "Failed to create Google tile session",
-          );
-        }
-      }
+            if (!cancelled) {
+              setGoogleTileSessions((prev) => ({ ...prev, [mapType]: data }));
+              setGoogleTileErrors((prev) => ({ ...prev, [mapType]: undefined }));
+            }
+          } catch (error: any) {
+            console.warn(
+              `Google ${mapType} session unavailable, falling back to default basemap:`,
+              error,
+            );
+            if (!cancelled) {
+              setGoogleTileSessions((prev) => ({ ...prev, [mapType]: null }));
+              setGoogleTileErrors((prev) => ({
+                ...prev,
+                [mapType]:
+                  error?.message || "Failed to create Google tile session",
+              }));
+            }
+          }
+        }),
+      );
     }
 
-    loadGoogleTileSession();
+    loadGoogleTileSessions();
     return () => {
       cancelled = true;
     };
-  }, [wantsGoogleTiles, isGoogleBasemapMode, googleMapType]);
+  }, [wantsGoogleTiles, isGoogleBasemapMode, showTopo]);
 
   // Use loaded city data or empty placeholder
   const cityConfig = useMemo(
@@ -1662,42 +1690,80 @@ export function SpeedMap({
   }, [city]); // Re-initialize map when city changes
 
   useEffect(() => {
-    if (!mapLoaded || !map.current || !googleTileSession?.session) return;
+    if (!mapLoaded || !map.current) return;
 
-    if (map.current.getSource("google-basemap")) {
-      try {
-        map.current.removeLayer("google-basemap-layer");
-      } catch {}
-      try {
-        map.current.removeSource("google-basemap");
-      } catch {}
-    }
+    const syncGoogleRasterLayer = ({
+      sourceId,
+      layerId,
+      session,
+      beforeId,
+      opacity,
+    }: {
+      sourceId: string;
+      layerId: string;
+      session: GoogleTileSession | null;
+      beforeId: string;
+      opacity?: number;
+    }) => {
+      if (map.current!.getSource(sourceId)) {
+        try {
+          map.current!.removeLayer(layerId);
+        } catch {}
+        try {
+          map.current!.removeSource(sourceId);
+        } catch {}
+      }
 
-    map.current.addSource("google-basemap", {
-      type: "raster",
-      tiles: [
-        `/api/google-map-tiles/tile?session=${encodeURIComponent(
-          googleTileSession.session,
-        )}&z={z}&x={x}&y={y}`,
-      ],
-      tileSize: 256,
-      attribution: "Google Maps",
+      if (!session?.session) return;
+
+      map.current!.addSource(sourceId, {
+        type: "raster",
+        tiles: [
+          `/api/google-map-tiles/tile?session=${encodeURIComponent(
+            session.session,
+          )}&z={z}&x={x}&y={y}`,
+        ],
+        tileSize: 256,
+        attribution: "Google Maps",
+      });
+
+      map.current!.addLayer(
+        {
+          id: layerId,
+          type: "raster",
+          source: sourceId,
+          minzoom: 0,
+          maxzoom: 22,
+          layout: {
+            visibility: "none",
+          },
+          ...(typeof opacity === "number"
+            ? {
+                paint: {
+                  "raster-opacity": opacity,
+                },
+              }
+            : {}),
+        },
+        beforeId,
+      );
+    };
+
+    syncGoogleRasterLayer({
+      sourceId: "google-satellite",
+      layerId: "google-satellite-layer",
+      session: googleSatelliteSession,
+      beforeId: "carto-dark-layer",
     });
 
-    map.current.addLayer(
-      {
-        id: "google-basemap-layer",
-        type: "raster",
-        source: "google-basemap",
-        minzoom: 0,
-        maxzoom: 22,
-        layout: {
-          visibility: "none",
-        },
-      },
-      "carto-dark-layer",
-    );
-  }, [mapLoaded, googleTileSession]);
+    syncGoogleRasterLayer({
+      sourceId: "google-terrain",
+      layerId: "google-terrain-layer",
+      session: googleTerrainSession,
+      beforeId: "carto-dark-layer",
+      opacity: 0.38,
+    });
+  }, [mapLoaded, googleSatelliteSession, googleTerrainSession]);
 
   // Speed-based color scale (memoized to prevent re-renders)
   // Uses same scale as speed limits for consistency
@@ -4441,7 +4507,8 @@ export function SpeedMap({
 
     try {
       const showDarkMap =
-        basemapMode === "map" || (showTopo && !shouldUseGoogleTiles);
+        basemapMode === "map" ||
+        (showTopo && !shouldUseGoogleSatellite && !shouldUseGoogleTerrainOverlay);
       map.current.setLayoutProperty(
         "carto-dark-layer",
         "visibility",
@@ -4450,22 +4517,48 @@ export function SpeedMap({
       map.current.setLayoutProperty(
         "satellite-layer-esri",
         "visibility",
-        showSatellite && !shouldUseGoogleTiles ? "visible" : "none",
+        showSatellite && !shouldUseGoogleSatellite ? "visible" : "none",
       );
-      if (map.current.getLayer("google-basemap-layer")) {
+      if (map.current.getLayer("google-satellite-layer")) {
         map.current.setLayoutProperty(
-          "google-basemap-layer",
+          "google-satellite-layer",
           "visibility",
-          basemapMode !== "map" && shouldUseGoogleTiles ? "visible" : "none",
+          (showSatellite || showTopo) && shouldUseGoogleSatellite
+            ? "visible"
+            : "none",
+        );
+      }
+      if (map.current.getLayer("google-terrain-layer")) {
+        map.current.setLayoutProperty(
+          "google-terrain-layer",
+          "visibility",
+          showTopo && shouldUseGoogleTerrainOverlay ? "visible" : "none",
         );
       }
     } catch (e) {
       // Layers may not exist yet
     }
-  }, [mapLoaded, basemapMode, showSatellite, showTopo, shouldUseGoogleTiles]);
+  }, [
+    mapLoaded,
+    basemapMode,
+    showSatellite,
+    showTopo,
+    shouldUseGoogleSatellite,
+    shouldUseGoogleTerrainOverlay,
+  ]);
 
   useEffect(() => {
-    if (!mapLoaded || !map.current || basemapMode === "map" || !shouldUseGoogleTiles) {
+    const attributionSession = showTopo
+      ? googleTerrainSession?.session || googleSatelliteSession?.session
+      : googleSatelliteSession?.session;
+
+    if (
+      !mapLoaded ||
+      !map.current ||
+      basemapMode === "map" ||
+      !(showTopo ? shouldUseGoogleSatellite || shouldUseGoogleTerrainOverlay : shouldUseGoogleSatellite) ||
+      !attributionSession
+    ) {
       setGoogleViewportCopyright("");
       return;
     }
@@ -4473,11 +4566,11 @@ export function SpeedMap({
     let cancelled = false;
 
     const updateViewportAttribution = async () => {
-      if (!map.current || !googleTileSession?.session) return;
+      if (!map.current || !attributionSession) return;
       const bounds = map.current.getBounds();
       const zoom = Math.max(0, Math.round(map.current.getZoom()));
       const params = new URLSearchParams({
-        session: googleTileSession.session,
+        session: attributionSession,
         zoom: String(zoom),
         north: String(bounds.getNorth()),
         south: String(bounds.getSouth()),
@@ -4510,7 +4603,15 @@ export function SpeedMap({
       cancelled = true;
       map.current?.off("moveend", updateViewportAttribution);
     };
-  }, [mapLoaded, basemapMode, shouldUseGoogleTiles, googleTileSession]);
+  }, [
+    mapLoaded,
+    basemapMode,
+    showTopo,
+    shouldUseGoogleSatellite,
+    shouldUseGoogleTerrainOverlay,
+    googleSatelliteSession,
+    googleTerrainSession,
+  ]);
 
   // Toggle population density layer (using US Census tract data)
   useEffect(() => {
@@ -5281,7 +5382,8 @@ export function SpeedMap({
         </div>
       )}
 
-      {basemapMode !== "map" && shouldUseGoogleTiles && (
+      {basemapMode !== "map" &&
+        (shouldUseGoogleSatellite || shouldUseGoogleTerrainOverlay) && (
         <div
           style={{
             position: "absolute",
@@ -5299,10 +5401,10 @@ export function SpeedMap({
             maxWidth: 280,
           }}
         >
-          <strong>{showTopo ? "Google Terrain" : "Google Maps"}</strong>
+          <strong>{showTopo ? "Google Satellite + Terrain" : "Google Maps"}</strong>
           {googleViewportCopyright ? ` | ${googleViewportCopyright}` : ""}
         </div>
-      )}
+        )}
 
       {dataSource === "none" && !cityDataLoading && !isProcessing && (
         <div className="data-status">

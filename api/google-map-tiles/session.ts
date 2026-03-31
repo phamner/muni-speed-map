@@ -15,19 +15,28 @@ export default async function handler(req: any, res: any) {
 
   try {
     const mapType = req.query?.mapType === "terrain" ? "terrain" : "satellite";
+    const sessionBody =
+      mapType === "terrain"
+        ? {
+            mapType,
+            language: "en-US",
+            region: "US",
+            layerTypes: ["layerRoadmap"],
+          }
+        : {
+            mapType,
+            language: "en-US",
+            region: "US",
+            imageFormat: "jpeg",
+            scale: "scaleFactor1x",
+            highDpi: true,
+          };
     const response = await fetch(`${GOOGLE_TILE_SESSION_URL}?key=${apiKey}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        mapType,
-        language: "en-US",
-        region: "US",
-        imageFormat: "jpeg",
-        scale: "scaleFactor1x",
-        highDpi: true,
-      }),
+      body: JSON.stringify(sessionBody),
     });
 
     const text = await response.text();
