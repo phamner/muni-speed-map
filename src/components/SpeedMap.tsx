@@ -449,6 +449,16 @@ const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
     "027": "Howard County",
     "510": "Baltimore City",
   },
+  "Washington DC": {
+    "001": "District of Columbia",
+    "013": "Arlington County",
+    "031": "Montgomery County",
+    "033": "Prince George's County",
+    "059": "Fairfax County",
+    "510": "Alexandria city",
+    "600": "Fairfax city",
+    "610": "Falls Church city",
+  },
 };
 
 const TORONTO_POPULATION_DENSITY_AREAS: Record<string, string> = {

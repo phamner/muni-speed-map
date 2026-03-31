@@ -83,7 +83,7 @@ export const railContextFeeds = {
       includeRouteLongNames: ["PENN - WASHINGTON", "CAMDEN - WASHINGTON"],
     },
   ],
-  Washington: [],
+  "Washington DC": [],
 };
 
 export const cityToRailContextPrefix = {
@@ -109,5 +109,5 @@ export const cityToRailContextPrefix = {
   Cleveland: "cleveland",
   Charlotte: "charlotte",
   Baltimore: "baltimore",
-  Washington: "washington",
+  "Washington DC": "washington",
 };

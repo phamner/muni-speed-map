@@ -8,6 +8,7 @@ const { Readable } = require("stream");
 // State FIPS -> state abbreviation for LODES URLs
 const STATE_FIPS_TO_ABBR = {
   "06": "ca", // SF, LA, San Diego, San Jose
+  "11": "dc", // Washington DC
   "25": "ma", // Boston
   "42": "pa", // Philadelphia (PA side), Pittsburgh
   "34": "nj", // Philadelphia (NJ side)
@@ -21,6 +22,7 @@ const STATE_FIPS_TO_ABBR = {
   "37": "nc", // Charlotte
   "24": "md", // Baltimore
   "27": "mn", // Minneapolis
+  "51": "va", // Washington DC
 };
 
 // City -> state FIPS codes needed
@@ -41,6 +43,7 @@ const CITY_TO_STATE_FIPS = {
   Charlotte: ["37"],
   Baltimore: ["24"],
   Minneapolis: ["27"],
+  "Washington DC": ["11", "24", "51"],
 };
 
 const DENSITY_DIR = path.join(__dirname, "../src/data/population-density");
@@ -122,6 +125,7 @@ async function main() {
     Cleveland: "cleveland",
     Charlotte: "charlotte",
     Baltimore: "baltimore",
+    "Washington DC": "washingtonDc",
   };
 
   const citiesToProcess = filterCity

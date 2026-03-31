@@ -9,7 +9,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.join(__dirname, "..");
 
-const BBOX = [38.94, -77.12, 39.05, -76.86];
 const OVERPASS_ENDPOINTS = [
   "https://overpass-api.de/api/interpreter",
   "https://overpass.kumi.systems/api/interpreter",
@@ -138,6 +137,29 @@ function readRouteLines() {
   });
 }
 
+function getRouteBBox(routeLines, padding = 0.01) {
+  let south = Infinity;
+  let west = Infinity;
+  let north = -Infinity;
+  let east = -Infinity;
+
+  for (const line of routeLines) {
+    for (const [lon, lat] of line) {
+      if (lat < south) south = lat;
+      if (lat > north) north = lat;
+      if (lon < west) west = lon;
+      if (lon > east) east = lon;
+    }
+  }
+
+  return [
+    south - padding,
+    west - padding,
+    north + padding,
+    east + padding,
+  ];
+}
+
 function centroidFromCoords(coords) {
   const [sumLon, sumLat] = coords.reduce(
     (acc, coord) => [acc[0] + coord[0], acc[1] + coord[1]],
@@ -255,14 +277,15 @@ function crossingType(tags = {}) {
 }
 
 async function main() {
-  const [south, west, north, east] = BBOX;
   const routeLines = readRouteLines();
+  const [south, west, north, east] = getRouteBBox(routeLines);
 
   const trackData = await fetchOverpass(`
 [out:json][timeout:90];
 (
   way["name"="Purple Line"]["railway"="construction"](${south},${west},${north},${east});
   way["name"="Purple Line"]["construction:railway"="light_rail"](${south},${west},${north},${east});
+  way["name"="Purple Line"]["railway"~"light_rail|tram"](${south},${west},${north},${east});
 );
 (._;>;);
 out body;

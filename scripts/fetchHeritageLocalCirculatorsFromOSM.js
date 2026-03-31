@@ -55,7 +55,7 @@ const CITIES = [
     bbox: [38.94, -77.12, 39.05, -76.86],
     outputFile: "washingtonPreviewRoutes.json",
     routeTypesRegex: "tram|light_rail",
-    fetchMode: "construction_ways",
+    fetchMode: "hybrid_ways",
     lineDefinitions: [
       {
         routeId: "PURPLE",
@@ -326,12 +326,20 @@ async function fetchCity(config) {
     });
   }
 
-  if (config.fetchMode === "construction_ways") {
+  if (
+    config.fetchMode === "construction_ways" ||
+    config.fetchMode === "hybrid_ways"
+  ) {
     const wayQuery = `
 [out:json][timeout:90];
 (
   way["railway"="construction"]["name"](${south},${west},${north},${east});
   way["construction:railway"~"tram|light_rail"]["name"](${south},${west},${north},${east});
+  ${
+    config.fetchMode === "hybrid_ways"
+      ? `way["railway"~"tram|light_rail"]["name"](${south},${west},${north},${east});`
+      : ""
+  }
 );
 out body geom;
 `;
@@ -427,6 +435,8 @@ out body geom;
         source:
           config.fetchMode === "construction_ways"
             ? "OpenStreetMap construction railway ways"
+            : config.fetchMode === "hybrid_ways"
+              ? "OpenStreetMap Purple Line railway ways"
             : "OpenStreetMap route relation",
       },
       geometry: {

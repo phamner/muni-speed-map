@@ -4,8 +4,8 @@
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "2250328109",
-        "stop_name": "College Park",
+        "stop_id": "1374894928",
+        "stop_name": "Glenridge",
         "routes": [
           "PURPLE"
         ]
@@ -13,42 +13,8 @@
       "geometry": {
         "type": "Point",
         "coordinates": [
-          -76.9287505,
-          38.9779334
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "738189344,1402212",
-        "stop_name": "College Park–University of Maryland",
-        "routes": [
-          "PURPLE"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -76.92836545,
-          38.9783776
-        ]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "stop_id": "3816542778,7020776231",
-        "stop_name": "Silver Spring",
-        "routes": [
-          "PURPLE"
-        ]
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          -77.03071235,
-          38.99329975
+          -76.8851386,
+          38.9509622
         ]
       }
     }

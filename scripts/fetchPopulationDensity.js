@@ -28,6 +28,7 @@ const TIGERWEB_URL =
 // State FIPS codes
 const STATE = {
   CA: "06",
+  DC: "11",
   MA: "25",
   MN: "27",
   UT: "49",
@@ -40,6 +41,7 @@ const STATE = {
   OH: "39",
   NC: "37",
   MD: "24",
+  VA: "51",
 };
 
 // City configurations: output filename + array of [stateFips, countyFips, countyName]
@@ -188,6 +190,19 @@ const CITY_CONFIGS = {
       [STATE.MD, "005", "Baltimore County"],
       [STATE.MD, "003", "Anne Arundel County"],
       [STATE.MD, "027", "Howard County"],
+    ],
+  },
+  washingtonDc: {
+    file: "washingtonDcPopulationDensity.json",
+    counties: [
+      [STATE.DC, "001", "District of Columbia"],
+      [STATE.MD, "031", "Montgomery County"],
+      [STATE.MD, "033", "Prince George's County"],
+      [STATE.VA, "013", "Arlington County"],
+      [STATE.VA, "059", "Fairfax County"],
+      [STATE.VA, "510", "Alexandria city"],
+      [STATE.VA, "600", "Fairfax city"],
+      [STATE.VA, "610", "Falls Church city"],
     ],
   },
 };

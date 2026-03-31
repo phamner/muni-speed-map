@@ -29,6 +29,11 @@ const CITY_QUERIES = {
   Charlotte: [{ state: "37", counties: ["071", "119", "179"] }],
   Baltimore: [{ state: "24", counties: ["003", "005", "027", "510"] }],
   Minneapolis: [{ state: "27", counties: ["037", "053", "123"] }],
+  "Washington DC": [
+    { state: "11", counties: ["001"] },
+    { state: "24", counties: ["031", "033"] },
+    { state: "51", counties: ["013", "059", "510", "600", "610"] },
+  ],
 };
 
 const cityToPrefix = {
@@ -48,6 +53,7 @@ const cityToPrefix = {
   Cleveland: "cleveland",
   Charlotte: "charlotte",
   Baltimore: "baltimore",
+  "Washington DC": "washingtonDc",
 };
 
 function fetchJson(url) {

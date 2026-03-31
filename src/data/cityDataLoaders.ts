@@ -41,6 +41,7 @@ const cityToRailContextPrefix: Partial<Record<City, string>> = {
   Cleveland: "cleveland",
   Charlotte: "charlotte",
   Baltimore: "baltimore",
+  "Washington DC": "washington",
 };
 
 const cityToCommuterRailContextFilename: Partial<Record<City, string>> = {
