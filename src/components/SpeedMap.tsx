@@ -44,10 +44,14 @@ import {
   type Vehicle,
   cityDataCache,
   POSITION_COLUMNS,
+  SEGMENT_MAPPING_VERSION,
+  LEGACY_POSITION_COLUMNS,
   fetchPagesParallel,
   getRouteFeatureMap,
   findSegmentsForVehicle,
+  getPrecomputedSegments,
   getDirection,
+  rowHasPrecomputedSegmentMapping,
   SF_TERMINUS,
   LA_TERMINUS,
   BOSTON_BRANCH_NAMES,
@@ -1264,6 +1268,24 @@ export function SpeedMap({
     (rows: any[], routes: any, cityName: string): Vehicle[] => {
       const routeFeatureMap = getRouteFeatureMap(routes);
       return rows.map((row: any) => {
+        const precomputed = getPrecomputedSegments(row);
+        if (precomputed) {
+          return {
+            id: `${row.vehicle_id}-${row.id}`,
+            lat: row.lat,
+            lon: row.lon,
+            routeId: row.route_id,
+            direction: getDirection(row.direction_id),
+            speed: row.speed_calculated,
+            recordedAt: row.recorded_at,
+            segmentId: precomputed.segmentId,
+            segmentId500: precomputed.segmentId500,
+            segmentId1000: precomputed.segmentId1000,
+            headsign: row.headsign,
+            onRoute: precomputed.onRoute,
+          };
+        }
+
         const segments = findSegmentsForVehicle(
           row.lat,
           row.lon,
@@ -1316,10 +1338,11 @@ export function SpeedMap({
 
       // Fetch first page to check data availability
       let query;
+      let selectedColumns = POSITION_COLUMNS;
       if (city === "SF") {
         query = supabase
           .from("vehicle_positions")
-          .select(POSITION_COLUMNS)
+          .select(selectedColumns)
           .or("city.is.null,city.eq.SF")
           .order("recorded_at", { ascending: false })
           .range(0, PAGE_SIZE - 1);
@@ -1327,14 +1350,14 @@ export function SpeedMap({
         // Handle San Diego like SF - include both legacy (null) and new data
         query = supabase
           .from("vehicle_positions")
-          .select(POSITION_COLUMNS)
+          .select(selectedColumns)
           .or("city.is.null,city.eq.San Diego")
           .order("recorded_at", { ascending: false })
           .range(0, PAGE_SIZE - 1);
       } else {
         query = supabase
           .from("vehicle_positions")
-          .select(POSITION_COLUMNS)
+          .select(selectedColumns)
           .eq("city", city)
           .order("recorded_at", { ascending: false })
           .range(0, PAGE_SIZE - 1);
@@ -1344,9 +1367,10 @@ export function SpeedMap({
 
       // Legacy fallback for old schema
       if (error && error.code === "42703") {
+        selectedColumns = LEGACY_POSITION_COLUMNS;
         const fallbackQuery = supabase
           .from("vehicle_positions")
-          .select(POSITION_COLUMNS)
+          .select(selectedColumns)
           .order("recorded_at", { ascending: false })
           .range(0, PAGE_SIZE - 1);
         const result = await fallbackQuery;
@@ -1376,6 +1400,7 @@ export function SpeedMap({
             pageNum,
             PARALLEL_BATCH,
             PAGE_SIZE,
+            selectedColumns,
           );
           allData = [...allData, ...batchData];
           setLoadingProgress(
@@ -1402,6 +1427,19 @@ export function SpeedMap({
         `Mapping ${filteredData.length.toLocaleString()} positions to track...`,
       );
       setIsProcessing(true);
+
+      const missingSegmentCount = filteredData.filter(
+        (row: any) => !rowHasPrecomputedSegmentMapping(row),
+      ).length;
+      const needsClientMapping = missingSegmentCount > 0;
+
+      if (needsClientMapping) {
+        setLoadingProgress(
+          `Mapping ${missingSegmentCount.toLocaleString()} uncached positions to track...`,
+        );
+      } else {
+        setLoadingProgress("Using precomputed segment mapping...");
+      }
 
       console.time("Pre-computing segments");
       const thisRequestId = ++segmentRequestId.current;
@@ -1438,6 +1476,7 @@ export function SpeedMap({
           routes: cityConfig.routes,
           city,
           requestId: thisRequestId,
+          mappingVersion: SEGMENT_MAPPING_VERSION,
         });
       });
 
@@ -1555,7 +1594,7 @@ export function SpeedMap({
       center: cityConfig.center,
       zoom: cityConfig.zoom,
       minZoom: 8.5,
-      maxZoom: 21,
+      maxZoom: 18,
     });
 
     map.current.addControl(new maplibregl.NavigationControl(), "bottom-right");
