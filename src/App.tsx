@@ -72,6 +72,7 @@ function App() {
 
   // Track if "none" was selected to preserve across city switches
   const noneSelectedRef = useRef(false);
+  const previousCityRef = useRef<City>(city);
   // Keep ref in sync with selectedLines (synchronously via render, not effect)
   noneSelectedRef.current = selectedLines.length === 0;
 
@@ -107,9 +108,15 @@ function App() {
 
   // Reset state when city changes
   useEffect(() => {
+    const previousCity = previousCityRef.current;
+    const previousCityHadLines = getLinesForCity(previousCity).length > 0;
     const lines = getLinesForCity(city);
-    // Preserve "none" selection across city switches
-    if (noneSelectedRef.current) {
+    // Cities like Washington DC may legitimately have no selectable lines yet.
+    // Only preserve an explicit "none selected" choice when switching away from
+    // a city that actually had line choices.
+    if (lines.length === 0) {
+      setSelectedLines([]);
+    } else if (previousCityHadLines && noneSelectedRef.current) {
       // User had "none" selected, keep it that way
       setSelectedLines([]);
     } else if (city === "SF") {
@@ -132,6 +139,7 @@ function App() {
     if (viewMode === "live") {
       setViewMode("raw");
     }
+    previousCityRef.current = city;
     // Note: showStops, showCrossings, showRouteLines, speedFilter, viewMode,
     // and hideStoppedTrains are intentionally preserved across city switches
   }, [city]);

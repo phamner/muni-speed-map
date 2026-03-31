@@ -328,18 +328,67 @@ export interface Vehicle {
   segmentId500?: string | null;
   segmentId1000?: string | null;
   headsign?: string | null;
+  onRoute?: boolean;
 }
 
 export const cityDataCache = new Map<City, Vehicle[]>();
 
+export const SEGMENT_MAPPING_VERSION = 1;
+
+export const LEGACY_POSITION_COLUMNS =
+  "id,vehicle_id,lat,lon,route_id,direction_id,speed_calculated,recorded_at,headsign,segment_id";
+
 export const POSITION_COLUMNS =
-  "id,vehicle_id,lat,lon,route_id,direction_id,speed_calculated,recorded_at,headsign";
+  [
+    "id",
+    "vehicle_id",
+    "lat",
+    "lon",
+    "route_id",
+    "direction_id",
+    "speed_calculated",
+    "recorded_at",
+    "headsign",
+    "segment_id",
+    "segment_id_200",
+    "segment_id_500",
+    "segment_id_1000",
+    "on_route",
+    "mapping_version",
+  ].join(",");
+
+export function rowHasPrecomputedSegmentMapping(row: any): boolean {
+  return (
+    row?.mapping_version === SEGMENT_MAPPING_VERSION &&
+    typeof row?.on_route === "boolean" &&
+    row?.segment_id_200 != null &&
+    row?.segment_id_500 != null &&
+    row?.segment_id_1000 != null
+  );
+}
+
+export function getPrecomputedSegments(row: any): {
+  segmentId: string | null;
+  segmentId500: string | null;
+  segmentId1000: string | null;
+  onRoute: boolean;
+} | null {
+  if (!rowHasPrecomputedSegmentMapping(row)) return null;
+
+  return {
+    segmentId: row.segment_id_200 ?? row.segment_id ?? null,
+    segmentId500: row.segment_id_500 ?? null,
+    segmentId1000: row.segment_id_1000 ?? null,
+    onRoute: row.on_route,
+  };
+}
 
 export async function fetchPagesParallel(
   targetCity: City,
   startPage: number,
   numPages: number,
   pageSize: number,
+  columns: string = POSITION_COLUMNS,
 ): Promise<any[]> {
   if (!supabase) return [];
 
@@ -348,23 +397,23 @@ export async function fetchPagesParallel(
     const from = (startPage + i) * pageSize;
     let query;
     if (targetCity === "SF") {
-      query = supabase
+        query = supabase
         .from("vehicle_positions")
-        .select(POSITION_COLUMNS)
+        .select(columns)
         .or("city.is.null,city.eq.SF")
         .order("recorded_at", { ascending: false })
         .range(from, from + pageSize - 1);
     } else if (targetCity === "San Diego") {
-      query = supabase
+        query = supabase
         .from("vehicle_positions")
-        .select(POSITION_COLUMNS)
+        .select(columns)
         .or("city.is.null,city.eq.San Diego")
         .order("recorded_at", { ascending: false })
         .range(from, from + pageSize - 1);
     } else {
-      query = supabase
+        query = supabase
         .from("vehicle_positions")
-        .select(POSITION_COLUMNS)
+        .select(columns)
         .eq("city", targetCity)
         .order("recorded_at", { ascending: false })
         .range(from, from + pageSize - 1);
@@ -373,5 +422,14 @@ export async function fetchPagesParallel(
   }
 
   const results = await Promise.all(promises);
+  if (columns !== LEGACY_POSITION_COLUMNS && results.some((r) => r.error?.code === "42703")) {
+    return fetchPagesParallel(
+      targetCity,
+      startPage,
+      numPages,
+      pageSize,
+      LEGACY_POSITION_COLUMNS,
+    );
+  }
   return results.flatMap((r) => r.data || []);
 }

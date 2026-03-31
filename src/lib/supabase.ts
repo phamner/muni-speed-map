@@ -26,6 +26,12 @@ export interface VehiclePosition {
   speed_reported?: number;
   speed_calculated?: number;
   segment_id?: string;
+  segment_id_200?: string | null;
+  segment_id_500?: string | null;
+  segment_id_1000?: string | null;
+  on_route?: boolean | null;
+  mapping_version?: number | null;
+  mapped_at?: string | null;
 }
 
 export interface SegmentSpeed {
@@ -110,4 +116,3 @@ export async function getPositionCount(): Promise<number> {
 
   return error ? 0 : count || 0;
 }
-

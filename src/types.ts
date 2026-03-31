@@ -17,8 +17,23 @@ export const CITIES = [
   "Cleveland",
   "Charlotte",
   "Baltimore",
+  "Washington DC",
 ] as const;
 export type City = (typeof CITIES)[number];
+
+export const WASHINGTON_DC_LINES = ["PURPLE"] as const;
+export type WashingtonDcLine = (typeof WASHINGTON_DC_LINES)[number];
+
+export const WASHINGTON_DC_LINE_INFO: Record<
+  WashingtonDcLine,
+  { name: string; letter: string; color: string }
+> = {
+  PURPLE: {
+    name: "Purple Line",
+    letter: "Purple",
+    color: "#7F3FBF",
+  },
+};
 
 // San Francisco Muni Metro lines
 export const MUNI_LINES = ["J", "K", "L", "M", "N", "T", "F"] as const;
@@ -459,6 +474,8 @@ export function getLinesForCity(city: City): readonly string[] {
       return CHARLOTTE_LYNX_LINES;
     case "Baltimore":
       return BALTIMORE_LIGHT_RAIL_LINES;
+    case "Washington DC":
+      return WASHINGTON_DC_LINES;
   }
 }
 
@@ -533,6 +550,10 @@ export function getRouteDisplayName(routeId: string, city: City): string {
       return (
         BALTIMORE_LIGHT_RAIL_LINE_INFO[routeId as BaltimoreLightRailLine]
           ?.letter || routeId
+      );
+    case "Washington DC":
+      return (
+        WASHINGTON_DC_LINE_INFO[routeId as WashingtonDcLine]?.letter || routeId
       );
     default:
       return routeId;

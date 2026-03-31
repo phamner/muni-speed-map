@@ -4,6 +4,7 @@
  *
  * Downloads route relations for:
  * - OC Streetcar
+ * - Purple Line (Maryland / DC)
  * - Seattle Streetcar (First Hill + South Lake Union)
  * - Seattle Center Monorail
  * - Phoenix Streetcar
@@ -44,6 +45,30 @@ const CITIES = [
           return (
             text.includes("oc streetcar") ||
             text.includes("orange county streetcar")
+          );
+        },
+      },
+    ],
+  },
+  {
+    name: "Washington DC",
+    bbox: [38.94, -77.12, 39.05, -76.86],
+    outputFile: "washingtonPreviewRoutes.json",
+    routeTypesRegex: "tram|light_rail",
+    fetchMode: "construction_ways",
+    lineDefinitions: [
+      {
+        routeId: "PURPLE",
+        routeName: "Purple Line",
+        routeColor: "#7F3FBF",
+        matches: (tags) => {
+          const text = collectTagText(tags);
+          return (
+            text.includes("purple line") &&
+            (tags?.wikidata === "Q7261432" ||
+              String(tags?.wikipedia || "").toLowerCase() ===
+                "en:purple line (maryland)" ||
+              String(tags?.website || "").includes("purplelinemd.com"))
           );
         },
       },
@@ -423,7 +448,18 @@ out body geom;
 }
 
 async function main() {
-  for (const config of CITIES) {
+  const requestedCity = process.argv[2]?.toLowerCase();
+  const citiesToFetch = requestedCity
+    ? CITIES.filter((config) => config.name.toLowerCase() === requestedCity)
+    : CITIES;
+
+  if (requestedCity && citiesToFetch.length === 0) {
+    throw new Error(
+      `Unknown city "${process.argv[2]}". Expected one of: ${CITIES.map((config) => config.name).join(", ")}`,
+    );
+  }
+
+  for (const config of citiesToFetch) {
     await fetchCity(config);
   }
 }

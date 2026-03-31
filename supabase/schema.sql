@@ -18,6 +18,12 @@ CREATE TABLE IF NOT EXISTS vehicle_positions (
   speed_reported DOUBLE PRECISION,      -- Speed from API (if available)
   speed_calculated DOUBLE PRECISION,    -- Speed calculated from previous position
   segment_id TEXT,                       -- Nearest route segment
+  segment_id_200 TEXT,                   -- Precomputed nearest 200m segment
+  segment_id_500 TEXT,                   -- Precomputed nearest 500m segment
+  segment_id_1000 TEXT,                  -- Precomputed nearest 1000m segment
+  on_route BOOLEAN,                      -- Whether the point was matched to route geometry
+  mapping_version INTEGER,               -- Version of the segment-mapping logic
+  mapped_at TIMESTAMPTZ,                 -- When the row was last segment-mapped
   headsign TEXT,                         -- Destination shown on vehicle (e.g. "Red Line to Airport")
   
   -- Index for fast queries
@@ -30,6 +36,10 @@ CREATE INDEX IF NOT EXISTS idx_positions_recorded_at ON vehicle_positions(record
 CREATE INDEX IF NOT EXISTS idx_positions_vehicle ON vehicle_positions(vehicle_id, recorded_at DESC);
 CREATE INDEX IF NOT EXISTS idx_positions_route ON vehicle_positions(route_id, recorded_at DESC);
 CREATE INDEX IF NOT EXISTS idx_positions_segment ON vehicle_positions(segment_id, recorded_at DESC);
+CREATE INDEX IF NOT EXISTS idx_positions_segment_200 ON vehicle_positions(segment_id_200, recorded_at DESC);
+CREATE INDEX IF NOT EXISTS idx_positions_segment_500 ON vehicle_positions(segment_id_500, recorded_at DESC);
+CREATE INDEX IF NOT EXISTS idx_positions_segment_1000 ON vehicle_positions(segment_id_1000, recorded_at DESC);
+CREATE INDEX IF NOT EXISTS idx_positions_mapping_version ON vehicle_positions(mapping_version, recorded_at DESC);
 
 -- Aggregated segment speeds (computed periodically)
 CREATE TABLE IF NOT EXISTS segment_speeds (
@@ -103,3 +113,20 @@ GRANT SELECT, INSERT ON vehicle_positions TO anon;
 GRANT SELECT, INSERT, UPDATE ON segment_speeds TO anon;
 GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO anon;
 
+-- Existing databases also need these ALTER statements.
+ALTER TABLE vehicle_positions
+  ADD COLUMN IF NOT EXISTS segment_id_200 TEXT,
+  ADD COLUMN IF NOT EXISTS segment_id_500 TEXT,
+  ADD COLUMN IF NOT EXISTS segment_id_1000 TEXT,
+  ADD COLUMN IF NOT EXISTS on_route BOOLEAN,
+  ADD COLUMN IF NOT EXISTS mapping_version INTEGER,
+  ADD COLUMN IF NOT EXISTS mapped_at TIMESTAMPTZ;
+
+CREATE INDEX IF NOT EXISTS idx_positions_segment_200_existing
+  ON vehicle_positions(segment_id_200, recorded_at DESC);
+CREATE INDEX IF NOT EXISTS idx_positions_segment_500_existing
+  ON vehicle_positions(segment_id_500, recorded_at DESC);
+CREATE INDEX IF NOT EXISTS idx_positions_segment_1000_existing
+  ON vehicle_positions(segment_id_1000, recorded_at DESC);
+CREATE INDEX IF NOT EXISTS idx_positions_mapping_version_existing
+  ON vehicle_positions(mapping_version, recorded_at DESC);

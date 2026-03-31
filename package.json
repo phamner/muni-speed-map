@@ -36,6 +36,7 @@
     "collect:multi": "bash scripts/collectMultiple.sh",
     "collect:selected": "bash scripts/collectSelected.sh",
     "collect:all": "bash scripts/collectAll.sh",
+    "backfill:segments": "node scripts/backfillSegmentMappings.js",
     "parse-gtfs": "node scripts/parseGtfs.js",
     "parse-gtfs:la": "node scripts/parseGtfsLA.js",
     "parse-gtfs:seattle": "node scripts/parseGtfsSeattle.js",

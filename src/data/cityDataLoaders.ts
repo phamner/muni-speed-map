@@ -450,6 +450,7 @@ export const CITY_COORDS: Record<
   Cleveland: { center: [-81.69, 41.5], zoom: 11 },
   Charlotte: { center: [-80.84, 35.23], zoom: 11 },
   Baltimore: { center: [-76.62, 39.32], zoom: 11 },
+  "Washington DC": { center: [-77.0369, 38.9072], zoom: 11 },
 };
 
 // Cache for loaded city data - persists across component remounts
@@ -1240,6 +1241,51 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation: separation.default,
         trafficLights: trafficLights.default,
         busRoutesOverlay: busRoutesOverlay.default,
+      };
+    }
+
+    case "Washington DC": {
+      const [previewRoutes, stops, crossings, switches, trafficLights] = await Promise.all([
+        import("./routes/washingtonPreviewRoutes.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
+        import("./stops/washingtonPurpleLineStops.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
+        import("./crossings/washingtonPurpleLineGradeCrossings.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
+        import("./switches/washingtonPurpleLineSwitches.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
+        import("./traffic-lights/washingtonPurpleLineTrafficLightsConsolidated.json").catch(
+          () => ({
+            default: { type: "FeatureCollection", features: [] },
+          }),
+        ),
+      ]);
+      console.timeEnd(`Loading ${city} static data`);
+      const normalizedPreviewRoutes = {
+        type: "FeatureCollection",
+        features: (previewRoutes.default?.features || []).map((feature: any) => ({
+          ...feature,
+          properties: {
+            ...feature.properties,
+            under_construction: false,
+            overlay_category: undefined,
+          },
+        })),
+      };
+      return {
+        routes: normalizedPreviewRoutes,
+        stops: stops.default,
+        crossings: crossings.default,
+        switches: switches.default,
+        maxspeed: null,
+        tunnelsBridges: null,
+        separation: null,
+        trafficLights: trafficLights.default,
+        busRoutesOverlay: null,
       };
     }
 

@@ -26,6 +26,7 @@ import type {
   ClevelandRtaLine,
   CharlotteLynxLine,
   BaltimoreLightRailLine,
+  WashingtonDcLine,
   City,
 } from "../types";
 import {
@@ -46,6 +47,7 @@ import {
   CLEVELAND_RTA_LINE_INFO,
   CHARLOTTE_LYNX_LINE_INFO,
   BALTIMORE_LIGHT_RAIL_LINE_INFO,
+  WASHINGTON_DC_LINE_INFO,
   getLinesForCity,
 } from "../types";
 import {
@@ -158,6 +160,13 @@ const CITY_SELECTOR_ITEMS: {
   },
   { id: "SF", sortName: "San Francisco", label: "SF", emoji: "🌉" },
   { id: "Toronto", sortName: "Toronto", label: "Toronto", emoji: "🍁" },
+  {
+    id: "Washington DC",
+    sortName: "Washington DC",
+    label: "DC",
+    emoji: "🏛️",
+    tooltip: "WMATA area preview",
+  },
 ].sort((a, b) => a.sortName.localeCompare(b.sortName)) as {
   id: City;
   sortName: string;
@@ -194,6 +203,7 @@ const OFFICIAL_TRANSIT_MAP_URLS: Record<City, string> = {
   Charlotte:
     "https://www.charlottenc.gov/files/sharedassets/cats/v/4/cats-images/rtcs-plan-map-28x42-7_29_2025-5-1.jpg",
   Baltimore: "https://www.urbanrail.net/am/balt/baltimore-map.gif",
+  "Washington DC": "",
 };
 
 const TRANSIT_MAP_DISPLAY_URLS: Partial<Record<City, string>> = {
@@ -292,6 +302,10 @@ function getLineColor(line: string, city: City): string {
       BALTIMORE_LIGHT_RAIL_LINE_INFO[line as BaltimoreLightRailLine]?.color ||
       "#666"
     );
+  } else if (city === "Washington DC") {
+    return (
+      WASHINGTON_DC_LINE_INFO[line as WashingtonDcLine]?.color || "#7F3FBF"
+    );
   }
   return "#666";
 }
@@ -347,6 +361,8 @@ function getLineLabel(line: string, city: City): string {
       BALTIMORE_LIGHT_RAIL_LINE_INFO[line as BaltimoreLightRailLine]?.letter ||
       line
     );
+  } else if (city === "Washington DC") {
+    return WASHINGTON_DC_LINE_INFO[line as WashingtonDcLine]?.letter || line;
   }
   return line;
 }
@@ -371,6 +387,8 @@ function getBadgeWidthClass(city: City): string {
     case "Toronto":
     case "Philadelphia":
       return "badge-width-3digit"; // "501", "102"
+    case "Washington DC":
+      return "badge-width-word";
     default:
       return "badge-width-letter"; // Single letters (SF, LA, Boston, Seattle, Denver)
   }
@@ -676,6 +694,7 @@ export function Controls({
     Charlotte: "Charlotte, NC",
     Phoenix: "Phoenix, AZ",
     Baltimore: "Baltimore, MD",
+    "Washington DC": "Washington, DC",
   };
   const systemNames: Record<string, string> = {
     SF: "Muni Speed Map",
@@ -695,6 +714,7 @@ export function Controls({
     Charlotte: "LYNX Speed Map",
     Phoenix: "Valley Metro Speed Map",
     Baltimore: "RailLink Speed Map",
+    "Washington DC": "Purple Line Speed Map",
   };
   const cityLogos: Partial<Record<string, string>> = {
     SF: "/logos/Muni_worm_logo.svg",
@@ -1375,6 +1395,11 @@ export function Controls({
           <p className="lrt-data-note">
             Lines 5 and 6 are not yet included in TTC's public vehicle position
             feed. Speed data will appear once TTC makes it available.
+          </p>
+        )}
+        {city === "Washington DC" && (
+          <p className="lrt-data-note">
+            Purple Line preview only. Expected opening: Winter 2027.
           </p>
         )}
         <div className="route-lines-section">

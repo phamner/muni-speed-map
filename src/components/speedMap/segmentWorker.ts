@@ -454,10 +454,17 @@ export interface SegmentWorkerInput {
     speed_calculated: number | null;
     recorded_at: string;
     headsign: string | null;
+    segment_id: string | null;
+    segment_id_200: string | null;
+    segment_id_500: string | null;
+    segment_id_1000: string | null;
+    on_route: boolean | null;
+    mapping_version: number | null;
   }>;
   routes: any;
   city: string;
   requestId: number;
+  mappingVersion: number;
 }
 
 export interface SegmentWorkerOutput {
@@ -479,11 +486,35 @@ export interface SegmentWorkerOutput {
 }
 
 self.onmessage = (e: MessageEvent<SegmentWorkerInput>) => {
-  const { rows, routes, city, requestId } = e.data;
+  const { rows, routes, city, requestId, mappingVersion } = e.data;
 
   const routeFeatureMap = buildRouteFeatureMap(routes);
 
   const vehicles = rows.map((row) => {
+    const hasPrecomputedSegments =
+      row.mapping_version === mappingVersion &&
+      typeof row.on_route === "boolean" &&
+      row.segment_id_200 != null &&
+      row.segment_id_500 != null &&
+      row.segment_id_1000 != null;
+
+    if (hasPrecomputedSegments) {
+      return {
+        id: `${row.vehicle_id}-${row.id}`,
+        lat: row.lat,
+        lon: row.lon,
+        routeId: row.route_id,
+        direction: getDirection(row.direction_id),
+        speed: row.speed_calculated ?? undefined,
+        recordedAt: row.recorded_at,
+        segmentId: row.segment_id_200 ?? row.segment_id ?? null,
+        segmentId500: row.segment_id_500,
+        segmentId1000: row.segment_id_1000,
+        headsign: row.headsign,
+        onRoute: row.on_route === true,
+      };
+    }
+
     const segments = findSegmentsForVehicle(
       row.lat,
       row.lon,

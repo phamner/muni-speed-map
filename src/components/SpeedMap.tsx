@@ -81,6 +81,9 @@ function buildSelectedLineFilter(
   linesProperty?: string,
 ): maplibregl.FilterSpecification {
   if (selectedLines.length === 0) {
+    if (getLinesForCity(city as City).length === 0) {
+      return true as unknown as maplibregl.FilterSpecification;
+    }
     return buildImpossibleFilter(routeProperty);
   }
 
@@ -5264,22 +5267,32 @@ export function SpeedMap({
 
       {dataSource === "none" && !cityDataLoading && !isProcessing && (
         <div className="data-status">
-          No data yet. Run{" "}
-          <code>
-            npm run collect:
-            {city === "LA"
-              ? "la"
-              : city === "Seattle"
-                ? "seattle"
-                : city === "Boston"
-                  ? "boston"
-                  : city === "Portland"
-                    ? "portland"
-                    : city === "San Diego"
-                      ? "sandiego"
-                      : "sf"}
-          </code>{" "}
-          to start collecting.
+          {city === "Washington DC" ? (
+            <>
+              Washington DC is available as a map-area preview, but data
+              collection is not configured yet. Purple Line expected opening:
+              Winter 2027.
+            </>
+          ) : (
+            <>
+              No data yet. Run{" "}
+              <code>
+                npm run collect:
+                {city === "LA"
+                  ? "la"
+                  : city === "Seattle"
+                    ? "seattle"
+                    : city === "Boston"
+                      ? "boston"
+                      : city === "Portland"
+                        ? "portland"
+                        : city === "San Diego"
+                          ? "sandiego"
+                          : "sf"}
+              </code>{" "}
+              to start collecting.
+            </>
+          )}
         </div>
       )}
     </div>
