@@ -102,7 +102,7 @@ function App() {
   const [hideAllTrains, setHideAllTrains] = useState(false);
   const [viewMode, setViewMode] = useState<ViewMode>("segments-500");
   const [lineStats, setLineStats] = useState<LineStats[]>([]);
-  const [basemapMode, setBasemapMode] = useState<BasemapMode>("map");
+  const [basemapMode, setBasemapMode] = useState<BasemapMode>("satellite");
   const [showPopulationDensity, setShowPopulationDensity] = useState(false);
   const [densityMode, setDensityMode] = useState<DensityMode>("population");
   const [speedUnit, setSpeedUnit] = useState<SpeedUnit>("mph");

@@ -350,11 +350,7 @@ interface GoogleTileSession {
 type GoogleMapType = "satellite" | "terrain";
 
 function shouldUseGoogleTilesFromUrl(): boolean {
-  if (typeof window === "undefined") return false;
-  const params = new URLSearchParams(window.location.search);
-  return (
-    params.get("satellite") === "google" || params.get("dev") === "true"
-  );
+  return true;
 }
 
 const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
@@ -1704,13 +1700,11 @@ export function SpeedMap({
       sourceId,
       layerId,
       session,
-      beforeId,
       opacity,
     }: {
       sourceId: string;
       layerId: string;
       session: GoogleTileSession | null;
-      beforeId: string;
       opacity?: number;
     }) => {
       if (map.current!.getSource(sourceId)) {
@@ -1735,40 +1729,35 @@ export function SpeedMap({
         attribution: "Google Maps",
       });
 
-      map.current!.addLayer(
-        {
-          id: layerId,
-          type: "raster",
-          source: sourceId,
-          minzoom: 0,
-          maxzoom: 22,
-          layout: {
-            visibility: "none",
-          },
-          ...(typeof opacity === "number"
-            ? {
-                paint: {
-                  "raster-opacity": opacity,
-                },
-              }
-            : {}),
+      map.current!.addLayer({
+        id: layerId,
+        type: "raster",
+        source: sourceId,
+        minzoom: 0,
+        maxzoom: 22,
+        layout: {
+          visibility: "none",
         },
-        beforeId,
-      );
+        ...(typeof opacity === "number"
+          ? {
+              paint: {
+                "raster-opacity": opacity,
+              },
+            }
+          : {}),
+      });
     };
 
     syncGoogleRasterLayer({
       sourceId: "google-satellite",
       layerId: "google-satellite-layer",
       session: googleSatelliteSession,
-      beforeId: "carto-dark-layer",
     });
 
     syncGoogleRasterLayer({
       sourceId: "google-terrain",
       layerId: "google-terrain-layer",
       session: googleTerrainSession,
-      beforeId: "carto-dark-layer",
       opacity: 0.38,
     });
   }, [mapLoaded, googleSatelliteSession, googleTerrainSession]);
@@ -4523,7 +4512,7 @@ export function SpeedMap({
       map.current.setLayoutProperty(
         "satellite-layer-esri",
         "visibility",
-        (showSatellite && !shouldUseGoogleSatellite)
+        showSatellite
           ? "visible"
           : "none",
       );
@@ -5370,7 +5359,7 @@ export function SpeedMap({
         basemapMode={basemapMode}
         showPopulationDensity={showPopulationDensity ?? false}
         densityMode={densityMode}
-        showTopo={wantsGoogleTiles}
+        showTopo={true}
         onBasemapModeChange={onBasemapModeChange}
         onPopulationDensityToggle={onPopulationDensityToggle}
         onDensityModeChange={onDensityModeChange}
