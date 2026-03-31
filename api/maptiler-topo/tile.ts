@@ -2,7 +2,7 @@
 // Edits made to that style in MapTiler should flow through here
 // automatically without app code changes.
 const MAPTILER_TOPO_STYLE_ID = "019d452b-cbcd-7652-aaf8-34e89d173128";
-const MAPTILER_TOPO_TILE_BASE_URL = `https://api.maptiler.com/maps/${MAPTILER_TOPO_STYLE_ID}`;
+const MAPTILER_TOPO_TILE_BASE_URL = `https://api.maptiler.com/maps/${MAPTILER_TOPO_STYLE_ID}/256`;
 
 export default async function handler(req: any, res: any) {
   if (req.method !== "GET") {
