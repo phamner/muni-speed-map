@@ -613,14 +613,13 @@ export function SpeedMap({
   const wantsGoogleTiles = useMemo(shouldUseGoogleTilesFromUrl, []);
   const showSatellite = basemapMode === "satellite";
   const showTopo = basemapMode === "topo";
-  const isGoogleBasemapMode = showSatellite || showTopo;
   const isImageryBasemap = basemapMode !== "map";
   const googleSatelliteSession = googleTileSessions.satellite;
   const googleTerrainSession = googleTileSessions.terrain;
   const googleSatelliteError = googleTileErrors.satellite || null;
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
-    isGoogleBasemapMode &&
+    showSatellite &&
     googleSatelliteSession !== null &&
     googleSatelliteSession.mapType === "satellite" &&
     !googleSatelliteError;
@@ -762,7 +761,7 @@ export function SpeedMap({
   }, [city]);
 
   useEffect(() => {
-    if (!wantsGoogleTiles || !isGoogleBasemapMode) return;
+    if (!wantsGoogleTiles || !showSatellite) return;
 
     let cancelled = false;
     const requestedMapTypes: GoogleMapType[] = ["satellite"];
@@ -808,7 +807,7 @@ export function SpeedMap({
     return () => {
       cancelled = true;
     };
-  }, [wantsGoogleTiles, isGoogleBasemapMode, showTopo]);
+  }, [wantsGoogleTiles, showSatellite]);
 
   // Use loaded city data or empty placeholder
   const cityConfig = useMemo(
