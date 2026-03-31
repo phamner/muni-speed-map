@@ -2861,6 +2861,8 @@ export function SpeedMap({
 
     const addStopsAndTrafficLightsLayers = () => {
       if (!map.current) return;
+      const stopMarkerSize = basemapMode === "topo" ? 16 : 20;
+      const stopLabelSize = basemapMode === "topo" ? 10 : 11;
 
       // === STOPS LAYER ===
       // Filter clustered stops to selected lines
@@ -2932,10 +2934,16 @@ export function SpeedMap({
           "visibility",
           showStops ? "visible" : "none",
         );
+        map.current.setLayoutProperty("stops", "text-size", stopMarkerSize);
         map.current.setLayoutProperty(
           "stops-label",
           "visibility",
           showStops ? "visible" : "none",
+        );
+        map.current.setLayoutProperty(
+          "stops-label",
+          "text-size",
+          stopLabelSize,
         );
       } else {
         map.current.addSource("stops", {
@@ -2950,7 +2958,7 @@ export function SpeedMap({
           layout: {
             visibility: showStops ? "visible" : "none",
             "text-field": "◆",
-            "text-size": 20,
+            "text-size": stopMarkerSize,
             "text-allow-overlap": true,
             "text-ignore-placement": true,
           },
@@ -2974,7 +2982,7 @@ export function SpeedMap({
           layout: {
             visibility: showStops ? "visible" : "none",
             "text-field": ["get", "stop_name"],
-            "text-size": 11,
+            "text-size": stopLabelSize,
             "text-offset": [0, 1.2],
             "text-anchor": "top",
             "text-optional": true,
@@ -4709,6 +4717,9 @@ export function SpeedMap({
             data: processedData as any,
             promoteId: "GEOID", // Use GEOID as feature ID for fast feature-state updates
           });
+          const densityBeforeLayer = map.current.getLayer("routes")
+            ? "routes"
+            : undefined;
 
           // Add fill layer with density-based coloring
           map.current.addLayer(
@@ -4762,7 +4773,7 @@ export function SpeedMap({
                 visibility: "none",
               },
             },
-            "routes", // Insert below routes layer
+            densityBeforeLayer,
           );
 
           // Add subtle outline for tract boundaries
@@ -4779,7 +4790,7 @@ export function SpeedMap({
                 visibility: "none",
               },
             },
-            "routes",
+            densityBeforeLayer,
           );
 
           // Add hover highlight layer (uses feature-state for fast O(1) updates)
@@ -4802,7 +4813,7 @@ export function SpeedMap({
                 visibility: "none",
               },
             },
-            "routes",
+            densityBeforeLayer,
           );
 
           // Hover handlers for density layer
