@@ -382,14 +382,14 @@ function createDefaultBasemapStyle(): maplibregl.StyleSpecification {
         type: "raster",
         source: "carto-dark",
         minzoom: 0,
-        maxzoom: 22,
+        maxzoom: 20,
       },
       {
         id: "satellite-layer-esri",
         type: "raster",
         source: "satellite-esri",
         minzoom: 0,
-        maxzoom: 22,
+        maxzoom: 20,
         layout: {
           visibility: "none",
         },
@@ -1648,7 +1648,7 @@ export function SpeedMap({
       center: cityConfig.center,
       zoom: cityConfig.zoom,
       minZoom: 8.5,
-      maxZoom: 22,
+      maxZoom: 20,
     });
 
     map.current.addControl(new maplibregl.NavigationControl(), "bottom-right");
@@ -1821,7 +1821,7 @@ export function SpeedMap({
         type: "raster",
         source: sourceId,
         minzoom: 0,
-        maxzoom: 22,
+        maxzoom: 20,
         layout: {
           visibility: "none",
         },
