@@ -602,6 +602,7 @@ export function SpeedMap({
   const densityModeRef = useRef(densityMode);
   densityModeRef.current = densityMode;
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [topoMobileRecoveryTick, setTopoMobileRecoveryTick] = useState(0);
   const [showMobileLegends, setShowMobileLegends] = useState(false);
   const [expandedStopCluster, setExpandedStopCluster] = useState<string | null>(
     null,
@@ -1703,6 +1704,83 @@ export function SpeedMap({
   }, [basemapMode]);
 
   useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+    if (basemapMode !== "topo") return;
+    if (!isTouchInteractionMode()) return;
+
+    const recoveryTimeout = window.setTimeout(() => {
+      if (!map.current || !map.current.isStyleLoaded()) return;
+
+      const viewingSegments =
+        viewMode === "segments" ||
+        viewMode === "segments-500" ||
+        viewMode === "segments-1000";
+      const viewingVehicles = viewMode === "raw" || viewMode === "live";
+
+      const missingRoutes = !map.current.getLayer("routes");
+      const missingSegments =
+        viewingSegments && !map.current.getLayer("speed-segments");
+      const missingVehicles =
+        viewingVehicles &&
+        (!map.current.getLayer("vehicles") ||
+          !map.current.getLayer("vehicles-glow"));
+
+      if (!missingRoutes && !missingSegments && !missingVehicles) return;
+
+      const layersToRemove = [
+        "speed-segments-hitarea",
+        "speed-segments",
+        "vehicles",
+        "vehicles-glow",
+        "routes-outline",
+        "routes",
+        "routes-construction-outline",
+        "routes-construction",
+        "routes-tunnel-outline",
+        "routes-tunnel",
+        "speed-limit-labels",
+        "speed-limit-outline",
+        "speed-limit",
+        "separation-outline",
+        "separation",
+        "heritage-local-circulators-outline",
+        "heritage-local-circulators",
+        "rail-context-heavy",
+        "rail-context-commuter",
+        "bus-routes-overlay-labels",
+        "bus-routes-overlay",
+      ];
+      const sourcesToRemove = [
+        "speed-segments",
+        "vehicles",
+        "routes",
+        "routes-construction",
+        "routes-tunnel",
+        "speed-limit",
+        "separation",
+        "rail-context-heavy-src",
+        "rail-context-commuter-src",
+        "bus-routes-overlay-src",
+      ];
+
+      for (const layerId of layersToRemove) {
+        try {
+          if (map.current.getLayer(layerId)) map.current.removeLayer(layerId);
+        } catch {}
+      }
+      for (const sourceId of sourcesToRemove) {
+        try {
+          if (map.current.getSource(sourceId)) map.current.removeSource(sourceId);
+        } catch {}
+      }
+
+      setTopoMobileRecoveryTick((prev) => prev + 1);
+    }, 350);
+
+    return () => window.clearTimeout(recoveryTimeout);
+  }, [mapLoaded, basemapMode, viewMode]);
+
+  useEffect(() => {
     if (!mapLoaded || !map.current) return;
 
     const syncGoogleRasterLayer = ({
@@ -1852,7 +1930,10 @@ export function SpeedMap({
 
       // UPDATE PATH: sources already exist, just swap GeoJSON data in-place.
       // This avoids the remove-and-recreate cycle that causes visual flicker.
-      if (map.current.getSource("routes")) {
+      const hasRouteSource = !!map.current.getSource("routes");
+      const hasRouteLayer = !!map.current.getLayer("routes");
+
+      if (hasRouteSource && hasRouteLayer) {
         try {
           (map.current.getSource("routes") as any).setData(regularRoutes);
           (map.current.getSource("routes-tunnel") as any).setData(tunnelRoutes);
@@ -2606,6 +2687,7 @@ export function SpeedMap({
   }, [
     mapLoaded,
     basemapMode,
+    topoMobileRecoveryTick,
     city,
     cityConfig.routes,
     cityConfig.maxspeed,
@@ -3763,9 +3845,21 @@ export function SpeedMap({
         "vehicles",
       ) as maplibregl.GeoJSONSource;
 
-      if (existingSource) {
+      const hasVehicleLayers =
+        !!map.current.getLayer("vehicles") &&
+        !!map.current.getLayer("vehicles-glow");
+
+      if (existingSource && hasVehicleLayers) {
         existingSource.setData(vehicleGeoJSON);
       } else {
+        try {
+          if (map.current.getLayer("vehicles")) map.current.removeLayer("vehicles");
+          if (map.current.getLayer("vehicles-glow")) {
+            map.current.removeLayer("vehicles-glow");
+          }
+          if (map.current.getSource("vehicles")) map.current.removeSource("vehicles");
+        } catch {}
+
         map.current.addSource("vehicles", {
           type: "geojson",
           data: vehicleGeoJSON,
@@ -4031,6 +4125,7 @@ export function SpeedMap({
     mapLoaded,
     basemapMode,
     isProcessing,
+    topoMobileRecoveryTick,
   ]);
 
   // Update speed filter
@@ -4432,7 +4527,9 @@ export function SpeedMap({
       "speed-segments",
     ) as maplibregl.GeoJSONSource;
 
-    if (existingSource) {
+    const hasSegmentLayer = !!map.current.getLayer("speed-segments");
+
+    if (existingSource && hasSegmentLayer) {
       existingSource.setData(segmentGeoJSON);
       map.current.setLayoutProperty("speed-segments", "visibility", "visible");
       if (map.current.getLayer("speed-segments-hitarea")) {
@@ -4573,6 +4670,7 @@ export function SpeedMap({
     allRouteSegments500,
     allRouteSegments1000,
     city,
+    topoMobileRecoveryTick,
   ]);
 
   useEffect(() => {
