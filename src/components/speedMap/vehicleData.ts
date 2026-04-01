@@ -357,7 +357,16 @@ export const POSITION_COLUMNS =
     "mapping_version",
   ].join(",");
 
-export function rowHasPrecomputedSegmentMapping(row: any): boolean {
+export function rowHasPrecomputedSegmentMapping(
+  row: any,
+  cityContext?: string,
+): boolean {
+  // Accuracy first: SF segment mappings are currently safer to compute from the
+  // live route geometry than to trust previously persisted values.
+  if (cityContext === "SF") {
+    return false;
+  }
+
   return (
     row?.mapping_version === SEGMENT_MAPPING_VERSION &&
     typeof row?.on_route === "boolean" &&
@@ -367,13 +376,18 @@ export function rowHasPrecomputedSegmentMapping(row: any): boolean {
   );
 }
 
-export function getPrecomputedSegments(row: any): {
+export function getPrecomputedSegments(
+  row: any,
+  cityContext?: string,
+): {
   segmentId: string | null;
   segmentId500: string | null;
   segmentId1000: string | null;
   onRoute: boolean;
 } | null {
-  if (!rowHasPrecomputedSegmentMapping(row)) return null;
+  if (!rowHasPrecomputedSegmentMapping(row, cityContext ?? row?.city)) {
+    return null;
+  }
 
   return {
     segmentId: row.segment_id_200 ?? row.segment_id ?? null,

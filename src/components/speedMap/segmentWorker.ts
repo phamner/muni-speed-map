@@ -492,6 +492,7 @@ self.onmessage = (e: MessageEvent<SegmentWorkerInput>) => {
 
   const vehicles = rows.map((row) => {
     const hasPrecomputedSegments =
+      city !== "SF" &&
       row.mapping_version === mappingVersion &&
       typeof row.on_route === "boolean" &&
       row.segment_id_200 != null &&

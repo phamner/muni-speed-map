@@ -1359,7 +1359,7 @@ export function SpeedMap({
     (rows: any[], routes: any, cityName: string): Vehicle[] => {
       const routeFeatureMap = getRouteFeatureMap(routes);
       return rows.map((row: any) => {
-        const precomputed = getPrecomputedSegments(row);
+        const precomputed = getPrecomputedSegments(row, cityName);
         if (precomputed) {
           return {
             id: `${row.vehicle_id}-${row.id}`,
@@ -1520,7 +1520,7 @@ export function SpeedMap({
       setIsProcessing(true);
 
       const missingSegmentCount = filteredData.filter(
-        (row: any) => !rowHasPrecomputedSegmentMapping(row),
+        (row: any) => !rowHasPrecomputedSegmentMapping(row, city),
       ).length;
       const needsClientMapping = missingSegmentCount > 0;
 
@@ -4192,6 +4192,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
       if (!v.segmentId) return;
@@ -4230,6 +4231,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
       if (!v.segmentId500) return;
@@ -4268,6 +4270,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
       if (!v.segmentId1000) return;
