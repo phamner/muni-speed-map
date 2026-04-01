@@ -2861,8 +2861,8 @@ export function SpeedMap({
 
     const addStopsAndTrafficLightsLayers = () => {
       if (!map.current) return;
-      const stopMarkerSize = basemapMode === "topo" ? 16 : 20;
-      const stopLabelSize = basemapMode === "topo" ? 10 : 11;
+      const stopMarkerSize = basemapMode === "topo" ? 14 : 20;
+      const stopLabelSize = basemapMode === "topo" ? 9 : 11;
 
       // === STOPS LAYER ===
       // Filter clustered stops to selected lines
@@ -3249,13 +3249,22 @@ export function SpeedMap({
 
     // All crossings use orange (gated vs non-gated distinction disabled - data too inconsistent)
     const crossingColor = "#ff9500";
+    const existingCrossingLayer = map.current.getLayer("crossings");
+    const expectedCrossingLayerType = "symbol";
 
     // Check if source already exists - if so, just update data (fast path)
     const existingSource = map.current.getSource(
       "crossings",
     ) as maplibregl.GeoJSONSource;
 
-    if (existingSource) {
+    if (
+      existingCrossingLayer &&
+      existingCrossingLayer.type !== expectedCrossingLayerType
+    ) {
+      map.current.removeLayer("crossings");
+    }
+
+    if (existingSource && map.current.getLayer("crossings")) {
       // Fast path: source exists, just update data immediately
       existingSource.setData(filteredCrossings as any);
       map.current.setLayoutProperty(
@@ -3263,12 +3272,40 @@ export function SpeedMap({
         "visibility",
         showCrossings ? "visible" : "none",
       );
-      // Update color when city changes
-      map.current.setPaintProperty(
-        "crossings",
-        "text-color",
-        crossingColor as any,
-      );
+      if (!map.current.hasImage("crossing-x-icon")) {
+        const size = 64;
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.clearRect(0, 0, size, size);
+          ctx.lineCap = "round";
+          ctx.strokeStyle = "#000000";
+          ctx.lineWidth = 12;
+          ctx.beginPath();
+          ctx.moveTo(16, 16);
+          ctx.lineTo(48, 48);
+          ctx.moveTo(48, 16);
+          ctx.lineTo(16, 48);
+          ctx.stroke();
+
+          ctx.strokeStyle = crossingColor;
+          ctx.lineWidth = 8;
+          ctx.beginPath();
+          ctx.moveTo(16, 16);
+          ctx.lineTo(48, 48);
+          ctx.moveTo(48, 16);
+          ctx.lineTo(16, 48);
+          ctx.stroke();
+
+          map.current.addImage("crossing-x-icon", {
+            width: size,
+            height: size,
+            data: ctx.getImageData(0, 0, size, size).data,
+          });
+        }
+      }
       return; // Exit early - no need to check style or create layers
     }
 
@@ -3282,6 +3319,41 @@ export function SpeedMap({
         data: filteredCrossings as any,
       });
 
+      if (!map.current.hasImage("crossing-x-icon")) {
+        const size = 64;
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.clearRect(0, 0, size, size);
+          ctx.lineCap = "round";
+          ctx.strokeStyle = "#000000";
+          ctx.lineWidth = 12;
+          ctx.beginPath();
+          ctx.moveTo(16, 16);
+          ctx.lineTo(48, 48);
+          ctx.moveTo(48, 16);
+          ctx.lineTo(16, 48);
+          ctx.stroke();
+
+          ctx.strokeStyle = crossingColor;
+          ctx.lineWidth = 8;
+          ctx.beginPath();
+          ctx.moveTo(16, 16);
+          ctx.lineTo(48, 48);
+          ctx.moveTo(48, 16);
+          ctx.lineTo(16, 48);
+          ctx.stroke();
+
+          map.current.addImage("crossing-x-icon", {
+            width: size,
+            height: size,
+            data: ctx.getImageData(0, 0, size, size).data,
+          });
+        }
+      }
+
       // Add crossing markers layer
       map.current.addLayer({
         id: "crossings",
@@ -3289,15 +3361,10 @@ export function SpeedMap({
         source: "crossings",
         layout: {
           visibility: showCrossings ? "visible" : "none",
-          "text-field": "✕",
-          "text-size": 14,
-          "text-allow-overlap": true,
-          "text-ignore-placement": true,
-        },
-        paint: {
-          "text-color": crossingColor as any,
-          "text-halo-color": "#000000",
-          "text-halo-width": 1.5,
+          "icon-image": "crossing-x-icon",
+          "icon-size": 0.28,
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
         },
       });
 
