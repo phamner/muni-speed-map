@@ -311,6 +311,8 @@ export function DynamicLegends({
       ? "#36afb6"
       : city === "LA"
         ? "#F28C28"
+        : city === "Boston"
+          ? "#DA291C"
         : city === "Phoenix"
           ? "#16A085"
           : "#aeb8c6";
@@ -334,6 +336,8 @@ export function DynamicLegends({
       ? "Cable cars"
       : city === "LA"
         ? "OC Streetcar (August 2026)"
+        : city === "Boston"
+          ? "Mattapan Trolley"
         : city === "Seattle"
           ? "Streetcars / monorail"
         : city === "Phoenix"
@@ -387,7 +391,8 @@ export function DynamicLegends({
           {(city === "SF" ||
             city === "LA" ||
             city === "Seattle" ||
-            city === "Phoenix") && (
+            city === "Phoenix" ||
+            city === "Boston") && (
             <div
               className={`rail-context-legend-item ${
                 showCableCarsOverlay ? "" : "disabled"

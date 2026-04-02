@@ -1502,7 +1502,8 @@ export function Controls({
         {(city === "SF" ||
           city === "LA" ||
           city === "Seattle" ||
-          city === "Phoenix") && (
+          city === "Phoenix" ||
+          city === "Boston") && (
           <div className="route-lines-toggle">
             <label
               className={`heritage-local-circulators-toggle ${

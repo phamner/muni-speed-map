@@ -685,6 +685,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     case "Boston": {
       const [
         routes,
+        heritageRoutes,
         stops,
         crossings,
         switches,
@@ -695,6 +696,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         busRoutesOverlay,
       ] = await Promise.all([
         import("./routes/bostonGreenLineRoutes.json"),
+        import("./routes/bostonHeritageLocalCirculatorRoutes.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
         import("./stops/bostonGreenLineStops.json"),
         import("./crossings/bostonGradeCrossings.json"),
         import("./switches/bostonSwitches.json"),
@@ -708,7 +712,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       ]);
       console.timeEnd(`Loading ${city} static data`);
       return {
-        routes: routes.default,
+        routes: mergeRouteCollections(routes.default, heritageRoutes.default),
         stops: stops.default,
         crossings: crossings.default,
         switches: switches.default,

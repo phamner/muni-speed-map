@@ -4,6 +4,7 @@
  *
  * Downloads route relations for:
  * - OC Streetcar
+ * - Mattapan Trolley
  * - Purple Line (Maryland / DC)
  * - Seattle Streetcar (First Hill + South Lake Union)
  * - Seattle Center Monorail
@@ -45,6 +46,29 @@ const CITIES = [
           return (
             text.includes("oc streetcar") ||
             text.includes("orange county streetcar")
+          );
+        },
+      },
+    ],
+  },
+  {
+    name: "Boston",
+    bbox: [42.255, -71.095, 42.31, -71.04],
+    outputFile: "bostonHeritageLocalCirculatorRoutes.json",
+    routeTypesRegex: "light_rail",
+    lineDefinitions: [
+      {
+        routeId: "MATTAPAN",
+        routeName: "Mattapan Trolley",
+        routeColor: "#DA291C",
+        matches: (tags) => {
+          const text = collectTagText(tags);
+          return (
+            tags?.["gtfs:route_id"] === "Mattapan" ||
+            String(tags?.ref || "").toLowerCase() === "mattapan" ||
+            String(tags?.short_name || "").toLowerCase() === "m line" ||
+            text.includes("mattapan trolley") ||
+            text.includes("ashmont mattapan")
           );
         },
       },
