@@ -2727,6 +2727,10 @@
   transition: all 0.2s ease;
 }
 
+.density-group-start {
+  margin-left: 8px;
+}
+
 .map-layer-selector:hover .layer-tiles-panel {
   opacity: 1;
   transform: translateX(0);
@@ -2904,6 +2908,10 @@
     opacity: 1;
     transform: none;
     pointer-events: auto;
+  }
+
+  .density-group-start {
+    margin-left: 6px;
   }
 
   /* Mobile: hide individual density tiles, show grouped density tile */
@@ -3214,6 +3222,10 @@
   .map-layer-tile {
     width: 56px;
     height: 56px;
+  }
+
+  .density-group-start {
+    margin-left: 4px;
   }
 
   .map-layer-tile .layer-preview {

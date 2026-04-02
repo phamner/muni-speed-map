@@ -100,7 +100,7 @@ export function LayerSelector({
 
         {/* Desktop: show all three density tiles directly */}
         <div
-          className={`map-layer-tile density-tile-desktop ${showPopulationDensity && densityMode === "population" ? "active" : ""}`}
+          className={`map-layer-tile density-tile-desktop density-group-start ${showPopulationDensity && densityMode === "population" ? "active" : ""}`}
           onClick={() => handleDensitySelect("population")}
           title="Population density"
         >
@@ -133,7 +133,7 @@ export function LayerSelector({
         </div>
 
         {/* Mobile: single "Density" tile that opens a sub-menu */}
-        <div className="density-tile-mobile-wrapper">
+        <div className="density-tile-mobile-wrapper density-group-start">
           <div
             className={`map-layer-tile density-tile-mobile ${showPopulationDensity ? "active" : ""}`}
             onClick={() => setMobileDensityOpen(!mobileDensityOpen)}
