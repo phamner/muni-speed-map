@@ -382,14 +382,14 @@ function createDefaultBasemapStyle(): maplibregl.StyleSpecification {
         type: "raster",
         source: "carto-dark",
         minzoom: 0,
-        maxzoom: 18,
+        maxzoom: 22,
       },
       {
         id: "satellite-layer-esri",
         type: "raster",
         source: "satellite-esri",
         minzoom: 0,
-        maxzoom: 18,
+        maxzoom: 22,
         layout: {
           visibility: "none",
         },
@@ -1827,7 +1827,7 @@ export function SpeedMap({
         type: "raster",
         source: sourceId,
         minzoom: 0,
-        maxzoom: 18,
+        maxzoom: 22,
         layout: {
           visibility: "none",
         },
