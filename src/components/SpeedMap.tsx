@@ -1969,41 +1969,6 @@ export function SpeedMap({
 
       const emptyFC = { type: "FeatureCollection", features: [] } as any;
       const routeVis: "visible" | "none" = showRouteLines ? "visible" : "none";
-      const stabilizeRouteVisibility = () => {
-        if (!map.current || !showRouteLines) return;
-        const routeLayerIds = [
-          "routes-outline",
-          "routes",
-          "routes-construction-outline",
-          "routes-construction",
-          "routes-tunnel-outline",
-          "routes-tunnel",
-        ].filter((id) => map.current?.getLayer(id));
-        if (routeLayerIds.length === 0) return;
-
-        window.requestAnimationFrame(() => {
-          if (!map.current) return;
-          for (const id of routeLayerIds) {
-            try {
-              map.current.setLayoutProperty(id, "visibility", "none");
-            } catch {
-              // Layer may have been removed during a style swap
-            }
-          }
-
-          window.requestAnimationFrame(() => {
-            if (!map.current) return;
-            for (const id of routeLayerIds) {
-              try {
-                map.current.setLayoutProperty(id, "visibility", "visible");
-              } catch {
-                // Layer may have been removed during a style swap
-              }
-            }
-            reorderRouteLayers();
-          });
-        });
-      };
 
       const requiredSources = [
         "routes",
@@ -2154,7 +2119,6 @@ export function SpeedMap({
           }
 
           reorderRouteLayers();
-          stabilizeRouteVisibility();
         } catch {
           // Source might have been removed externally
         }
@@ -2887,7 +2851,6 @@ export function SpeedMap({
         }
       }
       reorderRouteLayers();
-      stabilizeRouteVisibility();
     };
 
     // If style is already loaded, add layers immediately
@@ -2930,11 +2893,6 @@ export function SpeedMap({
     showBusRoutesOverlay,
     routeLayerFilter,
     speedLimitLayerFilter,
-    hideAllTrains,
-    hideStoppedTrains,
-    speedFilter.minSpeed,
-    speedFilter.maxSpeed,
-    viewMode,
   ]);
 
   // Keep route-line visibility and paint in sync with mode / toggle state
