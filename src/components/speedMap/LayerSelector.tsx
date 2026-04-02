@@ -2,6 +2,16 @@ import { useState } from "react";
 import { Users, BriefcaseBusiness, TramFront } from "lucide-react";
 import type { BasemapMode, DensityMode } from "../../App";
 
+const PREVIEW_TILE = {
+  z: 12,
+  x: 656,
+  y: 1582,
+} as const;
+
+const MAP_PREVIEW_URL = `https://a.basemaps.cartocdn.com/dark_all/${PREVIEW_TILE.z}/${PREVIEW_TILE.x}/${PREVIEW_TILE.y}@2x.png`;
+const SATELLITE_PREVIEW_URL = `https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/${PREVIEW_TILE.z}/${PREVIEW_TILE.y}/${PREVIEW_TILE.x}`;
+const TOPO_PREVIEW_URL = `https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/${PREVIEW_TILE.z}/${PREVIEW_TILE.y}/${PREVIEW_TILE.x}`;
+
 interface LayerSelectorProps {
   basemapMode: BasemapMode;
   showPopulationDensity: boolean;
@@ -45,8 +55,7 @@ export function LayerSelector({
         <div
           className="layer-preview"
           style={{
-            backgroundImage:
-              "url('https://a.basemaps.cartocdn.com/dark_all/12/656/1582@2x.png')",
+            backgroundImage: `url('${MAP_PREVIEW_URL}')`,
           }}
         />
         <span className="layer-label">Map</span>
@@ -65,8 +74,7 @@ export function LayerSelector({
           <div
             className="layer-preview"
             style={{
-              backgroundImage:
-                "url('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/12/1582/656')",
+              backgroundImage: `url('${SATELLITE_PREVIEW_URL}')`,
             }}
           />
           <span className="layer-label">Satellite</span>
@@ -83,11 +91,10 @@ export function LayerSelector({
             <div
               className="layer-preview"
               style={{
-                backgroundImage:
-                  "linear-gradient(180deg, #c7d4b6 0%, #a8c48c 35%, #d6c4a6 36%, #c6b18d 62%, #dde5cf 100%)",
+                backgroundImage: `url('${TOPO_PREVIEW_URL}')`,
               }}
             />
-            <span className="layer-label">Topo</span>
+            <span className="layer-label">Topographic</span>
           </div>
         )}
 
