@@ -11,7 +11,10 @@ const CITY_QUERIES = {
   LA: [{ state: "06", counties: ["037", "059", "065", "071", "111"] }],
   "San Jose": [{ state: "06", counties: ["001", "013", "075", "077", "081", "085", "087"] }],
   "San Diego": [{ state: "06", counties: ["073"] }],
-  Boston: [{ state: "25", counties: ["009", "017", "021", "025"] }],
+  Boston: [
+    { state: "25", counties: ["001", "005", "007", "009", "017", "019", "021", "023", "025", "027"] },
+    { state: "44", counties: ["001", "003", "005", "007", "009"] },
+  ],
   Philadelphia: [
     { state: "42", counties: ["017", "029", "045", "091", "101"] },
     { state: "34", counties: ["005", "007", "015", "021"] },
@@ -23,7 +26,7 @@ const CITY_QUERIES = {
     { state: "53", counties: ["011"] },
   ],
   Phoenix: [{ state: "04", counties: ["013"] }],
-  Denver: [{ state: "08", counties: ["001", "005", "013", "031", "035", "059"] }],
+  Denver: [{ state: "08", counties: ["001", "005", "013", "014", "031", "035", "059"] }],
   "Salt Lake City": [{ state: "49", counties: ["003", "011", "035", "049", "057"] }],
   Cleveland: [{ state: "39", counties: ["035", "085", "093"] }],
   Charlotte: [{ state: "37", counties: ["071", "119", "179"] }],

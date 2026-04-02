@@ -10,6 +10,7 @@ const STATE_FIPS_TO_ABBR = {
   "06": "ca", // SF, LA, San Diego, San Jose
   "11": "dc", // Washington DC
   "25": "ma", // Boston
+  "44": "ri", // Boston commuter extension
   "42": "pa", // Philadelphia (PA side), Pittsburgh
   "34": "nj", // Philadelphia (NJ side)
   "53": "wa", // Seattle
@@ -31,7 +32,7 @@ const CITY_TO_STATE_FIPS = {
   LA: ["06"],
   "San Diego": ["06"],
   "San Jose": ["06"],
-  Boston: ["25"],
+  Boston: ["25", "44"],
   Philadelphia: ["42", "34"],
   Pittsburgh: ["42"],
   Seattle: ["53"],
