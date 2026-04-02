@@ -382,14 +382,14 @@ function createDefaultBasemapStyle(): maplibregl.StyleSpecification {
         type: "raster",
         source: "carto-dark",
         minzoom: 0,
-        maxzoom: 20,
+        maxzoom: 18,
       },
       {
         id: "satellite-layer-esri",
         type: "raster",
         source: "satellite-esri",
         minzoom: 0,
-        maxzoom: 20,
+        maxzoom: 18,
         layout: {
           visibility: "none",
         },
@@ -599,6 +599,8 @@ export function SpeedMap({
   routeLineModeRef.current = routeLineMode;
   const showRouteLinesRef = useRef(showRouteLines);
   showRouteLinesRef.current = showRouteLines;
+  const viewModeRef = useRef(viewMode);
+  viewModeRef.current = viewMode;
   const densityModeRef = useRef(densityMode);
   densityModeRef.current = densityMode;
   const [mapLoaded, setMapLoaded] = useState(false);
@@ -660,6 +662,7 @@ export function SpeedMap({
   const googleTerrainSession = googleTileSessions.terrain;
   const googleSatelliteError = googleTileErrors.satellite || null;
   const topoStyleActiveRef = useRef(basemapMode === "topo");
+  const initialMapLoadComplete = useRef(false);
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     showSatellite &&
@@ -1635,6 +1638,7 @@ export function SpeedMap({
 
     // Reset handler registration flags for new map
     crossingHandlersRegistered.current = false;
+    initialMapLoadComplete.current = false;
 
     // Reset mapLoaded state for new map
     setMapLoaded(false);
@@ -1648,7 +1652,7 @@ export function SpeedMap({
       center: cityConfig.center,
       zoom: cityConfig.zoom,
       minZoom: 8.5,
-      maxZoom: 20,
+      maxZoom: 18,
     });
 
     map.current.addControl(new maplibregl.NavigationControl(), "bottom-right");
@@ -1675,10 +1679,12 @@ export function SpeedMap({
     });
 
     map.current.on("load", () => {
+      initialMapLoadComplete.current = true;
       setMapLoaded(true);
     });
 
     map.current.on("style.load", () => {
+      if (!initialMapLoadComplete.current) return;
       setMapLoaded(true);
     });
 
@@ -1821,7 +1827,7 @@ export function SpeedMap({
         type: "raster",
         source: sourceId,
         minzoom: 0,
-        maxzoom: 20,
+        maxzoom: 18,
         layout: {
           visibility: "none",
         },
@@ -1902,6 +1908,41 @@ export function SpeedMap({
 
     const addRouteLayers = () => {
       if (!map.current) return;
+      const reorderRouteLayers = () => {
+        if (!map.current) return;
+        const layerOrder = [
+          "rail-context-heavy",
+          "rail-context-commuter",
+          "heritage-local-circulators-outline",
+          "heritage-local-circulators",
+          "routes-outline",
+          "routes",
+          "routes-tunnel-outline",
+          "routes-tunnel",
+          "speed-limit-outline",
+          "speed-limit",
+          "speed-limit-labels",
+          "separation-outline",
+          "separation",
+          "speed-segments",
+          "vehicles-glow",
+          "vehicles",
+          "traffic-lights",
+          "crossings",
+          "switches",
+          "stops",
+          "stops-label",
+        ];
+
+        for (const id of layerOrder) {
+          if (!map.current.getLayer(id)) continue;
+          try {
+            map.current.moveLayer(id);
+          } catch {
+            // Layer may have been removed while styles are reconfiguring
+          }
+        }
+      };
 
       const _showByLine = showRouteLines && routeLineMode === "byLine";
       const showBySpeed = showRouteLines && routeLineMode === "bySpeedLimit";
@@ -1927,13 +1968,83 @@ export function SpeedMap({
       const tunnelRoutes = { type: "FeatureCollection", features: [] };
 
       const emptyFC = { type: "FeatureCollection", features: [] } as any;
+      const routeVis: "visible" | "none" = showRouteLines ? "visible" : "none";
+      const stabilizeRouteVisibility = () => {
+        if (!map.current || !showRouteLines) return;
+        const routeLayerIds = [
+          "routes-outline",
+          "routes",
+          "routes-construction-outline",
+          "routes-construction",
+          "routes-tunnel-outline",
+          "routes-tunnel",
+        ].filter((id) => map.current?.getLayer(id));
+        if (routeLayerIds.length === 0) return;
+
+        window.requestAnimationFrame(() => {
+          if (!map.current) return;
+          for (const id of routeLayerIds) {
+            try {
+              map.current.setLayoutProperty(id, "visibility", "none");
+            } catch {
+              // Layer may have been removed during a style swap
+            }
+          }
+
+          window.requestAnimationFrame(() => {
+            if (!map.current) return;
+            for (const id of routeLayerIds) {
+              try {
+                map.current.setLayoutProperty(id, "visibility", "visible");
+              } catch {
+                // Layer may have been removed during a style swap
+              }
+            }
+            reorderRouteLayers();
+          });
+        });
+      };
+
+      const requiredSources = [
+        "routes",
+        "routes-tunnel",
+        "routes-construction",
+        "rail-context-heavy-src",
+        "rail-context-commuter-src",
+        "bus-routes-overlay-src",
+        "speed-limit",
+        "separation",
+      ];
+      const requiredLayers = [
+        "rail-context-heavy",
+        "rail-context-commuter",
+        "heritage-local-circulators-outline",
+        "heritage-local-circulators",
+        "bus-routes-overlay",
+        "bus-routes-overlay-labels",
+        "routes-outline",
+        "routes",
+        "routes-construction-outline",
+        "routes-construction",
+        "routes-tunnel-outline",
+        "routes-tunnel",
+        "speed-limit-outline",
+        "speed-limit",
+        "speed-limit-labels",
+        "separation-outline",
+        "separation",
+      ];
 
       // UPDATE PATH: sources already exist, just swap GeoJSON data in-place.
       // This avoids the remove-and-recreate cycle that causes visual flicker.
-      const hasRouteSource = !!map.current.getSource("routes");
-      const hasRouteLayer = !!map.current.getLayer("routes");
+      const hasHealthyRouteSources = requiredSources.every((id) =>
+        Boolean(map.current?.getSource(id)),
+      );
+      const hasHealthyRouteLayers = requiredLayers.every((id) =>
+        Boolean(map.current?.getLayer(id)),
+      );
 
-      if (hasRouteSource && hasRouteLayer) {
+      if (hasHealthyRouteSources && hasHealthyRouteLayers) {
         try {
           (map.current.getSource("routes") as any).setData(regularRoutes);
           (map.current.getSource("routes-tunnel") as any).setData(tunnelRoutes);
@@ -1954,6 +2065,96 @@ export function SpeedMap({
               annotatedMaxspeed || emptyFC,
             );
           }
+
+          for (const id of [
+            "routes-outline",
+            "routes",
+            "routes-construction-outline",
+            "routes-construction",
+            "routes-tunnel-outline",
+            "routes-tunnel",
+          ]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(id, "visibility", routeVis);
+              map.current.setFilter(id, routeLayerFilter);
+            }
+          }
+
+          for (const id of ["routes", "routes-construction", "routes-tunnel"]) {
+            if (map.current.getLayer(id)) {
+              map.current.setPaintProperty(
+                id,
+                "line-color",
+                showBySpeed || showBySeparation
+                  ? "#6b7280"
+                  : ["get", "route_color"],
+              );
+            }
+          }
+
+          for (const id of [
+            "speed-limit-outline",
+            "speed-limit",
+            "speed-limit-labels",
+          ]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(
+                id,
+                "visibility",
+                showBySpeed ? "visible" : "none",
+              );
+              map.current.setFilter(id, speedLimitLayerFilter);
+            }
+          }
+
+          for (const id of ["separation-outline", "separation"]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(
+                id,
+                "visibility",
+                showBySeparation ? "visible" : "none",
+              );
+            }
+          }
+
+          if (map.current.getLayer("rail-context-heavy")) {
+            map.current.setLayoutProperty(
+              "rail-context-heavy",
+              "visibility",
+              showRailContextHeavy ? "visible" : "none",
+            );
+          }
+          if (map.current.getLayer("rail-context-commuter")) {
+            map.current.setLayoutProperty(
+              "rail-context-commuter",
+              "visibility",
+              showRailContextCommuter ? "visible" : "none",
+            );
+          }
+          for (const id of [
+            "heritage-local-circulators-outline",
+            "heritage-local-circulators",
+          ]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(
+                id,
+                "visibility",
+                showCableCarsOverlay ? "visible" : "none",
+              );
+            }
+          }
+          for (const id of ["bus-routes-overlay", "bus-routes-overlay-labels"]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(
+                id,
+                "visibility",
+                showBusRoutesOverlay ? "visible" : "none",
+              );
+            }
+          }
+
+          reorderRouteLayers();
+          stabilizeRouteVisibility();
         } catch {
           // Source might have been removed externally
         }
@@ -2638,6 +2839,25 @@ export function SpeedMap({
           routeLineModeRef.current === "bySeparation";
         if (isSpeedMode || isSepMode) return;
 
+        const isSegmentView =
+          viewModeRef.current === "segments" ||
+          viewModeRef.current === "segments-500" ||
+          viewModeRef.current === "segments-1000";
+
+        if (isSegmentView && map.current.getLayer("speed-segments")) {
+          const segmentFeatures = map.current.queryRenderedFeatures(e.point, {
+            layers: ["speed-segments", "speed-segments-hitarea"].filter((id) =>
+              map.current?.getLayer(id),
+            ),
+          });
+          if (segmentFeatures.length > 0) {
+            if (!crossingPopupPinned.current && !touchPopupPinned.current) {
+              popup.current?.remove();
+            }
+            return;
+          }
+        }
+
         // In byLine mode, show route name
         const props = e.features[0].properties;
         popup.current
@@ -2666,6 +2886,8 @@ export function SpeedMap({
           map.current.moveLayer(layerId);
         }
       }
+      reorderRouteLayers();
+      stabilizeRouteVisibility();
     };
 
     // If style is already loaded, add layers immediately
@@ -2706,6 +2928,13 @@ export function SpeedMap({
     showRailContextCommuter,
     showCableCarsOverlay,
     showBusRoutesOverlay,
+    routeLayerFilter,
+    speedLimitLayerFilter,
+    hideAllTrains,
+    hideStoppedTrains,
+    speedFilter.minSpeed,
+    speedFilter.maxSpeed,
+    viewMode,
   ]);
 
   // Keep route-line visibility and paint in sync with mode / toggle state
@@ -4522,7 +4751,6 @@ export function SpeedMap({
       type: "FeatureCollection" as const,
       features: segmentFeatures,
     };
-
     const existingSource = map.current.getSource(
       "speed-segments",
     ) as maplibregl.GeoJSONSource;
