@@ -1965,6 +1965,7 @@ export function SpeedMap({
           "separation-outline",
           "separation",
           "speed-segments",
+          "speed-segments-hitarea",
           "vehicles-glow",
           "vehicles",
           "traffic-lights",
@@ -4423,6 +4424,7 @@ export function SpeedMap({
       "separation-outline",
       "separation",
       "speed-segments",
+      "speed-segments-hitarea",
       "vehicles-glow",
       "vehicles",
       "traffic-lights",
@@ -4846,12 +4848,10 @@ export function SpeedMap({
       };
 
       map.current.on("mouseenter", "speed-segments", () => {
-        if (basemapModeRef.current === "topo") return;
         if (map.current) map.current.getCanvas().style.cursor = "pointer";
       });
 
       map.current.on("mouseleave", "speed-segments", () => {
-        if (basemapModeRef.current === "topo") return;
         if (map.current) map.current.getCanvas().style.cursor = "";
         if (!crossingPopupPinned.current && !touchPopupPinned.current) {
           popup.current?.remove();
@@ -4859,7 +4859,6 @@ export function SpeedMap({
       });
 
       map.current.on("mousemove", "speed-segments", (e) => {
-        if (basemapModeRef.current === "topo") return;
         if (isTouchInteractionMode() && touchPopupPinned.current) return;
         showSegmentPopup(e);
       });
@@ -4871,6 +4870,18 @@ export function SpeedMap({
         showSegmentPopup(e, true);
         e.originalEvent.stopPropagation();
       });
+    }
+
+    // Topo style swaps can re-add route layers after segments. Force segment
+    // layers back above routes so hover hits the colored line, not the route
+    // layer underneath.
+    for (const id of ["speed-segments", "speed-segments-hitarea"]) {
+      if (!map.current.getLayer(id)) continue;
+      try {
+        map.current.moveLayer(id);
+      } catch {
+        // Ignore transient layer ordering errors during style reconfiguration.
+      }
     }
   }, [
     cachedSegmentAverages,
@@ -4887,76 +4898,6 @@ export function SpeedMap({
     city,
     topoMobileRecoveryTick,
   ]);
-
-  useEffect(() => {
-    if (!map.current || !mapLoaded) return;
-
-    const handleSegmentHover = (e: maplibregl.MapMouseEvent) => {
-      if (!map.current) return;
-      if (isTouchInteractionMode()) return;
-
-      const isSegmentView =
-        viewMode === "segments" ||
-        viewMode === "segments-500" ||
-        viewMode === "segments-1000";
-
-      if (!isSegmentView) {
-        map.current.getCanvas().style.cursor = "";
-        return;
-      }
-
-      if (basemapMode !== "topo") return;
-
-      const hoverLayers = ["speed-segments"].filter((id) =>
-        map.current?.getLayer(id),
-      );
-      if (hoverLayers.length === 0) return;
-
-      const features = map.current.queryRenderedFeatures(e.point, {
-        layers: hoverLayers,
-      });
-
-      if (features.length === 0) {
-        map.current.getCanvas().style.cursor = "";
-        if (!crossingPopupPinned.current && !touchPopupPinned.current) {
-          popup.current?.remove();
-        }
-        return;
-      }
-
-      map.current.getCanvas().style.cursor = "pointer";
-      const props = features[0].properties;
-      const segColor = getSpeedColor(props.avgSpeed);
-      const lineLabel = getRouteDisplayName(props.routeId, city);
-
-      popup.current
-        ?.setLngLat(e.lngLat)
-        .setHTML(
-          `<div class="popup-content">
-            <div class="popup-title">${lineLabel} Segment</div>
-            <div class="popup-speed" style="color: ${segColor}">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
-            <div class="popup-detail">${props.sampleCount} readings</div>
-          </div>`,
-        )
-        .addTo(map.current);
-    };
-
-    const handleSegmentHoverOut = () => {
-      if (!map.current || isTouchInteractionMode()) return;
-      map.current.getCanvas().style.cursor = "";
-      if (!crossingPopupPinned.current && !touchPopupPinned.current) {
-        popup.current?.remove();
-      }
-    };
-
-    map.current.on("mousemove", handleSegmentHover);
-    map.current.on("mouseout", handleSegmentHoverOut);
-
-    return () => {
-      map.current?.off("mousemove", handleSegmentHover);
-      map.current?.off("mouseout", handleSegmentHoverOut);
-    };
-  }, [mapLoaded, basemapMode, viewMode, city]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
