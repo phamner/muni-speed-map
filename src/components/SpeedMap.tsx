@@ -675,6 +675,7 @@ export function SpeedMap({
   const googleSatelliteError = googleTileErrors.satellite || null;
   const topoStyleActiveRef = useRef(basemapMode === "topo");
   const initialMapLoadComplete = useRef(false);
+  const topoMobileRecoveryAttemptsRef = useRef(0);
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     showSatellite &&
@@ -1725,6 +1726,7 @@ export function SpeedMap({
     if (!map.current || !mapLoaded) return;
     if (basemapMode !== "topo") return;
     if (!isTouchInteractionMode()) return;
+    if (topoMobileRecoveryAttemptsRef.current >= 4) return;
 
     const recoveryTimeout = window.setTimeout(() => {
       if (!map.current || !map.current.isStyleLoaded()) return;
@@ -1743,7 +1745,10 @@ export function SpeedMap({
         (!map.current.getLayer("vehicles") ||
           !map.current.getLayer("vehicles-glow"));
 
-      if (!missingRoutes && !missingSegments && !missingVehicles) return;
+      if (!missingRoutes && !missingSegments && !missingVehicles) {
+        topoMobileRecoveryAttemptsRef.current = 0;
+        return;
+      }
 
       const layersToRemove = [
         "speed-segments-hitarea",
@@ -1792,11 +1797,16 @@ export function SpeedMap({
         } catch {}
       }
 
+      topoMobileRecoveryAttemptsRef.current += 1;
       setTopoMobileRecoveryTick((prev) => prev + 1);
-    }, 350);
+    }, 350 + topoMobileRecoveryAttemptsRef.current * 200);
 
     return () => window.clearTimeout(recoveryTimeout);
-  }, [mapLoaded, basemapMode, viewMode]);
+  }, [mapLoaded, basemapMode, viewMode, topoMobileRecoveryTick]);
+
+  useEffect(() => {
+    topoMobileRecoveryAttemptsRef.current = 0;
+  }, [city, basemapMode, viewMode]);
 
   useEffect(() => {
     if (!mapLoaded || !map.current) return;
