@@ -29,6 +29,15 @@ const LA_METRO_WS_URL = "wss://api.metro.net/ws/LACMTA_Rail/vehicle_positions";
 // 804 = E Line (Expo), 805 = D Line (Purple), 806 = L Line (Gold), 807 = K Line (Crenshaw)
 const METRO_LINES = ["801", "802", "803", "804", "805", "806", "807"];
 
+// Exclude very slow points from the Bergamot yard area so stored trains do not
+// pollute E line segment averages on the public map.
+const LA_YARD_FILTER_CENTER = {
+  lat: 34.02937102817086,
+  lon: -118.46257722208061,
+};
+const LA_YARD_FILTER_RADIUS_METERS = 170;
+const LA_YARD_FILTER_MAX_SPEED_MPH = 8;
+
 // Initialize Supabase client
 const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_KEY);
 
@@ -50,6 +59,39 @@ let currentWs = null;
 // Convert meters per second to miles per hour
 function mpsToMph(mps) {
   return mps * 2.237;
+}
+
+function distanceMeters(lat1, lon1, lat2, lon2) {
+  const toRadians = (degrees) => (degrees * Math.PI) / 180;
+  const earthRadiusMeters = 6371000;
+  const dLat = toRadians(lat2 - lat1);
+  const dLon = toRadians(lon2 - lon1);
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(toRadians(lat1)) *
+      Math.cos(toRadians(lat2)) *
+      Math.sin(dLon / 2) *
+      Math.sin(dLon / 2);
+  return 2 * earthRadiusMeters * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+function shouldSkipLaYardPoint(position) {
+  if (position.city !== "LA") return false;
+  if (
+    position.speed_calculated == null ||
+    position.speed_calculated >= LA_YARD_FILTER_MAX_SPEED_MPH
+  ) {
+    return false;
+  }
+
+  return (
+    distanceMeters(
+      position.lat,
+      position.lon,
+      LA_YARD_FILTER_CENTER.lat,
+      LA_YARD_FILTER_CENTER.lon,
+    ) <= LA_YARD_FILTER_RADIUS_METERS
+  );
 }
 
 // Process a vehicle position message
@@ -187,7 +229,7 @@ function connectWebSocket() {
       const message = JSON.parse(data.toString());
       const position = processVehicleMessage(message);
 
-      if (position) {
+      if (position && !shouldSkipLaYardPoint(position)) {
         // Store the latest position for this vehicle in the current window
         // This overwrites any previous position for the same vehicle
         currentWindowPositions.set(position.vehicle_id, position);
