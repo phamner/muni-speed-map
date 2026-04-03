@@ -30,7 +30,6 @@ import {
   waitForNoLongTasks,
   EMPTY_CITY_DATA,
   escapeHtml,
-  haversineDistance,
   distanceToLineString,
   distanceToSegment,
   MAX_DISTANCE_FROM_ROUTE_METERS,
@@ -159,23 +158,55 @@ const LA_E_YARD_CENTER = {
   lat: 34.02934167993672,
   lon: -118.46245902456381,
 };
-const LA_E_YARD_FILTER_RADIUS_METERS = 150;
-const LA_E_YARD_FILTER_MAX_SPEED_MPH = 4;
+const LA_E_YARD_SPLIT = {
+  lat: 34.029219559698355,
+  lon: -118.4646635593584,
+};
+const LA_E_YARD_REJOIN = {
+  lat: 34.030241699303375,
+  lon: -118.4599138066677,
+};
+const LA_E_YARD_FILTER_BUFFER_METERS = 95;
+
+function signedSideOfLine(
+  point: { lat: number; lon: number },
+  lineStart: { lat: number; lon: number },
+  lineEnd: { lat: number; lon: number },
+): number {
+  return (
+    (lineEnd.lon - lineStart.lon) * (point.lat - lineStart.lat) -
+    (lineEnd.lat - lineStart.lat) * (point.lon - lineStart.lon)
+  );
+}
 
 function shouldExcludeFromLaSegmentAverages(vehicle: Vehicle, city?: City): boolean {
   if (city !== "LA") return false;
-  if (vehicle.routeId !== "E") return false;
-  if (vehicle.speed == null || vehicle.speed >= LA_E_YARD_FILTER_MAX_SPEED_MPH)
-    return false;
+  // if (vehicle.routeId !== "E") return false;
 
-  return (
-    haversineDistance(
-      vehicle.lat,
-      vehicle.lon,
-      LA_E_YARD_CENTER.lat,
-      LA_E_YARD_CENTER.lon,
-    ) <= LA_E_YARD_FILTER_RADIUS_METERS
+  const vehicleSide = signedSideOfLine(
+    { lat: vehicle.lat, lon: vehicle.lon },
+    LA_E_YARD_SPLIT,
+    LA_E_YARD_REJOIN,
   );
+  const yardSide = signedSideOfLine(
+    LA_E_YARD_CENTER,
+    LA_E_YARD_SPLIT,
+    LA_E_YARD_REJOIN,
+  );
+
+  if (vehicleSide === 0 || yardSide === 0) return false;
+  if (Math.sign(vehicleSide) !== Math.sign(yardSide)) return false;
+
+  const distanceToYardBoundary = distanceToSegment(
+    vehicle.lon,
+    vehicle.lat,
+    LA_E_YARD_SPLIT.lon,
+    LA_E_YARD_SPLIT.lat,
+    LA_E_YARD_REJOIN.lon,
+    LA_E_YARD_REJOIN.lat,
+  );
+
+  return distanceToYardBoundary <= LA_E_YARD_FILTER_BUFFER_METERS;
 }
 
 function getFeatureLineStrings(feature: any): number[][][] {
