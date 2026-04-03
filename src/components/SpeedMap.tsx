@@ -4845,6 +4845,25 @@ export function SpeedMap({
           .addTo(map.current);
       };
 
+      map.current.on("mouseenter", "speed-segments", () => {
+        if (basemapModeRef.current === "topo") return;
+        if (map.current) map.current.getCanvas().style.cursor = "pointer";
+      });
+
+      map.current.on("mouseleave", "speed-segments", () => {
+        if (basemapModeRef.current === "topo") return;
+        if (map.current) map.current.getCanvas().style.cursor = "";
+        if (!crossingPopupPinned.current && !touchPopupPinned.current) {
+          popup.current?.remove();
+        }
+      });
+
+      map.current.on("mousemove", "speed-segments", (e) => {
+        if (basemapModeRef.current === "topo") return;
+        if (isTouchInteractionMode() && touchPopupPinned.current) return;
+        showSegmentPopup(e);
+      });
+
       // Mobile tap uses the wider hit-area layer for easier targeting
       map.current.on("click", "speed-segments-hitarea", (e) => {
         if (!isTouchInteractionMode() || !e.features?.length) return;
@@ -4886,8 +4905,10 @@ export function SpeedMap({
         return;
       }
 
-      const hoverLayers = ["speed-segments-hitarea", "speed-segments"].filter(
-        (id) => map.current?.getLayer(id),
+      if (basemapMode !== "topo") return;
+
+      const hoverLayers = ["speed-segments"].filter((id) =>
+        map.current?.getLayer(id),
       );
       if (hoverLayers.length === 0) return;
 
