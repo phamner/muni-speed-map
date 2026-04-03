@@ -4812,18 +4812,18 @@ export function SpeedMap({
             "line-cap": "round",
           },
           paint: {
-            "line-width": 30,
+            "line-width": 6,
             "line-opacity": 0,
           },
         },
         aboveLayer,
       );
 
-      map.current.on("mouseenter", "speed-segments", () => {
+      map.current.on("mouseenter", "speed-segments-hitarea", () => {
         if (map.current) map.current.getCanvas().style.cursor = "pointer";
       });
 
-      map.current.on("mouseleave", "speed-segments", () => {
+      map.current.on("mouseleave", "speed-segments-hitarea", () => {
         if (map.current) map.current.getCanvas().style.cursor = "";
         if (!crossingPopupPinned.current && !touchPopupPinned.current) {
           popup.current?.remove();
@@ -4856,7 +4856,7 @@ export function SpeedMap({
           .addTo(map.current);
       };
 
-      map.current.on("mousemove", "speed-segments", (e) => {
+      map.current.on("mousemove", "speed-segments-hitarea", (e) => {
         if (isTouchInteractionMode() && touchPopupPinned.current) return;
         showSegmentPopup(e);
       });
