@@ -367,14 +367,6 @@ function createDefaultBasemapStyle(): maplibregl.StyleSpecification {
         tileSize: 256,
         attribution: "&copy; OpenStreetMap &copy; CARTO",
       },
-      "satellite-esri": {
-        type: "raster",
-        tiles: [
-          "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-        ],
-        tileSize: 256,
-        attribution: "&copy; Esri, Maxar, Earthstar Geographics",
-      },
     },
     layers: [
       {
@@ -383,16 +375,6 @@ function createDefaultBasemapStyle(): maplibregl.StyleSpecification {
         source: "carto-dark",
         minzoom: 0,
         maxzoom: 22,
-      },
-      {
-        id: "satellite-layer-esri",
-        type: "raster",
-        source: "satellite-esri",
-        minzoom: 0,
-        maxzoom: 22,
-        layout: {
-          visibility: "none",
-        },
       },
     ],
   };
@@ -881,7 +863,7 @@ export function SpeedMap({
             }
           } catch (error: any) {
             console.warn(
-              `Google ${mapType} session unavailable, falling back to default basemap:`,
+              `Google ${mapType} session unavailable; no non-Google satellite fallback will be shown:`,
               error,
             );
             if (!cancelled) {
@@ -5814,6 +5796,31 @@ export function SpeedMap({
           <div className="loading-text">
             {loadingProgress || "Finishing up..."}
           </div>
+        </div>
+      )}
+
+      {basemapMode === "satellite" && googleSatelliteError && (
+        <div
+          style={{
+            position: "absolute",
+            top: 16,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 35,
+            padding: "10px 14px",
+            borderRadius: 10,
+            background: "rgba(28, 30, 48, 0.94)",
+            border: "1px solid rgba(255, 120, 120, 0.4)",
+            color: "#f3f4f6",
+            fontSize: 13,
+            lineHeight: 1.4,
+            boxShadow: "0 6px 22px rgba(0, 0, 0, 0.28)",
+            pointerEvents: "none",
+            maxWidth: 340,
+            textAlign: "center",
+          }}
+        >
+          Satellite imagery is temporarily unavailable.
         </div>
       )}
 
