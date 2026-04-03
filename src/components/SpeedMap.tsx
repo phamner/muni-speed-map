@@ -30,6 +30,7 @@ import {
   waitForNoLongTasks,
   EMPTY_CITY_DATA,
   escapeHtml,
+  haversineDistance,
   distanceToLineString,
   distanceToSegment,
   MAX_DISTANCE_FROM_ROUTE_METERS,
@@ -154,6 +155,28 @@ function buildSfRouteLayerFilter(
 
 const MAXSPEED_ROUTE_MATCH_METERS = 75;
 const MAXSPEED_BEARING_TOLERANCE_DEG = 35;
+const LA_E_YARD_CENTER = {
+  lat: 34.02934167993672,
+  lon: -118.46245902456381,
+};
+const LA_E_YARD_FILTER_RADIUS_METERS = 150;
+const LA_E_YARD_FILTER_MAX_SPEED_MPH = 4;
+
+function shouldExcludeFromLaSegmentAverages(vehicle: Vehicle, city?: City): boolean {
+  if (city !== "LA") return false;
+  if (vehicle.routeId !== "E") return false;
+  if (vehicle.speed == null || vehicle.speed >= LA_E_YARD_FILTER_MAX_SPEED_MPH)
+    return false;
+
+  return (
+    haversineDistance(
+      vehicle.lat,
+      vehicle.lon,
+      LA_E_YARD_CENTER.lat,
+      LA_E_YARD_CENTER.lon,
+    ) <= LA_E_YARD_FILTER_RADIUS_METERS
+  );
+}
 
 function getFeatureLineStrings(feature: any): number[][][] {
   if (!feature?.geometry) return [];
@@ -4580,6 +4603,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (shouldExcludeFromLaSegmentAverages(v, city)) return;
       if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
@@ -4619,6 +4643,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (shouldExcludeFromLaSegmentAverages(v, city)) return;
       if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
@@ -4658,6 +4683,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (shouldExcludeFromLaSegmentAverages(v, city)) return;
       if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
