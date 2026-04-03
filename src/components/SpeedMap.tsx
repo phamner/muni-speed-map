@@ -4819,17 +4819,6 @@ export function SpeedMap({
         aboveLayer,
       );
 
-      map.current.on("mouseenter", "speed-segments-hitarea", () => {
-        if (map.current) map.current.getCanvas().style.cursor = "pointer";
-      });
-
-      map.current.on("mouseleave", "speed-segments-hitarea", () => {
-        if (map.current) map.current.getCanvas().style.cursor = "";
-        if (!crossingPopupPinned.current && !touchPopupPinned.current) {
-          popup.current?.remove();
-        }
-      });
-
       const showSegmentPopup = (
         e: maplibregl.MapLayerMouseEvent,
         pinned = false,
@@ -4856,11 +4845,6 @@ export function SpeedMap({
           .addTo(map.current);
       };
 
-      map.current.on("mousemove", "speed-segments-hitarea", (e) => {
-        if (isTouchInteractionMode() && touchPopupPinned.current) return;
-        showSegmentPopup(e);
-      });
-
       // Mobile tap uses the wider hit-area layer for easier targeting
       map.current.on("click", "speed-segments-hitarea", (e) => {
         if (!isTouchInteractionMode() || !e.features?.length) return;
@@ -4884,6 +4868,74 @@ export function SpeedMap({
     city,
     topoMobileRecoveryTick,
   ]);
+
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+
+    const handleSegmentHover = (e: maplibregl.MapMouseEvent) => {
+      if (!map.current) return;
+      if (isTouchInteractionMode()) return;
+
+      const isSegmentView =
+        viewMode === "segments" ||
+        viewMode === "segments-500" ||
+        viewMode === "segments-1000";
+
+      if (!isSegmentView) {
+        map.current.getCanvas().style.cursor = "";
+        return;
+      }
+
+      const hoverLayers = ["speed-segments-hitarea", "speed-segments"].filter(
+        (id) => map.current?.getLayer(id),
+      );
+      if (hoverLayers.length === 0) return;
+
+      const features = map.current.queryRenderedFeatures(e.point, {
+        layers: hoverLayers,
+      });
+
+      if (features.length === 0) {
+        map.current.getCanvas().style.cursor = "";
+        if (!crossingPopupPinned.current && !touchPopupPinned.current) {
+          popup.current?.remove();
+        }
+        return;
+      }
+
+      map.current.getCanvas().style.cursor = "pointer";
+      const props = features[0].properties;
+      const segColor = getSpeedColor(props.avgSpeed);
+      const lineLabel = getRouteDisplayName(props.routeId, city);
+
+      popup.current
+        ?.setLngLat(e.lngLat)
+        .setHTML(
+          `<div class="popup-content">
+            <div class="popup-title">${lineLabel} Segment</div>
+            <div class="popup-speed" style="color: ${segColor}">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
+            <div class="popup-detail">${props.sampleCount} readings</div>
+          </div>`,
+        )
+        .addTo(map.current);
+    };
+
+    const handleSegmentHoverOut = () => {
+      if (!map.current || isTouchInteractionMode()) return;
+      map.current.getCanvas().style.cursor = "";
+      if (!crossingPopupPinned.current && !touchPopupPinned.current) {
+        popup.current?.remove();
+      }
+    };
+
+    map.current.on("mousemove", handleSegmentHover);
+    map.current.on("mouseout", handleSegmentHoverOut);
+
+    return () => {
+      map.current?.off("mousemove", handleSegmentHover);
+      map.current?.off("mouseout", handleSegmentHoverOut);
+    };
+  }, [mapLoaded, basemapMode, viewMode, city]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
