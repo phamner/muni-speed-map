@@ -784,6 +784,36 @@ export function SpeedMap({
     return "#22ccff";
   };
 
+  const renderSegmentPopup = useCallback(
+    (
+      lngLat: maplibregl.LngLatLike,
+      properties: Record<string, any>,
+      pinned = false,
+    ) => {
+      if (!map.current) return;
+
+      const segColor = getSpeedColor(properties.avgSpeed);
+      const lineLabel = getRouteDisplayName(properties.routeId, city);
+
+      popup.current
+        ?.setLngLat(lngLat)
+        .setHTML(
+          `<div class="popup-content${pinned ? " popup-pinned" : ""}">
+            <div class="popup-title">${lineLabel} Segment</div>
+            <div class="popup-speed" style="color: ${segColor}">${formatAvgSpeedFromRef(properties.avgSpeed)} avg</div>
+            <div class="popup-detail">${properties.sampleCount} readings</div>
+            ${
+              pinned
+                ? '<div class="popup-hint">Tap elsewhere to close</div>'
+                : ""
+            }
+          </div>`,
+        )
+        .addTo(map.current);
+    },
+    [city],
+  );
+
   // Load city static data when city changes
   useEffect(() => {
     let cancelled = false;
@@ -2856,9 +2886,8 @@ export function SpeedMap({
             ),
           });
           if (segmentFeatures.length > 0) {
-            if (!crossingPopupPinned.current && !touchPopupPinned.current) {
-              popup.current?.remove();
-            }
+            if (isTouchInteractionMode() && touchPopupPinned.current) return;
+            renderSegmentPopup(e.lngLat, segmentFeatures[0].properties);
             return;
           }
         }
@@ -4802,7 +4831,8 @@ export function SpeedMap({
         aboveLayer,
       );
 
-      // Wider invisible layer for easier mobile tap targets
+      // Invisible layer for mobile tap targeting. We keep it aligned with the
+      // visible segment width so hover behavior stays consistent with route lines.
       map.current.addLayer(
         {
           id: "speed-segments-hitarea",
@@ -4826,25 +4856,7 @@ export function SpeedMap({
         pinned = false,
       ) => {
         if (!e.features?.length || !map.current) return;
-        const props = e.features[0].properties;
-        const segColor = getSpeedColor(props.avgSpeed);
-        const lineLabel = getRouteDisplayName(props.routeId, city);
-
-        popup.current
-          ?.setLngLat(e.lngLat)
-          .setHTML(
-            `<div class="popup-content${pinned ? " popup-pinned" : ""}">
-              <div class="popup-title">${lineLabel} Segment</div>
-              <div class="popup-speed" style="color: ${segColor}">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
-              <div class="popup-detail">${props.sampleCount} readings</div>
-              ${
-                pinned
-                  ? '<div class="popup-hint">Tap elsewhere to close</div>'
-                  : ""
-              }
-            </div>`,
-          )
-          .addTo(map.current);
+        renderSegmentPopup(e.lngLat, e.features[0].properties, pinned);
       };
 
       map.current.on("mouseenter", "speed-segments", () => {
@@ -4873,8 +4885,8 @@ export function SpeedMap({
     }
 
     // Topo style swaps can re-add route layers after segments. Force segment
-    // layers back above routes so hover hits the colored line, not the route
-    // layer underneath.
+    // layers back above routes so the visible segment line remains the primary
+    // hover target in segment views.
     for (const id of ["speed-segments", "speed-segments-hitarea"]) {
       if (!map.current.getLayer(id)) continue;
       try {
@@ -4897,6 +4909,7 @@ export function SpeedMap({
     allRouteSegments1000,
     city,
     topoMobileRecoveryTick,
+    renderSegmentPopup,
   ]);
 
   useEffect(() => {
