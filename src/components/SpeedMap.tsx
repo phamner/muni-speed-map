@@ -676,6 +676,7 @@ export function SpeedMap({
   const topoStyleActiveRef = useRef(basemapMode === "topo");
   const initialMapLoadComplete = useRef(false);
   const topoMobileRecoveryAttemptsRef = useRef(0);
+  const basemapModeRef = useRef(basemapMode);
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     showSatellite &&
@@ -694,6 +695,10 @@ export function SpeedMap({
   const isTouchInteractionMode = () =>
     typeof window !== "undefined" &&
     window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  useEffect(() => {
+    basemapModeRef.current = basemapMode;
+  }, [basemapMode]);
 
   // Ref to avoid re-render loops with the callback
   const onVehicleUpdateRef = useRef(onVehicleUpdate);
@@ -1698,7 +1703,20 @@ export function SpeedMap({
 
     map.current.on("style.load", () => {
       if (!initialMapLoadComplete.current) return;
-      setMapLoaded(true);
+
+      const shouldAwaitTopoIdleOnMobile =
+        basemapModeRef.current === "topo" && isTouchInteractionMode();
+
+      if (!shouldAwaitTopoIdleOnMobile) {
+        setMapLoaded(true);
+        return;
+      }
+
+      map.current?.once("idle", () => {
+        if (!map.current) return;
+        if (basemapModeRef.current !== "topo") return;
+        setMapLoaded(true);
+      });
     });
 
     return () => {
