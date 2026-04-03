@@ -3142,8 +3142,8 @@ export function SpeedMap({
 
     const addStopsAndTrafficLightsLayers = () => {
       if (!map.current) return;
-      const stopMarkerSize = basemapMode === "topo" ? 20 : 20;
-      const stopLabelSize = basemapMode === "topo" ? 11 : 11;
+      const stopMarkerSize = basemapMode === "topo" ? 12 : 20;
+      const stopLabelSize = basemapMode === "topo" ? 9 : 11;
 
       // === STOPS LAYER ===
       // Filter clustered stops to selected lines
