@@ -3142,8 +3142,8 @@ export function SpeedMap({
 
     const addStopsAndTrafficLightsLayers = () => {
       if (!map.current) return;
-      const stopMarkerSize = basemapMode === "topo" ? 14 : 20;
-      const stopLabelSize = basemapMode === "topo" ? 9 : 11;
+      const stopMarkerSize = basemapMode === "topo" ? 20 : 20;
+      const stopLabelSize = basemapMode === "topo" ? 11 : 11;
 
       // === STOPS LAYER ===
       // Filter clustered stops to selected lines
@@ -3561,24 +3561,17 @@ export function SpeedMap({
         const ctx = canvas.getContext("2d");
         if (ctx) {
           ctx.clearRect(0, 0, size, size);
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.lineJoin = "round";
           ctx.lineCap = "round";
+          ctx.font =
+            '700 52px "Helvetica Neue", Arial, "Segoe UI Symbol", sans-serif';
           ctx.strokeStyle = "#000000";
-          ctx.lineWidth = 12;
-          ctx.beginPath();
-          ctx.moveTo(16, 16);
-          ctx.lineTo(48, 48);
-          ctx.moveTo(48, 16);
-          ctx.lineTo(16, 48);
-          ctx.stroke();
-
-          ctx.strokeStyle = crossingColor;
           ctx.lineWidth = 8;
-          ctx.beginPath();
-          ctx.moveTo(16, 16);
-          ctx.lineTo(48, 48);
-          ctx.moveTo(48, 16);
-          ctx.lineTo(16, 48);
-          ctx.stroke();
+          ctx.strokeText("✕", size / 2, size / 2 + 1);
+          ctx.fillStyle = crossingColor;
+          ctx.fillText("✕", size / 2, size / 2 + 1);
 
           map.current.addImage("crossing-x-icon", {
             width: size,
@@ -3608,24 +3601,17 @@ export function SpeedMap({
         const ctx = canvas.getContext("2d");
         if (ctx) {
           ctx.clearRect(0, 0, size, size);
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.lineJoin = "round";
           ctx.lineCap = "round";
+          ctx.font =
+            '700 52px "Helvetica Neue", Arial, "Segoe UI Symbol", sans-serif';
           ctx.strokeStyle = "#000000";
-          ctx.lineWidth = 12;
-          ctx.beginPath();
-          ctx.moveTo(16, 16);
-          ctx.lineTo(48, 48);
-          ctx.moveTo(48, 16);
-          ctx.lineTo(16, 48);
-          ctx.stroke();
-
-          ctx.strokeStyle = crossingColor;
           ctx.lineWidth = 8;
-          ctx.beginPath();
-          ctx.moveTo(16, 16);
-          ctx.lineTo(48, 48);
-          ctx.moveTo(48, 16);
-          ctx.lineTo(16, 48);
-          ctx.stroke();
+          ctx.strokeText("✕", size / 2, size / 2 + 1);
+          ctx.fillStyle = crossingColor;
+          ctx.fillText("✕", size / 2, size / 2 + 1);
 
           map.current.addImage("crossing-x-icon", {
             width: size,
