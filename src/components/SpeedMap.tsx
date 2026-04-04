@@ -220,6 +220,68 @@ function nearestSegmentBearing(
   return bearing(x1, y1, x2, y2);
 }
 
+function projectPointOntoCoordinates(
+  lng: number,
+  lat: number,
+  coordinates: number[][],
+): [number, number] | null {
+  let minDist = Infinity;
+  let bestPoint: [number, number] | null = null;
+
+  for (let i = 0; i < coordinates.length - 1; i++) {
+    const [x1, y1] = coordinates[i];
+    const [x2, y2] = coordinates[i + 1];
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const lenSq = dx * dx + dy * dy;
+    const t =
+      lenSq === 0
+        ? 0
+        : Math.max(
+            0,
+            Math.min(1, ((lng - x1) * dx + (lat - y1) * dy) / lenSq),
+          );
+    const projX = x1 + t * dx;
+    const projY = y1 + t * dy;
+    const dist = distanceToSegment(lng, lat, x1, y1, x2, y2);
+    if (dist < minDist) {
+      minDist = dist;
+      bestPoint = [projX, projY];
+    }
+  }
+
+  return bestPoint;
+}
+
+function getPopupAnchorForLineFeature(
+  lngLat: maplibregl.LngLatLike,
+  feature: any,
+): maplibregl.LngLatLike {
+  const point = maplibregl.LngLat.convert(lngLat);
+  const lineStrings = getFeatureLineStrings(feature);
+  if (lineStrings.length === 0) return lngLat;
+
+  let bestAnchor: [number, number] | null = null;
+  let minDist = Infinity;
+
+  for (const coordinates of lineStrings) {
+    const projected = projectPointOntoCoordinates(
+      point.lng,
+      point.lat,
+      coordinates,
+    );
+    if (!projected) continue;
+
+    const distance = distanceToLineString(point.lat, point.lng, coordinates);
+    if (distance < minDist) {
+      minDist = distance;
+      bestAnchor = projected;
+    }
+  }
+
+  return bestAnchor ?? lngLat;
+}
+
 function annotateMaxspeedRoutes(maxspeed: any, routes: any, city: string): any {
   if (!maxspeed?.features?.length) return maxspeed;
 
@@ -794,6 +856,31 @@ export function SpeedMap({
         .addTo(map.current);
     },
     [city],
+  );
+
+  const renderRoutePopup = useCallback(
+    (
+      lngLat: maplibregl.LngLatLike,
+      properties: Record<string, any>,
+      pinned = false,
+    ) => {
+      if (!map.current) return;
+
+      popup.current
+        ?.setLngLat(lngLat)
+        .setHTML(
+          `<div class="popup-content${pinned ? " popup-pinned" : ""}">
+            <div class="popup-title" style="color: ${properties.route_color}">${properties.route_name}</div>
+            ${
+              pinned
+                ? '<div class="popup-hint">Tap elsewhere to close</div>'
+                : ""
+            }
+          </div>`,
+        )
+        .addTo(map.current);
+    },
+    [],
   );
 
   // Load city static data when city changes
@@ -1969,6 +2056,7 @@ export function SpeedMap({
           "heritage-local-circulators",
           "routes-outline",
           "routes",
+          "routes-touch-hitarea",
           "routes-tunnel-outline",
           "routes-tunnel",
           "speed-limit-outline",
@@ -2184,6 +2272,8 @@ export function SpeedMap({
         if (map.current.getLayer("routes-outline"))
           map.current.removeLayer("routes-outline");
         if (map.current.getLayer("routes")) map.current.removeLayer("routes");
+        if (map.current.getLayer("routes-touch-hitarea"))
+          map.current.removeLayer("routes-touch-hitarea");
         if (map.current.getLayer("routes-construction-outline"))
           map.current.removeLayer("routes-construction-outline");
         if (map.current.getLayer("routes-construction"))
@@ -2519,6 +2609,22 @@ export function SpeedMap({
             HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH,
           ),
           "line-opacity": 0.9,
+        },
+      });
+
+      map.current.addLayer({
+        id: "routes-touch-hitarea",
+        type: "line",
+        source: "routes",
+        filter: routeLayerFilter,
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+          visibility: showRouteLines ? "visible" : "none",
+        },
+        paint: {
+          "line-width": 18,
+          "line-opacity": 0,
         },
       });
 
@@ -2876,14 +2982,44 @@ export function SpeedMap({
 
         // In byLine mode, show route name
         const props = e.features[0].properties;
-        popup.current
-          ?.setLngLat(e.lngLat)
-          .setHTML(
-            `<div class="popup-content">
-              <div class="popup-title" style="color: ${props.route_color}">${props.route_name}</div>
-            </div>`,
-          )
-          .addTo(map.current);
+        renderRoutePopup(e.lngLat, props);
+      });
+
+      map.current.on("click", "routes-touch-hitarea", (e) => {
+        if (!e.features?.length || !map.current || !isTouchInteractionMode()) {
+          return;
+        }
+
+        const isSegmentView =
+          viewModeRef.current === "segments" ||
+          viewModeRef.current === "segments-500" ||
+          viewModeRef.current === "segments-1000";
+
+        if (isSegmentView && map.current.getLayer("speed-segments")) {
+          const segmentFeatures = map.current.queryRenderedFeatures(e.point, {
+            layers: ["speed-segments", "speed-segments-hitarea"].filter((id) =>
+              map.current?.getLayer(id),
+            ),
+          });
+          if (segmentFeatures.length > 0) {
+            touchPopupPinned.current = true;
+            renderSegmentPopup(
+              getPopupAnchorForLineFeature(e.lngLat, segmentFeatures[0]),
+              segmentFeatures[0].properties,
+              true,
+            );
+            e.originalEvent.stopPropagation();
+            return;
+          }
+        }
+
+        touchPopupPinned.current = true;
+        renderRoutePopup(
+          getPopupAnchorForLineFeature(e.lngLat, e.features[0]),
+          e.features[0].properties,
+          true,
+        );
+        e.originalEvent.stopPropagation();
       });
 
       // Ensure symbol layers (stops, traffic-lights, crossings, switches, vehicles)
@@ -2937,6 +3073,8 @@ export function SpeedMap({
     handleRailContextMouseEnter,
     handleRailContextMouseLeave,
     handleRailContextMouseMove,
+    renderRoutePopup,
+    renderSegmentPopup,
     showRouteLines,
     routeLineMode,
     showRailContextHeavy,
@@ -2961,6 +3099,7 @@ export function SpeedMap({
       for (const id of [
         "routes-outline",
         "routes",
+        "routes-touch-hitarea",
         "routes-construction-outline",
         "routes-construction",
         "routes-tunnel-outline",
@@ -3012,6 +3151,7 @@ export function SpeedMap({
       for (const id of [
         "routes-outline",
         "routes",
+        "routes-touch-hitarea",
         "routes-construction-outline",
         "routes-construction",
         "routes-tunnel-outline",
@@ -3789,6 +3929,11 @@ export function SpeedMap({
               },
             );
             if (segmentFeatures && segmentFeatures.length > 0) return;
+
+            const routeFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["routes-touch-hitarea"],
+            });
+            if (routeFeatures && routeFeatures.length > 0) return;
 
             const densityFeatures = map.current?.queryRenderedFeatures(
               e.point,
@@ -4813,8 +4958,9 @@ export function SpeedMap({
         aboveLayer,
       );
 
-      // Invisible layer for mobile tap targeting. We keep it aligned with the
-      // visible segment width so hover behavior stays consistent with route lines.
+      // Invisible layer for mobile tap targeting. It is wider than the visible
+      // line so touch selection is easier, while desktop hover still uses the
+      // visible segment layer only.
       map.current.addLayer(
         {
           id: "speed-segments-hitarea",
@@ -4826,7 +4972,7 @@ export function SpeedMap({
             "line-cap": "round",
           },
           paint: {
-            "line-width": 6,
+            "line-width": 18,
             "line-opacity": 0,
           },
         },
@@ -4838,7 +4984,11 @@ export function SpeedMap({
         pinned = false,
       ) => {
         if (!e.features?.length || !map.current) return;
-        renderSegmentPopup(e.lngLat, e.features[0].properties, pinned);
+        const anchor =
+          pinned && isTouchInteractionMode()
+            ? getPopupAnchorForLineFeature(e.lngLat, e.features[0])
+            : e.lngLat;
+        renderSegmentPopup(anchor, e.features[0].properties, pinned);
       };
 
       map.current.on("mouseenter", "speed-segments", () => {
