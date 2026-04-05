@@ -11,6 +11,7 @@ const CITIES_WITH_PARALLEL_TRACKS = [
   "Philadelphia",
   "Denver",
   "Salt Lake City",
+  "San Diego",
   "Phoenix",
   "Cleveland",
   "Charlotte",

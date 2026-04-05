@@ -105,13 +105,50 @@ const CITIES = {
     name: "Salt Lake City",
     bbox: [40.55, -112.1, 40.9, -111.7],
     railwayTypes: "light_rail|tram",
-    outputRoutesFile: "slcTraxRoutes.json",
-    outputStopsFile: "slcTraxStops.json",
+    routeTypesRegex: "light_rail|tram",
+    useRouteRelations: true,
+    preserveRelationFeatures: true,
+    outputRoutesFile: path.join("routes", "slcTraxRoutes.json"),
+    outputStopsFile: path.join("stops", "slcTraxStops.json"),
     lineColors: {
       Blue: "#0053A0",
       Red: "#EE3124",
       Green: "#008144",
       "S-Line": "#77777a",
+    },
+    lineNames: {
+      Blue: "Blue Line",
+      Red: "Red Line",
+      Green: "Green Line",
+      "S-Line": "S-Line",
+    },
+  },
+  SanDiego: {
+    name: "San Diego",
+    bbox: [32.45, -117.35, 33.05, -116.85],
+    railwayTypes: "light_rail|tram",
+    routeTypesRegex: "light_rail|tram",
+    useRouteRelations: true,
+    preserveRelationFeatures: true,
+    outputRoutesFile: path.join("routes", "sanDiegoTrolleyRoutes.json"),
+    outputStopsFile: path.join("stops", "sanDiegoTrolleyStops.json"),
+    lineColors: {
+      "510": "#0000FF",
+      "520": "#FF6600",
+      "530": "#009900",
+      "535": "#B87333",
+    },
+    lineNames: {
+      "510": "Blue Line",
+      "520": "Orange Line",
+      "530": "Green Line",
+      "535": "Copper Line",
+    },
+    lineLetters: {
+      "510": "Blue",
+      "520": "Orange",
+      "530": "Green",
+      "535": "Copper",
     },
   },
   Phoenix: {
@@ -165,6 +202,27 @@ async function fetchOverpass(query) {
 }
 
 function getRouteIdFromTags(tags = {}, city = null) {
+  if (city?.name === "San Diego") {
+    const ref = String(tags.ref || "").trim();
+    if (["510", "520", "530", "535"].includes(ref)) return ref;
+
+    const line = String(tags.line || "")
+      .trim()
+      .toLowerCase();
+    if (line === "blue") return "510";
+    if (line === "orange") return "520";
+    if (line === "green") return "530";
+    if (line === "copper") return "535";
+  }
+
+  if (city?.name === "Salt Lake City") {
+    const ref = String(tags.ref || "").trim();
+    if (ref === "701") return "Blue";
+    if (ref === "703") return "Red";
+    if (ref === "704") return "Green";
+    if (ref === "720") return "S-Line";
+  }
+
   if (city?.name === "Seattle") {
     const ref = String(tags.ref || "")
       .trim()
@@ -331,6 +389,45 @@ function mergeContiguousWays(wayCoordinateSets) {
   return merged.sort((a, b) => b.length - a.length);
 }
 
+function stitchOrderedWayMembers(wayMembers) {
+  const lines = [];
+  let current = [];
+
+  for (const member of wayMembers) {
+    const coords = member.geometry.map((pt) => [pt.lon, pt.lat]);
+    if (coords.length < 2) continue;
+
+    if (current.length === 0) {
+      current = [...coords];
+      continue;
+    }
+
+    const currentStartKey = getCoordinateKey(current[0]);
+    const currentEndKey = getCoordinateKey(current[current.length - 1]);
+
+    const appendCandidate = reverseIfNeeded(coords, currentEndKey, true);
+    if (appendCandidate) {
+      current = current.concat(appendCandidate.slice(1));
+      continue;
+    }
+
+    const prependCandidate = reverseIfNeeded(coords, currentStartKey, false);
+    if (prependCandidate) {
+      current = prependCandidate.slice(0, -1).concat(current);
+      continue;
+    }
+
+    lines.push(current);
+    current = [...coords];
+  }
+
+  if (current.length > 1) {
+    lines.push(current);
+  }
+
+  return lines;
+}
+
 function collectWayRefsRecursive(relationId, relationMembers, visited = new Set()) {
   if (visited.has(relationId)) return new Set();
   visited.add(relationId);
@@ -374,26 +471,17 @@ out body;
 
     console.log(`   Found ${relations.length} route relations`);
 
-    const routeSegments = new Map();
     const routeRelationIds = new Map();
+    const matchingRelations = [];
 
     for (const relation of relations) {
       const routeId = getRouteIdFromTags(relation.tags, city);
       if (!city.lineColors[routeId]) continue;
-
-      if (!routeSegments.has(routeId)) {
-        routeSegments.set(routeId, {
-          route_id: routeId,
-          route_name: city.lineNames?.[routeId] || getRouteName(routeId),
-          route_color: city.lineColors[routeId],
-          coordinates: [],
-          seenWays: new Set(),
-        });
-      }
       if (!routeRelationIds.has(routeId)) {
         routeRelationIds.set(routeId, []);
       }
       routeRelationIds.get(routeId).push(relation.id);
+      matchingRelations.push({ relation, routeId });
     }
 
     const allRelationIds = Array.from(routeRelationIds.values()).flat();
@@ -414,6 +502,7 @@ out body geom;
     const wayElements = wayData.elements.filter(
       (el) => el.type === "way" && el.geometry?.length > 1,
     );
+    const waysById = new Map(wayElements.map((el) => [el.id, el]));
     const relationMembers = new Map();
     for (const el of wayData.elements) {
       if (el.type === "relation") {
@@ -421,43 +510,87 @@ out body geom;
       }
     }
 
-    for (const [routeId, relationIds] of routeRelationIds) {
-      const route = routeSegments.get(routeId);
-      const allowedWayIds = new Set();
-      for (const relationId of relationIds) {
-        const refs = collectWayRefsRecursive(relationId, relationMembers);
-        for (const ref of refs) allowedWayIds.add(ref);
-      }
-      const ways = wayElements.filter((el) => allowedWayIds.has(el.id));
+    const routeSegments = new Map();
+    const relationFeatures = [];
+    const routeDirectionCounters = new Map();
 
-      console.log(`   ${routeId}: ${ways.length} member ways`);
+    for (const { relation, routeId } of matchingRelations) {
+      const orderedMembers = (relation.members || []).filter(
+        (member) => isTrackRelationMember(member) && waysById.has(member.ref),
+      );
+      const orderedWays = orderedMembers
+        .map((member) => waysById.get(member.ref))
+        .filter(Boolean);
 
-      for (const way of ways) {
-        if (route.seenWays.has(way.id)) continue;
-        route.seenWays.add(way.id);
-        route.coordinates.push(
-          way.geometry.map((pt) => [pt.lon, pt.lat]),
+      let stitched = stitchOrderedWayMembers(orderedWays);
+
+      if (stitched.length === 0) {
+        const allowedWayIds = collectWayRefsRecursive(relation.id, relationMembers);
+        const fallbackWays = wayElements.filter((el) => allowedWayIds.has(el.id));
+        stitched = mergeContiguousWays(
+          fallbackWays.map((way) => way.geometry.map((pt) => [pt.lon, pt.lat])),
         );
       }
 
-      route.coordinates = mergeContiguousWays(route.coordinates);
-      console.log(`   ${routeId}: merged into ${route.coordinates.length} line strings`);
+      console.log(`   ${routeId}: ${orderedWays.length} ordered member ways`);
+      console.log(`   ${routeId}: merged into ${stitched.length} line strings`);
+
+      if (city.preserveRelationFeatures) {
+        const directionIndex = routeDirectionCounters.get(routeId) || 0;
+        routeDirectionCounters.set(routeId, directionIndex + 1);
+        relationFeatures.push({
+          type: "Feature",
+          properties: {
+            route_id: routeId,
+            route_name: city.lineNames?.[routeId] || getRouteName(routeId),
+            route_color: city.lineColors[routeId],
+            ...(city.lineLetters?.[routeId]
+              ? { route_letter: city.lineLetters[routeId] }
+              : {}),
+            direction_id: String(directionIndex),
+            direction: directionIndex === 0 ? "outbound" : "inbound",
+            headsign: relation.tags?.to || null,
+            osm_relation_id: relation.id,
+          },
+          geometry: {
+            type: "MultiLineString",
+            coordinates: stitched,
+          },
+        });
+        continue;
+      }
+
+      if (!routeSegments.has(routeId)) {
+        routeSegments.set(routeId, {
+          route_id: routeId,
+          route_name: city.lineNames?.[routeId] || getRouteName(routeId),
+          route_color: city.lineColors[routeId],
+          coordinates: [],
+        });
+      }
+
+      routeSegments.get(routeId).coordinates.push(...stitched);
     }
 
-    const features = Array.from(routeSegments.values())
-      .filter((route) => route.coordinates.length > 0)
-      .map((route) => ({
-        type: "Feature",
-        properties: {
-          route_id: route.route_id,
-          route_name: route.route_name,
-          route_color: route.route_color,
-        },
-        geometry: {
-          type: "MultiLineString",
-          coordinates: route.coordinates,
-        },
-      }));
+    const features = city.preserveRelationFeatures
+      ? relationFeatures.filter((feature) => feature.geometry.coordinates.length > 0)
+      : Array.from(routeSegments.values())
+          .filter((route) => route.coordinates.length > 0)
+          .map((route) => ({
+            type: "Feature",
+            properties: {
+              route_id: route.route_id,
+              route_name: route.route_name,
+              route_color: route.route_color,
+              ...(city.lineLetters?.[route.route_id]
+                ? { route_letter: city.lineLetters[route.route_id] }
+                : {}),
+            },
+            geometry: {
+              type: "MultiLineString",
+              coordinates: route.coordinates,
+            },
+          }));
 
     console.log(`   Created ${features.length} route features`);
 
@@ -499,19 +632,7 @@ out body geom;
 `;
 
   try {
-    const response = await fetch(OVERPASS_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `data=${encodeURIComponent(query)}`,
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await fetchOverpass(query);
     console.log(`   Found ${data.elements.length} railway ways`);
 
     // Convert to GeoJSON features
@@ -588,19 +709,7 @@ out body;
 `;
 
   try {
-    const response = await fetch(OVERPASS_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: `data=${encodeURIComponent(query)}`,
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error: ${response.status}`);
-    }
-
-    const data = await response.json();
+    const data = await fetchOverpass(query);
     console.log(`   Found ${data.elements.length} stops/stations`);
 
     // Convert to GeoJSON features

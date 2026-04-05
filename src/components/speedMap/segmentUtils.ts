@@ -80,6 +80,7 @@ export const CITIES_WITH_PARALLEL_TRACKS = [
   "Philadelphia",
   "Denver", //yes
   "Salt Lake City",
+  "San Diego",
   "Phoenix",
   "Cleveland",
   "Charlotte",

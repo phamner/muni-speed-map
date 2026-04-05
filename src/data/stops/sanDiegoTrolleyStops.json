@@ -4,1489 +4,3136 @@
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75102",
-        "stop_name": "12th & Imperial Station",
-        "routes": ["510", "520"]
+        "id": 48857639,
+        "name": "12th & Imperial Transit Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.1532179, 32.70587009]
+        "coordinates": [
+          -117.1531796,
+          32.7057558
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75103",
-        "stop_name": "12th & Imperial Station",
-        "routes": ["510", "520"]
+        "id": 48857671,
+        "name": "America Plaza",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15332593, 32.70578492]
+        "coordinates": [
+          -117.1690277,
+          32.7161117
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75100",
-        "stop_name": "12th & Imperial Station (Bayside)",
-        "routes": ["530"]
+        "id": 48988457,
+        "name": "Santee Town Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15389991, 32.70523403]
+        "coordinates": [
+          -116.9807682,
+          32.8419404
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75014",
-        "stop_name": "24th Street Station",
-        "routes": ["510"]
+        "id": 49496693,
+        "name": "47th Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.10800607, 32.66196491]
+        "coordinates": [
+          -117.095426,
+          32.7083074
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75015",
-        "stop_name": "24th Street Station",
-        "routes": ["510"]
+        "id": 295782228,
+        "name": "Union Grantville",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.10800516, 32.66170409]
+        "coordinates": [
+          -117.0979378,
+          32.780642
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75074",
-        "stop_name": "25th & Commercial St Station",
-        "routes": ["520"]
+        "id": 344551938,
+        "name": "County Center/Little Italy",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.13873095, 32.70527695]
+        "coordinates": [
+          -117.169965,
+          32.721062
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75075",
-        "stop_name": "25th & Commercial St Station",
-        "routes": ["520"]
+        "id": 344552428,
+        "name": "Seaport Village",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.14115393, 32.70528997]
+        "coordinates": [
+          -117.1681501,
+          32.7115099
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75072",
-        "stop_name": "32nd/Commercial St Station",
-        "routes": ["520"]
+        "id": 344552548,
+        "name": "Convention Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.12475301, 32.70576993]
+        "coordinates": [
+          -117.1638564,
+          32.7091594
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75073",
-        "stop_name": "32nd/Commercial St Station",
-        "routes": ["520"]
+        "id": 344552646,
+        "name": "Gaslamp Quarter",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.1245239, 32.70577705]
+        "coordinates": [
+          -117.1601462,
+          32.7071302
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75070",
-        "stop_name": "47th Street Station",
-        "routes": ["520"]
+        "id": 344558607,
+        "name": "Park & Market",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.09481908, 32.70843908]
+        "coordinates": [
+          -117.1537386,
+          32.7113695
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75071",
-        "stop_name": "47th Street Station",
-        "routes": ["520"]
+        "id": 344559141,
+        "name": "5th Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.09507209, 32.70844807]
+        "coordinates": [
+          -117.1600869,
+          32.7167649
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75032",
-        "stop_name": "70th Street Station",
-        "routes": ["530"]
+        "id": 344559766,
+        "name": "Middletown",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.0422951, 32.772147]
+        "coordinates": [
+          -117.1751474,
+          32.7340148
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75033",
-        "stop_name": "70th Street Station",
-        "routes": ["530"]
+        "id": 344559903,
+        "name": "Washington Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.0424841, 32.77229009]
+        "coordinates": [
+          -117.1847852,
+          32.7418648
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75016",
-        "stop_name": "8th Street Station",
-        "routes": ["510"]
+        "id": 344560202,
+        "name": "Morena/Linda Vista",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.11309508, 32.67501911]
+        "coordinates": [
+          -117.1972165,
+          32.7635557
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75017",
-        "stop_name": "8th Street Station",
-        "routes": ["510"]
+        "id": 344560363,
+        "name": "Fashion Valley",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.11308188, 32.67473308]
+        "coordinates": [
+          -117.1695392,
+          32.7653618
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75028",
-        "stop_name": "Amaya Drive Station",
-        "routes": ["520", "530"]
+        "id": 344560650,
+        "name": "Fenton Parkway",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.00186302, 32.7854099]
+        "coordinates": [
+          -117.1275431,
+          32.7779356
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75029",
-        "stop_name": "Amaya Drive Station",
-        "routes": ["520", "530"]
+        "id": 344560663,
+        "name": "Stadium",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.001606, 32.78541311]
+        "coordinates": [
+          -117.120158,
+          32.7809702
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75084",
-        "stop_name": "America Plaza Station",
-        "routes": ["510"]
+        "id": 347410782,
+        "name": "Mission San Diego",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16881107, 32.71638588]
+        "coordinates": [
+          -117.1114875,
+          32.781197
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75085",
-        "stop_name": "America Plaza Station",
-        "routes": ["510", "520"]
+        "id": 347413904,
+        "name": "SDSU",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.1688139, 32.7166269]
+        "coordinates": [
+          -117.0707152,
+          32.7732866
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75024",
-        "stop_name": "Arnele Avenue Station",
-        "routes": ["535"]
+        "id": 347991760,
+        "name": "Barrio Logan",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-116.97568505, 32.80466109]
+        "coordinates": [
+          -117.1461388,
+          32.6976871
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75025",
-        "stop_name": "Arnele Avenue Station",
-        "routes": ["535"]
+        "id": 347995355,
+        "name": "Pacific Fleet",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-116.97577313, 32.80448906]
+        "coordinates": [
+          -117.1243211,
+          32.6856888
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77774",
-        "stop_name": "Balboa Avenue Station",
-        "routes": ["510"]
+        "id": 347995576,
+        "name": "8th Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.21405986, 32.8057379]
+        "coordinates": [
+          -117.1129525,
+          32.6744694
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77775",
-        "stop_name": "Balboa Avenue Station",
-        "routes": ["510"]
+        "id": 347995962,
+        "name": "E Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.21406638, 32.80585769]
+        "coordinates": [
+          -117.098926,
+          32.6385415
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75018",
-        "stop_name": "Barrio Logan Station",
-        "routes": ["510"]
+        "id": 347998044,
+        "name": "Euclid Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.14666504, 32.69812698]
+        "coordinates": [
+          -117.0865344,
+          32.7095802
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75019",
-        "stop_name": "Barrio Logan Station",
-        "routes": ["510"]
+        "id": 347998216,
+        "name": "Encanto/62nd Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.14645586, 32.69788609]
+        "coordinates": [
+          -117.0637273,
+          32.7100631
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75002",
-        "stop_name": "Beyer Blvd Station",
-        "routes": ["510"]
+        "id": 347998925,
+        "name": "Massachusetts Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.04706184, 32.55765602]
+        "coordinates": [
+          -117.0398927,
+          32.7231797
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75003",
-        "stop_name": "Beyer Blvd Station",
-        "routes": ["510"]
+        "id": 347999846,
+        "name": "La Mesa Boulevard",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.046839, 32.55745297]
+        "coordinates": [
+          -117.0203292,
+          32.7646049
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75090",
-        "stop_name": "City College Station",
-        "routes": ["510", "520"]
+        "id": 348000644,
+        "name": "70th Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15417292, 32.71628902]
+        "coordinates": [
+          -117.0428859,
+          32.7723937
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75091",
-        "stop_name": "City College Station",
-        "routes": ["510", "520"]
+        "id": 348001379,
+        "name": "Alvarado",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15422206, 32.71623012]
+        "coordinates": [
+          -117.0573182,
+          32.7774816
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75086",
-        "stop_name": "Civic Center Station",
-        "routes": ["510", "520"]
+        "id": 348002505,
+        "name": "El Cajon",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.1624709, 32.71671]
+        "coordinates": [
+          -116.976188,
+          32.7915383
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75087",
-        "stop_name": "Civic Center Station",
-        "routes": ["510", "520"]
+        "id": 348002642,
+        "name": "Arnele Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16242896, 32.71677298]
+        "coordinates": [
+          -116.9757444,
+          32.8041168
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77772",
-        "stop_name": "Clairemont Drive Station",
-        "routes": ["510"]
+        "id": 373111765,
+        "name": "Solana Beach",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.20618712, 32.7899797]
+        "coordinates": [
+          -117.2716254,
+          32.99316
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77773",
-        "stop_name": "Clairemont Drive Station",
-        "routes": ["510"]
+        "id": 1042017545,
+        "name": "Seaport Village",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.20612915, 32.79006453]
+        "coordinates": [
+          -117.1689749,
+          32.7123759
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75096",
-        "stop_name": "Convention Center Station",
-        "routes": ["530"]
+        "id": 1110062239,
+        "name": "E Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16346306, 32.70898098]
+        "coordinates": [
+          -117.0991911,
+          32.6393931
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75097",
-        "stop_name": "Convention Center Station",
-        "routes": ["530"]
+        "id": 1111263715,
+        "name": "County Center/Little Italy",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16331998, 32.70881988]
+        "coordinates": [
+          -117.1699242,
+          32.7218262
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75080",
-        "stop_name": "County Center/Little Italy Station",
-        "routes": ["510", "530"]
+        "id": 1111263821,
+        "name": "12th & Imperial Transit Center (Bayside Terminal)",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16989795, 32.72149387]
+        "coordinates": [
+          -117.1535246,
+          32.7052236
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75081",
-        "stop_name": "County Center/Little Italy Station",
-        "routes": ["510", "530"]
+        "id": 1111263826,
+        "name": "City College",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16998502, 32.72136294]
+        "coordinates": [
+          -117.154021,
+          32.7159735
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75109",
-        "stop_name": "Courthouse Station",
-        "routes": ["520"]
+        "id": 1111263860,
+        "name": "Park & Market",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16602361, 32.71671555]
+        "coordinates": [
+          -117.1537726,
+          32.7105328
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75012",
-        "stop_name": "E Street Station",
-        "routes": ["510"]
+        "id": 1183956448,
+        "name": "Santee Town Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.09905693, 32.63910499]
+        "coordinates": [
+          -116.9807286,
+          32.8419193
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75013",
-        "stop_name": "E Street Station",
-        "routes": ["510"]
+        "id": 1183956664,
+        "name": "Amaya Drive",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.09906612, 32.63884492]
+        "coordinates": [
+          -117.0012196,
+          32.7855201
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75026",
-        "stop_name": "El Cajon Station",
-        "routes": ["530"]
+        "id": 1183956673,
+        "name": "Grossmont",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-116.97613899, 32.79206489]
+        "coordinates": [
+          -117.0109696,
+          32.7818384
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75027",
-        "stop_name": "El Cajon Station",
-        "routes": ["520", "535"]
+        "id": 1211649114,
+        "name": "SDSU",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-116.97621685, 32.79187891]
+        "coordinates": [
+          -117.070728,
+          32.7732098
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77790",
-        "stop_name": "El Cajon Station",
-        "routes": ["535"]
+        "id": 1211659969,
+        "name": "Union Grantville",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-116.97610337, 32.79283632]
+        "coordinates": [
+          -117.0969879,
+          32.7802742
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75066",
-        "stop_name": "Encanto/62nd St Station",
-        "routes": ["520"]
+        "id": 1213050164,
+        "name": "Mission Valley Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.06336103, 32.71013009]
+        "coordinates": [
+          -117.1495558,
+          32.7711614
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75067",
-        "stop_name": "Encanto/62nd St Station",
-        "routes": ["520"]
+        "id": 1213089786,
+        "name": "Hazard Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.06310995, 32.71008392]
+        "coordinates": [
+          -117.1587705,
+          32.7700272
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75068",
-        "stop_name": "Euclid Ave Station",
-        "routes": ["520"]
+        "id": 1214191074,
+        "name": "Spring Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.08612912, 32.70958396]
+        "coordinates": [
+          -117.0172286,
+          32.7571803
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75069",
-        "stop_name": "Euclid Ave Station",
-        "routes": ["520"]
+        "id": 1214583751,
+        "name": "Massachusetts Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.08576103, 32.70950703]
+        "coordinates": [
+          -117.0392852,
+          32.7238339
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77785",
-        "stop_name": "Executive Drive Station",
-        "routes": ["510"]
+        "id": 1214605512,
+        "name": "Encanto/62nd Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.21402471, 32.87416804]
+        "coordinates": [
+          -117.0627316,
+          32.7101457
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77786",
-        "stop_name": "Executive Drive Station",
-        "routes": ["510"]
+        "id": 1214614683,
+        "name": "Euclid Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.21404976, 32.87413569]
+        "coordinates": [
+          -117.085344,
+          32.7095164
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75046",
-        "stop_name": "Fashion Valley Station",
-        "routes": ["530"]
+        "id": 1217815298,
+        "name": "32nd/Commercial",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16915192, 32.76547104]
+        "coordinates": [
+          -117.1242876,
+          32.7063145
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75047",
-        "stop_name": "Fashion Valley Station",
-        "routes": ["530"]
+        "id": 1217842779,
+        "name": "32nd/Commercial",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16890515, 32.76545309]
+        "coordinates": [
+          -117.1250825,
+          32.7055414
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75054",
-        "stop_name": "Fenton Parkway Station",
-        "routes": ["530"]
+        "id": 1630990751,
+        "name": "70th Street",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.12723711, 32.77827002]
+        "coordinates": [
+          -117.0420326,
+          32.7721712
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75055",
-        "stop_name": "Fenton Parkway Station",
-        "routes": ["530"]
+        "id": 1717500777,
+        "name": "Rio Vista",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.12700808, 32.77837004]
+        "coordinates": [
+          -117.1423634,
+          32.7735307
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75088",
-        "stop_name": "Fifth Avenue Station",
-        "routes": ["510", "520"]
+        "id": 1815010897,
+        "name": "Beyer Boulevard",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15967791, 32.71679]
+        "coordinates": [
+          -117.0473522,
+          32.5577841
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75089",
-        "stop_name": "Fifth Avenue Station",
-        "routes": ["510", "520"]
+        "id": 1815010914,
+        "name": "Iris Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15972014, 32.716724]
+        "coordinates": [
+          -117.0675074,
+          32.56993
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75098",
-        "stop_name": "Gaslamp Quarter Station",
-        "routes": ["530"]
+        "id": 1815010981,
+        "name": "Palm Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15976288, 32.706942]
+        "coordinates": [
+          -117.0837899,
+          32.5850428
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75099",
-        "stop_name": "Gaslamp Quarter Station",
-        "routes": ["530"]
+        "id": 1815011013,
+        "name": "Palomar Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15959916, 32.7067651]
+        "coordinates": [
+          -117.0848426,
+          32.6026371
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75022",
-        "stop_name": "Gillespie Field Station",
-        "routes": ["535"]
+        "id": 1815011264,
+        "name": "Middletown",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-116.98207995, 32.82699596]
+        "coordinates": [
+          -117.1745383,
+          32.7332483
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75023",
-        "stop_name": "Gillespie Field Station",
-        "routes": ["535"]
+        "id": 1815809497,
+        "name": "San Diego",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-116.98204188, 32.82676394]
+        "coordinates": [
+          -117.1700154,
+          32.7172541
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75060",
-        "stop_name": "Union Grantville Station",
-        "routes": ["530"]
+        "id": 1824143746,
+        "name": "Beyer Boulevard",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.09738402, 32.78039787]
+        "coordinates": [
+          -117.0465391,
+          32.5573209
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75061",
-        "stop_name": "Union Grantville Station",
-        "routes": ["530"]
+        "id": 1826050383,
+        "name": "Iris Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.09755913, 32.78053987]
+        "coordinates": [
+          -117.0666863,
+          32.5693588
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75030",
-        "stop_name": "Grossmont Station",
-        "routes": ["520", "530"]
+        "id": 1826050384,
+        "name": "Palm Avenue",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.01126702, 32.78164207]
+        "coordinates": [
+          -117.083836,
+          32.5841617
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75031",
-        "stop_name": "Grossmont Station",
-        "routes": ["520", "530"]
+        "id": 1838689664,
+        "name": "Palomar Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.01147008, 32.78160811]
+        "coordinates": [
+          -117.0848985,
+          32.6026186
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75010",
-        "stop_name": "H Street Station",
-        "routes": ["510"]
+        "id": 2232559028,
+        "name": "El Cajon",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.09557712, 32.63017791]
+        "coordinates": [
+          -116.976162,
+          32.7923815
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75011",
-        "stop_name": "H Street Station",
-        "routes": ["510"]
+        "id": 2232701171,
+        "name": "Gaslamp Quarter",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.09557211, 32.62989293]
+        "coordinates": [
+          -117.1592253,
+          32.7065774
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75104",
-        "stop_name": "Harborside Station",
-        "routes": ["510"]
+        "id": 2607827443,
+        "name": "SDSU Transit Center",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.1328639, 32.6913259]
+        "coordinates": [
+          -117.0706227,
+          32.7733084
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75105",
-        "stop_name": "Harborside Station",
-        "routes": ["510"]
+        "id": 3248672743,
+        "name": "UC San Diego Central Campus",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.13263886, 32.69115188]
+        "coordinates": [
+          -117.231831,
+          32.8783398
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75048",
-        "stop_name": "Hazard Center Station",
-        "routes": ["530"]
+        "id": 3248672745,
+        "name": "VA Medical Center",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15815189, 32.77025712]
+        "coordinates": [
+          -117.229883,
+          32.8742475
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75049",
-        "stop_name": "Hazard Center Station",
-        "routes": ["530"]
+        "id": 3344517046,
+        "name": "Nobel Drive",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15841, 32.7702379]
+        "coordinates": [
+          -117.230425,
+          32.8668507
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75004",
-        "stop_name": "Iris Avenue Station",
-        "routes": ["510"]
+        "id": 3344517082,
+        "name": "UC San Diego Health La Jolla",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.06717616, 32.569762]
+        "coordinates": [
+          -117.2239,
+          32.882037
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75005",
-        "stop_name": "Iris Avenue Station",
-        "routes": ["510"]
+        "id": 3518203398,
+        "name": "City College",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.06696484, 32.56951494]
+        "coordinates": [
+          -117.1544428,
+          32.7166425
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75034",
-        "stop_name": "La Mesa Blvd Station",
-        "routes": ["520"]
+        "id": 4160314097,
+        "name": "Estacion Tijuana",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.02056497, 32.76513688]
+        "coordinates": [
+          -117.026509,
+          32.542424
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75035",
-        "stop_name": "La Mesa Blvd Station",
-        "routes": ["520"]
+        "id": 4494375185,
+        "name": "Civic Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.02053106, 32.76490512]
+        "coordinates": [
+          -117.1627766,
+          32.7167541
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75038",
-        "stop_name": "Lemon Grove Depot",
-        "routes": ["520"]
+        "id": 4515886253,
+        "name": "UC San Diego Health La Jolla",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.03065392, 32.74348189]
+        "coordinates": [
+          -117.223517,
+          32.8818572
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75039",
-        "stop_name": "Lemon Grove Depot",
-        "routes": ["520"]
+        "id": 4537175646,
+        "name": "Convention Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.03078301, 32.7432961]
+        "coordinates": [
+          -117.1629682,
+          32.708644
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75040",
-        "stop_name": "Massachusetts Ave Station",
-        "routes": ["520"]
+        "id": 4901345301,
+        "name": "12th & Imperial Transit Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.03948895, 32.72355904]
+        "coordinates": [
+          -117.1532671,
+          32.7057188
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75041",
-        "stop_name": "Massachusetts Ave Station",
-        "routes": ["520"]
+        "id": 5103752093,
+        "name": "24th Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.03967992, 32.7234619]
+        "coordinates": [
+          -117.1078596,
+          32.661389
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75078",
-        "stop_name": "Middletown Station",
-        "routes": ["510", "530"]
+        "id": 5103752094,
+        "name": "24th Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.17492298, 32.73378587]
+        "coordinates": [
+          -117.1081469,
+          32.6622568
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75079",
-        "stop_name": "Middletown Station",
-        "routes": ["510", "530"]
+        "id": 5388551999,
+        "name": "UTC Transit Center",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.17479297, 32.73351391]
+        "coordinates": [
+          -117.214043,
+          32.869228
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75058",
-        "stop_name": "Mission San Diego Station",
-        "routes": ["530"]
+        "id": 5388552006,
+        "name": "Executive Drive",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.11110498, 32.78098289]
+        "coordinates": [
+          -117.214048,
+          32.8740037
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75059",
-        "stop_name": "Mission San Diego Station",
-        "routes": ["530"]
+        "id": 5388552267,
+        "name": "Balboa Avenue Transit Center",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.11097904, 32.78081391]
+        "coordinates": [
+          -117.214053,
+          32.8057535
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75050",
-        "stop_name": "Mission Valley Center Station",
-        "routes": ["530"]
+        "id": 5388552277,
+        "name": "Clairemont Drive",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.14985611, 32.77108307]
+        "coordinates": [
+          -117.206168,
+          32.7900532
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75051",
-        "stop_name": "Mission Valley Center Station",
-        "routes": ["530"]
+        "id": 6083624383,
+        "name": "Civic Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15013501, 32.77109313]
+        "coordinates": [
+          -117.1621373,
+          32.7167234
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75044",
-        "stop_name": "Morena/Linda Vista Station",
-        "routes": ["530"]
+        "id": 6108409728,
+        "name": "San Diego",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.19655802, 32.76352707]
+        "coordinates": [
+          -117.1700668,
+          32.7169643
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75045",
-        "stop_name": "Morena/Linda Vista Station",
-        "routes": ["530"]
+        "id": 6108409729,
+        "name": "Old Town Transit Center",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.19684915, 32.76358613]
+        "coordinates": [
+          -117.199501,
+          32.7542948
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77776",
-        "stop_name": "Nobel Drive Station",
-        "routes": ["510"]
+        "id": 6108409730,
+        "name": "Sorrento Valley",
+        "type": "halt"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.23046202, 32.86686173]
+        "coordinates": [
+          -117.2247112,
+          32.9024426
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77778",
-        "stop_name": "Nobel Drive Station",
-        "routes": ["510"]
+        "id": 6117698029,
+        "name": "Encinitas",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.23038762, 32.86696566]
+        "coordinates": [
+          -117.2932908,
+          33.0471677
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75042",
-        "stop_name": "Old Town Station",
-        "routes": ["510", "530"]
+        "id": 6146719444,
+        "name": "Encinitas",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.19948716, 32.754908]
+        "coordinates": [
+          -117.2932864,
+          33.0478019
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75043",
-        "stop_name": "Old Town Station",
-        "routes": ["510", "530"]
+        "id": 6146719445,
+        "name": "Encinitas",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.19954799, 32.754697]
+        "coordinates": [
+          -117.2930691,
+          33.046236
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75106",
-        "stop_name": "Pacific Fleet Station",
-        "routes": ["510"]
+        "id": 6146719446,
+        "name": "Solana Beach",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.12479089, 32.68609889]
+        "coordinates": [
+          -117.2720592,
+          32.9948653
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75107",
-        "stop_name": "Pacific Fleet Station",
-        "routes": ["510"]
+        "id": 6146719447,
+        "name": "Solana Beach",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.12463707, 32.68589302]
+        "coordinates": [
+          -117.2714353,
+          32.9922529
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75006",
-        "stop_name": "Palm Avenue Station",
-        "routes": ["510"]
+        "id": 6146719452,
+        "name": "Sorrento Valley",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.08375293, 32.58477987]
+        "coordinates": [
+          -117.2247321,
+          32.9022964
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75007",
-        "stop_name": "Palm Avenue Station",
-        "routes": ["510"]
+        "id": 6146719453,
+        "name": "Sorrento Valley",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.08385991, 32.584454]
+        "coordinates": [
+          -117.2255797,
+          32.9032437
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75008",
-        "stop_name": "Palomar Street Station",
-        "routes": ["510"]
+        "id": 6146719454,
+        "name": "Old Town Transit Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.08508185, 32.60329399]
+        "coordinates": [
+          -117.199327,
+          32.7537483
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75009",
-        "stop_name": "Palomar Street Station",
-        "routes": ["510"]
+        "id": 6146719455,
+        "name": "Old Town Transit Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.08508809, 32.60302707]
+        "coordinates": [
+          -117.199753,
+          32.7550348
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75092",
-        "stop_name": "Park & Market Station",
-        "routes": ["510", "520"]
+        "id": 6146719456,
+        "name": "San Diego",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15372103, 32.71105999]
+        "coordinates": [
+          -117.1701698,
+          32.7172538
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75093",
-        "stop_name": "Park & Market Station",
-        "routes": ["510", "520"]
+        "id": 6146719457,
+        "name": "San Diego",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.15380087, 32.71092006]
+        "coordinates": [
+          -117.1701223,
+          32.7172531
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75052",
-        "stop_name": "Rio Vista Station",
-        "routes": ["530"]
+        "id": 6146719458,
+        "name": "San Diego",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.14196704, 32.77363297]
+        "coordinates": [
+          -117.1699624,
+          32.7172538
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75053",
-        "stop_name": "Rio Vista Station",
-        "routes": ["530"]
+        "id": 6184515857,
+        "name": "Encanto/62nd Street",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.14169885, 32.77362089]
+        "coordinates": [
+          -117.0631993,
+          32.7101857
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75000",
-        "stop_name": "San Ysidro Station",
-        "routes": ["510"]
+        "id": 6184515859,
+        "name": "Lemon Grove Depot",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.02953904, 32.54456598]
+        "coordinates": [
+          -117.0305764,
+          32.7437906
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75082",
-        "stop_name": "Santa Fe Depot",
-        "routes": ["510", "530"]
+        "id": 6184515860,
+        "name": "Lemon Grove Depot",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16986094, 32.71732492]
+        "coordinates": [
+          -117.0308004,
+          32.7429984
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75083",
-        "stop_name": "Santa Fe Depot",
-        "routes": ["510", "530"]
+        "id": 6184515861,
+        "name": "70th Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.169779, 32.71732388]
+        "coordinates": [
+          -117.0419383,
+          32.7720508
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75020",
-        "stop_name": "Santee Town Center Station",
-        "routes": ["535"]
+        "id": 6184515862,
+        "name": "Alvarado",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-116.98113185, 32.84155808]
+        "coordinates": [
+          -117.0562871,
+          32.7772484
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75062",
-        "stop_name": "SDSU Station",
-        "routes": ["530"]
+        "id": 6184515872,
+        "name": "Mission San Diego",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.07063815, 32.77327502]
+        "coordinates": [
+          -117.1106466,
+          32.7806469
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75063",
-        "stop_name": "SDSU Station",
-        "routes": ["530"]
+        "id": 6184515873,
+        "name": "Stadium",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.07037198, 32.77316493]
+        "coordinates": [
+          -117.119027,
+          32.7809817
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75094",
-        "stop_name": "Seaport Village Station",
-        "routes": ["530"]
+        "id": 6184515874,
+        "name": "Fenton Parkway",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16845216, 32.71173999]
+        "coordinates": [
+          -117.1267549,
+          32.7786187
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75095",
-        "stop_name": "Seaport Village Station",
-        "routes": ["530"]
+        "id": 6184515875,
+        "name": "Rio Vista",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.16862004, 32.71200095]
+        "coordinates": [
+          -117.1420972,
+          32.7736302
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75036",
-        "stop_name": "Spring Street Station",
-        "routes": ["520"]
+        "id": 6184515876,
+        "name": "Rio Vista",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.01738502, 32.75690711]
+        "coordinates": [
+          -117.1413428,
+          32.7737216
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75037",
-        "stop_name": "Spring Street Station",
-        "routes": ["520"]
+        "id": 6184515878,
+        "name": "Mission Valley Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.01753104, 32.75675394]
+        "coordinates": [
+          -117.1504913,
+          32.770973
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75056",
-        "stop_name": "Stadium Station",
-        "routes": ["530"]
+        "id": 6184516191,
+        "name": "Hazard Center",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.11949198, 32.78092904]
+        "coordinates": [
+          -117.1577797,
+          32.7703861
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75057",
-        "stop_name": "Stadium Station",
-        "routes": ["530"]
+        "id": 6184516205,
+        "name": "47th Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.11971092, 32.78102507]
+        "coordinates": [
+          -117.0944604,
+          32.7085566
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77770",
-        "stop_name": "Tecolote Road Station",
-        "routes": ["510"]
+        "id": 6184516206,
+        "name": "San Ysidro",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.20508853, 32.76981209]
+        "coordinates": [
+          -117.0291887,
+          32.5441583
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77771",
-        "stop_name": "Tecolote Road Station",
-        "routes": ["510"]
+        "id": 6184516207,
+        "name": "San Ysidro",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.20506166, 32.76991399]
+        "coordinates": [
+          -117.0293042,
+          32.5441079
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77781",
-        "stop_name": "UCSD Central Campus Station",
-        "routes": ["510"]
+        "id": 6184516208,
+        "name": "Seaport Village",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.23184702, 32.87829122]
+        "coordinates": [
+          -117.1685734,
+          32.7119019
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77782",
-        "stop_name": "UCSD Central Campus Station",
-        "routes": ["510"]
+        "id": 6184516211,
+        "name": "Fashion Valley",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.23177898, 32.87844073]
+        "coordinates": [
+          -117.1685256,
+          32.765564
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75064",
-        "stop_name": "UCSD Health East Station",
-        "routes": ["530"]
+        "id": 6184516212,
+        "name": "Morena/Linda Vista",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.05670693, 32.77730904]
+        "coordinates": [
+          -117.1961803,
+          32.7635682
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75065",
-        "stop_name": "UCSD Health East Station",
-        "routes": ["530"]
+        "id": 6184516216,
+        "name": "25th/Commercial",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.05691814, 32.77742199]
+        "coordinates": [
+          -117.1415704,
+          32.7052679
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77783",
-        "stop_name": "UCSD Health La Jolla Station",
-        "routes": ["510"]
+        "id": 6184516217,
+        "name": "25th/Commercial",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.22359758, 32.88190183]
+        "coordinates": [
+          -117.1383481,
+          32.7052927
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77784",
-        "stop_name": "UCSD Health La Jolla Station",
-        "routes": ["510"]
+        "id": 6184516224,
+        "name": "America Plaza",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.22349207, 32.88181636]
+        "coordinates": [
+          -117.1687515,
+          32.7165622
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77787",
-        "stop_name": "UTC Station",
-        "routes": ["510"]
+        "id": 6184516225,
+        "name": "Washington Street",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.21401071, 32.86920431]
+        "coordinates": [
+          -117.1839412,
+          32.7413757
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77779",
-        "stop_name": "VA Medical Center Station",
-        "routes": ["510"]
+        "id": 6184516226,
+        "name": "Courthouse",
+        "type": "stop"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.22992964, 32.87415396]
+        "coordinates": [
+          -117.1660056,
+          32.7166743
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "77780",
-        "stop_name": "VA Medical Center Station",
-        "routes": ["510"]
+        "id": 6184516227,
+        "name": "Courthouse",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.22981838, 32.87425324]
+        "coordinates": [
+          -117.1659105,
+          32.7166453
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75076",
-        "stop_name": "Washington Street Station",
-        "routes": ["510", "530"]
+        "id": 6184516237,
+        "name": "America Plaza",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.18446791, 32.74172394]
+        "coordinates": [
+          -117.1688218,
+          32.716457
+        ]
       }
     },
     {
       "type": "Feature",
       "properties": {
-        "stop_id": "75077",
-        "stop_name": "Washington Street Station",
-        "routes": ["510", "530"]
+        "id": 6184516238,
+        "name": "Palomar Street",
+        "type": "station"
       },
       "geometry": {
         "type": "Point",
-        "coordinates": [-117.18429004, 32.74154197]
+        "coordinates": [
+          -117.0849068,
+          32.6029243
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516239,
+        "name": "Palm Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0838845,
+          32.5843352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516240,
+        "name": "Iris Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0665659,
+          32.5693891
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516242,
+        "name": "5th Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1597872,
+          32.7166889
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516243,
+        "name": "5th Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1593504,
+          32.7167382
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516244,
+        "name": "12th & Imperial Transit Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1533713,
+          32.7056605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516252,
+        "name": "Barrio Logan",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1469255,
+          32.6982801
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516258,
+        "name": "Harborside",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1332318,
+          32.6914304
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516259,
+        "name": "Harborside",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1322455,
+          32.6909956
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516260,
+        "name": "Pacific Fleet",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1250818,
+          32.6862501
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516261,
+        "name": "Pacific Fleet",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1251114,
+          32.6862903
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516262,
+        "name": "8th Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1132134,
+          32.6752487
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516263,
+        "name": "H Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0957095,
+          32.6304783
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516264,
+        "name": "H Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0954235,
+          32.6295826
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516265,
+        "name": "Beyer Boulevard",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0468655,
+          32.5575987
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516267,
+        "name": "Spring Street",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0175594,
+          32.7564279
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516268,
+        "name": "La Mesa Boulevard",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.020745,
+          32.7654147
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516269,
+        "name": "Grossmont",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0117664,
+          32.7813689
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516270,
+        "name": "Amaya Drive",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0017632,
+          32.7854902
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516271,
+        "name": "Amaya Drive",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0022277,
+          32.7852578
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516272,
+        "name": "Arnele Avenue",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9756989,
+          32.8049562
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516273,
+        "name": "Gillespie Field Station",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.981798,
+          32.8264753
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516274,
+        "name": "Gillespie Field",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9822719,
+          32.8272918
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516275,
+        "name": "Spring Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0173702,
+          32.7568238
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516276,
+        "name": "Harborside",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1329724,
+          32.6912561
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516277,
+        "name": "Hazard Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1581332,
+          32.7703654
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516278,
+        "name": "Mission Valley Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1500822,
+          32.7710136
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516279,
+        "name": "El Cajon",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.97607,
+          32.7919757
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516280,
+        "name": "Union Grantville",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0974561,
+          32.7804741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516281,
+        "name": "Massachusetts Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0396605,
+          32.7235621
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516282,
+        "name": "Civic Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.162314,
+          32.7167939
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516283,
+        "name": "Lemon Grove Depot",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.030829,
+          32.7433352
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516284,
+        "name": "Barrio Logan",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1467326,
+          32.6980605
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516685,
+        "name": "Convention Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1635664,
+          32.7090678
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516686,
+        "name": "Arnele Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9757839,
+          32.8045154
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516687,
+        "name": "Grossmont",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0113209,
+          32.7817742
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516688,
+        "name": "Mission San Diego",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1110469,
+          32.7809006
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516689,
+        "name": "32nd/Commercial",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1250619,
+          32.7055989
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516690,
+        "name": "Fashion Valley",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1690328,
+          32.765461
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516691,
+        "name": "Euclid Avenue",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.086031,
+          32.7096389
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516692,
+        "name": "H Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0953052,
+          32.6295665
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516693,
+        "name": "Middletown",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1748622,
+          32.7336529
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516694,
+        "name": "Stadium",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.119597,
+          32.7810543
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516695,
+        "name": "UC San Diego Health East",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0570009,
+          32.7772993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516696,
+        "name": "Gillespie Field",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9821338,
+          32.8268628
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516697,
+        "name": "La Mesa Boulevard",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0206095,
+          32.7649694
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516698,
+        "name": "Washington Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1842436,
+          32.7415586
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516699,
+        "name": "Gaslamp Quarter",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.159622,
+          32.7068957
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516700,
+        "name": "25th/Commercial",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1400514,
+          32.7053945
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516701,
+        "name": "County Center/Little Italy",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.169937,
+          32.7214084
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516702,
+        "name": "Park & Market",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1537613,
+          32.7109822
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516703,
+        "name": "47th Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0949474,
+          32.7083421
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516704,
+        "name": "8th Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.113073,
+          32.674664
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516705,
+        "name": "City College",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1542201,
+          32.7162975
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516706,
+        "name": "Morena/Linda Vista",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1968189,
+          32.7636273
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516707,
+        "name": "Fenton Parkway",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1272545,
+          32.778303
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516708,
+        "name": "Santee Town Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9806821,
+          32.8418655
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516709,
+        "name": "E Street",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0984864,
+          32.6391693
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6184516710,
+        "name": "San Ysidro Transit Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0295724,
+          32.544414
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6472415323,
+        "name": "Clairemont Drive",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.206181,
+          32.7896339
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6474810837,
+        "name": "UC San Diego Central Campus",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.231882,
+          32.878721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6475033147,
+        "name": "UC San Diego Health La Jolla",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.223008,
+          32.8816752
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6838311739,
+        "name": "Santa Fe Depot",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.169838,
+          32.7172458
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6838311740,
+        "name": "Santa Fe Depot",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.1697965,
+          32.7172395
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6860875759,
+        "name": "Old Town Transit Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.19961,
+          32.7551721
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 6860875760,
+        "name": "Old Town Transit Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.19942,
+          32.7544455
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7191659507,
+        "name": "Balboa Avenue Transit Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.21426,
+          32.8061375
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7473330508,
+        "name": "Balboa Avenue Transit Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.213873,
+          32.8054316
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7474495554,
+        "name": "Executive Drive",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.21407,
+          32.8737003
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7474495557,
+        "name": "UTC Transit Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.214024,
+          32.8696608
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7474516121,
+        "name": "Nobel Drive",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.230386,
+          32.8672866
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7526861804,
+        "name": "Tecolote Road",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.205178,
+          32.7702292
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7526861811,
+        "name": "Tecolote Road",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.204996,
+          32.769473
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7526861869,
+        "name": "Clairemont Drive",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.20616,
+          32.7903993
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7715031112,
+        "name": "Santa Fe Depot",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.169815,
+          32.7169625
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7715031113,
+        "name": "Old Town Transit Center",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.19952,
+          32.7547968
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7742123233,
+        "name": "Unknown",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.0363586,
+          32.9697259
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7964992542,
+        "name": "Executive Drive",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.214025,
+          32.8745103
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7965226998,
+        "name": "UC San Diego Central Campus",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.231803,
+          32.8780751
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7965227007,
+        "name": "VA Medical Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.230089,
+          32.8739069
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7965227008,
+        "name": "VA Medical Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.229692,
+          32.8746036
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7965227017,
+        "name": "Nobel Drive",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.230462,
+          32.8664974
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 7965227040,
+        "name": "Tecolote Road",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.205086,
+          32.7698224
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 8209564417,
+        "name": "12th & Imperial Transit Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.153331,
+          32.7056926
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 9273111828,
+        "name": "UTC Transit Center",
+        "type": "stop"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.214064,
+          32.8688505
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": 11062678277,
+        "name": "García",
+        "type": "station"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -116.9278302,
+          32.4641473
+        ]
       }
     }
   ]
