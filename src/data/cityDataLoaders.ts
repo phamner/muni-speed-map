@@ -840,6 +840,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation,
         trafficLights,
         busRoutesOverlay,
+        ferryRoutesOverlay,
       ] = await Promise.all([
         import("./routes/torontoStreetcarRoutes.json"),
         import("./routes/torontoLrtRoutes.json"),
@@ -852,6 +853,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           default: null,
         })),
         import("./bus-routes/torontoBusRoutesTest.json").catch(() => ({ default: null })),
+        import("./rail-context/torontoFerryRoutesOverlay.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
       // Merge streetcar and LRT routes
@@ -871,6 +875,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation: separation.default,
         trafficLights: trafficLights.default,
         busRoutesOverlay: busRoutesOverlay.default,
+        ferryRoutesOverlay: ferryRoutesOverlay.default,
       };
     }
 

@@ -1,0 +1,325 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "ferry-12684042+ferry-12684043",
+        "route_name": "Jack Layton Ferry Terminal ↔ Ward's Island",
+        "route_short_name": "Jack Layton Ferry Terminal ↔ Ward's Island",
+        "route_long_name": "Toronto Island Ferry (Ward's Island - Toronto) / Toronto Island Ferry (Toronto - Ward's Island)",
+        "agency_name": "Toronto Island Ferries",
+        "network": "Toronto Island Ferries",
+        "operator": "Toronto Island Ferries",
+        "from_terminal": "Ward's Island",
+        "to_terminal": "Jack Layton Ferry Terminal",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_relation_id": [
+          12684042,
+          12684043
+        ]
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -79.3577684,
+              43.6314159
+            ],
+            [
+              -79.3594312,
+              43.6318381
+            ],
+            [
+              -79.3609533,
+              43.6327901
+            ],
+            [
+              -79.3629025,
+              43.6346774
+            ],
+            [
+              -79.3637434,
+              43.6350271
+            ],
+            [
+              -79.3681469,
+              43.6359702
+            ],
+            [
+              -79.3714287,
+              43.6368748
+            ],
+            [
+              -79.372719,
+              43.6374693
+            ],
+            [
+              -79.3738211,
+              43.6387537
+            ],
+            [
+              -79.3749365,
+              43.639502
+            ],
+            [
+              -79.3753353,
+              43.6400886
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "ferry-12855107+ferry-12855108",
+        "route_name": "Centre Island ↔ Jack Layton Ferry Terminal",
+        "route_short_name": "Centre Island ↔ Jack Layton Ferry Terminal",
+        "route_long_name": "Toronto Island Ferry (Centre Island - Toronto) / Toronto Island Ferry (Toronto - Centre Island)",
+        "agency_name": "Toronto Island Ferries",
+        "network": "Toronto Island Ferries",
+        "operator": "Toronto Island Ferries",
+        "from_terminal": "Centre Island",
+        "to_terminal": "Jack Layton Ferry Terminal",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_relation_id": [
+          12855107,
+          12855108
+        ]
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -79.3784128,
+              43.6224716
+            ],
+            [
+              -79.3781959,
+              43.6227697
+            ],
+            [
+              -79.3777967,
+              43.6231471
+            ],
+            [
+              -79.3776889,
+              43.6234693
+            ],
+            [
+              -79.3771707,
+              43.6247584
+            ],
+            [
+              -79.3765372,
+              43.6259545
+            ],
+            [
+              -79.3759509,
+              43.6270693
+            ],
+            [
+              -79.375551,
+              43.6281878
+            ],
+            [
+              -79.3753459,
+              43.628714
+            ],
+            [
+              -79.3752215,
+              43.6292913
+            ],
+            [
+              -79.3752355,
+              43.6296806
+            ],
+            [
+              -79.375278,
+              43.6303195
+            ],
+            [
+              -79.3748877,
+              43.6319522
+            ],
+            [
+              -79.3744704,
+              43.633704
+            ],
+            [
+              -79.3742507,
+              43.6346994
+            ],
+            [
+              -79.3740068,
+              43.6354439
+            ],
+            [
+              -79.3739206,
+              43.6364125
+            ],
+            [
+              -79.3740298,
+              43.6371564
+            ],
+            [
+              -79.3741334,
+              43.6379055
+            ],
+            [
+              -79.3745225,
+              43.6390884
+            ],
+            [
+              -79.3748687,
+              43.6397671
+            ],
+            [
+              -79.3751363,
+              43.6401602
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "ferry-12855109+ferry-12855110",
+        "route_name": "Hanlan's Point ↔ Jack Layton Ferry Terminal",
+        "route_short_name": "Hanlan's Point ↔ Jack Layton Ferry Terminal",
+        "route_long_name": "Toronto Island Ferry (Hanlan's Point - Toronto) / Toronto Island Ferry (Toronto - Hanlan's Point)",
+        "agency_name": "Toronto Island Ferries",
+        "network": "Toronto Island Ferries",
+        "operator": "Toronto Island Ferries",
+        "from_terminal": "Hanlan's Point",
+        "to_terminal": "Jack Layton Ferry Terminal",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_relation_id": [
+          12855109,
+          12855110
+        ]
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -79.374943,
+              43.6402295
+            ],
+            [
+              -79.3745229,
+              43.6396741
+            ],
+            [
+              -79.3742071,
+              43.6391345
+            ],
+            [
+              -79.3741801,
+              43.6387325
+            ],
+            [
+              -79.374618,
+              43.6381
+            ],
+            [
+              -79.3755788,
+              43.637354
+            ],
+            [
+              -79.3764413,
+              43.6366788
+            ],
+            [
+              -79.3771738,
+              43.6361265
+            ],
+            [
+              -79.3783136,
+              43.6352598
+            ],
+            [
+              -79.3795741,
+              43.6342248
+            ],
+            [
+              -79.381361,
+              43.6328599
+            ],
+            [
+              -79.3839075,
+              43.6308703
+            ],
+            [
+              -79.3879018,
+              43.6288668
+            ],
+            [
+              -79.3884316,
+              43.6284944
+            ],
+            [
+              -79.3886638,
+              43.6282471
+            ],
+            [
+              -79.3890058,
+              43.6279347
+            ],
+            [
+              -79.3890669,
+              43.6278868
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "ferry-12855111+ferry-12855112",
+        "route_name": "Bathurst Street Terminal ↔ Billy Bishop Airport",
+        "route_short_name": "Bathurst Street Terminal ↔ Billy Bishop Airport",
+        "route_long_name": "Billy Bishop Airport Ferry (Airport - Bathurst) / Billy Bishop Airport Ferry (Bathurst - Airport)",
+        "agency_name": "Billy Bishop Airport Ferry",
+        "network": "Billy Bishop Airport Ferry",
+        "operator": "Billy Bishop Airport Ferry",
+        "from_terminal": "Billy Bishop Airport",
+        "to_terminal": "Bathurst Street Terminal",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_relation_id": [
+          12855111,
+          12855112
+        ]
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -79.3977243,
+              43.6338727
+            ],
+            [
+              -79.3965612,
+              43.6327489
+            ],
+            [
+              -79.3962549,
+              43.6324402
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
