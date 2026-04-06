@@ -1092,10 +1092,11 @@ export function SpeedMap({
       if (!map.current || !e.features?.length) return;
       const props = (e.features[0].properties || {}) as Record<string, any>;
       const routeShortName = String(props.route_short_name || "").trim();
-      const routeLongName = String(props.route_name || props.route_long_name || "").trim();
-      const agencyName = String(
+      const routeLongName = String(props.route_long_name || props.route_name || "").trim();
+      const rawAgencyName = String(
         props.agency_name || props.operator || props.network || "",
       ).trim();
+      const agencyName = rawAgencyName === "MBTA" ? "MBTA Ferry" : rawAgencyName;
       const fromTerminal = String(props.from_terminal || "").trim();
       const toTerminal = String(props.to_terminal || "").trim();
       const title =
@@ -1120,6 +1121,8 @@ export function SpeedMap({
                   ? "→"
                   : stopSequenceSource.includes("=>")
                     ? "=>"
+                    : stopSequenceSource.includes(" - ")
+                      ? " - "
                     : stopSequenceSource.includes(" to ")
                       ? " to "
                       : null;

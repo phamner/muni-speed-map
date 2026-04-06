@@ -1509,8 +1509,8 @@ export function Controls({
         {(city === "SF" ||
           city === "Seattle" ||
           city === "Toronto" ||
-          city === "LA" ||
-          city === "San Diego") && (
+          city === "San Diego" ||
+          city === "Boston") && (
           <div className="route-lines-toggle">
             <label
               className={ferryOverlayDisabled ? "overlay-toggle-disabled" : ""}
