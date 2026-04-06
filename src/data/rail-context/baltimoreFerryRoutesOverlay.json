@@ -1,0 +1,165 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "HC1",
+        "route_name": "Maritime Park ↔ Locust Point",
+        "route_short_name": "HC1",
+        "route_long_name": "Baltimore Harbor Connector: Maritime Park => Locust Point",
+        "agency_name": "Baltimore Harbor Connector",
+        "network": "Baltimore Harbor Connector",
+        "operator": "Baltimore Harbor Connector",
+        "from_terminal": "Maritime Park",
+        "to_terminal": "Locust Point",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_way_id": 242900441
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -76.5958666,
+              39.2790373
+            ],
+            [
+              -76.5897141,
+              39.2759287
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "HC2",
+        "route_name": "Canton Waterfront Park ↔ Locust Point",
+        "route_short_name": "HC2",
+        "route_long_name": "Baltimore Harbor Connector: Canton Waterfront Park => Locust Point",
+        "agency_name": "Baltimore Harbor Connector",
+        "network": "Baltimore Harbor Connector",
+        "operator": "Baltimore Harbor Connector",
+        "from_terminal": "Canton Waterfront Park",
+        "to_terminal": "Locust Point",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_way_id": 242900443
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -76.5740668,
+              39.2768215
+            ],
+            [
+              -76.5743476,
+              39.2755434
+            ],
+            [
+              -76.5748687,
+              39.2750374
+            ],
+            [
+              -76.5754956,
+              39.2746132
+            ],
+            [
+              -76.5775743,
+              39.2733667
+            ],
+            [
+              -76.5781504,
+              39.2731901
+            ],
+            [
+              -76.5788323,
+              39.2732428
+            ],
+            [
+              -76.5801734,
+              39.2735916
+            ],
+            [
+              -76.5881817,
+              39.2757423
+            ],
+            [
+              -76.589486,
+              39.2759669
+            ],
+            [
+              -76.5897141,
+              39.2759287
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "HC3",
+        "route_name": "Federal Hill ↔ Pier 5",
+        "route_short_name": "HC3",
+        "route_long_name": "Baltimore Harbor Connector: Federal Hill => Pier 5",
+        "agency_name": "Baltimore Harbor Connector",
+        "network": "Baltimore Harbor Connector",
+        "operator": "Baltimore Harbor Connector",
+        "from_terminal": "Federal Hill",
+        "to_terminal": "Pier 5",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_way_id": 718616985
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -76.6051312,
+              39.2839538
+            ],
+            [
+              -76.6050753,
+              39.2839304
+            ],
+            [
+              -76.6050231,
+              39.2838505
+            ],
+            [
+              -76.6049313,
+              39.2833354
+            ],
+            [
+              -76.6049297,
+              39.2831824
+            ],
+            [
+              -76.6050041,
+              39.283062
+            ],
+            [
+              -76.6063998,
+              39.2819342
+            ],
+            [
+              -76.6067609,
+              39.281824
+            ],
+            [
+              -76.606974,
+              39.281836
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

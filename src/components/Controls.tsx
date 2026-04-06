@@ -1511,6 +1511,7 @@ export function Controls({
           city === "Toronto" ||
           city === "San Diego" ||
           city === "Boston" ||
+          city === "Baltimore" ||
           city === "Philadelphia" ||
           city === "Washington DC") && (
           <div className="route-lines-toggle">
