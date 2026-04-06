@@ -1281,7 +1281,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
     }
 
     case "Washington DC": {
-      const [previewRoutes, stops, crossings, switches, trafficLights] = await Promise.all([
+      const [previewRoutes, stops, crossings, switches, trafficLights, ferryRoutesOverlay] = await Promise.all([
         import("./routes/washingtonPreviewRoutes.json").catch(() => ({
           default: { type: "FeatureCollection", features: [] },
         })),
@@ -1299,6 +1299,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
             default: { type: "FeatureCollection", features: [] },
           }),
         ),
+        import("./rail-context/washingtonFerryRoutesOverlay.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
       const normalizedPreviewRoutes = {
@@ -1322,6 +1325,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation: null,
         trafficLights: trafficLights.default,
         busRoutesOverlay: null,
+        ferryRoutesOverlay: ferryRoutesOverlay.default,
       };
     }
 
