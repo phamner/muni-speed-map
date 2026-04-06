@@ -4823,6 +4823,8 @@ export function SpeedMap({
     viewMode,
     selectedLines,
     city,
+    googleSatelliteSession,
+    googleTerrainSession,
     reorderLayers,
   ]);
 
