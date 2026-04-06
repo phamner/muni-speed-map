@@ -21,6 +21,7 @@ export interface CityStaticData {
   railContextHeavy?: any | null;
   railContextCommuter?: any | null;
   busRoutesOverlay?: any | null;
+  ferryRoutesOverlay?: any | null;
 }
 
 const cityToRailContextPrefix: Partial<Record<City, string>> = {
@@ -537,6 +538,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separationOverrides,
         trafficLights,
         busRoutesOverlay,
+        ferryRoutesOverlay,
       ] = await Promise.all([
         import("./routes/sfMuniOsmRoutes.json"),
         import("./routes/sfCableCarRoutes.json"),
@@ -551,6 +553,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           default: null,
         })),
         import("./bus-routes/sfBusRoutesTest.json").catch(() => ({ default: null })),
+        import("./rail-context/sfBayFerryRoutesOverlay.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
 
@@ -580,6 +585,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation: mergedSeparation,
         trafficLights: trafficLights.default,
         busRoutesOverlay: busRoutesOverlay.default,
+        ferryRoutesOverlay: ferryRoutesOverlay.default,
       };
     }
 
@@ -1342,6 +1348,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         tunnelsBridges: null,
         separation: null,
         trafficLights: null,
+        ferryRoutesOverlay: null,
       };
     }
   }

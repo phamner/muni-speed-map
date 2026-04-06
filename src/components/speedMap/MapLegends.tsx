@@ -295,6 +295,7 @@ interface DynamicLegendsProps {
   showRailContextHeavy: boolean;
   showRailContextCommuter: boolean;
   showBusRoutesOverlay: boolean;
+  showFerryRoutesOverlay: boolean;
   showCableCarsOverlay: boolean;
 }
 
@@ -304,6 +305,7 @@ export function DynamicLegends({
   showRailContextHeavy,
   showRailContextCommuter,
   showBusRoutesOverlay,
+  showFerryRoutesOverlay,
   showCableCarsOverlay,
 }: DynamicLegendsProps) {
   const heritageLegendColor =
@@ -351,6 +353,7 @@ export function DynamicLegends({
     showRailContextHeavy ||
     showRailContextCommuter ||
     showBusRoutesOverlay ||
+    showFerryRoutesOverlay ||
     showCableCarsOverlay;
 
   if (!showCrossingLegend && !showRailContextLegend) return null;
@@ -388,6 +391,24 @@ export function DynamicLegends({
             <span className="rail-context-legend-line commuter"></span>
             <span>Regional / Commuter</span>
           </div>
+          {city === "SF" && (
+            <div
+              className={`rail-context-legend-item ${
+                showFerryRoutesOverlay ? "" : "disabled"
+              }`}
+            >
+              <span
+                className="rail-context-legend-line"
+                style={{
+                  borderTopColor: "#7fe8ff",
+                  borderTopWidth: 2.4,
+                  borderTopStyle: "dashed",
+                  opacity: 0.95,
+                }}
+              ></span>
+              <span>Ferries</span>
+            </div>
+          )}
           {(city === "SF" ||
             city === "LA" ||
             city === "Seattle" ||

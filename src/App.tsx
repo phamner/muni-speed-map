@@ -92,10 +92,12 @@ function App() {
   const [showRailContextHeavy, setShowRailContextHeavy] = useState(false);
   const [showRailContextCommuter, setShowRailContextCommuter] = useState(false);
   const [showBusRoutesOverlay, setShowBusRoutesOverlay] = useState(false);
+  const [showFerryRoutesOverlay, setShowFerryRoutesOverlay] = useState(false);
   const [showCableCarsOverlay, setShowCableCarsOverlay] = useState(false);
   const [railContextHeavyCount, setRailContextHeavyCount] = useState(0);
   const [railContextCommuterCount, setRailContextCommuterCount] = useState(0);
   const [busRoutesOverlayCount, setBusRoutesOverlayCount] = useState(0);
+  const [ferryRoutesOverlayCount, setFerryRoutesOverlayCount] = useState(0);
   const [heritageLocalCirculatorCount, setHeritageLocalCirculatorCount] =
     useState(0);
   const [hideStoppedTrains, setHideStoppedTrains] = useState(false);
@@ -135,6 +137,7 @@ function App() {
     setRailContextHeavyCount(0);
     setRailContextCommuterCount(0);
     setBusRoutesOverlayCount(0);
+    setFerryRoutesOverlayCount(0);
     setHeritageLocalCirculatorCount(0);
     // If switching away from live mode, default to raw
     if (viewMode === "live") {
@@ -190,11 +193,14 @@ function App() {
         setShowRailContextCommuter={setShowRailContextCommuter}
         showBusRoutesOverlay={showBusRoutesOverlay}
         setShowBusRoutesOverlay={setShowBusRoutesOverlay}
+        showFerryRoutesOverlay={showFerryRoutesOverlay}
+        setShowFerryRoutesOverlay={setShowFerryRoutesOverlay}
         showCableCarsOverlay={showCableCarsOverlay}
         setShowCableCarsOverlay={setShowCableCarsOverlay}
         railContextHeavyCount={railContextHeavyCount}
         railContextCommuterCount={railContextCommuterCount}
         busRoutesOverlayCount={busRoutesOverlayCount}
+        ferryRoutesOverlayCount={ferryRoutesOverlayCount}
         heritageLocalCirculatorCount={heritageLocalCirculatorCount}
         hideStoppedTrains={hideStoppedTrains}
         setHideStoppedTrains={setHideStoppedTrains}
@@ -222,6 +228,7 @@ function App() {
         showRailContextHeavy={showRailContextHeavy}
         showRailContextCommuter={showRailContextCommuter}
         showBusRoutesOverlay={showBusRoutesOverlay}
+        showFerryRoutesOverlay={showFerryRoutesOverlay}
         showCableCarsOverlay={showCableCarsOverlay}
         hideStoppedTrains={hideStoppedTrains}
         hideAllTrains={hideAllTrains}
@@ -237,11 +244,13 @@ function App() {
           heavyCount,
           commuterCount,
           busCount,
+          ferryCount,
           heritageCount,
         ) => {
           setRailContextHeavyCount(heavyCount);
           setRailContextCommuterCount(commuterCount);
           setBusRoutesOverlayCount(busCount ?? 0);
+          setFerryRoutesOverlayCount(ferryCount ?? 0);
           setHeritageLocalCirculatorCount(heritageCount ?? 0);
         }}
         onVehicleUpdate={(count, _time, stats) => {

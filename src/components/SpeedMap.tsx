@@ -374,6 +374,7 @@ interface SpeedMapProps {
   showRailContextHeavy: boolean;
   showRailContextCommuter: boolean;
   showBusRoutesOverlay: boolean;
+  showFerryRoutesOverlay: boolean;
   showCableCarsOverlay: boolean;
   hideStoppedTrains: boolean;
   hideAllTrains: boolean;
@@ -396,6 +397,7 @@ interface SpeedMapProps {
     heavyCount: number,
     commuterCount: number,
     busCount: number,
+    ferryCount: number,
     heritageCount: number,
   ) => void;
 }
@@ -626,6 +628,7 @@ export function SpeedMap({
   showRailContextHeavy,
   showRailContextCommuter,
   showBusRoutesOverlay,
+  showFerryRoutesOverlay,
   showCableCarsOverlay,
   hideStoppedTrains,
   hideAllTrains,
@@ -987,6 +990,7 @@ export function SpeedMap({
       railContextHeavy: cityStaticData?.railContextHeavy || null,
       railContextCommuter: cityStaticData?.railContextCommuter || null,
       busRoutesOverlay: cityStaticData?.busRoutesOverlay || null,
+      ferryRoutesOverlay: cityStaticData?.ferryRoutesOverlay || null,
     }),
     [city, cityStaticData],
   );
@@ -1018,7 +1022,9 @@ export function SpeedMap({
 
   const railContextCounts = useMemo(() => {
     const busFeatures = cityConfig.busRoutesOverlay?.features || [];
+    const ferryFeatures = cityConfig.ferryRoutesOverlay?.features || [];
     const uniqueBusRoutes = new Set<string>();
+    const uniqueFerryRoutes = new Set<string>();
     const uniqueHeritageRoutes = new Set<string>();
 
     for (const feature of cityConfig.routes?.features || []) {
@@ -1039,19 +1045,35 @@ export function SpeedMap({
       if (routeKey) uniqueBusRoutes.add(routeKey);
     }
 
+    for (const feature of ferryFeatures as any[]) {
+      const props = feature?.properties || {};
+      const routeKey = String(
+        props.route_short_name || props.route_name || props.route_id || "",
+      ).trim();
+      if (routeKey) uniqueFerryRoutes.add(routeKey);
+    }
+
     return {
       heavy: effectiveRailContext.heavy?.features?.length || 0,
       commuter: effectiveRailContext.commuter?.features?.length || 0,
       bus: uniqueBusRoutes.size,
+      ferry: uniqueFerryRoutes.size,
       heritage: uniqueHeritageRoutes.size,
     };
-  }, [city, cityConfig.busRoutesOverlay, cityConfig.routes, effectiveRailContext]);
+  }, [
+    city,
+    cityConfig.busRoutesOverlay,
+    cityConfig.ferryRoutesOverlay,
+    cityConfig.routes,
+    effectiveRailContext,
+  ]);
 
   useEffect(() => {
     onRailContextUpdate?.(
       railContextCounts.heavy,
       railContextCounts.commuter,
       railContextCounts.bus,
+      railContextCounts.ferry,
       railContextCounts.heritage,
     );
   }, [onRailContextUpdate, railContextCounts]);
@@ -1064,6 +1086,54 @@ export function SpeedMap({
     if (map.current) map.current.getCanvas().style.cursor = "";
     if (!crossingPopupPinned.current) popup.current?.remove();
   }, []);
+
+  const handleFerryRoutesMouseMove = useCallback(
+    (e: maplibregl.MapMouseEvent & { features?: maplibregl.MapGeoJSONFeature[] }) => {
+      if (!map.current || !e.features?.length) return;
+      const props = (e.features[0].properties || {}) as Record<string, any>;
+      const routeShortName = String(props.route_short_name || "").trim();
+      const routeLongName = String(props.route_name || props.route_long_name || "").trim();
+      const agencyName = String(
+        props.agency_name || props.operator || props.network || "",
+      ).trim();
+      const title =
+        agencyName || routeShortName || routeLongName || String(props.route_id || "Ferry route").trim();
+
+      const stopSequenceSource = routeLongName.includes(":")
+        ? routeLongName.split(":").slice(1).join(":").trim()
+        : routeShortName.includes("↔") || routeShortName.includes("→")
+          ? routeShortName
+          : routeLongName;
+
+      const stopSequence = stopSequenceSource
+        .split(stopSequenceSource.includes("↔") ? "↔" : "=>")
+        .map((part) => part.trim())
+        .filter(Boolean);
+
+      const bulletStops =
+        stopSequence.length >= 2
+          ? `<div style="margin-top:8px;text-align:left;padding-left:8px">${stopSequence
+              .map(
+                (stop) =>
+                  `<div style="padding-left:10px;color:#e5e7eb">• ${escapeHtml(stop)}</div>`,
+              )
+              .join("")}</div>`
+          : routeShortName || routeLongName
+            ? `<div class="popup-subtitle">${escapeHtml(routeShortName || routeLongName)}</div>`
+            : "";
+
+      popup.current
+        ?.setLngLat(e.lngLat)
+        .setHTML(
+          `<div class="popup-content">
+            <div class="popup-title" style="color:#7fe8ff">${escapeHtml(title)}</div>
+            ${bulletStops}
+          </div>`,
+        )
+        .addTo(map.current);
+    },
+    [],
+  );
 
   const handleHeritageLocalCirculatorMouseMove = useCallback(
     (e: maplibregl.MapMouseEvent & { features?: maplibregl.MapGeoJSONFeature[] }) => {
@@ -1887,6 +1957,7 @@ export function SpeedMap({
         "heritage-local-circulators",
         "rail-context-heavy",
         "rail-context-commuter",
+        "ferry-routes-overlay",
         "bus-routes-overlay-labels",
         "bus-routes-overlay",
       ];
@@ -1900,6 +1971,7 @@ export function SpeedMap({
         "separation",
         "rail-context-heavy-src",
         "rail-context-commuter-src",
+        "ferry-routes-overlay-src",
         "bus-routes-overlay-src",
       ];
 
@@ -2052,6 +2124,7 @@ export function SpeedMap({
         const layerOrder = [
           "rail-context-heavy",
           "rail-context-commuter",
+          "ferry-routes-overlay",
           "heritage-local-circulators-outline",
           "heritage-local-circulators",
           "routes-outline",
@@ -2117,6 +2190,7 @@ export function SpeedMap({
         "routes-construction",
         "rail-context-heavy-src",
         "rail-context-commuter-src",
+        "ferry-routes-overlay-src",
         "bus-routes-overlay-src",
         "speed-limit",
         "separation",
@@ -2124,6 +2198,7 @@ export function SpeedMap({
       const requiredLayers = [
         "rail-context-heavy",
         "rail-context-commuter",
+        "ferry-routes-overlay",
         "heritage-local-circulators-outline",
         "heritage-local-circulators",
         "bus-routes-overlay",
@@ -2162,6 +2237,9 @@ export function SpeedMap({
           );
           (map.current.getSource("rail-context-commuter-src") as any).setData(
             effectiveRailContext.commuter || emptyFC,
+          );
+          (map.current.getSource("ferry-routes-overlay-src") as any).setData(
+            cityConfig.ferryRoutesOverlay || emptyFC,
           );
           (map.current.getSource("bus-routes-overlay-src") as any).setData(
             cityConfig.busRoutesOverlay || emptyFC,
@@ -2237,6 +2315,13 @@ export function SpeedMap({
               showRailContextCommuter ? "visible" : "none",
             );
           }
+          if (map.current.getLayer("ferry-routes-overlay")) {
+            map.current.setLayoutProperty(
+              "ferry-routes-overlay",
+              "visibility",
+              showFerryRoutesOverlay ? "visible" : "none",
+            );
+          }
           for (const id of [
             "heritage-local-circulators-outline",
             "heritage-local-circulators",
@@ -2286,6 +2371,8 @@ export function SpeedMap({
           map.current.removeLayer("rail-context-heavy");
         if (map.current.getLayer("rail-context-commuter"))
           map.current.removeLayer("rail-context-commuter");
+        if (map.current.getLayer("ferry-routes-overlay"))
+          map.current.removeLayer("ferry-routes-overlay");
         if (map.current.getLayer("heritage-local-circulators-outline"))
           map.current.removeLayer("heritage-local-circulators-outline");
         if (map.current.getLayer("heritage-local-circulators"))
@@ -2303,6 +2390,8 @@ export function SpeedMap({
           map.current.removeSource("rail-context-heavy-src");
         if (map.current.getSource("rail-context-commuter-src"))
           map.current.removeSource("rail-context-commuter-src");
+        if (map.current.getSource("ferry-routes-overlay-src"))
+          map.current.removeSource("ferry-routes-overlay-src");
         if (map.current.getSource("bus-routes-overlay-src"))
           map.current.removeSource("bus-routes-overlay-src");
         // Speed limit layers
@@ -2359,6 +2448,16 @@ export function SpeedMap({
         },
       });
 
+      map.current.addSource("ferry-routes-overlay-src", {
+        type: "geojson",
+        data: cityConfig.ferryRoutesOverlay
+          ? cityConfig.ferryRoutesOverlay
+          : {
+              type: "FeatureCollection",
+              features: [],
+            },
+      });
+
       map.current.addSource("bus-routes-overlay-src", {
         type: "geojson",
         data: cityConfig.busRoutesOverlay
@@ -2398,6 +2497,33 @@ export function SpeedMap({
           "line-color": "#77c4ff",
           "line-width": 2.1,
           "line-opacity": 0.95,
+        },
+      });
+
+      map.current.addLayer({
+        id: "ferry-routes-overlay",
+        type: "line",
+        source: "ferry-routes-overlay-src",
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+          visibility: showFerryRoutesOverlay ? "visible" : "none",
+        },
+        paint: {
+          "line-color": "#7fe8ff",
+          "line-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            8,
+            1.1,
+            11,
+            1.7,
+            14,
+            2.6,
+          ],
+          "line-opacity": 0.92,
+          "line-dasharray": [3.5, 2.4],
         },
       });
 
@@ -2533,6 +2659,37 @@ export function SpeedMap({
         map.current.on("mouseleave", layerId, handleRailContextMouseLeave);
         map.current.on("mousemove", layerId, handleRailContextMouseMove);
       }
+
+      map.current.off(
+        "mouseenter",
+        "ferry-routes-overlay",
+        handleRailContextMouseEnter,
+      );
+      map.current.off(
+        "mouseleave",
+        "ferry-routes-overlay",
+        handleRailContextMouseLeave,
+      );
+      map.current.off(
+        "mousemove",
+        "ferry-routes-overlay",
+        handleFerryRoutesMouseMove,
+      );
+      map.current.on(
+        "mouseenter",
+        "ferry-routes-overlay",
+        handleRailContextMouseEnter,
+      );
+      map.current.on(
+        "mouseleave",
+        "ferry-routes-overlay",
+        handleRailContextMouseLeave,
+      );
+      map.current.on(
+        "mousemove",
+        "ferry-routes-overlay",
+        handleFerryRoutesMouseMove,
+      );
 
       map.current.off(
         "mouseenter",
@@ -3073,6 +3230,7 @@ export function SpeedMap({
     handleRailContextMouseEnter,
     handleRailContextMouseLeave,
     handleRailContextMouseMove,
+    handleFerryRoutesMouseMove,
     renderRoutePopup,
     renderSegmentPopup,
     showRouteLines,
@@ -3257,6 +3415,13 @@ export function SpeedMap({
           showRailContextCommuter ? "visible" : "none",
         );
       }
+      if (map.current.getLayer("ferry-routes-overlay")) {
+        map.current.setLayoutProperty(
+          "ferry-routes-overlay",
+          "visibility",
+          showFerryRoutesOverlay ? "visible" : "none",
+        );
+      }
       if (map.current.getLayer("heritage-local-circulators-outline")) {
         map.current.setLayoutProperty(
           "heritage-local-circulators-outline",
@@ -3293,6 +3458,7 @@ export function SpeedMap({
     basemapMode,
     showRailContextHeavy,
     showRailContextCommuter,
+    showFerryRoutesOverlay,
     showCableCarsOverlay,
     showBusRoutesOverlay,
   ]);
@@ -5909,6 +6075,7 @@ export function SpeedMap({
           showRailContextHeavy={showRailContextHeavy}
           showRailContextCommuter={showRailContextCommuter}
           showBusRoutesOverlay={showBusRoutesOverlay}
+          showFerryRoutesOverlay={showFerryRoutesOverlay}
           showCableCarsOverlay={showCableCarsOverlay}
         />
       </div>

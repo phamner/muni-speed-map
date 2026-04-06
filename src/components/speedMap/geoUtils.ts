@@ -66,6 +66,7 @@ export const EMPTY_CITY_DATA: CityStaticData = {
   railContextHeavy: null,
   railContextCommuter: null,
   busRoutesOverlay: null,
+  ferryRoutesOverlay: null,
 };
 
 export function escapeHtml(value: string): string {

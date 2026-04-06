@@ -420,11 +420,14 @@ interface ControlsProps {
   setShowRailContextCommuter: (show: boolean) => void;
   showBusRoutesOverlay: boolean;
   setShowBusRoutesOverlay: (show: boolean) => void;
+  showFerryRoutesOverlay: boolean;
+  setShowFerryRoutesOverlay: (show: boolean) => void;
   showCableCarsOverlay: boolean;
   setShowCableCarsOverlay: (show: boolean) => void;
   railContextHeavyCount: number;
   railContextCommuterCount: number;
   busRoutesOverlayCount: number;
+  ferryRoutesOverlayCount: number;
   heritageLocalCirculatorCount: number;
   hideStoppedTrains: boolean;
   setHideStoppedTrains: (hide: boolean) => void;
@@ -511,11 +514,14 @@ export function Controls({
   setShowRailContextCommuter,
   showBusRoutesOverlay,
   setShowBusRoutesOverlay,
+  showFerryRoutesOverlay,
+  setShowFerryRoutesOverlay,
   showCableCarsOverlay,
   setShowCableCarsOverlay,
   railContextHeavyCount,
   railContextCommuterCount,
   busRoutesOverlayCount,
+  ferryRoutesOverlayCount,
   heritageLocalCirculatorCount,
   hideStoppedTrains,
   setHideStoppedTrains,
@@ -533,6 +539,7 @@ export function Controls({
   const commuterOverlayDisabled = railContextCommuterCount === 0;
   const heritageOverlayDisabled = heritageLocalCirculatorCount === 0;
   const busOverlayDisabled = busRoutesOverlayCount === 0;
+  const ferryOverlayDisabled = ferryRoutesOverlayCount === 0;
 
   const MIN_TRANSIT_MAP_ZOOM = 1;
   const MAX_TRANSIT_MAP_ZOOM = 4;
@@ -1499,6 +1506,21 @@ export function Controls({
             Regional / Commuter rail ({railContextCommuterCount})
           </label>
         </div>
+        {city === "SF" && (
+          <div className="route-lines-toggle">
+            <label
+              className={ferryOverlayDisabled ? "overlay-toggle-disabled" : ""}
+            >
+              <input
+                type="checkbox"
+                checked={!ferryOverlayDisabled && showFerryRoutesOverlay}
+                disabled={ferryOverlayDisabled}
+                onChange={(e) => setShowFerryRoutesOverlay(e.target.checked)}
+              />
+              Ferries ({ferryRoutesOverlayCount})
+            </label>
+          </div>
+        )}
         {(city === "SF" ||
           city === "LA" ||
           city === "Seattle" ||
@@ -1566,6 +1588,7 @@ export function Controls({
           setShowRailContextHeavy(false);
           setShowRailContextCommuter(false);
           setShowBusRoutesOverlay(false);
+          setShowFerryRoutesOverlay(false);
           setShowCableCarsOverlay(false);
           setHideStoppedTrains(false);
           setHideAllTrains(false);
