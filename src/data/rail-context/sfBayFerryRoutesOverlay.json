@@ -2951,6 +2951,126 @@
           ]
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "ferry-way-27989500",
+        "route_name": "San Francisco Pier 33 ↔ Alcatraz Ferry Terminal",
+        "route_short_name": "San Francisco Pier 33 ↔ Alcatraz Ferry Terminal",
+        "route_long_name": "Alcatraz Cruises: San Francisco Pier 33 => Alcatraz Ferry Terminal",
+        "agency_name": "Alcatraz Cruises",
+        "network": "Alcatraz Cruises",
+        "operator": "Alcatraz Cruises, LLC",
+        "from_terminal": "San Francisco Pier 33",
+        "to_terminal": "Alcatraz Ferry Terminal",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_way_id": 27989500
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -122.404159,
+              37.8069704
+            ],
+            [
+              -122.4040632,
+              37.8069874
+            ],
+            [
+              -122.4039665,
+              37.8070399
+            ],
+            [
+              -122.4038167,
+              37.8072137
+            ],
+            [
+              -122.4035597,
+              37.8076244
+            ],
+            [
+              -122.4034337,
+              37.808081
+            ],
+            [
+              -122.4034017,
+              37.8084206
+            ],
+            [
+              -122.4034225,
+              37.8087629
+            ],
+            [
+              -122.4034509,
+              37.809084
+            ],
+            [
+              -122.4035282,
+              37.8094213
+            ],
+            [
+              -122.4036339,
+              37.8097059
+            ],
+            [
+              -122.4038737,
+              37.8101326
+            ],
+            [
+              -122.4043411,
+              37.8108196
+            ],
+            [
+              -122.4048817,
+              37.811474
+            ],
+            [
+              -122.4055158,
+              37.8121365
+            ],
+            [
+              -122.4073261,
+              37.8137484
+            ],
+            [
+              -122.417873,
+              37.8246229
+            ],
+            [
+              -122.4188075,
+              37.8256667
+            ],
+            [
+              -122.4195964,
+              37.8262371
+            ],
+            [
+              -122.4203296,
+              37.8266018
+            ],
+            [
+              -122.4205699,
+              37.8266764
+            ],
+            [
+              -122.420672,
+              37.8266835
+            ],
+            [
+              -122.4207726,
+              37.8266723
+            ],
+            [
+              -122.420808,
+              37.8266612
+            ]
+          ]
+        ]
+      }
     }
   ]
 }

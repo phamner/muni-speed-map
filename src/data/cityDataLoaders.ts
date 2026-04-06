@@ -658,6 +658,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation,
         trafficLights,
         busRoutesOverlay,
+        ferryRoutesOverlay,
       ] = await Promise.all([
         import("./routes/seattleLinkRoutes.json"),
         import("./routes/seattleHeritageLocalCirculatorRoutes.json").catch(() => ({
@@ -673,6 +674,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           default: null,
         })),
         import("./bus-routes/seattleBusRoutesTest.json").catch(() => ({ default: null })),
+        import("./rail-context/seattleFerryRoutesOverlay.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
       return {
@@ -685,6 +689,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation: separation.default,
         trafficLights: trafficLights.default,
         busRoutesOverlay: busRoutesOverlay.default,
+        ferryRoutesOverlay: ferryRoutesOverlay.default,
       };
     }
 

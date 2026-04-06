@@ -1096,26 +1096,48 @@ export function SpeedMap({
       const agencyName = String(
         props.agency_name || props.operator || props.network || "",
       ).trim();
+      const fromTerminal = String(props.from_terminal || "").trim();
+      const toTerminal = String(props.to_terminal || "").trim();
       const title =
         agencyName || routeShortName || routeLongName || String(props.route_id || "Ferry route").trim();
 
-      const stopSequenceSource = routeLongName.includes(":")
-        ? routeLongName.split(":").slice(1).join(":").trim()
-        : routeShortName.includes("↔") || routeShortName.includes("→")
-          ? routeShortName
-          : routeLongName;
+      const hasDistinctTerminalPair =
+        fromTerminal && toTerminal && fromTerminal !== toTerminal;
 
-      const stopSequence = stopSequenceSource
-        .split(stopSequenceSource.includes("↔") ? "↔" : "=>")
-        .map((part) => part.trim())
-        .filter(Boolean);
+      const stopSequence =
+        hasDistinctTerminalPair
+          ? [fromTerminal, toTerminal]
+          : (() => {
+              const stopSequenceSource = routeLongName.includes(":")
+                ? routeLongName.split(":").slice(1).join(":").trim()
+                : routeShortName.includes("↔") || routeShortName.includes("→")
+                  ? routeShortName
+                  : routeLongName;
+
+              const separator = stopSequenceSource.includes("↔")
+                ? "↔"
+                : stopSequenceSource.includes("→")
+                  ? "→"
+                  : stopSequenceSource.includes("=>")
+                    ? "=>"
+                    : stopSequenceSource.includes(" to ")
+                      ? " to "
+                      : null;
+
+              return separator
+                ? stopSequenceSource
+                    .split(separator)
+                    .map((part) => part.trim())
+                    .filter(Boolean)
+                : [];
+            })();
 
       const bulletStops =
         stopSequence.length >= 2
           ? `<div style="margin-top:8px;text-align:left;padding-left:8px">${stopSequence
               .map(
                 (stop) =>
-                  `<div style="padding-left:10px;color:#e5e7eb">• ${escapeHtml(stop)}</div>`,
+                  `<div style="padding-left:14px;text-indent:-10px;color:#e5e7eb">• ${escapeHtml(stop)}</div>`,
               )
               .join("")}</div>`
           : routeShortName || routeLongName
@@ -1282,7 +1304,7 @@ export function SpeedMap({
               const lineList = lines
                 .map(
                   (l) =>
-                    `<div style="padding-left:12px;color:#e5e7eb">• ${escapeHtml(l)}</div>`,
+                    `<div style="padding-left:16px;text-indent:-10px;color:#e5e7eb">• ${escapeHtml(l)}</div>`,
                 )
                 .join("");
               return `<div style="margin:6px 0"><span style="color:#9ca3af;font-weight:500">${escapeHtml(agency)}:</span>${lineList}</div>`;
@@ -4734,6 +4756,7 @@ export function SpeedMap({
     const layerOrder = [
       "rail-context-heavy",
       "rail-context-commuter",
+      "ferry-routes-overlay",
       "heritage-local-circulators-outline",
       "heritage-local-circulators",
       "routes-outline",
@@ -4793,6 +4816,7 @@ export function SpeedMap({
     showRouteLines,
     showRailContextHeavy,
     showRailContextCommuter,
+    showFerryRoutesOverlay,
     viewMode,
     selectedLines,
     city,

@@ -43,6 +43,7 @@
     "parse-gtfs:boston": "node scripts/parseGtfsBoston.js",
     "fetch:boston-routes-osm": "node scripts/fetchBostonGreenLineFromOSM.js",
     "fetch:sf-ferries-osm": "node scripts/fetchSfBayFerryRoutesFromOSM.js",
+    "fetch:seattle-ferries-osm": "node scripts/fetchSeattleFerryRoutesFromOSM.js",
     "fetch:slc-routes-osm": "node scripts/fetchRoutesFromOSM.js SaltLakeCity",
     "fetch:sandiego-routes-osm": "node scripts/fetchRoutesFromOSM.js SanDiego",
     "parse-gtfs:portland": "node scripts/parseGtfsPortland.js",

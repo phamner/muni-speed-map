@@ -13,7 +13,7 @@ const OUTPUT_FILE = path.join(
   "src",
   "data",
   "rail-context",
-  "sfBayFerryRoutesOverlay.json",
+  "seattleFerryRoutesOverlay.json",
 );
 
 const OVERPASS_ENDPOINTS = [
@@ -22,7 +22,7 @@ const OVERPASS_ENDPOINTS = [
   "https://maps.mail.ru/osm/tools/overpass/api/interpreter",
 ];
 
-const BBOX = [37.2, -123.1, 38.5, -121.5];
+const BBOX = [47.0, -123.75, 48.75, -121.8];
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -50,14 +50,14 @@ async function fetchOverpass(query) {
       } catch (error) {
         lastError = error;
         console.warn(
-          `Overpass ferry fetch failed via ${endpoint} (attempt ${attempt}/2): ${error.message}`,
+          `Overpass Seattle ferry fetch failed via ${endpoint} (attempt ${attempt}/2): ${error.message}`,
         );
         if (attempt < 2) await delay(1000);
       }
     }
   }
 
-  throw lastError || new Error("Overpass ferry fetch failed");
+  throw lastError || new Error("Overpass Seattle ferry fetch failed");
 }
 
 function getCoordinateKey(coord) {
@@ -173,20 +173,49 @@ function mergeContiguousWays(wayCoordinateSets) {
 
 function normalizeOperator(value) {
   if (!value) return "";
-  if (value.includes("Water Emergency Transportation")) {
-    return "San Francisco Bay Ferry";
-  }
-  if (value.includes("Golden Gate Bridge")) {
-    return "Golden Gate Ferry";
-  }
+  if (value.includes("Washington State Ferries")) return "Washington State Ferries";
+  if (value.includes("King County")) return "King County Water Taxi";
+  if (value.includes("Kitsap")) return "Kitsap Fast Ferries";
+  if (value.includes("Victoria Clipper")) return "FRS Clipper";
+  if (value.includes("Clipper Vacations")) return "FRS Clipper";
+  if (value.includes("Pierce County")) return "Pierce County";
   return value;
 }
 
+function normalizeTerminalName(value) {
+  if (!value) return "";
+  return value
+    .replaceAll("Fauntelroy", "Fauntleroy")
+    .replaceAll("Orchange", "Port Orchard")
+    .trim();
+}
+
+function getNormalizedAgency(tags = {}) {
+  return normalizeOperator(
+    String(tags.operator || tags.network || tags.name || "").trim(),
+  );
+}
+
+const ALLOWED_SEATTLE_FERRY_AGENCIES = new Set([
+  "Washington State Ferries",
+  "King County Water Taxi",
+  "Kitsap Fast Ferries",
+  "Pierce County",
+  "FRS Clipper",
+]);
+
+function shouldIncludeRelation(relation) {
+  const agency = getNormalizedAgency(relation.tags || {});
+  return ALLOWED_SEATTLE_FERRY_AGENCIES.has(agency);
+}
+
 function buildRouteShortName(tags) {
-  const from = String(tags.from || "").trim();
-  const to = String(tags.to || "").trim();
+  const from = normalizeTerminalName(String(tags.from || "").trim());
+  const to = normalizeTerminalName(String(tags.to || "").trim());
   if (from && to) return `${from} → ${to}`;
-  return String(tags.name || tags.network || tags.operator || "Ferry route").trim();
+  return normalizeTerminalName(
+    String(tags.name || tags.network || tags.operator || "Ferry route").trim(),
+  );
 }
 
 function countGeometryPoints(feature) {
@@ -212,39 +241,33 @@ function buildBidirectionalLabel(fromTerminal, toTerminal) {
   return fromTerminal || toTerminal || "Ferry route";
 }
 
-function inferStandaloneWayTerminals(tags) {
-  const network = String(tags?.network || "").trim();
-  const operator = String(tags?.operator || "").trim();
-  const name = String(tags?.name || "").trim();
-  const haystack = `${network} ${operator} ${name}`.toLowerCase();
-
-  if (
-    haystack.includes("alcatraz") &&
-    (haystack.includes("pier 33") || haystack.includes("alcatraz landing"))
-  ) {
-    return {
-      fromTerminal: "San Francisco Pier 33",
-      toTerminal: "Alcatraz Ferry Terminal",
-    };
-  }
-
-  return {
-    fromTerminal: "",
-    toTerminal: "",
-  };
-}
-
 function buildFeature(relation) {
   const orderedMembers = (relation.members || []).filter(isTrackMember);
   const stitched = stitchOrderedWayMembers(orderedMembers);
   const coordinates = mergeContiguousWays(stitched);
   if (!coordinates.length) return null;
 
-  const operator = normalizeOperator(String(relation.tags?.operator || "").trim());
-  const routeName = String(
-    relation.tags?.name || relation.tags?.network || operator || "Ferry route",
-  ).trim();
-  const routeShortName = buildRouteShortName(relation.tags || {});
+  const operator = getNormalizedAgency(relation.tags || {});
+  let routeName = normalizeTerminalName(
+    String(
+      relation.tags?.name || relation.tags?.network || operator || "Ferry route",
+    ).trim(),
+  );
+  let fromTerminal = normalizeTerminalName(String(relation.tags?.from || "").trim());
+  let toTerminal = normalizeTerminalName(String(relation.tags?.to || "").trim());
+
+  if (relation.id === 2855411) {
+    routeName = "Seattle ↔ Vashon";
+    fromTerminal = "Seattle";
+    toTerminal = "Vashon";
+  }
+
+  const routeShortName = buildRouteShortName({
+    ...relation.tags,
+    from: fromTerminal,
+    to: toTerminal,
+    name: routeName,
+  });
 
   return {
     type: "Feature",
@@ -256,49 +279,11 @@ function buildFeature(relation) {
       agency_name: operator || String(relation.tags?.network || "Ferry").trim(),
       network: String(relation.tags?.network || "").trim(),
       operator,
-      from_terminal: String(relation.tags?.from || "").trim(),
-      to_terminal: String(relation.tags?.to || "").trim(),
-      service_class: "ferry",
-      overlay_category: "regional_ferry",
-      osm_relation_id: relation.id,
-    },
-    geometry: {
-      type: "MultiLineString",
-      coordinates,
-    },
-  };
-}
-
-function buildStandaloneWayFeature(way) {
-  const coordinates = [
-    way.geometry.map((pt) => [pt.lon, pt.lat]).filter((coord) => coord.length === 2),
-  ].filter((line) => line.length > 1);
-  if (!coordinates.length) return null;
-
-  const tags = way.tags || {};
-  const operator = normalizeOperator(String(tags.operator || "").trim());
-  const network = String(tags.network || "").trim();
-  const { fromTerminal, toTerminal } = inferStandaloneWayTerminals(tags);
-  if (!fromTerminal || !toTerminal) return null;
-  const routeShortName =
-    buildBidirectionalLabel(fromTerminal, toTerminal);
-  const routeLongName = `${network || operator || "Ferry"}: ${fromTerminal} => ${toTerminal}`;
-
-  return {
-    type: "Feature",
-    properties: {
-      route_id: `ferry-way-${way.id}`,
-      route_name: routeShortName,
-      route_short_name: routeShortName,
-      route_long_name: routeLongName,
-      agency_name: network || operator || "Ferry",
-      network,
-      operator,
       from_terminal: fromTerminal,
       to_terminal: toTerminal,
       service_class: "ferry",
       overlay_category: "regional_ferry",
-      osm_way_id: way.id,
+      osm_relation_id: relation.id,
     },
     geometry: {
       type: "MultiLineString",
@@ -451,34 +436,17 @@ async function main() {
 [out:json][timeout:120];
 (
   relation["type"="route"]["route"="ferry"](${south},${west},${north},${east});
-  way["route"="ferry"](${south},${west},${north},${east});
 );
 (._;>>;);
 out body geom;
 `;
 
-  console.log("Fetching San Francisco Bay ferry routes from OSM...");
+  console.log("Fetching Seattle region ferry routes from OSM...");
   const data = await fetchOverpass(query);
-  const relations = data.elements.filter((el) => el.type === "relation");
-  const relationMemberWayIds = new Set(
-    relations.flatMap((relation) =>
-      (relation.members || [])
-        .filter((member) => member?.type === "way")
-        .map((member) => member.ref),
-    ),
+  const relations = data.elements.filter(
+    (el) => el.type === "relation" && shouldIncludeRelation(el),
   );
-  const standaloneFerryWays = data.elements.filter(
-    (el) =>
-      el.type === "way" &&
-      el.tags?.route === "ferry" &&
-      Array.isArray(el.geometry) &&
-      el.geometry.length > 1 &&
-      !relationMemberWayIds.has(el.id),
-  );
-  const rawFeatures = [
-    ...relations.map(buildFeature).filter(Boolean),
-    ...standaloneFerryWays.map(buildStandaloneWayFeature).filter(Boolean),
-  ];
+  const rawFeatures = relations.map(buildFeature).filter(Boolean);
   const mergedFeatures = mergeOppositeDirectionFeatures(rawFeatures);
   const features = dedupeIdenticalGeometryFeatures(mergedFeatures);
   const featureCollection = {
