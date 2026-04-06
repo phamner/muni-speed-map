@@ -901,6 +901,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         overrides,
         trafficLights,
         busRoutesOverlay,
+        ferryRoutesOverlay,
       ] = await Promise.all([
         import("./routes/phillyTrolleyRoutes.json"),
         import("./stops/phillyTrolleyStops.json"),
@@ -916,6 +917,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           default: null,
         })),
         import("./bus-routes/phillyBusRoutesTest.json").catch(() => ({ default: null })),
+        import("./rail-context/phillyFerryRoutesOverlay.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
 
@@ -938,6 +942,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         },
         trafficLights: trafficLights.default,
         busRoutesOverlay: busRoutesOverlay.default,
+        ferryRoutesOverlay: ferryRoutesOverlay.default,
       };
     }
 

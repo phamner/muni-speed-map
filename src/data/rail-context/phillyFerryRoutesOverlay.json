@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "ferry-way-30104246",
+        "route_name": "Penn's Landing ↔ Camden",
+        "route_short_name": "Penn's Landing ↔ Camden",
+        "route_long_name": "RiverLink Ferry: Penn's Landing => Camden",
+        "agency_name": "RiverLink Ferry",
+        "network": "RiverLink Ferry",
+        "operator": "RiverLink Ferry",
+        "from_terminal": "Penn's Landing",
+        "to_terminal": "Camden",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_way_id": 30104246
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -75.1396331,
+              39.946224
+            ],
+            [
+              -75.1392486,
+              39.9461926
+            ],
+            [
+              -75.1330091,
+              39.9442674
+            ],
+            [
+              -75.132616,
+              39.9442611
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}

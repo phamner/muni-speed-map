@@ -47,6 +47,7 @@
     "fetch:la-ferries-osm": "node scripts/fetchLaFerryRoutesFromOSM.js",
     "fetch:sandiego-ferries-osm": "node scripts/fetchSanDiegoFerryRoutesFromOSM.js",
     "fetch:toronto-ferries-osm": "node scripts/fetchTorontoFerryRoutesFromOSM.js",
+    "fetch:philly-ferries-osm": "node scripts/fetchPhiladelphiaFerryRoutesFromOSM.js",
     "fetch:slc-routes-osm": "node scripts/fetchRoutesFromOSM.js SaltLakeCity",
     "fetch:sandiego-routes-osm": "node scripts/fetchRoutesFromOSM.js SanDiego",
     "parse-gtfs:portland": "node scripts/parseGtfsPortland.js",
