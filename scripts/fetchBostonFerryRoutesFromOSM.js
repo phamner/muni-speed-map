@@ -23,10 +23,7 @@ const OVERPASS_ENDPOINTS = [
 ];
 
 const BBOX = [42.2, -71.2, 42.65, -70.75];
-const INCLUDED_WAY_IDS = new Set([
-  610034586, 610034587, 610835723, 1362952454, 1362952455, 1362952456,
-  99270540, 1185546972,
-]);
+const INCLUDED_WAY_IDS = new Set([99270540, 1185546972]);
 
 function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
