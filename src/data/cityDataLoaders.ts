@@ -602,6 +602,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separationOverrides,
         trafficLights,
         busRoutesOverlay,
+        ferryRoutesOverlay,
       ] = await Promise.all([
         import("./routes/laMetroRoutes.json"),
         import("./routes/laHeritageLocalCirculatorRoutes.json").catch(() => ({
@@ -618,6 +619,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           default: null,
         })),
         import("./bus-routes/laBusRoutesTest.json").catch(() => ({ default: null })),
+        import("./rail-context/laFerryRoutesOverlay.json").catch(() => ({ default: null })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
 
@@ -643,6 +645,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation: mergedSeparation,
         trafficLights: trafficLights.default,
         busRoutesOverlay: busRoutesOverlay.default,
+        ferryRoutesOverlay: ferryRoutesOverlay.default,
       };
     }
 
@@ -800,6 +803,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation,
         trafficLights,
         busRoutesOverlay,
+        ferryRoutesOverlay,
       ] = await Promise.all([
         import("./routes/sanDiegoTrolleyRoutes.json"),
         import("./stops/sanDiegoTrolleyStops.json"),
@@ -814,6 +818,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           default: null,
         })),
         import("./bus-routes/sanDiegoBusRoutesTest.json").catch(() => ({ default: null })),
+        import("./rail-context/sanDiegoFerryRoutesOverlay.json").catch(() => ({
+          default: null,
+        })),
       ]);
       console.timeEnd(`Loading ${city} static data`);
       return {
@@ -826,6 +833,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         separation: separation.default,
         trafficLights: trafficLights.default,
         busRoutesOverlay: busRoutesOverlay.default,
+        ferryRoutesOverlay: ferryRoutesOverlay.default,
       };
     }
 

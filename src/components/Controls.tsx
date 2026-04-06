@@ -1506,7 +1506,11 @@ export function Controls({
             Regional / Commuter rail ({railContextCommuterCount})
           </label>
         </div>
-        {(city === "SF" || city === "Seattle" || city === "Toronto") && (
+        {(city === "SF" ||
+          city === "Seattle" ||
+          city === "Toronto" ||
+          city === "LA" ||
+          city === "San Diego") && (
           <div className="route-lines-toggle">
             <label
               className={ferryOverlayDisabled ? "overlay-toggle-disabled" : ""}

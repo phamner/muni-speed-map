@@ -1,0 +1,255 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "ferry-19848010+ferry-19848012",
+        "route_name": "Broadway Pier ↔ Coronado Ferry Landing",
+        "route_short_name": "Broadway Pier ↔ Coronado Ferry Landing",
+        "route_long_name": "Coronado Ferry: Broadway Pier => Coronado Ferry Landing / Coronado Ferry: Coronado Ferry Landing => Broadway Pier",
+        "agency_name": "Coronado Ferry",
+        "network": "Coronado Ferry",
+        "operator": "Coronado Ferry",
+        "from_terminal": "Broadway Pier",
+        "to_terminal": "Coronado Ferry Landing",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_relation_id": [
+          19848010,
+          19848012
+        ]
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -117.1697879,
+              32.699939
+            ],
+            [
+              -117.1698066,
+              32.700112
+            ],
+            [
+              -117.169845,
+              32.7003709
+            ],
+            [
+              -117.169942,
+              32.7006845
+            ],
+            [
+              -117.1700588,
+              32.7009245
+            ],
+            [
+              -117.1703109,
+              32.7014166
+            ],
+            [
+              -117.1707669,
+              32.7020688
+            ],
+            [
+              -117.1718183,
+              32.7032425
+            ],
+            [
+              -117.1762398,
+              32.7077597
+            ],
+            [
+              -117.1766463,
+              32.7082439
+            ],
+            [
+              -117.1770647,
+              32.7088036
+            ],
+            [
+              -117.1774724,
+              32.7094536
+            ],
+            [
+              -117.1777621,
+              32.7100855
+            ],
+            [
+              -117.1780518,
+              32.710889
+            ],
+            [
+              -117.1782985,
+              32.7117827
+            ],
+            [
+              -117.1784809,
+              32.7127125
+            ],
+            [
+              -117.1786848,
+              32.714229
+            ],
+            [
+              -117.178638,
+              32.7145087
+            ],
+            [
+              -117.1785533,
+              32.7148452
+            ],
+            [
+              -117.1782523,
+              32.7150716
+            ],
+            [
+              -117.1778643,
+              32.7152052
+            ],
+            [
+              -117.1775571,
+              32.7152481
+            ],
+            [
+              -117.1736031,
+              32.7152509
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "route_id": "ferry-19848011+ferry-19848013",
+        "route_name": "Convention Center Ferry Landing ↔ Coronado Ferry Landing",
+        "route_short_name": "Convention Center Ferry Landing ↔ Coronado Ferry Landing",
+        "route_long_name": "Coronado Ferry: Coronado Ferry Landing => Convention Center Ferry Landing / Coronado Ferry: Convention Center Ferry Landing => Coronado Ferry Landing",
+        "agency_name": "Coronado Ferry",
+        "network": "Coronado Ferry",
+        "operator": "Coronado Ferry",
+        "from_terminal": "Coronado Ferry Landing",
+        "to_terminal": "Convention Center Ferry Landing",
+        "service_class": "ferry",
+        "overlay_category": "regional_ferry",
+        "osm_relation_id": [
+          19848011,
+          19848013
+        ]
+      },
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              -117.1697879,
+              32.699939
+            ],
+            [
+              -117.1693399,
+              32.7003241
+            ],
+            [
+              -117.1691039,
+              32.7004889
+            ],
+            [
+              -117.1688357,
+              32.7006424
+            ],
+            [
+              -117.1684924,
+              32.7007688
+            ],
+            [
+              -117.1681276,
+              32.7008839
+            ],
+            [
+              -117.1674946,
+              32.7010103
+            ],
+            [
+              -117.1666148,
+              32.7011547
+            ],
+            [
+              -117.1658209,
+              32.7013172
+            ],
+            [
+              -117.1648016,
+              32.7015768
+            ],
+            [
+              -117.1640614,
+              32.7018296
+            ],
+            [
+              -117.1635142,
+              32.7020643
+            ],
+            [
+              -117.1632889,
+              32.7021659
+            ],
+            [
+              -117.1629243,
+              32.7024323
+            ],
+            [
+              -117.1624842,
+              32.7029062
+            ],
+            [
+              -117.1622159,
+              32.7032537
+            ],
+            [
+              -117.1620724,
+              32.7034625
+            ],
+            [
+              -117.1620604,
+              32.703545
+            ],
+            [
+              -117.1620603,
+              32.7036283
+            ],
+            [
+              -117.1621174,
+              32.7037803
+            ],
+            [
+              -117.1621854,
+              32.7039293
+            ],
+            [
+              -117.1622511,
+              32.7040644
+            ],
+            [
+              -117.1623432,
+              32.7041994
+            ],
+            [
+              -117.1624941,
+              32.7044017
+            ],
+            [
+              -117.1626588,
+              32.7045643
+            ],
+            [
+              -117.162892,
+              32.7047188
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
