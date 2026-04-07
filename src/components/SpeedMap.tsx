@@ -822,11 +822,12 @@ export function SpeedMap({
 
   const getSpeedColor = (mph: number | null | undefined): string => {
     if (mph == null) return "#666666";
-    if (mph <= 5) return "#9b2d6b";
-    if (mph < 10) return "#ff3333";
-    if (mph < 15) return "#ff9933";
+    if (mph <= 3) return "#5b1a6e";
+    if (mph < 7) return "#9b2d6b";
+    if (mph < 12) return "#ff5a36";
+    if (mph < 18) return "#ff9a2f";
     if (mph < 25) return "#ffdd33";
-    if (mph < 35) return "#88ff33";
+    if (mph < 35) return "#9be22d";
     if (mph < 50) return "#33eebb";
     return "#22ccff";
   };
@@ -2098,16 +2099,18 @@ export function SpeedMap({
       "case",
       ["==", ["get", "speed"], null],
       "#666666", // grey - no data
-      ["<=", ["get", "speed"], 5],
-      "#9b2d6b", // magenta - crawling (≤5 mph)
-      ["<", ["get", "speed"], 10],
-      "#ff3333", // red - very slow (< 10 mph)
-      ["<", ["get", "speed"], 15],
-      "#ff9933", // orange - slow (10-15 mph)
+      ["<=", ["get", "speed"], 3],
+      "#5b1a6e", // very dark purple - crawling (≤3 mph)
+      ["<", ["get", "speed"], 7],
+      "#9b2d6b", // lighter purple - very slow (3-7 mph)
+      ["<", ["get", "speed"], 12],
+      "#ff5a36", // red-orange - slow (7-12 mph)
+      ["<", ["get", "speed"], 18],
+      "#ff9a2f", // orange - moderate-slow (12-18 mph)
       ["<", ["get", "speed"], 25],
-      "#ffdd33", // yellow - moderate (15-25 mph)
+      "#ffdd33", // yellow - moderate (18-25 mph)
       ["<", ["get", "speed"], 35],
-      "#88ff33", // light green - good (25-35 mph)
+      "#9be22d", // light green - good (25-35 mph)
       ["<", ["get", "speed"], 50],
       "#33eebb", // teal - fast (35-50 mph)
       "#22ccff", // cyan - very fast (50+ mph)
@@ -2121,16 +2124,18 @@ export function SpeedMap({
       "case",
       ["==", ["get", "maxspeed_mph"], null],
       "#666666", // grey - no data
-      ["<=", ["get", "maxspeed_mph"], 5],
-      "#9b2d6b", // magenta - crawling (≤5 mph)
-      ["<", ["get", "maxspeed_mph"], 10],
-      "#ff3333", // red - very slow (< 10 mph)
-      ["<", ["get", "maxspeed_mph"], 15],
-      "#ff9933", // orange - slow (10-15 mph)
+      ["<=", ["get", "maxspeed_mph"], 3],
+      "#5b1a6e", // very dark purple - crawling (≤3 mph)
+      ["<", ["get", "maxspeed_mph"], 7],
+      "#9b2d6b", // lighter purple - very slow (3-7 mph)
+      ["<", ["get", "maxspeed_mph"], 12],
+      "#ff5a36", // red-orange - slow (7-12 mph)
+      ["<", ["get", "maxspeed_mph"], 18],
+      "#ff9a2f", // orange - moderate-slow (12-18 mph)
       ["<", ["get", "maxspeed_mph"], 25],
-      "#ffdd33", // yellow - moderate (15-25 mph)
+      "#ffdd33", // yellow - moderate (18-25 mph)
       ["<", ["get", "maxspeed_mph"], 35],
-      "#88ff33", // light green - good (25-35 mph)
+      "#9be22d", // light green - good (25-35 mph)
       ["<", ["get", "maxspeed_mph"], 50],
       "#33eebb", // teal - fast (35-50 mph) - slightly more green
       "#22ccff", // cyan - very fast (50+ mph) - slightly more blue
@@ -5137,16 +5142,18 @@ export function SpeedMap({
               "case",
               ["==", ["get", "avgSpeed"], null],
               "#666666", // grey - no data
-              ["<=", ["get", "avgSpeed"], 5],
-              "#9b2d6b", // magenta - crawling (≤5 mph)
-              ["<", ["get", "avgSpeed"], 10],
-              "#ff3333", // red - very slow (5-10 mph)
-              ["<", ["get", "avgSpeed"], 15],
-              "#ff9933", // orange - slow (10-15 mph)
+              ["<=", ["get", "avgSpeed"], 3],
+              "#5b1a6e", // very dark purple - crawling (≤3 mph)
+              ["<", ["get", "avgSpeed"], 7],
+              "#9b2d6b", // lighter purple - very slow (3-7 mph)
+              ["<", ["get", "avgSpeed"], 12],
+              "#ff5a36", // red-orange - slow (7-12 mph)
+              ["<", ["get", "avgSpeed"], 18],
+              "#ff9a2f", // orange - moderate-slow (12-18 mph)
               ["<", ["get", "avgSpeed"], 25],
-              "#ffdd33", // yellow - moderate (15-25 mph)
+              "#ffdd33", // yellow - moderate (18-25 mph)
               ["<", ["get", "avgSpeed"], 35],
-              "#88ff33", // light green - good (25-35 mph)
+              "#9be22d", // light green - good (25-35 mph)
               ["<", ["get", "avgSpeed"], 50],
               "#33eebb", // teal - fast (35-50 mph)
               "#22ccff", // cyan - very fast (50+ mph)

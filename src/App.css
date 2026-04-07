@@ -2360,6 +2360,12 @@
   gap: 3px 14px;
 }
 
+.map-speed-legend-column {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .map-speed-legend-item {
   display: flex;
   align-items: center;

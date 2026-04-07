@@ -15,67 +15,47 @@ interface SpeedLegendProps {
 }
 
 export function SpeedLegend({ speedUnit }: SpeedLegendProps) {
+  const speedItems = [
+    { color: "#5b1a6e", label: speedUnit === "kmh" ? "≤ 5" : "≤ 3" },
+    { color: "#9b2d6b", label: speedUnit === "kmh" ? "5-11" : "3-7" },
+    { color: "#ff5a36", label: speedUnit === "kmh" ? "11-19" : "7-12" },
+    { color: "#ff9a2f", label: speedUnit === "kmh" ? "19-29" : "12-18" },
+    { color: "#ffdd33", label: speedUnit === "kmh" ? "29-40" : "18-25" },
+    { color: "#9be22d", label: speedUnit === "kmh" ? "40-56" : "25-35" },
+    { color: "#33eebb", label: speedUnit === "kmh" ? "56-80" : "35-50" },
+    { color: "#22ccff", label: speedUnit === "kmh" ? "> 80" : "> 50" },
+  ];
+  const midpoint = Math.ceil(speedItems.length / 2);
+  const leftColumn = speedItems.slice(0, midpoint);
+  const rightColumn = speedItems.slice(midpoint);
+
   return (
     <div className="map-speed-legend">
       <div className="map-speed-legend-title">
         Speed ({speedUnit === "kmh" ? "km/h" : "mph"})
       </div>
       <div className="map-speed-legend-grid">
-        <div className="map-speed-legend-item">
-          <span
-            className="map-speed-dot"
-            style={{ backgroundColor: "#9b2d6b" }}
-          ></span>
-          <span>≤ {speedUnit === "kmh" ? 8 : 5}</span>
+        <div className="map-speed-legend-column">
+          {leftColumn.map((item) => (
+            <div className="map-speed-legend-item" key={item.label}>
+              <span
+                className="map-speed-dot"
+                style={{ backgroundColor: item.color }}
+              ></span>
+              <span>{item.label}</span>
+            </div>
+          ))}
         </div>
-        <div className="map-speed-legend-item">
-          <span
-            className="map-speed-dot"
-            style={{ backgroundColor: "#88ff33" }}
-          ></span>
-          <span>{speedUnit === "kmh" ? "40-56" : "25-35"}</span>
-        </div>
-        <div className="map-speed-legend-item">
-          <span
-            className="map-speed-dot"
-            style={{ backgroundColor: "#ff3333" }}
-          ></span>
-          <span>{speedUnit === "kmh" ? "8-16" : "5-10"}</span>
-        </div>
-        <div className="map-speed-legend-item">
-          <span
-            className="map-speed-dot"
-            style={{ backgroundColor: "#33eebb" }}
-          ></span>
-          <span>{speedUnit === "kmh" ? "56-80" : "35-50"}</span>
-        </div>
-        <div className="map-speed-legend-item">
-          <span
-            className="map-speed-dot"
-            style={{ backgroundColor: "#ff9933" }}
-          ></span>
-          <span>{speedUnit === "kmh" ? "16-24" : "10-15"}</span>
-        </div>
-        <div className="map-speed-legend-item">
-          <span
-            className="map-speed-dot"
-            style={{ backgroundColor: "#22ccff" }}
-          ></span>
-          <span>&gt; {speedUnit === "kmh" ? 80 : 50}</span>
-        </div>
-        <div className="map-speed-legend-item">
-          <span
-            className="map-speed-dot"
-            style={{ backgroundColor: "#ffdd33" }}
-          ></span>
-          <span>{speedUnit === "kmh" ? "24-40" : "15-25"}</span>
-        </div>
-        <div className="map-speed-legend-item">
-          <span
-            className="map-speed-dot"
-            style={{ backgroundColor: "#666666" }}
-          ></span>
-          <span>No data</span>
+        <div className="map-speed-legend-column">
+          {rightColumn.map((item) => (
+            <div className="map-speed-legend-item" key={item.label}>
+              <span
+                className="map-speed-dot"
+                style={{ backgroundColor: item.color }}
+              ></span>
+              <span>{item.label}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
