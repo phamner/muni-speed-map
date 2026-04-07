@@ -27,7 +27,7 @@ const CITY_CONFIGS = {
   cleveland: { file: "clevelandPopulationDensity.json" },
   charlotte: { file: "charlottePopulationDensity.json" },
   baltimore: { file: "baltimorePopulationDensity.json", minWaterAreaSqM: 10000 },
-  washingtonDc: { file: "washingtonDcPopulationDensity.json" },
+  washingtonDc: { file: "washingtonDcPopulationDensity.json", minWaterAreaSqM: 10000 },
 };
 
 const DEFAULT_CONFIG = {
