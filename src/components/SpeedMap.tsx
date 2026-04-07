@@ -5423,10 +5423,15 @@ export function SpeedMap({
             const areaKm2 =
               f.properties.AREALAND > 0 ? f.properties.AREALAND / 1000000 : 0;
             const totalWorkers = f.properties.TOTAL_WORKERS || 0;
+            const geoid = String(f.properties.GEOID || "");
+            const tractCode = geoid.length >= 11 ? geoid.slice(5) : geoid;
+            const isSpecialLandUseTract =
+              tractCode.startsWith("98") || tractCode.startsWith("99");
             return {
               ...f,
               properties: {
                 ...f.properties,
+                isSpecialLandUseTract,
                 density:
                   areaKm2 > 0 ? Math.round(f.properties.POP100 / areaKm2) : 0,
                 jobDensity:
@@ -6046,6 +6051,11 @@ export function SpeedMap({
               0.58 * fillOpacityMultiplier,
             ];
 
+    const modeFilter: any[] = [
+      "all",
+      [">", ["to-number", ["get", "AREALAND"]], 0],
+    ];
+
     map.current.setPaintProperty(
       "population-density-fill",
       "fill-color",
@@ -6056,6 +6066,13 @@ export function SpeedMap({
       "fill-opacity",
       opacityExpr,
     );
+    map.current.setFilter("population-density-fill", modeFilter as any);
+    if (map.current.getLayer("population-density-outline")) {
+      map.current.setFilter("population-density-outline", modeFilter as any);
+    }
+    if (map.current.getLayer("population-density-hover")) {
+      map.current.setFilter("population-density-hover", modeFilter as any);
+    }
   }, [mapLoaded, basemapMode, densityMode, isImageryBasemap, showPopulationDensity]);
 
   // Update speed limit labels when speed unit changes

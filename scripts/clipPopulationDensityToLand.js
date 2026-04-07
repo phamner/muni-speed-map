@@ -11,26 +11,28 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DATA_DIR = path.join(__dirname, "..", "src", "data", "population-density");
 
 const CITY_CONFIGS = {
-  sf: {
-    file: "sfPopulationDensity.json",
-    countyGeoids: [
-      "06001",
-      "06013",
-      "06041",
-      "06055",
-      "06067",
-      "06075",
-      "06077",
-      "06081",
-      "06085",
-      "06087",
-      "06095",
-      "06097",
-      "06113",
-    ],
-    minWaterAreaSqM: 500000,
-    allowedMtfcc: new Set(["H2030", "H2040", "H2051", "H2053"]),
-  },
+  sf: { file: "sfPopulationDensity.json" },
+  la: { file: "laPopulationDensity.json" },
+  boston: { file: "bostonPopulationDensity.json" },
+  philly: { file: "phillyPopulationDensity.json", minWaterAreaSqM: 10000 },
+  seattle: { file: "seattlePopulationDensity.json" },
+  portland: { file: "portlandPopulationDensity.json", minWaterAreaSqM: 10000 },
+  sanDiego: { file: "sanDiegoPopulationDensity.json" },
+  sanJose: { file: "sanJosePopulationDensity.json" },
+  pittsburgh: { file: "pittsburghPopulationDensity.json", minWaterAreaSqM: 10000 },
+  minneapolis: { file: "minneapolisPopulationDensity.json" },
+  denver: { file: "denverPopulationDensity.json" },
+  slc: { file: "saltLakeCityPopulationDensity.json" },
+  phoenix: { file: "phoenixPopulationDensity.json" },
+  cleveland: { file: "clevelandPopulationDensity.json" },
+  charlotte: { file: "charlottePopulationDensity.json" },
+  baltimore: { file: "baltimorePopulationDensity.json", minWaterAreaSqM: 10000 },
+  washingtonDc: { file: "washingtonDcPopulationDensity.json" },
+};
+
+const DEFAULT_CONFIG = {
+  minWaterAreaSqM: 500000,
+  allowedMtfcc: new Set(["H2030", "H2040", "H2051", "H2053", "H3010", "H3020"]),
 };
 
 function bboxIntersects(a, b) {
@@ -44,6 +46,19 @@ function normalizeFeatureCollections(parsed) {
     return parsed.filter((item) => item?.type === "FeatureCollection");
   }
   return [];
+}
+
+function getCountyGeoids(geojson) {
+  const countyGeoids = new Set();
+
+  for (const feature of geojson.features || []) {
+    const geoid = String(feature?.properties?.GEOID || "");
+    if (/^\d{11}$/.test(geoid)) {
+      countyGeoids.add(geoid.slice(0, 5));
+    }
+  }
+
+  return [...countyGeoids].sort();
 }
 
 async function downloadCountyWaterFeatures(countyGeoid, config) {
@@ -79,18 +94,28 @@ async function downloadCountyWaterFeatures(countyGeoid, config) {
 }
 
 async function clipCityToLand(cityKey) {
-  const config = CITY_CONFIGS[cityKey];
-  if (!config) {
+  const cityConfig = CITY_CONFIGS[cityKey];
+  if (!cityConfig) {
     throw new Error(
-      `Unknown city "${cityKey}". Supported: ${Object.keys(CITY_CONFIGS).join(", ")}`,
+      `Unknown city "${cityKey}". Supported: ${Object.keys(CITY_CONFIGS).join(", ")}, all-us`,
     );
   }
 
+  const config = { ...DEFAULT_CONFIG, ...cityConfig };
   const filePath = path.join(DATA_DIR, config.file);
   const geojson = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const countyGeoids = getCountyGeoids(geojson);
+
+  if (countyGeoids.length === 0) {
+    throw new Error(
+      `Could not infer U.S. county GEOIDs from ${config.file}. This script currently supports U.S. tract files only.`,
+    );
+  }
+
   const waterFeaturesByCounty = new Map();
 
-  for (const countyGeoid of config.countyGeoids) {
+  console.log(`\nClipping land geometry for ${cityKey} (${config.file})`);
+  for (const countyGeoid of countyGeoids) {
     console.log(`Downloading areawater for ${countyGeoid}...`);
     const countyWater = await downloadCountyWaterFeatures(countyGeoid, config);
     console.log(`  → ${countyWater.length} water polygons`);
@@ -174,8 +199,15 @@ async function clipCityToLand(cityKey) {
 async function main() {
   const cityKey = process.argv[2];
   if (!cityKey) {
-    console.error("Usage: node scripts/clipPopulationDensityToLand.js <cityKey>");
+    console.error("Usage: node scripts/clipPopulationDensityToLand.js <cityKey|all-us>");
     process.exit(1);
+  }
+
+  if (cityKey === "all-us") {
+    for (const key of Object.keys(CITY_CONFIGS)) {
+      await clipCityToLand(key);
+    }
+    return;
   }
 
   await clipCityToLand(cityKey);
