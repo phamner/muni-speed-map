@@ -16,10 +16,10 @@ interface SpeedLegendProps {
 
 export function SpeedLegend({ speedUnit }: SpeedLegendProps) {
   const speedItems = [
-    { color: "#5b1a6e", label: speedUnit === "kmh" ? "≤ 5" : "≤ 3" },
-    { color: "#9b2d6b", label: speedUnit === "kmh" ? "5-11" : "3-7" },
-    { color: "#ff5a36", label: speedUnit === "kmh" ? "11-19" : "7-12" },
-    { color: "#ff9a2f", label: speedUnit === "kmh" ? "19-29" : "12-18" },
+    { color: "#4a1768", label: speedUnit === "kmh" ? "≤ 5" : "≤ 3" },
+    { color: "#b1265f", label: speedUnit === "kmh" ? "5-11" : "3-7" },
+    { color: "#ff3b30", label: speedUnit === "kmh" ? "11-19" : "7-12" },
+    { color: "#ff9500", label: speedUnit === "kmh" ? "19-29" : "12-18" },
     { color: "#ffdd33", label: speedUnit === "kmh" ? "29-40" : "18-25" },
     { color: "#9be22d", label: speedUnit === "kmh" ? "40-56" : "25-35" },
     { color: "#33eebb", label: speedUnit === "kmh" ? "56-80" : "35-50" },
