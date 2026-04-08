@@ -154,6 +154,7 @@ function buildSfRouteLayerFilter(
 
 const MAXSPEED_ROUTE_MATCH_METERS = 75;
 const MAXSPEED_BEARING_TOLERANCE_DEG = 35;
+const ENABLE_INFRASTRUCTURE_POPUPS = false;
 
 function getFeatureLineStrings(feature: any): number[][][] {
   if (!feature?.geometry) return [];
@@ -3654,6 +3655,7 @@ export function SpeedMap({
 
         // Stop hover
         map.current.on("mouseenter", "stops", () => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (map.current) map.current.getCanvas().style.cursor = "pointer";
         });
 
@@ -3663,6 +3665,7 @@ export function SpeedMap({
         });
 
         map.current.on("mousemove", "stops", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (!e.features?.length || !map.current) return;
           const props = e.features[0].properties;
           const routes = JSON.parse(props.routes || "[]");
@@ -3689,6 +3692,7 @@ export function SpeedMap({
 
         // Click to expand/collapse clusters
         map.current.on("click", "stops", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (isTouchInteractionMode()) return;
           if (!e.features?.length) return;
           const props = e.features[0].properties;
@@ -3762,6 +3766,7 @@ export function SpeedMap({
         });
 
         map.current.on("mouseenter", "traffic-lights", () => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (map.current) map.current.getCanvas().style.cursor = "pointer";
         });
 
@@ -3773,6 +3778,7 @@ export function SpeedMap({
         });
 
         map.current.on("mousemove", "traffic-lights", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (crossingPopupPinned.current) return;
           if (!e.features?.length || !map.current) return;
 
@@ -3796,6 +3802,7 @@ export function SpeedMap({
         });
 
         map.current.on("click", "traffic-lights", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (isTouchInteractionMode()) return;
           if (!e.features?.length || !map.current) return;
 
@@ -4017,6 +4024,7 @@ export function SpeedMap({
 
         // Crossing hover popup
         map.current.on("mouseenter", "crossings", () => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (map.current) map.current.getCanvas().style.cursor = "pointer";
         });
 
@@ -4029,6 +4037,7 @@ export function SpeedMap({
         });
 
         map.current.on("mousemove", "crossings", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           // Don't update popup if it's pinned
           if (crossingPopupPinned.current) return;
           if (!e.features?.length || !map.current) return;
@@ -4064,6 +4073,7 @@ export function SpeedMap({
 
         // Click to pin the popup
         map.current.on("click", "crossings", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (isTouchInteractionMode()) return;
           if (!e.features?.length || !map.current) return;
 
@@ -4318,6 +4328,7 @@ export function SpeedMap({
 
       // Switch hover popup
       map.current.on("mouseenter", "switches", () => {
+        if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
         if (map.current) map.current.getCanvas().style.cursor = "pointer";
       });
 
@@ -4327,6 +4338,7 @@ export function SpeedMap({
       });
 
       map.current.on("mousemove", "switches", (e) => {
+        if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
         // Don't update popup if it's pinned
         if (crossingPopupPinned.current) return;
         if (!e.features?.length || !map.current) return;
@@ -4352,6 +4364,7 @@ export function SpeedMap({
 
       // Click to pin the popup
       map.current.on("click", "switches", (e) => {
+        if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
         if (isTouchInteractionMode()) return;
         if (!e.features?.length || !map.current) return;
 
