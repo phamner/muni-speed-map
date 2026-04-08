@@ -30,7 +30,6 @@ import {
   waitForNoLongTasks,
   EMPTY_CITY_DATA,
   escapeHtml,
-  haversineDistance,
   distanceToLineString,
   distanceToSegment,
   MAX_DISTANCE_FROM_ROUTE_METERS,
@@ -219,91 +218,6 @@ function nearestSegmentBearing(
   const [x1, y1] = coordinates[bestIdx];
   const [x2, y2] = coordinates[bestIdx + 1];
   return bearing(x1, y1, x2, y2);
-}
-
-function getLineStringMidpoint(coordinates: number[][]): [number, number] | null {
-  if (!coordinates.length) return null;
-  if (coordinates.length === 1) {
-    return [coordinates[0][0], coordinates[0][1]];
-  }
-
-  let totalLength = 0;
-  const segmentLengths: number[] = [];
-  for (let i = 0; i < coordinates.length - 1; i++) {
-    const [lon1, lat1] = coordinates[i];
-    const [lon2, lat2] = coordinates[i + 1];
-    const length = haversineDistance(lat1, lon1, lat2, lon2);
-    segmentLengths.push(length);
-    totalLength += length;
-  }
-
-  if (totalLength === 0) {
-    const middleIndex = Math.floor(coordinates.length / 2);
-    return [coordinates[middleIndex][0], coordinates[middleIndex][1]];
-  }
-
-  const halfway = totalLength / 2;
-  let traversed = 0;
-
-  for (let i = 0; i < segmentLengths.length; i++) {
-    const segLength = segmentLengths[i];
-    if (traversed + segLength >= halfway) {
-      const [lon1, lat1] = coordinates[i];
-      const [lon2, lat2] = coordinates[i + 1];
-      const remaining = halfway - traversed;
-      const t = segLength === 0 ? 0 : remaining / segLength;
-      return [lon1 + (lon2 - lon1) * t, lat1 + (lat2 - lat1) * t];
-    }
-    traversed += segLength;
-  }
-
-  const last = coordinates[coordinates.length - 1];
-  return [last[0], last[1]];
-}
-
-function normalizeTextRotation(angle: number): number {
-  let normalized = angle;
-  while (normalized > 180) normalized -= 360;
-  while (normalized <= -180) normalized += 360;
-  if (normalized > 90) normalized -= 180;
-  if (normalized <= -90) normalized += 180;
-  return normalized;
-}
-
-function getLineStringMidpointRotation(coordinates: number[][]): number {
-  if (coordinates.length < 2) return 0;
-
-  let totalLength = 0;
-  const segmentLengths: number[] = [];
-  for (let i = 0; i < coordinates.length - 1; i++) {
-    const [lon1, lat1] = coordinates[i];
-    const [lon2, lat2] = coordinates[i + 1];
-    const length = haversineDistance(lat1, lon1, lat2, lon2);
-    segmentLengths.push(length);
-    totalLength += length;
-  }
-
-  if (totalLength === 0) {
-    const [lon1, lat1] = coordinates[0];
-    const [lon2, lat2] = coordinates[coordinates.length - 1];
-    return normalizeTextRotation(90 - bearing(lon1, lat1, lon2, lat2));
-  }
-
-  const halfway = totalLength / 2;
-  let traversed = 0;
-
-  for (let i = 0; i < segmentLengths.length; i++) {
-    if (traversed + segmentLengths[i] >= halfway) {
-      const [lon1, lat1] = coordinates[i];
-      const [lon2, lat2] = coordinates[i + 1];
-      return normalizeTextRotation(90 - bearing(lon1, lat1, lon2, lat2));
-    }
-    traversed += segmentLengths[i];
-  }
-
-  const [lon1, lat1] = coordinates[coordinates.length - 2];
-  const [lon2, lat2] = coordinates[coordinates.length - 1];
-  return normalizeTextRotation(90 - bearing(lon1, lat1, lon2, lat2));
 }
 
 function annotateMaxspeedRoutes(maxspeed: any, routes: any, city: string): any {
@@ -4448,57 +4362,12 @@ export function SpeedMap({
       type: "FeatureCollection" as const,
       features: segmentFeatures,
     };
-    const segmentLabelPointByMidpoint = new Map<
-      string,
-      {
-        type: "Feature";
-        properties: (typeof segmentFeatures)[number]["properties"] & {
-          labelRotate: number;
-        };
-        geometry: {
-          type: "Point";
-          coordinates: [number, number];
-        };
-      }
-    >();
-    for (const feature of segmentFeatures) {
-      const midpoint = getLineStringMidpoint(feature.geometry.coordinates);
-      if (!midpoint) continue;
-      const labelRotate = getLineStringMidpointRotation(
-        feature.geometry.coordinates,
-      );
-
-      // When interlined routes overlap, keep only the label for the topmost
-      // rendered segment so labels follow the same "top visible route wins"
-      // rule as the line colors.
-      const midpointKey = `${midpoint[0].toFixed(6)},${midpoint[1].toFixed(6)}`;
-      segmentLabelPointByMidpoint.set(midpointKey, {
-        type: "Feature",
-        properties: {
-          ...feature.properties,
-          labelRotate,
-        },
-        geometry: {
-          type: "Point",
-          coordinates: midpoint,
-        },
-      });
-    }
-    const segmentLabelPointGeoJSON = {
-      type: "FeatureCollection" as const,
-      features: Array.from(segmentLabelPointByMidpoint.values()),
-    };
-
     const existingSource = map.current.getSource(
       "speed-segments",
     ) as maplibregl.GeoJSONSource;
-    const existingLabelPointSource = map.current.getSource(
-      "speed-segment-label-points",
-    ) as maplibregl.GeoJSONSource | undefined;
 
     if (existingSource) {
       existingSource.setData(segmentGeoJSON);
-      existingLabelPointSource?.setData(segmentLabelPointGeoJSON);
       map.current.setLayoutProperty("speed-segments", "visibility", "visible");
       if (map.current.getLayer("speed-segment-labels")) {
         map.current.setLayoutProperty("speed-segment-labels", "visibility", "visible");
@@ -4514,10 +4383,6 @@ export function SpeedMap({
       map.current.addSource("speed-segments", {
         type: "geojson",
         data: segmentGeoJSON,
-      });
-      map.current.addSource("speed-segment-label-points", {
-        type: "geojson",
-        data: segmentLabelPointGeoJSON,
       });
 
       // Find the first layer that should be above segments (stops or vehicles)
@@ -4569,10 +4434,11 @@ export function SpeedMap({
         {
           id: "speed-segment-labels",
           type: "symbol",
-          source: "speed-segment-label-points",
+          source: "speed-segments",
           filter: segmentLayerFilter,
           layout: {
             visibility: "visible",
+            "symbol-placement": "line-center",
             "text-field": [
               "concat",
               ["to-string", ["round", ["get", "avgSpeed"]]],
@@ -4581,11 +4447,9 @@ export function SpeedMap({
             "text-size": 11,
             "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
             "text-padding": 2,
-            "text-anchor": "center",
-            "text-offset": [0, 0],
+            "text-max-angle": 25,
+            "text-keep-upright": true,
             "text-rotation-alignment": "map",
-            "text-rotate": ["get", "labelRotate"],
-            "text-keep-upright": false,
             "text-allow-overlap": false,
             "text-ignore-placement": false,
           },
