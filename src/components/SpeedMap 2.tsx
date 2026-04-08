@@ -155,6 +155,7 @@ function buildSfRouteLayerFilter(
 
 const MAXSPEED_ROUTE_MATCH_METERS = 75;
 const MAXSPEED_BEARING_TOLERANCE_DEG = 35;
+const ENABLE_INFRASTRUCTURE_POPUPS = false;
 
 function getFeatureLineStrings(feature: any): number[][][] {
   if (!feature?.geometry) return [];
@@ -221,6 +222,68 @@ function nearestSegmentBearing(
   return bearing(x1, y1, x2, y2);
 }
 
+function projectPointOntoCoordinates(
+  lng: number,
+  lat: number,
+  coordinates: number[][],
+): [number, number] | null {
+  let minDist = Infinity;
+  let bestPoint: [number, number] | null = null;
+
+  for (let i = 0; i < coordinates.length - 1; i++) {
+    const [x1, y1] = coordinates[i];
+    const [x2, y2] = coordinates[i + 1];
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const lenSq = dx * dx + dy * dy;
+    const t =
+      lenSq === 0
+        ? 0
+        : Math.max(
+            0,
+            Math.min(1, ((lng - x1) * dx + (lat - y1) * dy) / lenSq),
+          );
+    const projX = x1 + t * dx;
+    const projY = y1 + t * dy;
+    const dist = distanceToSegment(lng, lat, x1, y1, x2, y2);
+    if (dist < minDist) {
+      minDist = dist;
+      bestPoint = [projX, projY];
+    }
+  }
+
+  return bestPoint;
+}
+
+function getPopupAnchorForLineFeature(
+  lngLat: maplibregl.LngLatLike,
+  feature: any,
+): maplibregl.LngLatLike {
+  const point = maplibregl.LngLat.convert(lngLat);
+  const lineStrings = getFeatureLineStrings(feature);
+  if (lineStrings.length === 0) return lngLat;
+
+  let bestAnchor: [number, number] | null = null;
+  let minDist = Infinity;
+
+  for (const coordinates of lineStrings) {
+    const projected = projectPointOntoCoordinates(
+      point.lng,
+      point.lat,
+      coordinates,
+    );
+    if (!projected) continue;
+
+    const distance = distanceToLineString(point.lat, point.lng, coordinates);
+    if (distance < minDist) {
+      minDist = distance;
+      bestAnchor = projected;
+    }
+  }
+
+  return bestAnchor ?? lngLat;
+}
+
 function getLineStringMidpoint(coordinates: number[][]): [number, number] | null {
   if (!coordinates.length) return null;
   if (coordinates.length === 1) {
@@ -259,51 +322,6 @@ function getLineStringMidpoint(coordinates: number[][]): [number, number] | null
 
   const last = coordinates[coordinates.length - 1];
   return [last[0], last[1]];
-}
-
-function normalizeTextRotation(angle: number): number {
-  let normalized = angle;
-  while (normalized > 180) normalized -= 360;
-  while (normalized <= -180) normalized += 360;
-  if (normalized > 90) normalized -= 180;
-  if (normalized <= -90) normalized += 180;
-  return normalized;
-}
-
-function getLineStringMidpointRotation(coordinates: number[][]): number {
-  if (coordinates.length < 2) return 0;
-
-  let totalLength = 0;
-  const segmentLengths: number[] = [];
-  for (let i = 0; i < coordinates.length - 1; i++) {
-    const [lon1, lat1] = coordinates[i];
-    const [lon2, lat2] = coordinates[i + 1];
-    const length = haversineDistance(lat1, lon1, lat2, lon2);
-    segmentLengths.push(length);
-    totalLength += length;
-  }
-
-  if (totalLength === 0) {
-    const [lon1, lat1] = coordinates[0];
-    const [lon2, lat2] = coordinates[coordinates.length - 1];
-    return normalizeTextRotation(90 - bearing(lon1, lat1, lon2, lat2));
-  }
-
-  const halfway = totalLength / 2;
-  let traversed = 0;
-
-  for (let i = 0; i < segmentLengths.length; i++) {
-    if (traversed + segmentLengths[i] >= halfway) {
-      const [lon1, lat1] = coordinates[i];
-      const [lon2, lat2] = coordinates[i + 1];
-      return normalizeTextRotation(90 - bearing(lon1, lat1, lon2, lat2));
-    }
-    traversed += segmentLengths[i];
-  }
-
-  const [lon1, lat1] = coordinates[coordinates.length - 2];
-  const [lon2, lat2] = coordinates[coordinates.length - 1];
-  return normalizeTextRotation(90 - bearing(lon1, lat1, lon2, lat2));
 }
 
 function annotateMaxspeedRoutes(maxspeed: any, routes: any, city: string): any {
@@ -438,123 +456,158 @@ interface GoogleTileSession {
 type GoogleMapType = "satellite" | "terrain";
 
 function shouldUseGoogleTilesFromUrl(): boolean {
-  if (typeof window === "undefined") return false;
-  const params = new URLSearchParams(window.location.search);
-  return (
-    params.get("satellite") === "google" || params.get("dev") === "true"
-  );
+  return true;
+}
+
+function createDefaultBasemapStyle(): maplibregl.StyleSpecification {
+  return {
+    version: 8,
+    sources: {
+      "carto-dark": {
+        type: "raster",
+        tiles: [
+          "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+          "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+          "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
+        ],
+        tileSize: 256,
+        attribution: "&copy; OpenStreetMap &copy; CARTO",
+      },
+    },
+    layers: [
+      {
+        id: "carto-dark-layer",
+        type: "raster",
+        source: "carto-dark",
+        minzoom: 0,
+        maxzoom: 22,
+      },
+    ],
+  };
 }
 
 const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
   Record<City, Record<string, string>>
 > = {
   SF: {
-    "001": "Alameda County",
-    "013": "Contra Costa County",
-    "041": "Marin County",
-    "075": "San Francisco County",
-    "081": "San Mateo County",
-    "085": "Santa Clara County",
-    "087": "Santa Cruz County",
+    "06-001": "Alameda County",
+    "06-013": "Contra Costa County",
+    "06-041": "Marin County",
+    "06-075": "San Francisco County",
+    "06-081": "San Mateo County",
+    "06-085": "Santa Clara County",
+    "06-087": "Santa Cruz County",
   },
   LA: {
-    "037": "Los Angeles County",
-    "059": "Orange County",
-    "065": "Riverside County",
-    "071": "San Bernardino County",
-    "111": "Ventura County",
+    "06-037": "Los Angeles County",
+    "06-059": "Orange County",
+    "06-065": "Riverside County",
+    "06-071": "San Bernardino County",
+    "06-111": "Ventura County",
   },
   Boston: {
-    "009": "Essex County",
-    "017": "Middlesex County",
-    "021": "Norfolk County",
-    "025": "Suffolk County",
+    "25-001": "Barnstable County",
+    "25-005": "Bristol County",
+    "25-007": "Dukes County",
+    "25-009": "Essex County",
+    "25-017": "Middlesex County",
+    "25-019": "Nantucket County",
+    "25-021": "Norfolk County",
+    "25-023": "Plymouth County",
+    "25-025": "Suffolk County",
+    "25-027": "Worcester County",
+    "44-001": "Bristol County",
+    "44-003": "Kent County",
+    "44-005": "Newport County",
+    "44-007": "Providence County",
+    "44-009": "Washington County",
   },
   Philadelphia: {
-    "005": "Burlington County",
-    "007": "Camden County",
-    "015": "Gloucester County",
-    "017": "Bucks County",
-    "021": "Mercer County",
-    "029": "Chester County",
-    "045": "Delaware County",
-    "091": "Montgomery County",
-    "101": "Philadelphia County",
+    "34-005": "Burlington County",
+    "34-007": "Camden County",
+    "34-015": "Gloucester County",
+    "34-021": "Mercer County",
+    "42-017": "Bucks County",
+    "42-029": "Chester County",
+    "42-045": "Delaware County",
+    "42-091": "Montgomery County",
+    "42-101": "Philadelphia County",
   },
   Seattle: {
-    "033": "King County",
-    "053": "Pierce County",
-    "061": "Snohomish County",
+    "53-033": "King County",
+    "53-053": "Pierce County",
+    "53-061": "Snohomish County",
   },
   Portland: {
-    "005": "Clackamas County",
-    "011": "Clark County",
-    "051": "Multnomah County",
-    "067": "Washington County",
+    "41-005": "Clackamas County",
+    "41-051": "Multnomah County",
+    "41-067": "Washington County",
+    "53-011": "Clark County",
   },
   "San Diego": {
-    "073": "San Diego County",
+    "06-073": "San Diego County",
   },
   "San Jose": {
-    "001": "Alameda County",
-    "013": "Contra Costa County",
-    "075": "San Francisco County",
-    "081": "San Mateo County",
-    "085": "Santa Clara County",
-    "087": "Santa Cruz County",
+    "06-001": "Alameda County",
+    "06-013": "Contra Costa County",
+    "06-075": "San Francisco County",
+    "06-081": "San Mateo County",
+    "06-085": "Santa Clara County",
+    "06-087": "Santa Cruz County",
   },
   Pittsburgh: {
-    "003": "Allegheny County",
-    "125": "Washington County",
+    "42-003": "Allegheny County",
+    "42-125": "Washington County",
   },
   Minneapolis: {
-    "037": "Dakota County",
-    "053": "Hennepin County",
-    "123": "Ramsey County",
+    "27-037": "Dakota County",
+    "27-053": "Hennepin County",
+    "27-123": "Ramsey County",
   },
   Denver: {
-    "001": "Adams County",
-    "005": "Arapahoe County",
-    "013": "Boulder County",
-    "031": "Denver County",
-    "035": "Douglas County",
-    "059": "Jefferson County",
+    "08-001": "Adams County",
+    "08-005": "Arapahoe County",
+    "08-013": "Boulder County",
+    "08-014": "Broomfield County",
+    "08-031": "Denver County",
+    "08-035": "Douglas County",
+    "08-059": "Jefferson County",
   },
   "Salt Lake City": {
-    "003": "Box Elder County",
-    "011": "Davis County",
-    "035": "Salt Lake County",
-    "049": "Utah County",
-    "057": "Weber County",
+    "49-003": "Box Elder County",
+    "49-011": "Davis County",
+    "49-035": "Salt Lake County",
+    "49-049": "Utah County",
+    "49-057": "Weber County",
   },
   Phoenix: {
-    "013": "Maricopa County",
+    "04-013": "Maricopa County",
   },
   Cleveland: {
-    "035": "Cuyahoga County",
-    "085": "Lake County",
-    "093": "Lorain County",
+    "39-035": "Cuyahoga County",
+    "39-085": "Lake County",
+    "39-093": "Lorain County",
   },
   Charlotte: {
-    "071": "Gaston County",
-    "119": "Mecklenburg County",
-    "179": "Union County",
+    "37-071": "Gaston County",
+    "37-119": "Mecklenburg County",
+    "37-179": "Union County",
   },
   Baltimore: {
-    "003": "Anne Arundel County",
-    "005": "Baltimore County",
-    "027": "Howard County",
-    "510": "Baltimore City",
+    "24-003": "Anne Arundel County",
+    "24-005": "Baltimore County",
+    "24-027": "Howard County",
+    "24-510": "Baltimore City",
   },
   "Washington DC": {
-    "001": "District of Columbia",
-    "013": "Arlington County",
-    "031": "Montgomery County",
-    "033": "Prince George's County",
-    "059": "Fairfax County",
-    "510": "Alexandria city",
-    "600": "Fairfax city",
-    "610": "Falls Church city",
+    "11-001": "District of Columbia",
+    "24-031": "Montgomery County",
+    "24-033": "Prince George's County",
+    "51-013": "Arlington County",
+    "51-059": "Fairfax County",
+    "51-510": "Alexandria city",
+    "51-600": "Fairfax city",
+    "51-610": "Falls Church city",
   },
 };
 
@@ -592,7 +645,7 @@ function getPopulationDensityAreaLabel(
 
   const counties = POPULATION_DENSITY_COUNTIES_BY_CITY[city];
   if (!counties || !/^\d{11}$/.test(geoid)) return null;
-  return counties[geoid.slice(2, 5)] || null;
+  return counties[`${geoid.slice(0, 2)}-${geoid.slice(2, 5)}`] || null;
 }
 
 function getPopulationDensityTractLabel(
@@ -647,9 +700,12 @@ export function SpeedMap({
   routeLineModeRef.current = routeLineMode;
   const showRouteLinesRef = useRef(showRouteLines);
   showRouteLinesRef.current = showRouteLines;
+  const viewModeRef = useRef(viewMode);
+  viewModeRef.current = viewMode;
   const densityModeRef = useRef(densityMode);
   densityModeRef.current = densityMode;
   const [mapLoaded, setMapLoaded] = useState(false);
+  const [topoMobileRecoveryTick, setTopoMobileRecoveryTick] = useState(0);
   const [showMobileLegends, setShowMobileLegends] = useState(false);
   const [expandedStopCluster, setExpandedStopCluster] = useState<string | null>(
     null,
@@ -706,6 +762,10 @@ export function SpeedMap({
   const googleSatelliteSession = googleTileSessions.satellite;
   const googleTerrainSession = googleTileSessions.terrain;
   const googleSatelliteError = googleTileErrors.satellite || null;
+  const topoStyleActiveRef = useRef(basemapMode === "topo");
+  const initialMapLoadComplete = useRef(false);
+  const topoMobileRecoveryAttemptsRef = useRef(0);
+  const basemapModeRef = useRef(basemapMode);
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     showSatellite &&
@@ -724,6 +784,10 @@ export function SpeedMap({
   const isTouchInteractionMode = () =>
     typeof window !== "undefined" &&
     window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+  useEffect(() => {
+    basemapModeRef.current = basemapMode;
+  }, [basemapMode]);
 
   // Ref to avoid re-render loops with the callback
   const onVehicleUpdateRef = useRef(onVehicleUpdate);
@@ -810,6 +874,61 @@ export function SpeedMap({
     return "#22ccff";
   };
 
+  const renderSegmentPopup = useCallback(
+    (
+      lngLat: maplibregl.LngLatLike,
+      properties: Record<string, any>,
+      pinned = false,
+    ) => {
+      if (!map.current) return;
+
+      const segColor = getSpeedColor(properties.avgSpeed);
+      const lineLabel = getRouteDisplayName(properties.routeId, city);
+
+      popup.current
+        ?.setLngLat(lngLat)
+        .setHTML(
+          `<div class="popup-content${pinned ? " popup-pinned" : ""}">
+            <div class="popup-title">${lineLabel} Segment</div>
+            <div class="popup-speed" style="color: ${segColor}">${formatAvgSpeedFromRef(properties.avgSpeed)} avg</div>
+            <div class="popup-detail">${properties.sampleCount} readings</div>
+            ${
+              pinned
+                ? '<div class="popup-hint">Tap elsewhere to close</div>'
+                : ""
+            }
+          </div>`,
+        )
+        .addTo(map.current);
+    },
+    [city],
+  );
+
+  const renderRoutePopup = useCallback(
+    (
+      lngLat: maplibregl.LngLatLike,
+      properties: Record<string, any>,
+      pinned = false,
+    ) => {
+      if (!map.current) return;
+
+      popup.current
+        ?.setLngLat(lngLat)
+        .setHTML(
+          `<div class="popup-content${pinned ? " popup-pinned" : ""}">
+            <div class="popup-title" style="color: ${properties.route_color}">${properties.route_name}</div>
+            ${
+              pinned
+                ? '<div class="popup-hint">Tap elsewhere to close</div>'
+                : ""
+            }
+          </div>`,
+        )
+        .addTo(map.current);
+    },
+    [],
+  );
+
   // Load city static data when city changes
   useEffect(() => {
     let cancelled = false;
@@ -877,7 +996,7 @@ export function SpeedMap({
             }
           } catch (error: any) {
             console.warn(
-              `Google ${mapType} session unavailable, falling back to default basemap:`,
+              `Google ${mapType} session unavailable; no non-Google satellite fallback will be shown:`,
               error,
             );
             if (!cancelled) {
@@ -914,6 +1033,7 @@ export function SpeedMap({
       railContextHeavy: cityStaticData?.railContextHeavy || null,
       railContextCommuter: cityStaticData?.railContextCommuter || null,
       busRoutesOverlay: cityStaticData?.busRoutesOverlay || null,
+      ferryRoutesOverlay: cityStaticData?.ferryRoutesOverlay || null,
     }),
     [city, cityStaticData],
   );
@@ -945,7 +1065,9 @@ export function SpeedMap({
 
   const railContextCounts = useMemo(() => {
     const busFeatures = cityConfig.busRoutesOverlay?.features || [];
+    const ferryFeatures = cityConfig.ferryRoutesOverlay?.features || [];
     const uniqueBusRoutes = new Set<string>();
+    const uniqueFerryRoutes = new Set<string>();
     const uniqueHeritageRoutes = new Set<string>();
 
     for (const feature of cityConfig.routes?.features || []) {
@@ -966,14 +1088,28 @@ export function SpeedMap({
       if (routeKey) uniqueBusRoutes.add(routeKey);
     }
 
+    for (const feature of ferryFeatures as any[]) {
+      const props = feature?.properties || {};
+      const routeKey = String(
+        props.route_short_name || props.route_name || props.route_id || "",
+      ).trim();
+      if (routeKey) uniqueFerryRoutes.add(routeKey);
+    }
+
     return {
       heavy: effectiveRailContext.heavy?.features?.length || 0,
       commuter: effectiveRailContext.commuter?.features?.length || 0,
       bus: uniqueBusRoutes.size,
-      ferry: 0,
+      ferry: uniqueFerryRoutes.size,
       heritage: uniqueHeritageRoutes.size,
     };
-  }, [city, cityConfig.busRoutesOverlay, cityConfig.routes, effectiveRailContext]);
+  }, [
+    city,
+    cityConfig.busRoutesOverlay,
+    cityConfig.ferryRoutesOverlay,
+    cityConfig.routes,
+    effectiveRailContext,
+  ]);
 
   useEffect(() => {
     onRailContextUpdate?.(
@@ -993,6 +1129,79 @@ export function SpeedMap({
     if (map.current) map.current.getCanvas().style.cursor = "";
     if (!crossingPopupPinned.current) popup.current?.remove();
   }, []);
+
+  const handleFerryRoutesMouseMove = useCallback(
+    (e: maplibregl.MapMouseEvent & { features?: maplibregl.MapGeoJSONFeature[] }) => {
+      if (!map.current || !e.features?.length) return;
+      const props = (e.features[0].properties || {}) as Record<string, any>;
+      const routeShortName = String(props.route_short_name || "").trim();
+      const routeLongName = String(props.route_long_name || props.route_name || "").trim();
+      const rawAgencyName = String(
+        props.agency_name || props.operator || props.network || "",
+      ).trim();
+      const agencyName = rawAgencyName === "MBTA" ? "MBTA Ferry" : rawAgencyName;
+      const fromTerminal = String(props.from_terminal || "").trim();
+      const toTerminal = String(props.to_terminal || "").trim();
+      const title =
+        agencyName || routeShortName || routeLongName || String(props.route_id || "Ferry route").trim();
+
+      const hasDistinctTerminalPair =
+        fromTerminal && toTerminal && fromTerminal !== toTerminal;
+
+      const stopSequence =
+        hasDistinctTerminalPair
+          ? [fromTerminal, toTerminal]
+          : (() => {
+              const stopSequenceSource = routeLongName.includes(":")
+                ? routeLongName.split(":").slice(1).join(":").trim()
+                : routeShortName.includes("↔") || routeShortName.includes("→")
+                  ? routeShortName
+                  : routeLongName;
+
+              const separator = stopSequenceSource.includes("↔")
+                ? "↔"
+                : stopSequenceSource.includes("→")
+                  ? "→"
+                  : stopSequenceSource.includes("=>")
+                    ? "=>"
+                    : stopSequenceSource.includes(" - ")
+                      ? " - "
+                    : stopSequenceSource.includes(" to ")
+                      ? " to "
+                      : null;
+
+              return separator
+                ? stopSequenceSource
+                    .split(separator)
+                    .map((part) => part.trim())
+                    .filter(Boolean)
+                : [];
+            })();
+
+      const bulletStops =
+        stopSequence.length >= 2
+          ? `<div style="margin-top:8px;text-align:left;padding-left:8px">${stopSequence
+              .map(
+                (stop) =>
+                  `<div style="padding-left:14px;text-indent:-10px;color:#e5e7eb">• ${escapeHtml(stop)}</div>`,
+              )
+              .join("")}</div>`
+          : routeShortName || routeLongName
+            ? `<div class="popup-subtitle">${escapeHtml(routeShortName || routeLongName)}</div>`
+            : "";
+
+      popup.current
+        ?.setLngLat(e.lngLat)
+        .setHTML(
+          `<div class="popup-content">
+            <div class="popup-title" style="color:#7fe8ff">${escapeHtml(title)}</div>
+            ${bulletStops}
+          </div>`,
+        )
+        .addTo(map.current);
+    },
+    [],
+  );
 
   const handleHeritageLocalCirculatorMouseMove = useCallback(
     (e: maplibregl.MapMouseEvent & { features?: maplibregl.MapGeoJSONFeature[] }) => {
@@ -1141,7 +1350,7 @@ export function SpeedMap({
               const lineList = lines
                 .map(
                   (l) =>
-                    `<div style="padding-left:12px;color:#e5e7eb">• ${escapeHtml(l)}</div>`,
+                    `<div style="padding-left:16px;text-indent:-10px;color:#e5e7eb">• ${escapeHtml(l)}</div>`,
                 )
                 .join("");
               return `<div style="margin:6px 0"><span style="color:#9ca3af;font-weight:500">${escapeHtml(agency)}:</span>${lineList}</div>`;
@@ -1409,7 +1618,7 @@ export function SpeedMap({
     (rows: any[], routes: any, cityName: string): Vehicle[] => {
       const routeFeatureMap = getRouteFeatureMap(routes);
       return rows.map((row: any) => {
-        const precomputed = getPrecomputedSegments(row);
+        const precomputed = getPrecomputedSegments(row, cityName);
         if (precomputed) {
           return {
             id: `${row.vehicle_id}-${row.id}`,
@@ -1570,7 +1779,7 @@ export function SpeedMap({
       setIsProcessing(true);
 
       const missingSegmentCount = filteredData.filter(
-        (row: any) => !rowHasPrecomputedSegmentMapping(row),
+        (row: any) => !rowHasPrecomputedSegmentMapping(row, city),
       ).length;
       const needsClientMapping = missingSegmentCount > 0;
 
@@ -1684,72 +1893,17 @@ export function SpeedMap({
 
     // Reset handler registration flags for new map
     crossingHandlersRegistered.current = false;
+    initialMapLoadComplete.current = false;
 
     // Reset mapLoaded state for new map
     setMapLoaded(false);
 
     map.current = new maplibregl.Map({
       container: mapContainer.current,
-      style: {
-        version: 8,
-        sources: {
-          "carto-dark": {
-            type: "raster",
-            tiles: [
-              "https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-              "https://b.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-              "https://c.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png",
-            ],
-            tileSize: 256,
-            attribution: "&copy; OpenStreetMap &copy; CARTO",
-          },
-          "satellite-esri": {
-            type: "raster",
-            tiles: [
-              "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-            ],
-            tileSize: 256,
-            attribution: "&copy; Esri, Maxar, Earthstar Geographics",
-          },
-          "topo-esri": {
-            type: "raster",
-            tiles: [
-              "/api/maptiler-topo/tile?z={z}&x={x}&y={y}",
-            ],
-            tileSize: 256,
-            attribution: "&copy; MapTiler",
-          },
-        },
-        layers: [
-          {
-            id: "carto-dark-layer",
-            type: "raster",
-            source: "carto-dark",
-            minzoom: 0,
-            maxzoom: 19,
-          },
-          {
-            id: "satellite-layer-esri",
-            type: "raster",
-            source: "satellite-esri",
-            minzoom: 0,
-            maxzoom: 19,
-            layout: {
-              visibility: "none", // Hidden by default
-            },
-          },
-          {
-            id: "topo-layer-esri",
-            type: "raster",
-            source: "topo-esri",
-            minzoom: 0,
-            maxzoom: 19,
-            layout: {
-              visibility: "none",
-            },
-          },
-        ],
-      },
+      style:
+        basemapMode === "topo"
+          ? "/api/maptiler-topo/style"
+          : createDefaultBasemapStyle(),
       center: cityConfig.center,
       zoom: cityConfig.zoom,
       minZoom: 8.5,
@@ -1780,7 +1934,26 @@ export function SpeedMap({
     });
 
     map.current.on("load", () => {
+      initialMapLoadComplete.current = true;
       setMapLoaded(true);
+    });
+
+    map.current.on("style.load", () => {
+      if (!initialMapLoadComplete.current) return;
+
+      const shouldAwaitTopoIdleOnMobile =
+        basemapModeRef.current === "topo" && isTouchInteractionMode();
+
+      if (!shouldAwaitTopoIdleOnMobile) {
+        setMapLoaded(true);
+        return;
+      }
+
+      map.current?.once("idle", () => {
+        if (!map.current) return;
+        if (basemapModeRef.current !== "topo") return;
+        setMapLoaded(true);
+      });
     });
 
     return () => {
@@ -1788,6 +1961,109 @@ export function SpeedMap({
       map.current = null;
     };
   }, [city]); // Re-initialize map when city changes
+
+  useEffect(() => {
+    if (!map.current) return;
+
+    const shouldUseTopoStyle = basemapMode === "topo";
+    if (topoStyleActiveRef.current === shouldUseTopoStyle) return;
+
+    topoStyleActiveRef.current = shouldUseTopoStyle;
+    setMapLoaded(false);
+    map.current.setStyle(
+      shouldUseTopoStyle
+        ? "/api/maptiler-topo/style"
+        : createDefaultBasemapStyle(),
+    );
+  }, [basemapMode]);
+
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+    if (basemapMode !== "topo") return;
+    if (!isTouchInteractionMode()) return;
+    if (topoMobileRecoveryAttemptsRef.current >= 4) return;
+
+    const recoveryTimeout = window.setTimeout(() => {
+      if (!map.current || !map.current.isStyleLoaded()) return;
+
+      const viewingSegments =
+        viewMode === "segments" ||
+        viewMode === "segments-500" ||
+        viewMode === "segments-1000";
+      const viewingVehicles = viewMode === "raw" || viewMode === "live";
+
+      const missingRoutes = !map.current.getLayer("routes");
+      const missingSegments =
+        viewingSegments && !map.current.getLayer("speed-segments");
+      const missingVehicles =
+        viewingVehicles &&
+        (!map.current.getLayer("vehicles") ||
+          !map.current.getLayer("vehicles-glow"));
+
+      if (!missingRoutes && !missingSegments && !missingVehicles) {
+        topoMobileRecoveryAttemptsRef.current = 0;
+        return;
+      }
+
+      const layersToRemove = [
+        "speed-segments-hitarea",
+        "speed-segments",
+        "vehicles",
+        "vehicles-glow",
+        "routes-outline",
+        "routes",
+        "routes-construction-outline",
+        "routes-construction",
+        "routes-tunnel-outline",
+        "routes-tunnel",
+        "speed-limit-labels",
+        "speed-limit-outline",
+        "speed-limit",
+        "separation-outline",
+        "separation",
+        "heritage-local-circulators-outline",
+        "heritage-local-circulators",
+        "rail-context-heavy",
+        "rail-context-commuter",
+        "ferry-routes-overlay",
+        "bus-routes-overlay-labels",
+        "bus-routes-overlay",
+      ];
+      const sourcesToRemove = [
+        "speed-segments",
+        "vehicles",
+        "routes",
+        "routes-construction",
+        "routes-tunnel",
+        "speed-limit",
+        "separation",
+        "rail-context-heavy-src",
+        "rail-context-commuter-src",
+        "ferry-routes-overlay-src",
+        "bus-routes-overlay-src",
+      ];
+
+      for (const layerId of layersToRemove) {
+        try {
+          if (map.current.getLayer(layerId)) map.current.removeLayer(layerId);
+        } catch {}
+      }
+      for (const sourceId of sourcesToRemove) {
+        try {
+          if (map.current.getSource(sourceId)) map.current.removeSource(sourceId);
+        } catch {}
+      }
+
+      topoMobileRecoveryAttemptsRef.current += 1;
+      setTopoMobileRecoveryTick((prev) => prev + 1);
+    }, 350 + topoMobileRecoveryAttemptsRef.current * 200);
+
+    return () => window.clearTimeout(recoveryTimeout);
+  }, [mapLoaded, basemapMode, viewMode, topoMobileRecoveryTick]);
+
+  useEffect(() => {
+    topoMobileRecoveryAttemptsRef.current = 0;
+  }, [city, basemapMode, viewMode]);
 
   useEffect(() => {
     if (!mapLoaded || !map.current) return;
@@ -1866,7 +2142,7 @@ export function SpeedMap({
       ["==", ["get", "speed"], null],
       "#666666", // grey - no data
       ["<=", ["get", "speed"], 3],
-      "#4a1768", // dark purple - crawling (≤3 mph)
+      "#4a1768", // lighter indigo-violet - crawling (≤3 mph)
       ["<", ["get", "speed"], 7],
       "#b1265f", // raspberry - very slow (3-7 mph)
       ["<", ["get", "speed"], 12],
@@ -1891,7 +2167,7 @@ export function SpeedMap({
       ["==", ["get", "maxspeed_mph"], null],
       "#666666", // grey - no data
       ["<=", ["get", "maxspeed_mph"], 3],
-      "#4a1768", // dark purple - crawling (≤3 mph)
+      "#4a1768", // lighter indigo-violet - crawling (≤3 mph)
       ["<", ["get", "maxspeed_mph"], 7],
       "#b1265f", // raspberry - very slow (3-7 mph)
       ["<", ["get", "maxspeed_mph"], 12],
@@ -1903,8 +2179,8 @@ export function SpeedMap({
       ["<", ["get", "maxspeed_mph"], 35],
       "#9be22d", // light green - good (25-35 mph)
       ["<", ["get", "maxspeed_mph"], 50],
-      "#33eebb", // teal - fast (35-50 mph)
-      "#22ccff", // cyan - very fast (50+ mph)
+      "#33eebb", // teal - fast (35-50 mph) - slightly more green
+      "#22ccff", // cyan - very fast (50+ mph) - slightly more blue
     ],
     [],
   );
@@ -1915,6 +2191,44 @@ export function SpeedMap({
 
     const addRouteLayers = () => {
       if (!map.current) return;
+      const reorderRouteLayers = () => {
+        if (!map.current) return;
+        const layerOrder = [
+          "rail-context-heavy",
+          "rail-context-commuter",
+          "ferry-routes-overlay",
+          "heritage-local-circulators-outline",
+          "heritage-local-circulators",
+          "routes-outline",
+          "routes",
+          "routes-touch-hitarea",
+          "routes-tunnel-outline",
+          "routes-tunnel",
+          "speed-limit-outline",
+          "speed-limit",
+          "speed-limit-labels",
+          "separation-outline",
+          "separation",
+          "speed-segments",
+          "speed-segments-hitarea",
+          "vehicles-glow",
+          "vehicles",
+          "traffic-lights",
+          "crossings",
+          "switches",
+          "stops",
+          "stops-label",
+        ];
+
+        for (const id of layerOrder) {
+          if (!map.current.getLayer(id)) continue;
+          try {
+            map.current.moveLayer(id);
+          } catch {
+            // Layer may have been removed while styles are reconfiguring
+          }
+        }
+      };
 
       const _showByLine = showRouteLines && routeLineMode === "byLine";
       const showBySpeed = showRouteLines && routeLineMode === "bySpeedLimit";
@@ -1940,10 +2254,50 @@ export function SpeedMap({
       const tunnelRoutes = { type: "FeatureCollection", features: [] };
 
       const emptyFC = { type: "FeatureCollection", features: [] } as any;
+      const routeVis: "visible" | "none" = showRouteLines ? "visible" : "none";
+
+      const requiredSources = [
+        "routes",
+        "routes-tunnel",
+        "routes-construction",
+        "rail-context-heavy-src",
+        "rail-context-commuter-src",
+        "ferry-routes-overlay-src",
+        "bus-routes-overlay-src",
+        "speed-limit",
+        "separation",
+      ];
+      const requiredLayers = [
+        "rail-context-heavy",
+        "rail-context-commuter",
+        "ferry-routes-overlay",
+        "heritage-local-circulators-outline",
+        "heritage-local-circulators",
+        "bus-routes-overlay",
+        "bus-routes-overlay-labels",
+        "routes-outline",
+        "routes",
+        "routes-construction-outline",
+        "routes-construction",
+        "routes-tunnel-outline",
+        "routes-tunnel",
+        "speed-limit-outline",
+        "speed-limit",
+        "speed-limit-labels",
+        "separation-outline",
+        "separation",
+      ];
 
       // UPDATE PATH: sources already exist, just swap GeoJSON data in-place.
       // This avoids the remove-and-recreate cycle that causes visual flicker.
-      if (map.current.getSource("routes")) {
+      const hasHealthyRouteSources = requiredSources.every((id) =>
+        Boolean(map.current?.getSource(id)),
+      );
+      const hasHealthyRouteLayers = requiredLayers.every((id) =>
+        Boolean(map.current?.getLayer(id)),
+      );
+
+      if (hasHealthyRouteSources && hasHealthyRouteLayers) {
         try {
           (map.current.getSource("routes") as any).setData(regularRoutes);
           (map.current.getSource("routes-tunnel") as any).setData(tunnelRoutes);
@@ -1956,6 +2310,9 @@ export function SpeedMap({
           (map.current.getSource("rail-context-commuter-src") as any).setData(
             effectiveRailContext.commuter || emptyFC,
           );
+          (map.current.getSource("ferry-routes-overlay-src") as any).setData(
+            cityConfig.ferryRoutesOverlay || emptyFC,
+          );
           (map.current.getSource("bus-routes-overlay-src") as any).setData(
             cityConfig.busRoutesOverlay || emptyFC,
           );
@@ -1964,6 +2321,102 @@ export function SpeedMap({
               annotatedMaxspeed || emptyFC,
             );
           }
+
+          for (const id of [
+            "routes-outline",
+            "routes",
+            "routes-construction-outline",
+            "routes-construction",
+            "routes-tunnel-outline",
+            "routes-tunnel",
+          ]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(id, "visibility", routeVis);
+              map.current.setFilter(id, routeLayerFilter);
+            }
+          }
+
+          for (const id of ["routes", "routes-construction", "routes-tunnel"]) {
+            if (map.current.getLayer(id)) {
+              map.current.setPaintProperty(
+                id,
+                "line-color",
+                showBySpeed || showBySeparation
+                  ? "#6b7280"
+                  : ["get", "route_color"],
+              );
+            }
+          }
+
+          for (const id of [
+            "speed-limit-outline",
+            "speed-limit",
+            "speed-limit-labels",
+          ]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(
+                id,
+                "visibility",
+                showBySpeed ? "visible" : "none",
+              );
+              map.current.setFilter(id, speedLimitLayerFilter);
+            }
+          }
+
+          for (const id of ["separation-outline", "separation"]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(
+                id,
+                "visibility",
+                showBySeparation ? "visible" : "none",
+              );
+            }
+          }
+
+          if (map.current.getLayer("rail-context-heavy")) {
+            map.current.setLayoutProperty(
+              "rail-context-heavy",
+              "visibility",
+              showRailContextHeavy ? "visible" : "none",
+            );
+          }
+          if (map.current.getLayer("rail-context-commuter")) {
+            map.current.setLayoutProperty(
+              "rail-context-commuter",
+              "visibility",
+              showRailContextCommuter ? "visible" : "none",
+            );
+          }
+          if (map.current.getLayer("ferry-routes-overlay")) {
+            map.current.setLayoutProperty(
+              "ferry-routes-overlay",
+              "visibility",
+              showFerryRoutesOverlay ? "visible" : "none",
+            );
+          }
+          for (const id of [
+            "heritage-local-circulators-outline",
+            "heritage-local-circulators",
+          ]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(
+                id,
+                "visibility",
+                showCableCarsOverlay ? "visible" : "none",
+              );
+            }
+          }
+          for (const id of ["bus-routes-overlay", "bus-routes-overlay-labels"]) {
+            if (map.current.getLayer(id)) {
+              map.current.setLayoutProperty(
+                id,
+                "visibility",
+                showBusRoutesOverlay ? "visible" : "none",
+              );
+            }
+          }
+
+          reorderRouteLayers();
         } catch {
           // Source might have been removed externally
         }
@@ -1976,6 +2429,8 @@ export function SpeedMap({
         if (map.current.getLayer("routes-outline"))
           map.current.removeLayer("routes-outline");
         if (map.current.getLayer("routes")) map.current.removeLayer("routes");
+        if (map.current.getLayer("routes-touch-hitarea"))
+          map.current.removeLayer("routes-touch-hitarea");
         if (map.current.getLayer("routes-construction-outline"))
           map.current.removeLayer("routes-construction-outline");
         if (map.current.getLayer("routes-construction"))
@@ -1988,6 +2443,8 @@ export function SpeedMap({
           map.current.removeLayer("rail-context-heavy");
         if (map.current.getLayer("rail-context-commuter"))
           map.current.removeLayer("rail-context-commuter");
+        if (map.current.getLayer("ferry-routes-overlay"))
+          map.current.removeLayer("ferry-routes-overlay");
         if (map.current.getLayer("heritage-local-circulators-outline"))
           map.current.removeLayer("heritage-local-circulators-outline");
         if (map.current.getLayer("heritage-local-circulators"))
@@ -2005,6 +2462,8 @@ export function SpeedMap({
           map.current.removeSource("rail-context-heavy-src");
         if (map.current.getSource("rail-context-commuter-src"))
           map.current.removeSource("rail-context-commuter-src");
+        if (map.current.getSource("ferry-routes-overlay-src"))
+          map.current.removeSource("ferry-routes-overlay-src");
         if (map.current.getSource("bus-routes-overlay-src"))
           map.current.removeSource("bus-routes-overlay-src");
         // Speed limit layers
@@ -2061,6 +2520,16 @@ export function SpeedMap({
         },
       });
 
+      map.current.addSource("ferry-routes-overlay-src", {
+        type: "geojson",
+        data: cityConfig.ferryRoutesOverlay
+          ? cityConfig.ferryRoutesOverlay
+          : {
+              type: "FeatureCollection",
+              features: [],
+            },
+      });
+
       map.current.addSource("bus-routes-overlay-src", {
         type: "geojson",
         data: cityConfig.busRoutesOverlay
@@ -2100,6 +2569,33 @@ export function SpeedMap({
           "line-color": "#77c4ff",
           "line-width": 2.1,
           "line-opacity": 0.95,
+        },
+      });
+
+      map.current.addLayer({
+        id: "ferry-routes-overlay",
+        type: "line",
+        source: "ferry-routes-overlay-src",
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+          visibility: showFerryRoutesOverlay ? "visible" : "none",
+        },
+        paint: {
+          "line-color": "#7fe8ff",
+          "line-width": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            8,
+            1.1,
+            11,
+            1.7,
+            14,
+            2.6,
+          ],
+          "line-opacity": 0.92,
+          "line-dasharray": [3.5, 2.4],
         },
       });
 
@@ -2238,6 +2734,37 @@ export function SpeedMap({
 
       map.current.off(
         "mouseenter",
+        "ferry-routes-overlay",
+        handleRailContextMouseEnter,
+      );
+      map.current.off(
+        "mouseleave",
+        "ferry-routes-overlay",
+        handleRailContextMouseLeave,
+      );
+      map.current.off(
+        "mousemove",
+        "ferry-routes-overlay",
+        handleFerryRoutesMouseMove,
+      );
+      map.current.on(
+        "mouseenter",
+        "ferry-routes-overlay",
+        handleRailContextMouseEnter,
+      );
+      map.current.on(
+        "mouseleave",
+        "ferry-routes-overlay",
+        handleRailContextMouseLeave,
+      );
+      map.current.on(
+        "mousemove",
+        "ferry-routes-overlay",
+        handleFerryRoutesMouseMove,
+      );
+
+      map.current.off(
+        "mouseenter",
         "heritage-local-circulators",
         handleRailContextMouseEnter,
       );
@@ -2311,6 +2838,22 @@ export function SpeedMap({
             HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH,
           ),
           "line-opacity": 0.9,
+        },
+      });
+
+      map.current.addLayer({
+        id: "routes-touch-hitarea",
+        type: "line",
+        source: "routes",
+        filter: routeLayerFilter,
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+          visibility: showRouteLines ? "visible" : "none",
+        },
+        paint: {
+          "line-width": 18,
+          "line-opacity": 0,
         },
       });
 
@@ -2491,16 +3034,12 @@ export function SpeedMap({
                 : speedMph >= 35
                   ? "#33eebb"
                   : speedMph >= 25
-                    ? "#9be22d"
-                    : speedMph >= 18
+                    ? "#88ff33"
+                    : speedMph >= 15
                       ? "#ffdd33"
-                      : speedMph >= 12
+                    : speedMph >= 10
                         ? "#ff9500"
-                        : speedMph >= 7
-                          ? "#ff3b30"
-                          : speedMph >= 3
-                            ? "#b1265f"
-                            : "#4a1768";
+                        : "#ff3b30";
           const displaySpeed =
             speedMph != null ? formatSpeedFromRef(speedMph) : "Unknown";
           popup.current
@@ -2652,16 +3191,64 @@ export function SpeedMap({
           routeLineModeRef.current === "bySeparation";
         if (isSpeedMode || isSepMode) return;
 
+        const isSegmentView =
+          viewModeRef.current === "segments" ||
+          viewModeRef.current === "segments-500" ||
+          viewModeRef.current === "segments-1000";
+
+        if (isSegmentView && map.current.getLayer("speed-segments")) {
+          const segmentFeatures = map.current.queryRenderedFeatures(e.point, {
+            layers: ["speed-segments", "speed-segments-hitarea"].filter((id) =>
+              map.current?.getLayer(id),
+            ),
+          });
+          if (segmentFeatures.length > 0) {
+            if (isTouchInteractionMode() && touchPopupPinned.current) return;
+            renderSegmentPopup(e.lngLat, segmentFeatures[0].properties);
+            return;
+          }
+        }
+
         // In byLine mode, show route name
         const props = e.features[0].properties;
-        popup.current
-          ?.setLngLat(e.lngLat)
-          .setHTML(
-            `<div class="popup-content">
-              <div class="popup-title" style="color: ${props.route_color}">${props.route_name}</div>
-            </div>`,
-          )
-          .addTo(map.current);
+        renderRoutePopup(e.lngLat, props);
+      });
+
+      map.current.on("click", "routes-touch-hitarea", (e) => {
+        if (!e.features?.length || !map.current || !isTouchInteractionMode()) {
+          return;
+        }
+
+        const isSegmentView =
+          viewModeRef.current === "segments" ||
+          viewModeRef.current === "segments-500" ||
+          viewModeRef.current === "segments-1000";
+
+        if (isSegmentView && map.current.getLayer("speed-segments")) {
+          const segmentFeatures = map.current.queryRenderedFeatures(e.point, {
+            layers: ["speed-segments", "speed-segments-hitarea"].filter((id) =>
+              map.current?.getLayer(id),
+            ),
+          });
+          if (segmentFeatures.length > 0) {
+            touchPopupPinned.current = true;
+            renderSegmentPopup(
+              getPopupAnchorForLineFeature(e.lngLat, segmentFeatures[0]),
+              segmentFeatures[0].properties,
+              true,
+            );
+            e.originalEvent.stopPropagation();
+            return;
+          }
+        }
+
+        touchPopupPinned.current = true;
+        renderRoutePopup(
+          getPopupAnchorForLineFeature(e.lngLat, e.features[0]),
+          e.features[0].properties,
+          true,
+        );
+        e.originalEvent.stopPropagation();
       });
 
       // Ensure symbol layers (stops, traffic-lights, crossings, switches, vehicles)
@@ -2680,6 +3267,7 @@ export function SpeedMap({
           map.current.moveLayer(layerId);
         }
       }
+      reorderRouteLayers();
     };
 
     // If style is already loaded, add layers immediately
@@ -2700,6 +3288,8 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
+    basemapMode,
+    topoMobileRecoveryTick,
     city,
     cityConfig.routes,
     cityConfig.maxspeed,
@@ -2712,12 +3302,17 @@ export function SpeedMap({
     handleRailContextMouseEnter,
     handleRailContextMouseLeave,
     handleRailContextMouseMove,
+    handleFerryRoutesMouseMove,
+    renderRoutePopup,
+    renderSegmentPopup,
     showRouteLines,
     routeLineMode,
     showRailContextHeavy,
     showRailContextCommuter,
     showCableCarsOverlay,
     showBusRoutesOverlay,
+    routeLayerFilter,
+    speedLimitLayerFilter,
   ]);
 
   // Keep route-line visibility and paint in sync with mode / toggle state
@@ -2734,6 +3329,7 @@ export function SpeedMap({
       for (const id of [
         "routes-outline",
         "routes",
+        "routes-touch-hitarea",
         "routes-construction-outline",
         "routes-construction",
         "routes-tunnel-outline",
@@ -2776,7 +3372,7 @@ export function SpeedMap({
     } catch {
       // Layers might not exist yet
     }
-  }, [mapLoaded, showRouteLines, routeLineMode]);
+  }, [mapLoaded, basemapMode, showRouteLines, routeLineMode]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
@@ -2785,6 +3381,7 @@ export function SpeedMap({
       for (const id of [
         "routes-outline",
         "routes",
+        "routes-touch-hitarea",
         "routes-construction-outline",
         "routes-construction",
         "routes-tunnel-outline",
@@ -2797,7 +3394,7 @@ export function SpeedMap({
     } catch {
       // Layers might not exist yet
     }
-  }, [mapLoaded, routeLayerFilter]);
+  }, [mapLoaded, basemapMode, routeLayerFilter]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
@@ -2815,7 +3412,7 @@ export function SpeedMap({
     } catch {
       // Layers might not exist yet
     }
-  }, [mapLoaded, speedLimitLayerFilter]);
+  }, [mapLoaded, basemapMode, speedLimitLayerFilter]);
 
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
@@ -2864,6 +3461,7 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
+    basemapMode,
     routeLineMode,
     city,
     cityConfig.routes,
@@ -2887,6 +3485,13 @@ export function SpeedMap({
           "rail-context-commuter",
           "visibility",
           showRailContextCommuter ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("ferry-routes-overlay")) {
+        map.current.setLayoutProperty(
+          "ferry-routes-overlay",
+          "visibility",
+          showFerryRoutesOverlay ? "visible" : "none",
         );
       }
       if (map.current.getLayer("heritage-local-circulators-outline")) {
@@ -2922,8 +3527,10 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
+    basemapMode,
     showRailContextHeavy,
     showRailContextCommuter,
+    showFerryRoutesOverlay,
     showCableCarsOverlay,
     showBusRoutesOverlay,
   ]);
@@ -2953,6 +3560,8 @@ export function SpeedMap({
 
     const addStopsAndTrafficLightsLayers = () => {
       if (!map.current) return;
+      const stopMarkerSize = basemapMode === "topo" ? 12 : 20;
+      const stopLabelSize = basemapMode === "topo" ? 11 : 11;
 
       // === STOPS LAYER ===
       // Filter clustered stops to selected lines
@@ -3024,10 +3633,16 @@ export function SpeedMap({
           "visibility",
           showStops ? "visible" : "none",
         );
+        map.current.setLayoutProperty("stops", "text-size", stopMarkerSize);
         map.current.setLayoutProperty(
           "stops-label",
           "visibility",
           showStops ? "visible" : "none",
+        );
+        map.current.setLayoutProperty(
+          "stops-label",
+          "text-size",
+          stopLabelSize,
         );
       } else {
         map.current.addSource("stops", {
@@ -3042,7 +3657,7 @@ export function SpeedMap({
           layout: {
             visibility: showStops ? "visible" : "none",
             "text-field": "◆",
-            "text-size": 20,
+            "text-size": stopMarkerSize,
             "text-allow-overlap": true,
             "text-ignore-placement": true,
           },
@@ -3066,7 +3681,7 @@ export function SpeedMap({
           layout: {
             visibility: showStops ? "visible" : "none",
             "text-field": ["get", "stop_name"],
-            "text-size": 11,
+            "text-size": stopLabelSize,
             "text-offset": [0, 1.2],
             "text-anchor": "top",
             "text-optional": true,
@@ -3081,6 +3696,7 @@ export function SpeedMap({
 
         // Stop hover
         map.current.on("mouseenter", "stops", () => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (map.current) map.current.getCanvas().style.cursor = "pointer";
         });
 
@@ -3090,6 +3706,7 @@ export function SpeedMap({
         });
 
         map.current.on("mousemove", "stops", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (!e.features?.length || !map.current) return;
           const props = e.features[0].properties;
           const routes = JSON.parse(props.routes || "[]");
@@ -3116,6 +3733,7 @@ export function SpeedMap({
 
         // Click to expand/collapse clusters
         map.current.on("click", "stops", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (isTouchInteractionMode()) return;
           if (!e.features?.length) return;
           const props = e.features[0].properties;
@@ -3189,6 +3807,7 @@ export function SpeedMap({
         });
 
         map.current.on("mouseenter", "traffic-lights", () => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (map.current) map.current.getCanvas().style.cursor = "pointer";
         });
 
@@ -3200,6 +3819,7 @@ export function SpeedMap({
         });
 
         map.current.on("mousemove", "traffic-lights", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (crossingPopupPinned.current) return;
           if (!e.features?.length || !map.current) return;
 
@@ -3223,6 +3843,7 @@ export function SpeedMap({
         });
 
         map.current.on("click", "traffic-lights", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (isTouchInteractionMode()) return;
           if (!e.features?.length || !map.current) return;
 
@@ -3270,6 +3891,7 @@ export function SpeedMap({
     }
   }, [
     mapLoaded,
+    basemapMode,
     showStops,
     showTrafficLights,
     selectedLines,
@@ -3332,13 +3954,22 @@ export function SpeedMap({
 
     // All crossings use orange (gated vs non-gated distinction disabled - data too inconsistent)
     const crossingColor = "#ff9500";
+    const existingCrossingLayer = map.current.getLayer("crossings");
+    const expectedCrossingLayerType = "symbol";
 
     // Check if source already exists - if so, just update data (fast path)
     const existingSource = map.current.getSource(
       "crossings",
     ) as maplibregl.GeoJSONSource;
 
-    if (existingSource) {
+    if (
+      existingCrossingLayer &&
+      existingCrossingLayer.type !== expectedCrossingLayerType
+    ) {
+      map.current.removeLayer("crossings");
+    }
+
+    if (existingSource && map.current.getLayer("crossings")) {
       // Fast path: source exists, just update data immediately
       existingSource.setData(filteredCrossings as any);
       map.current.setLayoutProperty(
@@ -3346,12 +3977,33 @@ export function SpeedMap({
         "visibility",
         showCrossings ? "visible" : "none",
       );
-      // Update color when city changes
-      map.current.setPaintProperty(
-        "crossings",
-        "text-color",
-        crossingColor as any,
-      );
+      if (!map.current.hasImage("crossing-x-icon")) {
+        const size = 64;
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.clearRect(0, 0, size, size);
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.lineJoin = "round";
+          ctx.lineCap = "round";
+          ctx.font =
+            '700 52px "Helvetica Neue", Arial, "Segoe UI Symbol", sans-serif';
+          ctx.strokeStyle = "#000000";
+          ctx.lineWidth = 8;
+          ctx.strokeText("✕", size / 2, size / 2 + 1);
+          ctx.fillStyle = crossingColor;
+          ctx.fillText("✕", size / 2, size / 2 + 1);
+
+          map.current.addImage("crossing-x-icon", {
+            width: size,
+            height: size,
+            data: ctx.getImageData(0, 0, size, size).data,
+          });
+        }
+      }
       return; // Exit early - no need to check style or create layers
     }
 
@@ -3365,6 +4017,34 @@ export function SpeedMap({
         data: filteredCrossings as any,
       });
 
+      if (!map.current.hasImage("crossing-x-icon")) {
+        const size = 64;
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+        if (ctx) {
+          ctx.clearRect(0, 0, size, size);
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+          ctx.lineJoin = "round";
+          ctx.lineCap = "round";
+          ctx.font =
+            '700 52px "Helvetica Neue", Arial, "Segoe UI Symbol", sans-serif';
+          ctx.strokeStyle = "#000000";
+          ctx.lineWidth = 8;
+          ctx.strokeText("✕", size / 2, size / 2 + 1);
+          ctx.fillStyle = crossingColor;
+          ctx.fillText("✕", size / 2, size / 2 + 1);
+
+          map.current.addImage("crossing-x-icon", {
+            width: size,
+            height: size,
+            data: ctx.getImageData(0, 0, size, size).data,
+          });
+        }
+      }
+
       // Add crossing markers layer
       map.current.addLayer({
         id: "crossings",
@@ -3372,15 +4052,10 @@ export function SpeedMap({
         source: "crossings",
         layout: {
           visibility: showCrossings ? "visible" : "none",
-          "text-field": "✕",
-          "text-size": 14,
-          "text-allow-overlap": true,
-          "text-ignore-placement": true,
-        },
-        paint: {
-          "text-color": crossingColor as any,
-          "text-halo-color": "#000000",
-          "text-halo-width": 1.5,
+          "icon-image": "crossing-x-icon",
+          "icon-size": 0.28,
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
         },
       });
 
@@ -3390,6 +4065,7 @@ export function SpeedMap({
 
         // Crossing hover popup
         map.current.on("mouseenter", "crossings", () => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (map.current) map.current.getCanvas().style.cursor = "pointer";
         });
 
@@ -3402,6 +4078,7 @@ export function SpeedMap({
         });
 
         map.current.on("mousemove", "crossings", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           // Don't update popup if it's pinned
           if (crossingPopupPinned.current) return;
           if (!e.features?.length || !map.current) return;
@@ -3437,6 +4114,7 @@ export function SpeedMap({
 
         // Click to pin the popup
         map.current.on("click", "crossings", (e) => {
+          if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
           if (isTouchInteractionMode()) return;
           if (!e.features?.length || !map.current) return;
 
@@ -3498,6 +4176,11 @@ export function SpeedMap({
               },
             );
             if (segmentFeatures && segmentFeatures.length > 0) return;
+
+            const routeFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["routes-touch-hitarea"],
+            });
+            if (routeFeatures && routeFeatures.length > 0) return;
 
             const densityFeatures = map.current?.queryRenderedFeatures(
               e.point,
@@ -3579,7 +4262,7 @@ export function SpeedMap({
       };
       setTimeout(waitForStyle, 50);
     }
-  }, [mapLoaded, showCrossings, filteredCrossings, city]);
+  }, [mapLoaded, basemapMode, showCrossings, filteredCrossings, city]);
 
   // Get switches and signals data for current city, filtered by selected lines
   const switchesData = useMemo(() => {
@@ -3686,6 +4369,7 @@ export function SpeedMap({
 
       // Switch hover popup
       map.current.on("mouseenter", "switches", () => {
+        if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
         if (map.current) map.current.getCanvas().style.cursor = "pointer";
       });
 
@@ -3695,6 +4379,7 @@ export function SpeedMap({
       });
 
       map.current.on("mousemove", "switches", (e) => {
+        if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
         // Don't update popup if it's pinned
         if (crossingPopupPinned.current) return;
         if (!e.features?.length || !map.current) return;
@@ -3720,6 +4405,7 @@ export function SpeedMap({
 
       // Click to pin the popup
       map.current.on("click", "switches", (e) => {
+        if (!ENABLE_INFRASTRUCTURE_POPUPS) return;
         if (isTouchInteractionMode()) return;
         if (!e.features?.length || !map.current) return;
 
@@ -3763,7 +4449,7 @@ export function SpeedMap({
       };
       setTimeout(waitForStyle, 50);
     }
-  }, [mapLoaded, showSwitches, switchesData]);
+  }, [mapLoaded, basemapMode, showSwitches, switchesData]);
 
   // Update vehicle data source
   useEffect(() => {
@@ -3779,9 +4465,21 @@ export function SpeedMap({
         "vehicles",
       ) as maplibregl.GeoJSONSource;
 
-      if (existingSource) {
+      const hasVehicleLayers =
+        !!map.current.getLayer("vehicles") &&
+        !!map.current.getLayer("vehicles-glow");
+
+      if (existingSource && hasVehicleLayers) {
         existingSource.setData(vehicleGeoJSON);
       } else {
+        try {
+          if (map.current.getLayer("vehicles")) map.current.removeLayer("vehicles");
+          if (map.current.getLayer("vehicles-glow")) {
+            map.current.removeLayer("vehicles-glow");
+          }
+          if (map.current.getSource("vehicles")) map.current.removeSource("vehicles");
+        } catch {}
+
         map.current.addSource("vehicles", {
           type: "geojson",
           data: vehicleGeoJSON,
@@ -4045,7 +4743,9 @@ export function SpeedMap({
     cachedLiveVehicleGeoJSON,
     viewMode,
     mapLoaded,
+    basemapMode,
     isProcessing,
+    topoMobileRecoveryTick,
   ]);
 
   // Update speed filter
@@ -4101,6 +4801,7 @@ export function SpeedMap({
     hideStoppedTrains,
     hideAllTrains,
     mapLoaded,
+    basemapMode,
     vehicleRouteFilter,
   ]);
 
@@ -4117,6 +4818,10 @@ export function SpeedMap({
     const layerOrder = [
       "rail-context-heavy",
       "rail-context-commuter",
+      "ferry-routes-overlay",
+      "population-density-fill",
+      "population-density-outline",
+      "population-density-hover",
       "heritage-local-circulators-outline",
       "heritage-local-circulators",
       "routes-outline",
@@ -4130,6 +4835,8 @@ export function SpeedMap({
       "separation",
       "speed-segments",
       "speed-segment-labels",
+      "speed-segment-label-points",
+      "speed-segments-hitarea",
       "vehicles-glow",
       "vehicles",
       "traffic-lights",
@@ -4168,6 +4875,7 @@ export function SpeedMap({
     return () => clearTimeout(timeoutId);
   }, [
     mapLoaded,
+    basemapMode,
     vehicles,
     showStops,
     showCrossings,
@@ -4175,9 +4883,13 @@ export function SpeedMap({
     showRouteLines,
     showRailContextHeavy,
     showRailContextCommuter,
+    showFerryRoutesOverlay,
+    showPopulationDensity,
     viewMode,
     selectedLines,
     city,
+    googleSatelliteSession,
+    googleTerrainSession,
     reorderLayers,
   ]);
 
@@ -4194,7 +4906,7 @@ export function SpeedMap({
       map.current?.off("sourcedata", debouncedReorder);
       debouncedReorder.cancel();
     };
-  }, [mapLoaded, reorderLayers]);
+  }, [mapLoaded, basemapMode, reorderLayers]);
 
   // Handle view mode toggle
   useEffect(() => {
@@ -4253,12 +4965,29 @@ export function SpeedMap({
         map.current.setLayoutProperty(
           "speed-segment-labels",
           "visibility",
-          "visible",
+          showSegments ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("speed-segment-label-points")) {
+        map.current.setLayoutProperty(
+          "speed-segment-label-points",
+          "visibility",
+          showSegments ? "visible" : "none",
         );
       }
     } else {
       if (map.current.getLayer("speed-segments")) {
         map.current.setLayoutProperty("speed-segments", "visibility", "none");
+      }
+      if (map.current.getLayer("speed-segment-labels")) {
+        map.current.setLayoutProperty("speed-segment-labels", "visibility", "none");
+      }
+      if (map.current.getLayer("speed-segment-label-points")) {
+        map.current.setLayoutProperty(
+          "speed-segment-label-points",
+          "visibility",
+          "none",
+        );
       }
       if (map.current.getLayer("speed-segments-hitarea")) {
         map.current.setLayoutProperty(
@@ -4267,11 +4996,8 @@ export function SpeedMap({
           "none",
         );
       }
-      if (map.current.getLayer("speed-segment-labels")) {
-        map.current.setLayoutProperty("speed-segment-labels", "visibility", "none");
-      }
     }
-  }, [viewMode, cachedVehicleGeoJSON, cachedLiveVehicleGeoJSON, mapLoaded]);
+  }, [viewMode, cachedVehicleGeoJSON, cachedLiveVehicleGeoJSON, mapLoaded, basemapMode]);
 
   // Memoized segment averages — computed from ALL readings (no speed filter).
   // Speed filtering happens in the display effect, which hides whole segments by average.
@@ -4283,6 +5009,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
       if (!v.segmentId) return;
@@ -4321,6 +5048,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
       if (!v.segmentId500) return;
@@ -4359,6 +5087,7 @@ export function SpeedMap({
     const segmentSpeeds: Map<string, number[]> = new Map();
 
     vehicles.forEach((v) => {
+      if (!v.onRoute) return;
       if (v.speed == null) return;
       if (hideStoppedTrains && v.speed < 0.5) return;
       if (!v.segmentId1000) return;
@@ -4452,9 +5181,7 @@ export function SpeedMap({
       string,
       {
         type: "Feature";
-        properties: (typeof segmentFeatures)[number]["properties"] & {
-          labelRotate: number;
-        };
+        properties: (typeof segmentFeatures)[number]["properties"];
         geometry: {
           type: "Point";
           coordinates: [number, number];
@@ -4464,44 +5191,47 @@ export function SpeedMap({
     for (const feature of segmentFeatures) {
       const midpoint = getLineStringMidpoint(feature.geometry.coordinates);
       if (!midpoint) continue;
-      const labelRotate = getLineStringMidpointRotation(
-        feature.geometry.coordinates,
-      );
 
-      // When interlined routes overlap, keep only the label for the topmost
-      // rendered segment so labels follow the same "top visible route wins"
-      // rule as the line colors.
+      // When multiple interlined routes share the same drawn segment geometry,
+      // keep only the label for the topmost rendered segment. Because the line
+      // layer draws later features on top, overwriting by midpoint preserves
+      // the same "top visible route wins" rule for labels too.
       const midpointKey = `${midpoint[0].toFixed(6)},${midpoint[1].toFixed(6)}`;
       segmentLabelPointByMidpoint.set(midpointKey, {
         type: "Feature",
-        properties: {
-          ...feature.properties,
-          labelRotate,
-        },
+        properties: feature.properties,
         geometry: {
           type: "Point",
           coordinates: midpoint,
         },
       });
     }
+    const segmentLabelPointFeatures = Array.from(
+      segmentLabelPointByMidpoint.values(),
+    );
     const segmentLabelPointGeoJSON = {
       type: "FeatureCollection" as const,
-      features: Array.from(segmentLabelPointByMidpoint.values()),
+      features: segmentLabelPointFeatures,
     };
-
     const existingSource = map.current.getSource(
       "speed-segments",
     ) as maplibregl.GeoJSONSource;
     const existingLabelPointSource = map.current.getSource(
       "speed-segment-label-points",
-    ) as maplibregl.GeoJSONSource | undefined;
+    ) as maplibregl.GeoJSONSource;
 
-    if (existingSource) {
+    const hasSegmentLayer = !!map.current.getLayer("speed-segments");
+
+    if (existingSource && hasSegmentLayer) {
       existingSource.setData(segmentGeoJSON);
       existingLabelPointSource?.setData(segmentLabelPointGeoJSON);
       map.current.setLayoutProperty("speed-segments", "visibility", "visible");
       if (map.current.getLayer("speed-segment-labels")) {
-        map.current.setLayoutProperty("speed-segment-labels", "visibility", "visible");
+        map.current.setLayoutProperty(
+          "speed-segment-labels",
+          "visibility",
+          "visible",
+        );
       }
       if (map.current.getLayer("speed-segments-hitarea")) {
         map.current.setLayoutProperty(
@@ -4544,7 +5274,7 @@ export function SpeedMap({
               ["==", ["get", "avgSpeed"], null],
               "#666666", // grey - no data
               ["<=", ["get", "avgSpeed"], 3],
-              "#4a1768", // dark purple - crawling (≤3 mph)
+              "#4a1768", // lighter indigo-violet - crawling (≤3 mph)
               ["<", ["get", "avgSpeed"], 7],
               "#b1265f", // raspberry - very slow (3-7 mph)
               ["<", ["get", "avgSpeed"], 12],
@@ -4583,9 +5313,6 @@ export function SpeedMap({
             "text-padding": 2,
             "text-anchor": "center",
             "text-offset": [0, 0],
-            "text-rotation-alignment": "map",
-            "text-rotate": ["get", "labelRotate"],
-            "text-keep-upright": false,
             "text-allow-overlap": false,
             "text-ignore-placement": false,
           },
@@ -4599,7 +5326,9 @@ export function SpeedMap({
         aboveLayer,
       );
 
-      // Wider invisible layer for easier mobile tap targets
+      // Invisible layer for mobile tap targeting. It is wider than the visible
+      // line so touch selection is easier, while desktop hover still uses the
+      // visible segment layer only.
       map.current.addLayer(
         {
           id: "speed-segments-hitarea",
@@ -4611,12 +5340,24 @@ export function SpeedMap({
             "line-cap": "round",
           },
           paint: {
-            "line-width": 30,
+            "line-width": 18,
             "line-opacity": 0,
           },
         },
         aboveLayer,
       );
+
+      const showSegmentPopup = (
+        e: maplibregl.MapLayerMouseEvent,
+        pinned = false,
+      ) => {
+        if (!e.features?.length || !map.current) return;
+        const anchor =
+          pinned && isTouchInteractionMode()
+            ? getPopupAnchorForLineFeature(e.lngLat, e.features[0])
+            : e.lngLat;
+        renderSegmentPopup(anchor, e.features[0].properties, pinned);
+      };
 
       map.current.on("mouseenter", "speed-segments", () => {
         if (map.current) map.current.getCanvas().style.cursor = "pointer";
@@ -4628,32 +5369,6 @@ export function SpeedMap({
           popup.current?.remove();
         }
       });
-
-      const showSegmentPopup = (
-        e: maplibregl.MapLayerMouseEvent,
-        pinned = false,
-      ) => {
-        if (!e.features?.length || !map.current) return;
-        const props = e.features[0].properties;
-        const segColor = getSpeedColor(props.avgSpeed);
-        const lineLabel = getRouteDisplayName(props.routeId, city);
-
-        popup.current
-          ?.setLngLat(e.lngLat)
-          .setHTML(
-            `<div class="popup-content${pinned ? " popup-pinned" : ""}">
-              <div class="popup-title">${lineLabel} Segment</div>
-              <div class="popup-speed" style="color: ${segColor}">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
-              <div class="popup-detail">${props.sampleCount} readings</div>
-              ${
-                pinned
-                  ? '<div class="popup-hint">Tap elsewhere to close</div>'
-                  : ""
-              }
-            </div>`,
-          )
-          .addTo(map.current);
-      };
 
       map.current.on("mousemove", "speed-segments", (e) => {
         if (isTouchInteractionMode() && touchPopupPinned.current) return;
@@ -4669,12 +5384,20 @@ export function SpeedMap({
       });
     }
 
-    for (const id of ["speed-segments", "speed-segment-labels", "speed-segments-hitarea"]) {
+    // Topo style swaps can re-add route layers after segments. Force segment
+    // layers back above routes so the visible segment line remains the primary
+    // hover target in segment views.
+    for (const id of [
+      "speed-segments",
+      "speed-segment-labels",
+      "speed-segment-label-points",
+      "speed-segments-hitarea",
+    ]) {
       if (!map.current.getLayer(id)) continue;
       try {
         map.current.moveLayer(id);
       } catch {
-        // Ignore transient ordering errors during style changes.
+        // Ignore transient layer ordering errors during style reconfiguration.
       }
     }
   }, [
@@ -4685,10 +5408,13 @@ export function SpeedMap({
     hideStoppedTrains,
     viewMode,
     mapLoaded,
+    basemapMode,
     allRouteSegments,
     allRouteSegments500,
     allRouteSegments1000,
     city,
+    topoMobileRecoveryTick,
+    renderSegmentPopup,
   ]);
 
   useEffect(() => {
@@ -4708,13 +5434,20 @@ export function SpeedMap({
       // Layer might not exist yet
     }
     try {
+      if (map.current.getLayer("speed-segment-label-points")) {
+        map.current.setFilter("speed-segment-label-points", segmentLayerFilter);
+      }
+    } catch {
+      // Layer might not exist yet
+    }
+    try {
       if (map.current.getLayer("speed-segments-hitarea")) {
         map.current.setFilter("speed-segments-hitarea", segmentLayerFilter);
       }
     } catch {
       // Layer might not exist yet
     }
-  }, [mapLoaded, segmentLayerFilter]);
+  }, [mapLoaded, basemapMode, segmentLayerFilter]);
 
   // Toggle satellite/dark base map
   useEffect(() => {
@@ -4722,27 +5455,26 @@ export function SpeedMap({
 
     try {
       const showDarkMap = basemapMode === "map";
-      map.current.setLayoutProperty(
-        "carto-dark-layer",
-        "visibility",
-        showDarkMap ? "visible" : "none",
-      );
-      map.current.setLayoutProperty(
-        "satellite-layer-esri",
-        "visibility",
-        showSatellite
-          ? "visible"
-          : "none",
-      );
-      if (map.current.getLayer("topo-layer-esri")) {
+      if (map.current.getLayer("carto-dark-layer")) {
         map.current.setLayoutProperty(
-          "topo-layer-esri",
+          "carto-dark-layer",
           "visibility",
-          showTopo ? "visible" : "none",
+          showDarkMap ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("satellite-layer-esri")) {
+        map.current.setLayoutProperty(
+          "satellite-layer-esri",
+          "visibility",
+          showSatellite ? "visible" : "none",
         );
       }
       if (map.current.getLayer("topo-reference-layer-esri")) {
-        map.current.setLayoutProperty("topo-reference-layer-esri", "visibility", "none");
+        map.current.setLayoutProperty(
+          "topo-reference-layer-esri",
+          "visibility",
+          "none",
+        );
       }
       if (map.current.getLayer("google-satellite-layer")) {
         map.current.setLayoutProperty(
@@ -4879,10 +5611,15 @@ export function SpeedMap({
             const areaKm2 =
               f.properties.AREALAND > 0 ? f.properties.AREALAND / 1000000 : 0;
             const totalWorkers = f.properties.TOTAL_WORKERS || 0;
+            const geoid = String(f.properties.GEOID || "");
+            const tractCode = geoid.length >= 11 ? geoid.slice(5) : geoid;
+            const isSpecialLandUseTract =
+              tractCode.startsWith("98") || tractCode.startsWith("99");
             return {
               ...f,
               properties: {
                 ...f.properties,
+                isSpecialLandUseTract,
                 density:
                   areaKm2 > 0 ? Math.round(f.properties.POP100 / areaKm2) : 0,
                 jobDensity:
@@ -4911,6 +5648,9 @@ export function SpeedMap({
             data: processedData as any,
             promoteId: "GEOID", // Use GEOID as feature ID for fast feature-state updates
           });
+          const densityBeforeLayer = map.current.getLayer("routes")
+            ? "routes"
+            : undefined;
 
           // Add fill layer with density-based coloring
           map.current.addLayer(
@@ -4964,7 +5704,7 @@ export function SpeedMap({
                 visibility: "none",
               },
             },
-            "routes", // Insert below routes layer
+            densityBeforeLayer,
           );
 
           // Add subtle outline for tract boundaries
@@ -4981,7 +5721,7 @@ export function SpeedMap({
                 visibility: "none",
               },
             },
-            "routes",
+            densityBeforeLayer,
           );
 
           // Add hover highlight layer (uses feature-state for fast O(1) updates)
@@ -5004,7 +5744,7 @@ export function SpeedMap({
                 visibility: "none",
               },
             },
-            "routes",
+            densityBeforeLayer,
           );
 
           // Hover handlers for density layer
@@ -5358,7 +6098,7 @@ export function SpeedMap({
     return () => {
       cancelled = true;
     };
-  }, [mapLoaded, showPopulationDensity, city]);
+  }, [mapLoaded, basemapMode, showPopulationDensity, city]);
 
   // Separate effect for density mode and satellite opacity — GPU-only paint updates, no data reload
   useEffect(() => {
@@ -5499,6 +6239,11 @@ export function SpeedMap({
               0.58 * fillOpacityMultiplier,
             ];
 
+    const modeFilter: any[] = [
+      "all",
+      [">", ["to-number", ["get", "AREALAND"]], 0],
+    ];
+
     map.current.setPaintProperty(
       "population-density-fill",
       "fill-color",
@@ -5509,7 +6254,14 @@ export function SpeedMap({
       "fill-opacity",
       opacityExpr,
     );
-  }, [mapLoaded, densityMode, isImageryBasemap, showPopulationDensity]);
+    map.current.setFilter("population-density-fill", modeFilter as any);
+    if (map.current.getLayer("population-density-outline")) {
+      map.current.setFilter("population-density-outline", modeFilter as any);
+    }
+    if (map.current.getLayer("population-density-hover")) {
+      map.current.setFilter("population-density-hover", modeFilter as any);
+    }
+  }, [mapLoaded, basemapMode, densityMode, isImageryBasemap, showPopulationDensity]);
 
   // Update speed limit labels when speed unit changes
   useEffect(() => {
@@ -5533,9 +6285,8 @@ export function SpeedMap({
     } catch (e) {
       // Layer may not exist
     }
-  }, [mapLoaded, speedUnit]);
+  }, [mapLoaded, basemapMode, speedUnit]);
 
-  // Update segment-average labels when speed unit changes
   useEffect(() => {
     if (!map.current || !mapLoaded) return;
 
@@ -5556,7 +6307,7 @@ export function SpeedMap({
     } catch {
       // Layer may not exist
     }
-  }, [mapLoaded, speedUnit]);
+  }, [mapLoaded, basemapMode, speedUnit]);
 
   return (
     <div className="map-wrapper">
@@ -5601,7 +6352,7 @@ export function SpeedMap({
         basemapMode={basemapMode}
         showPopulationDensity={showPopulationDensity ?? false}
         densityMode={densityMode}
-        showTopo={wantsGoogleTiles}
+        showTopo={true}
         onBasemapModeChange={onBasemapModeChange}
         onPopulationDensityToggle={onPopulationDensityToggle}
         onDensityModeChange={onDensityModeChange}
@@ -5622,6 +6373,31 @@ export function SpeedMap({
           <div className="loading-text">
             {loadingProgress || "Finishing up..."}
           </div>
+        </div>
+      )}
+
+      {basemapMode === "satellite" && googleSatelliteError && (
+        <div
+          style={{
+            position: "absolute",
+            top: 16,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 35,
+            padding: "10px 14px",
+            borderRadius: 10,
+            background: "rgba(28, 30, 48, 0.94)",
+            border: "1px solid rgba(255, 120, 120, 0.4)",
+            color: "#f3f4f6",
+            fontSize: 13,
+            lineHeight: 1.4,
+            boxShadow: "0 6px 22px rgba(0, 0, 0, 0.28)",
+            pointerEvents: "none",
+            maxWidth: 340,
+            textAlign: "center",
+          }}
+        >
+          Satellite imagery is temporarily unavailable.
         </div>
       )}
 
