@@ -2353,7 +2353,7 @@ export function SpeedMap({
           },
           paint: {
             "line-color": "#000",
-            "line-width": 8, //philip999
+            "line-width": 7.5, //philip999
             "line-opacity": 1.0, // Fully opaque to completely cover grey routes underneath
           },
         });
@@ -4531,7 +4531,7 @@ export function SpeedMap({
               visibility: "visible",
             },
             paint: {
-              "line-width": 7, //philip999
+              "line-width": 7.5, //philip999
               "line-color": routeColorExpression,
               "line-opacity": 1,
             },
@@ -4570,7 +4570,7 @@ export function SpeedMap({
             paint: {
               "text-color": "#ffffff",
               "text-halo-color": "#000",
-              "text-halo-width": 1.0, //philip999
+              "text-halo-width": 0.8, //philip999
             },
             minzoom: 14,
           },
