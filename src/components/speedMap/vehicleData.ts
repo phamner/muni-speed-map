@@ -333,7 +333,7 @@ export interface Vehicle {
 
 export const cityDataCache = new Map<City, Vehicle[]>();
 
-export const SEGMENT_MAPPING_VERSION = 1;
+export const SEGMENT_MAPPING_VERSION = 2;
 
 export const LEGACY_POSITION_COLUMNS =
   "id,vehicle_id,lat,lon,route_id,direction_id,speed_calculated,recorded_at,headsign,segment_id";

@@ -12,7 +12,7 @@ const ROOT = path.resolve(__dirname, "..");
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const SEGMENT_MAPPING_VERSION = 1;
+const SEGMENT_MAPPING_VERSION = 2;
 const DEFAULT_BATCH_SIZE = Number(process.env.SEGMENT_BACKFILL_BATCH_SIZE || 500);
 
 if (!SUPABASE_URL || !SUPABASE_SERVICE_KEY) {
