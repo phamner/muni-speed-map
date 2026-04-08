@@ -152,6 +152,18 @@ function buildSfRouteLayerFilter(
   return buildSelectedLineFilter(selectedLines, "SF", "route_id", "lines");
 }
 
+function sanitizeLayerIdPart(value: string): string {
+  return value.replace(/[^a-zA-Z0-9_-]/g, "_");
+}
+
+function getSegmentRouteLayerId(routeId: string): string {
+  return `speed-segments-route-${sanitizeLayerIdPart(routeId)}`;
+}
+
+function getSegmentRouteLabelLayerId(routeId: string): string {
+  return `speed-segment-labels-route-${sanitizeLayerIdPart(routeId)}`;
+}
+
 const MAXSPEED_ROUTE_MATCH_METERS = 75;
 const MAXSPEED_BEARING_TOLERANCE_DEG = 35;
 
@@ -553,6 +565,8 @@ export function SpeedMap({
   const crossingPopupPinned = useRef(false);
   const touchPopupPinned = useRef(false);
   const hoveredTractId = useRef<string | null>(null);
+  const segmentRouteLayerIdsRef = useRef<string[]>([]);
+  const segmentRouteLayerRouteIdsRef = useRef<Record<string, string>>({});
   const clickedTractId = useRef<string | null>(null);
   const crossingHandlersRegistered = useRef(false);
   const suppressNextMapClickUnpin = useRef(false);
@@ -2339,7 +2353,7 @@ export function SpeedMap({
           },
           paint: {
             "line-color": "#000",
-            "line-width": 7,
+            "line-width": 8, //philip999
             "line-opacity": 1.0, // Fully opaque to completely cover grey routes underneath
           },
         });
@@ -2369,7 +2383,7 @@ export function SpeedMap({
           filter: speedLimitLayerFilter,
           layout: {
             "symbol-placement": "line",
-            "text-field": ["concat", ["get", "maxspeed_mph"], " mph"],
+            "text-field": ["concat", ["get", "maxspeed_mph"], " MPH"],
             "text-size": 11,
             "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
             visibility: showBySpeed ? "visible" : "none",
@@ -4043,7 +4057,8 @@ export function SpeedMap({
       "separation-outline",
       "separation",
       "speed-segments",
-      "speed-segment-labels",
+      ...segmentRouteLayerIdsRef.current,
+      "speed-segments-hitarea",
       "vehicles-glow",
       "vehicles",
       "traffic-lights",
@@ -4148,41 +4163,22 @@ export function SpeedMap({
       viewMode === "segments" ||
       viewMode === "segments-500" ||
       viewMode === "segments-1000";
+    const segmentDisplayLayerIds = [
+      "speed-segments",
+      "speed-segments-hitarea",
+      ...segmentRouteLayerIdsRef.current,
+    ];
     if (showSegments) {
-      if (map.current.getLayer("speed-segments")) {
-        map.current.setLayoutProperty(
-          "speed-segments",
-          "visibility",
-          "visible",
-        );
-      }
-      if (map.current.getLayer("speed-segments-hitarea")) {
-        map.current.setLayoutProperty(
-          "speed-segments-hitarea",
-          "visibility",
-          "visible",
-        );
-      }
-      if (map.current.getLayer("speed-segment-labels")) {
-        map.current.setLayoutProperty(
-          "speed-segment-labels",
-          "visibility",
-          "visible",
-        );
+      for (const layerId of segmentDisplayLayerIds) {
+        if (map.current.getLayer(layerId)) {
+          map.current.setLayoutProperty(layerId, "visibility", "visible");
+        }
       }
     } else {
-      if (map.current.getLayer("speed-segments")) {
-        map.current.setLayoutProperty("speed-segments", "visibility", "none");
-      }
-      if (map.current.getLayer("speed-segments-hitarea")) {
-        map.current.setLayoutProperty(
-          "speed-segments-hitarea",
-          "visibility",
-          "none",
-        );
-      }
-      if (map.current.getLayer("speed-segment-labels")) {
-        map.current.setLayoutProperty("speed-segment-labels", "visibility", "none");
+      for (const layerId of segmentDisplayLayerIds) {
+        if (map.current.getLayer(layerId)) {
+          map.current.setLayoutProperty(layerId, "visibility", "none");
+        }
       }
     }
   }, [viewMode, cachedVehicleGeoJSON, cachedLiveVehicleGeoJSON, mapLoaded]);
@@ -4362,16 +4358,45 @@ export function SpeedMap({
       type: "FeatureCollection" as const,
       features: segmentFeatures,
     };
+    const segmentRouteIds = Array.from(
+      new Set(segmentFeatures.map((feature) => String(feature.properties.routeId))),
+    );
+    const segmentDisplayLayerIds = segmentRouteIds.flatMap((routeId) => [
+      getSegmentRouteLayerId(routeId),
+      getSegmentRouteLabelLayerId(routeId),
+    ]);
+    const routeColorExpression: maplibregl.ExpressionSpecification = [
+      "case",
+      ["==", ["get", "avgSpeed"], null],
+      "#666666",
+      ["<=", ["get", "avgSpeed"], 3],
+      "#4a1768",
+      ["<", ["get", "avgSpeed"], 7],
+      "#b1265f",
+      ["<", ["get", "avgSpeed"], 12],
+      "#ff3b30",
+      ["<", ["get", "avgSpeed"], 18],
+      "#ff9500",
+      ["<", ["get", "avgSpeed"], 25],
+      "#ffdd33",
+      ["<", ["get", "avgSpeed"], 35],
+      "#9be22d",
+      ["<", ["get", "avgSpeed"], 50],
+      "#33eebb",
+      "#22ccff",
+    ];
     const existingSource = map.current.getSource(
       "speed-segments",
     ) as maplibregl.GeoJSONSource;
+    const aboveLayer = map.current.getLayer("stops")
+      ? "stops"
+      : map.current.getLayer("vehicles-glow")
+        ? "vehicles-glow"
+        : undefined;
 
     if (existingSource) {
       existingSource.setData(segmentGeoJSON);
       map.current.setLayoutProperty("speed-segments", "visibility", "visible");
-      if (map.current.getLayer("speed-segment-labels")) {
-        map.current.setLayoutProperty("speed-segment-labels", "visibility", "visible");
-      }
       if (map.current.getLayer("speed-segments-hitarea")) {
         map.current.setLayoutProperty(
           "speed-segments-hitarea",
@@ -4385,13 +4410,6 @@ export function SpeedMap({
         data: segmentGeoJSON,
       });
 
-      // Find the first layer that should be above segments (stops or vehicles)
-      const aboveLayer = map.current.getLayer("stops")
-        ? "stops"
-        : map.current.getLayer("vehicles-glow")
-          ? "vehicles-glow"
-          : undefined;
-
       map.current.addLayer(
         {
           id: "speed-segments",
@@ -4403,62 +4421,10 @@ export function SpeedMap({
             "line-cap": ["step", ["zoom"], "round", 11, "butt"],
           },
           paint: {
-            "line-width": 6,
-            "line-color": [
-              "case",
-              ["==", ["get", "avgSpeed"], null],
-              "#666666", // grey - no data
-              ["<=", ["get", "avgSpeed"], 3],
-              "#4a1768", // dark purple - crawling (≤3 mph)
-              ["<", ["get", "avgSpeed"], 7],
-              "#b1265f", // raspberry - very slow (3-7 mph)
-              ["<", ["get", "avgSpeed"], 12],
-              "#ff3b30", // red - slow (7-12 mph)
-              ["<", ["get", "avgSpeed"], 18],
-              "#ff9500", // orange - moderate-slow (12-18 mph)
-              ["<", ["get", "avgSpeed"], 25],
-              "#ffdd33", // yellow - moderate (18-25 mph)
-              ["<", ["get", "avgSpeed"], 35],
-              "#9be22d", // light green - good (25-35 mph)
-              ["<", ["get", "avgSpeed"], 50],
-              "#33eebb", // teal - fast (35-50 mph)
-              "#22ccff", // cyan - very fast (50+ mph)
-            ],
-            "line-opacity": 1,
+            "line-width": 10,
+            "line-color": routeColorExpression,
+            "line-opacity": 0,
           },
-        },
-        aboveLayer,
-      );
-
-      map.current.addLayer(
-        {
-          id: "speed-segment-labels",
-          type: "symbol",
-          source: "speed-segments",
-          filter: segmentLayerFilter,
-          layout: {
-            visibility: "visible",
-            "symbol-placement": "line-center",
-            "text-field": [
-              "concat",
-              ["to-string", ["round", ["get", "avgSpeed"]]],
-              speedUnit === "kmh" ? " km/h" : " mph",
-            ],
-            "text-size": 11,
-            "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
-            "text-padding": 2,
-            "text-max-angle": 25,
-            "text-keep-upright": true,
-            "text-rotation-alignment": "map",
-            "text-allow-overlap": false,
-            "text-ignore-placement": false,
-          },
-          paint: {
-            "text-color": "#ffffff",
-            "text-halo-color": "#000",
-            "text-halo-width": 1.5,
-          },
-          minzoom: 14,
         },
         aboveLayer,
       );
@@ -4533,7 +4499,102 @@ export function SpeedMap({
       });
     }
 
-    for (const id of ["speed-segments", "speed-segment-labels", "speed-segments-hitarea"]) {
+    for (const staleLayerId of segmentRouteLayerIdsRef.current) {
+      if (segmentDisplayLayerIds.includes(staleLayerId)) continue;
+      if (!map.current.getLayer(staleLayerId)) continue;
+      try {
+        map.current.removeLayer(staleLayerId);
+      } catch {
+        // Ignore transient ordering errors during style changes.
+      }
+    }
+
+    for (const routeId of segmentRouteIds) {
+      const routeLayerId = getSegmentRouteLayerId(routeId);
+      const routeLabelLayerId = getSegmentRouteLabelLayerId(routeId);
+      const routeFilter = [
+        "all",
+        segmentLayerFilter,
+        ["==", ["to-string", ["get", "routeId"]], routeId],
+      ] as maplibregl.FilterSpecification;
+
+      if (!map.current.getLayer(routeLayerId)) {
+        map.current.addLayer(
+          {
+            id: routeLayerId,
+            type: "line",
+            source: "speed-segments",
+            filter: routeFilter,
+            layout: {
+              "line-join": "round",
+              "line-cap": ["step", ["zoom"], "round", 11, "butt"],
+              visibility: "visible",
+            },
+            paint: {
+              "line-width": 7, //philip999
+              "line-color": routeColorExpression,
+              "line-opacity": 1,
+            },
+          },
+          aboveLayer,
+        );
+      } else {
+        map.current.setFilter(routeLayerId, routeFilter);
+        map.current.setLayoutProperty(routeLayerId, "visibility", "visible");
+      }
+
+      if (!map.current.getLayer(routeLabelLayerId)) {
+        map.current.addLayer(
+          {
+            id: routeLabelLayerId,
+            type: "symbol",
+            source: "speed-segments",
+            filter: routeFilter,
+            layout: {
+              visibility: "visible",
+              "symbol-placement": "line-center",
+              "text-field": [
+                "concat",
+                ["to-string", ["round", ["get", "avgSpeed"]]],
+                speedUnit === "kmh" ? " km/h" : " MPH",
+              ],
+              "text-size": 9, //philip999
+              "text-font": ["Open Sans Bold", "Arial Unicode MS Bold"],
+              "text-padding": 2,
+              "text-max-angle": 25,
+              "text-keep-upright": true,
+              "text-rotation-alignment": "map",
+              "text-allow-overlap": false,
+              "text-ignore-placement": false,
+            },
+            paint: {
+              "text-color": "#ffffff",
+              "text-halo-color": "#000",
+              "text-halo-width": 1.0, //philip999
+            },
+            minzoom: 14,
+          },
+          aboveLayer,
+        );
+      } else {
+        map.current.setFilter(routeLabelLayerId, routeFilter);
+        map.current.setLayoutProperty(routeLabelLayerId, "visibility", "visible");
+      }
+    }
+
+    segmentRouteLayerIdsRef.current = segmentDisplayLayerIds;
+    segmentRouteLayerRouteIdsRef.current = Object.fromEntries(
+      segmentRouteIds.flatMap((routeId) => [
+        [getSegmentRouteLayerId(routeId), routeId],
+        [getSegmentRouteLabelLayerId(routeId), routeId],
+      ]),
+    );
+
+    for (const id of [
+      "speed-segments",
+      ...segmentDisplayLayerIds,
+      "speed-segments-hitarea",
+    ]) {
       if (!map.current.getLayer(id)) continue;
       try {
         map.current.moveLayer(id);
@@ -4565,18 +4626,25 @@ export function SpeedMap({
       // Layer might not exist yet
     }
     try {
-      if (map.current.getLayer("speed-segment-labels")) {
-        map.current.setFilter("speed-segment-labels", segmentLayerFilter);
-      }
-    } catch {
-      // Layer might not exist yet
-    }
-    try {
       if (map.current.getLayer("speed-segments-hitarea")) {
         map.current.setFilter("speed-segments-hitarea", segmentLayerFilter);
       }
     } catch {
       // Layer might not exist yet
+    }
+    for (const layerId of segmentRouteLayerIdsRef.current) {
+      try {
+        if (!map.current.getLayer(layerId)) continue;
+        const routeId = segmentRouteLayerRouteIdsRef.current[layerId];
+        if (!routeId) continue;
+        map.current.setFilter(layerId, [
+          "all",
+          segmentLayerFilter,
+          ["==", ["to-string", ["get", "routeId"]], routeId],
+        ] as maplibregl.FilterSpecification);
+      } catch {
+        // Layer might not exist yet
+      }
     }
   }, [mapLoaded, segmentLayerFilter]);
 
@@ -5381,7 +5449,7 @@ export function SpeedMap({
 
     try {
       if (map.current.getLayer("speed-limit-labels")) {
-        const unitSuffix = speedUnit === "kmh" ? " km/h" : " mph";
+        const unitSuffix = speedUnit === "kmh" ? " km/h" : " MPH";
         const conversionFactor = speedUnit === "kmh" ? 1.60934 : 1;
 
         // MapLibre expression to convert and display speed
@@ -5404,11 +5472,17 @@ export function SpeedMap({
     if (!map.current || !mapLoaded) return;
 
     try {
-      if (map.current.getLayer("speed-segment-labels")) {
-        const unitSuffix = speedUnit === "kmh" ? " km/h" : " mph";
-        const conversionFactor = speedUnit === "kmh" ? 1.60934 : 1;
+      const unitSuffix = speedUnit === "kmh" ? " km/h" : " MPH";
+      const conversionFactor = speedUnit === "kmh" ? 1.60934 : 1;
 
-        map.current.setLayoutProperty("speed-segment-labels", "text-field", [
+      for (const layerId of segmentRouteLayerIdsRef.current) {
+        if (
+          !layerId.startsWith("speed-segment-labels-route-") ||
+          !map.current.getLayer(layerId)
+        ) {
+          continue;
+        }
+        map.current.setLayoutProperty(layerId, "text-field", [
           "concat",
           [
             "to-string",
