@@ -122,6 +122,7 @@ function buildSelectedLineFilter(
 
 const HERITAGE_LOCAL_CIRCULATOR_OUTLINE_WIDTH = 2.9;
 const HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH = 2.1;
+const ENABLE_INFRASTRUCTURE_POPUPS = false;
 const HERITAGE_LOCAL_CIRCULATOR_FILTER = [
   "==",
   ["to-string", ["get", "overlay_category"]],
@@ -3007,41 +3008,6 @@ export function SpeedMap({
           minzoom: 14,
         });
 
-        // Stop hover
-        map.current.on("mouseenter", "stops", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "pointer";
-        });
-
-        map.current.on("mouseleave", "stops", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "";
-          if (!crossingPopupPinned.current) popup.current?.remove();
-        });
-
-        map.current.on("mousemove", "stops", (e) => {
-          if (!e.features?.length || !map.current) return;
-          const props = e.features[0].properties;
-          const routes = JSON.parse(props.routes || "[]");
-          const isCluster =
-            props.is_cluster === true || props.is_cluster === "true";
-          const clusterSize = props.cluster_size || 1;
-
-          const clusterHint =
-            isCluster && clusterSize > 1
-              ? `<div class="popup-detail" style="color: #a855f7;">Click to show ${clusterSize} platforms</div>`
-              : "";
-
-          popup.current
-            ?.setLngLat(e.lngLat)
-            .setHTML(
-              `<div class="popup-content">
-                <div class="popup-title">${props.stop_name} <span style="color:#ffffff">◆</span></div>
-                <div class="popup-detail">Lines: ${routes.join(", ")}</div>
-                ${clusterHint}
-              </div>`,
-            )
-            .addTo(map.current);
-        });
-
         // Click to expand/collapse clusters
         map.current.on("click", "stops", (e) => {
           if (isTouchInteractionMode()) return;
@@ -3116,68 +3082,70 @@ export function SpeedMap({
           },
         });
 
-        map.current.on("mouseenter", "traffic-lights", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "pointer";
-        });
+        if (ENABLE_INFRASTRUCTURE_POPUPS) {
+          map.current.on("mouseenter", "traffic-lights", () => {
+            if (map.current) map.current.getCanvas().style.cursor = "pointer";
+          });
 
-        map.current.on("mouseleave", "traffic-lights", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "";
-          if (!crossingPopupPinned.current) {
-            popup.current?.remove();
-          }
-        });
+          map.current.on("mouseleave", "traffic-lights", () => {
+            if (map.current) map.current.getCanvas().style.cursor = "";
+            if (!crossingPopupPinned.current) {
+              popup.current?.remove();
+            }
+          });
 
-        map.current.on("mousemove", "traffic-lights", (e) => {
-          if (crossingPopupPinned.current) return;
-          if (!e.features?.length || !map.current) return;
+          map.current.on("mousemove", "traffic-lights", (e) => {
+            if (crossingPopupPinned.current) return;
+            if (!e.features?.length || !map.current) return;
 
-          const feature = e.features[0];
-          const coords =
-            feature.geometry.type === "Point"
-              ? (feature.geometry as GeoJSON.Point).coordinates
-              : null;
-          const lon = coords ? coords[0].toFixed(6) : "N/A";
-          const lat = coords ? coords[1].toFixed(6) : "N/A";
+            const feature = e.features[0];
+            const coords =
+              feature.geometry.type === "Point"
+                ? (feature.geometry as GeoJSON.Point).coordinates
+                : null;
+            const lon = coords ? coords[0].toFixed(6) : "N/A";
+            const lat = coords ? coords[1].toFixed(6) : "N/A";
 
-          popup.current
-            ?.setLngLat(e.lngLat)
-            .setHTML(
-              `<div class="popup-content">
-                <div class="popup-title">Traffic Light 🚦</div>
-                <div class="popup-coords">${lat}, ${lon}</div>
-              </div>`,
-            )
-            .addTo(map.current);
-        });
+            popup.current
+              ?.setLngLat(e.lngLat)
+              .setHTML(
+                `<div class="popup-content">
+                  <div class="popup-title">Traffic Light 🚦</div>
+                  <div class="popup-coords">${lat}, ${lon}</div>
+                </div>`,
+              )
+              .addTo(map.current);
+          });
 
-        map.current.on("click", "traffic-lights", (e) => {
-          if (isTouchInteractionMode()) return;
-          if (!e.features?.length || !map.current) return;
+          map.current.on("click", "traffic-lights", (e) => {
+            if (isTouchInteractionMode()) return;
+            if (!e.features?.length || !map.current) return;
 
-          const feature = e.features[0];
-          const coords =
-            feature.geometry.type === "Point"
-              ? (feature.geometry as GeoJSON.Point).coordinates
-              : null;
-          const lon = coords ? coords[0].toFixed(6) : "N/A";
-          const lat = coords ? coords[1].toFixed(6) : "N/A";
+            const feature = e.features[0];
+            const coords =
+              feature.geometry.type === "Point"
+                ? (feature.geometry as GeoJSON.Point).coordinates
+                : null;
+            const lon = coords ? coords[0].toFixed(6) : "N/A";
+            const lat = coords ? coords[1].toFixed(6) : "N/A";
 
-          crossingPopupPinned.current = true;
-          suppressNextMapClickUnpin.current = true;
+            crossingPopupPinned.current = true;
+            suppressNextMapClickUnpin.current = true;
 
-          popup.current
-            ?.setLngLat(e.lngLat)
-            .setHTML(
-              `<div class="popup-content popup-pinned">
-                <div class="popup-title">Traffic Light 🚦 📌</div>
-                <div class="popup-coords">${lat}, ${lon}</div>
-                <div class="popup-hint">Click elsewhere to close</div>
-              </div>`,
-            )
-            .addTo(map.current);
+            popup.current
+              ?.setLngLat(e.lngLat)
+              .setHTML(
+                `<div class="popup-content popup-pinned">
+                  <div class="popup-title">Traffic Light 🚦 📌</div>
+                  <div class="popup-coords">${lat}, ${lon}</div>
+                  <div class="popup-hint">Click elsewhere to close</div>
+                </div>`,
+              )
+              .addTo(map.current);
 
-          e.originalEvent.stopPropagation();
-        });
+            e.originalEvent.stopPropagation();
+          });
+        }
       }
     };
 
@@ -3316,92 +3284,94 @@ export function SpeedMap({
       if (!crossingHandlersRegistered.current) {
         crossingHandlersRegistered.current = true;
 
-        // Crossing hover popup
-        map.current.on("mouseenter", "crossings", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "pointer";
-        });
+        if (ENABLE_INFRASTRUCTURE_POPUPS) {
+          // Crossing hover popup
+          map.current.on("mouseenter", "crossings", () => {
+            if (map.current) map.current.getCanvas().style.cursor = "pointer";
+          });
 
-        map.current.on("mouseleave", "crossings", () => {
-          if (map.current) map.current.getCanvas().style.cursor = "";
-          // Only remove popup if not pinned
-          if (!crossingPopupPinned.current) {
-            popup.current?.remove();
-          }
-        });
+          map.current.on("mouseleave", "crossings", () => {
+            if (map.current) map.current.getCanvas().style.cursor = "";
+            // Only remove popup if not pinned
+            if (!crossingPopupPinned.current) {
+              popup.current?.remove();
+            }
+          });
 
-        map.current.on("mousemove", "crossings", (e) => {
-          // Don't update popup if it's pinned
-          if (crossingPopupPinned.current) return;
-          if (!e.features?.length || !map.current) return;
+          map.current.on("mousemove", "crossings", (e) => {
+            // Don't update popup if it's pinned
+            if (crossingPopupPinned.current) return;
+            if (!e.features?.length || !map.current) return;
 
-          // Get coordinates from the feature geometry
-          const feature = e.features[0];
-          const props = feature.properties || {};
-          const coords =
-            feature.geometry.type === "Point"
-              ? (feature.geometry as GeoJSON.Point).coordinates
-              : null;
-          const lon = coords ? coords[0].toFixed(6) : "N/A";
-          const lat = coords ? coords[1].toFixed(6) : "N/A";
+            // Get coordinates from the feature geometry
+            const feature = e.features[0];
+            const props = feature.properties || {};
+            const coords =
+              feature.geometry.type === "Point"
+                ? (feature.geometry as GeoJSON.Point).coordinates
+                : null;
+            const lon = coords ? coords[0].toFixed(6) : "N/A";
+            const lat = coords ? coords[1].toFixed(6) : "N/A";
 
-          // Build barrier info line
-          const barrierStatus =
-            props.crossing_barrier === "yes"
-              ? ""
-              : props.crossing_barrier === "no"
-                ? "✗ No gates"
-                : "";
+            // Build barrier info line
+            const barrierStatus =
+              props.crossing_barrier === "yes"
+                ? ""
+                : props.crossing_barrier === "no"
+                  ? "✗ No gates"
+                  : "";
 
-          popup.current
-            ?.setLngLat(e.lngLat)
-            .setHTML(
-              `<div class="popup-content">
-                  <div class="popup-title">Grade Crossing <span style="color:#ff9500">✕</span>${barrierStatus ? ` <span style="color: ${props.crossing_barrier === "yes" ? "#22c55e" : "#ff9500"}">${barrierStatus}</span>` : ""}</div>
-                  <div class="popup-coords">${lat}, ${lon}</div>
-                </div>`,
-            )
-            .addTo(map.current);
-        });
+            popup.current
+              ?.setLngLat(e.lngLat)
+              .setHTML(
+                `<div class="popup-content">
+                    <div class="popup-title">Grade Crossing <span style="color:#ff9500">✕</span>${barrierStatus ? ` <span style="color: ${props.crossing_barrier === "yes" ? "#22c55e" : "#ff9500"}">${barrierStatus}</span>` : ""}</div>
+                    <div class="popup-coords">${lat}, ${lon}</div>
+                  </div>`,
+              )
+              .addTo(map.current);
+          });
 
-        // Click to pin the popup
-        map.current.on("click", "crossings", (e) => {
-          if (isTouchInteractionMode()) return;
-          if (!e.features?.length || !map.current) return;
+          // Click to pin the popup
+          map.current.on("click", "crossings", (e) => {
+            if (isTouchInteractionMode()) return;
+            if (!e.features?.length || !map.current) return;
 
-          // Get coordinates from the feature geometry
-          const feature = e.features[0];
-          const props = feature.properties || {};
-          const coords =
-            feature.geometry.type === "Point"
-              ? (feature.geometry as GeoJSON.Point).coordinates
-              : null;
-          const lon = coords ? coords[0].toFixed(6) : "N/A";
-          const lat = coords ? coords[1].toFixed(6) : "N/A";
+            // Get coordinates from the feature geometry
+            const feature = e.features[0];
+            const props = feature.properties || {};
+            const coords =
+              feature.geometry.type === "Point"
+                ? (feature.geometry as GeoJSON.Point).coordinates
+                : null;
+            const lon = coords ? coords[0].toFixed(6) : "N/A";
+            const lat = coords ? coords[1].toFixed(6) : "N/A";
 
-          // Build barrier info line
-          const barrierStatus =
-            props.crossing_barrier === "yes"
-              ? ""
-              : props.crossing_barrier === "no"
-                ? "✗ No gates"
-                : "";
+            // Build barrier info line
+            const barrierStatus =
+              props.crossing_barrier === "yes"
+                ? ""
+                : props.crossing_barrier === "no"
+                  ? "✗ No gates"
+                  : "";
 
-          crossingPopupPinned.current = true;
+            crossingPopupPinned.current = true;
 
-          popup.current
-            ?.setLngLat(e.lngLat)
-            .setHTML(
-              `<div class="popup-content popup-pinned">
-                  <div class="popup-title">Grade Crossing <span style="color:#ff9500">✕</span>${barrierStatus ? ` <span style="color: ${props.crossing_barrier === "yes" ? "#22c55e" : "#ff9500"}">${barrierStatus}</span>` : ""} 📌</div>
-                  <div class="popup-coords">${lat}, ${lon}</div>
-                  <div class="popup-hint">Click elsewhere to close</div>
-                </div>`,
-            )
-            .addTo(map.current);
+            popup.current
+              ?.setLngLat(e.lngLat)
+              .setHTML(
+                `<div class="popup-content popup-pinned">
+                    <div class="popup-title">Grade Crossing <span style="color:#ff9500">✕</span>${barrierStatus ? ` <span style="color: ${props.crossing_barrier === "yes" ? "#22c55e" : "#ff9500"}">${barrierStatus}</span>` : ""} 📌</div>
+                    <div class="popup-coords">${lat}, ${lon}</div>
+                    <div class="popup-hint">Click elsewhere to close</div>
+                  </div>`,
+              )
+              .addTo(map.current);
 
-          // Prevent the click from propagating to the map
-          e.originalEvent.stopPropagation();
-        });
+            // Prevent the click from propagating to the map
+            e.originalEvent.stopPropagation();
+          });
+        }
 
         // Click elsewhere on map to unpin crossing popup and collapse stop clusters
         map.current.on("click", (e) => {
@@ -3612,69 +3582,71 @@ export function SpeedMap({
         },
       });
 
-      // Switch hover popup
-      map.current.on("mouseenter", "switches", () => {
-        if (map.current) map.current.getCanvas().style.cursor = "pointer";
-      });
+      if (ENABLE_INFRASTRUCTURE_POPUPS) {
+        // Switch hover popup
+        map.current.on("mouseenter", "switches", () => {
+          if (map.current) map.current.getCanvas().style.cursor = "pointer";
+        });
 
-      map.current.on("mouseleave", "switches", () => {
-        if (map.current) map.current.getCanvas().style.cursor = "";
-        if (!crossingPopupPinned.current) popup.current?.remove();
-      });
+        map.current.on("mouseleave", "switches", () => {
+          if (map.current) map.current.getCanvas().style.cursor = "";
+          if (!crossingPopupPinned.current) popup.current?.remove();
+        });
 
-      map.current.on("mousemove", "switches", (e) => {
-        // Don't update popup if it's pinned
-        if (crossingPopupPinned.current) return;
-        if (!e.features?.length || !map.current) return;
+        map.current.on("mousemove", "switches", (e) => {
+          // Don't update popup if it's pinned
+          if (crossingPopupPinned.current) return;
+          if (!e.features?.length || !map.current) return;
 
-        const feature = e.features[0];
-        const coords =
-          feature.geometry.type === "Point"
-            ? (feature.geometry as GeoJSON.Point).coordinates
-            : null;
-        const lon = coords ? coords[0].toFixed(6) : "N/A";
-        const lat = coords ? coords[1].toFixed(6) : "N/A";
+          const feature = e.features[0];
+          const coords =
+            feature.geometry.type === "Point"
+              ? (feature.geometry as GeoJSON.Point).coordinates
+              : null;
+          const lon = coords ? coords[0].toFixed(6) : "N/A";
+          const lat = coords ? coords[1].toFixed(6) : "N/A";
 
-        popup.current
-          ?.setLngLat(e.lngLat)
-          .setHTML(
-            `<div class="popup-content">
-                <div class="popup-title">Track Switch <span style="color:#00d4ff">Y</span></div>
-                <div class="popup-coords">${lat}, ${lon}</div>
-              </div>`,
-          )
-          .addTo(map.current);
-      });
+          popup.current
+            ?.setLngLat(e.lngLat)
+            .setHTML(
+              `<div class="popup-content">
+                  <div class="popup-title">Track Switch <span style="color:#00d4ff">Y</span></div>
+                  <div class="popup-coords">${lat}, ${lon}</div>
+                </div>`,
+            )
+            .addTo(map.current);
+        });
 
-      // Click to pin the popup
-      map.current.on("click", "switches", (e) => {
-        if (isTouchInteractionMode()) return;
-        if (!e.features?.length || !map.current) return;
+        // Click to pin the popup
+        map.current.on("click", "switches", (e) => {
+          if (isTouchInteractionMode()) return;
+          if (!e.features?.length || !map.current) return;
 
-        const feature = e.features[0];
-        const coords =
-          feature.geometry.type === "Point"
-            ? (feature.geometry as GeoJSON.Point).coordinates
-            : null;
-        const lon = coords ? coords[0].toFixed(6) : "N/A";
-        const lat = coords ? coords[1].toFixed(6) : "N/A";
+          const feature = e.features[0];
+          const coords =
+            feature.geometry.type === "Point"
+              ? (feature.geometry as GeoJSON.Point).coordinates
+              : null;
+          const lon = coords ? coords[0].toFixed(6) : "N/A";
+          const lat = coords ? coords[1].toFixed(6) : "N/A";
 
-        crossingPopupPinned.current = true;
+          crossingPopupPinned.current = true;
 
-        popup.current
-          ?.setLngLat(e.lngLat)
-          .setHTML(
-            `<div class="popup-content popup-pinned">
-                <div class="popup-title">Track Switch <span style="color:#00d4ff">Y</span> 📌</div>
-                <div class="popup-coords">${lat}, ${lon}</div>
-                <div class="popup-hint">Click elsewhere to close</div>
-              </div>`,
-          )
-          .addTo(map.current);
+          popup.current
+            ?.setLngLat(e.lngLat)
+            .setHTML(
+              `<div class="popup-content popup-pinned">
+                  <div class="popup-title">Track Switch <span style="color:#00d4ff">Y</span> 📌</div>
+                  <div class="popup-coords">${lat}, ${lon}</div>
+                  <div class="popup-hint">Click elsewhere to close</div>
+                </div>`,
+            )
+            .addTo(map.current);
 
-        // Prevent the click from propagating to the map
-        e.originalEvent.stopPropagation();
-      });
+          // Prevent the click from propagating to the map
+          e.originalEvent.stopPropagation();
+        });
+      }
     };
 
     // Only wait for style on first setup
