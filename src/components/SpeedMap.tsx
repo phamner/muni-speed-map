@@ -365,11 +365,10 @@ interface GoogleTileSession {
 type GoogleMapType = "satellite" | "terrain";
 
 function shouldUseGoogleTilesFromUrl(): boolean {
-  if (typeof window === "undefined") return false;
+  if (typeof window === "undefined") return true;
   const params = new URLSearchParams(window.location.search);
-  return (
-    params.get("satellite") === "google" || params.get("dev") === "true"
-  );
+  if (params.get("satellite") === "esri") return false;
+  return true;
 }
 
 const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
@@ -628,6 +627,7 @@ export function SpeedMap({
   >({});
   const [googleViewportCopyright, setGoogleViewportCopyright] =
     useState<string>("");
+  const [useMapTilerTopo, setUseMapTilerTopo] = useState(true);
   const wantsGoogleTiles = useMemo(shouldUseGoogleTilesFromUrl, []);
   const showSatellite = basemapMode === "satellite";
   const showTopo = basemapMode === "topo";
@@ -827,6 +827,30 @@ export function SpeedMap({
       cancelled = true;
     };
   }, [wantsGoogleTiles, showSatellite]);
+
+  useEffect(() => {
+    if (!showTopo) return;
+
+    let cancelled = false;
+
+    async function checkTopoProvider() {
+      try {
+        const response = await fetch("/api/maptiler-topo/style");
+        if (!cancelled) {
+          setUseMapTilerTopo(response.ok);
+        }
+      } catch {
+        if (!cancelled) {
+          setUseMapTilerTopo(false);
+        }
+      }
+    }
+
+    checkTopoProvider();
+    return () => {
+      cancelled = true;
+    };
+  }, [showTopo]);
 
   // Use loaded city data or empty placeholder
   const cityConfig = useMemo(
@@ -1735,13 +1759,21 @@ export function SpeedMap({
             tileSize: 256,
             attribution: "&copy; Esri, Maxar, Earthstar Geographics",
           },
-          "topo-esri": {
+          "topo-maptiler": {
             type: "raster",
             tiles: [
               "/api/maptiler-topo/tile?z={z}&x={x}&y={y}",
             ],
             tileSize: 256,
             attribution: "&copy; MapTiler",
+          },
+          "topo-esri-fallback": {
+            type: "raster",
+            tiles: [
+              "https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}",
+            ],
+            tileSize: 256,
+            attribution: "&copy; Esri",
           },
         },
         layers: [
@@ -1765,7 +1797,17 @@ export function SpeedMap({
           {
             id: "topo-layer-esri",
             type: "raster",
-            source: "topo-esri",
+            source: "topo-maptiler",
+            minzoom: 0,
+            maxzoom: 19,
+            layout: {
+              visibility: "none",
+            },
+          },
+          {
+            id: "topo-layer-fallback",
+            type: "raster",
+            source: "topo-esri-fallback",
             minzoom: 0,
             maxzoom: 19,
             layout: {
@@ -4840,7 +4882,7 @@ export function SpeedMap({
       map.current.setLayoutProperty(
         "satellite-layer-esri",
         "visibility",
-        showSatellite
+        showSatellite && !shouldUseGoogleSatellite
           ? "visible"
           : "none",
       );
@@ -4848,7 +4890,14 @@ export function SpeedMap({
         map.current.setLayoutProperty(
           "topo-layer-esri",
           "visibility",
-          showTopo ? "visible" : "none",
+          showTopo && useMapTilerTopo ? "visible" : "none",
+        );
+      }
+      if (map.current.getLayer("topo-layer-fallback")) {
+        map.current.setLayoutProperty(
+          "topo-layer-fallback",
+          "visibility",
+          showTopo && !useMapTilerTopo ? "visible" : "none",
         );
       }
       if (map.current.getLayer("topo-reference-layer-esri")) {
@@ -4879,6 +4928,7 @@ export function SpeedMap({
     showSatellite,
     showTopo,
     shouldUseGoogleSatellite,
+    useMapTilerTopo,
   ]);
 
   useEffect(() => {
