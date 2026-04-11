@@ -416,6 +416,36 @@ function createDefaultBasemapStyle(): maplibregl.StyleSpecification {
   };
 }
 
+function setMapStyleAndWait(
+  map: maplibregl.Map,
+  style: string | maplibregl.StyleSpecification,
+  waitForIdle = false,
+): Promise<void> {
+  return new Promise((resolve) => {
+    const cleanup = () => {
+      map.off("style.load", handleStyleLoad);
+      map.off("idle", handleIdle);
+    };
+
+    const handleIdle = () => {
+      cleanup();
+      resolve();
+    };
+
+    const handleStyleLoad = () => {
+      if (waitForIdle) {
+        map.on("idle", handleIdle);
+        return;
+      }
+      cleanup();
+      resolve();
+    };
+
+    map.on("style.load", handleStyleLoad);
+    map.setStyle(style);
+  });
+}
+
 const POPULATION_DENSITY_COUNTIES_BY_CITY: Partial<
   Record<City, Record<string, string>>
 > = {
@@ -682,6 +712,8 @@ export function SpeedMap({
   const topoStyleActiveRef = useRef(basemapMode === "topo");
   const initialMapLoadComplete = useRef(false);
   const basemapModeRef = useRef(basemapMode);
+  const pendingStyleChangeRef = useRef(false);
+  const styleChangeRequestRef = useRef(0);
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     showSatellite &&
@@ -1760,6 +1792,7 @@ export function SpeedMap({
     // Reset handler registration flags for new map
     crossingHandlersRegistered.current = false;
     initialMapLoadComplete.current = false;
+    pendingStyleChangeRef.current = false;
 
     // Reset mapLoaded state for new map
     setMapLoaded(false);
@@ -1806,6 +1839,7 @@ export function SpeedMap({
 
     map.current.on("style.load", () => {
       if (!initialMapLoadComplete.current) return;
+      if (pendingStyleChangeRef.current) return;
 
       const shouldAwaitTopoIdleOnMobile =
         basemapModeRef.current === "topo" && isTouchInteractionMode();
@@ -1831,16 +1865,36 @@ export function SpeedMap({
   useEffect(() => {
     if (!map.current) return;
 
+    let cancelled = false;
+    const mapInstance = map.current;
     const shouldUseTopoStyle = basemapMode === "topo";
     if (topoStyleActiveRef.current === shouldUseTopoStyle) return;
 
     topoStyleActiveRef.current = shouldUseTopoStyle;
     setMapLoaded(false);
-    map.current.setStyle(
-      shouldUseTopoStyle
-        ? "/api/maptiler-topo/style"
-        : createDefaultBasemapStyle(),
-    );
+    pendingStyleChangeRef.current = true;
+    const styleChangeRequest = ++styleChangeRequestRef.current;
+
+    void (async () => {
+      await setMapStyleAndWait(
+        mapInstance,
+        shouldUseTopoStyle
+          ? "/api/maptiler-topo/style"
+          : createDefaultBasemapStyle(),
+        shouldUseTopoStyle && isTouchInteractionMode(),
+      );
+
+      if (cancelled) return;
+      if (map.current !== mapInstance) return;
+      if (styleChangeRequestRef.current !== styleChangeRequest) return;
+
+      pendingStyleChangeRef.current = false;
+      setMapLoaded(true);
+    })();
+
+    return () => {
+      cancelled = true;
+    };
   }, [basemapMode]);
 
   useEffect(() => {
@@ -1851,11 +1905,13 @@ export function SpeedMap({
       layerId,
       session,
       opacity,
+      visible,
     }: {
       sourceId: string;
       layerId: string;
       session: GoogleTileSession | null;
       opacity?: number;
+      visible?: boolean;
     }) => {
       if (map.current!.getSource(sourceId)) {
         try {
@@ -1886,7 +1942,7 @@ export function SpeedMap({
         minzoom: 0,
         maxzoom: 22,
         layout: {
-          visibility: "none",
+          visibility: visible ? "visible" : "none",
         },
         ...(typeof opacity === "number"
           ? {
@@ -1902,6 +1958,7 @@ export function SpeedMap({
       sourceId: "google-satellite",
       layerId: "google-satellite-layer",
       session: googleSatelliteSession,
+      visible: showSatellite && shouldUseGoogleSatellite,
     });
 
     syncGoogleRasterLayer({
@@ -1909,8 +1966,15 @@ export function SpeedMap({
       layerId: "google-terrain-layer",
       session: googleTerrainSession,
       opacity: 0.38,
+      visible: false,
     });
-  }, [mapLoaded, googleSatelliteSession, googleTerrainSession]);
+  }, [
+    mapLoaded,
+    googleSatelliteSession,
+    googleTerrainSession,
+    showSatellite,
+    shouldUseGoogleSatellite,
+  ]);
 
   // Speed-based color scale (memoized to prevent re-renders)
   // Uses same scale as speed limits for consistency
