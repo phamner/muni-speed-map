@@ -714,6 +714,7 @@ export function SpeedMap({
   const basemapModeRef = useRef(basemapMode);
   const pendingStyleChangeRef = useRef(false);
   const styleChangeRequestRef = useRef(0);
+  const [styleGeneration, setStyleGeneration] = useState(0);
   const shouldUseGoogleSatellite =
     wantsGoogleTiles &&
     showSatellite &&
@@ -1889,6 +1890,9 @@ export function SpeedMap({
       if (styleChangeRequestRef.current !== styleChangeRequest) return;
 
       pendingStyleChangeRef.current = false;
+      segmentRouteLayerIdsRef.current = [];
+      segmentRouteLayerRouteIdsRef.current = {};
+      setStyleGeneration((prev) => prev + 1);
       setMapLoaded(true);
     })();
 
@@ -2914,6 +2918,7 @@ export function SpeedMap({
     showCableCarsOverlay,
     showBusRoutesOverlay,
     showFerryRoutesOverlay,
+    styleGeneration,
   ]);
 
   // Keep route-line visibility and paint in sync with mode / toggle state
@@ -3157,6 +3162,8 @@ export function SpeedMap({
 
     const addStopsAndTrafficLightsLayers = () => {
       if (!map.current) return;
+      const stopMarkerSize = basemapMode === "topo" ? 12 : 20;
+      const stopLabelSize = 11;
 
       // === STOPS LAYER ===
       // Filter clustered stops to selected lines
@@ -3228,10 +3235,16 @@ export function SpeedMap({
           "visibility",
           showStops ? "visible" : "none",
         );
+        map.current.setLayoutProperty("stops", "text-size", stopMarkerSize);
         map.current.setLayoutProperty(
           "stops-label",
           "visibility",
           showStops ? "visible" : "none",
+        );
+        map.current.setLayoutProperty(
+          "stops-label",
+          "text-size",
+          stopLabelSize,
         );
       } else {
         map.current.addSource("stops", {
@@ -3246,7 +3259,7 @@ export function SpeedMap({
           layout: {
             visibility: showStops ? "visible" : "none",
             "text-field": "◆",
-            "text-size": 20,
+            "text-size": stopMarkerSize,
             "text-allow-overlap": true,
             "text-ignore-placement": true,
           },
@@ -3270,7 +3283,7 @@ export function SpeedMap({
           layout: {
             visibility: showStops ? "visible" : "none",
             "text-field": ["get", "stop_name"],
-            "text-size": 11,
+            "text-size": stopLabelSize,
             "text-offset": [0, 1.2],
             "text-anchor": "top",
             "text-optional": true,
@@ -3447,6 +3460,7 @@ export function SpeedMap({
     clusteredStops,
     expandedStopCluster,
     filteredTrafficLights,
+    styleGeneration,
   ]);
 
   // Show all grade crossings regardless of selected lines
@@ -3503,13 +3517,52 @@ export function SpeedMap({
 
     // All crossings use orange (gated vs non-gated distinction disabled - data too inconsistent)
     const crossingColor = "#ff9500";
+    const existingCrossingLayer = map.current.getLayer("crossings");
+    const expectedCrossingLayerType = "symbol";
 
     // Check if source already exists - if so, just update data (fast path)
     const existingSource = map.current.getSource(
       "crossings",
     ) as maplibregl.GeoJSONSource;
 
-    if (existingSource) {
+    if (
+      existingCrossingLayer &&
+      existingCrossingLayer.type !== expectedCrossingLayerType
+    ) {
+      map.current.removeLayer("crossings");
+    }
+
+    const ensureCrossingIconImage = () => {
+      if (!map.current || map.current.hasImage("crossing-x-icon")) return;
+
+      const size = 64;
+      const canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      ctx.clearRect(0, 0, size, size);
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.lineJoin = "round";
+      ctx.lineCap = "round";
+      ctx.font =
+        '700 52px "Helvetica Neue", Arial, "Segoe UI Symbol", sans-serif';
+      ctx.strokeStyle = "#000000";
+      ctx.lineWidth = 8;
+      ctx.strokeText("✕", size / 2, size / 2 + 1);
+      ctx.fillStyle = crossingColor;
+      ctx.fillText("✕", size / 2, size / 2 + 1);
+
+      map.current.addImage("crossing-x-icon", {
+        width: size,
+        height: size,
+        data: ctx.getImageData(0, 0, size, size).data,
+      });
+    };
+
+    if (existingSource && map.current.getLayer("crossings")) {
       // Fast path: source exists, just update data immediately
       existingSource.setData(filteredCrossings as any);
       map.current.setLayoutProperty(
@@ -3517,12 +3570,7 @@ export function SpeedMap({
         "visibility",
         showCrossings ? "visible" : "none",
       );
-      // Update color when city changes
-      map.current.setPaintProperty(
-        "crossings",
-        "text-color",
-        crossingColor as any,
-      );
+      ensureCrossingIconImage();
       return; // Exit early - no need to check style or create layers
     }
 
@@ -3536,6 +3584,8 @@ export function SpeedMap({
         data: filteredCrossings as any,
       });
 
+      ensureCrossingIconImage();
+
       // Add crossing markers layer
       map.current.addLayer({
         id: "crossings",
@@ -3543,15 +3593,10 @@ export function SpeedMap({
         source: "crossings",
         layout: {
           visibility: showCrossings ? "visible" : "none",
-          "text-field": "✕",
-          "text-size": 14,
-          "text-allow-overlap": true,
-          "text-ignore-placement": true,
-        },
-        paint: {
-          "text-color": crossingColor as any,
-          "text-halo-color": "#000000",
-          "text-halo-width": 1.5,
+          "icon-image": "crossing-x-icon",
+          "icon-size": 0.28,
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
         },
       });
 
@@ -3752,7 +3797,7 @@ export function SpeedMap({
       };
       setTimeout(waitForStyle, 50);
     }
-  }, [mapLoaded, showCrossings, filteredCrossings, city]);
+  }, [mapLoaded, showCrossings, filteredCrossings, city, styleGeneration]);
 
   // Get switches and signals data for current city, filtered by selected lines
   const switchesData = useMemo(() => {
@@ -3938,7 +3983,7 @@ export function SpeedMap({
       };
       setTimeout(waitForStyle, 50);
     }
-  }, [mapLoaded, showSwitches, switchesData]);
+  }, [mapLoaded, showSwitches, switchesData, styleGeneration]);
 
   // Update vehicle data source
   useEffect(() => {
@@ -4221,6 +4266,7 @@ export function SpeedMap({
     viewMode,
     mapLoaded,
     isProcessing,
+    styleGeneration,
   ]);
 
   // Update speed filter
@@ -4886,6 +4932,7 @@ export function SpeedMap({
     allRouteSegments500,
     allRouteSegments1000,
     city,
+    styleGeneration,
   ]);
 
   useEffect(() => {
