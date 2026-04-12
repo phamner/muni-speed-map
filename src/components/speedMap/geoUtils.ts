@@ -59,6 +59,7 @@ export const EMPTY_CITY_DATA: CityStaticData = {
   stops: { type: "FeatureCollection", features: [] },
   crossings: { type: "FeatureCollection", features: [] },
   switches: { type: "FeatureCollection", features: [] },
+  yards: null,
   maxspeed: null,
   tunnelsBridges: null,
   separation: null,

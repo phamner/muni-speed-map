@@ -322,6 +322,7 @@ interface SpeedMapProps {
   showCrossings: boolean;
   showTrafficLights: boolean;
   showSwitches: boolean;
+  showYards: boolean;
   showRailContextHeavy: boolean;
   showRailContextCommuter: boolean;
   showBusRoutesOverlay: boolean;
@@ -615,6 +616,7 @@ export function SpeedMap({
   showCrossings,
   showTrafficLights,
   showSwitches,
+  showYards,
   showRailContextHeavy,
   showRailContextCommuter,
   showBusRoutesOverlay,
@@ -644,6 +646,7 @@ export function SpeedMap({
   const segmentRouteLayerRouteIdsRef = useRef<Record<string, string>>({});
   const clickedTractId = useRef<string | null>(null);
   const crossingHandlersRegistered = useRef(false);
+  const yardHandlersRegistered = useRef(false);
   const suppressNextMapClickUnpin = useRef(false);
   const prevViewMode = useRef<ViewMode>(viewMode);
   const routeLineModeRef = useRef(routeLineMode);
@@ -925,6 +928,7 @@ export function SpeedMap({
       stops: cityStaticData?.stops || EMPTY_CITY_DATA.stops,
       crossings: cityStaticData?.crossings || EMPTY_CITY_DATA.crossings,
       switches: cityStaticData?.switches || EMPTY_CITY_DATA.switches,
+      yards: cityStaticData?.yards || EMPTY_CITY_DATA.yards,
       maxspeed: cityStaticData?.maxspeed || null,
       tunnelsBridges: cityStaticData?.tunnelsBridges || null,
       separation: cityStaticData?.separation || null,
@@ -1797,6 +1801,7 @@ export function SpeedMap({
 
     // Reset handler registration flags for new map
     crossingHandlersRegistered.current = false;
+    yardHandlersRegistered.current = false;
     initialMapLoadComplete.current = false;
     pendingStyleChangeRef.current = false;
 
@@ -2902,7 +2907,7 @@ export function SpeedMap({
           .addTo(map.current);
       });
 
-      // Ensure symbol layers (stops, traffic-lights, crossings, switches, vehicles)
+      // Ensure symbol layers (stops, traffic-lights, crossings, switches, yards, vehicles)
       // stay above route layers by moving them to the top after route layers are added
       const symbolLayers = [
         "stops",
@@ -2910,6 +2915,7 @@ export function SpeedMap({
         "traffic-lights",
         "crossings",
         "switches",
+        "yards-symbol",
         "vehicles-glow",
         "vehicles",
       ];
@@ -3196,6 +3202,30 @@ export function SpeedMap({
       features: filtered,
     };
   }, [cityConfig.trafficLights, selectedLines]);
+
+  const filteredYards = useMemo(() => {
+    const rawYards = cityConfig.yards || {
+      type: "FeatureCollection" as const,
+      features: [],
+    };
+
+    if (!showYards) {
+      return { ...rawYards, features: [] };
+    }
+
+    const filtered = rawYards.features.filter((feature: any) => {
+      const yardRoutes = feature.properties?.routes;
+      if (!yardRoutes || !Array.isArray(yardRoutes) || yardRoutes.length === 0) {
+        return true;
+      }
+      return yardRoutes.some((route: string) => selectedLines.includes(route));
+    });
+
+    return {
+      type: "FeatureCollection" as const,
+      features: filtered,
+    };
+  }, [cityConfig.yards, selectedLines, showYards]);
 
   // Add/update stops layer with clustering by name
   useEffect(() => {
@@ -3765,6 +3795,13 @@ export function SpeedMap({
               },
             );
             if (densityFeatures && densityFeatures.length > 0) return;
+
+            const yardFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["yards-symbol"].filter((id) =>
+                map.current?.getLayer(id),
+              ),
+            });
+            if (yardFeatures && yardFeatures.length > 0) return;
           } else {
             // Check if click was on a crossing (handled above)
             const crossingFeatures = map.current?.queryRenderedFeatures(
@@ -3795,6 +3832,13 @@ export function SpeedMap({
               layers: ["switches"],
             });
             if (switchFeatures && switchFeatures.length > 0) return;
+
+            const yardFeatures = map.current?.queryRenderedFeatures(e.point, {
+              layers: ["yards-symbol"].filter((id) =>
+                map.current?.getLayer(id),
+              ),
+            });
+            if (yardFeatures && yardFeatures.length > 0) return;
 
             const vehicleFeatures = map.current?.queryRenderedFeatures(
               e.point,
@@ -4025,6 +4069,181 @@ export function SpeedMap({
       setTimeout(waitForStyle, 50);
     }
   }, [mapLoaded, showSwitches, switchesData, styleGeneration]);
+
+  useEffect(() => {
+    if (!map.current || !mapLoaded) return;
+
+    const existingSource = map.current.getSource(
+      "yards",
+    ) as maplibregl.GeoJSONSource;
+
+    const showYardPopup = (
+      e: maplibregl.MapLayerMouseEvent,
+      pinned = false,
+    ) => {
+      if (!e.features?.length || !map.current) return;
+
+      const props = e.features[0].properties || {};
+      const name = escapeHtml(String(props.name || "Rail Yard"));
+
+      popup.current
+        ?.setLngLat(e.lngLat)
+        .setHTML(
+          `<div class="popup-content${pinned ? " popup-pinned" : ""}">
+            <div class="popup-title">${name} <span style="color:#f59e0b">🔧</span>${pinned ? " 📌" : ""}</div>
+            ${pinned ? '<div class="popup-hint">Tap elsewhere to close</div>' : ""}
+          </div>`,
+        )
+        .addTo(map.current);
+    };
+
+    const ensureYardWrenchIcon = () => {
+      if (!map.current || map.current.hasImage("yards-wrench-icon")) return;
+
+      const size = 96;
+      const canvas = document.createElement("canvas");
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+
+      const wrenchPath = new Path2D(
+        "M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z",
+      );
+
+      ctx.clearRect(0, 0, size, size);
+      ctx.scale(size / 24, size / 24);
+      ctx.strokeStyle = "#f59e0b";
+      ctx.lineWidth = 2.25;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.stroke(wrenchPath);
+
+      map.current.addImage("yards-wrench-icon", {
+        width: size,
+        height: size,
+        data: ctx.getImageData(0, 0, size, size).data,
+      });
+    };
+
+    const bindYardHandlers = (layerId: string) => {
+      if (!map.current) return;
+
+      map.current.on("mouseenter", layerId, () => {
+        if (map.current) map.current.getCanvas().style.cursor = "pointer";
+      });
+
+      map.current.on("mouseleave", layerId, () => {
+        if (map.current) map.current.getCanvas().style.cursor = "";
+        if (!crossingPopupPinned.current && !touchPopupPinned.current) {
+          popup.current?.remove();
+        }
+      });
+
+      map.current.on("mousemove", layerId, (e) => {
+        if (crossingPopupPinned.current) return;
+        if (isTouchInteractionMode() && touchPopupPinned.current) return;
+        showYardPopup(e);
+      });
+
+      map.current.on("click", layerId, (e) => {
+        if (!isTouchInteractionMode() || !e.features?.length) return;
+        touchPopupPinned.current = true;
+        showYardPopup(e, true);
+        e.originalEvent.stopPropagation();
+      });
+    };
+
+    if (existingSource) {
+      existingSource.setData(filteredYards as any);
+      ensureYardWrenchIcon();
+      for (const layerId of ["yards-symbol"]) {
+        if (map.current.getLayer(layerId)) {
+          map.current.setLayoutProperty(
+            layerId,
+            "visibility",
+            showYards ? "visible" : "none",
+          );
+          map.current.setLayoutProperty(layerId, "icon-size", [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            9,
+            0.18,
+            11,
+            0.24,
+            13,
+            0.3,
+            15,
+            0.38,
+            17,
+            0.46,
+          ]);
+        }
+      }
+      return;
+    }
+
+    const addYardLayers = () => {
+      if (!map.current) return;
+      if (map.current.getSource("yards")) return;
+
+      map.current.addSource("yards", {
+        type: "geojson",
+        data: filteredYards as any,
+      });
+
+      ensureYardWrenchIcon();
+
+      map.current.addLayer({
+        id: "yards-symbol",
+        type: "symbol",
+        source: "yards",
+        layout: {
+          visibility: showYards ? "visible" : "none",
+          "icon-image": "yards-wrench-icon",
+          "icon-size": [
+            "interpolate",
+            ["linear"],
+            ["zoom"],
+            9,
+            0.18,
+            11,
+            0.24,
+            13,
+            0.3,
+            15,
+            0.38,
+            17,
+            0.46,
+          ],
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+        },
+      });
+
+      if (!yardHandlersRegistered.current) {
+        yardHandlersRegistered.current = true;
+        for (const layerId of ["yards-symbol"]) {
+          bindYardHandlers(layerId);
+        }
+      }
+    };
+
+    if (map.current.isStyleLoaded()) {
+      addYardLayers();
+    } else {
+      const waitForStyle = () => {
+        if (!map.current) return;
+        if (map.current.isStyleLoaded()) {
+          addYardLayers();
+        } else {
+          setTimeout(waitForStyle, 50);
+        }
+      };
+      setTimeout(waitForStyle, 50);
+    }
+  }, [filteredYards, mapLoaded, showYards, styleGeneration]);
 
   // Update vehicle data source
   useEffect(() => {
@@ -4399,6 +4618,7 @@ export function SpeedMap({
       "traffic-lights",
       "crossings",
       "switches",
+      "yards-symbol",
       "stops",
       "stops-label",
     ];
@@ -4436,6 +4656,7 @@ export function SpeedMap({
     showStops,
     showCrossings,
     showSwitches,
+    showYards,
     showRouteLines,
     showRailContextHeavy,
     showRailContextCommuter,

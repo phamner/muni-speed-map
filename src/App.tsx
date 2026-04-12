@@ -89,6 +89,7 @@ function App() {
   const [showCrossings, setShowCrossings] = useState(false);
   const [showTrafficLights, setShowTrafficLights] = useState(false);
   const [showSwitches, setShowSwitches] = useState(false);
+  const [showYards, setShowYards] = useState(false);
   const [showRailContextHeavy, setShowRailContextHeavy] = useState(false);
   const [showRailContextCommuter, setShowRailContextCommuter] = useState(false);
   const [showBusRoutesOverlay, setShowBusRoutesOverlay] = useState(false);
@@ -187,6 +188,8 @@ function App() {
         setShowTrafficLights={setShowTrafficLights}
         showSwitches={showSwitches}
         setShowSwitches={setShowSwitches}
+        showYards={showYards}
+        setShowYards={setShowYards}
         showRailContextHeavy={showRailContextHeavy}
         setShowRailContextHeavy={setShowRailContextHeavy}
         showRailContextCommuter={showRailContextCommuter}
@@ -225,6 +228,7 @@ function App() {
         showCrossings={showCrossings}
         showTrafficLights={showTrafficLights}
         showSwitches={showSwitches}
+        showYards={showYards}
         showRailContextHeavy={showRailContextHeavy}
         showRailContextCommuter={showRailContextCommuter}
         showBusRoutesOverlay={showBusRoutesOverlay}

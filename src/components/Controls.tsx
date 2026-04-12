@@ -414,6 +414,8 @@ interface ControlsProps {
   setShowTrafficLights: (show: boolean) => void;
   showSwitches: boolean;
   setShowSwitches: (show: boolean) => void;
+  showYards: boolean;
+  setShowYards: (show: boolean) => void;
   showRailContextHeavy: boolean;
   setShowRailContextHeavy: (show: boolean) => void;
   showRailContextCommuter: boolean;
@@ -508,6 +510,8 @@ export function Controls({
   setShowTrafficLights,
   showSwitches,
   setShowSwitches,
+  showYards,
+  setShowYards,
   showRailContextHeavy,
   setShowRailContextHeavy,
   showRailContextCommuter,
@@ -1320,6 +1324,38 @@ export function Controls({
             Show track switches <span style={{ color: "#00d4ff" }}>Y</span>
           </label>
         </div>
+        {city === "SF" && (
+          <div className="route-lines-toggle">
+            <label className="toggle-with-info-icon">
+              <span className="toggle-label-content">
+                <input
+                  type="checkbox"
+                  checked={showYards}
+                  onChange={(e) => setShowYards(e.target.checked)}
+                />
+                Show yards <span style={{ color: "#f59e0b" }}>🔧</span>
+              </span>
+              <span
+                className="speed-by-line-info-icon"
+                onMouseEnter={(e) =>
+                  showTooltip(
+                    e,
+                    "Shows San Francisco's light rail yards as wrench markers.",
+                  )
+                }
+                onClick={(e) =>
+                  toggleTouchTooltip(
+                    e,
+                    "Shows San Francisco's light rail yards as wrench markers.",
+                  )
+                }
+                onMouseLeave={hideTooltip}
+              >
+                ⓘ
+              </span>
+            </label>
+          </div>
+        )}
       </CollapsibleSection>
 
       {/* Lines & Regional Context */}
@@ -1592,6 +1628,7 @@ export function Controls({
           setShowCrossings(false);
           setShowTrafficLights(false);
           setShowSwitches(false);
+          setShowYards(false);
           setShowRailContextHeavy(false);
           setShowRailContextCommuter(false);
           setShowBusRoutesOverlay(false);

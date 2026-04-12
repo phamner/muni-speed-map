@@ -1,0 +1,53 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Curtis E. Green Light Rail Center",
+        "short_name": "Green Yard",
+        "operator": "Muni",
+        "yard_type": "light_rail_yard",
+        "routes": ["J", "K", "L", "M", "N", "T"],
+        "location": "Balboa Park",
+        "notes": "Primary Muni Metro storage and maintenance yard"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.44633, 37.72188]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cameron Beach Yard",
+        "short_name": "Cameron Beach",
+        "operator": "Muni",
+        "yard_type": "light_rail_yard",
+        "routes": ["J", "K", "L", "M", "N", "T"],
+        "location": "Balboa Park",
+        "notes": "Historic Muni rail yard near Geneva and San Jose"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.44645, 37.7199]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muni Metro East",
+        "short_name": "MME",
+        "operator": "Muni",
+        "yard_type": "light_rail_yard",
+        "routes": ["J", "K", "L", "M", "N", "T"],
+        "location": "Dogpatch",
+        "notes": "Modern light rail yard and maintenance facility"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.38532, 37.75172]
+      }
+    }
+  ]
+}

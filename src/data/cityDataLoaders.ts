@@ -14,6 +14,7 @@ export interface CityStaticData {
   stops: any;
   crossings: any;
   switches: any;
+  yards?: any | null;
   maxspeed: any | null;
   tunnelsBridges: any | null;
   separation: any | null;
@@ -532,6 +533,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         stops,
         crossings,
         switches,
+        yards,
         maxspeed,
         tunnelsBridges,
         separation,
@@ -545,6 +547,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         import("./stops/muniMetroStops.json"),
         import("./crossings/sfGradeCrossings.json"),
         import("./switches/sfSwitches.json"),
+        import("./yards/sfYards.json").catch(() => ({ default: null })),
         import("./maxspeed/sfMaxspeed.json"),
         import("./tunnels-bridges/sfTunnelsBridges.json").catch(() => ({ default: null })),
         import("./separation/sfSeparation.json").catch(() => ({ default: null })),
@@ -580,6 +583,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         stops: stops.default,
         crossings: crossings.default,
         switches: switches.default,
+        yards: yards.default,
         maxspeed: maxspeed.default,
         tunnelsBridges: tunnelsBridges.default,
         separation: mergedSeparation,
