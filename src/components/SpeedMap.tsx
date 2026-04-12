@@ -712,6 +712,7 @@ export function SpeedMap({
   const topoStyleActiveRef = useRef(basemapMode === "topo");
   const initialMapLoadComplete = useRef(false);
   const basemapModeRef = useRef(basemapMode);
+  const viewModeRef = useRef(viewMode);
   const pendingStyleChangeRef = useRef(false);
   const styleChangeRequestRef = useRef(0);
   const [styleGeneration, setStyleGeneration] = useState(0);
@@ -737,6 +738,10 @@ export function SpeedMap({
   useEffect(() => {
     basemapModeRef.current = basemapMode;
   }, [basemapMode]);
+
+  useEffect(() => {
+    viewModeRef.current = viewMode;
+  }, [viewMode]);
 
   // Ref to avoid re-render loops with the callback
   const onVehicleUpdateRef = useRef(onVehicleUpdate);
@@ -2848,6 +2853,42 @@ export function SpeedMap({
           showRouteLinesRef.current &&
           routeLineModeRef.current === "bySeparation";
         if (isSpeedMode || isSepMode) return;
+
+        const isSegmentView =
+          viewModeRef.current === "segments" ||
+          viewModeRef.current === "segments-500" ||
+          viewModeRef.current === "segments-1000";
+
+        if (isSegmentView && map.current.getLayer("speed-segments")) {
+          const segmentLayerIds = [
+            "speed-segments",
+            "speed-segments-hitarea",
+          ].filter((id) => map.current?.getLayer(id));
+
+          if (segmentLayerIds.length > 0) {
+            const segmentFeatures = map.current.queryRenderedFeatures(e.point, {
+              layers: segmentLayerIds,
+            });
+
+            if (segmentFeatures.length > 0) {
+              const props = segmentFeatures[0].properties;
+              const segColor = getSpeedColor(props.avgSpeed);
+              const lineLabel = getRouteDisplayName(props.routeId, city);
+
+              popup.current
+                ?.setLngLat(e.lngLat)
+                .setHTML(
+                  `<div class="popup-content">
+                    <div class="popup-title">${lineLabel} Segment</div>
+                    <div class="popup-speed" style="color: ${segColor}">${formatAvgSpeedFromRef(props.avgSpeed)} avg</div>
+                    <div class="popup-detail">${props.sampleCount} readings</div>
+                  </div>`,
+                )
+                .addTo(map.current);
+              return;
+            }
+          }
+        }
 
         // In byLine mode, show route name
         const props = e.features[0].properties;
