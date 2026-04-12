@@ -1229,7 +1229,7 @@ export function Controls({
               checked={showStops}
               onChange={(e) => setShowStops(e.target.checked)}
             />
-            Show stations ◆
+            Stations ◆
           </label>
         </div>
         <div className="route-lines-toggle">
@@ -1251,7 +1251,7 @@ export function Controls({
               onMouseLeave={hideTooltip}
             >
               <input type="checkbox" checked={false} disabled />
-              Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
+              Grade crossings <span style={{ color: "#ff9500" }}>✕</span>
             </label>
           ) : (
             <label className="toggle-with-info-icon">
@@ -1261,7 +1261,7 @@ export function Controls({
                   checked={showCrossings}
                   onChange={(e) => setShowCrossings(e.target.checked)}
                 />
-                Show grade crossings <span style={{ color: "#ff9500" }}>✕</span>
+                Grade crossings <span style={{ color: "#ff9500" }}>✕</span>
               </span>
               <span
                 className="speed-by-line-info-icon"
@@ -1292,7 +1292,7 @@ export function Controls({
                 checked={showTrafficLights}
                 onChange={(e) => setShowTrafficLights(e.target.checked)}
               />
-              Show traffic lights 🚦
+              Traffic lights 🚦
             </span>
             <span
               className="speed-by-line-info-icon"
@@ -1321,7 +1321,7 @@ export function Controls({
               checked={showSwitches}
               onChange={(e) => setShowSwitches(e.target.checked)}
             />
-            Show track switches <span style={{ color: "#00d4ff" }}>Y</span>
+            Track switches <span style={{ color: "#00d4ff" }}>Y</span>
           </label>
         </div>
         {city === "SF" && (
@@ -1333,7 +1333,7 @@ export function Controls({
                   checked={showYards}
                   onChange={(e) => setShowYards(e.target.checked)}
                 />
-                Show yards <span style={{ color: "#f59e0b" }}>🔧</span>
+                Maintenance yards <span style={{ color: "#f59e0b" }}>🔧</span>
               </span>
               <span
                 className="speed-by-line-info-icon"
