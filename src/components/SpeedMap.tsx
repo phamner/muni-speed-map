@@ -2915,7 +2915,10 @@ export function SpeedMap({
         "traffic-lights",
         "crossings",
         "switches",
+        "yards-fill",
+        "yards-outline",
         "yards-symbol",
+        "yards-symbol-detail",
         "vehicles-glow",
         "vehicles",
       ];
@@ -4157,29 +4160,22 @@ export function SpeedMap({
     if (existingSource) {
       existingSource.setData(filteredYards as any);
       ensureYardWrenchIcon();
-      for (const layerId of ["yards-symbol"]) {
-        if (map.current.getLayer(layerId)) {
-          map.current.setLayoutProperty(
-            layerId,
-            "visibility",
-            showYards ? "visible" : "none",
-          );
-          map.current.setLayoutProperty(layerId, "icon-size", [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            9,
-            0.18,
-            11,
-            0.24,
-            13,
-            0.3,
-            15,
-            0.38,
-            17,
-            0.46,
-          ]);
-        }
+      for (const layerId of [
+        "yards-fill",
+        "yards-outline",
+        "yards-symbol",
+        "yards-symbol-detail",
+      ]) {
+        if (!map.current.getLayer(layerId)) continue;
+        map.current.setLayoutProperty(
+          layerId,
+          "visibility",
+          layerId === "yards-symbol-detail"
+            ? "none"
+            : showYards
+              ? "visible"
+              : "none",
+        );
       }
       return;
     }
@@ -4196,27 +4192,88 @@ export function SpeedMap({
       ensureYardWrenchIcon();
 
       map.current.addLayer({
+        id: "yards-fill",
+        type: "fill",
+        source: "yards",
+        filter: ["==", ["geometry-type"], "Polygon"],
+        paint: {
+          "fill-color": "#f59e0b",
+          "fill-opacity": 0.15,
+        },
+        layout: {
+          visibility: showYards ? "visible" : "none",
+        },
+      });
+
+      const yardSymbolZoomThreshold = 14;
+
+      map.current.addLayer({
+        id: "yards-outline",
+        type: "line",
+        source: "yards",
+        filter: ["==", ["geometry-type"], "Polygon"],
+        paint: {
+          "line-color": "#f59e0b",
+          "line-width": 2,
+          "line-opacity": 0.7,
+          "line-dasharray": [
+            "step",
+            ["zoom"],
+            ["literal", [1, 0]],
+            yardSymbolZoomThreshold,
+            ["literal", [4, 2]],
+          ],
+        },
+        layout: {
+          visibility: showYards ? "visible" : "none",
+        },
+      });
+
+      const yardIconSize: maplibregl.ExpressionSpecification = [
+        "interpolate",
+        ["linear"],
+        ["zoom"],
+        12, 0.24,
+        14, 0.30,
+        16, 0.38,
+        18, 0.46,
+      ];
+
+      map.current.addLayer({
         id: "yards-symbol",
         type: "symbol",
         source: "yards",
+        minzoom: yardSymbolZoomThreshold,
+        filter: ["all",
+          ["==", ["geometry-type"], "Point"],
+          ["any",
+            ["!", ["has", "detail"]],
+            ["==", ["get", "detail"], false],
+          ],
+        ],
         layout: {
           visibility: showYards ? "visible" : "none",
           "icon-image": "yards-wrench-icon",
-          "icon-size": [
-            "interpolate",
-            ["linear"],
-            ["zoom"],
-            9,
-            0.18,
-            11,
-            0.24,
-            13,
-            0.3,
-            15,
-            0.38,
-            17,
-            0.46,
-          ],
+          "icon-size": yardIconSize,
+          "icon-allow-overlap": true,
+          "icon-ignore-placement": true,
+        },
+      });
+
+      map.current.addLayer({
+        id: "yards-symbol-detail",
+        type: "symbol",
+        source: "yards",
+        minzoom: yardSymbolZoomThreshold,
+        filter: ["all",
+          ["==", ["geometry-type"], "Point"],
+          ["==", ["get", "detail"], true],
+        ],
+        layout: {
+          // Hide extra detail markers so we render a single wrench per yard.
+          visibility: "none",
+          "icon-image": "yards-wrench-icon",
+          "icon-size": yardIconSize,
           "icon-allow-overlap": true,
           "icon-ignore-placement": true,
         },
@@ -4224,7 +4281,7 @@ export function SpeedMap({
 
       if (!yardHandlersRegistered.current) {
         yardHandlersRegistered.current = true;
-        for (const layerId of ["yards-symbol"]) {
+        for (const layerId of ["yards-symbol", "yards-symbol-detail"]) {
           bindYardHandlers(layerId);
         }
       }
@@ -4618,7 +4675,10 @@ export function SpeedMap({
       "traffic-lights",
       "crossings",
       "switches",
+      "yards-fill",
+      "yards-outline",
       "yards-symbol",
+      "yards-symbol-detail",
       "stops",
       "stops-label",
     ];

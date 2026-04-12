@@ -20,6 +20,74 @@
     {
       "type": "Feature",
       "properties": {
+        "name": "Curtis E. Green Light Rail Center",
+        "short_name": "Green Yard",
+        "operator": "Muni",
+        "yard_type": "light_rail_yard",
+        "routes": ["J", "K", "L", "M", "N", "T"],
+        "location": "Balboa Park",
+        "notes": "Approximate yard boundary polygon"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.4467495, 37.7209300],
+          [-122.4466630, 37.7209517],
+          [-122.4466067, 37.7209798],
+          [-122.4465618, 37.7210255],
+          [-122.4452649, 37.7226172],
+          [-122.4452448, 37.7226830],
+          [-122.4452555, 37.7227413],
+          [-122.4452890, 37.7227784],
+          [-122.4453494, 37.7228187],
+          [-122.4453963, 37.7228495],
+          [-122.4454728, 37.7228654],
+          [-122.4470258, 37.7228750],
+          [-122.4470834, 37.7228368],
+          [-122.4471183, 37.7227986],
+          [-122.4471706, 37.7227498],
+          [-122.4471867, 37.7227021],
+          [-122.4471974, 37.7226649],
+          [-122.4473463, 37.7219415],
+          [-122.4473999, 37.7216338],
+          [-122.4474053, 37.7214843],
+          [-122.4473825, 37.7214005],
+          [-122.4473664, 37.7213326],
+          [-122.4472846, 37.7212063],
+          [-122.4470687, 37.7210313],
+          [-122.4467482, 37.7209295],
+          [-122.4467495, 37.7209300]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Curtis E. Green Light Rail Center",
+        "short_name": "Green Yard",
+        "operator": "Muni",
+        "yard_type": "light_rail_yard",
+        "routes": ["J", "K", "L", "M", "N", "T"],
+        "location": "Balboa Park",
+        "notes": "Approximate yard boundary polygon (Length: 0.404 km / 0.251 mi)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.4455492, 37.7201795],
+          [-122.4460334, 37.7194061],
+          [-122.4461152, 37.7194348],
+          [-122.4462546, 37.7194422],
+          [-122.4471854, 37.7198432],
+          [-122.4466033, 37.7205476],
+          [-122.4455519, 37.7201795],
+          [-122.4455492, 37.7201795]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "name": "Cameron Beach Yard",
         "short_name": "Cameron Beach",
         "operator": "Muni",
@@ -45,8 +113,65 @@
         "notes": "Modern light rail yard and maintenance facility"
       },
       "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.3866788, 37.7528329],
+          [-122.3864749, 37.7504831],
+          [-122.3856702, 37.7505224],
+          [-122.3856770, 37.7508468],
+          [-122.3855455, 37.7509794],
+          [-122.3839483, 37.7510876],
+          [-122.3841387, 37.7530089],
+          [-122.3866788, 37.7528329]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muni Metro East",
+        "short_name": "MME",
+        "operator": "Muni",
+        "yard_type": "light_rail_yard",
+        "routes": ["J", "K", "L", "M", "N", "T"],
+        "location": "Dogpatch",
+        "detail": false
+      },
+      "geometry": {
         "type": "Point",
-        "coordinates": [-122.38532, 37.75172]
+        "coordinates": [-122.3854, 37.7518]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muni Metro East",
+        "short_name": "MME",
+        "operator": "Muni",
+        "yard_type": "light_rail_yard",
+        "routes": ["J", "K", "L", "M", "N", "T"],
+        "location": "Dogpatch",
+        "detail": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.3862, 37.7524]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Muni Metro East",
+        "short_name": "MME",
+        "operator": "Muni",
+        "yard_type": "light_rail_yard",
+        "routes": ["J", "K", "L", "M", "N", "T"],
+        "location": "Dogpatch",
+        "detail": true
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.3845, 37.7512]
       }
     }
   ]
