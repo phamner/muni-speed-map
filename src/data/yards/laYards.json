@@ -1,0 +1,305 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 14 Maintenance and Storage Facility",
+        "short_name": "Division 14",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["804"],
+        "location": "Santa Monica"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.4612480, 34.0296709]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 14 Maintenance and Storage Facility",
+        "short_name": "Division 14",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["804"],
+        "location": "Santa Monica",
+        "notes": "Approximate yard boundary polygon (Length: 0.931 km / 0.578 mi)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.4649150, 34.0291390],
+          [-118.4647407, 34.0285632],
+          [-118.4639159, 34.0287344],
+          [-118.4635793, 34.0286633],
+          [-118.4613373, 34.0291077],
+          [-118.4611120, 34.0293044],
+          [-118.4605648, 34.0294189],
+          [-118.4607536, 34.0299848],
+          [-118.4649137, 34.0291378],
+          [-118.4649150, 34.0291390]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 16 Maintenance and Storage Facility",
+        "short_name": "Division 16",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["803", "807"],
+        "location": "Hawthorne"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.3804961, 33.9507356]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 16 Maintenance and Storage Facility",
+        "short_name": "Division 16",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["803", "807"],
+        "location": "Hawthorne",
+        "notes": "Approximate yard boundary polygon (Length: 1.362 km / 0.846 mi)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.3788536, 33.9524603],
+          [-118.3824009, 33.9524914],
+          [-118.3824009, 33.9510586],
+          [-118.3814514, 33.9510497],
+          [-118.3812448, 33.9510185],
+          [-118.3810303, 33.9509651],
+          [-118.3810329, 33.9509228],
+          [-118.3808559, 33.9508561],
+          [-118.3806601, 33.9507671],
+          [-118.3804965, 33.9506781],
+          [-118.3803141, 33.9505557],
+          [-118.3801907, 33.9504445],
+          [-118.3796784, 33.9499572],
+          [-118.3790964, 33.9493587],
+          [-118.3789811, 33.9492041],
+          [-118.3788872, 33.9490338],
+          [-118.3788161, 33.9488570],
+          [-118.3788402, 33.9495567],
+          [-118.3789033, 33.9495578],
+          [-118.3789113, 33.9497881],
+          [-118.3790039, 33.9497881],
+          [-118.3790146, 33.9500262],
+          [-118.3789274, 33.9500295],
+          [-118.3789207, 33.9502487],
+          [-118.3788456, 33.9502498],
+          [-118.3788536, 33.9524597],
+          [-118.3788536, 33.9524603]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 20 Maintenance and Storage Facility",
+        "short_name": "Division 20",
+        "operator": "LA Metro",
+        "yard_type": "subway_yard",
+        "routes": ["802", "805"],
+        "location": "Downtown Los Angeles"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.2307871, 34.0451748]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 20 Maintenance and Storage Facility",
+        "short_name": "Division 20",
+        "operator": "LA Metro",
+        "yard_type": "subway_yard",
+        "routes": ["802", "805"],
+        "location": "Downtown Los Angeles",
+        "notes": "Approximate yard boundary polygon (Length: 1.761 km / 1.094 mi)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.2323313, 34.0458857],
+          [-118.2315910, 34.0458532],
+          [-118.2319906, 34.0441774],
+          [-118.2320657, 34.0438218],
+          [-118.2325378, 34.0437907],
+          [-118.2325700, 34.0422941],
+          [-118.2324252, 34.0421474],
+          [-118.2319987, 34.0419229],
+          [-118.2317117, 34.0418274],
+          [-118.2314971, 34.0417451],
+          [-118.2313657, 34.0416851],
+          [-118.2300568, 34.0417651],
+          [-118.2308614, 34.0452945],
+          [-118.2312799, 34.0479481],
+          [-118.2318592, 34.0480370],
+          [-118.2322025, 34.0475569],
+          [-118.2323098, 34.0469347],
+          [-118.2323313, 34.0458857]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 22 Maintenance and Storage Facility",
+        "short_name": "Division 22",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["803", "807"],
+        "location": "Lawndale"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.3758589, 33.8976994]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 22 Maintenance and Storage Facility",
+        "short_name": "Division 22",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["803", "807"],
+        "location": "Lawndale",
+        "notes": "Approximate yard boundary polygon (Length: 0.995 km / 0.618 mi)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.3743811, 33.8982601],
+          [-118.3785278, 33.8982534],
+          [-118.3785345, 33.8971486],
+          [-118.3752823, 33.8971492],
+          [-118.3752809, 33.8976846],
+          [-118.3751388, 33.8977848],
+          [-118.3749846, 33.8978471],
+          [-118.3747526, 33.8979084],
+          [-118.3743744, 33.8979050],
+          [-118.3743804, 33.8982601],
+          [-118.3743811, 33.8982601]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 24 Maintenance and Storage Facility",
+        "short_name": "Division 24",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["801"],
+        "location": "Monrovia"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-117.9928298, 34.1337042]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 11 Maintenance and Storage Facility",
+        "short_name": "Division 11",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["801"],
+        "location": "Rancho Dominguez / North Long Beach",
+        "notes": "Point placeholder; polygon to be added"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-118.20775377380254, 33.83463012335056]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 11 Maintenance and Storage Facility",
+        "short_name": "Division 11",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["801"],
+        "location": "Rancho Dominguez / North Long Beach",
+        "notes": "Approximate yard boundary polygon (Length: 1.413 km / 0.878 mi)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-118.2073572, 33.8382288],
+          [-118.2082504, 33.8349872],
+          [-118.2084113, 33.8342809],
+          [-118.2085374, 33.8332761],
+          [-118.2084328, 33.8326500],
+          [-118.2075745, 33.8327213],
+          [-118.2075262, 33.8328171],
+          [-118.2066250, 33.8337974],
+          [-118.2066250, 33.8358583],
+          [-118.2063675, 33.8361635],
+          [-118.2062414, 33.8364331],
+          [-118.2062548, 33.8366470],
+          [-118.2068905, 33.8382020],
+          [-118.2073545, 33.8382288],
+          [-118.2073572, 33.8382288]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Metro Division 24 Maintenance and Storage Facility",
+        "short_name": "Division 24",
+        "operator": "LA Metro",
+        "yard_type": "light_rail_yard",
+        "routes": ["801"],
+        "location": "Monrovia",
+        "notes": "Approximate yard boundary polygon (Length: 1.173 km / 0.729 mi)"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-117.9948914, 34.1344773],
+          [-117.9942772, 34.1349524],
+          [-117.9913697, 34.1349302],
+          [-117.9908889, 34.1345567],
+          [-117.9908453, 34.1344995],
+          [-117.9908138, 34.1344101],
+          [-117.9908091, 34.1329565],
+          [-117.9908212, 34.1329232],
+          [-117.9908828, 34.1328166],
+          [-117.9909740, 34.1327201],
+          [-117.9910518, 34.1326601],
+          [-117.9911350, 34.1326446],
+          [-117.9912490, 34.1326279],
+          [-117.9916754, 34.1326224],
+          [-117.9924117, 34.1324647],
+          [-117.9933478, 34.1324603],
+          [-117.9941162, 34.1326235],
+          [-117.9945642, 34.1326446],
+          [-117.9946433, 34.1326734],
+          [-117.9947171, 34.1327067],
+          [-117.9947935, 34.1327756],
+          [-117.9948378, 34.1328466],
+          [-117.9948552, 34.1329099],
+          [-117.9948565, 34.1340089],
+          [-117.9948914, 34.1340111],
+          [-117.9948914, 34.1344773]
+        ]]
+      }
+    }
+  ]
+}

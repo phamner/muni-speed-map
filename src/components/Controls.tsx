@@ -1324,7 +1324,7 @@ export function Controls({
             Track switches <span style={{ color: "#00d4ff" }}>Y</span>
           </label>
         </div>
-        {city === "SF" && (
+        {(city === "SF" || city === "LA") && (
           <div className="route-lines-toggle">
             <label className="toggle-with-info-icon">
               <span className="toggle-label-content">
@@ -1340,13 +1340,13 @@ export function Controls({
                 onMouseEnter={(e) =>
                   showTooltip(
                     e,
-                    "Shows San Francisco's light rail yards as wrench markers.",
+                    "Shows rail maintenance yards as wrench markers.",
                   )
                 }
                 onClick={(e) =>
                   toggleTouchTooltip(
                     e,
-                    "Shows San Francisco's light rail yards as wrench markers.",
+                    "Shows rail maintenance yards as wrench markers.",
                   )
                 }
                 onMouseLeave={hideTooltip}
