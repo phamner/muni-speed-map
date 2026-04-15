@@ -5932,7 +5932,7 @@ export function SpeedMap({
     return () => {
       cancelled = true;
     };
-  }, [mapLoaded, showPopulationDensity, city]);
+  }, [mapLoaded, showPopulationDensity, city, styleGeneration]);
 
   // Separate effect for density mode and satellite opacity — GPU-only paint updates, no data reload
   useEffect(() => {
@@ -6083,7 +6083,7 @@ export function SpeedMap({
       "fill-opacity",
       opacityExpr,
     );
-  }, [mapLoaded, densityMode, isImageryBasemap, showPopulationDensity]);
+  }, [mapLoaded, densityMode, isImageryBasemap, showPopulationDensity, styleGeneration]);
 
   // Update speed limit labels when speed unit changes
   useEffect(() => {
