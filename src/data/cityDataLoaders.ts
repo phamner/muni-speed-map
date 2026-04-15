@@ -661,7 +661,6 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         routes,
         heritageRoutes,
         dLineExtension,
-        bLineOsm,
         stops,
         crossings,
         switches,
@@ -678,9 +677,6 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           default: { type: "FeatureCollection", features: [] },
         })),
         import("./routes/laDLineOsm.json").catch(() => ({
-          default: { type: "FeatureCollection", features: [] },
-        })),
-        import("./routes/laBLineOsm.json").catch(() => ({
           default: { type: "FeatureCollection", features: [] },
         })),
         import("./stops/laMetroStops.json"),
@@ -831,82 +827,6 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
                 geometry: {
                   type: "LineString",
                   coordinates: [...secondary].reverse(),
-                },
-              },
-            ],
-          };
-        }
-      }
-
-      // --- B Line (Red) ORM replacement ---
-      // Replace GTFS route 802 geometry with OpenRailwayMap data for accurate
-      // two-track geometry from North Hollywood → Union Station.
-      // After changing this, run:  npm run backfill:segments -- --city LA --route 802 --force
-      const bLineOsmFeatures = bLineOsm.default?.features || [];
-      const bLineOsmSegments: Array<Array<[number, number]>> =
-        bLineOsmFeatures
-          .map((feature: any) => feature?.geometry?.coordinates)
-          .filter((coords: any) => Array.isArray(coords) && coords.length >= 2);
-
-      const bLineOsmChains = mergeLineSegmentsIntoChains(bLineOsmSegments);
-
-      if (bLineOsmChains.length >= 2) {
-        const baseFeatures = rebuiltLaRoutes?.features || [];
-
-        // Pick the two longest chains (full-route), orient NW→SE (decreasing lat)
-        const sortedBChains = [...bLineOsmChains]
-          .sort((a, b) => b.length - a.length)
-          .slice(0, 2)
-          .map(orientWestToEast); // NW end has smaller lon → orients NW→SE
-
-        const bPrimary = sortedBChains[0] || [];
-        const bSecondary = sortedBChains[1] || [];
-
-        if (bPrimary.length >= 2 && bSecondary.length >= 2) {
-          const bLineBase = baseFeatures.find(
-            (feature: any) => String(feature?.properties?.route_id) === "802",
-          );
-          const bBaseProps = bLineBase?.properties || {
-            route_id: "802",
-            route_name: "B Line (Red)",
-            route_color: "#E3131B",
-          };
-
-          const nonBLineFeatures = baseFeatures.filter(
-            (feature: any) => String(feature?.properties?.route_id) !== "802",
-          );
-
-          // Primary NW→SE = outbound (direction 0), reversed = inbound (direction 1)
-          rebuiltLaRoutes = {
-            ...rebuiltLaRoutes,
-            features: [
-              ...nonBLineFeatures,
-              {
-                type: "Feature",
-                properties: {
-                  ...bBaseProps,
-                  shape_id: "802OSM_FULL_OUTBOUND",
-                  direction_id: "0",
-                  direction: "outbound",
-                  source: "OpenStreetMap/OpenRailwayMap",
-                } as any,
-                geometry: {
-                  type: "LineString",
-                  coordinates: bPrimary,
-                },
-              },
-              {
-                type: "Feature",
-                properties: {
-                  ...bBaseProps,
-                  shape_id: "802OSM_FULL_INBOUND",
-                  direction_id: "1",
-                  direction: "inbound",
-                  source: "OpenStreetMap/OpenRailwayMap",
-                } as any,
-                geometry: {
-                  type: "LineString",
-                  coordinates: [...bSecondary].reverse(),
                 },
               },
             ],

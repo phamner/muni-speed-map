@@ -224,49 +224,6 @@ function mergeDLineExtension(laRoutes) {
 
 // --- End D Line helpers ---
 
-// --- B Line (Red) ORM replacement (must match cityDataLoaders.ts logic) ---
-function mergeBLineOsm(laRoutes) {
-  let osmData;
-  try {
-    const osmPath = path.join(ROOT, "src/data/routes/laBLineOsm.json");
-    const content = readFileSync(osmPath, "utf8");
-    osmData = JSON.parse(content);
-  } catch (err) {
-    console.log("⚠️  B Line ORM file not found, skipping merge:", err.message);
-    return laRoutes;
-  }
-
-  const segments = (osmData.features || [])
-    .map((f) => f.geometry?.coordinates)
-    .filter((c) => c && c.length >= 2);
-  const chains = mergeLineSegmentsIntoChains(segments);
-  if (chains.length < 2) { console.log("⚠️  Not enough B Line chains"); return laRoutes; }
-
-  const features = laRoutes.features || [];
-
-  // Pick the two longest chains, orient NW→SE (west-to-east)
-  const sortedChains = [...chains].sort((a, b) => b.length - a.length).slice(0, 2).map(orientWestToEast);
-  const bPrimary = sortedChains[0] || [];
-  const bSecondary = sortedChains[1] || [];
-
-  if (bPrimary.length < 2 || bSecondary.length < 2) return laRoutes;
-
-  const bLineBase = features.find((f) => String(f.properties?.route_id) === "802");
-  const bBaseProps = bLineBase?.properties || { route_id: "802", route_name: "B Line (Red)", route_color: "#E3131B" };
-  const nonBLine = features.filter((f) => String(f.properties?.route_id) !== "802");
-
-  console.log(`✅ B Line ORM merged: outbound ${bPrimary.length} pts, inbound ${bSecondary.length} pts`);
-  return {
-    ...laRoutes,
-    features: [
-      ...nonBLine,
-      { type: "Feature", properties: { ...bBaseProps, shape_id: "802OSM_FULL_OUTBOUND", direction_id: "0", direction: "outbound", source: "OpenStreetMap/OpenRailwayMap" }, geometry: { type: "LineString", coordinates: bPrimary } },
-      { type: "Feature", properties: { ...bBaseProps, shape_id: "802OSM_FULL_INBOUND", direction_id: "1", direction: "inbound", source: "OpenStreetMap/OpenRailwayMap" }, geometry: { type: "LineString", coordinates: [...bSecondary].reverse() } },
-    ],
-  };
-}
-// --- End B Line helpers ---
-
 async function loadRouteCollections() {
   const routeCollections = new Map();
   const routeIdsByCity = new Map();
@@ -281,7 +238,6 @@ async function loadRouteCollections() {
     // Merge D Line extension so segment IDs match the renderer
     if (city === "LA") {
       merged = mergeDLineExtension(merged);
-      merged = mergeBLineOsm(merged);
     }
 
     routeCollections.set(city, merged);
