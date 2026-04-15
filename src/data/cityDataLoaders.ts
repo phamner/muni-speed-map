@@ -813,7 +813,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
                   direction_id: "0",
                   direction: "outbound",
                   source: "OpenStreetMap/OpenRailwayMap",
-                },
+                } as any,
                 geometry: {
                   type: "LineString",
                   coordinates: primary,
@@ -827,7 +827,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
                   direction_id: "1",
                   direction: "inbound",
                   source: "OpenStreetMap/OpenRailwayMap",
-                },
+                } as any,
                 geometry: {
                   type: "LineString",
                   coordinates: [...secondary].reverse(),
@@ -889,7 +889,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
                   direction_id: "0",
                   direction: "outbound",
                   source: "OpenStreetMap/OpenRailwayMap",
-                },
+                } as any,
                 geometry: {
                   type: "LineString",
                   coordinates: bPrimary,
@@ -903,7 +903,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
                   direction_id: "1",
                   direction: "inbound",
                   source: "OpenStreetMap/OpenRailwayMap",
-                },
+                } as any,
                 geometry: {
                   type: "LineString",
                   coordinates: [...bSecondary].reverse(),
