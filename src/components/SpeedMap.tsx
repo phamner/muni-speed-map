@@ -5445,34 +5445,37 @@ export function SpeedMap({
     loadPopulationDensity(city).then((rawData) => {
       if (cancelled || !map.current || !rawData) return;
 
-      try {
-        const MIN_WORKERS_FOR_TRANSIT_PCT = 100;
-        const processedData = {
-          ...rawData,
-          features: rawData.features.map((f: any) => {
-            const areaKm2 =
-              f.properties.AREALAND > 0 ? f.properties.AREALAND / 1000000 : 0;
-            const totalWorkers = f.properties.TOTAL_WORKERS || 0;
-            return {
-              ...f,
-              properties: {
-                ...f.properties,
-                density:
-                  areaKm2 > 0 ? Math.round(f.properties.POP100 / areaKm2) : 0,
-                jobDensity:
-                  areaKm2 > 0
-                    ? Math.round((f.properties.JOBS || 0) / areaKm2)
-                    : 0,
-                TRANSIT_PCT_RAW: f.properties.TRANSIT_PCT || 0,
-                TRANSIT_PCT:
-                  totalWorkers >= MIN_WORKERS_FOR_TRANSIT_PCT
-                    ? f.properties.TRANSIT_PCT || 0
-                    : 0,
-              },
-            };
-          }),
-        };
+      const MIN_WORKERS_FOR_TRANSIT_PCT = 100;
+      const processedData = {
+        ...rawData,
+        features: rawData.features.map((f: any) => {
+          const areaKm2 =
+            f.properties.AREALAND > 0 ? f.properties.AREALAND / 1000000 : 0;
+          const totalWorkers = f.properties.TOTAL_WORKERS || 0;
+          return {
+            ...f,
+            properties: {
+              ...f.properties,
+              density:
+                areaKm2 > 0 ? Math.round(f.properties.POP100 / areaKm2) : 0,
+              jobDensity:
+                areaKm2 > 0
+                  ? Math.round((f.properties.JOBS || 0) / areaKm2)
+                  : 0,
+              TRANSIT_PCT_RAW: f.properties.TRANSIT_PCT || 0,
+              TRANSIT_PCT:
+                totalWorkers >= MIN_WORKERS_FOR_TRANSIT_PCT
+                  ? f.properties.TRANSIT_PCT || 0
+                  : 0,
+            },
+          };
+        }),
+      };
 
+      const setupDensityLayers = () => {
+        if (cancelled || !map.current) return;
+
+      try {
         const existingSource = map.current.getSource(
           "census-tracts",
         ) as maplibregl.GeoJSONSource;
@@ -5926,6 +5929,23 @@ export function SpeedMap({
         }
       } catch (e) {
         console.error("Error setting up population density layer:", e);
+      }
+      }; // end setupDensityLayers
+
+      // Wait for style to be loaded and routes layer to exist before adding census layers
+      const waitAndSetup = () => {
+        if (cancelled || !map.current) return;
+        if (map.current.isStyleLoaded() && map.current.getLayer("routes")) {
+          setupDensityLayers();
+        } else {
+          setTimeout(waitAndSetup, 50);
+        }
+      };
+
+      if (map.current.isStyleLoaded() && map.current.getLayer("routes")) {
+        setupDensityLayers();
+      } else {
+        setTimeout(waitAndSetup, 50);
       }
     });
 
