@@ -78,6 +78,69 @@ function mergeRouteCollections(...collections: Array<any | null | undefined>): a
   };
 }
 
+function coordinateKey(coord: [number, number]): string {
+  return `${coord[0].toFixed(7)},${coord[1].toFixed(7)}`;
+}
+
+function mergeLineSegmentsIntoChains(
+  lineStrings: Array<Array<[number, number]>>,
+): Array<Array<[number, number]>> {
+  const chains = lineStrings
+    .filter((line) => Array.isArray(line) && line.length >= 2)
+    .map((line) => [...line]);
+
+  let merged = true;
+  while (merged) {
+    merged = false;
+    for (let i = 0; i < chains.length; i += 1) {
+      if (!chains[i]) continue;
+      for (let j = i + 1; j < chains.length; j += 1) {
+        if (!chains[j]) continue;
+
+        const a = chains[i];
+        const b = chains[j];
+        const aStart = coordinateKey(a[0]);
+        const aEnd = coordinateKey(a[a.length - 1]);
+        const bStart = coordinateKey(b[0]);
+        const bEnd = coordinateKey(b[b.length - 1]);
+
+        let combined: Array<[number, number]> | null = null;
+
+        if (aEnd === bStart) {
+          combined = [...a, ...b.slice(1)];
+        } else if (aEnd === bEnd) {
+          combined = [...a, ...[...b].reverse().slice(1)];
+        } else if (aStart === bEnd) {
+          combined = [...b, ...a.slice(1)];
+        } else if (aStart === bStart) {
+          combined = [...[...b].reverse(), ...a.slice(1)];
+        }
+
+        if (combined) {
+          chains[i] = combined;
+          chains[j] = null as unknown as Array<[number, number]>;
+          merged = true;
+        }
+      }
+    }
+  }
+
+  return chains.filter(Boolean).sort((a, b) => b.length - a.length);
+}
+
+function orientWestToEast(line: Array<[number, number]>): Array<[number, number]> {
+  if (line.length < 2) return line;
+  return line[0][0] <= line[line.length - 1][0] ? line : [...line].reverse();
+}
+
+function maxLon(line: Array<[number, number]>): number {
+  return Math.max(...line.map((coord) => coord[0]));
+}
+
+function minLon(line: Array<[number, number]>): number {
+  return Math.min(...line.map((coord) => coord[0]));
+}
+
 function splitSfRouteAtExtremum(
   routes: any,
   routeId: string,
@@ -597,6 +660,8 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       const [
         routes,
         heritageRoutes,
+        dLineExtension,
+        bLineOsm,
         stops,
         crossings,
         switches,
@@ -610,6 +675,12 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
       ] = await Promise.all([
         import("./routes/laMetroRoutes.json"),
         import("./routes/laHeritageLocalCirculatorRoutes.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
+        import("./routes/laDLineOsm.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
+        import("./routes/laBLineOsm.json").catch(() => ({
           default: { type: "FeatureCollection", features: [] },
         })),
         import("./stops/laMetroStops.json"),
@@ -639,8 +710,215 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         };
       }
 
+      // Replace D Line (route 805) GTFS geometry with full ORM data so we get
+      // two clean parallel tracks from VA Hospital → Union Station.
+      // After changing this, run:  npm run backfill:segments -- --city LA --route 805 --force
+      const baseLaRoutes = routes.default;
+      const dLineOsmFeatures = dLineExtension.default?.features || [];
+      const dLineOsmSegments: Array<Array<[number, number]>> =
+        dLineOsmFeatures
+          .map((feature: any) => feature?.geometry?.coordinates)
+          .filter((coords: any) => Array.isArray(coords) && coords.length >= 2);
+
+      const dLineOsmChains = mergeLineSegmentsIntoChains(dLineOsmSegments);
+
+      let rebuiltLaRoutes = baseLaRoutes;
+      if (dLineOsmChains.length >= 2) {
+        const baseFeatures = baseLaRoutes?.features || [];
+
+        // Pick the two longest chains that span the full corridor
+        const westReachingChains = dLineOsmChains
+          .filter((chain) => minLon(chain) < -118.40)
+          .map(orientWestToEast)
+          .sort((a, b) => b.length - a.length);
+
+        let primary = westReachingChains[0] || [];
+        let secondary = westReachingChains[1] || [];
+
+        // If secondary is shorter (OSM gap), bridge it with eastern fragments
+        // using the primary's geometry offset by the track separation so the
+        // bridge follows the curve instead of cutting across.
+        if (
+          secondary.length >= 2 &&
+          maxLon(secondary) < maxLon(primary) - 0.005
+        ) {
+          const eastFragments = dLineOsmChains
+            .filter((chain) => chain.length >= 2 && minLon(chain) >= -118.40)
+            .map(orientWestToEast)
+            .sort((a, b) => b.length - a.length);
+
+          for (const frag of eastFragments) {
+            const secEnd = secondary[secondary.length - 1];
+            const gap = Math.abs(frag[0][0] - secEnd[0]);
+            if (gap < 0.04) {
+              // Interpolate the primary's latitude at a given longitude
+              const interpPrimaryLat = (lon: number): number => {
+                for (let k = 1; k < primary.length; k++) {
+                  const prev = primary[k - 1];
+                  const cur = primary[k];
+                  if ((prev[0] <= lon && cur[0] >= lon) || (cur[0] <= lon && prev[0] >= lon)) {
+                    const span = cur[0] - prev[0];
+                    if (Math.abs(span) < 1e-10) return prev[1];
+                    const t = (lon - prev[0]) / span;
+                    return prev[1] + t * (cur[1] - prev[1]);
+                  }
+                }
+                return lon; // fallback (shouldn't happen)
+              };
+
+              // Measure the lat offset (secondary − primary) at both gap endpoints
+              const startOffset = secEnd[1] - interpPrimaryLat(secEnd[0]);
+              const endOffset = frag[0][1] - interpPrimaryLat(frag[0][0]);
+
+              // Build bridge points by offsetting the primary's coords in the gap
+              const bridgePoints: Array<[number, number]> = primary
+                .filter((p) => p[0] > secEnd[0] && p[0] < frag[0][0])
+                .map((p) => {
+                  const t = (p[0] - secEnd[0]) / (frag[0][0] - secEnd[0]);
+                  const offset = startOffset + t * (endOffset - startOffset);
+                  return [p[0], p[1] + offset] as [number, number];
+                });
+
+              secondary = [...secondary, ...bridgePoints, ...frag];
+              break;
+            }
+          }
+        }
+
+        if (primary.length >= 2 && secondary.length >= 2) {
+          // Get base D Line feature for property templates
+          const dLineBase = baseFeatures.find(
+            (feature: any) => String(feature?.properties?.route_id) === "805",
+          );
+          const baseProps = dLineBase?.properties || {
+            route_id: "805",
+            route_name: "D Line (Purple)",
+            route_color: "#A05DA5",
+          };
+
+          const nonDLineFeatures = baseFeatures.filter(
+            (feature: any) => String(feature?.properties?.route_id) !== "805",
+          );
+
+          // Primary is outbound (west→east), secondary reversed is inbound (east→west)
+          rebuiltLaRoutes = {
+            ...baseLaRoutes,
+            features: [
+              ...nonDLineFeatures,
+              {
+                type: "Feature",
+                properties: {
+                  ...baseProps,
+                  shape_id: "805OSM_FULL_EASTBOUND",
+                  direction_id: "0",
+                  direction: "outbound",
+                  source: "OpenStreetMap/OpenRailwayMap",
+                },
+                geometry: {
+                  type: "LineString",
+                  coordinates: primary,
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ...baseProps,
+                  shape_id: "805OSM_FULL_WESTBOUND",
+                  direction_id: "1",
+                  direction: "inbound",
+                  source: "OpenStreetMap/OpenRailwayMap",
+                },
+                geometry: {
+                  type: "LineString",
+                  coordinates: [...secondary].reverse(),
+                },
+              },
+            ],
+          };
+        }
+      }
+
+      // --- B Line (Red) ORM replacement ---
+      // Replace GTFS route 802 geometry with OpenRailwayMap data for accurate
+      // two-track geometry from North Hollywood → Union Station.
+      // After changing this, run:  npm run backfill:segments -- --city LA --route 802 --force
+      const bLineOsmFeatures = bLineOsm.default?.features || [];
+      const bLineOsmSegments: Array<Array<[number, number]>> =
+        bLineOsmFeatures
+          .map((feature: any) => feature?.geometry?.coordinates)
+          .filter((coords: any) => Array.isArray(coords) && coords.length >= 2);
+
+      const bLineOsmChains = mergeLineSegmentsIntoChains(bLineOsmSegments);
+
+      if (bLineOsmChains.length >= 2) {
+        const baseFeatures = rebuiltLaRoutes?.features || [];
+
+        // Pick the two longest chains (full-route), orient NW→SE (decreasing lat)
+        const sortedBChains = [...bLineOsmChains]
+          .sort((a, b) => b.length - a.length)
+          .slice(0, 2)
+          .map(orientWestToEast); // NW end has smaller lon → orients NW→SE
+
+        const bPrimary = sortedBChains[0] || [];
+        const bSecondary = sortedBChains[1] || [];
+
+        if (bPrimary.length >= 2 && bSecondary.length >= 2) {
+          const bLineBase = baseFeatures.find(
+            (feature: any) => String(feature?.properties?.route_id) === "802",
+          );
+          const bBaseProps = bLineBase?.properties || {
+            route_id: "802",
+            route_name: "B Line (Red)",
+            route_color: "#E3131B",
+          };
+
+          const nonBLineFeatures = baseFeatures.filter(
+            (feature: any) => String(feature?.properties?.route_id) !== "802",
+          );
+
+          // Primary NW→SE = outbound (direction 0), reversed = inbound (direction 1)
+          rebuiltLaRoutes = {
+            ...rebuiltLaRoutes,
+            features: [
+              ...nonBLineFeatures,
+              {
+                type: "Feature",
+                properties: {
+                  ...bBaseProps,
+                  shape_id: "802OSM_FULL_OUTBOUND",
+                  direction_id: "0",
+                  direction: "outbound",
+                  source: "OpenStreetMap/OpenRailwayMap",
+                },
+                geometry: {
+                  type: "LineString",
+                  coordinates: bPrimary,
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ...bBaseProps,
+                  shape_id: "802OSM_FULL_INBOUND",
+                  direction_id: "1",
+                  direction: "inbound",
+                  source: "OpenStreetMap/OpenRailwayMap",
+                },
+                geometry: {
+                  type: "LineString",
+                  coordinates: [...bSecondary].reverse(),
+                },
+              },
+            ],
+          };
+        }
+      }
+
       return {
-        routes: mergeRouteCollections(routes.default, heritageRoutes.default),
+        routes: mergeRouteCollections(
+          rebuiltLaRoutes,
+          heritageRoutes.default,
+        ),
         stops: stops.default,
         crossings: crossings.default,
         switches: switches.default,

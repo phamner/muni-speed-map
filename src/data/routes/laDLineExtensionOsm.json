@@ -1,0 +1,1600 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_295760351",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 295760351,
+        "osm_name": "Purple Line Extension (Phase 1 of 3)",
+        "osm_railway": "subway",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.311106,
+            34.0617426
+          ],
+          [
+            -118.3176011,
+            34.0617483
+          ],
+          [
+            -118.3238856,
+            34.0618838
+          ],
+          [
+            -118.3405847,
+            34.0622204
+          ],
+          [
+            -118.3423245,
+            34.0622549
+          ],
+          [
+            -118.3429373,
+            34.062267
+          ],
+          [
+            -118.3438855,
+            34.0622858
+          ],
+          [
+            -118.3440037,
+            34.0622881
+          ],
+          [
+            -118.3570932,
+            34.062561
+          ],
+          [
+            -118.3575057,
+            34.062608
+          ],
+          [
+            -118.3611638,
+            34.0630243
+          ],
+          [
+            -118.3711718,
+            34.0641308
+          ],
+          [
+            -118.3720606,
+            34.0642718
+          ],
+          [
+            -118.3729649,
+            34.0644333
+          ],
+          [
+            -118.3745235,
+            34.0648194
+          ],
+          [
+            -118.3751667,
+            34.0649787
+          ],
+          [
+            -118.3756779,
+            34.0651054
+          ],
+          [
+            -118.375943,
+            34.0651659
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_629183606",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 629183606,
+        "osm_name": "Purple Line Extension (Phase 2 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.375943,
+            34.0651659
+          ],
+          [
+            -118.3776632,
+            34.0656031
+          ],
+          [
+            -118.3803396,
+            34.0662796
+          ],
+          [
+            -118.3826595,
+            34.0668436
+          ],
+          [
+            -118.3836681,
+            34.0670302
+          ],
+          [
+            -118.3846673,
+            34.0671065
+          ],
+          [
+            -118.3923448,
+            34.0671105
+          ],
+          [
+            -118.3964071,
+            34.0671102
+          ],
+          [
+            -118.3969644,
+            34.0671102
+          ],
+          [
+            -118.4066199,
+            34.0671096
+          ],
+          [
+            -118.4068641,
+            34.067102
+          ],
+          [
+            -118.4071075,
+            34.0670858
+          ],
+          [
+            -118.4074002,
+            34.0670463
+          ],
+          [
+            -118.4076879,
+            34.0669852
+          ],
+          [
+            -118.407971,
+            34.066902
+          ],
+          [
+            -118.4082432,
+            34.0667981
+          ],
+          [
+            -118.4085029,
+            34.0666743
+          ],
+          [
+            -118.4087495,
+            34.0665307
+          ],
+          [
+            -118.4089821,
+            34.066367
+          ],
+          [
+            -118.4091931,
+            34.0661885
+          ],
+          [
+            -118.4093853,
+            34.0659931
+          ],
+          [
+            -118.4095533,
+            34.0657862
+          ],
+          [
+            -118.4096859,
+            34.0655879
+          ],
+          [
+            -118.4097978,
+            34.065382
+          ],
+          [
+            -118.4098876,
+            34.0651728
+          ],
+          [
+            -118.4099576,
+            34.0649552
+          ],
+          [
+            -118.4100031,
+            34.0647494
+          ],
+          [
+            -118.4100392,
+            34.0645329
+          ],
+          [
+            -118.4101383,
+            34.0637096
+          ],
+          [
+            -118.4101676,
+            34.0635218
+          ],
+          [
+            -118.4102056,
+            34.0633355
+          ],
+          [
+            -118.4102867,
+            34.0630661
+          ],
+          [
+            -118.4103974,
+            34.0628034
+          ],
+          [
+            -118.4105366,
+            34.0625503
+          ],
+          [
+            -118.4107046,
+            34.062307
+          ],
+          [
+            -118.4109037,
+            34.0620725
+          ],
+          [
+            -118.4111312,
+            34.0618523
+          ],
+          [
+            -118.4113821,
+            34.0616518
+          ],
+          [
+            -118.411654,
+            34.0614724
+          ],
+          [
+            -118.411857,
+            34.0613594
+          ],
+          [
+            -118.4120634,
+            34.0612547
+          ],
+          [
+            -118.4130378,
+            34.0607855
+          ],
+          [
+            -118.4134329,
+            34.0605805
+          ],
+          [
+            -118.4137634,
+            34.060382
+          ],
+          [
+            -118.4140785,
+            34.0601633
+          ],
+          [
+            -118.4144973,
+            34.0598524
+          ],
+          [
+            -118.4151856,
+            34.0593415
+          ],
+          [
+            -118.4168739,
+            34.0580884
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_629185987",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 629185987,
+        "osm_name": "Purple Line Extension (Phase 3 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4168739,
+            34.0580884
+          ],
+          [
+            -118.4171884,
+            34.0578739
+          ],
+          [
+            -118.4175815,
+            34.0576729
+          ],
+          [
+            -118.4180038,
+            34.0575213
+          ],
+          [
+            -118.4184471,
+            34.0574217
+          ],
+          [
+            -118.4189021,
+            34.0573756
+          ],
+          [
+            -118.4193582,
+            34.0573837
+          ],
+          [
+            -118.4198083,
+            34.0574455
+          ],
+          [
+            -118.4203466,
+            34.0575918
+          ],
+          [
+            -118.4227339,
+            34.0584394
+          ],
+          [
+            -118.4238705,
+            34.0587982
+          ],
+          [
+            -118.4249258,
+            34.0590762
+          ],
+          [
+            -118.4328251,
+            34.0608978
+          ],
+          [
+            -118.4332458,
+            34.0609784
+          ],
+          [
+            -118.4336726,
+            34.061034
+          ],
+          [
+            -118.4341012,
+            34.0610641
+          ],
+          [
+            -118.4345329,
+            34.0610689
+          ],
+          [
+            -118.4349624,
+            34.0610481
+          ],
+          [
+            -118.4353905,
+            34.0610019
+          ],
+          [
+            -118.4358151,
+            34.0609302
+          ],
+          [
+            -118.4362374,
+            34.0608321
+          ],
+          [
+            -118.4476191,
+            34.0579453
+          ],
+          [
+            -118.4480957,
+            34.0578047
+          ],
+          [
+            -118.4485468,
+            34.0576277
+          ],
+          [
+            -118.4489714,
+            34.057424
+          ],
+          [
+            -118.4493474,
+            34.0572044
+          ],
+          [
+            -118.4497202,
+            34.0569619
+          ],
+          [
+            -118.4499782,
+            34.0567654
+          ],
+          [
+            -118.4509407,
+            34.0560324
+          ],
+          [
+            -118.4512359,
+            34.0557821
+          ],
+          [
+            -118.4514838,
+            34.0556059
+          ],
+          [
+            -118.4517432,
+            34.0554411
+          ],
+          [
+            -118.4547659,
+            34.0537941
+          ],
+          [
+            -118.4554609,
+            34.0534154
+          ],
+          [
+            -118.456574,
+            34.052809
+          ],
+          [
+            -118.45711,
+            34.0524691
+          ],
+          [
+            -118.4576522,
+            34.0520899
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_664015305",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": false,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 664015305,
+        "osm_name": "Metro D Line",
+        "osm_railway": "subway",
+        "osm_construction": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.2939891,
+            34.0634826
+          ],
+          [
+            -118.2941487,
+            34.0634199
+          ],
+          [
+            -118.2970131,
+            34.0621428
+          ],
+          [
+            -118.2973694,
+            34.0620082
+          ],
+          [
+            -118.2977428,
+            34.0619095
+          ],
+          [
+            -118.2981272,
+            34.0618482
+          ],
+          [
+            -118.2985179,
+            34.0618247
+          ],
+          [
+            -118.3018049,
+            34.0617829
+          ],
+          [
+            -118.3059781,
+            34.0617605
+          ],
+          [
+            -118.3065885,
+            34.0617572
+          ],
+          [
+            -118.3071563,
+            34.0617542
+          ],
+          [
+            -118.3089071,
+            34.0617448
+          ],
+          [
+            -118.311106,
+            34.0617426
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_664015313",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 664015313,
+        "osm_name": "Purple Line Extension (Phase 3 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4575762,
+            34.0520046
+          ],
+          [
+            -118.4570304,
+            34.0523855
+          ],
+          [
+            -118.4564907,
+            34.0527273
+          ],
+          [
+            -118.4553912,
+            34.0533266
+          ],
+          [
+            -118.4546944,
+            34.0537064
+          ],
+          [
+            -118.4516763,
+            34.0553513
+          ],
+          [
+            -118.4514104,
+            34.0555189
+          ],
+          [
+            -118.4511561,
+            34.0556979
+          ],
+          [
+            -118.4508504,
+            34.0559564
+          ],
+          [
+            -118.4498897,
+            34.0566885
+          ],
+          [
+            -118.4496409,
+            34.0568781
+          ],
+          [
+            -118.4492663,
+            34.0571223
+          ],
+          [
+            -118.4489002,
+            34.0573353
+          ],
+          [
+            -118.4484925,
+            34.0575316
+          ],
+          [
+            -118.4480471,
+            34.0577061
+          ],
+          [
+            -118.4475801,
+            34.0578435
+          ],
+          [
+            -118.4362037,
+            34.0607304
+          ],
+          [
+            -118.4357911,
+            34.060826
+          ],
+          [
+            -118.4353724,
+            34.0608966
+          ],
+          [
+            -118.4349513,
+            34.0609418
+          ],
+          [
+            -118.4345276,
+            34.0609621
+          ],
+          [
+            -118.4341039,
+            34.0609573
+          ],
+          [
+            -118.4336858,
+            34.0609279
+          ],
+          [
+            -118.4332663,
+            34.0608734
+          ],
+          [
+            -118.4328503,
+            34.0607937
+          ],
+          [
+            -118.4249725,
+            34.0589761
+          ],
+          [
+            -118.4239154,
+            34.0586982
+          ],
+          [
+            -118.4227812,
+            34.0583396
+          ],
+          [
+            -118.420391,
+            34.0574924
+          ],
+          [
+            -118.4198329,
+            34.0573411
+          ],
+          [
+            -118.4193622,
+            34.0572772
+          ],
+          [
+            -118.4188884,
+            34.0572697
+          ],
+          [
+            -118.4184193,
+            34.0573178
+          ],
+          [
+            -118.4179601,
+            34.0574216
+          ],
+          [
+            -118.4175226,
+            34.0575791
+          ],
+          [
+            -118.4171146,
+            34.0577881
+          ],
+          [
+            -118.4167913,
+            34.0580088
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_664015314",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 664015314,
+        "osm_name": "Purple Line Extension (Phase 2 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4167913,
+            34.0580088
+          ],
+          [
+            -118.4151007,
+            34.0592623
+          ],
+          [
+            -118.4144136,
+            34.0597717
+          ],
+          [
+            -118.4139959,
+            34.0600814
+          ],
+          [
+            -118.4136855,
+            34.0602961
+          ],
+          [
+            -118.4133593,
+            34.0604928
+          ],
+          [
+            -118.4129703,
+            34.0606945
+          ],
+          [
+            -118.4119955,
+            34.0611629
+          ],
+          [
+            -118.4117838,
+            34.0612724
+          ],
+          [
+            -118.4115757,
+            34.0613875
+          ],
+          [
+            -118.4112965,
+            34.0615716
+          ],
+          [
+            -118.4110386,
+            34.0617774
+          ],
+          [
+            -118.4108018,
+            34.0620063
+          ],
+          [
+            -118.4105908,
+            34.0622553
+          ],
+          [
+            -118.4104176,
+            34.0625075
+          ],
+          [
+            -118.4102744,
+            34.0627696
+          ],
+          [
+            -118.4101612,
+            34.0630403
+          ],
+          [
+            -118.4100794,
+            34.0633164
+          ],
+          [
+            -118.41004,
+            34.0635083
+          ],
+          [
+            -118.4100107,
+            34.0637024
+          ],
+          [
+            -118.4099101,
+            34.0645174
+          ],
+          [
+            -118.4098753,
+            34.0647319
+          ],
+          [
+            -118.4098303,
+            34.0649354
+          ],
+          [
+            -118.4097634,
+            34.0651427
+          ],
+          [
+            -118.4096758,
+            34.0653461
+          ],
+          [
+            -118.4095683,
+            34.0655429
+          ],
+          [
+            -118.4094415,
+            34.0657322
+          ],
+          [
+            -118.409281,
+            34.0659296
+          ],
+          [
+            -118.4090978,
+            34.0661159
+          ],
+          [
+            -118.4088931,
+            34.066289
+          ],
+          [
+            -118.4086661,
+            34.0664484
+          ],
+          [
+            -118.4084309,
+            34.0665849
+          ],
+          [
+            -118.4081801,
+            34.066704
+          ],
+          [
+            -118.4079183,
+            34.0668035
+          ],
+          [
+            -118.4076459,
+            34.0668832
+          ],
+          [
+            -118.407372,
+            34.0669411
+          ],
+          [
+            -118.407092,
+            34.0669787
+          ],
+          [
+            -118.4068531,
+            34.0669942
+          ],
+          [
+            -118.4066117,
+            34.0670032
+          ],
+          [
+            -118.3969619,
+            34.0670185
+          ],
+          [
+            -118.3964056,
+            34.0670194
+          ],
+          [
+            -118.38467,
+            34.067038
+          ],
+          [
+            -118.3836828,
+            34.0669624
+          ],
+          [
+            -118.382683,
+            34.066778
+          ],
+          [
+            -118.3803734,
+            34.0662148
+          ],
+          [
+            -118.3776873,
+            34.0655376
+          ],
+          [
+            -118.3759661,
+            34.0651001
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_664015315",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 664015315,
+        "osm_name": "Purple Line Extension (Phase 1 of 3)",
+        "osm_railway": "subway",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.3759661,
+            34.0651001
+          ],
+          [
+            -118.3757007,
+            34.0650396
+          ],
+          [
+            -118.3751922,
+            34.0649136
+          ],
+          [
+            -118.3745471,
+            34.0647538
+          ],
+          [
+            -118.3729855,
+            34.064367
+          ],
+          [
+            -118.3720771,
+            34.0642047
+          ],
+          [
+            -118.3711852,
+            34.0640632
+          ],
+          [
+            -118.3611782,
+            34.0629081
+          ],
+          [
+            -118.3570975,
+            34.062502
+          ],
+          [
+            -118.3440058,
+            34.0622196
+          ],
+          [
+            -118.34292,
+            34.0621988
+          ],
+          [
+            -118.3423257,
+            34.0621875
+          ],
+          [
+            -118.3419409,
+            34.0621801
+          ],
+          [
+            -118.341794,
+            34.0621759
+          ],
+          [
+            -118.3405866,
+            34.062152
+          ],
+          [
+            -118.3385896,
+            34.0621118
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_664015317",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": false,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 664015317,
+        "osm_name": "Metro D Line",
+        "osm_railway": "subway",
+        "osm_construction": null
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.311106,
+            34.0616741
+          ],
+          [
+            -118.3071818,
+            34.0616846
+          ],
+          [
+            -118.306586,
+            34.0616873
+          ],
+          [
+            -118.305978,
+            34.06169
+          ],
+          [
+            -118.3018735,
+            34.0617085
+          ],
+          [
+            -118.3000679,
+            34.0617258
+          ],
+          [
+            -118.298487,
+            34.0617215
+          ],
+          [
+            -118.2980961,
+            34.0617448
+          ],
+          [
+            -118.2977119,
+            34.0618062
+          ],
+          [
+            -118.2973387,
+            34.0619049
+          ],
+          [
+            -118.2969823,
+            34.0620395
+          ],
+          [
+            -118.2940003,
+            34.0633689
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1173192577",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1173192577,
+        "osm_name": "Purple Line Extension (Phase 2 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4151856,
+            34.0593415
+          ],
+          [
+            -118.4150038,
+            34.0594489
+          ],
+          [
+            -118.4147994,
+            34.0595569
+          ],
+          [
+            -118.4145817,
+            34.0596726
+          ],
+          [
+            -118.4144136,
+            34.0597717
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1173192578",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1173192578,
+        "osm_name": "Purple Line Extension (Phase 2 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4151007,
+            34.0592623
+          ],
+          [
+            -118.4149513,
+            34.0593994
+          ],
+          [
+            -118.4147994,
+            34.0595569
+          ],
+          [
+            -118.4146404,
+            34.0597212
+          ],
+          [
+            -118.4144973,
+            34.0598524
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1173394408",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1173394408,
+        "osm_name": "Purple Line Extension (Phase 3 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4554609,
+            34.0534154
+          ],
+          [
+            -118.4553073,
+            34.0534818
+          ],
+          [
+            -118.455078,
+            34.0535607
+          ],
+          [
+            -118.4548677,
+            34.0536328
+          ],
+          [
+            -118.4546944,
+            34.0537064
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1173394409",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1173394409,
+        "osm_name": "Purple Line Extension (Phase 3 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4547659,
+            34.0537941
+          ],
+          [
+            -118.4549152,
+            34.0536914
+          ],
+          [
+            -118.455078,
+            34.0535607
+          ],
+          [
+            -118.4552535,
+            34.0534209
+          ],
+          [
+            -118.4553912,
+            34.0533266
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1173394410",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1173394410,
+        "osm_name": "Purple Line Extension (Phase 3 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4499782,
+            34.0567654
+          ],
+          [
+            -118.4501969,
+            34.0565687
+          ],
+          [
+            -118.4504149,
+            34.0563606
+          ],
+          [
+            -118.45064,
+            34.0561458
+          ],
+          [
+            -118.4508504,
+            34.0559564
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1173394411",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1173394411,
+        "osm_name": "Purple Line Extension (Phase 3 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.4509407,
+            34.0560324
+          ],
+          [
+            -118.4506984,
+            34.0561893
+          ],
+          [
+            -118.4504149,
+            34.0563606
+          ],
+          [
+            -118.4501443,
+            34.0565263
+          ],
+          [
+            -118.4498897,
+            34.0566885
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1317805694",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1317805694,
+        "osm_name": "Purple Line Extension (Phase 1 of 3)",
+        "osm_railway": "subway",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.3385896,
+            34.0621118
+          ],
+          [
+            -118.3376821,
+            34.0620937
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1455415563",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1455415563,
+        "osm_name": "Purple Line Extension (Phase 1 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.3429373,
+            34.062267
+          ],
+          [
+            -118.342629,
+            34.0622269
+          ],
+          [
+            -118.3423257,
+            34.0621875
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1455415564",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1455415564,
+        "osm_name": "Purple Line Extension (Phase 1 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.34292,
+            34.0621988
+          ],
+          [
+            -118.342629,
+            34.0622269
+          ],
+          [
+            -118.3423245,
+            34.0622549
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1455416027",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1455416027,
+        "osm_name": "Purple Line Extension (Phase 1 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.3751667,
+            34.0649787
+          ],
+          [
+            -118.3748579,
+            34.0648665
+          ],
+          [
+            -118.3745471,
+            34.0647538
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1455416028",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1455416028,
+        "osm_name": "Purple Line Extension (Phase 1 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.3751922,
+            34.0649136
+          ],
+          [
+            -118.3748579,
+            34.0648665
+          ],
+          [
+            -118.3745235,
+            34.0648194
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1455416413",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1455416413,
+        "osm_name": "Purple Line Extension (Phase 2 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.3969644,
+            34.0671102
+          ],
+          [
+            -118.396685,
+            34.0670648
+          ],
+          [
+            -118.3964056,
+            34.0670194
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "shape_id": "805OSM_1455416414",
+        "route_id": "805",
+        "route_name": "D Line (Purple)",
+        "route_color": "#A05DA5",
+        "direction_id": "0",
+        "direction": "outbound",
+        "headsign": "",
+        "under_construction": true,
+        "source": "OpenStreetMap/OpenRailwayMap",
+        "osm_way_id": 1455416414,
+        "osm_name": "Purple Line Extension (Phase 2 of 3)",
+        "osm_railway": "construction",
+        "osm_construction": "subway"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -118.3969619,
+            34.0670185
+          ],
+          [
+            -118.396685,
+            34.0670648
+          ],
+          [
+            -118.3964071,
+            34.0671102
+          ]
+        ]
+      }
+    }
+  ]
+}

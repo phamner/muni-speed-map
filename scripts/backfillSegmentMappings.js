@@ -1,4 +1,5 @@
 import { readFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import dotenv from "dotenv";
@@ -76,6 +77,8 @@ function parseArgs() {
   const args = process.argv.slice(2);
   const options = {
     city: null,
+    route: null,
+    force: false,
     batchSize: DEFAULT_BATCH_SIZE,
   };
 
@@ -84,6 +87,11 @@ function parseArgs() {
     if (arg === "--city") {
       options.city = args[i + 1] || null;
       i += 1;
+    } else if (arg === "--route") {
+      options.route = args[i + 1] || null;
+      i += 1;
+    } else if (arg === "--force") {
+      options.force = true;
     } else if (arg === "--batch-size") {
       options.batchSize = Number(args[i + 1] || DEFAULT_BATCH_SIZE);
       i += 1;
@@ -99,16 +107,182 @@ async function readJson(relativePath) {
   return JSON.parse(content);
 }
 
+// --- D Line extension merge helpers (must match cityDataLoaders.ts logic) ---
+
+function coordKey(coord) {
+  return `${coord[0].toFixed(7)},${coord[1].toFixed(7)}`;
+}
+
+function mergeLineSegmentsIntoChains(lineStrings) {
+  const chains = lineStrings.filter((l) => l && l.length >= 2).map((l) => [...l]);
+  let merged = true;
+  while (merged) {
+    merged = false;
+    for (let i = 0; i < chains.length; i++) {
+      if (!chains[i]) continue;
+      for (let j = i + 1; j < chains.length; j++) {
+        if (!chains[j]) continue;
+        const a = chains[i], b = chains[j];
+        const aS = coordKey(a[0]), aE = coordKey(a[a.length - 1]);
+        const bS = coordKey(b[0]), bE = coordKey(b[b.length - 1]);
+        let combined = null;
+        if (aE === bS) combined = [...a, ...b.slice(1)];
+        else if (aE === bE) combined = [...a, ...[...b].reverse().slice(1)];
+        else if (aS === bE) combined = [...b, ...a.slice(1)];
+        else if (aS === bS) combined = [...[...b].reverse(), ...a.slice(1)];
+        if (combined) { chains[i] = combined; chains[j] = null; merged = true; }
+      }
+    }
+  }
+  return chains.filter(Boolean).sort((a, b) => b.length - a.length);
+}
+
+function orientWestToEast(line) {
+  return line[0][0] <= line[line.length - 1][0] ? line : [...line].reverse();
+}
+
+function minLonOf(line) { return Math.min(...line.map((c) => c[0])); }
+function maxLonOf(line) { return Math.max(...line.map((c) => c[0])); }
+
+function mergeDLineExtension(laRoutes) {
+  let osmData;
+  try {
+    const osmPath = path.join(ROOT, "src/data/routes/laDLineOsm.json");
+    const content = readFileSync(osmPath, "utf8");
+    osmData = JSON.parse(content);
+  } catch (err) {
+    console.log("⚠️  D Line ORM file not found, skipping merge:", err.message);
+    return laRoutes;
+  }
+
+  const segments = (osmData.features || [])
+    .map((f) => f.geometry?.coordinates)
+    .filter((c) => c && c.length >= 2);
+  const chains = mergeLineSegmentsIntoChains(segments);
+  if (chains.length < 2) { console.log("⚠️  Not enough D Line chains"); return laRoutes; }
+
+  const features = laRoutes.features || [];
+
+  // Pick the two longest west-reaching chains
+  const westChains = chains.filter((c) => minLonOf(c) < -118.40).map(orientWestToEast).sort((a, b) => b.length - a.length);
+  let primary = westChains[0] || [];
+  let secondary = westChains[1] || [];
+
+  // Bridge secondary to eastern fragments using primary's geometry offset
+  if (secondary.length >= 2 && maxLonOf(secondary) < maxLonOf(primary) - 0.005) {
+    const eastFragments = chains
+      .filter((c) => c.length >= 2 && minLonOf(c) >= -118.40)
+      .map(orientWestToEast)
+      .sort((a, b) => b.length - a.length);
+    for (const frag of eastFragments) {
+      const secEnd = secondary[secondary.length - 1];
+      const gap = Math.abs(frag[0][0] - secEnd[0]);
+      if (gap < 0.04) {
+        const interpPrimaryLat = (lon) => {
+          for (let k = 1; k < primary.length; k++) {
+            const prev = primary[k - 1], cur = primary[k];
+            if ((prev[0] <= lon && cur[0] >= lon) || (cur[0] <= lon && prev[0] >= lon)) {
+              const span = cur[0] - prev[0];
+              if (Math.abs(span) < 1e-10) return prev[1];
+              return prev[1] + (lon - prev[0]) / span * (cur[1] - prev[1]);
+            }
+          }
+          return lon;
+        };
+        const startOffset = secEnd[1] - interpPrimaryLat(secEnd[0]);
+        const endOffset = frag[0][1] - interpPrimaryLat(frag[0][0]);
+        const bridgePoints = primary
+          .filter((p) => p[0] > secEnd[0] && p[0] < frag[0][0])
+          .map((p) => {
+            const t = (p[0] - secEnd[0]) / (frag[0][0] - secEnd[0]);
+            const offset = startOffset + t * (endOffset - startOffset);
+            return [p[0], p[1] + offset];
+          });
+        secondary = [...secondary, ...bridgePoints, ...frag];
+        break;
+      }
+    }
+  }
+
+  if (primary.length < 2 || secondary.length < 2) return laRoutes;
+
+  // Get base D Line feature for property templates
+  const dLineBase = features.find((f) => String(f.properties?.route_id) === "805");
+  const baseProps = dLineBase?.properties || { route_id: "805", route_name: "D Line (Purple)", route_color: "#A05DA5" };
+  const nonDLine = features.filter((f) => String(f.properties?.route_id) !== "805");
+
+  console.log(`✅ D Line ORM merged: outbound ${primary.length} pts, inbound ${secondary.length} pts`);
+  return {
+    ...laRoutes,
+    features: [
+      ...nonDLine,
+      { type: "Feature", properties: { ...baseProps, shape_id: "805OSM_FULL_EASTBOUND", direction_id: "0", direction: "outbound", source: "OpenStreetMap/OpenRailwayMap" }, geometry: { type: "LineString", coordinates: primary } },
+      { type: "Feature", properties: { ...baseProps, shape_id: "805OSM_FULL_WESTBOUND", direction_id: "1", direction: "inbound", source: "OpenStreetMap/OpenRailwayMap" }, geometry: { type: "LineString", coordinates: [...secondary].reverse() } },
+    ],
+  };
+}
+
+// --- End D Line helpers ---
+
+// --- B Line (Red) ORM replacement (must match cityDataLoaders.ts logic) ---
+function mergeBLineOsm(laRoutes) {
+  let osmData;
+  try {
+    const osmPath = path.join(ROOT, "src/data/routes/laBLineOsm.json");
+    const content = readFileSync(osmPath, "utf8");
+    osmData = JSON.parse(content);
+  } catch (err) {
+    console.log("⚠️  B Line ORM file not found, skipping merge:", err.message);
+    return laRoutes;
+  }
+
+  const segments = (osmData.features || [])
+    .map((f) => f.geometry?.coordinates)
+    .filter((c) => c && c.length >= 2);
+  const chains = mergeLineSegmentsIntoChains(segments);
+  if (chains.length < 2) { console.log("⚠️  Not enough B Line chains"); return laRoutes; }
+
+  const features = laRoutes.features || [];
+
+  // Pick the two longest chains, orient NW→SE (west-to-east)
+  const sortedChains = [...chains].sort((a, b) => b.length - a.length).slice(0, 2).map(orientWestToEast);
+  const bPrimary = sortedChains[0] || [];
+  const bSecondary = sortedChains[1] || [];
+
+  if (bPrimary.length < 2 || bSecondary.length < 2) return laRoutes;
+
+  const bLineBase = features.find((f) => String(f.properties?.route_id) === "802");
+  const bBaseProps = bLineBase?.properties || { route_id: "802", route_name: "B Line (Red)", route_color: "#E3131B" };
+  const nonBLine = features.filter((f) => String(f.properties?.route_id) !== "802");
+
+  console.log(`✅ B Line ORM merged: outbound ${bPrimary.length} pts, inbound ${bSecondary.length} pts`);
+  return {
+    ...laRoutes,
+    features: [
+      ...nonBLine,
+      { type: "Feature", properties: { ...bBaseProps, shape_id: "802OSM_FULL_OUTBOUND", direction_id: "0", direction: "outbound", source: "OpenStreetMap/OpenRailwayMap" }, geometry: { type: "LineString", coordinates: bPrimary } },
+      { type: "Feature", properties: { ...bBaseProps, shape_id: "802OSM_FULL_INBOUND", direction_id: "1", direction: "inbound", source: "OpenStreetMap/OpenRailwayMap" }, geometry: { type: "LineString", coordinates: [...bSecondary].reverse() } },
+    ],
+  };
+}
+// --- End B Line helpers ---
+
 async function loadRouteCollections() {
   const routeCollections = new Map();
   const routeIdsByCity = new Map();
 
   for (const [city, sourcePaths] of Object.entries(CITY_ROUTE_SOURCES)) {
     const collections = await Promise.all(sourcePaths.map(readJson));
-    const merged = {
+    let merged = {
       type: "FeatureCollection",
       features: collections.flatMap((collection) => collection?.features || []),
     };
+
+    // Merge D Line extension so segment IDs match the renderer
+    if (city === "LA") {
+      merged = mergeDLineExtension(merged);
+      merged = mergeBLineOsm(merged);
+    }
 
     routeCollections.set(city, merged);
     routeIdsByCity.set(
@@ -510,13 +684,15 @@ function findSegmentsForVehicle(lat, lon, routeId, routeFeatureMap, city) {
   };
 }
 
-async function fetchBatch(batchSize, targetCity, blockedIds) {
+async function fetchBatch(batchSize, targetCity, targetRoute, force, blockedIds, lastProcessedId) {
   let query = supabase
     .from("vehicle_positions")
     .select(
       "id,city,route_id,lat,lon,segment_id,segment_id_200,segment_id_500,segment_id_1000,on_route,mapping_version",
-    )
-    .or(
+    );
+
+  if (!force) {
+    query = query.or(
       [
         "mapping_version.is.null",
         `mapping_version.neq.${SEGMENT_MAPPING_VERSION}`,
@@ -525,12 +701,21 @@ async function fetchBatch(batchSize, targetCity, blockedIds) {
         "segment_id_1000.is.null",
         "on_route.is.null",
       ].join(","),
-    )
-    .order("id", { ascending: true })
-    .limit(batchSize);
+    );
+  }
+
+  // When force-reprocessing, paginate by id to avoid re-fetching updated rows
+  if (lastProcessedId > 0) {
+    query = query.gt("id", lastProcessedId);
+  }
+
+  query = query.order("id", { ascending: true }).limit(batchSize);
 
   if (targetCity) {
     query = query.eq("city", targetCity);
+  }
+  if (targetRoute) {
+    query = query.eq("route_id", targetRoute);
   }
   if (blockedIds.size > 0) {
     query = query.not("id", "in", `(${Array.from(blockedIds).join(",")})`);
@@ -561,7 +746,7 @@ async function updateBatch(rows) {
 }
 
 async function main() {
-  const { city: targetCity, batchSize } = parseArgs();
+  const { city: targetCity, route: targetRoute, force, batchSize } = parseArgs();
   const { routeCollections, routeIdsByCity } = await loadRouteCollections();
   const routeFeatureMaps = new Map(
     Array.from(routeCollections.entries()).map(([city, routes]) => [
@@ -570,16 +755,23 @@ async function main() {
     ]),
   );
 
+  if (targetRoute) {
+    console.log(`Filtering to route_id=${targetRoute}${force ? " (force reprocess)" : ""}`);
+  }
+
   let totalProcessed = 0;
-  let totalUpdated = 0;
+  let totalChanged = 0;
+  let totalUnchanged = 0;
   let totalSkipped = 0;
+  let lastProcessedId = 0;
   const blockedIds = new Set();
 
   while (true) {
-    const batch = await fetchBatch(batchSize, targetCity, blockedIds);
+    const batch = await fetchBatch(batchSize, targetCity, targetRoute, force, blockedIds, lastProcessedId);
     if (batch.length === 0) break;
 
-    const updates = [];
+    const changed = [];
+    let batchUnchanged = 0;
 
     for (const row of batch) {
       totalProcessed += 1;
@@ -600,31 +792,52 @@ async function main() {
         resolvedCity,
       );
 
-      updates.push({
+      const newSegmentId200 = segments.segmentId ?? "";
+      const newSegmentId500 = segments.segmentId500 ?? "";
+      const newSegmentId1000 = segments.segmentId1000 ?? "";
+
+      const alreadyCorrect =
+        row.segment_id_200 === newSegmentId200 &&
+        row.segment_id_500 === newSegmentId500 &&
+        row.segment_id_1000 === newSegmentId1000 &&
+        row.on_route === segments.onRoute &&
+        row.mapping_version === SEGMENT_MAPPING_VERSION;
+
+      if (alreadyCorrect) {
+        batchUnchanged += 1;
+        totalUnchanged += 1;
+        continue;
+      }
+
+      changed.push({
         id: row.id,
-        segment_id: segments.segmentId ?? "",
-        segment_id_200: segments.segmentId ?? "",
-        segment_id_500: segments.segmentId500 ?? "",
-        segment_id_1000: segments.segmentId1000 ?? "",
+        segment_id: newSegmentId200,
+        segment_id_200: newSegmentId200,
+        segment_id_500: newSegmentId500,
+        segment_id_1000: newSegmentId1000,
         on_route: segments.onRoute,
         mapping_version: SEGMENT_MAPPING_VERSION,
         mapped_at: new Date().toISOString(),
       });
     }
 
-    if (updates.length > 0) {
-      await updateBatch(updates);
-      totalUpdated += updates.length;
+    if (changed.length > 0) {
+      await updateBatch(changed);
+      totalChanged += changed.length;
     }
 
+    // Track highest id to paginate forward on force-reprocess
+    const maxId = Math.max(...batch.map((row) => row.id));
+    if (maxId > lastProcessedId) lastProcessedId = maxId;
+
     console.log(
-      `Processed ${totalProcessed} rows (${totalUpdated} updated, ${totalSkipped} skipped)`,
+      `Processed ${totalProcessed} rows (${totalChanged} changed, ${totalUnchanged} unchanged, ${totalSkipped} skipped)`,
     );
   }
 
   console.log("✅ Segment mapping backfill complete.");
   console.log(
-    `Rows processed: ${totalProcessed}, updated: ${totalUpdated}, skipped: ${totalSkipped}`,
+    `Rows processed: ${totalProcessed}, changed: ${totalChanged}, unchanged: ${totalUnchanged}, skipped: ${totalSkipped}`,
   );
   if (blockedIds.size > 0) {
     console.log(
