@@ -5932,17 +5932,18 @@ export function SpeedMap({
       }
       }; // end setupDensityLayers
 
-      // Wait for style to be loaded and routes layer to exist before adding census layers
+      // Wait for routes layer to exist before adding census layers
+      // (routes layer is the insertion point for addLayer's "before" param)
       const waitAndSetup = () => {
         if (cancelled || !map.current) return;
-        if (map.current.isStyleLoaded() && map.current.getLayer("routes")) {
+        if (map.current.getLayer("routes")) {
           setupDensityLayers();
         } else {
           setTimeout(waitAndSetup, 50);
         }
       };
 
-      if (map.current.isStyleLoaded() && map.current.getLayer("routes")) {
+      if (map.current.getLayer("routes")) {
         setupDensityLayers();
       } else {
         setTimeout(waitAndSetup, 50);
