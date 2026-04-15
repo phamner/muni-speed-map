@@ -5442,8 +5442,27 @@ export function SpeedMap({
 
     let cancelled = false;
 
-    loadPopulationDensity(city).then((rawData) => {
+    void (async () => {
+      // Step 1: Load census data (cached after first load)
+      const rawData = await loadPopulationDensity(city);
       if (cancelled || !map.current || !rawData) return;
+
+      // Step 2: Wait for the "routes" layer to exist — it's the insertion
+      // point for census layers and is created by the routes effect which
+      // may still be waiting for the style to finish loading.
+      if (!map.current.getLayer("routes")) {
+        await new Promise<void>((resolve) => {
+          const m = map.current!;
+          const onStyleData = () => {
+            if (cancelled || m.getLayer("routes")) {
+              m.off("styledata", onStyleData);
+              resolve();
+            }
+          };
+          m.on("styledata", onStyleData);
+        });
+      }
+      if (cancelled || !map.current) return;
 
       const MIN_WORKERS_FOR_TRANSIT_PCT = 100;
       const processedData = {
@@ -5472,9 +5491,7 @@ export function SpeedMap({
         }),
       };
 
-      const setupDensityLayers = () => {
-        if (cancelled || !map.current) return;
-
+      // Step 3: Apply census layers to the map
       try {
         const existingSource = map.current.getSource(
           "census-tracts",
@@ -5930,25 +5947,7 @@ export function SpeedMap({
       } catch (e) {
         console.error("Error setting up population density layer:", e);
       }
-      }; // end setupDensityLayers
-
-      // Wait for routes layer to exist before adding census layers
-      // (routes layer is the insertion point for addLayer's "before" param)
-      const waitAndSetup = () => {
-        if (cancelled || !map.current) return;
-        if (map.current.getLayer("routes")) {
-          setupDensityLayers();
-        } else {
-          setTimeout(waitAndSetup, 50);
-        }
-      };
-
-      if (map.current.getLayer("routes")) {
-        setupDensityLayers();
-      } else {
-        setTimeout(waitAndSetup, 50);
-      }
-    });
+    })();
 
     return () => {
       cancelled = true;
