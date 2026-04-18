@@ -3217,19 +3217,8 @@ export function SpeedMap({
       return { ...rawYards, features: [] };
     }
 
-    const filtered = rawYards.features.filter((feature: any) => {
-      const yardRoutes = feature.properties?.routes;
-      if (!yardRoutes || !Array.isArray(yardRoutes) || yardRoutes.length === 0) {
-        return true;
-      }
-      return yardRoutes.some((route: string) => selectedLines.includes(route));
-    });
-
-    return {
-      type: "FeatureCollection" as const,
-      features: filtered,
-    };
-  }, [cityConfig.yards, selectedLines, showYards]);
+    return rawYards;
+  }, [cityConfig.yards, showYards]);
 
   // Add/update stops layer with clustering by name
   useEffect(() => {
