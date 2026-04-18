@@ -33,7 +33,6 @@ import {
   haversineDistance,
   distanceToLineString,
   distanceToSegment,
-  MAX_DISTANCE_FROM_ROUTE_METERS,
   getMaxDistanceForRoute,
 } from "./speedMap/geoUtils";
 import { filterSeparationByRoutes } from "./speedMap/separationUtils";

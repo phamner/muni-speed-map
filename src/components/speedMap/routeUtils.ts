@@ -1,6 +1,5 @@
 import {
   distanceToLineString,
-  MAX_DISTANCE_FROM_ROUTE_METERS,
   getMaxDistanceForRoute,
 } from "./geoUtils";
 

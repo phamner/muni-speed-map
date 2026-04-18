@@ -1,6 +1,6 @@
 import type { City } from "../../types";
 import { supabase } from "../../lib/supabase";
-import { MAX_DISTANCE_FROM_ROUTE_METERS, getMaxDistanceForRoute } from "./geoUtils";
+import { getMaxDistanceForRoute } from "./geoUtils";
 import {
   findNearestPointOnLine,
   getLineStringLength,
