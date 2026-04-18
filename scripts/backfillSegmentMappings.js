@@ -30,6 +30,17 @@ const SEGMENT_SIZE_500_METERS = 500;
 const SEGMENT_SIZE_1000_METERS = 1000;
 const MAX_DISTANCE_FROM_ROUTE_METERS = 100;
 
+const ROUTE_DISTANCE_OVERRIDES = {
+  "802": 200, // LA B Line (subway)
+};
+
+function getMaxDistanceForRoute(routeId) {
+  if (routeId && routeId in ROUTE_DISTANCE_OVERRIDES) {
+    return ROUTE_DISTANCE_OVERRIDES[routeId];
+  }
+  return MAX_DISTANCE_FROM_ROUTE_METERS;
+}
+
 const CITIES_WITH_PARALLEL_TRACKS = new Set([
   "SF",
   "LA",
@@ -222,7 +233,58 @@ function mergeDLineExtension(laRoutes) {
   };
 }
 
-// --- End D Line helpers ---
+// --- B Line ORM merge (must match cityDataLoaders.ts logic) ---
+
+function mergeBLineOsm(laRoutes) {
+  let osmData;
+  try {
+    const osmPath = path.join(ROOT, "src/data/routes/laBLineOsm.json");
+    const content = readFileSync(osmPath, "utf8");
+    osmData = JSON.parse(content);
+  } catch (err) {
+    console.log("⚠️  B Line ORM file not found, skipping merge:", err.message);
+    return laRoutes;
+  }
+
+  const segments = (osmData.features || [])
+    .filter((f) => !f.properties?.under_construction)
+    .map((f) => f.geometry?.coordinates)
+    .filter((c) => c && c.length >= 2);
+  const chains = mergeLineSegmentsIntoChains(segments);
+  if (chains.length < 2) { console.log("⚠️  Not enough B Line chains"); return laRoutes; }
+
+  const features = laRoutes.features || [];
+
+  // B Line runs north-south; orient chains south→north and pick the two longest
+  const orientSouthToNorth = (line) =>
+    line[0][1] <= line[line.length - 1][1] ? line : [...line].reverse();
+
+  const fullCorridor = chains
+    .filter((c) => c.length >= 10)
+    .map(orientSouthToNorth)
+    .sort((a, b) => b.length - a.length);
+
+  const primary = fullCorridor[0] || [];
+  const secondary = fullCorridor[1] || [];
+
+  if (primary.length < 2 || secondary.length < 2) return laRoutes;
+
+  const bLineBase = features.find((f) => String(f.properties?.route_id) === "802");
+  const baseProps = bLineBase?.properties || { route_id: "802", route_name: "B Line (Red)", route_color: "#E4002B" };
+  const nonBLine = features.filter((f) => String(f.properties?.route_id) !== "802");
+
+  console.log(`✅ B Line ORM merged: northbound ${primary.length} pts, southbound ${secondary.length} pts`);
+  return {
+    ...laRoutes,
+    features: [
+      ...nonBLine,
+      { type: "Feature", properties: { ...baseProps, shape_id: "802OSM_FULL_NORTHBOUND", direction_id: "0", direction: "outbound", source: "OpenStreetMap/OpenRailwayMap" }, geometry: { type: "LineString", coordinates: primary } },
+      { type: "Feature", properties: { ...baseProps, shape_id: "802OSM_FULL_SOUTHBOUND", direction_id: "1", direction: "inbound", source: "OpenStreetMap/OpenRailwayMap" }, geometry: { type: "LineString", coordinates: [...secondary].reverse() } },
+    ],
+  };
+}
+
+// --- End D Line / B Line helpers ---
 
 async function loadRouteCollections() {
   const routeCollections = new Map();
@@ -235,8 +297,9 @@ async function loadRouteCollections() {
       features: collections.flatMap((collection) => collection?.features || []),
     };
 
-    // Merge D Line extension so segment IDs match the renderer
+    // Merge D Line + B Line extensions so segment IDs match the renderer
     if (city === "LA") {
+      merged = mergeBLineOsm(merged);
       merged = mergeDLineExtension(merged);
     }
 
@@ -585,9 +648,10 @@ function findSegmentsForVehicle(lat, lon, routeId, routeFeatureMap, city) {
             )
           : result.distanceAlong;
 
+        const maxDist = getMaxDistanceForRoute(candidateRouteId);
         if (
           result.distance < minDistance &&
-          result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
+          result.distance <= maxDist
         ) {
           minDistance = result.distance;
           bestSegmentIndex200 =
@@ -614,7 +678,7 @@ function findSegmentsForVehicle(lat, lon, routeId, routeFeatureMap, city) {
     }
   }
 
-  if (bestSegmentRouteId && minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS) {
+  if (bestSegmentRouteId && minDistance <= getMaxDistanceForRoute(bestSegmentRouteId)) {
     return {
       segmentId:
         bestSegmentIndex200 !== null

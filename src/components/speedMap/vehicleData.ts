@@ -1,6 +1,6 @@
 import type { City } from "../../types";
 import { supabase } from "../../lib/supabase";
-import { MAX_DISTANCE_FROM_ROUTE_METERS } from "./geoUtils";
+import { MAX_DISTANCE_FROM_ROUTE_METERS, getMaxDistanceForRoute } from "./geoUtils";
 import {
   findNearestPointOnLine,
   getLineStringLength,
@@ -113,9 +113,10 @@ export function findSegmentForVehicle(
             )
           : result.distanceAlong;
 
+        const maxDist = getMaxDistanceForRoute(candidateRouteId);
         if (
           result.distance < minDistance &&
-          result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
+          result.distance <= maxDist
         ) {
           minDistance = result.distance;
           const localSegmentIndex = Math.floor(distanceAlong / segmentSizeMeters);
@@ -137,7 +138,7 @@ export function findSegmentForVehicle(
   if (
     bestSegmentIndex !== null &&
     bestSegmentRouteId &&
-    minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS
+    minDistance <= getMaxDistanceForRoute(bestSegmentRouteId)
   ) {
     return `${bestSegmentRouteId}_${bestSegmentIndex}`;
   }
@@ -226,9 +227,10 @@ export function findSegmentsForVehicle(
             )
           : result.distanceAlong;
 
+        const maxDist2 = getMaxDistanceForRoute(candidateRouteId);
         if (
           result.distance < minDistance &&
-          result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
+          result.distance <= maxDist2
         ) {
           minDistance = result.distance;
           bestSegmentIndex200 =
@@ -255,7 +257,7 @@ export function findSegmentsForVehicle(
     }
   }
 
-  if (bestSegmentRouteId && minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS) {
+  if (bestSegmentRouteId && minDistance <= getMaxDistanceForRoute(bestSegmentRouteId)) {
     return {
       segmentId: bestSegmentIndex200 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex200}` : null,
       segmentId500: bestSegmentIndex500 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex500}` : null,

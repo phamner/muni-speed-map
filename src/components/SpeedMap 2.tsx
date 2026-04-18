@@ -34,6 +34,7 @@ import {
   distanceToLineString,
   distanceToSegment,
   MAX_DISTANCE_FROM_ROUTE_METERS,
+  getMaxDistanceForRoute,
 } from "./speedMap/geoUtils";
 import { filterSeparationByRoutes } from "./speedMap/separationUtils";
 import {
@@ -1656,7 +1657,7 @@ export function SpeedMap({
           segmentId500: segments.segmentId500,
           segmentId1000: segments.segmentId1000,
           headsign: row.headsign,
-          onRoute: segments.minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS,
+          onRoute: segments.minDistance <= getMaxDistanceForRoute(row.route_id),
         };
       });
     },

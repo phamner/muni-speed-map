@@ -1,4 +1,15 @@
 const MAX_DISTANCE_FROM_ROUTE_METERS = 100;
+
+const ROUTE_DISTANCE_OVERRIDES: Record<string, number> = {
+  "802": 200, // LA B Line (subway)
+};
+
+function getMaxDistanceForRoute(routeId?: string | null): number {
+  if (routeId && routeId in ROUTE_DISTANCE_OVERRIDES) {
+    return ROUTE_DISTANCE_OVERRIDES[routeId];
+  }
+  return MAX_DISTANCE_FROM_ROUTE_METERS;
+}
 const SEGMENT_SIZE_METERS = 200;
 const SEGMENT_SIZE_500_METERS = 500;
 const SEGMENT_SIZE_1000_METERS = 1000;
@@ -390,9 +401,10 @@ function findSegmentsForVehicle(
             )
           : result.distanceAlong;
 
+        const maxDist = getMaxDistanceForRoute(candidateRouteId);
         if (
           result.distance < minDistance &&
-          result.distance <= MAX_DISTANCE_FROM_ROUTE_METERS
+          result.distance <= maxDist
         ) {
           minDistance = result.distance;
           bestSegmentIndex200 =
@@ -419,7 +431,7 @@ function findSegmentsForVehicle(
     }
   }
 
-  if (bestSegmentRouteId && minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS) {
+  if (bestSegmentRouteId && minDistance <= getMaxDistanceForRoute(bestSegmentRouteId)) {
     return {
       segmentId: bestSegmentIndex200 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex200}` : null,
       segmentId500: bestSegmentIndex500 !== null ? `${bestSegmentRouteId}_${bestSegmentIndex500}` : null,
@@ -536,7 +548,7 @@ self.onmessage = (e: MessageEvent<SegmentWorkerInput>) => {
       segmentId500: segments.segmentId500,
       segmentId1000: segments.segmentId1000,
       headsign: row.headsign,
-      onRoute: segments.minDistance <= MAX_DISTANCE_FROM_ROUTE_METERS,
+      onRoute: segments.minDistance <= getMaxDistanceForRoute(row.route_id),
     };
   });
 

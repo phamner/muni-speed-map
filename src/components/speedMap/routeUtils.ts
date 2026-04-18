@@ -1,6 +1,7 @@
 import {
   distanceToLineString,
   MAX_DISTANCE_FROM_ROUTE_METERS,
+  getMaxDistanceForRoute,
 } from "./geoUtils";
 
 export function buildRouteGeometryMap(routes: any): Map<string, number[][][]> {
@@ -43,9 +44,10 @@ export function isOnRoute(
     return true;
   }
 
+  const maxDist = getMaxDistanceForRoute(routeId);
   for (const lineCoords of routeLines) {
     const distance = distanceToLineString(lat, lon, lineCoords);
-    if (distance <= MAX_DISTANCE_FROM_ROUTE_METERS) {
+    if (distance <= maxDist) {
       return true;
     }
   }

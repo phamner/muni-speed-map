@@ -2,6 +2,18 @@ import type { CityStaticData } from "../../data/cityDataLoaders";
 
 export const MAX_DISTANCE_FROM_ROUTE_METERS = 100;
 
+/** Per-route distance overrides (e.g. subways with noisy underground GPS). */
+const ROUTE_DISTANCE_OVERRIDES: Record<string, number> = {
+  "802": 200, // LA B Line (subway) — underground GPS drift
+};
+
+export function getMaxDistanceForRoute(routeId?: string | null): number {
+  if (routeId && routeId in ROUTE_DISTANCE_OVERRIDES) {
+    return ROUTE_DISTANCE_OVERRIDES[routeId];
+  }
+  return MAX_DISTANCE_FROM_ROUTE_METERS;
+}
+
 export function debounce<T extends (...args: any[]) => void>(
   fn: T,
   delay: number,
