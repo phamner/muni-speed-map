@@ -661,6 +661,7 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         routes,
         heritageRoutes,
         dLineExtension,
+        bLineOsm,
         stops,
         crossings,
         switches,
@@ -677,6 +678,9 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
           default: { type: "FeatureCollection", features: [] },
         })),
         import("./routes/laDLineOsm.json").catch(() => ({
+          default: { type: "FeatureCollection", features: [] },
+        })),
+        import("./routes/laBLineOsm.json").catch(() => ({
           default: { type: "FeatureCollection", features: [] },
         })),
         import("./stops/laMetroStops.json"),
@@ -706,10 +710,90 @@ async function doLoadCityData(city: City): Promise<CityStaticData> {
         };
       }
 
+      // Replace B Line (route 802) GTFS geometry with full ORM data (higher
+      // resolution subway track geometry from OpenRailwayMap).
+      // After changing this, run:  npm run backfill:segments -- --city LA --route 802 --force
+      const bLineOsmFeatures = bLineOsm.default?.features || [];
+      const bLineOsmSegments: Array<Array<[number, number]>> =
+        bLineOsmFeatures
+          .filter((f: any) => !f?.properties?.under_construction)
+          .map((f: any) => f?.geometry?.coordinates)
+          .filter((coords: any) => Array.isArray(coords) && coords.length >= 2);
+
+      const bLineOsmChains = mergeLineSegmentsIntoChains(bLineOsmSegments);
+
+      let bLineRebuiltRoutes = routes.default;
+      if (bLineOsmChains.length >= 2) {
+        const baseFeatures = bLineRebuiltRoutes?.features || [];
+
+        // B Line runs roughly north-south; orient chains south→north and
+        // pick the two longest that span the full corridor.
+        const orientSouthToNorth = (line: Array<[number, number]>): Array<[number, number]> =>
+          line[0][1] <= line[line.length - 1][1] ? line : [...line].reverse();
+
+        const fullCorridor = bLineOsmChains
+          .filter((c) => c.length >= 10)
+          .map(orientSouthToNorth)
+          .sort((a, b) => b.length - a.length);
+
+        const bPrimary = fullCorridor[0] || [];
+        const bSecondary = fullCorridor[1] || [];
+
+        if (bPrimary.length >= 2 && bSecondary.length >= 2) {
+          const bLineBase = baseFeatures.find(
+            (f: any) => String(f?.properties?.route_id) === "802",
+          );
+          const bBaseProps = bLineBase?.properties || {
+            route_id: "802",
+            route_name: "B Line (Red)",
+            route_color: "#E4002B",
+          };
+
+          const nonBLineFeatures = baseFeatures.filter(
+            (f: any) => String(f?.properties?.route_id) !== "802",
+          );
+
+          bLineRebuiltRoutes = {
+            ...bLineRebuiltRoutes,
+            features: [
+              ...nonBLineFeatures,
+              {
+                type: "Feature",
+                properties: {
+                  ...bBaseProps,
+                  shape_id: "802OSM_FULL_NORTHBOUND",
+                  direction_id: "0",
+                  direction: "outbound",
+                  source: "OpenStreetMap/OpenRailwayMap",
+                } as any,
+                geometry: {
+                  type: "LineString",
+                  coordinates: bPrimary,
+                },
+              },
+              {
+                type: "Feature",
+                properties: {
+                  ...bBaseProps,
+                  shape_id: "802OSM_FULL_SOUTHBOUND",
+                  direction_id: "1",
+                  direction: "inbound",
+                  source: "OpenStreetMap/OpenRailwayMap",
+                } as any,
+                geometry: {
+                  type: "LineString",
+                  coordinates: [...bSecondary].reverse(),
+                },
+              },
+            ],
+          };
+        }
+      }
+
       // Replace D Line (route 805) GTFS geometry with full ORM data so we get
       // two clean parallel tracks from VA Hospital → Union Station.
       // After changing this, run:  npm run backfill:segments -- --city LA --route 805 --force
-      const baseLaRoutes = routes.default;
+      const baseLaRoutes = bLineRebuiltRoutes;
       const dLineOsmFeatures = dLineExtension.default?.features || [];
       const dLineOsmSegments: Array<Array<[number, number]>> =
         dLineOsmFeatures
