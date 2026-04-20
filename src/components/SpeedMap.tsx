@@ -123,6 +123,8 @@ function buildSelectedLineFilter(
 const HERITAGE_LOCAL_CIRCULATOR_OUTLINE_WIDTH = 2.9;
 const HERITAGE_LOCAL_CIRCULATOR_LINE_WIDTH = 2.1;
 const ENABLE_INFRASTRUCTURE_POPUPS = false;
+const FERRY_OVERLAY_COLOR = "#99b7ea";
+const FERRY_OVERLAY_DASHARRAY = [2.2, 2.8];
 const HERITAGE_LOCAL_CIRCULATOR_FILTER = [
   "==",
   ["to-string", ["get", "overlay_category"]],
@@ -1102,7 +1104,7 @@ export function SpeedMap({
         ?.setLngLat(e.lngLat)
         .setHTML(
           `<div class="popup-content">
-            <div class="popup-title" style="color:#7fe8ff">${escapeHtml(title)}</div>
+            <div class="popup-title" style="color:${FERRY_OVERLAY_COLOR}">${escapeHtml(title)}</div>
             ${bulletStops}
           </div>`,
         )
@@ -2258,24 +2260,24 @@ export function SpeedMap({
         source: "ferry-routes-overlay-src",
         layout: {
           "line-join": "round",
-          "line-cap": "round",
+          "line-cap": "butt",
           visibility: showFerryRoutesOverlay ? "visible" : "none",
         },
         paint: {
-          "line-color": "#7fe8ff",
+          "line-color": FERRY_OVERLAY_COLOR,
           "line-width": [
             "interpolate",
             ["linear"],
             ["zoom"],
             8,
-            1.1,
+            0.7,
             11,
-            1.7,
+            1.05,
             14,
-            2.6,
+            1.45,
           ],
-          "line-opacity": 0.92,
-          "line-dasharray": [3.5, 2.4],
+          "line-opacity": 0.82,
+          "line-dasharray": FERRY_OVERLAY_DASHARRAY,
         },
       });
 

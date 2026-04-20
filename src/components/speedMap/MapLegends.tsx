@@ -380,10 +380,10 @@ export function DynamicLegends({
               <span
                 className="rail-context-legend-line"
                 style={{
-                  borderTopColor: "#7fe8ff",
-                  borderTopWidth: 2.4,
+                  borderTopColor: "#99b7ea",
+                  borderTopWidth: 1.8,
                   borderTopStyle: "dashed",
-                  opacity: 0.95,
+                  opacity: 0.82,
                 }}
               ></span>
               <span>Ferries</span>
